@@ -1,0 +1,74 @@
+{
+    "name": "@girs/meta-18",
+    "version": "18.0.0-4.0.0-beta.41",
+    "description": "GJS TypeScript type definitions for Meta-18, generated from library version 18.0.0",
+    "type": "module",
+    "module": "meta-18.js",
+    "main": "meta-18.js",
+    "exports": {
+        "./ambient": {
+            "types": "./meta-18-ambient.d.ts",
+            "import": "./meta-18-ambient.js",
+            "default": "./meta-18-ambient.js"
+        },
+        "./import": {
+            "types": "./meta-18-import.d.ts",
+            "import": "./meta-18-import.js",
+            "default": "./meta-18-import.js"
+        },
+        "./meta-18": {
+            "types": "./meta-18.d.ts",
+            "import": "./meta-18.js",
+            "default": "./meta-18.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
+    },
+    "scripts": {
+        "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/clutter-18": "workspace:^",
+        "@girs/cogl-18": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdesktopenums-3.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/mtk-18": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/xfixes-4.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Meta-18"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/meta-18#readme"
+}

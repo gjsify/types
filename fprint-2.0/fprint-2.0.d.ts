@@ -126,6 +126,11 @@ export namespace FPrint {
          *   before retrying.
          */
         REMOVE_FINGER,
+        /**
+         * The scan did not succeed because the finger
+         *   swipe or touch was too fast.
+         */
+        TOO_FAST,
     }
 
     /**
@@ -884,8 +889,13 @@ export namespace FPrint {
          * driver will return a newly created print after enrollment succeeded.
          * @param template_print a {@link FPrint.Print}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param progress_cb progress reporting callback
          */
-        enroll(template_print: Print, cancellable?: Gio.Cancellable | null): globalThis.Promise<Print>;
+        enroll(
+            template_print: Print,
+            cancellable?: Gio.Cancellable | null,
+            progress_cb?: EnrollProgress | null,
+        ): globalThis.Promise<Print>;
         /**
          * Start an asynchronous operation to enroll a print. The callback will
          * be called once the operation has finished. Retrieve the result with
@@ -899,11 +909,13 @@ export namespace FPrint {
          * driver will return a newly created print after enrollment succeeded.
          * @param template_print a {@link FPrint.Print}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param progress_cb progress reporting callback
          * @param callback the function to call on completion
          */
         enroll(
             template_print: Print,
             cancellable: Gio.Cancellable | null,
+            progress_cb: EnrollProgress | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
@@ -919,11 +931,13 @@ export namespace FPrint {
          * driver will return a newly created print after enrollment succeeded.
          * @param template_print a {@link FPrint.Print}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param progress_cb progress reporting callback
          * @param callback the function to call on completion
          */
         enroll(
             template_print: Print,
             cancellable?: Gio.Cancellable | null,
+            progress_cb?: EnrollProgress | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Print> | void;
         /**
@@ -1008,10 +1022,12 @@ export namespace FPrint {
          * `fp_device_identify_finish()`.
          * @param prints {@link GLib.PtrArray} of {@link FPrint.Print}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param match_cb match reporting callback
          */
         identify(
             prints: Print[],
             cancellable?: Gio.Cancellable | null,
+            match_cb?: MatchCb | null,
         ): globalThis.Promise<[void, Print | null, Print | null]>;
         /**
          * Start an asynchronous operation to identify prints. The callback will
@@ -1019,11 +1035,13 @@ export namespace FPrint {
          * `fp_device_identify_finish()`.
          * @param prints {@link GLib.PtrArray} of {@link FPrint.Print}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param match_cb match reporting callback
          * @param callback the function to call on completion
          */
         identify(
             prints: Print[],
             cancellable: Gio.Cancellable | null,
+            match_cb: MatchCb | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
@@ -1032,11 +1050,13 @@ export namespace FPrint {
          * `fp_device_identify_finish()`.
          * @param prints {@link GLib.PtrArray} of {@link FPrint.Print}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param match_cb match reporting callback
          * @param callback the function to call on completion
          */
         identify(
             prints: Print[],
             cancellable?: Gio.Cancellable | null,
+            match_cb?: MatchCb | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[void, Print | null, Print | null]> | void;
         /**
@@ -1056,9 +1076,14 @@ export namespace FPrint {
          * Identify a print synchronously.
          * @param prints {@link GLib.PtrArray} of {@link FPrint.Print}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param match_cb match reporting callback
          * @returns `false` on error, `true` otherwise
          */
-        identify_sync(prints: Print[], cancellable?: Gio.Cancellable | null): [Print | null, Print | null];
+        identify_sync(
+            prints: Print[],
+            cancellable?: Gio.Cancellable | null,
+            match_cb?: MatchCb | null,
+        ): [Print | null, Print | null];
         /**
          * @returns Whether the device is open or not
          */
@@ -1262,10 +1287,12 @@ export namespace FPrint {
          * `fp_device_verify_finish()`.
          * @param enrolled_print a {@link FPrint.Print} to verify
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param match_cb match reporting callback
          */
         verify(
             enrolled_print: Print,
             cancellable?: Gio.Cancellable | null,
+            match_cb?: MatchCb | null,
         ): globalThis.Promise<[void, boolean, Print | null]>;
         /**
          * Start an asynchronous operation to verify a print. The callback will
@@ -1273,11 +1300,13 @@ export namespace FPrint {
          * `fp_device_verify_finish()`.
          * @param enrolled_print a {@link FPrint.Print} to verify
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param match_cb match reporting callback
          * @param callback the function to call on completion
          */
         verify(
             enrolled_print: Print,
             cancellable: Gio.Cancellable | null,
+            match_cb: MatchCb | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
@@ -1286,11 +1315,13 @@ export namespace FPrint {
          * `fp_device_verify_finish()`.
          * @param enrolled_print a {@link FPrint.Print} to verify
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param match_cb match reporting callback
          * @param callback the function to call on completion
          */
         verify(
             enrolled_print: Print,
             cancellable?: Gio.Cancellable | null,
+            match_cb?: MatchCb | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[void, boolean, Print | null]> | void;
         /**
@@ -1309,9 +1340,14 @@ export namespace FPrint {
          * Verify a given print synchronously.
          * @param enrolled_print a {@link FPrint.Print} to verify
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param match_cb match reporting callback
          * @returns `false` on error, `true` otherwise
          */
-        verify_sync(enrolled_print: Print, cancellable: Gio.Cancellable | null): [boolean, Print | null];
+        verify_sync(
+            enrolled_print: Print,
+            cancellable: Gio.Cancellable | null,
+            match_cb: MatchCb | null,
+        ): [boolean, Print | null];
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -1610,7 +1646,7 @@ export namespace FPrint {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1665,7 +1701,7 @@ export namespace FPrint {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1740,7 +1776,7 @@ export namespace FPrint {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2474,7 +2510,7 @@ export namespace FPrint {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2529,7 +2565,7 @@ export namespace FPrint {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2604,7 +2640,7 @@ export namespace FPrint {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

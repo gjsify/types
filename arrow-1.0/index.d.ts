@@ -9,7 +9,5 @@
 
 import './arrow-1.0-ambient.d.ts';
 
-import './arrow-1.0-import.d.ts';
-
 import Arrow from './arrow-1.0.js';
 export default Arrow;

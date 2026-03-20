@@ -19,11 +19,11 @@
     // Show diagnostics
     "diagnostics": true,
     "paths": {
-      "@girs/rest-0.7": [
-            "../rest-0.7/index.d.ts"
+      "@girs/rest-1.0": [
+            "../rest-1.0/index.d.ts"
       ],
-      "@girs/soup-2.4": [
-            "../soup-2.4/index.d.ts"
+      "@girs/soup-3.0": [
+            "../soup-3.0/index.d.ts"
       ],
       "@girs/gio-2.0": [
             "../gio-2.0/index.d.ts"

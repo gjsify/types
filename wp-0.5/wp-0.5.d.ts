@@ -181,7 +181,7 @@ export namespace Wp {
 
     const ITERATOR_METHODS_VERSION: number;
     /**
-     * A custom GLib log level for trace messages (extension of GLogLevelFlags)
+     * A custom GLib log level for trace messages (extension of GLogLevelFlags).
      */
     const LOG_LEVEL_TRACE: number;
     /**
@@ -191,10 +191,7 @@ export namespace Wp {
     const OBJECT_FORMAT: string;
     const SETTINGS_PERSISTENT_METADATA_NAME_PREFIX: string;
     const SETTINGS_SCHEMA_METADATA_NAME_PREFIX: string;
-    /**
-     * Type id representing an invalid SPA type.
-     */
-    const SPA_TYPE_INVALID: SpaType;
+    const SPA_TYPE_INVALID: number;
     /**
      * Searches for `filename` in the hierarchy of directories specified by the `flags` parameter.
      *
@@ -256,9 +253,10 @@ export namespace Wp {
      * The "actions" value should be an object where the key is the action name and the value can be any valid JSON. Both the action name and the value are passed as-is on the `callback`.
      * @param json a JSON array containing rules in the described format
      * @param match_props the properties to match against the rules
+     * @param callback a function to call for each action on a successful match
      * @returns FALSE if an error occurred, TRUE otherwise
      */
-    function json_utils_match_rules(json: SpaJson, match_props: Properties): boolean;
+    function json_utils_match_rules(json: SpaJson, match_props: Properties, callback: RuleMatchCallback): boolean;
     /**
      * Matches the given properties against a set of rules described in JSON and updates the properties if the rule actions include the "update-props" action.
      * @param json a JSON array containing rules in the format accepted by `wp_json_utils_match_rules()`
@@ -298,6 +296,12 @@ export namespace Wp {
         n_fields: number,
         user_data?: any | null,
     ): GLib.LogWriterOutput;
+    /**
+     * Gets the process information of a given PID.
+     * @param pid the PID to get the process information from
+     * @returns (transfer full): the process information of the given PID
+     */
+    function proc_utils_get_proc_info(pid: never): ProcInfo;
     /**
      * Registers an additional WpSpaIdTable in the spa type system.
      *
@@ -438,7 +442,7 @@ export namespace Wp {
      */
     function spa_id_value_short_name(id: SpaIdValue): string;
     /**
-     * Gets WirePlumber's instance of spa_log
+     * Gets WirePlumber's instance of spa_log.
      * @returns WirePlumber's instance of spa_log, which can be used to redirect PipeWire's log messages to the currently installed GLogWriterFunc. This is installed automatically when you call `wp_init()` with WP_INIT_SET_PW_LOG set in the flags
      */
     function spa_log_get_instance(): any | null;
@@ -967,7 +971,7 @@ export namespace Wp {
          */
         enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -1063,7 +1067,7 @@ export namespace Wp {
          */
         vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -1412,6 +1416,15 @@ export namespace Wp {
          * @param args
          */
         connect(...args: never[]): any;
+        /**
+         * Connects this core to the PipeWire server on the given socket.
+         *
+         *
+         * When connection succeeds, the WpCore "connected" signal is emitted.
+         * @param fd the connected socket to use, the socket will be closed automatically on disconnect or error
+         * @returns TRUE if the core is effectively connected or FALSE if connection failed
+         */
+        connect_fd(fd: number): boolean;
         /**
          * Disconnects this core from the PipeWire server.
          *
@@ -1879,7 +1892,7 @@ export namespace Wp {
          */
         enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -1975,7 +1988,7 @@ export namespace Wp {
          */
         vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -2128,6 +2141,12 @@ export namespace Wp {
         // Methods
 
         /**
+         * Returns an iterator to iterate over the registered hooks for a particular event type.
+         * @param event_type the event type
+         * @returns a new iterator
+         */
+        new_hooks_for_event_type_iterator(event_type: string): Iterator;
+        /**
          * Returns an iterator to iterate over all the registered hooks.
          * @returns a new iterator
          */
@@ -2243,11 +2262,16 @@ export namespace Wp {
         // Virtual methods
 
         /**
-         * Finishes the async operation that was started by `wp_event_hook_run()`
+         * Finishes the async operation that was started by `wp_event_hook_run()`.
          * @param res the async operation result
          * @virtual
          */
         vfunc_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Gets all the matching event types for this hook if any.
+         * @virtual
+         */
+        vfunc_get_matching_event_types(): string[] | null;
         /**
          * Runs the hook on the given event.
          * @param event the event that triggered the hook
@@ -2270,11 +2294,16 @@ export namespace Wp {
         // Methods
 
         /**
-         * Finishes the async operation that was started by `wp_event_hook_run()`
+         * Finishes the async operation that was started by `wp_event_hook_run()`.
          * @param res the async operation result
          * @returns FALSE if there was an error, TRUE otherwise
          */
         finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Gets all the matching event types for this hook if any.
+         * @returns the matching event types for this hook if any.
+         */
+        get_matching_event_types(): string[] | null;
         /**
          * Returns the name of the hook.
          * @returns the event hook name
@@ -2480,7 +2509,7 @@ export namespace Wp {
          */
         enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -2576,7 +2605,7 @@ export namespace Wp {
          */
         vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -2871,7 +2900,7 @@ export namespace Wp {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2931,7 +2960,7 @@ export namespace Wp {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3006,7 +3035,7 @@ export namespace Wp {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3738,7 +3767,7 @@ export namespace Wp {
          */
         enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -3834,7 +3863,7 @@ export namespace Wp {
          */
         vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -4192,7 +4221,7 @@ export namespace Wp {
          */
         enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -4288,7 +4317,7 @@ export namespace Wp {
          */
         vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -4788,7 +4817,7 @@ export namespace Wp {
          */
         enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -4884,7 +4913,7 @@ export namespace Wp {
          */
         vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -5112,13 +5141,13 @@ export namespace Wp {
          */
         abort_activation(msg: string): void;
         /**
-         * Callback version of `wp_object_activate_closure()`
+         * Callback version of `wp_object_activate_closure()`.
          * @param features the features to enable
          * @param cancellable a cancellable for the async operation
          */
         activate(features: ObjectFeatures, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
-         * Callback version of `wp_object_activate_closure()`
+         * Callback version of `wp_object_activate_closure()`.
          * @param features the features to enable
          * @param cancellable a cancellable for the async operation
          * @param callback a function to call when activation is complete
@@ -5129,7 +5158,7 @@ export namespace Wp {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Callback version of `wp_object_activate_closure()`
+         * Callback version of `wp_object_activate_closure()`.
          * @param features the features to enable
          * @param cancellable a cancellable for the async operation
          * @param callback a function to call when activation is complete
@@ -5151,7 +5180,7 @@ export namespace Wp {
          */
         activate_closure(features: ObjectFeatures, cancellable: Gio.Cancellable | null, closure: GObject.Closure): void;
         /**
-         * Finishes the async operation that was started with `wp_object_activate()`
+         * Finishes the async operation that was started with `wp_object_activate()`.
          * @param res the async operation result
          * @returns TRUE if the requested features were activated, FALSE if there was an error
          */
@@ -5325,7 +5354,7 @@ export namespace Wp {
          *
          *
          * If more than one objects match, only the first one is returned. To find multiple objects that match certain criteria, `wp_object_manager_new_filtered_iterator()` is more suitable.
-         * @param interest the interst
+         * @param interest the interest
          * @returns the first managed object that matches the lookup interest, or NULL if no object matches
          */
         lookup_full<T = GObject.Object>(interest: ObjectInterest): T;
@@ -5444,7 +5473,7 @@ export namespace Wp {
         // Methods
 
         /**
-         * Retreives the name of a plugin.
+         * Retrieves the name of a plugin.
          * @returns the name of this plugin
          */
         get_name(): string;
@@ -5635,7 +5664,7 @@ export namespace Wp {
          */
         enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -5731,7 +5760,7 @@ export namespace Wp {
          */
         vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -6048,7 +6077,7 @@ export namespace Wp {
         // Static methods
 
         /**
-         * Helper callback for sub-classes that deffers and unexports the session item.
+         * Helper callback for sub-classes that defers and unexports the session item.
          *
          *
          * Only meant to be used when the pipewire proxy destroyed signal is triggered.
@@ -6249,7 +6278,7 @@ export namespace Wp {
         /**
          * Finds a registered WpSettings object by its metadata name.
          * @param core the WpCore
-         * @param metadata_name the name of the metadata object that the settings object is associated with; NULL means the default "sm-settings"
+         * @param metadata_name the name of the metadata object that the settings object is associated with; NULL returns the first settings object that is found
          */
         static find(core: Core, metadata_name?: string | null): Settings | null;
 
@@ -6637,6 +6666,15 @@ export namespace Wp {
          * @returns a WpIterator that iterates over all the objects managed by this device
          */
         new_managed_object_iterator(): Iterator;
+        /**
+         * Marks a managed object id pending.
+         *
+         *
+         * When an object id is pending, Props from received ObjectConfig events for the id are saved. When wp_spa_device_store_managed_object later sets an object for the id, the saved Props are immediately set on the object and pending status is cleared.
+         * If an object is already set for the id, this has no effect.
+         * @param id the (device-internal) id of the object
+         */
+        set_managed_pending(id: number): void;
         /**
          * Stores or removes a managed object into/from a device.
          * @param id the (device-internal) id of the object
@@ -7159,7 +7197,7 @@ export namespace Wp {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7208,7 +7246,7 @@ export namespace Wp {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7283,7 +7321,7 @@ export namespace Wp {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7550,12 +7588,12 @@ export namespace Wp {
          */
         collect_hooks(dispatcher: EventDispatcher): boolean;
         /**
-         * Returns the internal GCancellable that is used to track whether this event has been stopped by `wp_event_stop_processing()`
+         * Returns the internal GCancellable that is used to track whether this event has been stopped by `wp_event_stop_processing()`.
          * @returns the cancellable
          */
         get_cancellable(): Gio.Cancellable;
         /**
-         * Gets the data that was previously associated with `key` by `wp_event_set_data()`
+         * Gets the data that was previously associated with `key` by `wp_event_set_data()`.
          * @param key the key
          * @returns the data associated with `key` or `null`
          */
@@ -7586,7 +7624,7 @@ export namespace Wp {
          */
         get_subject<T = GObject.Object>(): T;
         /**
-         * Returns an iterator that iterates over all the hooks that were collected by `wp_event_collect_hooks()`
+         * Returns an iterator that iterates over all the hooks that were collected by `wp_event_collect_hooks()`.
          * @returns the new iterator
          */
         new_hooks_iterator(): Iterator;
@@ -7869,6 +7907,16 @@ export namespace Wp {
             value?: GLib.Variant | null,
         ): void;
         /**
+         * Finds all the defined constraint values for a subject in `self`.
+         *
+         *
+         * A defined constraint value is the value of a constraint with the 'equal' or 'in-list' verb, because the full value must be defined with those verbs. This can be useful for cases where we want to enumerate interests that are interested in specific subjects.
+         * @param type the constraint type
+         * @param subject the subject that the constraint applies to
+         * @returns the defined constraint values for this object interest.
+         */
+        find_defined_constraint_values(type: ConstraintType | null, subject: string): GLib.Variant[] | null;
+        /**
          * Checks if the specified `object` matches the type and all the constraints that are described in `self`.
          *
          *
@@ -7934,6 +7982,52 @@ export namespace Wp {
      * @gir-type Alias
      */
     type PortClass = typeof Port;
+    /**
+     * WpProcInfo holds information of a process.
+     * @gir-type Struct
+     */
+    abstract class ProcInfo {
+        static $gtype: GObject.GType<ProcInfo>;
+
+        // Methods
+
+        /**
+         * Gets the indexed arg of a process information object.
+         * @param index the index of the arg
+         * @returns the indexed arg of the process information object
+         */
+        get_arg(index: number): string;
+        /**
+         * Gets the systemd cgroup of a process information object.
+         * @returns the systemd cgroup of the process information object
+         */
+        get_cgroup(): string;
+        /**
+         * Gets the number of args of a process information object.
+         * @returns the number of args of the process information object
+         */
+        get_n_args(): number;
+        /**
+         * Gets the parent PID of a process information object.
+         * @returns the parent PID of the process information object
+         */
+        get_parent_pid(): never;
+        /**
+         * Gets the PID of a process information object.
+         * @returns the PID of the process information object
+         */
+        get_pid(): never;
+        /**
+         * Increases the reference count of a process information object.
+         * @returns `self` with an additional reference count on it
+         */
+        ref(): ProcInfo;
+        /**
+         * Decreases the reference count on `self` and frees it when the ref count reaches zero.
+         */
+        unref(): void;
+    }
+
     /**
      * WpProperties is a data structure that contains string key-value pairs, which are used to send/receive/attach arbitrary properties to PipeWire objects.
      * This could be thought of as a hash table with strings as both keys and values. However, the reason that this class exists instead of using GHashTable directly is that in reality it wraps the PipeWire native struct spa_dict and struct pw_properties and therefore it can be easily passed to PipeWire function calls that require a struct spa_dict * or a struct pw_properties * as arguments. Or alternatively, it can easily wrap a struct spa_dict * or a struct pw_properties * that was given from the PipeWire API without necessarily doing an expensive copy operation.
@@ -8026,7 +8120,7 @@ export namespace Wp {
          *
          * If a property is contained in `other` and not in `self`, the result is not matched. If a property is contained in both sets, then the value of the property in `other` is interpreted as a glob-style pattern (using `g_pattern_match_simple()`) and the value in `self` is checked to see if it matches with this pattern.
          * @param other a set of properties to match
-         * @returns TRUE if all matches were successfull, FALSE if at least one property value did not match
+         * @returns TRUE if all matches were successful, FALSE if at least one property value did not match
          */
         matches(other: Properties): boolean;
         /**
@@ -8056,7 +8150,7 @@ export namespace Wp {
          */
         sort(): void;
         /**
-         * Gets a copy of the properties object as a struct pw_properties
+         * Gets a copy of the properties object as a struct pw_properties.
          * @returns a copy of the properties in `self` as a struct pw_properties
          */
         to_pw_properties(): any | null;
@@ -8215,6 +8309,11 @@ export namespace Wp {
          */
         get_min_value(): SpaJson | null;
         /**
+         * Gets the human-readable name of a settings spec.
+         * @returns the human-readable name of the settings spec, or NULL if none
+         */
+        get_name(): string | null;
+        /**
          * Gets the type of a settings spec.
          * @returns the type of the settings spec
          */
@@ -8322,7 +8421,7 @@ export namespace Wp {
          */
         is_array(): boolean;
         /**
-         * Checks wether the spa json is of type boolean or not.
+         * Checks whether the spa json is of type boolean or not.
          * @returns TRUE if it is of type boolean, FALSE otherwise
          */
         is_boolean(): boolean;
@@ -8332,17 +8431,17 @@ export namespace Wp {
          */
         is_container(): boolean;
         /**
-         * Checks wether the spa json is of type float or not.
+         * Checks whether the spa json is of type float or not.
          * @returns TRUE if it is of type float, FALSE otherwise
          */
         is_float(): boolean;
         /**
-         * Checks wether the spa json is of type int or not.
+         * Checks whether the spa json is of type int or not.
          * @returns TRUE if it is of type int, FALSE otherwise
          */
         is_int(): boolean;
         /**
-         * Checks wether the spa json is of type null or not.
+         * Checks whether the spa json is of type null or not.
          * @returns TRUE if it is of type null, FALSE otherwise
          */
         is_null(): boolean;
@@ -8352,7 +8451,7 @@ export namespace Wp {
          */
         is_object(): boolean;
         /**
-         * Checks wether the spa json is of type string or not.
+         * Checks whether the spa json is of type string or not.
          * @returns TRUE if it is of type string, FALSE otherwise
          */
         is_string(): boolean;
@@ -8632,7 +8731,7 @@ export namespace Wp {
          */
         get_choice_child(): SpaPod;
         /**
-         * If the pod is a Choice, this gets the choice type (Range, Step, Enum, ...)
+         * If the pod is a Choice, this gets the choice type (Range, Step, Enum, ...).
          * @returns the choice type of the choice pod
          */
         get_choice_type(): SpaIdValue;
@@ -8710,102 +8809,102 @@ export namespace Wp {
          */
         get_string(): [boolean, string];
         /**
-         * Checks wether the spa pod is of type array or not.
+         * Checks whether the spa pod is of type array or not.
          * @returns TRUE if it is of type array, FALSE otherwise
          */
         is_array(): boolean;
         /**
-         * Checks wether the spa pod is of type boolean or not.
+         * Checks whether the spa pod is of type boolean or not.
          * @returns TRUE if it is of type boolean, FALSE otherwise
          */
         is_boolean(): boolean;
         /**
-         * Checks wether the spa pod is of type bytes or not.
+         * Checks whether the spa pod is of type bytes or not.
          * @returns TRUE if it is of type bytes, FALSE otherwise
          */
         is_bytes(): boolean;
         /**
-         * Checks wether the spa pod is of type choice or not.
+         * Checks whether the spa pod is of type choice or not.
          * @returns TRUE if it is of type choice, FALSE otherwise
          */
         is_choice(): boolean;
         /**
-         * Checks wether the spa pod is of type control or not.
+         * Checks whether the spa pod is of type control or not.
          * @returns TRUE if it is of type control, FALSE otherwise
          */
         is_control(): boolean;
         /**
-         * Checks wether the spa pod is of type double or not.
+         * Checks whether the spa pod is of type double or not.
          * @returns TRUE if it is of type double, FALSE otherwise
          */
         is_double(): boolean;
         /**
-         * Checks wether the spa pod is of type Fd or not.
+         * Checks whether the spa pod is of type Fd or not.
          * @returns TRUE if it is of type Fd, FALSE otherwise
          */
         is_fd(): boolean;
         /**
-         * Checks wether the spa pod is of type float or not.
+         * Checks whether the spa pod is of type float or not.
          * @returns TRUE if it is of type float, FALSE otherwise
          */
         is_float(): boolean;
         /**
-         * Checks wether the spa pod is of type fraction or not.
+         * Checks whether the spa pod is of type fraction or not.
          * @returns TRUE if it is of type fraction, FALSE otherwise
          */
         is_fraction(): boolean;
         /**
-         * Checks wether the spa pod is of type Id or not.
+         * Checks whether the spa pod is of type Id or not.
          * @returns TRUE if it is of type Id, FALSE otherwise
          */
         is_id(): boolean;
         /**
-         * Checks wether the spa pod is of type int or not.
+         * Checks whether the spa pod is of type int or not.
          * @returns TRUE if it is of type int, FALSE otherwise
          */
         is_int(): boolean;
         /**
-         * Checks wether the spa pod is of type long or not.
+         * Checks whether the spa pod is of type long or not.
          * @returns TRUE if it is of type long, FALSE otherwise
          */
         is_long(): boolean;
         /**
-         * Checks wether the spa pod is of type none or not.
+         * Checks whether the spa pod is of type none or not.
          * @returns TRUE if it is of type none, FALSE otherwise
          */
         is_none(): boolean;
         /**
-         * Checks wether the spa pod is of type object or not.
+         * Checks whether the spa pod is of type object or not.
          * @returns TRUE if it is of type object, FALSE otherwise
          */
         is_object(): boolean;
         /**
-         * Checks wether the spa pod is of type pointer or not.
+         * Checks whether the spa pod is of type pointer or not.
          * @returns TRUE if it is of type pointer, FALSE otherwise
          */
         is_pointer(): boolean;
         /**
-         * Checks wether the spa pod is of type property or not.
+         * Checks whether the spa pod is of type property or not.
          * @returns TRUE if it is of type property, FALSE otherwise
          */
         is_property(): boolean;
         /**
-         * Checks wether the spa pod is of type rectangle or not.
+         * Checks whether the spa pod is of type rectangle or not.
          * @returns TRUE if it is of type rectangle, FALSE otherwise
          */
         is_rectangle(): boolean;
         /**
-         * Checks wether the spa pod is of type sequence or not.
+         * Checks whether the spa pod is of type sequence or not.
          * @returns TRUE if it is of type sequence, FALSE otherwise
          */
         is_sequence(): boolean;
         /**
-         * Checks wether the spa pod is of type string or not.
+         * Checks whether the spa pod is of type string or not.
          * @returns TRUE if it is of type string, FALSE otherwise
          */
         is_string(): boolean;
         /**
-         * Checks wether the spa pod is of type struct or not.
+         * Checks whether the spa pod is of type struct or not.
          * @returns TRUE if it is of type struct, FALSE otherwise
          */
         is_struct(): boolean;
@@ -8850,7 +8949,7 @@ export namespace Wp {
         set_float(value: number): boolean;
         /**
          * Sets the numerator and denominator values of a fraction in the spa pod object.
-         * @param num the numerator value of the farction
+         * @param num the numerator value of the fraction
          * @param denom the denominator value of the fraction
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
@@ -8986,7 +9085,7 @@ export namespace Wp {
         /**
          * Adds a pointer value with its type name into the builder.
          * @param type_name the type name that the pointer points to
-         * @param value the pointer vaue
+         * @param value the pointer value
          */
         add_pointer(type_name: string, value?: any | null): void;
         /**
@@ -9229,7 +9328,7 @@ export namespace Wp {
              */
             vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
             /**
-             * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+             * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
              *
              *
              * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
@@ -9378,7 +9477,7 @@ export namespace Wp {
          */
         enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
         /**
-         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
          *
          *
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO

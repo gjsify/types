@@ -34,8 +34,8 @@
       "@girs/gmodule-2.0": [
             "../gmodule-2.0/index.d.ts"
       ],
-      "@girs/girepository-2.0": [
-            "../girepository-2.0/index.d.ts"
+      "@girs/girepository-3.0": [
+            "../girepository-3.0/index.d.ts"
       ],
       "@girs/gtk-3.0": [
             "../gtk-3.0/index.d.ts"

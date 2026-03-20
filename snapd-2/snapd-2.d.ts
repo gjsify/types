@@ -327,6 +327,14 @@ export namespace Snapd {
          * The requested interfaces' operation would have no effect.
          */
         static INTERFACES_UNCHANGED: number;
+        /**
+         * An async process is already running.
+         */
+        static ALREADY_RUNNING: number;
+        /**
+         * An async process is not running.
+         */
+        static NOT_RUNNING: number;
 
         // Constructors
 
@@ -431,6 +439,23 @@ export namespace Snapd {
          * the initial version of Snap markdown.
          */
         static '0': number;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace NoticeType {
+        export const $gtype: GObject.GType<NoticeType>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum NoticeType {
+        UNKNOWN,
+        CHANGE_UPDATE,
+        REFRESH_INHIBIT,
+        SNAP_RUN_INHIBIT,
     }
 
     /**
@@ -866,6 +891,7 @@ export namespace Snapd {
          * Return snaps that are installed but not active.
          */
         INCLUDE_INACTIVE,
+        REFRESH_INHIBITED,
     }
 
     /**
@@ -1420,6 +1446,98 @@ export namespace Snapd {
         get_macaroon(): string;
     }
 
+    namespace AutorefreshChangeData {
+        // Signal signatures
+        interface SignalSignatures extends ChangeData.SignalSignatures {
+            'notify::refresh-forced': (pspec: GObject.ParamSpec) => void;
+            'notify::snap-names': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends ChangeData.ConstructorProps {
+            refresh_forced: string[];
+            refreshForced: string[];
+            snap_names: string[];
+            snapNames: string[];
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AutorefreshChangeData extends ChangeData {
+        static $gtype: GObject.GType<AutorefreshChangeData>;
+
+        // Properties
+
+        /**
+         * @construct-only
+         */
+        get refresh_forced(): string[];
+        /**
+         * @construct-only
+         */
+        get refreshForced(): string[];
+        /**
+         * @construct-only
+         */
+        get snap_names(): string[];
+        /**
+         * @construct-only
+         */
+        get snapNames(): string[];
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AutorefreshChangeData.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<AutorefreshChangeData.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof AutorefreshChangeData.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AutorefreshChangeData.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof AutorefreshChangeData.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AutorefreshChangeData.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof AutorefreshChangeData.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<AutorefreshChangeData.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * @returns a GStrv with the snap names, or NULL if the property wasn't defined
+         */
+        get_refresh_forced(): string[];
+        /**
+         * @returns a GStrv with the snap names, or NULL if the property wasn't defined
+         */
+        get_snap_names(): string[];
+    }
+
     namespace Category {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -1582,6 +1700,7 @@ export namespace Snapd {
     namespace Change {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::data': (pspec: GObject.ParamSpec) => void;
             'notify::error': (pspec: GObject.ParamSpec) => void;
             'notify::id': (pspec: GObject.ParamSpec) => void;
             'notify::kind': (pspec: GObject.ParamSpec) => void;
@@ -1596,6 +1715,7 @@ export namespace Snapd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            data: ChangeData;
             error: string;
             id: string;
             kind: string;
@@ -1620,6 +1740,10 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
+        get data(): ChangeData;
         /**
          * @construct-only
          */
@@ -1704,6 +1828,16 @@ export namespace Snapd {
         // Methods
 
         /**
+         * Get the data field for this change.
+         * @returns a {@link Snapd.ChangeData} object with all the data, or NULL if the field isn't defined
+         */
+        get_data(): ChangeData;
+        /**
+         * @param args
+         */
+        // Conflicted with GObject.Object.get_data
+        get_data(...args: never[]): any;
+        /**
          * Gets the error string associated with this change.
          * @returns an error string or `null`.
          */
@@ -1748,6 +1882,58 @@ export namespace Snapd {
          * @returns an array of {@link Snapd.Task}.
          */
         get_tasks(): Task[];
+    }
+
+    namespace ChangeData {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class ChangeData extends GObject.Object {
+        static $gtype: GObject.GType<ChangeData>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: ChangeData.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<ChangeData.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof ChangeData.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ChangeData.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof ChangeData.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ChangeData.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof ChangeData.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<ChangeData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Channel {
@@ -3892,6 +4078,184 @@ export namespace Snapd {
          */
         get_maintenance(): Maintenance | null;
         /**
+         * Asynchronously get notifications that have occurred / are occurring on the snap daemon.
+         *
+         * The `since_date_time` field, being a GDateTime, has a resolution of microseconds, so,
+         * if nanosecond resolution is needed, it is mandatory to call
+         * `snapd_client_notices_set_after_notice` before calling this method.
+         * @param since_date_time send only the notices generated after this moment (NULL for all).
+         * @param timeout time, in microseconds, to wait for a new notice (zero to return immediately).
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        get_notices_async(
+            since_date_time: GLib.DateTime,
+            timeout: GLib.TimeSpan,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<Notice[]>;
+        /**
+         * Asynchronously get notifications that have occurred / are occurring on the snap daemon.
+         *
+         * The `since_date_time` field, being a GDateTime, has a resolution of microseconds, so,
+         * if nanosecond resolution is needed, it is mandatory to call
+         * `snapd_client_notices_set_after_notice` before calling this method.
+         * @param since_date_time send only the notices generated after this moment (NULL for all).
+         * @param timeout time, in microseconds, to wait for a new notice (zero to return immediately).
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        get_notices_async(
+            since_date_time: GLib.DateTime,
+            timeout: GLib.TimeSpan,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously get notifications that have occurred / are occurring on the snap daemon.
+         *
+         * The `since_date_time` field, being a GDateTime, has a resolution of microseconds, so,
+         * if nanosecond resolution is needed, it is mandatory to call
+         * `snapd_client_notices_set_after_notice` before calling this method.
+         * @param since_date_time send only the notices generated after this moment (NULL for all).
+         * @param timeout time, in microseconds, to wait for a new notice (zero to return immediately).
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        get_notices_async(
+            since_date_time: GLib.DateTime,
+            timeout: GLib.TimeSpan,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<Notice[]> | void;
+        /**
+         * Complete request started with `snapd_client_get_notices_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns a {@link GLib.PtrArray} object containing the requested notices, or NULL in case of error.
+         */
+        get_notices_finish(result: Gio.AsyncResult): Notice[];
+        /**
+         * Synchronously get notifications that have occurred / are occurring on the snap daemon.
+         *
+         * The `since_date_time` field, being a GDateTime, has a resolution of microseconds, so,
+         * if nanosecond resolution is needed, it is mandatory to call `snapd_client_notices_set_after_notice`
+         * before calling this method.
+         * @param since_date_time send only the notices generated after this moment (NULL for all).
+         * @param timeout time, in microseconds, to wait for a new notice (zero to return immediately).
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns a {@link GLib.PtrArray} object containing the requested notices, or NULL in case of error.
+         */
+        get_notices_sync(
+            since_date_time: GLib.DateTime,
+            timeout: GLib.TimeSpan,
+            cancellable?: Gio.Cancellable | null,
+        ): Notice[];
+        /**
+         * Asynchronously get notifications that have occurred / are occurring on the snap daemon,
+         * allowing to filter the results with several options.
+         *
+         * The `since_date_time` field, being a GDateTime, has a resolution of microseconds, so,
+         * if nanosecond resolution is needed, it is mandatory to call
+         * `snapd_client_notices_set_after_notice` before calling this method.
+         * @param user_id filter by this user-id (NULL for no filter).
+         * @param users filter by this comma-separated list of users (NULL for no filter).
+         * @param types filter by this comma-separated list of types (NULL for no filter).
+         * @param keys filter by this comma-separated list of keys (NULL for no filter).
+         * @param since_date_time send only the notices generated after this moment (NULL for all).
+         * @param timeout time, in microseconds, to wait for a new notice (zero to return immediately).
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        get_notices_with_filters_async(
+            user_id: string,
+            users: string,
+            types: string,
+            keys: string,
+            since_date_time: GLib.DateTime,
+            timeout: GLib.TimeSpan,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<Notice[]>;
+        /**
+         * Asynchronously get notifications that have occurred / are occurring on the snap daemon,
+         * allowing to filter the results with several options.
+         *
+         * The `since_date_time` field, being a GDateTime, has a resolution of microseconds, so,
+         * if nanosecond resolution is needed, it is mandatory to call
+         * `snapd_client_notices_set_after_notice` before calling this method.
+         * @param user_id filter by this user-id (NULL for no filter).
+         * @param users filter by this comma-separated list of users (NULL for no filter).
+         * @param types filter by this comma-separated list of types (NULL for no filter).
+         * @param keys filter by this comma-separated list of keys (NULL for no filter).
+         * @param since_date_time send only the notices generated after this moment (NULL for all).
+         * @param timeout time, in microseconds, to wait for a new notice (zero to return immediately).
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        get_notices_with_filters_async(
+            user_id: string,
+            users: string,
+            types: string,
+            keys: string,
+            since_date_time: GLib.DateTime,
+            timeout: GLib.TimeSpan,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously get notifications that have occurred / are occurring on the snap daemon,
+         * allowing to filter the results with several options.
+         *
+         * The `since_date_time` field, being a GDateTime, has a resolution of microseconds, so,
+         * if nanosecond resolution is needed, it is mandatory to call
+         * `snapd_client_notices_set_after_notice` before calling this method.
+         * @param user_id filter by this user-id (NULL for no filter).
+         * @param users filter by this comma-separated list of users (NULL for no filter).
+         * @param types filter by this comma-separated list of types (NULL for no filter).
+         * @param keys filter by this comma-separated list of keys (NULL for no filter).
+         * @param since_date_time send only the notices generated after this moment (NULL for all).
+         * @param timeout time, in microseconds, to wait for a new notice (zero to return immediately).
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        get_notices_with_filters_async(
+            user_id: string,
+            users: string,
+            types: string,
+            keys: string,
+            since_date_time: GLib.DateTime,
+            timeout: GLib.TimeSpan,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<Notice[]> | void;
+        /**
+         * Complete request started with `snapd_client_get_notices_with_filters_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns a {@link GLib.PtrArray} object containing the requested notices, or NULL in case of error.
+         */
+        get_notices_with_filters_finish(result: Gio.AsyncResult): Notice[];
+        /**
+         * Synchronously get notifications that have occurred / are occurring on the snap daemon,
+         * allowing to filter the results with several options.
+         *
+         * The `since_date_time` field, being a GDateTime, has a resolution of microseconds, so,
+         * if nanosecond resolution is needed, it is mandatory to call
+         * `snapd_client_notices_set_after_notice` before calling this method.
+         * @param user_id filter by this user-id (NULL for no filter).
+         * @param users filter by this comma-separated list of users (NULL for no filter).
+         * @param types filter by this comma-separated list of types (NULL for no filter).
+         * @param keys filter by this comma-separated list of keys (NULL for no filter).
+         * @param since_date_time send only the notices generated after this moment (NULL for all).
+         * @param timeout time, in microseconds, to wait for a new notice (zero to return immediately).
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns a {@link GLib.PtrArray} object containing the requested notices, or NULL in case of error.
+         */
+        get_notices_with_filters_sync(
+            user_id: string,
+            users: string,
+            types: string,
+            keys: string,
+            since_date_time: GLib.DateTime,
+            timeout: GLib.TimeSpan,
+            cancellable?: Gio.Cancellable | null,
+        ): Notice[];
+        /**
          * Asynchronously get the store sections.
          * See `snapd_client_get_sections_sync()` for more information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
@@ -4034,6 +4398,9 @@ export namespace Snapd {
         /**
          * Asynchronously get information on installed snaps.
          * See `snapd_client_get_snaps_sync()` for more information.
+         *
+         * When settings the `flags` variable, only one of SNAPD_GET_SNAPS_FLAGS_INCLUDE_INACTIVE and
+         * SNAPD_GET_SNAPS_FLAGS_REFRESH_INHIBITED can be set. Setting both results in an error.
          * @param flags a set of {@link Snapd.GetSnapsFlags} to control what results are returned.
          * @param names A list of snap names to return results for. If `null` or empty then all installed snaps are returned.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
@@ -4046,6 +4413,9 @@ export namespace Snapd {
         /**
          * Asynchronously get information on installed snaps.
          * See `snapd_client_get_snaps_sync()` for more information.
+         *
+         * When settings the `flags` variable, only one of SNAPD_GET_SNAPS_FLAGS_INCLUDE_INACTIVE and
+         * SNAPD_GET_SNAPS_FLAGS_REFRESH_INHIBITED can be set. Setting both results in an error.
          * @param flags a set of {@link Snapd.GetSnapsFlags} to control what results are returned.
          * @param names A list of snap names to return results for. If `null` or empty then all installed snaps are returned.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
@@ -4060,6 +4430,9 @@ export namespace Snapd {
         /**
          * Asynchronously get information on installed snaps.
          * See `snapd_client_get_snaps_sync()` for more information.
+         *
+         * When settings the `flags` variable, only one of SNAPD_GET_SNAPS_FLAGS_INCLUDE_INACTIVE and
+         * SNAPD_GET_SNAPS_FLAGS_REFRESH_INHIBITED can be set. Setting both results in an error.
          * @param flags a set of {@link Snapd.GetSnapsFlags} to control what results are returned.
          * @param names A list of snap names to return results for. If `null` or empty then all installed snaps are returned.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
@@ -4082,6 +4455,10 @@ export namespace Snapd {
          * Get information on installed snaps (snaps with status {@link Snapd.SnapStatus.ACTIVE}).
          * If `flags` contains {@link Snapd.GetSnapsFlags.INCLUDE_INACTIVE} then also return snaps
          * with status {@link Snapd.SnapStatus.INSTALLED}.
+         *
+         * If `flags` contains {@link Snapd.GetSnapsFlags.REFRESH_INHIBITED}, then it will return
+         * only those snaps that are inhibited from being refreshed, for example due to having a
+         * running instace.
          *
          * If `names` is not `null` and contains at least one name only snaps that match these names are
          * returned. If a snap is not installed it is not returned (no error is generated).
@@ -4750,6 +5127,35 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          */
         logout_sync(id: number, cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Allows to set the "since" parameter with nanosecond accuracy when doing a call
+         * to get the notices. This is currently needed because GDateTime has only an
+         * accuracy of 1 microsecond, but to receive notice events correctly, without
+         * loosing any of them, an accuracy of 1 nanosecond is needed in the value passed
+         * on in the `since_date_time` parameter.
+         *
+         * The value is "reset" after any call to snapd_client_get_notices_*(), so it must
+         * be set again always before doing any of those calls.
+         *
+         * Passing NULL will reset the value too, in which case the mili- and micro-seconds defined
+         * in the `since_date_time` parameter will be used.
+         * @param notice the last {@link Snapd.Notice} received, to get all the notices after it.
+         */
+        notices_set_after_notice(notice: Notice): void;
+        /**
+         * Allows to set the "since" parameter with nanosecond accuracy when doing a call to get the notices.
+         * This is currently needed because GDateTime has only an accuracy of 1 microsecond, but to receive
+         * notice events correctly, without loosing any, it is needed 1 nanosecond accuracy in the value
+         * passed on in the `since_date_time` parameter.
+         *
+         * The value is "reseted" after any call to snapd_client_get_notices_*(), so it must be set always before
+         * doing any of those calls.
+         *
+         * Passing NULL will reset the value too, in which case the mili- and micro-seconds defined
+         * in the `since_date_time` parameter will be used.
+         * @param nanoseconds the nanoseconds value to use to combine with the               `since_date_time` property to filter notices after it
+         */
+        notices_set_since_nanoseconds(nanoseconds: number): void;
         /**
          * Asynchronously ???.
          * See `snapd_client_prefer_sync()` for more information.
@@ -6410,6 +6816,368 @@ export namespace Snapd {
         get_width(): number;
     }
 
+    namespace Notice {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::expire-after': (pspec: GObject.ParamSpec) => void;
+            'notify::first-occurred': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::key': (pspec: GObject.ParamSpec) => void;
+            'notify::last-data': (pspec: GObject.ParamSpec) => void;
+            'notify::last-occurred': (pspec: GObject.ParamSpec) => void;
+            'notify::last-occurred-nanoseconds': (pspec: GObject.ParamSpec) => void;
+            'notify::last-repeated': (pspec: GObject.ParamSpec) => void;
+            'notify::notice-type': (pspec: GObject.ParamSpec) => void;
+            'notify::occurrences': (pspec: GObject.ParamSpec) => void;
+            'notify::repeat-after': (pspec: GObject.ParamSpec) => void;
+            'notify::user-id': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            expire_after: number;
+            expireAfter: number;
+            first_occurred: GLib.DateTime;
+            firstOccurred: GLib.DateTime;
+            id: string;
+            key: string;
+            last_data: GLib.HashTable<any, any>;
+            lastData: GLib.HashTable<any, any>;
+            last_occurred: GLib.DateTime;
+            lastOccurred: GLib.DateTime;
+            last_occurred_nanoseconds: number;
+            lastOccurredNanoseconds: number;
+            last_repeated: GLib.DateTime;
+            lastRepeated: GLib.DateTime;
+            notice_type: number;
+            noticeType: number;
+            occurrences: number;
+            repeat_after: number;
+            repeatAfter: number;
+            user_id: string;
+            userId: string;
+        }
+    }
+
+    /**
+     * {@link Snapd.Notice} contains information on a notification element.
+     * @gir-type Class
+     * @since 1.65
+     */
+    class Notice extends GObject.Object {
+        static $gtype: GObject.GType<Notice>;
+
+        // Properties
+
+        /**
+         * @construct-only
+         */
+        get expire_after(): number;
+        /**
+         * @construct-only
+         */
+        get expireAfter(): number;
+        /**
+         * @construct-only
+         */
+        get first_occurred(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
+        get firstOccurred(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
+        get id(): string;
+        /**
+         * @construct-only
+         */
+        get key(): string;
+        /**
+         * @construct-only
+         */
+        get last_data(): GLib.HashTable<any, any>;
+        /**
+         * @construct-only
+         */
+        get lastData(): GLib.HashTable<any, any>;
+        /**
+         * @construct-only
+         */
+        get last_occurred(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
+        get lastOccurred(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
+        get last_occurred_nanoseconds(): number;
+        /**
+         * @construct-only
+         */
+        get lastOccurredNanoseconds(): number;
+        /**
+         * @construct-only
+         */
+        get last_repeated(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
+        get lastRepeated(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
+        get notice_type(): number;
+        /**
+         * @construct-only
+         */
+        get noticeType(): number;
+        /**
+         * @construct-only
+         */
+        get occurrences(): number;
+        /**
+         * @construct-only
+         */
+        get repeat_after(): number;
+        /**
+         * @construct-only
+         */
+        get repeatAfter(): number;
+        /**
+         * @construct-only
+         */
+        get user_id(): string;
+        /**
+         * @construct-only
+         */
+        get userId(): string;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: Notice.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<Notice.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof Notice.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Notice.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof Notice.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Notice.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof Notice.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<Notice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Compare the last_occurred fields (and the last_occurred_nanosecond if available)
+         * of both notices, and returns whether the first one is before, same or after the
+         * second one.
+         * @param notice_to_compare another {@link Snapd.Notice}.
+         * @returns -1 if the first one is before the second one; 0 if both are the same time instant, and 1 if the first one is after the second one.
+         */
+        compare_last_occurred(notice_to_compare: Notice): number;
+        /**
+         * Get the time interval after this notification can expire.
+         * @returns a {@link GLib.TimeSpan}.
+         */
+        get_expire_after(): GLib.TimeSpan;
+        /**
+         * Get the time this notification first occurred.
+         * @returns a {@link GLib.DateTime}.
+         */
+        get_first_occurred(): GLib.DateTime;
+        /**
+         * Get the time this notification first occurred.
+         * @returns a {@link GLib.DateTime}.
+         */
+        get_first_occurred2(): GLib.DateTime;
+        /**
+         * Get the unique ID for this notice.
+         * @returns an ID.
+         */
+        get_id(): string;
+        /**
+         * Get the notice-id or the instance-name, depending on the type.
+         * @returns a string with the key.
+         */
+        get_key(): string;
+        /**
+         * Get the data of the notice.
+         * @returns a HashTable with the data elements.
+         */
+        get_last_data(): GLib.HashTable<any, any>;
+        /**
+         * Get the data of the notice.
+         * @returns a HashTable with the data elements.
+         */
+        get_last_data2(): GLib.HashTable<any, any>;
+        /**
+         * Get the time this notification last occurred.
+         * @returns a {@link GLib.DateTime}.
+         */
+        get_last_occurred(): GLib.DateTime;
+        /**
+         * Get the time this notification last occurred.
+         * @returns a {@link GLib.DateTime}.
+         */
+        get_last_occurred2(): GLib.DateTime;
+        /**
+         * Get the nanoseconds value of *last-occurred*, exactly as sent by
+         * snapd. Useful when combined with `snapd_client_notices_set_since_nanoseconds`,
+         * and used internally by snapd_client_notices_set_after_notice, to ensure the maximum
+         * possible precission when dealing with timestamps.
+         * @returns the nanosecond value between 0 and 999999999, or -1 if no nanosecond value was set.
+         */
+        get_last_occurred_nanoseconds(): number;
+        /**
+         * Get the time this notification last repeated.
+         * @returns a {@link GLib.DateTime}.
+         */
+        get_last_repeated(): GLib.DateTime;
+        /**
+         * Get the time this notification last repeated.
+         * @returns a {@link GLib.DateTime}.
+         */
+        get_last_repeated2(): GLib.DateTime;
+        /**
+         * Gets the type of notice this is.
+         * @returns the type of notice.
+         */
+        get_notice_type(): NoticeType;
+        /**
+         * Get the number of times that this notification has been triggered.
+         * @returns a count.
+         */
+        get_occurrences(): number;
+        /**
+         * Get the time interval after this notification can be repeated.
+         * @returns a {@link GLib.TimeSpan}.
+         */
+        get_repeat_after(): GLib.TimeSpan;
+        /**
+         * Get the user ID for this notice, or NULL if no user is defined
+         * @returns an user ID.
+         */
+        get_user_id(): string;
+    }
+
+    namespace NoticesMonitor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            'error-event': (arg0: GLib.Error) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            'notice-event': (arg0: Notice, arg1: boolean) => void;
+            'notify::client': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            client: Client;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class NoticesMonitor extends GObject.Object {
+        static $gtype: GObject.GType<NoticesMonitor>;
+
+        // Properties
+
+        /**
+         * @construct-only
+         */
+        set client(val: Client);
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: NoticesMonitor.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<NoticesMonitor.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): NoticesMonitor;
+
+        static new_with_client(client: Client): NoticesMonitor;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof NoticesMonitor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, NoticesMonitor.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof NoticesMonitor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, NoticesMonitor.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof NoticesMonitor.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<NoticesMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Starts the asynchronous listening proccess, that will wait for new
+         * notices and emit a "notice-event" signal with the new notice as
+         * parameter.
+         * @returns FALSE if there was an error, TRUE if everything worked fine and the object is listening for events.
+         */
+        start(): boolean;
+        /**
+         * Stops the asynchronous listening proccess started with `snapd_notices_monitor_start`.
+         * @returns FALSE if there was an error, TRUE if everything worked fine.
+         */
+        stop(): boolean;
+    }
+
     namespace Plug {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -7075,6 +7843,7 @@ export namespace Snapd {
             'notify::name': (pspec: GObject.ParamSpec) => void;
             'notify::prices': (pspec: GObject.ParamSpec) => void;
             'notify::private': (pspec: GObject.ParamSpec) => void;
+            'notify::proceed-time': (pspec: GObject.ParamSpec) => void;
             'notify::publisher-display-name': (pspec: GObject.ParamSpec) => void;
             'notify::publisher-id': (pspec: GObject.ParamSpec) => void;
             'notify::publisher-username': (pspec: GObject.ParamSpec) => void;
@@ -7126,6 +7895,8 @@ export namespace Snapd {
             name: string;
             prices: any[];
             private: boolean;
+            proceed_time: GLib.DateTime;
+            proceedTime: GLib.DateTime;
             publisher_display_name: string;
             publisherDisplayName: string;
             publisher_id: string;
@@ -7282,6 +8053,14 @@ export namespace Snapd {
          * @construct-only
          */
         get private(): boolean;
+        /**
+         * @construct-only
+         */
+        get proceed_time(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
+        get proceedTime(): GLib.DateTime;
         /**
          * @construct-only
          */
@@ -7542,6 +8321,13 @@ export namespace Snapd {
          * @returns `true` if this is a private snap.
          */
         get_private(): boolean;
+        /**
+         * Returns the date and time after which a refresh is forced for this running snap
+         * in the next auto-refresh. By substracting the current date and time it's possible
+         * to know how many time remains before the snap is forced to be refreshed.
+         * @returns a {@link GLib.DateTime} or `null`.
+         */
+        get_proceed_time(): GLib.DateTime | null;
         /**
          * Get the display name of the publisher who created this snap.
          * @returns a publisher display name.
@@ -7975,6 +8761,7 @@ export namespace Snapd {
     namespace Task {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::data': (pspec: GObject.ParamSpec) => void;
             'notify::id': (pspec: GObject.ParamSpec) => void;
             'notify::kind': (pspec: GObject.ParamSpec) => void;
             'notify::progress-done': (pspec: GObject.ParamSpec) => void;
@@ -7990,6 +8777,7 @@ export namespace Snapd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            data: TaskData;
             id: string;
             kind: string;
             progress_done: number;
@@ -8018,6 +8806,10 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
+        get data(): TaskData;
         /**
          * @construct-only
          */
@@ -8118,6 +8910,16 @@ export namespace Snapd {
         // Methods
 
         /**
+         * Get the extra data associated with the progress.
+         * @returns a {@link Snapd.TaskData} or NULL.
+         */
+        get_data(): TaskData | null;
+        /**
+         * @param args
+         */
+        // Conflicted with GObject.Object.get_data
+        get_data(...args: never[]): any;
+        /**
          * Get the unique ID for this task.
          * @returns an ID.
          */
@@ -8167,6 +8969,84 @@ export namespace Snapd {
          * @returns a string describing the task.
          */
         get_summary(): string;
+    }
+
+    namespace TaskData {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::affected-snaps': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            affected_snaps: string[];
+            affectedSnaps: string[];
+        }
+    }
+
+    /**
+     * {@link Snapd.TaskData} contains extra information for a task in a Snap transaction.
+     * @gir-type Class
+     * @since 1.66
+     */
+    class TaskData extends GObject.Object {
+        static $gtype: GObject.GType<TaskData>;
+
+        // Properties
+
+        /**
+         * @construct-only
+         */
+        get affected_snaps(): string[];
+        /**
+         * @construct-only
+         */
+        get affectedSnaps(): string[];
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: TaskData.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<TaskData.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof TaskData.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TaskData.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof TaskData.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TaskData.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof TaskData.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<TaskData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Get the list of snaps that are affected by this task, or `null` if snapd doesn't send this data.
+         * @returns a {@link GObject.Strv} or `null`.
+         */
+        get_affected_snaps(): string[] | null;
     }
 
     namespace UserInformation {
@@ -8316,6 +9196,10 @@ export namespace Snapd {
     /**
      * @gir-type Alias
      */
+    type AutorefreshChangeDataClass = typeof AutorefreshChangeData;
+    /**
+     * @gir-type Alias
+     */
     type CategoryClass = typeof Category;
     /**
      * @gir-type Alias
@@ -8325,6 +9209,10 @@ export namespace Snapd {
      * @gir-type Alias
      */
     type ChangeClass = typeof Change;
+    /**
+     * @gir-type Alias
+     */
+    type ChangeDataClass = typeof ChangeData;
     /**
      * @gir-type Alias
      */
@@ -8368,6 +9256,14 @@ export namespace Snapd {
     /**
      * @gir-type Alias
      */
+    type NoticeClass = typeof Notice;
+    /**
+     * @gir-type Alias
+     */
+    type NoticesMonitorClass = typeof NoticesMonitor;
+    /**
+     * @gir-type Alias
+     */
     type PlugClass = typeof Plug;
     /**
      * @gir-type Alias
@@ -8401,6 +9297,10 @@ export namespace Snapd {
      * @gir-type Alias
      */
     type TaskClass = typeof Task;
+    /**
+     * @gir-type Alias
+     */
+    type TaskDataClass = typeof TaskData;
     /**
      * @gir-type Alias
      */

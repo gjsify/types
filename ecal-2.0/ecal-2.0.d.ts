@@ -292,6 +292,37 @@ export namespace ECal {
     }
 
     /**
+     * @gir-type Enum
+     */
+    export namespace IntervalUnits {
+        export const $gtype: GObject.GType<IntervalUnits>;
+    }
+
+    /**
+     * Declares interval units.
+     * @gir-type Enum
+     * @since 3.52
+     */
+    enum IntervalUnits {
+        /**
+         * No unit is set
+         */
+        NONE,
+        /**
+         * interval is in minutes
+         */
+        MINUTES,
+        /**
+         * interval is in hours
+         */
+        HOURS,
+        /**
+         * interval is in days
+         */
+        DAYS,
+    }
+
+    /**
      * An email address preferred for e-mail reminders by the calendar.
      * @since 3.2
      */
@@ -411,8 +442,7 @@ export namespace ECal {
     const STATIC_CAPABILITY_REQ_SEND_OPTIONS: string;
     /**
      * Set, when the backend supports retract. That's a way to ask for a meeting
-     * deletion with a comment, which is stored in a component as
-     * X-EVOLUTION-RETRACT-COMMENT property.
+     * deletion with a comment, which is stored in a component as the COMMENT property.
      * @since 3.50
      */
     const STATIC_CAPABILITY_RETRACT_SUPPORTED: string;
@@ -460,6 +490,35 @@ export namespace ECal {
      * @since 3.30
      */
     const STATIC_CAPABILITY_TASK_NO_ALARM: string;
+    /**
+     * Set, when the backend can save meetings only if the organizer is
+     * the calendar user.
+     * @since 3.56
+     */
+    const STATIC_CAPABILITY_USER_IS_ORGANIZER_ONLY: string;
+    /**
+     * Returns whether the `item1` and `item2` are equal regarding
+     * the component reference stored in them. Only the client,
+     * uid and rid members of the items are used here.
+     *
+     * See: `e_cal_component_bag_item_hash_by_comp()`
+     * @param item1 the first {@link ECal.ComponentBagItem}
+     * @param item2 the second {@link ECal.ComponentBagItem}
+     * @returns whether the `item1` and `item2` are equal regarding    the component reference stored in them
+     * @since 3.58
+     */
+    function component_bag_item_equal_by_comp(item1?: any | null, item2?: any | null): boolean;
+    /**
+     * Calculates hash of the `self`, considering only the client, uid and
+     * rid from the `self`, because the client with the component ID and
+     * the recurrence ID uniquely identify the component.
+     *
+     * See: `e_cal_component_bag_item_equal_by_comp()`
+     * @param self an {@link ECal.ComponentBagItem}
+     * @returns hash value for the `self`'s component
+     * @since 3.58
+     */
+    function component_bag_item_hash_by_comp(self?: any | null): number;
     /**
      * Creates an ISO 8601 UTC representation from a time value.
      * @param t A time value.
@@ -562,6 +621,8 @@ export namespace ECal {
      * @param icalcomp an {@link ICalGLib.Component}
      * @param interval_start an interval start, for which generate instances
      * @param interval_end an interval end, for which generate instances
+     * @param callback a callback to be called for each instance
+     * @param get_tz_callback a callback to call when resolving timezone
      * @param default_timezone a default {@link ICalGLib.Timezone}
      * @param cancellable a {@link Gio.Cancellable}; can be `null`
      * @returns `true` if successful (when all instances had been returned), `false` otherwise.
@@ -571,6 +632,8 @@ export namespace ECal {
         icalcomp: ICalGLib.Component,
         interval_start: ICalGLib.Time,
         interval_end: ICalGLib.Time,
+        callback: RecurInstanceCb,
+        get_tz_callback: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
@@ -796,6 +859,25 @@ export namespace ECal {
      */
     function util_add_timezones_from_component(vcal_comp: ICalGLib.Component, icalcomp: ICalGLib.Component): void;
     /**
+     * Checks whether removing the instance with recurrence ID `rid` from
+     * the series defined in the `icalcomp` using the `mod` mode is equal
+     * to remove all events.
+     * @param comp an {@link ECal.Component}
+     * @param detached_instances a {@link GLib.SList} of detached instances as {@link ECal.Component}, or `null`
+     * @param rid recurrence ID to remove, or `null`
+     * @param mod an {@link ECal.ObjModType} removal mode
+     * @param tz_cb The {@link ECal.RecurResolveTimezoneCb} to call
+     * @returns `true`, when the whole series should be removed
+     * @since 3.58
+     */
+    function util_check_may_remove_all(
+        comp: Component,
+        detached_instances: Component[] | null,
+        rid: ICalGLib.Time | null,
+        mod: ObjModType | null,
+        tz_cb: RecurResolveTimezoneCb,
+    ): boolean;
+    /**
      * Modifies the `vtimezone` to include only subcomponents influencing
      * the passed-in time interval between `from` and `to`.
      * @param vtimezone a VTIMEZONE component to modify
@@ -819,6 +901,33 @@ export namespace ECal {
         vtimezone: ICalGLib.Component,
         component: ICalGLib.Component,
     ): ICalGLib.Component;
+    /**
+     * Converts the time/date property `prop_kind` to `to_zone`. When such property
+     * does not exist, or does not contain DATE nor DATE-TIME value, then
+     * the function returns -1 and no output argument is set.
+     *
+     * The `vcalendar` is used to get the timezone for the property, if provided,
+     * otherwise the timezone is tried to be found in the `tz_cache`. If neither
+     * can get it, the iCal builtin timezones are checked. When the set timezone
+     * cannot be found, floating time is used (which can be almost always wrong).
+     *
+     * Note: this uses `i_cal_component_get_first_property()`, thus it cannot be used
+     *    in case any upper caller uses it too at the same time.
+     * @param icomp an {@link ICalGLib.Component} to get the property from
+     * @param prop_kind an {@link ICalGLib.PropertyKind} of the property to read
+     * @param to_zone an {@link ICalGLib.Timezone} to convert the time to, or `null` for UTC
+     * @param vcalendar an optional VCALENDAR component with timezones for the `icomp`, or `null` when not available
+     * @param tz_cache an {@link ECal.TimezoneCache} to use to read the time zones from, or `null` if not available
+     * @returns property's time converted into `to_zone`, or -1, when the conversion    was not possible.
+     * @since 3.58
+     */
+    function util_comp_time_to_zone(
+        icomp: ICalGLib.Component,
+        prop_kind: ICalGLib.PropertyKind | null,
+        to_zone?: ICalGLib.Timezone | null,
+        vcalendar?: ICalGLib.Component | null,
+        tz_cache?: TimezoneCache | null,
+    ): [number, ICalGLib.Time | null];
     /**
      * Searches for an X property named `x_name` within X properties
      * of `icalcomp` and returns its value as a newly allocated string.
@@ -848,6 +957,31 @@ export namespace ECal {
         icalcomp: ICalGLib.Component,
         prop_kind: ICalGLib.PropertyKind | null,
         locale?: string | null,
+    ): ICalGLib.Property | null;
+    /**
+     * Searches properties of kind `prop_kind` in the `icalcomp`, which can
+     * be filtered by the `func`, and returns one, which is usable for the `locale`.
+     * When `locale` is `null`, the current locale is assumed. If no such property
+     * for the locale exists either the one with no language parameter or the first
+     * found is returned.
+     *
+     * The `func` is called before checking of the applicability for the `locale`.
+     * When the `func` is `null`, all the properties of the `prop_kind` are considered.
+     *
+     * Free the returned non-NULL {@link ICalGLib.Property} with `g_object_unref()`,
+     * when no longer needed.
+     * @param icalcomp an {@link ICalGLib.Component}
+     * @param prop_kind an {@link ICalGLib.PropertyKind} to traverse
+     * @param locale a locale identifier, or `null`
+     * @param func an {@link ECal.UtilFilterPropertyFunc}, to determine whether a property can be considered
+     * @returns a property of kind `prop_kind` for the `locale`,    `null` if no such property is set on the `comp`.
+     * @since 3.52
+     */
+    function util_component_find_property_for_locale_filtered(
+        icalcomp: ICalGLib.Component,
+        prop_kind: ICalGLib.PropertyKind | null,
+        locale?: string | null,
+        func?: UtilFilterPropertyFunc | null,
     ): ICalGLib.Property | null;
     /**
      * Searches for an X property named `x_name` within X properties
@@ -1080,6 +1214,9 @@ export namespace ECal {
      * which is stored within the `client`. In contrast to `e_cal_util_generate_alarms_for_comp()`,
      * this function handles detached instances of recurring events properly.
      *
+     * The `def_reminder_before_start_seconds`, if not negative, causes addition of an alarm,
+     * which will trigger a "display" alarm these seconds before start of the event.
+     *
      * Returns the instances structure, or `null` if no alarm instances occurred in the specified
      * time range. Free the returned structure with `e_cal_component_alarms_free()`,
      * when no longer needed.
@@ -1090,7 +1227,8 @@ export namespace ECal {
      * @param omit alarm types to omit
      * @param resolve_tzid Callback for resolving timezones
      * @param default_timezone The timezone used to resolve DATE and floating DATE-TIME values
-     * @param cancellable
+     * @param def_reminder_before_start_seconds add default reminder before start in seconds, when not negative value
+     * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns a list of all the alarms found    for the given component in the given time range.
      * @since 3.48
      */
@@ -1102,6 +1240,7 @@ export namespace ECal {
         omit: ComponentAlarmAction | null,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
+        def_reminder_before_start_seconds: number,
         cancellable?: Gio.Cancellable | null,
     ): ComponentAlarms | null;
     /**
@@ -1172,6 +1311,18 @@ export namespace ECal {
      * @since 2.28
      */
     function util_get_system_timezone_location(): string | null;
+    /**
+     * Tries to match the `tzid` with a built-in iCal timezone.
+     *
+     * Whenever possible, the timezone should be taken from
+     * the timezone cache or the VCALENDAR component the owner
+     * component belongs to, this should be used just as the last
+     * resort when such time zone could not be found.
+     * @param tzid a time zone ID
+     * @returns matching built-in {@link ICalGLib.Timezone} for the `tzid`,    or `null`, when could not be found
+     * @since 3.58
+     */
+    function util_guess_timezone(tzid: string): ICalGLib.Timezone | null;
     /**
      * Checks whether the `comp` has any alarms in the given time interval.
      * @param comp an {@link ECal.Component} to check alarms for
@@ -1362,6 +1513,28 @@ export namespace ECal {
      */
     function util_property_has_parameter(prop: ICalGLib.Property, param_kind: ICalGLib.ParameterKind | null): boolean;
     /**
+     * Converts the time/date property `prop` to `to_zone`. When such property
+     * does not contain DATE nor DATE-TIME value, the function returns -1
+     * and no output argument is set.
+     *
+     * The `vcalendar` is used to get the timezone for the property, if provided,
+     * otherwise the timezone is tried to be found in the `tz_cache`. If neither
+     * can get it, the iCal builtin timezones are checked. When the set timezone
+     * cannot be found, floating time is used (which can be almost always wrong).
+     * @param prop an {@link ICalGLib.Property} of DATE or DATE-TIME value
+     * @param to_zone an {@link ICalGLib.Timezone} to convert the time to, or `null` for UTC
+     * @param vcalendar an optional VCALENDAR component with timezones for the `prop`, or `null` when not available
+     * @param tz_cache an {@link ECal.TimezoneCache} to use to read the time zones from, or `null` if not available
+     * @returns property's time converted into `to_zone`, or -1, when the conversion    was not possible.
+     * @since 3.58
+     */
+    function util_property_time_to_zone(
+        prop: ICalGLib.Property,
+        to_zone?: ICalGLib.Timezone | null,
+        vcalendar?: ICalGLib.Component | null,
+        tz_cache?: TimezoneCache | null,
+    ): [number, ICalGLib.Time | null];
+    /**
      * Removes one or more instances from `icalcomp` according to `rid` and `mod`.
      * @param icalcomp A (recurring) {@link ICalGLib.Component}
      * @param rid The base RECURRENCE-ID to remove
@@ -1463,6 +1636,28 @@ export namespace ECal {
      */
     function util_strip_mailto(address?: string | null): string;
     /**
+     * Converts the `itt` in `tzid` to `to_zone`.
+     *
+     * The `vcalendar` is used to get the timezone for the property, if provided,
+     * otherwise the timezone is tried to be found in the `tz_cache`. If neither
+     * can get it, the iCal builtin timezones are checked. When the set timezone
+     * cannot be found, floating time is used (which can be almost always wrong).
+     * @param itt an {@link ICalGLib.Time} to convert
+     * @param tzid a timezone ID the `itt` is at, or `null` for floating time
+     * @param to_zone
+     * @param vcalendar an optional VCALENDAR component with timezones for the `tzid`, or `null` when not available
+     * @param tz_cache an {@link ECal.TimezoneCache} to use to read the time zones from, or `null` if not available
+     * @returns the time converted into `to_zone`, or -1, when the conversion    was not possible.
+     * @since 3.58
+     */
+    function util_time_to_zone(
+        itt: ICalGLib.Time,
+        tzid: string | null,
+        to_zone: ICalGLib.Timezone,
+        vcalendar?: ICalGLib.Component | null,
+        tz_cache?: TimezoneCache | null,
+    ): [number, ICalGLib.Time | null];
+    /**
      * Converts a struct tm into an {@link ICalGLib.Time}. Free the returned object
      * with `g_object_unref()`, when no longer needed.
      * @param tm A struct tm.
@@ -1471,6 +1666,12 @@ export namespace ECal {
      * @since 2.22
      */
     function util_tm_to_icaltime(tm: any | null, is_date: boolean): ICalGLib.Time;
+    /**
+     * @gir-type Callback
+     */
+    interface ComponentBagForeachFunc {
+        (bag: ComponentBag, item: ComponentBagItem): boolean;
+    }
     /**
      * @gir-type Callback
      */
@@ -1505,6 +1706,12 @@ export namespace ECal {
      */
     interface RecurResolveTimezoneCb {
         (tzid: string, cancellable?: Gio.Cancellable | null): ICalGLib.Timezone | null;
+    }
+    /**
+     * @gir-type Callback
+     */
+    interface UtilFilterPropertyFunc {
+        (prop: ICalGLib.Property): boolean;
     }
     /**
      * @gir-type Callback
@@ -1708,15 +1915,23 @@ export namespace ECal {
 
         // Properties
 
+        /**
+         * Timezone used to resolve DATE and floating DATE-TIME values
+         */
         get default_timezone(): ICalGLib.Timezone;
         set default_timezone(val: ICalGLib.Timezone);
+        /**
+         * Timezone used to resolve DATE and floating DATE-TIME values
+         */
         get defaultTimezone(): ICalGLib.Timezone;
         set defaultTimezone(val: ICalGLib.Timezone);
         /**
+         * The iCalendar data type
          * @construct-only
          */
         get source_type(): ClientSourceType;
         /**
+         * The iCalendar data type
          * @construct-only
          */
         get sourceType(): ClientSourceType;
@@ -1793,11 +2008,13 @@ export namespace ECal {
          * accordingly.
          * @param vcalendar a VCALENDAR containing a list of    VTIMEZONE and arbitrary other components, in    arbitrary order: these other components are    modified by this call
          * @param icalcomps a list of {@link ICalGLib.Component}    instances which also have to be patched; may be `null`
+         * @param tzlookup a callback function which is called to retrieve    a calendar's VTIMEZONE definition; the returned    definition is *not* freed by `e_cal_client_check_timezones()`    NULL indicates that no such timezone exists    or an error occurred
          * @param cancellable a {@link Gio.Cancellable} to use in `tzlookup` function
          */
         static check_timezones_sync(
             vcalendar: ICalGLib.Component,
-            icalcomps?: ICalGLib.Component[] | null,
+            icalcomps: ICalGLib.Component[] | null,
+            tzlookup: RecurResolveTimezoneCb,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -3836,7 +4053,7 @@ export namespace ECal {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3891,7 +4108,7 @@ export namespace ECal {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3966,7 +4183,7 @@ export namespace ECal {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4245,12 +4462,12 @@ export namespace ECal {
         // Properties
 
         /**
-         * The ECalClient for the view
+         * The {@link ECal.Client} for the view
          * @construct-only
          */
         get client(): Client;
         /**
-         * The GDBusConnection used to create the D-Bus proxy
+         * The {@link Gio.DBusConnection} used to create the D-Bus proxy
          * @construct-only
          */
         get connection(): Gio.DBusConnection;
@@ -4304,11 +4521,13 @@ export namespace ECal {
         // Virtual methods
 
         /**
+         * A signal emitted when the backend finished initial view population
          * @param error
          * @virtual
          */
         vfunc_complete(error: GLib.Error): void;
         /**
+         * A signal emitted when the backend notifies about the progress
          * @param percent
          * @param message
          * @virtual
@@ -4328,8 +4547,7 @@ export namespace ECal {
          */
         get_object_path(): string;
         /**
-         * Retunrs: Whether view is running. Not running views are ignoring
-         * all events sent from the server.
+         * @returns Whether view is running. Not running views are ignoring all events sent from the server.
          */
         is_running(): boolean;
         /**
@@ -4550,7 +4768,7 @@ export namespace ECal {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4605,7 +4823,7 @@ export namespace ECal {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4680,7 +4898,7 @@ export namespace ECal {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5613,6 +5831,323 @@ export namespace ECal {
          * one of its fields.
          */
         strip_errors(): void;
+    }
+
+    namespace ComponentBag {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * A signal emitted whenever a new {@link ECal.ComponentBagItem} is added.
+             *
+             * The `item` can be modified, but if any properties related to the layout
+             * changes then the content needs to be recalculated, for example
+             * by calling `e_cal_component_bag_rebuild()`.
+             * @signal
+             * @since 3.58
+             * @action
+             * @run-last
+             */
+            added: (arg0: ComponentBagItem) => void;
+            /**
+             * A signal emitted whenever an existing `item` in the `bag` is changed.
+             * It's a complement signal for the ECalComponentBag::added signal,
+             * in a sense that when adding an item to the `bag` either the added
+             * or the item-changed is emitted, if the component changed.
+             *
+             * The `item` can be modified, but if any properties related to the layout
+             * changes then the content needs to be recalculated, for example
+             * by calling `e_cal_component_bag_rebuild()`.
+             * @signal
+             * @since 3.58
+             * @action
+             * @run-last
+             */
+            'item-changed': (arg0: ComponentBagItem) => void;
+            /**
+             * A signal emitted when one or more items are removed from the `bag`.
+             * This is not called for `e_cal_component_bag_clear()`
+             * @signal
+             * @since 3.58
+             * @action
+             * @run-last
+             */
+            removed: (arg0: ComponentBagItem[]) => void;
+            /**
+             * A signal emitted with an array of {@link ECal.ComponentBagItem} structures,
+             * whose span changed.
+             *
+             * The respective items can be modified, but if any properties related
+             * to the layout changes then the content needs to be recalculated,
+             * for example by calling `e_cal_component_bag_rebuild()`.
+             * @signal
+             * @since 3.58
+             * @action
+             * @run-last
+             */
+            'span-changed': (arg0: ComponentBagItem[]) => void;
+            'notify::n-items': (pspec: GObject.ParamSpec) => void;
+            'notify::n-spans': (pspec: GObject.ParamSpec) => void;
+            'notify::timezone': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            n_items: number;
+            nItems: number;
+            n_spans: number;
+            nSpans: number;
+            timezone: ICalGLib.Timezone;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class ComponentBag extends GObject.Object {
+        static $gtype: GObject.GType<ComponentBag>;
+
+        // Properties
+
+        /**
+         * Total count of the components in all spans. The property can be
+         * only read. It emits a notification when it changes.
+         * @since 3.58
+         * @read-only
+         */
+        get n_items(): number;
+        /**
+         * Total count of the components in all spans. The property can be
+         * only read. It emits a notification when it changes.
+         * @since 3.58
+         * @read-only
+         */
+        get nItems(): number;
+        /**
+         * How many spans the components are divided to. The property can be
+         * only read. It emits a notification when it changes.
+         * @since 3.58
+         * @read-only
+         */
+        get n_spans(): number;
+        /**
+         * How many spans the components are divided to. The property can be
+         * only read. It emits a notification when it changes.
+         * @since 3.58
+         * @read-only
+         */
+        get nSpans(): number;
+        /**
+         * An {@link ICalGLib.Timezone} to calculate component times in.
+         * @since 3.58
+         */
+        get timezone(): ICalGLib.Timezone;
+        set timezone(val: ICalGLib.Timezone);
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: ComponentBag.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<ComponentBag.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): ComponentBag;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof ComponentBag.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ComponentBag.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof ComponentBag.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ComponentBag.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof ComponentBag.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<ComponentBag.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Adds a component into the bag. It's possible to add the same component
+         * from the same client multiple times, in which case any previous occurrence
+         * is removed.
+         *
+         * The component is identified by the client and its uid/rid.
+         *
+         * Note this unsets any previously set user data on the item
+         * by the `e_cal_component_bag_add_with_user_data()`.
+         * @param client an {@link ECal.Client}
+         * @param comp an {@link ECal.Component}
+         */
+        add(client: Client, comp: Component): void;
+        /**
+         * Adds a component into the bag. It's possible to add the same component
+         * from the same client multiple times, in which case any previous occurrence
+         * is removed.
+         *
+         * The component is identified by the client and its uid/rid.
+         *
+         * The function also sets the user data member of a newly created
+         * {@link ECal.ComponentBagItem}. The `user_data` is replaced in an existing
+         * item only if it's set (non-`null`), otherwise it's left unchanged.
+         * See `e_cal_component_bag_item_set_user_data()` for more information.
+         * @param client an {@link ECal.Client}
+         * @param comp an {@link ECal.Component}
+         * @param user_data custom user data, or `null`
+         * @param copy_user_data a copy function for the `user_data`, or `null`
+         * @param free_user_data a free function for the `user_data`, or `null`
+         */
+        add_with_user_data(
+            client: Client,
+            comp: Component,
+            user_data?: any | null,
+            copy_user_data?: GObject.BoxedCopyFunc | null,
+            free_user_data?: GObject.BoxedFreeFunc | null,
+        ): void;
+        /**
+         * Removes all components from the bag.
+         *
+         * This does not emit the ECalComponentBag::removed for each span,
+         * but it notifies about a change in the ECalComponentBag:n-spans
+         * and in the ECalComponentBag:n-items properties, which will be zero.
+         */
+        clear(): void;
+        /**
+         * Looks up for an item identified by the `client`, `uid` and optionally `rid`,
+         * and returns a copy of it. Free the returned item with `e_cal_component_bag_item_free()`,
+         * when no longer needed
+         *
+         * This is a thread safe variant of the `e_cal_component_bag_get_item()`.
+         * @param client an {@link ECal.Client}
+         * @param uid a component UID
+         * @param rid a component recurrence ID, or `null`
+         * @returns an {@link ECal.ComponentBagItem} copy of a stored    item, or `null` when not found
+         */
+        dup_item(client: Client, uid: string, rid?: string | null): ComponentBagItem | null;
+        /**
+         * Similar to the `e_cal_component_bag_get_span()`,
+         * except the returned array is a copy of the span,
+         * thus it is thread safe.
+         * @param index span index, counting from 0
+         * @returns a copy of a span at `index`, or `null`, when `index` is out of bounds
+         */
+        dup_span(index: number): ComponentBagItem[] | null;
+        /**
+         * Calls the `func` for each item in the `self`, or until the `func` returns `false`,
+         * to stop the traversal earlier.
+         * @param func an {@link ECal.ComponentBagForeachFunc} to call
+         */
+        foreach(func: ComponentBagForeachFunc): void;
+        /**
+         * Looks up for an item identified by the `client`, `uid` and optionally `rid`,
+         * and returns it.
+         *
+         * This is a not thread safe, it's valid until the next change of it
+         * is received by the `self`. If thread safety is required, use the `e_cal_component_bag_dup_item()`
+         * instead.
+         * @param client an {@link ECal.Client}
+         * @param uid a component UID
+         * @param rid a component recurrence ID, or `null`
+         * @returns a stored {@link ECal.ComponentBagItem}, or `null` when not found
+         */
+        get_item(client: Client, uid: string, rid?: string | null): ComponentBagItem | null;
+        /**
+         * Gets minimum duration, in minutes, previously set
+         * by the `e_cal_component_bag_set_min_duration_minutes()`.
+         * @returns minimum duration, in minutes
+         */
+        get_min_duration_minutes(): number;
+        /**
+         * Gets how many items are in the bag across all the spans.
+         * @returns how many items are in the bag across all the spans
+         */
+        get_n_items(): number;
+        /**
+         * Gets how many spans all the components in the `self` occupy.
+         * @returns how many spans all the components in the `self` occupy
+         */
+        get_n_spans(): number;
+        /**
+         * Peeks a current span content. The `index` should be between 0
+         * and one less than `e_cal_component_bag_get_n_spans()`.
+         *
+         * Unlike the `e_cal_component_bag_list()`, the returned array is
+         * owned by the `self` and is valid until the next content change
+         * (addition, removal, clear) of the `self` is done.
+         *
+         * If thread safety is required, use `e_cal_component_bag_dup_span()`
+         * instead.
+         * @param index span index, counting from 0
+         * @returns an array of {@link ECal.ComponentBag} in the `index` span, or `null` when    the `index` is out of bounds
+         */
+        get_span(index: number): ComponentBagItem[] | null;
+        /**
+         * Gets an {@link ICalGLib.Timezone} used to calculate component times in.
+         * @returns an {@link ICalGLib.Timezone} used to calculate component times in,    or `null`, when not set. In such case UTC is used.
+         */
+        get_timezone(): ICalGLib.Timezone | null;
+        /**
+         * Lists all components stored in the `self`. The items are of the {@link ECal.ComponentBagItem} type.
+         * Even only the container is needed to be freed, the items are owned by the container and
+         * can be modified in any way without influencing the `self`.
+         * @returns a {@link GLib.PtrArray} containing    all the currently stored components in the bag as {@link ECal.ComponentBagItem} objects.
+         */
+        list(): ComponentBagItem[];
+        /**
+         * Locks the `self`, to prevent changes from other threads. It can
+         * be called multiple times, only each call needs its pair call
+         * of the `e_cal_component_bag_unlock()`.
+         */
+        lock(): void;
+        /**
+         * Rebuilds the spans with the current content, like if all
+         * the items are added from scratch.
+         */
+        rebuild(): void;
+        /**
+         * Removes a component from the bag. The function does nothing
+         * when the component is not part of the bag.
+         * @param client an {@link ECal.Client}
+         * @param uid a unique identifier of the component to remove
+         * @param rid a recurrence ID of an instance, or `null` to remove all instances
+         */
+        remove(client: Client, uid: string, rid?: string | null): void;
+        /**
+         * Sets minimum duration to be used for the components, in minutes.
+         * When the component duration is less than this `value`, it is
+         * increased to it. The default value is 0.
+         *
+         * Changing the value does not influence already added components.
+         * Use `e_cal_component_bag_rebuild()` to rebuild the content.
+         * @param value a value to set
+         */
+        set_min_duration_minutes(value: number): void;
+        /**
+         * Sets the `zone` as a time zone to be used to calculate component times in.
+         * @param zone an {@link ICalGLib.Timezone}
+         */
+        set_timezone(zone: ICalGLib.Timezone): void;
+        /**
+         * Unlocks the `self`, previously locked by the `e_cal_component_bag_unlock()`.
+         */
+        unlock(): void;
     }
 
     namespace ReminderWatcher {
@@ -6684,6 +7219,107 @@ export namespace ECal {
     /**
      * @gir-type Alias
      */
+    type ComponentBagClass = typeof ComponentBag;
+    /**
+     * @gir-type Struct
+     */
+    class ComponentBagItem {
+        static $gtype: GObject.GType<ComponentBagItem>;
+
+        // Fields
+
+        client: Client;
+        comp: Component;
+        uid: string;
+        rid: string;
+        start: number;
+        duration_minutes: number;
+        span_index: number;
+        user_data: any;
+        copy_user_data: GObject.BoxedCopyFunc;
+        free_user_data: GObject.BoxedFreeFunc;
+
+        // Constructors
+
+        constructor(client: Client, comp: Component, min_duration_minutes: number, timezone?: ICalGLib.Timezone | null);
+
+        static ['new'](
+            client: Client,
+            comp: Component,
+            min_duration_minutes: number,
+            timezone?: ICalGLib.Timezone | null,
+        ): ComponentBagItem;
+
+        // Static methods
+
+        /**
+         * Returns whether the `item1` and `item2` are equal regarding
+         * the component reference stored in them. Only the client,
+         * uid and rid members of the items are used here.
+         *
+         * See: `e_cal_component_bag_item_hash_by_comp()`
+         * @param item1 the first {@link ECal.ComponentBagItem}
+         * @param item2 the second {@link ECal.ComponentBagItem}
+         */
+        static equal_by_comp(item1?: any | null, item2?: any | null): boolean;
+        /**
+         * Calculates hash of the `self`, considering only the client, uid and
+         * rid from the `self`, because the client with the component ID and
+         * the recurrence ID uniquely identify the component.
+         *
+         * See: `e_cal_component_bag_item_equal_by_comp()`
+         * @param self an {@link ECal.ComponentBagItem}
+         */
+        static hash_by_comp(self?: any | null): number;
+
+        // Methods
+
+        /**
+         * Creates an independent copy of the `self`. If there is set a copy_user_data,
+         * then also the user_data member is copied using this function, otherwise
+         * the user_data member is just carried over to the new copy.
+         * @returns a new copy of the `self`
+         */
+        copy(): ComponentBagItem;
+        /**
+         * Frees the `self`. Does nothing when it's `null`.
+         */
+        free(): void;
+        /**
+         * Reads the start time and the duration from the set component,
+         * returning whether any of it changed.
+         *
+         * The `min_duration_minutes` is used to define the minimum duration, in minutes,
+         * the item should have set. Any smaller duration is increased to it.
+         * @param min_duration_minutes minimum duration, in minutes
+         * @param timezone an {@link ICalGLib.Timezone} to calculate the start time for, or `null`
+         * @returns `true` when any of the stored times changed, `false` if not
+         */
+        read_times(min_duration_minutes: number, timezone?: ICalGLib.Timezone | null): boolean;
+        /**
+         * Sets the user data members of the `self` in a safe way, meaning
+         * the function does not change the user data when it's the same as that
+         * already set; otherwise it frees the current user data, if the free
+         * function was previously provided, and the assigns the three members
+         * to the self.
+         *
+         * The function assumes owner ship of the `user_data`, optionally calling
+         * the `free_user_data` if provided, when the user_data instance is the same
+         * as the already set.
+         * @param user_data custom user data, or `null`
+         * @param copy_user_data a copy function for the `user_data`, or `null`
+         * @param free_user_data a free function for the `user_data`, or `null`
+         */
+        set_user_data(
+            user_data?: any | null,
+            copy_user_data?: GObject.BoxedCopyFunc | null,
+            free_user_data?: GObject.BoxedFreeFunc | null,
+        ): void;
+    }
+
+    /**
+     * @gir-type Alias
+     */
     type ComponentClass = typeof Component;
     /**
      * An opaque structure containing an {@link ICalGLib.Time} describing
@@ -6923,7 +7559,10 @@ export namespace ECal {
 
         static ['new'](): ComponentParameterBag;
 
-        static new_from_property(property: ICalGLib.Property): ComponentParameterBag;
+        static new_from_property(
+            property: ICalGLib.Property,
+            func?: ComponentParameterBagFilterFunc | null,
+        ): ComponentParameterBag;
 
         // Methods
 
@@ -6994,8 +7633,9 @@ export namespace ECal {
          * returned `true`. When the `func` is `null`, all the parameters are included.
          * The `bag` content is cleared before any parameter is added.
          * @param property an {@link ICalGLib.Property} containing the parameters to fill the `bag` with
+         * @param func an optional %ECalComponentParameterBagFilterFunc callback
          */
-        set_from_property(property: ICalGLib.Property): void;
+        set_from_property(property: ICalGLib.Property, func?: ComponentParameterBagFilterFunc | null): void;
         /**
          * Adds the `param` into the `bag` and assumes ownership of the `param`.
          * @param param an {@link ICalGLib.Parameter}
@@ -7114,7 +7754,10 @@ export namespace ECal {
 
         static ['new'](): ComponentPropertyBag;
 
-        static new_from_component(component: ICalGLib.Component): ComponentPropertyBag;
+        static new_from_component(
+            component: ICalGLib.Component,
+            func?: ComponentPropertyBagFilterFunc | null,
+        ): ComponentPropertyBag;
 
         // Methods
 
@@ -7185,8 +7828,9 @@ export namespace ECal {
          * returned `true`. When the `func` is `null`, all the properties are included.
          * The `bag` content is cleared before any property is added.
          * @param component an {@link ICalGLib.Component} containing the properties to fill the `bag` with
+         * @param func an optional %ECalComponentPropertyBagFilterFunc callback
          */
-        set_from_component(component: ICalGLib.Component): void;
+        set_from_component(component: ICalGLib.Component, func?: ComponentPropertyBagFilterFunc | null): void;
         /**
          * Adds the `prop` into the `bag` and assumes ownership of the `prop`.
          * @param prop an {@link ICalGLib.Property}

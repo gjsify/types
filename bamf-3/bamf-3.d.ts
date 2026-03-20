@@ -1000,7 +1000,7 @@ export namespace Bamf {
         /**
          * @virtual
          */
-        vfunc_get_transient(): Window;
+        vfunc_get_transient(): Window | null;
         /**
          * @param prop
          * @virtual
@@ -1042,7 +1042,7 @@ export namespace Bamf {
         /**
          * @returns A transient for this {@link Bamf.Window}.
          */
-        get_transient(): Window;
+        get_transient(): Window | null;
         /**
          * @param prop
          */
@@ -1057,13 +1057,6 @@ export namespace Bamf {
      * @gir-type Alias
      */
     type ApplicationClass = typeof Application;
-    /**
-     * @gir-type Struct
-     */
-    abstract class ApplicationPrivate {
-        static $gtype: GObject.GType<ApplicationPrivate>;
-    }
-
     /**
      * @gir-type Alias
      */
@@ -1091,34 +1084,13 @@ export namespace Bamf {
      */
     type TabClass = typeof Tab;
     /**
-     * @gir-type Struct
-     */
-    abstract class TabPrivate {
-        static $gtype: GObject.GType<TabPrivate>;
-    }
-
-    /**
      * @gir-type Alias
      */
     type ViewClass = typeof View;
     /**
-     * @gir-type Struct
-     */
-    abstract class ViewPrivate {
-        static $gtype: GObject.GType<ViewPrivate>;
-    }
-
-    /**
      * @gir-type Alias
      */
     type WindowClass = typeof Window;
-    /**
-     * @gir-type Struct
-     */
-    abstract class WindowPrivate {
-        static $gtype: GObject.GType<WindowPrivate>;
-    }
-
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

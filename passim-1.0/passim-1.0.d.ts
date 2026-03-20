@@ -162,7 +162,7 @@ export namespace Passim {
          */
         get_version(): string;
         /**
-         * Loads the client from a file on disk.
+         * Loads properties from the passim daemon.
          * @returns `true` for success
          */
         load(): boolean;

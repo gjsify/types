@@ -693,6 +693,11 @@ export namespace GExiv2 {
         has_xmp(): boolean;
         /**
          * The buffer must be an image format supported by Exiv2.
+         *
+         * When called on an already filled meta-data object (i.e. one that has already
+         * been filled by a previous call of {@link GExiv2.Metadata.open_path}) and the
+         * opening of the new path fails, the object will not revert to its previous
+         * state but be in a similar state after calling {@link GExiv2.Metadata.new}.
          * @param data A buffer containing the data to be read
          * @returns Boolean success indicator
          */

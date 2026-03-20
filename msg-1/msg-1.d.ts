@@ -10,13 +10,13 @@
 import '@girs/gjs';
 
 // Module dependencies
-import type GLib from '@girs/glib-2.0';
-import type GObject from '@girs/gobject-2.0';
-import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type Goa from '@girs/goa-1.0';
-import type Json from '@girs/json-1.0';
 import type Soup from '@girs/soup-3.0';
+import type Gio from '@girs/gio-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
+import type Json from '@girs/json-1.0';
+import type Goa from '@girs/goa-1.0';
 
 export namespace Msg {
     /**
@@ -24,15 +24,28 @@ export namespace Msg {
      */
 
     /**
+     * The type of Drive
+     * <ulink url="https://docs.microsoft.com/en-us/graph/api/resources/drive?view=graph-rest-1.0">
+     * objects</ulink>.
      * @gir-type Enum
      */
     enum DriveType {
+        /**
+         * Personal OneDrive drive
+         */
         PERSONAL,
+        /**
+         * OneDrive for Business drive
+         */
         BUSINESS,
+        /**
+         * SharePoint document library
+         */
         DOCUMENT_LIBRARY,
     }
 
     /**
+     * This enumeration can be expanded at a later date.
      * @gir-type Struct
      */
     class Error extends GLib.Error {
@@ -40,6 +53,9 @@ export namespace Msg {
 
         // Static fields
 
+        /**
+         * An unrecoverable error occurred.
+         */
         static FAILED: number;
         static PROTOCOL_ERROR: number;
 
@@ -70,7 +86,7 @@ export namespace Msg {
 
     const API_ENDPOINT: string;
     const BETA_API_ENDPOINT: string;
-    function error_quark(): number;
+    function error_quark(): GLib.Quark;
     /**
      * @param object
      * @param name
@@ -91,6 +107,9 @@ export namespace Msg {
     }
 
     /**
+     * {@link Msg.DriveService} is a subclass of {@link Msg.Service} for communicating with the MS Graph API.
+     *
+     * Details: https://learn.microsoft.com/en-us/graph/api/resources/drive?view=graph-rest-1.0
      * @gir-type Class
      */
     class Drive extends GObject.Object {
@@ -138,13 +157,45 @@ export namespace Msg {
 
         // Methods
 
+        /**
+         * Get created time of drive.
+         * @returns created time of drive
+         */
         get_created(): GLib.DateTime;
+        /**
+         * Gets the drive type of the drive.
+         * @returns the drive type of drive
+         */
         get_drive_type(): DriveType;
+        /**
+         * Gets the ID of the drive.
+         * @returns the id of the drive
+         */
         get_id(): string;
+        /**
+         * Gets the modified time of the drive.
+         * @returns modified time of drive
+         */
         get_modified(): GLib.DateTime;
+        /**
+         * Gets tthe name of the drive.
+         * @returns name of drive
+         */
         get_name(): string;
+        /**
+         * Gets the remaining size of the drive.
+         * @returns remaining size of drive
+         */
         get_remaining(): number;
+        /**
+         * Gets the total size of the drive.
+         * @returns total size of drive
+         */
         get_total(): number;
+        /**
+         * Gets the used size of the drive.
+         * @returns used size of drive
+         */
         get_used(): number;
     }
 
@@ -203,28 +254,77 @@ export namespace Msg {
 
         // Methods
 
+        /**
+         * Get created time of drive item.
+         * @returns created date time of drive item
+         */
         get_created(): number;
+        /**
+         * Gets drive id of drive item.
+         * @returns drive id of drive item
+         */
         get_drive_id(): string;
+        /**
+         * Gets etag of drive item.
+         * @returns etag of drive item
+         */
         get_etag(): string;
+        /**
+         * Get id of drive item.
+         * @returns id of drive item
+         */
         get_id(): string;
+        /**
+         * Gets modified time of drive item.
+         * @returns modified date time of drive item
+         */
         get_modified(): number;
+        /**
+         * Gets name of drive item.
+         * @returns name of drive item
+         */
         get_name(): string;
+        /**
+         * Gets parent id of drive item.
+         * @returns parent id of drive item
+         */
         get_parent_id(): string;
+        /**
+         * Get remote parent drive id of drive item.
+         */
         get_remote_drive_id(): string;
+        /**
+         * Get remote id of drive item.
+         */
         get_remote_id(): string;
+        /**
+         * Gets size of drive item.
+         * @returns size of drive item
+         */
         get_size(): number;
+        /**
+         * Gets user of drive item.
+         * @returns user of drive item
+         */
         get_user(): string;
+        /**
+         * Gets whether item is shared.
+         * @returns `true` if item is shared, otherwise `false`
+         */
         is_shared(): boolean;
         /**
-         * @param id
+         * Sets id of drive item.
+         * @param id new id of drive item
          */
         set_id(id: string): void;
         /**
-         * @param name
+         * Sets name of drive item.
+         * @param name new name of drive item
          */
         set_name(name: string): void;
         /**
-         * @param parent_id
+         * Set parent id of drive item.
+         * @param parent_id parent id
          */
         set_parent_id(parent_id: string): void;
     }
@@ -286,7 +386,15 @@ export namespace Msg {
 
         // Methods
 
+        /**
+         * Gets mime type of drive item file.
+         * @returns mime type of drive item file
+         */
         get_mime_type(): string;
+        /**
+         * Gets thumbnail uri of drive item file.
+         * @returns thumbnail uri of drive item file
+         */
         get_thumbnail_uri(): string;
     }
 
@@ -404,79 +512,107 @@ export namespace Msg {
         // Methods
 
         /**
-         * @param parent
-         * @param item
-         * @param cancellable
+         * Adds item to parent folder
+         * @param parent parent drive item
+         * @param item drive item to add
+         * @param cancellable a cancellable
+         * @returns a new drive item
          */
-        add_item_to_folder(parent: DriveItem, item: DriveItem, cancellable: Gio.Cancellable): DriveItem;
+        add_item_to_folder(parent: DriveItem, item: DriveItem, cancellable?: Gio.Cancellable | null): DriveItem;
         /**
-         * @param file
-         * @param destination
-         * @param cancellable
+         * Copy a file async on remote server to a new directory.
+         * @param file source {@link Msg.DriveItem}
+         * @param destination destination directory {@link Msg.DriveItem}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` if accepted, `false` on error
          */
-        copy_file(file: DriveItem, destination: DriveItem, cancellable: Gio.Cancellable): boolean;
+        copy_file(file: DriveItem, destination: DriveItem, cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * @param parent
-         * @param name
-         * @param cancellable
+         * Creates a new folder called name under parent.
+         * @param parent parent drive item
+         * @param name name of new folder
+         * @param cancellable a cancellable
+         * @returns a newly created {@link Msg.DriveItem}
          */
-        create_folder(parent: DriveItem, name: string, cancellable: Gio.Cancellable): DriveItem;
+        create_folder(parent: DriveItem, name: string, cancellable?: Gio.Cancellable | null): DriveItem;
         /**
-         * @param item
-         * @param cancellable
+         * Deletes item.
+         * @param item a {@link Msg.DriveItem}
+         * @param cancellable a cancellable
+         * @returns `true` when item has been deleted, otherwise `false`
          */
-        ['delete'](item: DriveItem, cancellable: Gio.Cancellable): boolean;
+        ['delete'](item: DriveItem, cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * @param item
-         * @param cancellable
+         * Download item
+         * @param item a {@link Msg.DriveItem}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns input stream of drive item
          */
-        download_item(item: DriveItem, cancellable: Gio.Cancellable): Gio.InputStream;
+        download_item(item: DriveItem, cancellable?: Gio.Cancellable | null): Gio.InputStream;
         /**
-         * @param url
-         * @param cancellable
+         * Download url
+         * @param url url to download
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a new {@link Gio.InputStream} for url
          */
-        download_url(url: string, cancellable: Gio.Cancellable): Gio.InputStream;
+        download_url(url: string, cancellable?: Gio.Cancellable | null): Gio.InputStream;
         /**
-         * @param cancellable
+         * Queries the Microsoft Graph API for all the drives of the currently logged in user
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns all drives the user can access
          */
-        get_drives(cancellable: Gio.Cancellable): Drive[];
+        get_drives(cancellable?: Gio.Cancellable | null): Drive[];
         /**
-         * @param drive
-         * @param cancellable
+         * Get root item of selected drive
+         * @param drive a {@link Msg.Drive}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns root 'MsgDriveItem'
          */
-        get_root(drive: Drive, cancellable: Gio.Cancellable): DriveItem;
+        get_root(drive: Drive, cancellable?: Gio.Cancellable | null): DriveItem;
         /**
-         * @param cancellable
+         * Requests all shared with me items
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns shared with me list
          */
-        get_shared_with_me(cancellable: Gio.Cancellable): DriveItem[];
+        get_shared_with_me(cancellable?: Gio.Cancellable | null): DriveItem[];
         /**
-         * @param item
-         * @param cancellable
+         * Get a list of all files in folder item
+         * @param item a {@link Msg.DriveItem}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns all items in folder
          */
-        list_children(item: DriveItem, cancellable: Gio.Cancellable): DriveItem[];
+        list_children(item: DriveItem, cancellable?: Gio.Cancellable | null): DriveItem[];
         /**
-         * @param file
-         * @param destination
-         * @param cancellable
+         * Move a file async on remote server to a new directory.
+         * @param file source {@link Msg.DriveItem}
+         * @param destination destination directory {@link Msg.DriveItem}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns moved {@link Msg.DriveItem}
          */
-        move_file(file: DriveItem, destination: DriveItem, cancellable: Gio.Cancellable): DriveItem;
+        move_file(file: DriveItem, destination: DriveItem, cancellable?: Gio.Cancellable | null): DriveItem;
         /**
-         * @param item
-         * @param new_name
-         * @param cancellable
+         * Sets a new drive item name
+         * @param item a {@link Msg.DriveItem}
+         * @param new_name new name of item
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns the renamed {@link Msg.DriveItem}
          */
-        rename(item: DriveItem, new_name: string, cancellable: Gio.Cancellable): DriveItem;
+        rename(item: DriveItem, new_name: string, cancellable?: Gio.Cancellable | null): DriveItem;
         /**
-         * @param item
-         * @param cancellable
+         * Creates an update stream for drive item in order to update it's content.
+         * @param item a drive item
+         * @param cancellable a cancellable
+         * @returns an output stream
          */
-        update(item: DriveItem, cancellable: Gio.Cancellable): Gio.OutputStream;
+        update(item: DriveItem, cancellable?: Gio.Cancellable | null): Gio.OutputStream;
         /**
-         * @param item
-         * @param stream
-         * @param cancellable
+         * Finish a update session of given #item.
+         * @param item a {@link Msg.DriveItem}
+         * @param stream stream where data is store and needs to be transfered
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a new {@link Msg.DriveItem} or `null` on error.
          */
-        update_finish(item: DriveItem, stream: Gio.OutputStream, cancellable: Gio.Cancellable): DriveItem;
+        update_finish(item: DriveItem, stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): DriveItem;
     }
 
     namespace GoaAuthorizer {
@@ -494,6 +630,8 @@ export namespace Msg {
     }
 
     /**
+     * The {@link Msg.GoaAuthorizer} structure contains only private data and
+     * should only be accessed using the provided API.
      * @gir-type Class
      */
     class GoaAuthorizer extends GObject.Object implements Authorizer {
@@ -550,25 +688,48 @@ export namespace Msg {
 
         // Methods
 
+        /**
+         * Gets the GOA account used by `self` for authorization.
+         * @returns A {@link Goa.Object}. The returned object is owned by {@link Msg.GoaAuthorizer} and should not be modified or freed.
+         */
         get_goa_object(): Goa.Object;
         /**
-         * @param message
+         * Adds the necessary authorization to `message`. The type of `message`
+         * can be DELETE, GET and POST.
+         *
+         * This method modifies `message` in place and is thread safe.
+         * @param message A {@link Soup.Message}.
          */
         process_request(message: Soup.Message): void;
         /**
-         * @param cancellable
+         * Synchronously forces `iface` to refresh any authorization tokens
+         * held by it. See `msg_authorizer_refresh_authorization_async()` for the
+         * asynchronous version of this call.
+         *
+         * This method is thread safe.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable: Gio.Cancellable): boolean;
+        refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * @param message
+         * Adds the necessary authorization to `message`. The type of `message`
+         * can be DELETE, GET and POST.
+         *
+         * This method modifies `message` in place and is thread safe.
+         * @param message A {@link Soup.Message}.
          * @virtual
          */
         vfunc_process_request(message: Soup.Message): void;
         /**
-         * @param cancellable
+         * Synchronously forces `iface` to refresh any authorization tokens
+         * held by it. See `msg_authorizer_refresh_authorization_async()` for the
+         * asynchronous version of this call.
+         *
+         * This method is thread safe.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @virtual
          */
-        vfunc_refresh_authorization(cancellable: Gio.Cancellable): boolean;
+        vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -666,7 +827,7 @@ export namespace Msg {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -721,7 +882,7 @@ export namespace Msg {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -796,7 +957,7 @@ export namespace Msg {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1076,7 +1237,8 @@ export namespace Msg {
         // Static methods
 
         /**
-         * @param stream
+         * Gets corresponding SoupMessage
+         * @param stream a {@link Gio.InputStream}
          */
         static get_message(stream: Gio.InputStream): Soup.Message;
         /**
@@ -1088,8 +1250,8 @@ export namespace Msg {
         static send_async(
             stream: Gio.InputStream,
             io_priority: number,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<InputStream>,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<InputStream> | null,
         ): void;
         /**
          * @param stream
@@ -1297,7 +1459,7 @@ export namespace Msg {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1352,7 +1514,7 @@ export namespace Msg {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1427,7 +1589,7 @@ export namespace Msg {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1661,6 +1823,7 @@ export namespace Msg {
     }
 
     /**
+     * Handling of mail folder specific functions.
      * @gir-type Class
      */
     class MailFolder extends GObject.Object {
@@ -1710,11 +1873,23 @@ export namespace Msg {
 
         get_child_folder_count(): number;
         get_delta_link(): string;
+        /**
+         * @returns display name of mail folder
+         */
         get_display_name(): string;
         get_folder_type(): MailFolderType;
+        /**
+         * @returns id of mail folder
+         */
         get_id(): string;
         get_parent_id(): string;
+        /**
+         * @returns total item number of mail folder
+         */
         get_total_item_count(): number;
+        /**
+         * @returns unread item number of mail folder
+         */
         get_unread_item_count(): number;
         /**
          * @param count
@@ -1760,6 +1935,7 @@ export namespace Msg {
     }
 
     /**
+     * Handling of mail message specific functions.
      * @gir-type Class
      */
     class MailMessage extends GObject.Object {
@@ -1808,20 +1984,59 @@ export namespace Msg {
         // Methods
 
         /**
+         * Get mail body.
          * @param is_html
+         * @returns mail body
          */
         get_body(is_html: boolean): string;
+        /**
+         * Get mail body preview.
+         * @returns body preview of mail_message
+         */
         get_body_preview(): string;
+        /**
+         * Get mail cc.
+         * @returns mail cc
+         */
         get_cc(): string;
+        /**
+         * Get whether mail has attachments.
+         * @returns `true` if mail has attachments otherwise `false`
+         */
         get_has_attachment(): boolean;
+        /**
+         * Get id.
+         * @returns unique mail id
+         */
         get_id(): string;
+        /**
+         * Get mail received date.
+         * @returns received date
+         */
         get_received_date(): GLib.DateTime;
+        /**
+         * Get mail receiver.
+         * @returns mail receiver
+         */
         get_receiver(): string;
+        /**
+         * Get mail sender.
+         * @returns mail sender
+         */
         get_sender(): string;
+        /**
+         * Get mail subject.
+         * @returns subject of mail_message
+         */
         get_subject(): string;
+        /**
+         * Get mail unread.
+         * @returns unread count
+         */
         get_unread(): number;
         /**
-         * @param body
+         * Set mail body.
+         * @param body mail body
          */
         set_body(body: string): void;
         /**
@@ -1829,35 +2044,43 @@ export namespace Msg {
          */
         set_body_preview(preview: string): void;
         /**
-         * @param cc
+         * Set mail cc.
+         * @param cc carbon copy string
          */
         set_cc(cc: string): void;
         /**
-         * @param has_attachment
+         * Set whether mail has attachments.
+         * @param has_attachment flag to set attachments
          */
         set_has_attachment(has_attachment: boolean): void;
         /**
-         * @param id
+         * Set mail id.
+         * @param id mail_message id
          */
         set_id(id: string): void;
         /**
-         * @param timestamp
+         * Set mail received timestamp.
+         * @param timestamp received timestamp
          */
         set_received_date(timestamp: number): void;
         /**
-         * @param receiver
+         * Set mail receiver.
+         * @param receiver mail_message receiver
          */
         set_receiver(receiver: string): void;
         /**
-         * @param sender
+         * Set mail sender.
+         * @param sender mail_message sender
          */
         set_sender(sender: string): void;
         /**
-         * @param subject
+         * Set mail subject.
+         * @param subject mail subject
          */
         set_subject(subject: string): void;
         /**
-         * @param unread
+         * Set mail unread count.
+         * @param unread unread count
          */
         set_unread(unread: number): void;
     }
@@ -1920,39 +2143,49 @@ export namespace Msg {
         // Methods
 
         /**
-         * @param mail
-         * @param cancellable
+         * Create new draft mail #mail and return new mail object.
+         * @param mail a `MsgMail`
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a new `MsgMail`
          */
-        create_draft_message(mail: MailMessage, cancellable: Gio.Cancellable): MailMessage;
+        create_draft_message(mail: MailMessage, cancellable?: Gio.Cancellable | null): MailMessage;
         /**
-         * @param mail
-         * @param cancellable
+         * Delets #mail.
+         * @param mail a `MsgMail`
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` for succes, else &FALSE
          */
-        delete_message(mail: MailMessage, cancellable: Gio.Cancellable): boolean;
+        delete_message(mail: MailMessage, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * @param type
          * @param cancellable
          */
-        get_folder_id(type: MailFolderType | null, cancellable: Gio.Cancellable): string;
+        get_folder_id(type: MailFolderType | null, cancellable?: Gio.Cancellable | null): string;
         /**
-         * @param type
-         * @param cancellable
+         * Get a specific mail folder for given service
+         * @param type a `MsgMailMailFolderType`
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a {@link Msg.MailFolder}
          */
-        get_mail_folder(type: MailFolderType | null, cancellable: Gio.Cancellable): MailFolder;
+        get_mail_folder(type: MailFolderType | null, cancellable?: Gio.Cancellable | null): MailFolder;
         /**
+         * Get all folders for given service
          * @param delta_url
          * @param delta_url_out
-         * @param cancellable
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns all mail folders the user can access
          */
-        get_mail_folders(delta_url: string, delta_url_out: string, cancellable: Gio.Cancellable): MailFolder[];
+        get_mail_folders(delta_url: string, delta_url_out: string, cancellable?: Gio.Cancellable | null): MailFolder[];
         /**
+         * Get all mails for given service
          * @param folder
-         * @param next_link
-         * @param out_next_link
-         * @param delta_link
-         * @param out_delta_link
-         * @param max_page_size
-         * @param cancellable
+         * @param next_link next link if available
+         * @param out_next_link next next link
+         * @param delta_link delta link if used
+         * @param out_delta_link new delta link
+         * @param max_page_size maximal page size
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns all mails the user can access
          */
         get_messages(
             folder: MailFolder,
@@ -1961,13 +2194,13 @@ export namespace Msg {
             delta_link: string,
             out_delta_link: string,
             max_page_size: number,
-            cancellable: Gio.Cancellable,
+            cancellable?: Gio.Cancellable | null,
         ): MailMessage[];
         /**
          * @param mail
          * @param cancellable
          */
-        get_mime_message(mail: MailMessage, cancellable: Gio.Cancellable): GLib.Bytes;
+        get_mime_message(mail: MailMessage, cancellable?: Gio.Cancellable | null): GLib.Bytes;
     }
 
     namespace OAuth2Authorizer {
@@ -2075,25 +2308,44 @@ export namespace Msg {
          * @param authorization_code
          * @param cancellable
          */
-        request_authorization(authorization_code: string, cancellable: Gio.Cancellable): boolean;
+        request_authorization(authorization_code: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * @param message
+         * Adds the necessary authorization to `message`. The type of `message`
+         * can be DELETE, GET and POST.
+         *
+         * This method modifies `message` in place and is thread safe.
+         * @param message A {@link Soup.Message}.
          */
         process_request(message: Soup.Message): void;
         /**
-         * @param cancellable
+         * Synchronously forces `iface` to refresh any authorization tokens
+         * held by it. See `msg_authorizer_refresh_authorization_async()` for the
+         * asynchronous version of this call.
+         *
+         * This method is thread safe.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable: Gio.Cancellable): boolean;
+        refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * @param message
+         * Adds the necessary authorization to `message`. The type of `message`
+         * can be DELETE, GET and POST.
+         *
+         * This method modifies `message` in place and is thread safe.
+         * @param message A {@link Soup.Message}.
          * @virtual
          */
         vfunc_process_request(message: Soup.Message): void;
         /**
-         * @param cancellable
+         * Synchronously forces `iface` to refresh any authorization tokens
+         * held by it. See `msg_authorizer_refresh_authorization_async()` for the
+         * asynchronous version of this call.
+         *
+         * This method is thread safe.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @virtual
          */
-        vfunc_refresh_authorization(cancellable: Gio.Cancellable): boolean;
+        vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2191,7 +2443,7 @@ export namespace Msg {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2246,7 +2498,7 @@ export namespace Msg {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2321,7 +2573,7 @@ export namespace Msg {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2619,11 +2871,12 @@ export namespace Msg {
             msg: Soup.Message,
             tls_cert: Gio.TlsCertificate,
             tls_errors: Gio.TlsCertificateFlags,
-            session: any,
+            session?: any | null,
         ): boolean;
         static get_https_port(): number;
         /**
-         * @param object
+         * Get next link
+         * @param object a {@link Json.Object}
          */
         static get_next_link(object: Json.Object): string;
         /**
@@ -2631,42 +2884,64 @@ export namespace Msg {
          */
         static handle_rate_limiting(msg: Soup.Message): boolean;
         /**
-         * @param bytes
-         * @param object
+         * Parse response data and check for errors. In case
+         * no errors are found, return json root object.
+         * @param bytes input bytes containing response buffer
+         * @param object a pointer to the returning root object
          */
         static parse_response(bytes: GLib.Bytes | Uint8Array, object: Json.Object): Json.Parser;
 
         // Methods
 
         /**
-         * @param method
-         * @param uri
-         * @param etag
-         * @param etag_if_match
+         * Construct and checks a {@link Soup.Message} for transfer
+         * @param method transfer method
+         * @param uri uri to access
+         * @param etag an optional etag
+         * @param etag_if_match use etag if
+         * @returns a {@link Soup.Message} or NULL on error.
          */
         build_message(method: string, uri: string, etag: string, etag_if_match: boolean): Soup.Message;
+        /**
+         * Get related authorizer.
+         * @returns a {@link Msg.Authorizer}
+         */
         get_authorizer(): Authorizer;
+        /**
+         * Get related soup session
+         * @returns a {@link Soup.Session}
+         */
         get_session(): Soup.Session;
         /**
          * @param cancellable
          */
-        refresh_authorization(cancellable: Gio.Cancellable): boolean;
+        refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * @param message
-         * @param cancellable
+         * Adds authorizer information to `message` and send it.
+         * @param message a {@link Soup.Message}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a {@link Gio.InputStream}
          */
-        send(message: Soup.Message, cancellable: Gio.Cancellable): Gio.InputStream;
+        send(message: Soup.Message, cancellable?: Gio.Cancellable | null): Gio.InputStream;
         /**
-         * @param message
+         * A combination of `msg_service_send_and_read` and `msg_service_parse_response`
+         * @param message a {@link Soup.Message}
          * @param object
-         * @param cancellable
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a {@link Json.Parser} or `null` on error
          */
-        send_and_parse_response(message: Soup.Message, object: Json.Object, cancellable: Gio.Cancellable): Json.Parser;
+        send_and_parse_response(
+            message: Soup.Message,
+            object: Json.Object,
+            cancellable?: Gio.Cancellable | null,
+        ): Json.Parser;
         /**
-         * @param message
-         * @param cancellable
+         * Adds authorizer information to `message` and send it.
+         * @param message a {@link Soup.Message}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a {@link GLib.Bytes} or `null` on error.
          */
-        send_and_read(message: Soup.Message, cancellable: Gio.Cancellable): GLib.Bytes;
+        send_and_read(message: Soup.Message, cancellable?: Gio.Cancellable | null): GLib.Bytes;
     }
 
     namespace User {
@@ -2679,6 +2954,7 @@ export namespace Msg {
     }
 
     /**
+     * Handling of user specific functions.
      * @gir-type Class
      */
     class User extends GObject.Object {
@@ -2726,14 +3002,38 @@ export namespace Msg {
 
         // Methods
 
+        /**
+         * @returns company name of user or `null` if not existing
+         */
         get_company_name(): string;
+        /**
+         * @returns department of user or `null` if not existing
+         */
         get_department(): string;
+        /**
+         * @returns display name of user or `null` if not existing
+         */
         get_display_name(): string;
+        /**
+         * @returns given name of user or `null` if not existing
+         */
         get_given_name(): string;
+        /**
+         * @returns mail of user or `null` if not existing
+         */
         get_mail(): string;
         get_mail_name(): string;
+        /**
+         * @returns mobile phone of user or `null` if not existing
+         */
         get_mobile_phone(): string;
+        /**
+         * @returns office location of user or `null` if not existing
+         */
         get_office_location(): string;
+        /**
+         * @returns surname of user or `null` if not existing
+         */
         get_surname(): string;
     }
 
@@ -2747,6 +3047,7 @@ export namespace Msg {
     }
 
     /**
+     * Handling of user_contact folder specific functions.
      * @gir-type Class
      */
     class UserContactFolder extends GObject.Object {
@@ -2794,7 +3095,13 @@ export namespace Msg {
 
         // Methods
 
+        /**
+         * @returns display name of user_contact folder
+         */
         get_display_name(): string;
+        /**
+         * @returns id of user_contact folder
+         */
         get_id(): string;
     }
 
@@ -2856,167 +3163,125 @@ export namespace Msg {
         // Methods
 
         /**
-         * @param name
-         * @param cancellable
+         * Find all users with the given `name`. (Business accounts only!)
+         * @param name name to search
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a list of contacts with the given name.
          */
-        find_users(name: string, cancellable: Gio.Cancellable): User[];
+        find_users(name: string, cancellable?: Gio.Cancellable | null): User[];
         /**
-         * @param cancellable
+         * Get all folders for given service
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns all user contact folders the user can access
          */
-        get_contact_folders(cancellable: Gio.Cancellable): UserContactFolder[];
+        get_contact_folders(cancellable?: Gio.Cancellable | null): UserContactFolder[];
         /**
-         * @param cancellable
+         * Get all contats within users 'Contact' folder.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns all contact in users contact folder
          */
-        get_contacts(cancellable: Gio.Cancellable): UserContactFolder[];
+        get_contacts(cancellable?: Gio.Cancellable | null): UserContactFolder[];
         /**
-         * @param mail
-         * @param cancellable
+         * Try to load user photo using provided %mail address.
+         * @param mail mail address
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns user photo or `null` if not found.
          */
-        get_photo(mail: string, cancellable: Gio.Cancellable): GLib.Bytes;
+        get_photo(mail: string, cancellable?: Gio.Cancellable | null): GLib.Bytes;
         /**
-         * @param name
-         * @param cancellable
+         * Get user information
+         * @param name user name (`null` for me)
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns request user
          */
-        get_user(name: string, cancellable: Gio.Cancellable): User;
+        get_user(name: string, cancellable?: Gio.Cancellable | null): User;
     }
 
     /**
-     * @gir-type Struct
+     * @gir-type Alias
      */
-    class AuthorizerInterface {
-        static $gtype: GObject.GType<AuthorizerInterface>;
-    }
-
+    type AuthorizerInterface = typeof Authorizer;
+    /**
+     * @gir-type Alias
+     */
+    type DriveClass = typeof Drive;
+    /**
+     * @gir-type Alias
+     */
+    type DriveItemClass = typeof DriveItem;
+    /**
+     * @gir-type Alias
+     */
+    type DriveItemFileClass = typeof DriveItemFile;
+    /**
+     * @gir-type Alias
+     */
+    type DriveItemFolderClass = typeof DriveItemFolder;
+    /**
+     * @gir-type Alias
+     */
+    type DriveServiceClass = typeof DriveService;
+    /**
+     * @gir-type Alias
+     */
+    type GoaAuthorizerClass = typeof GoaAuthorizer;
     /**
      * @gir-type Struct
      */
-    class DriveClass {
-        static $gtype: GObject.GType<DriveClass>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DriveItemClass {
-        static $gtype: GObject.GType<DriveItemClass>;
-
-        // Fields
-
-        padding: any[];
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DriveItemFileClass {
-        static $gtype: GObject.GType<DriveItemFileClass>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DriveItemFolderClass {
-        static $gtype: GObject.GType<DriveItemFolderClass>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DriveServiceClass {
-        static $gtype: GObject.GType<DriveServiceClass>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class GoaAuthorizerClass {
-        static $gtype: GObject.GType<GoaAuthorizerClass>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class GoaAuthorizerPrivate {
+    abstract class GoaAuthorizerPrivate {
         static $gtype: GObject.GType<GoaAuthorizerPrivate>;
     }
 
     /**
-     * @gir-type Struct
+     * @gir-type Alias
      */
-    class InputStreamClass {
-        static $gtype: GObject.GType<InputStreamClass>;
-    }
-
+    type InputStreamClass = typeof InputStream;
     /**
      * @gir-type Struct
      */
-    class InputStreamPrivate {
+    abstract class InputStreamPrivate {
         static $gtype: GObject.GType<InputStreamPrivate>;
     }
 
     /**
-     * @gir-type Struct
+     * @gir-type Alias
      */
-    class MailFolderClass {
-        static $gtype: GObject.GType<MailFolderClass>;
-    }
-
+    type MailFolderClass = typeof MailFolder;
+    /**
+     * @gir-type Alias
+     */
+    type MailMessageClass = typeof MailMessage;
+    /**
+     * @gir-type Alias
+     */
+    type MailServiceClass = typeof MailService;
+    /**
+     * @gir-type Alias
+     */
+    type OAuth2AuthorizerClass = typeof OAuth2Authorizer;
     /**
      * @gir-type Struct
      */
-    class MailMessageClass {
-        static $gtype: GObject.GType<MailMessageClass>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MailServiceClass {
-        static $gtype: GObject.GType<MailServiceClass>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OAuth2AuthorizerClass {
-        static $gtype: GObject.GType<OAuth2AuthorizerClass>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OAuth2AuthorizerPrivate {
+    abstract class OAuth2AuthorizerPrivate {
         static $gtype: GObject.GType<OAuth2AuthorizerPrivate>;
     }
 
     /**
-     * @gir-type Struct
+     * @gir-type Alias
      */
-    class ServiceClass {
-        static $gtype: GObject.GType<ServiceClass>;
-    }
-
+    type ServiceClass = typeof Service;
     /**
-     * @gir-type Struct
+     * @gir-type Alias
      */
-    class UserClass {
-        static $gtype: GObject.GType<UserClass>;
-    }
-
+    type UserClass = typeof User;
     /**
-     * @gir-type Struct
+     * @gir-type Alias
      */
-    class UserContactFolderClass {
-        static $gtype: GObject.GType<UserContactFolderClass>;
-    }
-
+    type UserContactFolderClass = typeof UserContactFolder;
     /**
-     * @gir-type Struct
+     * @gir-type Alias
      */
-    class UserServiceClass {
-        static $gtype: GObject.GType<UserServiceClass>;
-    }
-
+    type UserServiceClass = typeof UserService;
     /**
      * @gir-type Struct
      */
@@ -3048,15 +3313,24 @@ export namespace Msg {
             // Virtual methods
 
             /**
-             * @param message
+             * Adds the necessary authorization to `message`. The type of `message`
+             * can be DELETE, GET and POST.
+             *
+             * This method modifies `message` in place and is thread safe.
+             * @param message A {@link Soup.Message}.
              * @virtual
              */
             vfunc_process_request(message: Soup.Message): void;
             /**
-             * @param cancellable
+             * Synchronously forces `iface` to refresh any authorization tokens
+             * held by it. See `msg_authorizer_refresh_authorization_async()` for the
+             * asynchronous version of this call.
+             *
+             * This method is thread safe.
+             * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
              * @virtual
              */
-            vfunc_refresh_authorization(cancellable: Gio.Cancellable): boolean;
+            vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         }
 
         // Constructor properties interface
@@ -3075,13 +3349,23 @@ export namespace Msg {
         // Methods
 
         /**
-         * @param message
+         * Adds the necessary authorization to `message`. The type of `message`
+         * can be DELETE, GET and POST.
+         *
+         * This method modifies `message` in place and is thread safe.
+         * @param message A {@link Soup.Message}.
          */
         process_request(message: Soup.Message): void;
         /**
-         * @param cancellable
+         * Synchronously forces `iface` to refresh any authorization tokens
+         * held by it. See `msg_authorizer_refresh_authorization_async()` for the
+         * asynchronous version of this call.
+         *
+         * This method is thread safe.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable: Gio.Cancellable): boolean;
+        refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
     }
 
     export const Authorizer: AuthorizerNamespace & {

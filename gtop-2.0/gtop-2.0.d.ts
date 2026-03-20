@@ -467,81 +467,81 @@ export namespace GTop {
      * @param buf
      * @param pid
      */
-    function glibtop_get_proc_affinity(buf: glibtop_proc_affinity, pid: number): number;
+    function glibtop_get_proc_affinity(buf: glibtop_proc_affinity, pid: never): number;
     /**
      * @param buf
      * @param pid
      * @param max_len
      */
-    function glibtop_get_proc_args(buf: glibtop_proc_args, pid: number, max_len: number): string;
+    function glibtop_get_proc_args(buf: glibtop_proc_args, pid: never, max_len: number): string;
     /**
      * @param buf
      * @param pid
      * @param max_len
      */
-    function glibtop_get_proc_argv(buf: glibtop_proc_args, pid: number, max_len: number): string[];
+    function glibtop_get_proc_argv(buf: glibtop_proc_args, pid: never, max_len: number): string[];
     /**
      * @param buf
      * @param pid
      */
-    function glibtop_get_proc_io(buf: glibtop_proc_io, pid: number): void;
+    function glibtop_get_proc_io(buf: glibtop_proc_io, pid: never): void;
     /**
      * @param buf
      * @param pid
      */
-    function glibtop_get_proc_kernel(buf: glibtop_proc_kernel, pid: number): void;
+    function glibtop_get_proc_kernel(buf: glibtop_proc_kernel, pid: never): void;
     /**
      * @param buf
      * @param pid
      */
-    function glibtop_get_proc_map(buf: glibtop_proc_map, pid: number): glibtop_map_entry[];
+    function glibtop_get_proc_map(buf: glibtop_proc_map, pid: never): glibtop_map_entry[];
     /**
      * @param buf
      * @param pid
      */
-    function glibtop_get_proc_mem(buf: glibtop_proc_mem, pid: number): void;
+    function glibtop_get_proc_mem(buf: glibtop_proc_mem, pid: never): void;
     /**
      * @param buf
      * @param pid
      */
-    function glibtop_get_proc_open_files(buf: glibtop_proc_open_files, pid: number): glibtop_open_files_entry[];
+    function glibtop_get_proc_open_files(buf: glibtop_proc_open_files, pid: never): glibtop_open_files_entry[];
     /**
      * @param buf
      * @param pid
      */
-    function glibtop_get_proc_segment(buf: glibtop_proc_segment, pid: number): void;
+    function glibtop_get_proc_segment(buf: glibtop_proc_segment, pid: never): void;
     /**
      * @param buf
      * @param pid
      */
-    function glibtop_get_proc_signal(buf: glibtop_proc_signal, pid: number): void;
+    function glibtop_get_proc_signal(buf: glibtop_proc_signal, pid: never): void;
     /**
      * @param buf
      * @param pid
      */
-    function glibtop_get_proc_state(buf: glibtop_proc_state, pid: number): void;
+    function glibtop_get_proc_state(buf: glibtop_proc_state, pid: never): void;
     /**
      * @param buf
      * @param pid
      */
-    function glibtop_get_proc_time(buf: glibtop_proc_time, pid: number): void;
+    function glibtop_get_proc_time(buf: glibtop_proc_time, pid: never): void;
     /**
      * @param buf
      * @param pid
      */
-    function glibtop_get_proc_uid(buf: glibtop_proc_uid, pid: number): void;
+    function glibtop_get_proc_uid(buf: glibtop_proc_uid, pid: never): void;
     /**
      * @param buf
      * @param pid
      */
-    function glibtop_get_proc_wd(buf: glibtop_proc_wd, pid: number): string[];
+    function glibtop_get_proc_wd(buf: glibtop_proc_wd, pid: never): string[];
     /**
      * @param buf a {@link GTop.glibtop_proclist}
      * @param which a #GLIBTOP_* constant specifying process type
      * @param arg an argument specific for the process type
      * @returns an array of process     ids
      */
-    function glibtop_get_proclist(buf: glibtop_proclist, which: number, arg: number): number[];
+    function glibtop_get_proclist(buf: glibtop_proclist, which: number, arg: number): never[];
     /**
      * @param buf
      */
@@ -605,11 +605,11 @@ export namespace GTop {
         server_port: number;
         sysdeps: glibtop_sysdeps;
         required: glibtop_sysdeps;
-        pid: number;
-        uid: number;
-        euid: number;
-        gid: number;
-        egid: number;
+        pid: never;
+        uid: never;
+        euid: never;
+        gid: never;
+        egid: never;
         ndisk: number;
         real_ndisk: number;
 
@@ -664,80 +664,80 @@ export namespace GTop {
          * @param buf
          * @param pid
          */
-        static get_proc_affinity(buf: glibtop_proc_affinity, pid: number): number;
+        static get_proc_affinity(buf: glibtop_proc_affinity, pid: never): number;
         /**
          * @param buf
          * @param pid
          * @param max_len
          */
-        static get_proc_args(buf: glibtop_proc_args, pid: number, max_len: number): string;
+        static get_proc_args(buf: glibtop_proc_args, pid: never, max_len: number): string;
         /**
          * @param buf
          * @param pid
          * @param max_len
          */
-        static get_proc_argv(buf: glibtop_proc_args, pid: number, max_len: number): string[];
+        static get_proc_argv(buf: glibtop_proc_args, pid: never, max_len: number): string[];
         /**
          * @param buf
          * @param pid
          */
-        static get_proc_io(buf: glibtop_proc_io, pid: number): void;
+        static get_proc_io(buf: glibtop_proc_io, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        static get_proc_kernel(buf: glibtop_proc_kernel, pid: number): void;
+        static get_proc_kernel(buf: glibtop_proc_kernel, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        static get_proc_map(buf: glibtop_proc_map, pid: number): glibtop_map_entry[];
+        static get_proc_map(buf: glibtop_proc_map, pid: never): glibtop_map_entry[];
         /**
          * @param buf
          * @param pid
          */
-        static get_proc_mem(buf: glibtop_proc_mem, pid: number): void;
+        static get_proc_mem(buf: glibtop_proc_mem, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        static get_proc_open_files(buf: glibtop_proc_open_files, pid: number): glibtop_open_files_entry[];
+        static get_proc_open_files(buf: glibtop_proc_open_files, pid: never): glibtop_open_files_entry[];
         /**
          * @param buf
          * @param pid
          */
-        static get_proc_segment(buf: glibtop_proc_segment, pid: number): void;
+        static get_proc_segment(buf: glibtop_proc_segment, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        static get_proc_signal(buf: glibtop_proc_signal, pid: number): void;
+        static get_proc_signal(buf: glibtop_proc_signal, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        static get_proc_state(buf: glibtop_proc_state, pid: number): void;
+        static get_proc_state(buf: glibtop_proc_state, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        static get_proc_time(buf: glibtop_proc_time, pid: number): void;
+        static get_proc_time(buf: glibtop_proc_time, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        static get_proc_uid(buf: glibtop_proc_uid, pid: number): void;
+        static get_proc_uid(buf: glibtop_proc_uid, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        static get_proc_wd(buf: glibtop_proc_wd, pid: number): string[];
+        static get_proc_wd(buf: glibtop_proc_wd, pid: never): string[];
         /**
          * @param buf a {@link GTop.glibtop_proclist}
          * @param which a #GLIBTOP_* constant specifying process type
          * @param arg an argument specific for the process type
          */
-        static get_proclist(buf: glibtop_proclist, which: number, arg: number): number[];
+        static get_proclist(buf: glibtop_proclist, which: number, arg: number): never[];
         /**
          * @param buf
          */
@@ -907,135 +907,135 @@ export namespace GTop {
          * @param buf
          * @param pid
          */
-        get_proc_affinity_l(buf: glibtop_proc_affinity, pid: number): number;
+        get_proc_affinity_l(buf: glibtop_proc_affinity, pid: never): number;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_affinity_s(buf: glibtop_proc_affinity, pid: number): number;
-        /**
-         * @param buf
-         * @param pid
-         * @param max_len
-         */
-        get_proc_args_l(buf: glibtop_proc_args, pid: number, max_len: number): string;
+        get_proc_affinity_s(buf: glibtop_proc_affinity, pid: never): number;
         /**
          * @param buf
          * @param pid
          * @param max_len
          */
-        get_proc_args_s(buf: glibtop_proc_args, pid: number, max_len: number): string;
+        get_proc_args_l(buf: glibtop_proc_args, pid: never, max_len: number): string;
+        /**
+         * @param buf
+         * @param pid
+         * @param max_len
+         */
+        get_proc_args_s(buf: glibtop_proc_args, pid: never, max_len: number): string;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_io_l(buf: glibtop_proc_io, pid: number): void;
+        get_proc_io_l(buf: glibtop_proc_io, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_io_s(buf: glibtop_proc_io, pid: number): void;
+        get_proc_io_s(buf: glibtop_proc_io, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_kernel_l(buf: glibtop_proc_kernel, pid: number): void;
+        get_proc_kernel_l(buf: glibtop_proc_kernel, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_kernel_s(buf: glibtop_proc_kernel, pid: number): void;
+        get_proc_kernel_s(buf: glibtop_proc_kernel, pid: never): void;
         /**
          * @param pid
          */
-        get_proc_map_l(pid: number): [glibtop_map_entry[], glibtop_proc_map];
+        get_proc_map_l(pid: never): [glibtop_map_entry[], glibtop_proc_map];
         /**
          * @param pid
          */
-        get_proc_map_s(pid: number): [glibtop_map_entry[], glibtop_proc_map];
-        /**
-         * @param buf
-         * @param pid
-         */
-        get_proc_mem_l(buf: glibtop_proc_mem, pid: number): void;
+        get_proc_map_s(pid: never): [glibtop_map_entry[], glibtop_proc_map];
         /**
          * @param buf
          * @param pid
          */
-        get_proc_mem_s(buf: glibtop_proc_mem, pid: number): void;
-        /**
-         * @param pid
-         */
-        get_proc_open_files_l(pid: number): [glibtop_open_files_entry[], glibtop_proc_open_files];
+        get_proc_mem_l(buf: glibtop_proc_mem, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_open_files_s(buf: glibtop_proc_open_files, pid: number): glibtop_open_files_entry;
+        get_proc_mem_s(buf: glibtop_proc_mem, pid: never): void;
+        /**
+         * @param pid
+         */
+        get_proc_open_files_l(pid: never): [glibtop_open_files_entry[], glibtop_proc_open_files];
         /**
          * @param buf
          * @param pid
          */
-        get_proc_segment_l(buf: glibtop_proc_segment, pid: number): void;
+        get_proc_open_files_s(buf: glibtop_proc_open_files, pid: never): glibtop_open_files_entry;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_segment_s(buf: glibtop_proc_segment, pid: number): void;
+        get_proc_segment_l(buf: glibtop_proc_segment, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_signal_l(buf: glibtop_proc_signal, pid: number): void;
+        get_proc_segment_s(buf: glibtop_proc_segment, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_signal_s(buf: glibtop_proc_signal, pid: number): void;
+        get_proc_signal_l(buf: glibtop_proc_signal, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_state_l(buf: glibtop_proc_state, pid: number): void;
+        get_proc_signal_s(buf: glibtop_proc_signal, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_state_s(buf: glibtop_proc_state, pid: number): void;
+        get_proc_state_l(buf: glibtop_proc_state, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_time_l(buf: glibtop_proc_time, pid: number): void;
+        get_proc_state_s(buf: glibtop_proc_state, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_time_s(buf: glibtop_proc_time, pid: number): void;
+        get_proc_time_l(buf: glibtop_proc_time, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_uid_l(buf: glibtop_proc_uid, pid: number): void;
+        get_proc_time_s(buf: glibtop_proc_time, pid: never): void;
         /**
          * @param buf
          * @param pid
          */
-        get_proc_uid_s(buf: glibtop_proc_uid, pid: number): void;
+        get_proc_uid_l(buf: glibtop_proc_uid, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_uid_s(buf: glibtop_proc_uid, pid: never): void;
         /**
          * @param buf a {@link GTop.glibtop_proclist}
          * @param which a #GLIBTOP_* constant specifying process type
          * @param arg an argument specific for the process type
          * @returns an array of process     ids
          */
-        get_proclist_l(buf: glibtop_proclist, which: number, arg: number): number[];
+        get_proclist_l(buf: glibtop_proclist, which: number, arg: number): never[];
         /**
          * @param buf a {@link GTop.glibtop_proclist}
          * @param which a #GLIBTOP_* constant specifying process type
          * @param arg an argument specific for the process type
          * @returns an array of process     ids
          */
-        get_proclist_s(buf: glibtop_proclist, which: number, arg: number): number[];
+        get_proclist_s(buf: glibtop_proclist, which: number, arg: number): never[];
         /**
          * @param buf
          */

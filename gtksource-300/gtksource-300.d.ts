@@ -32,28 +32,6 @@ export namespace GtkSource {
     /**
      * @gir-type Enum
      */
-    export namespace BackgroundPatternType {
-        export const $gtype: GObject.GType<BackgroundPatternType>;
-    }
-
-    /**
-     * @gir-type Enum
-     * @since 3.16
-     */
-    enum BackgroundPatternType {
-        /**
-         * no pattern
-         */
-        NONE,
-        /**
-         * grid pattern
-         */
-        GRID,
-    }
-
-    /**
-     * @gir-type Enum
-     */
     export namespace BracketMatchType {
         export const $gtype: GObject.GType<BracketMatchType>;
     }
@@ -154,13 +132,37 @@ export namespace GtkSource {
      */
     enum CompressionType {
         /**
-         * plain text.
+         * Plain text.
          */
         NONE,
         /**
-         * gzip compression.
+         * Gzip compression.
          */
         GZIP,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace EncodingDuplicates {
+        export const $gtype: GObject.GType<EncodingDuplicates>;
+    }
+
+    /**
+     * Specifies which {@link GtkSource.Encoding} occurrence to keep when removing
+     * duplicated encodings in a list with `gtk_source_encoding_remove_duplicates()`.
+     * @gir-type Enum
+     * @since 299.6
+     */
+    enum EncodingDuplicates {
+        /**
+         * Keep the first occurrence.
+         */
+        FIRST,
+        /**
+         * Keep the last occurrence.
+         */
+        LAST,
     }
 
     /**
@@ -178,12 +180,12 @@ export namespace GtkSource {
         static TOO_BIG: number;
         /**
          * It is not
-         * possible to detect the encoding automatically.
+         *   possible to detect the encoding automatically.
          */
         static ENCODING_AUTO_DETECTION_FAILED: number;
         /**
          * There was an encoding
-         * conversion error and it was needed to use a fallback character.
+         *   conversion error and it was needed to use a fallback character.
          */
         static CONVERSION_FALLBACK: number;
 
@@ -265,15 +267,15 @@ export namespace GtkSource {
      */
     enum NewlineType {
         /**
-         * line feed, used on UNIX.
+         * Line feed, used on UNIX.
          */
         LF,
         /**
-         * carriage return, used on Mac.
+         * Carriage return, used on macOS.
          */
         CR,
         /**
-         * carriage return followed by a line feed, used
+         * Carriage return followed by a line feed, used
          *   on Windows.
          */
         CR_LF,
@@ -316,6 +318,39 @@ export namespace GtkSource {
     /**
      * @gir-type Enum
      */
+    export namespace StyleSchemeKind {
+        export const $gtype: GObject.GType<StyleSchemeKind>;
+    }
+
+    /**
+     * The kind (or category) of a {@link GtkSource.StyleScheme}.
+     * @gir-type Enum
+     * @since 299.2
+     */
+    enum StyleSchemeKind {
+        /**
+         * Light style.
+         */
+        LIGHT,
+        /**
+         * Dark style.
+         */
+        DARK,
+        /**
+         * Light style. Supports only a light
+         *   GTK theme.
+         */
+        LIGHT_ONLY,
+        /**
+         * Dark style. Supports only a dark GTK
+         *   theme.
+         */
+        DARK_ONLY,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     export namespace ViewGutterPosition {
         export const $gtype: GObject.GType<ViewGutterPosition>;
     }
@@ -338,41 +373,54 @@ export namespace GtkSource {
 
     function completion_error_quark(): GLib.Quark;
     /**
-     * Gets all encodings.
-     * @returns a list of all {@link GtkSource.Encoding}'s. Free with `g_slist_free()`.
-     * @since 3.14
+     * A {@link GLib.CompareFunc} provided for convenience. When 0 is returned it means that
+     * the two encodings are equal according to `gtk_source_encoding_equals()`.
+     *
+     * It is useful for example for `g_slist_find_custom()`.
+     * @param a a {@link GtkSource.Encoding}.
+     * @param b a {@link GtkSource.Encoding}.
+     * @returns an integer according to {@link GLib.CompareFunc}.
+     * @since 299.6
+     */
+    function encoding_compare_func(a?: any | null, b?: any | null): number;
+    /**
+     * A {@link GLib.CopyFunc} provided for convenience. It does the same as
+     * `gtk_source_encoding_copy()`. It is useful for example for `g_slist_copy_deep()`.
+     * @param src a {@link GtkSource.Encoding}.
+     * @param data Additional data (ignored).
+     * @returns a copy of `src`.
+     * @since 299.6
+     */
+    function encoding_copy_func(src?: any | null, data?: any | null): any | null;
+    /**
+     * Gets a list of all encodings known by {@link GtkSource.Encoding}.
+     * @returns a list of   {@link GtkSource.Encoding}'s.
+     * @since 299.6
      */
     function encoding_get_all(): Encoding[];
-    /**
-     * Gets the {@link GtkSource.Encoding} for the current locale. See also `g_get_charset()`.
-     * @returns the current locale encoding.
-     * @since 3.14
-     */
-    function encoding_get_current(): Encoding;
     /**
      * Gets the list of default candidate encodings to try when loading a file. See
      * `gtk_source_file_loader_set_candidate_encodings()`.
      *
-     * This function returns a different list depending on the current locale (i.e.
+     * This function returns a different list depending on the current locale (i.e.,
      * language, country and default encoding). The UTF-8 encoding and the current
      * locale encoding are guaranteed to be present in the returned list.
-     * @returns the list of default candidate encodings. Free with `g_slist_free()`.
-     * @since 3.18
+     *
+     * Note that the returned list doesn't contain all encodings known by
+     * {@link GtkSource.Encoding}, it is a limited list that contains only the encodings
+     * that have the most likelihood to fit for the current locale.
+     * @returns the list of   default candidate encodings.
+     * @since 299.6
      */
     function encoding_get_default_candidates(): Encoding[];
     /**
-     * Gets a {@link GtkSource.Encoding} from a character set such as "UTF-8" or
-     * "ISO-8859-1".
-     * @param charset a character set.
-     * @returns the corresponding {@link GtkSource.Encoding}, or `null` if not found.
-     * @since 3.14
+     * A convenience function to remove duplicated encodings in a list.
+     * @param list a list of   {@link GtkSource.Encoding}'s.
+     * @param removal_type the {@link GtkSource.EncodingDuplicates}.
+     * @returns the new start of   the {@link GLib.SList}.
+     * @since 299.6
      */
-    function encoding_get_from_charset(charset: string): Encoding | null;
-    /**
-     * @returns the UTF-8 encoding.
-     * @since 3.14
-     */
-    function encoding_get_utf8(): Encoding;
+    function encoding_remove_duplicates(list: Encoding[], removal_type: EncodingDuplicates | null): Encoding[];
     function file_loader_error_quark(): GLib.Quark;
     function file_saver_error_quark(): GLib.Quark;
     /**
@@ -393,6 +441,46 @@ export namespace GtkSource {
      * @since 4.0
      */
     function init(): void;
+    /**
+     * @param iter a {@link Gtk.TextIter}.
+     * @param str a non-empty UTF-8 string.
+     * @returns `true` if and only if `str` ends at (exactly) the `iter` position.
+     * @since 299.6
+     */
+    function iter_ends_string(iter: Gtk.TextIter, str: string): [boolean, Gtk.TextIter | null];
+    /**
+     * Gets the boundary, on `iter`'s line, between leading whitespaces (indentation)
+     * and the text.
+     * @param iter the input {@link Gtk.TextIter}.
+     * @since 299.6
+     */
+    function iter_get_leading_spaces_end_boundary(iter: Gtk.TextIter): Gtk.TextIter;
+    /**
+     * Gets the indentation, as a string, of the line at `iter`. `iter` can be
+     * anywhere in the line.
+     *
+     * Possible use-case: to implement an action that inserts some text in a
+     * {@link Gtk.TextBuffer}. If the text to insert spans multiple lines, it is sometimes
+     * desired to keep the same indentation level.
+     * @param iter a {@link Gtk.TextIter}.
+     * @returns the line indentation at `iter`.
+     * @since 299.6
+     */
+    function iter_get_line_indentation(iter: Gtk.TextIter): string;
+    /**
+     * Gets the boundary, on `iter`'s line, between the end of the text and trailing
+     * whitespaces.
+     * @param iter the input {@link Gtk.TextIter}.
+     * @since 299.6
+     */
+    function iter_get_trailing_spaces_start_boundary(iter: Gtk.TextIter): Gtk.TextIter;
+    /**
+     * @param iter a {@link Gtk.TextIter}.
+     * @param str a non-empty UTF-8 string.
+     * @returns `true` if and only if `str` is found at (exactly) the `iter` position.
+     * @since 299.6
+     */
+    function iter_starts_string(iter: Gtk.TextIter, str: string): [boolean, Gtk.TextIter | null];
     /**
      * Use this function to escape the following characters: `\n`, `\r`, `\t` and `\`.
      *
@@ -423,7 +511,7 @@ export namespace GtkSource {
      * @param iter the {@link Gtk.TextIter}.
      * @param state the {@link GtkSource.BracketMatchType}.
      * @returns a string intended to be shown in the UI,   that describes a bracket matching. `null` is returned on   {@link GtkSource.BracketMatchType.NONE}.
-     * @since 300.0
+     * @since 299.0
      */
     function utils_get_bracket_matched_message(iter: Gtk.TextIter, state: BracketMatchType | null): string | null;
     /**
@@ -1288,7 +1376,7 @@ export namespace GtkSource {
 
         // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
             accelerators: number;
             auto_complete_delay: number;
             autoCompleteDelay: number;
@@ -1311,7 +1399,7 @@ export namespace GtkSource {
     /**
      * @gir-type Class
      */
-    class Completion extends GObject.Object implements Gtk.Buildable {
+    class Completion extends GObject.Object {
         static $gtype: GObject.GType<Completion>;
 
         // Properties
@@ -1580,641 +1668,6 @@ export namespace GtkSource {
          * again.
          */
         unblock_interactive(): void;
-        /**
-         * Adds a child to `buildable`. `type` is an optional string
-         * describing how the child should be added.
-         * @param builder a {@link Gtk.Builder}
-         * @param child child to add
-         * @param type kind of child or `null`
-         */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
-        /**
-         * Constructs a child of `buildable` with the name `name`.
-         *
-         * {@link Gtk.Builder} calls this function if a “constructor” has been
-         * specified in the UI definition.
-         * @param builder {@link Gtk.Builder} used to construct this object
-         * @param name name of child to construct
-         * @returns the constructed child
-         */
-        construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
-        /**
-         * This is similar to `gtk_buildable_parser_finished()` but is
-         * called once for each custom tag handled by the `buildable`.
-         * @param builder a {@link Gtk.Builder}
-         * @param child child object or `null` for non-child tags
-         * @param tagname the name of the tag
-         * @param data user data created in custom_tag_start
-         */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
-        /**
-         * This is called at the end of each custom element handled by
-         * the buildable.
-         * @param builder {@link Gtk.Builder} used to construct this object
-         * @param child child object or `null` for non-child tags
-         * @param tagname name of tag
-         * @param data user data that will be passed in to parser functions
-         */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
-        /**
-         * This is called for each unknown element under `<child>`.
-         * @param builder a {@link Gtk.Builder} used to construct this object
-         * @param child child object or `null` for non-child tags
-         * @param tagname name of tag
-         * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
-         */
-        custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, GLib.MarkupParser, any];
-        /**
-         * Get the internal child called `childname` of the `buildable` object.
-         * @param builder a {@link Gtk.Builder}
-         * @param childname name of child
-         * @returns the internal child of the buildable object
-         */
-        get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
-        /**
-         * Gets the name of the `buildable` object.
-         *
-         * {@link Gtk.Builder} sets the name based on the
-         * [GtkBuilder UI definition][BUILDER-UI]
-         * used to construct the `buildable`.
-         * @returns the name set with `gtk_buildable_set_name()`
-         */
-        get_name(): string;
-        /**
-         * Called when the builder finishes the parsing of a
-         * [GtkBuilder UI definition][BUILDER-UI].
-         * Note that this will be called once for each time
-         * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
-         * is called on a builder.
-         * @param builder a {@link Gtk.Builder}
-         */
-        parser_finished(builder: Gtk.Builder): void;
-        /**
-         * Sets the property name `name` to `value` on the `buildable` object.
-         * @param builder a {@link Gtk.Builder}
-         * @param name name of property
-         * @param value value of property
-         */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
-        /**
-         * Sets the name of the `buildable` object.
-         * @param name name to set
-         */
-        set_name(name: string): void;
-        /**
-         * Adds a child to `buildable`. `type` is an optional string
-         * describing how the child should be added.
-         * @param builder a {@link Gtk.Builder}
-         * @param child child to add
-         * @param type kind of child or `null`
-         * @virtual
-         */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
-        /**
-         * Constructs a child of `buildable` with the name `name`.
-         *
-         * {@link Gtk.Builder} calls this function if a “constructor” has been
-         * specified in the UI definition.
-         * @param builder {@link Gtk.Builder} used to construct this object
-         * @param name name of child to construct
-         * @virtual
-         */
-        vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
-        /**
-         * This is similar to `gtk_buildable_parser_finished()` but is
-         * called once for each custom tag handled by the `buildable`.
-         * @param builder a {@link Gtk.Builder}
-         * @param child child object or `null` for non-child tags
-         * @param tagname the name of the tag
-         * @param data user data created in custom_tag_start
-         * @virtual
-         */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data?: any | null,
-        ): void;
-        /**
-         * This is called at the end of each custom element handled by
-         * the buildable.
-         * @param builder {@link Gtk.Builder} used to construct this object
-         * @param child child object or `null` for non-child tags
-         * @param tagname name of tag
-         * @param data user data that will be passed in to parser functions
-         * @virtual
-         */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data?: any | null,
-        ): void;
-        /**
-         * This is called for each unknown element under `<child>`.
-         * @param builder a {@link Gtk.Builder} used to construct this object
-         * @param child child object or `null` for non-child tags
-         * @param tagname name of tag
-         * @virtual
-         */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, GLib.MarkupParser, any];
-        /**
-         * Get the internal child called `childname` of the `buildable` object.
-         * @param builder a {@link Gtk.Builder}
-         * @param childname name of child
-         * @virtual
-         */
-        vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
-        /**
-         * Gets the name of the `buildable` object.
-         *
-         * {@link Gtk.Builder} sets the name based on the
-         * [GtkBuilder UI definition][BUILDER-UI]
-         * used to construct the `buildable`.
-         * @virtual
-         */
-        vfunc_get_name(): string;
-        /**
-         * Called when the builder finishes the parsing of a
-         * [GtkBuilder UI definition][BUILDER-UI].
-         * Note that this will be called once for each time
-         * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
-         * is called on a builder.
-         * @param builder a {@link Gtk.Builder}
-         * @virtual
-         */
-        vfunc_parser_finished(builder: Gtk.Builder): void;
-        /**
-         * Sets the property name `name` to `value` on the `buildable` object.
-         * @param builder a {@link Gtk.Builder}
-         * @param name name of property
-         * @param value value of property
-         * @virtual
-         */
-        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
-        /**
-         * Sets the name of the `buildable` object.
-         * @param name name to set
-         * @virtual
-         */
-        vfunc_set_name(name: string): void;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
-         * updated with the same value of the "active" property of the action {@link GObject.Object}
-         * instance.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call `g_object_unref()` on the returned
-         * {@link GObject.Binding} instance.
-         *
-         * Removing the binding by calling `g_object_unref()` on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use `g_binding_unbind()` instead to be on the safe side.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags | null,
-        ): GObject.Binding;
-        /**
-         * Complete version of `g_object_bind_property()`.
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`, allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
-         * {@link GObject.Binding} instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call `g_binding_unbind()`.
-         *
-         * A {@link GObject.Object} can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * `g_object_bind_property_with_closures()` instead.
-         * @param source_property the property on `source` to bind
-         * @param target the target {@link GObject.Object}
-         * @param target_property the property on `target` to bind
-         * @param flags flags to pass to {@link GObject.Binding}
-         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
-         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
-         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        /**
-         * @param args
-         */
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all `GInitiallyUnowneds` are created with a floating reference
-         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
-         * @param key name of the key for that association
-         * @returns the data if found,          or `null` if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns `true` if `object` has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param property_name the name of a property installed on the class of `object`.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * `g_object_notify()`.
-         *
-         * One way to avoid using `g_object_notify()` from within the
-         * class that registered the properties, and using `g_object_notify_by_pspec()`
-         * instead, is to store the GParamSpec used with
-         * `g_object_class_install_property()` inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC `typeof()`
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same `object`
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for `g_object_ref()`.
-         * @returns `object`
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or `null`          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * `g_object_set_qdata()` and removes the `data` from object
-         * without invoking its `destroy()` function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using `g_object_get_qdata()` in the above example, instead of
-         * `g_object_steal_qdata()` would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * `g_object_set_qdata_full()`.
-         * @param quark A {@link GLib.Quark}, naming the user data pointer
-         * @returns The user data pointer set, or `null`
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to `null` rather than retain a dangling pointer to a potentially
-         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling `g_closure_invalidate()` on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
-         * added as marshal guards to the `closure`, to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure {@link GObject.Closure} to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by `g_object_new()` as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         * @virtual
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         * @virtual
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         * @virtual
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         * @virtual
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use `g_object_notify_by_pspec()`
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
-         * called.
-         * @param pspec
-         * @virtual
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace CompletionContext {
@@ -2578,7 +2031,7 @@ export namespace GtkSource {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2633,7 +2086,7 @@ export namespace GtkSource {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2708,7 +2161,7 @@ export namespace GtkSource {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2934,28 +2387,11 @@ export namespace GtkSource {
 
     namespace CompletionItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::gicon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::info': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::markup': (pspec: GObject.ParamSpec) => void;
-            'notify::text': (pspec: GObject.ParamSpec) => void;
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, CompletionProposal.ConstructorProps {
-            gicon: Gio.Icon;
-            icon: GdkPixbuf.Pixbuf;
-            icon_name: string;
-            iconName: string;
-            info: string;
-            label: string;
-            markup: string;
-            text: string;
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, CompletionProposal.ConstructorProps {}
     }
 
     /**
@@ -2963,52 +2399,6 @@ export namespace GtkSource {
      */
     class CompletionItem extends GObject.Object implements CompletionProposal {
         static $gtype: GObject.GType<CompletionItem>;
-
-        // Properties
-
-        /**
-         * The {@link Gio.Icon} for the icon to be shown for this proposal.
-         * @since 3.18
-         */
-        get gicon(): Gio.Icon;
-        set gicon(val: Gio.Icon);
-        /**
-         * The {@link GdkPixbuf.Pixbuf} for the icon to be shown for this proposal.
-         */
-        get icon(): GdkPixbuf.Pixbuf;
-        set icon(val: GdkPixbuf.Pixbuf);
-        /**
-         * The icon name for the icon to be shown for this proposal.
-         * @since 3.18
-         */
-        get icon_name(): string;
-        set icon_name(val: string);
-        /**
-         * The icon name for the icon to be shown for this proposal.
-         * @since 3.18
-         */
-        get iconName(): string;
-        set iconName(val: string);
-        /**
-         * Optional extra information to be shown for this proposal.
-         */
-        get info(): string;
-        set info(val: string);
-        /**
-         * Label to be shown for this proposal.
-         */
-        get label(): string;
-        set label(val: string);
-        /**
-         * Label with markup to be shown for this proposal.
-         */
-        get markup(): string;
-        set markup(val: string);
-        /**
-         * Proposal text.
-         */
-        get text(): string;
-        set text(val: string);
 
         /**
          * Compile-time signal type information.
@@ -3079,141 +2469,137 @@ export namespace GtkSource {
          */
         set_text(text?: string | null): void;
         /**
-         * Emits the "changed" signal on `proposal`. This should be called by
-         * implementations whenever the name, icon or info of the proposal has
-         * changed.
+         * Emits the {@link GtkSource.CompletionProposal.SignalSignatures.changed | GtkSource.CompletionProposal::changed} signal on `proposal`. This
+         * should be called by implementations whenever the label, icon or info of the
+         * proposal has changed.
          */
         changed(): void;
         /**
-         * Get whether two proposal objects are the same.  This is used to (together
+         * Gets whether two proposal objects are the same. This is used to (together
          * with `gtk_source_completion_proposal_hash()`) to match proposals in the
-         * completion model. By default, it uses direct equality (g_direct_equal()).
+         * completion model.
          * @param other a {@link GtkSource.CompletionProposal}.
-         * @returns `true` if `proposal` and `object` are the same proposal
+         * @returns whether `proposal` and `other` are the same proposal.
          */
         equal(other: CompletionProposal): boolean;
         /**
-         * Gets the {@link Gio.Icon} for the icon of `proposal`.
-         * @returns A {@link Gio.Icon} with the icon of `proposal`.
+         * @returns the {@link Gio.Icon} for the icon of `proposal`.
          */
         get_gicon(): Gio.Icon | null;
         /**
-         * Gets the {@link GdkPixbuf.Pixbuf} for the icon of `proposal`.
-         * @returns A {@link GdkPixbuf.Pixbuf} with the icon of `proposal`.
+         * @returns a {@link GdkPixbuf.Pixbuf} with the icon of `proposal`.
          */
         get_icon(): GdkPixbuf.Pixbuf | null;
         /**
-         * Gets the icon name of `proposal`.
-         * @returns The icon name of `proposal`.
+         * @returns the icon name of `proposal`.
          */
         get_icon_name(): string | null;
         /**
          * Gets extra information associated to the proposal. This information will be
          * used to present the user with extra, detailed information about the
-         * selected proposal. The returned string must be freed with `g_free()`.
-         * @returns a newly-allocated string containing extra information of `proposal` or `null` if no extra information is associated to `proposal`.
+         * selected proposal.
+         * @returns a newly-allocated string containing   extra information of `proposal`, or `null` if no extra information is   associated to `proposal`.
          */
         get_info(): string | null;
         /**
          * Gets the label of `proposal`. The label is shown in the list of proposals as
-         * plain text. If you need any markup (such as bold or italic text), you have
-         * to implement `gtk_source_completion_proposal_get_markup()`. The returned string
-         * must be freed with `g_free()`.
-         * @returns a new string containing the label of `proposal`.
+         * plain text. If you need any markup (such as bold or italic text), you have to
+         * implement `gtk_source_completion_proposal_get_markup()`.
+         * @returns a new string containing the label of   `proposal`.
          */
-        get_label(): string;
+        get_label(): string | null;
         /**
          * Gets the label of `proposal` with markup. The label is shown in the list of
          * proposals and may contain markup. This will be used instead of
-         * `gtk_source_completion_proposal_get_label()` if implemented. The returned string
-         * must be freed with `g_free()`.
-         * @returns a new string containing the label of `proposal` with markup.
+         * `gtk_source_completion_proposal_get_label()` if implemented.
+         * @returns a new string containing the label of   `proposal` with markup.
          */
-        get_markup(): string;
+        get_markup(): string | null;
         /**
-         * Gets the text of `proposal`. The text that is inserted into
-         * the text buffer when the proposal is activated by the default activation.
-         * You are free to implement a custom activation handler in the provider and
-         * not implement this function. For more information, see
-         * `gtk_source_completion_provider_activate_proposal()`. The returned string must
-         * be freed with `g_free()`.
-         * @returns a new string containing the text of `proposal`.
+         * Gets the text of `proposal`. The text that is inserted into the text buffer
+         * when the proposal is activated by the default activation.
+         *
+         * You are free to implement a custom activation handler in the provider and not
+         * implement this function. For more information, see
+         * `gtk_source_completion_provider_activate_proposal()`.
+         * @returns a new string containing the text of   `proposal`.
          */
-        get_text(): string;
+        get_text(): string | null;
         /**
-         * Get the hash value of `proposal`. This is used to (together with
+         * Gets the hash value of `proposal`. This is used to (together with
          * `gtk_source_completion_proposal_equal()`) to match proposals in the completion
-         * model. By default, it uses a direct hash (g_direct_hash()).
-         * @returns The hash value of `proposal`.
+         * model.
+         * @returns the hash value of `proposal`.
          */
         hash(): number;
         /**
-         * Emits the "changed" signal on `proposal`. This should be called by
-         * implementations whenever the name, icon or info of the proposal has
-         * changed.
+         * Emits the {@link GtkSource.CompletionProposal.SignalSignatures.changed | GtkSource.CompletionProposal::changed} signal on `proposal`. This
+         * should be called by implementations whenever the label, icon or info of the
+         * proposal has changed.
          * @virtual
          */
         vfunc_changed(): void;
         /**
-         * Get whether two proposal objects are the same.  This is used to (together
+         * Gets whether two proposal objects are the same. This is used to (together
          * with `gtk_source_completion_proposal_hash()`) to match proposals in the
-         * completion model. By default, it uses direct equality (g_direct_equal()).
+         * completion model.
          * @param other a {@link GtkSource.CompletionProposal}.
          * @virtual
          */
         vfunc_equal(other: CompletionProposal): boolean;
         /**
-         * Gets the {@link Gio.Icon} for the icon of `proposal`.
+         * The virtual function pointer for `gtk_source_completion_proposal_get_gicon()`.
+         *   By default, `null` is returned.
          * @virtual
          */
         vfunc_get_gicon(): Gio.Icon | null;
         /**
-         * Gets the {@link GdkPixbuf.Pixbuf} for the icon of `proposal`.
+         * The virtual function pointer for `gtk_source_completion_proposal_get_icon()`.
+         *   By default, `null` is returned.
          * @virtual
          */
         vfunc_get_icon(): GdkPixbuf.Pixbuf | null;
         /**
-         * Gets the icon name of `proposal`.
+         * The virtual function pointer for `gtk_source_completion_proposal_get_icon_name()`.
+         *   By default, `null` is returned.
          * @virtual
          */
         vfunc_get_icon_name(): string | null;
         /**
          * Gets extra information associated to the proposal. This information will be
          * used to present the user with extra, detailed information about the
-         * selected proposal. The returned string must be freed with `g_free()`.
+         * selected proposal.
          * @virtual
          */
         vfunc_get_info(): string | null;
         /**
          * Gets the label of `proposal`. The label is shown in the list of proposals as
-         * plain text. If you need any markup (such as bold or italic text), you have
-         * to implement `gtk_source_completion_proposal_get_markup()`. The returned string
-         * must be freed with `g_free()`.
+         * plain text. If you need any markup (such as bold or italic text), you have to
+         * implement `gtk_source_completion_proposal_get_markup()`.
          * @virtual
          */
-        vfunc_get_label(): string;
+        vfunc_get_label(): string | null;
         /**
          * Gets the label of `proposal` with markup. The label is shown in the list of
          * proposals and may contain markup. This will be used instead of
-         * `gtk_source_completion_proposal_get_label()` if implemented. The returned string
-         * must be freed with `g_free()`.
+         * `gtk_source_completion_proposal_get_label()` if implemented.
          * @virtual
          */
-        vfunc_get_markup(): string;
+        vfunc_get_markup(): string | null;
         /**
-         * Gets the text of `proposal`. The text that is inserted into
-         * the text buffer when the proposal is activated by the default activation.
-         * You are free to implement a custom activation handler in the provider and
-         * not implement this function. For more information, see
-         * `gtk_source_completion_provider_activate_proposal()`. The returned string must
-         * be freed with `g_free()`.
+         * Gets the text of `proposal`. The text that is inserted into the text buffer
+         * when the proposal is activated by the default activation.
+         *
+         * You are free to implement a custom activation handler in the provider and not
+         * implement this function. For more information, see
+         * `gtk_source_completion_provider_activate_proposal()`.
          * @virtual
          */
-        vfunc_get_text(): string;
+        vfunc_get_text(): string | null;
         /**
-         * Get the hash value of `proposal`. This is used to (together with
+         * Gets the hash value of `proposal`. This is used to (together with
          * `gtk_source_completion_proposal_equal()`) to match proposals in the completion
-         * model. By default, it uses a direct hash (g_direct_hash()).
+         * model.
          * @virtual
          */
         vfunc_hash(): number;
@@ -3314,7 +2700,7 @@ export namespace GtkSource {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3369,7 +2755,7 @@ export namespace GtkSource {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3444,7 +2830,7 @@ export namespace GtkSource {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3713,14 +3099,14 @@ export namespace GtkSource {
          */
         get compressionType(): CompressionType;
         /**
-         * The character encoding, initially `null`. After a successful file
+         * The {@link GtkSource.Encoding}, initially `null`. After a successful file
          * loading or saving operation, the encoding is non-`null`.
          * @since 3.14
          * @read-only
          */
         get encoding(): Encoding;
         /**
-         * The location.
+         * The {@link Gio.File}.
          * @since 3.14
          */
         get location(): Gio.File;
@@ -3738,15 +3124,23 @@ export namespace GtkSource {
          */
         get newlineType(): NewlineType;
         /**
-         * Whether the file is read-only or not. The value of this property is
-         * not updated automatically (there is no file monitors).
+         * Whether the file is read-only. If the {@link GtkSource.File.location} is
+         * `null`, this property is `false`.
+         *
+         * The value of this property is not updated automatically (there are no
+         * file monitors). To have an up-to-date value, you must first call
+         * `gtk_source_file_check_file_on_disk()`.
          * @since 3.18
          * @read-only
          */
         get read_only(): boolean;
         /**
-         * Whether the file is read-only or not. The value of this property is
-         * not updated automatically (there is no file monitors).
+         * Whether the file is read-only. If the {@link GtkSource.File.location} is
+         * `null`, this property is `false`.
+         *
+         * The value of this property is not updated automatically (there are no
+         * file monitors). To have an up-to-date value, you must first call
+         * `gtk_source_file_check_file_on_disk()`.
          * @since 3.18
          * @read-only
          */
@@ -3805,21 +3199,19 @@ export namespace GtkSource {
          */
         check_file_on_disk(): void;
         /**
-         * @returns the compression type.
+         * @returns the current value of the {@link GtkSource.File.compression_type} property.
          */
         get_compression_type(): CompressionType;
         /**
-         * The encoding is initially `null`. After a successful file loading or saving
-         * operation, the encoding is non-`null`.
-         * @returns the character encoding.
+         * @returns the current value of the   {@link GtkSource.File.encoding} property.
          */
-        get_encoding(): Encoding;
+        get_encoding(): Encoding | null;
         /**
-         * @returns the {@link Gio.File}.
+         * @returns the current value of the   {@link GtkSource.File.location} property.
          */
-        get_location(): Gio.File;
+        get_location(): Gio.File | null;
         /**
-         * @returns the newline type.
+         * @returns the current value of the {@link GtkSource.File.newline_type} property.
          */
         get_newline_type(): NewlineType;
         /**
@@ -3847,16 +3239,11 @@ export namespace GtkSource {
          */
         is_local(): boolean;
         /**
-         * Returns whether the file is read-only. If the
-         * {@link GtkSource.File.location} is `null`, returns `false`.
-         *
-         * To have an up-to-date value, you must first call
-         * `gtk_source_file_check_file_on_disk()`.
-         * @returns whether the file is read-only.
+         * @returns the current value of the {@link GtkSource.File.read_only} property.
          */
         is_readonly(): boolean;
         /**
-         * Sets the location.
+         * Sets the {@link GtkSource.File.location} property.
          * @param location the new {@link Gio.File}, or `null`.
          */
         set_location(location?: Gio.File | null): void;
@@ -3869,6 +3256,7 @@ export namespace GtkSource {
             'notify::file': (pspec: GObject.ParamSpec) => void;
             'notify::input-stream': (pspec: GObject.ParamSpec) => void;
             'notify::location': (pspec: GObject.ParamSpec) => void;
+            'notify::max-size': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3879,6 +3267,8 @@ export namespace GtkSource {
             input_stream: Gio.InputStream;
             inputStream: Gio.InputStream;
             location: Gio.File;
+            max_size: number;
+            maxSize: number;
         }
     }
 
@@ -3919,13 +3309,33 @@ export namespace GtkSource {
          */
         get inputStream(): Gio.InputStream;
         /**
-         * The {@link Gio.File} to load. If the {@link GtkSource.FileLoader.input_stream} is
-         * `null`, by default the location is taken from the {@link GtkSource.File} at
-         * construction time.
+         * The {@link Gio.File} to load, or `null` to load the contents from the
+         * {@link GtkSource.FileLoader.input_stream}.
+         *
+         * If the {@link GtkSource.FileLoader.input_stream} is `null`, by default the
+         * location is taken from the {@link GtkSource.File} at construction time.
          * @since 3.14
          * @construct-only
          */
         get location(): Gio.File;
+        /**
+         * The maximum number of bytes to read.
+         *
+         * If the content to load exceeds the limit,
+         * {@link GtkSource.FileLoaderError.TOO_BIG} is returned.
+         * @since 299.6
+         */
+        get max_size(): number;
+        set max_size(val: number);
+        /**
+         * The maximum number of bytes to read.
+         *
+         * If the content to load exceeds the limit,
+         * {@link GtkSource.FileLoaderError.TOO_BIG} is returned.
+         * @since 299.6
+         */
+        get maxSize(): number;
+        set maxSize(val: number);
 
         /**
          * Compile-time signal type information.
@@ -3970,29 +3380,33 @@ export namespace GtkSource {
         // Methods
 
         /**
-         * @returns the {@link GtkSource.Buffer} to load the contents into.
+         * @returns the value of the   {@link GtkSource.FileLoader.buffer} property.
          */
-        get_buffer(): Buffer;
+        get_buffer(): Buffer | null;
         /**
          * @returns the detected compression type.
          */
         get_compression_type(): CompressionType;
         /**
-         * @returns the detected file encoding.
+         * @returns the detected encoding.
          */
         get_encoding(): Encoding;
         /**
-         * @returns the {@link GtkSource.File}.
+         * @returns the value of the   {@link GtkSource.FileLoader.file} property.
          */
-        get_file(): File;
+        get_file(): File | null;
         /**
-         * @returns the {@link Gio.InputStream} to load, or `null` if a {@link Gio.File} is used.
+         * @returns the value of the   {@link GtkSource.FileLoader.input_stream} property.
          */
         get_input_stream(): Gio.InputStream | null;
         /**
-         * @returns the {@link Gio.File} to load, or `null` if an input stream is used.
+         * @returns the value of the   {@link GtkSource.FileLoader.location} property.
          */
         get_location(): Gio.File | null;
+        /**
+         * @returns the value of the {@link GtkSource.FileLoader.max_size} property.
+         */
+        get_max_size(): number;
         /**
          * @returns the detected newline type.
          */
@@ -4063,14 +3477,19 @@ export namespace GtkSource {
          * For convenience, `candidate_encodings` can contain duplicates. Only the first
          * occurrence of a duplicated encoding is kept in the list.
          *
-         * By default the candidate encodings are (in that order in the list):
+         * If you don't call this function, the default list will be (in that order):
          * 1. If set, the {@link GtkSource.File}'s encoding as returned by
-         * `gtk_source_file_get_encoding()`.
-         * 2. The default candidates as returned by
-         * `gtk_source_encoding_get_default_candidates()`.
-         * @param candidate_encodings a list of   {@link GtkSource.Encoding}<!-- -->s.
+         *    `gtk_source_file_get_encoding()`.
+         * 2. Plus the default candidates as returned by
+         *    `gtk_source_encoding_get_default_candidates()`.
+         * @param candidate_encodings a list of   {@link GtkSource.Encoding}'s.
          */
         set_candidate_encodings(candidate_encodings: Encoding[]): void;
+        /**
+         * Sets the {@link GtkSource.FileLoader.max_size} property.
+         * @param max_size the new value.
+         */
+        set_max_size(max_size: number): void;
     }
 
     namespace FileSaver {
@@ -6686,13 +6105,13 @@ export namespace GtkSource {
         set highlight(val: boolean);
         /**
          * A {@link GtkSource.Style}, or `null` for theme's scheme default style.
-         * @since 3.16
+         * @since 299.2
          */
         get match_style(): Style;
         set match_style(val: Style);
         /**
          * A {@link GtkSource.Style}, or `null` for theme's scheme default style.
-         * @since 3.16
+         * @since 299.2
          */
         get matchStyle(): Style;
         set matchStyle(val: Style);
@@ -7409,78 +6828,6 @@ export namespace GtkSource {
         set_types_for_locations(locations: SpaceLocationFlags | null, types: SpaceTypeFlags | null): void;
     }
 
-    namespace Style {
-        // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class Style extends GObject.Object {
-        static $gtype: GObject.GType<Style>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: Style.SignalSignatures;
-
-        // Constructors
-
-        constructor(properties?: Partial<Style.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Signals
-
-        /** @signal */
-        connect<K extends keyof Style.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Style.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Style.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Style.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof Style.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Style.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-
-        /**
-         * This function modifies the {@link Gtk.TextTag} properties that are related to the
-         * {@link GtkSource.Style} attributes. Other {@link Gtk.TextTag} properties are left untouched.
-         *
-         * If `style` is non-`null`, applies `style` to `tag`.
-         *
-         * If `style` is `null`, the related *-set properties of {@link Gtk.TextTag} are set to
-         * `false`.
-         * @param tag a {@link Gtk.TextTag} to apply styles to.
-         */
-        apply(tag: Gtk.TextTag): void;
-        /**
-         * Creates a copy of `style`, that is a new {@link GtkSource.Style} instance which
-         * has the same attributes set.
-         * @returns copy of `style`, call `g_object_unref()` when you are done with it.
-         */
-        copy(): Style;
-    }
-
     namespace StyleScheme {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -7535,10 +6882,6 @@ export namespace GtkSource {
         // Methods
 
         /**
-         * @returns a   `null`-terminated array containing the `scheme` authors, or `null` if no   author is specified by the style scheme.
-         */
-        get_authors(): string[] | null;
-        /**
          * @returns the `scheme` description, a human-readable (translated)   string to present to the user.
          */
         get_description(): string | null;
@@ -7550,6 +6893,10 @@ export namespace GtkSource {
          * @returns the `scheme` ID, a unique string used to identify the style scheme in   a {@link GtkSource.StyleSchemeManager}.
          */
         get_id(): string;
+        /**
+         * @returns the kind of `scheme`.
+         */
+        get_kind(): StyleSchemeKind;
         /**
          * @returns the `scheme` name, a human-readable (translated) string to present to   the user.
          */
@@ -7565,9 +6912,9 @@ export namespace GtkSource {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
-             * Emitted when the `manager` has changed.
+             * Emitted when the `manager`'s content has changed.
              * @signal
-             * @since 300.0
+             * @since 299.0
              * @run-first
              */
             changed: () => void;
@@ -7962,7 +7309,6 @@ export namespace GtkSource {
              */
             undo: () => void;
             'notify::auto-indent': (pspec: GObject.ParamSpec) => void;
-            'notify::background-pattern': (pspec: GObject.ParamSpec) => void;
             'notify::completion': (pspec: GObject.ParamSpec) => void;
             'notify::highlight-current-line': (pspec: GObject.ParamSpec) => void;
             'notify::indent-on-tab': (pspec: GObject.ParamSpec) => void;
@@ -8055,8 +7401,6 @@ export namespace GtkSource {
                 Gtk.Scrollable.ConstructorProps {
             auto_indent: boolean;
             autoIndent: boolean;
-            background_pattern: BackgroundPatternType;
-            backgroundPattern: BackgroundPatternType;
             completion: Completion;
             highlight_current_line: boolean;
             highlightCurrentLine: boolean;
@@ -8093,33 +7437,42 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * Whether to enable auto indentation.
+         */
         get auto_indent(): boolean;
         set auto_indent(val: boolean);
+        /**
+         * Whether to enable auto indentation.
+         */
         get autoIndent(): boolean;
         set autoIndent(val: boolean);
         /**
-         * Draw a specific background pattern on the view.
-         * @since 3.16
-         */
-        get background_pattern(): BackgroundPatternType;
-        set background_pattern(val: BackgroundPatternType);
-        /**
-         * Draw a specific background pattern on the view.
-         * @since 3.16
-         */
-        get backgroundPattern(): BackgroundPatternType;
-        set backgroundPattern(val: BackgroundPatternType);
-        /**
-         * The completion object associated with the view
+         * The completion object associated with the view.
+         *
+         * The completion object is guaranteed to be the same for the lifetime
+         * of the view. Each view has a different completion object.
          * @read-only
          */
         get completion(): Completion;
+        /**
+         * Whether to highlight the current line.
+         */
         get highlight_current_line(): boolean;
         set highlight_current_line(val: boolean);
+        /**
+         * Whether to highlight the current line.
+         */
         get highlightCurrentLine(): boolean;
         set highlightCurrentLine(val: boolean);
+        /**
+         * Whether to indent the selected text when the tab key is pressed.
+         */
         get indent_on_tab(): boolean;
         set indent_on_tab(val: boolean);
+        /**
+         * Whether to indent the selected text when the tab key is pressed.
+         */
         get indentOnTab(): boolean;
         set indentOnTab(val: boolean);
         /**
@@ -8132,37 +7485,43 @@ export namespace GtkSource {
          */
         get indentWidth(): number;
         set indentWidth(val: number);
+        /**
+         * Whether to insert spaces instead of tabs.
+         */
         get insert_spaces_instead_of_tabs(): boolean;
         set insert_spaces_instead_of_tabs(val: boolean);
+        /**
+         * Whether to insert spaces instead of tabs.
+         */
         get insertSpacesInsteadOfTabs(): boolean;
         set insertSpacesInsteadOfTabs(val: boolean);
         /**
-         * Position of the right margin.
+         * The width in characters where to position the right margin.
          */
         get right_margin_position(): number;
         set right_margin_position(val: number);
         /**
-         * Position of the right margin.
+         * The width in characters where to position the right margin.
          */
         get rightMarginPosition(): number;
         set rightMarginPosition(val: number);
         /**
-         * Whether to display line mark pixbufs
+         * Whether to display line mark pixbufs beside the text.
          */
         get show_line_marks(): boolean;
         set show_line_marks(val: boolean);
         /**
-         * Whether to display line mark pixbufs
+         * Whether to display line mark pixbufs beside the text.
          */
         get showLineMarks(): boolean;
         set showLineMarks(val: boolean);
         /**
-         * Whether to display line numbers
+         * Whether to display line numbers beside the text.
          */
         get show_line_numbers(): boolean;
         set show_line_numbers(val: boolean);
         /**
-         * Whether to display line numbers
+         * Whether to display line numbers beside the text.
          */
         get showLineNumbers(): boolean;
         set showLineNumbers(val: boolean);
@@ -8202,23 +7561,37 @@ export namespace GtkSource {
         set smartHomeEnd(val: SmartHomeEndType);
         /**
          * The {@link GtkSource.SpaceDrawer} object associated with the view.
+         *
+         * The {@link GtkSource.SpaceDrawer} object is guaranteed to be the same for the
+         * lifetime of the view. Each view has a different {@link GtkSource.SpaceDrawer}
+         * object.
          * @since 3.24
          * @read-only
          */
         get space_drawer(): SpaceDrawer;
         /**
          * The {@link GtkSource.SpaceDrawer} object associated with the view.
+         *
+         * The {@link GtkSource.SpaceDrawer} object is guaranteed to be the same for the
+         * lifetime of the view. Each view has a different {@link GtkSource.SpaceDrawer}
+         * object.
          * @since 3.24
          * @read-only
          */
         get spaceDrawer(): SpaceDrawer;
         /**
-         * Width of a tab character expressed in number of spaces.
+         * The width of a tabulation character expressed in number of spaces.
+         *
+         * The {@link Gtk.TextBuffer} still contains `\t` characters, but they can take
+         * a different visual width in a {@link GtkSource.View} widget.
          */
         get tab_width(): number;
         set tab_width(val: number);
         /**
-         * Width of a tab character expressed in number of spaces.
+         * The width of a tabulation character expressed in number of spaces.
+         *
+         * The {@link Gtk.TextBuffer} still contains `\t` characters, but they can take
+         * a different visual width in a {@link GtkSource.View} widget.
          */
         get tabWidth(): number;
         set tabWidth(val: number);
@@ -8302,30 +7675,22 @@ export namespace GtkSource {
          */
         get_auto_indent(): boolean;
         /**
-         * Returns the {@link GtkSource.BackgroundPatternType} specifying if and how
-         * the background pattern should be displayed for this `view`.
-         * @returns the {@link GtkSource.BackgroundPatternType}.
-         */
-        get_background_pattern(): BackgroundPatternType;
-        /**
-         * Gets the {@link GtkSource.Completion} associated with `view`. The returned object is
-         * guaranteed to be the same for the lifetime of `view`. Each {@link GtkSource.View}
-         * object has a different {@link GtkSource.Completion}.
-         * @returns the {@link GtkSource.Completion} associated with `view`.
+         * @returns the value of the {@link GtkSource.View.completion}   property.
          */
         get_completion(): Completion;
         /**
          * Returns the {@link GtkSource.Gutter} object associated with `window_type` for `view`.
-         * Only GTK_TEXT_WINDOW_LEFT and GTK_TEXT_WINDOW_RIGHT are supported,
-         * respectively corresponding to the left and right gutter. The line numbers
-         * and mark category icons are rendered in the left gutter.
+         *
+         * Only {@link Gtk.TextWindowType.LEFT} and {@link Gtk.TextWindowType.RIGHT} are supported,
+         * respectively corresponding to the left and right gutter.
+         *
+         * The line numbers and mark category icons are rendered in the left gutter.
          * @param window_type the gutter window type.
          * @returns the {@link GtkSource.Gutter}.
          */
         get_gutter(window_type: Gtk.TextWindowType | null): Gutter;
         /**
-         * Returns whether the current line is highlighted.
-         * @returns `true` if the current line is highlighted.
+         * @returns the current value of the {@link GtkSource.View.highlight_current_line}   property.
          */
         get_highlight_current_line(): boolean;
         /**
@@ -8354,23 +7719,19 @@ export namespace GtkSource {
          */
         get_mark_attributes(category: string, priority: number): MarkAttributes;
         /**
-         * Gets the position of the right margin in the given `view`.
-         * @returns the position of the right margin.
+         * @returns the current value of the {@link GtkSource.View.right_margin_position}   property.
          */
         get_right_margin_position(): number;
         /**
-         * Returns whether line marks are displayed beside the text.
-         * @returns `true` if the line marks are displayed.
+         * @returns the current value of the {@link GtkSource.View.show_line_marks} property.
          */
         get_show_line_marks(): boolean;
         /**
-         * Returns whether line numbers are displayed beside the text.
-         * @returns `true` if the line numbers are displayed.
+         * @returns the current value of the {@link GtkSource.View.show_line_numbers} property.
          */
         get_show_line_numbers(): boolean;
         /**
-         * Returns whether a right margin is displayed.
-         * @returns `true` if the right margin is shown.
+         * @returns the current value of the {@link GtkSource.View.show_right_margin} property.
          */
         get_show_right_margin(): boolean;
         /**
@@ -8386,15 +7747,11 @@ export namespace GtkSource {
          */
         get_smart_home_end(): SmartHomeEndType;
         /**
-         * Gets the {@link GtkSource.SpaceDrawer} associated with `view`. The returned object is
-         * guaranteed to be the same for the lifetime of `view`. Each {@link GtkSource.View}
-         * object has a different {@link GtkSource.SpaceDrawer}.
-         * @returns the {@link GtkSource.SpaceDrawer} associated with `view`.
+         * @returns the value of the {@link GtkSource.View.space_drawer}   property.
          */
         get_space_drawer(): SpaceDrawer;
         /**
-         * Returns the width of tabulation in characters.
-         * @returns width of tab.
+         * @returns the current value of the {@link GtkSource.View.tab_width} property.
          */
         get_tab_width(): number;
         /**
@@ -8422,13 +7779,8 @@ export namespace GtkSource {
          */
         set_auto_indent(enable: boolean): void;
         /**
-         * Set if and how the background pattern should be displayed.
-         * @param background_pattern the {@link GtkSource.BackgroundPatternType}.
-         */
-        set_background_pattern(background_pattern: BackgroundPatternType | null): void;
-        /**
-         * If `highlight` is `true` the current line will be highlighted.
-         * @param highlight whether to highlight the current line.
+         * Sets the {@link GtkSource.View.highlight_current_line} property.
+         * @param highlight the new value.
          */
         set_highlight_current_line(highlight: boolean): void;
         /**
@@ -8483,23 +7835,23 @@ export namespace GtkSource {
          */
         set_mark_attributes(category: string, attributes: MarkAttributes, priority: number): void;
         /**
-         * Sets the position of the right margin in the given `view`.
-         * @param pos the width in characters where to position the right margin.
+         * Sets the {@link GtkSource.View.right_margin_position} property.
+         * @param pos the new value.
          */
         set_right_margin_position(pos: number): void;
         /**
-         * If `true` line marks will be displayed beside the text.
-         * @param show whether line marks should be displayed.
+         * Sets the {@link GtkSource.View.show_line_marks} property.
+         * @param show the new value.
          */
         set_show_line_marks(show: boolean): void;
         /**
-         * If `true` line numbers will be displayed beside the text.
-         * @param show whether line numbers should be displayed.
+         * Sets the {@link GtkSource.View.show_line_numbers} property.
+         * @param show the new value.
          */
         set_show_line_numbers(show: boolean): void;
         /**
-         * If `true` a right margin is displayed.
-         * @param show whether to show a right margin.
+         * Sets the {@link GtkSource.View.show_right_margin} property.
+         * @param show the new value.
          */
         set_show_right_margin(show: boolean): void;
         /**
@@ -8515,10 +7867,8 @@ export namespace GtkSource {
          */
         set_smart_home_end(smart_home_end: SmartHomeEndType | null): void;
         /**
-         * Sets the width of tabulation in characters. The {@link Gtk.TextBuffer} still contains
-         * \t characters, but they can take a different visual width in a {@link GtkSource.View}
-         * widget.
-         * @param width width of tab in characters.
+         * Sets the {@link GtkSource.View.tab_width} property.
+         * @param width the new value.
          */
         set_tab_width(width: number): void;
         /**
@@ -8735,7 +8085,7 @@ export namespace GtkSource {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -8790,7 +8140,7 @@ export namespace GtkSource {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8865,7 +8215,7 @@ export namespace GtkSource {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9155,59 +8505,118 @@ export namespace GtkSource {
     /**
      * @gir-type Struct
      */
-    abstract class Encoding {
+    class Encoding {
         static $gtype: GObject.GType<Encoding>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+
+        static ['new'](charset: string): Encoding;
+
+        static new_from_locale(): Encoding;
+
+        static new_utf8(): Encoding;
 
         // Static methods
 
         /**
-         * Gets all encodings.
+         * A {@link GLib.CompareFunc} provided for convenience. When 0 is returned it means that
+         * the two encodings are equal according to `gtk_source_encoding_equals()`.
+         *
+         * It is useful for example for `g_slist_find_custom()`.
+         * @param a a {@link GtkSource.Encoding}.
+         * @param b a {@link GtkSource.Encoding}.
+         */
+        static compare_func(a?: any | null, b?: any | null): number;
+        /**
+         * A {@link GLib.CopyFunc} provided for convenience. It does the same as
+         * `gtk_source_encoding_copy()`. It is useful for example for `g_slist_copy_deep()`.
+         * @param src a {@link GtkSource.Encoding}.
+         * @param data Additional data (ignored).
+         */
+        static copy_func(src?: any | null, data?: any | null): any | null;
+        /**
+         * Gets a list of all encodings known by {@link GtkSource.Encoding}.
          */
         static get_all(): Encoding[];
-        /**
-         * Gets the {@link GtkSource.Encoding} for the current locale. See also `g_get_charset()`.
-         */
-        static get_current(): Encoding;
         /**
          * Gets the list of default candidate encodings to try when loading a file. See
          * `gtk_source_file_loader_set_candidate_encodings()`.
          *
-         * This function returns a different list depending on the current locale (i.e.
+         * This function returns a different list depending on the current locale (i.e.,
          * language, country and default encoding). The UTF-8 encoding and the current
          * locale encoding are guaranteed to be present in the returned list.
+         *
+         * Note that the returned list doesn't contain all encodings known by
+         * {@link GtkSource.Encoding}, it is a limited list that contains only the encodings
+         * that have the most likelihood to fit for the current locale.
          */
         static get_default_candidates(): Encoding[];
         /**
-         * Gets a {@link GtkSource.Encoding} from a character set such as "UTF-8" or
-         * "ISO-8859-1".
-         * @param charset a character set.
+         * A convenience function to remove duplicated encodings in a list.
+         * @param list a list of   {@link GtkSource.Encoding}'s.
+         * @param removal_type the {@link GtkSource.EncodingDuplicates}.
          */
-        static get_from_charset(charset: string): Encoding | null;
-        static get_utf8(): Encoding;
+        static remove_duplicates(list: Encoding[], removal_type: EncodingDuplicates): Encoding[];
 
         // Methods
 
         /**
-         * Used by language bindings.
          * @returns a copy of `enc`.
          */
         copy(): Encoding;
         /**
-         * Used by language bindings.
+         * Returns whether `enc1` and `enc2` are equal. It returns `true` if and only if:
+         * - Both `enc1` and `enc2` are `null`;
+         * - Or both `enc1` and `enc2` have a UTF-8 charset (see
+         *   `gtk_source_encoding_is_utf8()`);
+         * - Or the charsets are equal according to `g_ascii_strcasecmp()` (because
+         *   iconv-compatible charsets are case insensitive).
+         * @param enc2 a {@link GtkSource.Encoding}, or `null`.
+         * @returns whether `enc1` and `enc2` are equal.
          */
+        equals(enc2?: Encoding | null): boolean;
         free(): void;
         /**
-         * Gets the character set of the {@link GtkSource.Encoding}, such as "UTF-8" or
-         * "ISO-8859-1".
+         * Gets the character set of the {@link GtkSource.Encoding}, such as "UTF-8" or "ISO-8859-1".
          * @returns the character set of the {@link GtkSource.Encoding}.
          */
         get_charset(): string;
         /**
-         * Gets the name of the {@link GtkSource.Encoding} such as "Unicode" or "Western".
+         * Gets the name of the {@link GtkSource.Encoding} such as "Unicode" or "Western". If
+         * the charset is unknown by {@link GtkSource.Encoding}, "Unknown" is returned. The
+         * return value is already translated by gettext.
          * @returns the name of the {@link GtkSource.Encoding}.
          */
         get_name(): string;
         /**
+         * Returns `true` if `enc` has a charset known by {@link GtkSource.Encoding}. In other
+         * words: if `enc` is equal to an encoding returned by
+         * `gtk_source_encoding_get_all()`.
+         *
+         * When the charset string comes from an untrusted source, it can be desirable
+         * to check it.
+         * @returns whether `enc` has a charset known by {@link GtkSource.Encoding}.
+         */
+        has_known_charset(): boolean;
+        /**
+         * @returns whether `enc` is the locale encoding (see   `gtk_source_encoding_new_from_locale()`).
+         */
+        is_locale(): boolean;
+        /**
+         * Returns whether `enc` is a UTF-8 encoding.
+         *
+         * If `enc` was created with `gtk_source_encoding_new_utf8()`, the charset is
+         * "UTF-8". But iconv supports other variants: "UTF8", "utf-8" and "utf8". This
+         * function returns `true` for all UTF-8 variants supported by iconv.
+         * @returns whether `enc` is a UTF-8 encoding.
+         */
+        is_utf8(): boolean;
+        /**
+         * Returns the encoding name with the charset in parenthesis, for example
+         * "Unicode (UTF-8)". If the name is unknown, just the charset is returned. The
+         * name is translated by gettext.
          * @returns a string representation. Free with `g_free()` when no longer needed.
          */
         to_string(): string;
@@ -9414,26 +8823,19 @@ export namespace GtkSource {
     }
 
     /**
-     * @gir-type Alias
-     */
-    type StyleClass = typeof Style;
-    /**
-     * The data of a {@link GtkSource.Style} object.
-     *
      * Before using the value of a certain field, check the boolean value of the
-     * corresponding "use_" field.
+     * corresponding "`use_`" field.
      * @gir-type Struct
-     * @since 300.0
+     * @since 299.2
      */
-    class StyleData {
-        static $gtype: GObject.GType<StyleData>;
+    class Style {
+        static $gtype: GObject.GType<Style>;
 
         // Fields
 
         foreground_color: Gdk.RGBA;
         background_color: Gdk.RGBA;
         underline_color: Gdk.RGBA;
-        paragraph_background_color: Gdk.RGBA;
         scale: number;
         underline: Pango.Underline;
         italic: number;
@@ -9442,18 +8844,62 @@ export namespace GtkSource {
         use_foreground_color: number;
         use_background_color: number;
         use_underline_color: number;
-        use_paragraph_background_color: number;
         use_scale: number;
         use_underline: number;
         use_italic: number;
         use_bold: number;
         use_strikethrough: number;
+
+        // Constructors
+
+        constructor(
+            properties?: Partial<{
+                foreground_color: Gdk.RGBA;
+                background_color: Gdk.RGBA;
+                underline_color: Gdk.RGBA;
+                scale: number;
+                underline: Pango.Underline;
+                italic: number;
+                bold: number;
+                strikethrough: number;
+                use_foreground_color: number;
+                use_background_color: number;
+                use_underline_color: number;
+                use_scale: number;
+                use_underline: number;
+                use_italic: number;
+                use_bold: number;
+                use_strikethrough: number;
+            }>,
+        );
+
+        static ['new'](): Style;
+
+        // Methods
+
+        /**
+         * This function modifies the {@link Gtk.TextTag} properties that are related to the
+         * {@link GtkSource.Style} attributes. Other {@link Gtk.TextTag} properties are left untouched.
+         *
+         * If `style` is non-`null`, applies `style` to `tag`.
+         *
+         * If `style` is `null`, the related `*-set` properties of {@link Gtk.TextTag} are set to
+         * `false`.
+         * @param tag a {@link Gtk.TextTag} to apply styles to.
+         */
+        apply(tag: Gtk.TextTag): void;
+        /**
+         * Increases the reference count of `style` by one.
+         * @returns the passed in `style`.
+         */
+        ref(): Style;
+        /**
+         * Decreases the reference count of `style` by one. If the reference count drops
+         * to 0, `style` is freed.
+         */
+        unref(): void;
     }
 
-    /**
-     * @gir-type Alias
-     */
-    type StyleSchemeChooserInterface = typeof StyleSchemeChooser;
     /**
      * @gir-type Alias
      */
@@ -9504,72 +8950,73 @@ export namespace GtkSource {
             // Virtual methods
 
             /**
-             * Emits the "changed" signal on `proposal`. This should be called by
-             * implementations whenever the name, icon or info of the proposal has
-             * changed.
+             * Emits the {@link GtkSource.CompletionProposal.SignalSignatures.changed | GtkSource.CompletionProposal::changed} signal on `proposal`. This
+             * should be called by implementations whenever the label, icon or info of the
+             * proposal has changed.
              * @virtual
              */
             vfunc_changed(): void;
             /**
-             * Get whether two proposal objects are the same.  This is used to (together
+             * Gets whether two proposal objects are the same. This is used to (together
              * with `gtk_source_completion_proposal_hash()`) to match proposals in the
-             * completion model. By default, it uses direct equality (g_direct_equal()).
+             * completion model.
              * @param other a {@link GtkSource.CompletionProposal}.
              * @virtual
              */
             vfunc_equal(other: CompletionProposal): boolean;
             /**
-             * Gets the {@link Gio.Icon} for the icon of `proposal`.
+             * The virtual function pointer for `gtk_source_completion_proposal_get_gicon()`.
+             *   By default, `null` is returned.
              * @virtual
              */
             vfunc_get_gicon(): Gio.Icon | null;
             /**
-             * Gets the {@link GdkPixbuf.Pixbuf} for the icon of `proposal`.
+             * The virtual function pointer for `gtk_source_completion_proposal_get_icon()`.
+             *   By default, `null` is returned.
              * @virtual
              */
             vfunc_get_icon(): GdkPixbuf.Pixbuf | null;
             /**
-             * Gets the icon name of `proposal`.
+             * The virtual function pointer for `gtk_source_completion_proposal_get_icon_name()`.
+             *   By default, `null` is returned.
              * @virtual
              */
             vfunc_get_icon_name(): string | null;
             /**
              * Gets extra information associated to the proposal. This information will be
              * used to present the user with extra, detailed information about the
-             * selected proposal. The returned string must be freed with `g_free()`.
+             * selected proposal.
              * @virtual
              */
             vfunc_get_info(): string | null;
             /**
              * Gets the label of `proposal`. The label is shown in the list of proposals as
-             * plain text. If you need any markup (such as bold or italic text), you have
-             * to implement `gtk_source_completion_proposal_get_markup()`. The returned string
-             * must be freed with `g_free()`.
+             * plain text. If you need any markup (such as bold or italic text), you have to
+             * implement `gtk_source_completion_proposal_get_markup()`.
              * @virtual
              */
-            vfunc_get_label(): string;
+            vfunc_get_label(): string | null;
             /**
              * Gets the label of `proposal` with markup. The label is shown in the list of
              * proposals and may contain markup. This will be used instead of
-             * `gtk_source_completion_proposal_get_label()` if implemented. The returned string
-             * must be freed with `g_free()`.
+             * `gtk_source_completion_proposal_get_label()` if implemented.
              * @virtual
              */
-            vfunc_get_markup(): string;
+            vfunc_get_markup(): string | null;
             /**
-             * Gets the text of `proposal`. The text that is inserted into
-             * the text buffer when the proposal is activated by the default activation.
-             * You are free to implement a custom activation handler in the provider and
-             * not implement this function. For more information, see
-             * `gtk_source_completion_provider_activate_proposal()`. The returned string must
-             * be freed with `g_free()`.
+             * Gets the text of `proposal`. The text that is inserted into the text buffer
+             * when the proposal is activated by the default activation.
+             *
+             * You are free to implement a custom activation handler in the provider and not
+             * implement this function. For more information, see
+             * `gtk_source_completion_provider_activate_proposal()`.
              * @virtual
              */
-            vfunc_get_text(): string;
+            vfunc_get_text(): string | null;
             /**
-             * Get the hash value of `proposal`. This is used to (together with
+             * Gets the hash value of `proposal`. This is used to (together with
              * `gtk_source_completion_proposal_equal()`) to match proposals in the completion
-             * model. By default, it uses a direct hash (g_direct_hash()).
+             * model.
              * @virtual
              */
             vfunc_hash(): number;
@@ -9591,72 +9038,67 @@ export namespace GtkSource {
         // Methods
 
         /**
-         * Emits the "changed" signal on `proposal`. This should be called by
-         * implementations whenever the name, icon or info of the proposal has
-         * changed.
+         * Emits the {@link GtkSource.CompletionProposal.SignalSignatures.changed | GtkSource.CompletionProposal::changed} signal on `proposal`. This
+         * should be called by implementations whenever the label, icon or info of the
+         * proposal has changed.
          */
         changed(): void;
         /**
-         * Get whether two proposal objects are the same.  This is used to (together
+         * Gets whether two proposal objects are the same. This is used to (together
          * with `gtk_source_completion_proposal_hash()`) to match proposals in the
-         * completion model. By default, it uses direct equality (g_direct_equal()).
+         * completion model.
          * @param other a {@link GtkSource.CompletionProposal}.
-         * @returns `true` if `proposal` and `object` are the same proposal
+         * @returns whether `proposal` and `other` are the same proposal.
          */
         equal(other: CompletionProposal): boolean;
         /**
-         * Gets the {@link Gio.Icon} for the icon of `proposal`.
-         * @returns A {@link Gio.Icon} with the icon of `proposal`.
+         * @returns the {@link Gio.Icon} for the icon of `proposal`.
          */
         get_gicon(): Gio.Icon | null;
         /**
-         * Gets the {@link GdkPixbuf.Pixbuf} for the icon of `proposal`.
-         * @returns A {@link GdkPixbuf.Pixbuf} with the icon of `proposal`.
+         * @returns a {@link GdkPixbuf.Pixbuf} with the icon of `proposal`.
          */
         get_icon(): GdkPixbuf.Pixbuf | null;
         /**
-         * Gets the icon name of `proposal`.
-         * @returns The icon name of `proposal`.
+         * @returns the icon name of `proposal`.
          */
         get_icon_name(): string | null;
         /**
          * Gets extra information associated to the proposal. This information will be
          * used to present the user with extra, detailed information about the
-         * selected proposal. The returned string must be freed with `g_free()`.
-         * @returns a newly-allocated string containing extra information of `proposal` or `null` if no extra information is associated to `proposal`.
+         * selected proposal.
+         * @returns a newly-allocated string containing   extra information of `proposal`, or `null` if no extra information is   associated to `proposal`.
          */
         get_info(): string | null;
         /**
          * Gets the label of `proposal`. The label is shown in the list of proposals as
-         * plain text. If you need any markup (such as bold or italic text), you have
-         * to implement `gtk_source_completion_proposal_get_markup()`. The returned string
-         * must be freed with `g_free()`.
-         * @returns a new string containing the label of `proposal`.
+         * plain text. If you need any markup (such as bold or italic text), you have to
+         * implement `gtk_source_completion_proposal_get_markup()`.
+         * @returns a new string containing the label of   `proposal`.
          */
-        get_label(): string;
+        get_label(): string | null;
         /**
          * Gets the label of `proposal` with markup. The label is shown in the list of
          * proposals and may contain markup. This will be used instead of
-         * `gtk_source_completion_proposal_get_label()` if implemented. The returned string
-         * must be freed with `g_free()`.
-         * @returns a new string containing the label of `proposal` with markup.
+         * `gtk_source_completion_proposal_get_label()` if implemented.
+         * @returns a new string containing the label of   `proposal` with markup.
          */
-        get_markup(): string;
+        get_markup(): string | null;
         /**
-         * Gets the text of `proposal`. The text that is inserted into
-         * the text buffer when the proposal is activated by the default activation.
-         * You are free to implement a custom activation handler in the provider and
-         * not implement this function. For more information, see
-         * `gtk_source_completion_provider_activate_proposal()`. The returned string must
-         * be freed with `g_free()`.
-         * @returns a new string containing the text of `proposal`.
+         * Gets the text of `proposal`. The text that is inserted into the text buffer
+         * when the proposal is activated by the default activation.
+         *
+         * You are free to implement a custom activation handler in the provider and not
+         * implement this function. For more information, see
+         * `gtk_source_completion_provider_activate_proposal()`.
+         * @returns a new string containing the text of   `proposal`.
          */
-        get_text(): string;
+        get_text(): string | null;
         /**
-         * Get the hash value of `proposal`. This is used to (together with
+         * Gets the hash value of `proposal`. This is used to (together with
          * `gtk_source_completion_proposal_equal()`) to match proposals in the completion
-         * model. By default, it uses a direct hash (g_direct_hash()).
-         * @returns The hash value of `proposal`.
+         * model.
+         * @returns the hash value of `proposal`.
          */
         hash(): number;
     }
@@ -9938,80 +9380,6 @@ export namespace GtkSource {
 
     export const CompletionProvider: CompletionProviderNamespace & {
         new (): CompletionProvider; // This allows `obj instanceof CompletionProvider`
-    };
-
-    namespace StyleSchemeChooser {
-        /**
-         * Interface for implementing StyleSchemeChooser.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Gets the currently-selected scheme.
-             * @virtual
-             */
-            vfunc_get_style_scheme(): StyleScheme;
-            /**
-             * Sets the scheme.
-             * @param scheme a {@link GtkSource.StyleScheme}
-             * @virtual
-             */
-            vfunc_set_style_scheme(scheme: StyleScheme): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            style_scheme: StyleScheme;
-            styleScheme: StyleScheme;
-        }
-    }
-
-    export interface StyleSchemeChooserNamespace {
-        $gtype: GObject.GType<StyleSchemeChooser>;
-        prototype: StyleSchemeChooser;
-    }
-    /**
-     * @gir-type Interface
-     */
-    interface StyleSchemeChooser extends GObject.Object, StyleSchemeChooser.Interface {
-        // Properties
-
-        /**
-         * The :style-scheme property contains the currently selected style
-         * scheme. The property can be set to change
-         * the current selection programmatically.
-         * @since 3.16
-         */
-        get style_scheme(): StyleScheme;
-        set style_scheme(val: StyleScheme);
-        /**
-         * The :style-scheme property contains the currently selected style
-         * scheme. The property can be set to change
-         * the current selection programmatically.
-         * @since 3.16
-         */
-        get styleScheme(): StyleScheme;
-        set styleScheme(val: StyleScheme);
-
-        // Methods
-
-        /**
-         * Gets the currently-selected scheme.
-         * @returns the currently-selected scheme.
-         */
-        get_style_scheme(): StyleScheme;
-        /**
-         * Sets the scheme.
-         * @param scheme a {@link GtkSource.StyleScheme}
-         */
-        set_style_scheme(scheme: StyleScheme): void;
-    }
-
-    export const StyleSchemeChooser: StyleSchemeChooserNamespace & {
-        new (): StyleSchemeChooser; // This allows `obj instanceof StyleSchemeChooser`
     };
 
     namespace UndoManager {

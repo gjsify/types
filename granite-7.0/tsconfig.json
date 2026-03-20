@@ -19,8 +19,8 @@
     // Show diagnostics
     "diagnostics": true,
     "paths": {
-      "@girs/gdk-4.0": [
-            "../gdk-4.0/index.d.ts"
+      "@girs/pango-1.0": [
+            "../pango-1.0/index.d.ts"
       ],
       "@girs/cairo-1.0": [
             "../cairo-1.0/index.d.ts"
@@ -30,12 +30,6 @@
       ],
       "@girs/glib-2.0": [
             "../glib-2.0/index.d.ts"
-      ],
-      "@girs/pangocairo-1.0": [
-            "../pangocairo-1.0/index.d.ts"
-      ],
-      "@girs/pango-1.0": [
-            "../pango-1.0/index.d.ts"
       ],
       "@girs/harfbuzz-0.0": [
             "../harfbuzz-0.0/index.d.ts"
@@ -48,6 +42,12 @@
       ],
       "@girs/gmodule-2.0": [
             "../gmodule-2.0/index.d.ts"
+      ],
+      "@girs/gdk-4.0": [
+            "../gdk-4.0/index.d.ts"
+      ],
+      "@girs/pangocairo-1.0": [
+            "../pangocairo-1.0/index.d.ts"
       ],
       "@girs/gdkpixbuf-2.0": [
             "../gdkpixbuf-2.0/index.d.ts"

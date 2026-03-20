@@ -394,6 +394,23 @@ export namespace GstSdp {
      */
     function sdp_make_keymgmt(uri: string, base64: string): string;
     /**
+     * Mapping of structure fields to SDP attributes:
+     *
+     * a=rtpmap:(payload) (encoding_name) or (clock_rate)[or (encoding_params)]
+     *
+     * a=framesize:(payload) (width)-(height)
+     *
+     * a=fmtp:(payload) (param)[=(value)];...
+     *
+     * a=rtcp-fb:(payload) (param1) [param2]...
+     *
+     * a=extmap:(id)[/direction] (extensionname) (extensionattributes)
+     * @param structure a {@link Gst.Structure} belonging to a {@link Gst.Caps} SDP mapping, see also `gst_sdp_media_get_caps_from_media()`
+     * @returns a {@link GstSdp.SDPResult}.
+     * @since 1.28
+     */
+    function sdp_media_add_media_from_structure(structure: Gst.Structure): [SDPResult, SDPMedia];
+    /**
      * Initialize `media` so that its contents are as if it was freshly allocated
      * with `gst_sdp_media_new()`. This function is mostly used to initialize a media
      * allocated on the stack. `gst_sdp_media_uninit()` undoes this operation.
@@ -420,6 +437,8 @@ export namespace GstSdp {
      * a=rtcp-fb:(payload) (param1) [param2]...
      *
      * a=extmap:(id)[/direction] (extensionname) (extensionattributes)
+     *
+     * Only the first {@link Gst.Structure} of the `caps` is used.
      * @param caps a {@link Gst.Caps}
      * @returns a {@link GstSdp.SDPResult}.
      * @since 1.8
@@ -1154,6 +1173,21 @@ export namespace GstSdp {
         // Static methods
 
         /**
+         * Mapping of structure fields to SDP attributes:
+         *
+         * a=rtpmap:(payload) (encoding_name) or (clock_rate)[or (encoding_params)]
+         *
+         * a=framesize:(payload) (width)-(height)
+         *
+         * a=fmtp:(payload) (param)[=(value)];...
+         *
+         * a=rtcp-fb:(payload) (param1) [param2]...
+         *
+         * a=extmap:(id)[/direction] (extensionname) (extensionattributes)
+         * @param structure a {@link Gst.Structure} belonging to a {@link Gst.Caps} SDP mapping, see also `gst_sdp_media_get_caps_from_media()`
+         */
+        static add_media_from_structure(structure: Gst.Structure): [SDPResult, SDPMedia];
+        /**
          * Initialize `media` so that its contents are as if it was freshly allocated
          * with `gst_sdp_media_new()`. This function is mostly used to initialize a media
          * allocated on the stack. `gst_sdp_media_uninit()` undoes this operation.
@@ -1178,6 +1212,8 @@ export namespace GstSdp {
          * a=rtcp-fb:(payload) (param1) [param2]...
          *
          * a=extmap:(id)[/direction] (extensionname) (extensionattributes)
+         *
+         * Only the first {@link Gst.Structure} of the `caps` is used.
          * @param caps a {@link Gst.Caps}
          */
         static set_media_from_caps(caps: Gst.Caps): [SDPResult, SDPMedia];

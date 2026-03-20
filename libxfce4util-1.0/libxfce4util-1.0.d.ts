@@ -545,6 +545,123 @@ export namespace Libxfce4util {
     interface PosixSignalHandler {
         (signal: number): void;
     }
+    namespace Consolekit {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class Consolekit extends GObject.Object {
+        static $gtype: GObject.GType<Consolekit>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: Consolekit.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<Consolekit.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof Consolekit.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Consolekit.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof Consolekit.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Consolekit.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof Consolekit.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<Consolekit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Create a new {@link Libxfce4util.Consolekit} instance or increase reference count.
+         */
+        static get(): Consolekit;
+
+        // Methods
+
+        /**
+         * Check whether ConsoleKit can trigger and has authorization for Hibernate.
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        can_hibernate(): [boolean, boolean, boolean];
+        /**
+         * Check whether ConsoleKit can trigger and has authorization for HybridSleep.
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        can_hybrid_sleep(): [boolean, boolean, boolean];
+        /**
+         * Check whether ConsoleKit can trigger PowerOff.
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        can_power_off(): [boolean, boolean, boolean];
+        /**
+         * Check whether ConsoleKit can trigger Reboot.
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        can_reboot(): [boolean, boolean, boolean];
+        /**
+         * Check whether ConsoleKit can trigger and has authorization for Suspend.
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        can_suspend(): [boolean, boolean, boolean];
+        /**
+         * Ask ConsoleKit to trigger Hibernate.
+         * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        hibernate(polkit_interactive: boolean): boolean;
+        /**
+         * Ask ConsoleKit to trigger HybridSleep.
+         * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        hybrid_sleep(polkit_interactive: boolean): boolean;
+        /**
+         * Ask ConsoleKit to trigger PowerOff.
+         * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        power_off(polkit_interactive: boolean): boolean;
+        /**
+         * Ask ConsoleKit to trigger Reboot.
+         * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        reboot(polkit_interactive: boolean): boolean;
+        /**
+         * Ask ConsoleKit to trigger Suspend.
+         * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        suspend(polkit_interactive: boolean): boolean;
+    }
+
     namespace Kiosk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -614,6 +731,127 @@ export namespace Libxfce4util {
         query(capability: string): boolean;
     }
 
+    namespace Systemd {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class Systemd extends GObject.Object {
+        static $gtype: GObject.GType<Systemd>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: Systemd.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<Systemd.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof Systemd.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Systemd.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof Systemd.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Systemd.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof Systemd.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<Systemd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Create a new {@link Libxfce4util.Systemd} instance or increase reference count.
+         */
+        static get(): Systemd;
+
+        // Methods
+
+        /**
+         * Check whether systemd can trigger and has authorization for Hibernate.
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        can_hibernate(): [boolean, boolean, boolean];
+        /**
+         * Check whether systemd can trigger and has authorization for HybridSleep.
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        can_hybrid_sleep(): [boolean, boolean, boolean];
+        /**
+         * Check whether systemd can trigger PowerOff.
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        can_power_off(): [boolean, boolean, boolean];
+        /**
+         * Check whether systemd can trigger Reboot.
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        can_reboot(): [boolean, boolean, boolean];
+        /**
+         * Check whether systemd can trigger and has authorization for Suspend.
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        can_suspend(): [boolean, boolean, boolean];
+        /**
+         * Ask systemd to trigger Hibernate.
+         * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        hibernate(polkit_interactive: boolean): boolean;
+        /**
+         * Ask systemd to trigger HybridSleep.
+         * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        hybrid_sleep(polkit_interactive: boolean): boolean;
+        /**
+         * Ask systemd to trigger PowerOff.
+         * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        power_off(polkit_interactive: boolean): boolean;
+        /**
+         * Ask systemd to trigger Reboot.
+         * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        reboot(polkit_interactive: boolean): boolean;
+        /**
+         * Ask systemd to trigger Suspend.
+         * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
+         * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         */
+        suspend(polkit_interactive: boolean): boolean;
+    }
+
+    /**
+     * @gir-type Alias
+     */
+    type ConsolekitClass = typeof Consolekit;
     /**
      * @gir-type Alias
      */
@@ -841,6 +1079,10 @@ export namespace Libxfce4util {
         write_list_entry(key: string, value: string, separator: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
+    type SystemdClass = typeof Systemd;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

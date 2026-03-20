@@ -1120,6 +1120,7 @@ export namespace Poppler {
 
     /**
      * @gir-type Enum
+     * @since 24.12
      */
     enum Stretch {
         ULTRA_CONDENSED,
@@ -1451,6 +1452,7 @@ export namespace Poppler {
 
     /**
      * @gir-type Enum
+     * @since 24.12
      */
     enum Style {
         NORMAL,
@@ -1467,6 +1469,7 @@ export namespace Poppler {
 
     /**
      * @gir-type Enum
+     * @since 24.12
      */
     enum Weight {
         THIN,
@@ -1480,15 +1483,43 @@ export namespace Poppler {
         HEAVY,
     }
 
+    /**
+     * @since 26.01
+     */
+    const ANNOT_TEXT_ICON_CHECK: string;
     const ANNOT_TEXT_ICON_CIRCLE: string;
     const ANNOT_TEXT_ICON_COMMENT: string;
     const ANNOT_TEXT_ICON_CROSS: string;
+    /**
+     * @since 26.01
+     */
+    const ANNOT_TEXT_ICON_CROSS_HAIRS: string;
     const ANNOT_TEXT_ICON_HELP: string;
     const ANNOT_TEXT_ICON_INSERT: string;
     const ANNOT_TEXT_ICON_KEY: string;
     const ANNOT_TEXT_ICON_NEW_PARAGRAPH: string;
     const ANNOT_TEXT_ICON_NOTE: string;
     const ANNOT_TEXT_ICON_PARAGRAPH: string;
+    /**
+     * @since 26.01
+     */
+    const ANNOT_TEXT_ICON_RIGHT_ARROW: string;
+    /**
+     * @since 26.01
+     */
+    const ANNOT_TEXT_ICON_RIGHT_POINTER: string;
+    /**
+     * @since 26.01
+     */
+    const ANNOT_TEXT_ICON_STAR: string;
+    /**
+     * @since 26.01
+     */
+    const ANNOT_TEXT_ICON_UP_ARROW: string;
+    /**
+     * @since 26.01
+     */
+    const ANNOT_TEXT_ICON_UP_LEFT_ARROW: string;
     /**
      * Defined if poppler was compiled with cairo support.
      */
@@ -1767,40 +1798,144 @@ export namespace Poppler {
     }
 
     /**
+     * Flags to select which annotations to render. If the flag corresponding to a
+     * certain annotation type is on, then such annotation type will be rendered,
+     * when appropriate (e.g: won't be renderer if the annotation is not visible).
+     * This allows to combine multiple flags, like
+     * `POPPLER_RENDER_ANNOTS_LINK | POPPLER_RENDER_ANNOTS_TEXT`, or disable some
+     * specific annotations like
+     * `POPPLER_RENDER_ANNOTS_ALL & (~POPPLER_RENDER_ANNOTS_TEXT)`
      * @gir-type Flags
+     * @since 25.02
      */
     enum RenderAnnotsFlags {
+        /**
+         * do not render annotations
+         */
         NONE,
+        /**
+         * render text annotations
+         */
         TEXT,
+        /**
+         * render link annotations
+         */
         LINK,
+        /**
+         * render freetext annotations,
+         */
         FREETEXT,
+        /**
+         * render line annotations,
+         */
         LINE,
+        /**
+         * render square annotations,
+         */
         SQUARE,
+        /**
+         * render circle annotations,
+         */
         CIRCLE,
+        /**
+         * render polygon annotations,
+         */
         POLYGON,
+        /**
+         * render polyline annotations,
+         */
         POLYLINE,
+        /**
+         * render highlight annotations,
+         */
         HIGHLIGHT,
+        /**
+         * render underline annotations,
+         */
         UNDERLINE,
+        /**
+         * render squiggly annotations,
+         */
         SQUIGGLY,
+        /**
+         * render strikeout annotations,
+         */
         STRIKEOUT,
+        /**
+         * render stamp annotations,
+         */
         STAMP,
+        /**
+         * render caret annotations,
+         */
         CARET,
+        /**
+         * render ink annotations,
+         */
         INK,
+        /**
+         * render popup annotations,
+         */
         POPUP,
+        /**
+         * render fileattachment annotations,
+         */
         FILEATTACHMENT,
+        /**
+         * render sound annotations,
+         */
         SOUND,
+        /**
+         * render movie annotations,
+         */
         MOVIE,
+        /**
+         * render widget annotations,
+         */
         WIDGET,
+        /**
+         * render screen annotations,
+         */
         SCREEN,
+        /**
+         * render printermark annotations,
+         */
         PRINTERMARK,
+        /**
+         * render trapnet annotations,
+         */
         TRAPNET,
+        /**
+         * render watermark annotations,
+         */
         WATERMARK,
+        /**
+         * render 3D annotations,
+         */
         '3D',
+        /**
+         * render richmedia annotations,
+         */
         RICHMEDIA,
+        /**
+         * render the default annotations used for printing
+         */
         PRINT_DOCUMENT,
+        /**
+         * render markup annotations and default annotations used for printing
+         */
         PRINT_MARKUP,
+        /**
+         * render stamp annotations and default annotations used for printing
+         */
         PRINT_STAMP,
+        /**
+         * render all possible annotations used for printing
+         */
         PRINT_ALL,
+        /**
+         * render all annotations
+         */
         ALL,
     }
 
@@ -2325,10 +2460,20 @@ export namespace Poppler {
         // Methods
 
         /**
+         * Returns whether the annotation is drawn below the page content or not.
+         */
+        get_draw_below(): boolean;
+        /**
          * Each element of the return value is a path.
          * @returns a GSList of PopplerPath
          */
         get_ink_list(): Path[];
+        /**
+         * This is typically used for highlight annotations. Technically, this implies that the
+         * annotation is drawn using a multiply blend mode.
+         * @param draw_below whether the annotation should be drawn below the document content
+         */
+        set_draw_below(draw_below: boolean): void;
         /**
          * Each element of `ink_list` is a path. The annotation must have
          * already been added to a page, otherwise the annotation may be
@@ -2922,6 +3067,32 @@ export namespace Poppler {
          *  </varlistentry>
          *  <varlistentry>
          *   <term>#POPPLER_ANNOT_TEXT_ICON_CIRCLE</term>
+         *  </varlistentry>
+         * </variablelist>
+         *
+         * Since 26.1.0, Poppler also knows how to render the following icons,
+         * which are somewhat standard and other PDF renderers may also support:
+         * <variablelist>
+         *  <varlistentry>
+         *   <term>#POPPLER_ANNOT_TEXT_ICON_CHECK</term>
+         *  </varlistentry>
+         *  <varlistentry>
+         *   <term>#POPPLER_ANNOT_TEXT_ICON_STAR</term>
+         *  </varlistentry>
+         *  <varlistentry>
+         *   <term>#POPPLER_ANNOT_TEXT_ICON_RIGHT_ARROW</term>
+         *  </varlistentry>
+         *  <varlistentry>
+         *   <term>#POPPLER_ANNOT_TEXT_ICON_RIGHT_POINTER</term>
+         *  </varlistentry>
+         *  <varlistentry>
+         *   <term>#POPPLER_ANNOT_TEXT_ICON_UP_ARROW</term>
+         *  </varlistentry>
+         *  <varlistentry>
+         *   <term>#POPPLER_ANNOT_TEXT_ICON_UP_LEFT_ARROW</term>
+         *  </varlistentry>
+         *  <varlistentry>
+         *   <term>#POPPLER_ANNOT_TEXT_ICON_CROSS_HAIRS</term>
          *  </varlistentry>
          * </variablelist>
          * @param icon the name of an icon

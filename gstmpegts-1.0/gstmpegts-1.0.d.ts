@@ -438,6 +438,24 @@ export namespace GstMpegts {
         MPEG2_STEREOSCOPIC_VIDEO_FORMAT,
         STEREOSCOPIC_PROGRAM_INFO,
         STEREOSCOPIC_VIDEO_INFO,
+        /**
+         * Extension Descriptor.
+         */
+        EXTENSION,
+    }
+
+    /**
+     * The type of an extended descriptor
+     *
+     * The values correpond to the registered extended descriptor types from the
+     * base ISO 13818 / ITU H.222.0 specifications
+     *
+     * Consult the specification for more details
+     * @gir-type Enum
+     * @since 1.26
+     */
+    enum ExtendedDescriptorType {
+        MTS_DESC_EXT_JXS_VIDEO,
     }
 
     /**
@@ -512,6 +530,21 @@ export namespace GstMpegts {
         CLEAN_EFFECTS,
         HEARING_IMPAIRED,
         VISUAL_IMPAIRED_COMMENTARY,
+    }
+
+    /**
+     * `GST_MPEGTS_METADATA_APPLICATION_FORMAT_ISAN` ISO 15706-1 (ISAN) encoded in its binary form
+     * `GST_MPEGTS_METADATA_APPLICATION_FORMAT_VSAN` ISO 15706-2 (V-ISAN) encoded in its binary form
+     * `GST_MPEGTS_METADATA_APPLICATION_FORMAT_IDENTIFIER_FIELD` Defined by the metadata_application_format_identifier field
+     *
+     * metadata_application_format valid values. See ISO/IEC 13818-1:2023(E) Table 2-84.
+     * @gir-type Enum
+     * @since 1.26
+     */
+    enum MetadataApplicationFormat {
+        ISAN,
+        VSAN,
+        IDENTIFIER_FIELD,
     }
 
     /**
@@ -1312,6 +1345,14 @@ export namespace GstMpegts {
          */
         VIDEO_HEVC,
         /**
+         * JPEG-XS stream type
+         */
+        VIDEO_JPEG_XS,
+        /**
+         * VVC/H.266 video stream type
+         */
+        VIDEO_VVC,
+        /**
          * IPMP stream
          */
         IPMP_STREAM,
@@ -1369,12 +1410,19 @@ export namespace GstMpegts {
     }
 
     /**
+     * Creates and adds a {@link GstMpegts.PESMetadataMeta} to a `buffer`.
+     * @param buffer a {@link Gst.Buffer}
+     * @returns a newly created {@link GstMpegts.PESMetadataMeta}
+     * @since 1.24
+     */
+    function buffer_add_mpegts_pes_metadata_meta(buffer: Gst.Buffer): PESMetadataMeta;
+    /**
      * Creates a {@link GstMpegts.Descriptor} with custom `tag` and `data`
      * @param tag descriptor tag
      * @param data descriptor data (after tag and length field)
-     * @returns {@link GstMpegts.Descriptor}
+     * @returns {@link GstMpegts.Descriptor}, or `null` if input is invalid
      */
-    function descriptor_from_custom(tag: number, data: Uint8Array | string): Descriptor;
+    function descriptor_from_custom(tag: number, data: Uint8Array | string): Descriptor | null;
     /**
      * Creates a {@link GstMpegts.Descriptor} with custom `tag`, `tag_extension` and `data`
      * @param tag descriptor tag
@@ -1393,9 +1441,9 @@ export namespace GstMpegts {
      * with the network name `name`. The data field of the {@link GstMpegts.Descriptor}
      * will be allocated, and transferred to the caller.
      * @param name the network name to set
-     * @returns the {@link GstMpegts.Descriptor} or `null` on fail
+     * @returns the {@link GstMpegts.Descriptor} or `null` on failure.
      */
-    function descriptor_from_dvb_network_name(name: string): Descriptor;
+    function descriptor_from_dvb_network_name(name: string): Descriptor | null;
     /**
      * Fills a {@link GstMpegts.Descriptor} to be a {@link GstMpegts.DVBDescriptorType.SERVICE}.
      * The data field of the {@link GstMpegts.Descriptor} will be allocated,
@@ -1403,13 +1451,13 @@ export namespace GstMpegts {
      * @param service_type Service type defined as a {@link GstMpegts.DVBServiceType}
      * @param service_name Name of the service
      * @param service_provider Name of the service provider
-     * @returns the {@link GstMpegts.Descriptor} or `null` on fail
+     * @returns the {@link GstMpegts.Descriptor} or `null` on failure
      */
     function descriptor_from_dvb_service(
         service_type: DVBServiceType | null,
         service_name?: string | null,
         service_provider?: string | null,
-    ): Descriptor;
+    ): Descriptor | null;
     /**
      * @param lang a string containing the ISO639 language
      * @param type subtitling type
@@ -1429,6 +1477,24 @@ export namespace GstMpegts {
      * @returns {@link GstMpegts.Descriptor}, `null` on failure
      */
     function descriptor_from_iso_639_language(language: string): Descriptor;
+    /**
+     * Create a new {@link GstMpegts.Descriptor} based on the information in `jpegxs`
+     * @param jpegxs A {@link GstMpegts.JpegXsDescriptor}
+     * @returns The {@link GstMpegts.Descriptor}
+     * @since 1.26
+     */
+    function descriptor_from_jpeg_xs(jpegxs: JpegXsDescriptor): Descriptor;
+    /**
+     * @param metadata_descriptor
+     * @since 1.26
+     */
+    function descriptor_from_metadata(metadata_descriptor: MetadataDescriptor): Descriptor;
+    /**
+     * @param metadata_pointer_descriptor a {@link GstMpegts.MetadataPointerDescriptor}
+     * @returns a {@link GstMpegts.Descriptor} from the metadata pointer descriptor.
+     * @since 1.26
+     */
+    function descriptor_from_metadata_pointer(metadata_pointer_descriptor: MetadataPointerDescriptor): Descriptor;
     /**
      * Creates a {@link GstMpegts.DescriptorType.REGISTRATION} {@link GstMpegts.Descriptor}
      * @param format_identifier a 4 character format identifier string
@@ -1462,7 +1528,7 @@ export namespace GstMpegts {
      * @param event {@link Gst.Event} containing a {@link GstMpegts.Section}
      * @returns The extracted {@link GstMpegts.Section} , or `null` if the event did not contain a valid {@link GstMpegts.Section}.
      */
-    function event_parse_mpegts_section(event: Gst.Event): Section;
+    function event_parse_mpegts_section(event: Gst.Event): Section | null;
     /**
      * Finds the first descriptor of type `tag` in the array.
      *
@@ -1472,7 +1538,7 @@ export namespace GstMpegts {
      * @param tag the tag to look for
      * @returns the first descriptor matching `tag`, else `null`.
      */
-    function find_descriptor(descriptors: Descriptor[], tag: number): Descriptor;
+    function find_descriptor(descriptors: Descriptor[], tag: number): Descriptor | null;
     /**
      * Finds the first descriptor of type `tag` with `tag_extension` in the array.
      *
@@ -1484,7 +1550,11 @@ export namespace GstMpegts {
      * @returns the first descriptor matchin `tag` with `tag_extension`, else `null`.
      * @since 1.20
      */
-    function find_descriptor_with_extension(descriptors: Descriptor[], tag: number, tag_extension: number): Descriptor;
+    function find_descriptor_with_extension(
+        descriptors: Descriptor[],
+        tag: number,
+        tag_extension: number,
+    ): Descriptor | null;
     /**
      * Initializes the MPEG-TS helper library. Must be called before any
      * usage.
@@ -1496,13 +1566,13 @@ export namespace GstMpegts {
      * @param section The {@link GstMpegts.Section} to put in a message
      * @returns The new {@link Gst.Message} to be posted, or `null` if the section is not valid.
      */
-    function message_new_mpegts_section(parent: Gst.Object, section: Section): Gst.Message;
+    function message_new_mpegts_section(parent: Gst.Object, section: Section): Gst.Message | null;
     /**
      * Returns the {@link GstMpegts.Section} contained in a message.
      * @param message a {@link Gst.Message}
      * @returns the contained {@link GstMpegts.Section}, or `null`.
      */
-    function message_parse_mpegts_section(message: Gst.Message): Section;
+    function message_parse_mpegts_section(message: Gst.Message): Section | null;
     /**
      * Parses the descriptors present in `buffer` and returns them as an
      * array.
@@ -1510,9 +1580,9 @@ export namespace GstMpegts {
      * Note: The data provided in `buffer` will not be copied.
      * @param buffer descriptors to parse
      * @param buf_len Size of `buffer`
-     * @returns an array of the parsed descriptors or `null` if there was an error. Release with `g_array_unref` when done with it.
+     * @returns an array of the parsed descriptors or `null` if there was an error.  Release with `g_array_unref` when done with it.
      */
-    function parse_descriptors(buffer: number, buf_len: number): Descriptor[];
+    function parse_descriptors(buffer: number, buf_len: number): Descriptor[] | null;
     /**
      * Allocates a new {@link GLib.PtrArray} for {@link GstMpegts.PatProgram}. The array can be filled
      * and then converted to a PAT section with `gst_mpegts_section_from_pat()`.
@@ -1571,10 +1641,9 @@ export namespace GstMpegts {
     function scte_splice_out_new(event_id: number, splice_time: Gst.ClockTime, duration: Gst.ClockTime): SCTESIT;
     /**
      * @param mgt a {@link GstMpegts.AtscMGT} to create the {@link GstMpegts.Section} from
-     * @returns the {@link GstMpegts.Section}
-     * @since 1.18
+     * @returns the {@link GstMpegts.Section}, or `null` if `mgt` is invalid Since: 1.18
      */
-    function section_from_atsc_mgt(mgt: AtscMGT): Section;
+    function section_from_atsc_mgt(mgt: AtscMGT): Section | null;
     /**
      * @param rrt
      */
@@ -1586,9 +1655,9 @@ export namespace GstMpegts {
     /**
      * Ownership of `nit` is taken. The data in `nit` is managed by the {@link GstMpegts.Section}
      * @param nit a {@link GstMpegts.NIT} to create the {@link GstMpegts.Section} from
-     * @returns the {@link GstMpegts.Section}
+     * @returns the {@link GstMpegts.Section}, or `null` if `nit` is invalid
      */
-    function section_from_nit(nit: NIT): Section;
+    function section_from_nit(nit: NIT): Section | null;
     /**
      * Creates a PAT {@link GstMpegts.Section} from the `programs` array of `GstMpegtsPatPrograms`
      * @param programs an array of {@link GstMpegts.PatProgram}
@@ -1600,22 +1669,22 @@ export namespace GstMpegts {
      * Creates a {@link GstMpegts.Section} from `pmt` that is bound to `pid`
      * @param pmt a {@link GstMpegts.PMT} to create a {@link GstMpegts.Section} from
      * @param pid The PID that the {@link GstMpegts.PMT} belongs to
-     * @returns {@link GstMpegts.Section}
+     * @returns {@link GstMpegts.Section}, or `null` if `pmt` is invalid
      */
-    function section_from_pmt(pmt: PMT, pid: number): Section;
+    function section_from_pmt(pmt: PMT, pid: number): Section | null;
     /**
      * Ownership of `sit` is taken. The data in `sit` is managed by the {@link GstMpegts.Section}
      * @param sit a {@link GstMpegts.SCTESIT} to create the {@link GstMpegts.Section} from
      * @param pid
-     * @returns the {@link GstMpegts.Section}
+     * @returns the {@link GstMpegts.Section}, or `null` if `sit` is invalid
      */
-    function section_from_scte_sit(sit: SCTESIT, pid: number): Section;
+    function section_from_scte_sit(sit: SCTESIT, pid: number): Section | null;
     /**
      * Ownership of `sdt` is taken. The data in `sdt` is managed by the {@link GstMpegts.Section}
      * @param sdt a {@link GstMpegts.SDT} to create the {@link GstMpegts.Section} from
-     * @returns the {@link GstMpegts.Section}
+     * @returns the {@link GstMpegts.Section} or `null` if `sdt` is invalid
      */
-    function section_from_sdt(sdt: SDT): Section;
+    function section_from_sdt(sdt: SDT): Section | null;
     /**
      * @gir-type Callback
      */
@@ -2274,15 +2343,15 @@ export namespace GstMpegts {
         /**
          * @returns The {@link GstMpegts.DVBLinkageEvent} or `null` if an error happened
          */
-        get_event(): DVBLinkageEvent;
+        get_event(): DVBLinkageEvent | null;
         /**
          * @returns an {@link GstMpegts.DVBLinkageExtendedEvent} array or `null` if an error happened
          */
-        get_extended_event(): DVBLinkageExtendedEvent[];
+        get_extended_event(): DVBLinkageExtendedEvent[] | null;
         /**
          * @returns The {@link GstMpegts.DVBLinkageMobileHandOver} or `null` if an error happened
          */
-        get_mobile_hand_over(): DVBLinkageMobileHandOver;
+        get_mobile_hand_over(): DVBLinkageMobileHandOver | null;
     }
 
     /**
@@ -2462,7 +2531,7 @@ export namespace GstMpegts {
          * @param tag descriptor tag
          * @param data descriptor data (after tag and length field)
          */
-        static from_custom(tag: number, data: Uint8Array | string): Descriptor;
+        static from_custom(tag: number, data: Uint8Array | string): Descriptor | null;
         /**
          * Creates a {@link GstMpegts.Descriptor} with custom `tag`, `tag_extension` and `data`
          * @param tag descriptor tag
@@ -2476,7 +2545,7 @@ export namespace GstMpegts {
          * will be allocated, and transferred to the caller.
          * @param name the network name to set
          */
-        static from_dvb_network_name(name: string): Descriptor;
+        static from_dvb_network_name(name: string): Descriptor | null;
         /**
          * Fills a {@link GstMpegts.Descriptor} to be a {@link GstMpegts.DVBDescriptorType.SERVICE}.
          * The data field of the {@link GstMpegts.Descriptor} will be allocated,
@@ -2489,7 +2558,7 @@ export namespace GstMpegts {
             service_type: DVBServiceType,
             service_name?: string | null,
             service_provider?: string | null,
-        ): Descriptor;
+        ): Descriptor | null;
         /**
          * @param lang a string containing the ISO639 language
          * @param type subtitling type
@@ -2503,6 +2572,19 @@ export namespace GstMpegts {
          * @param language ISO-639-2 language 3-char code
          */
         static from_iso_639_language(language: string): Descriptor;
+        /**
+         * Create a new {@link GstMpegts.Descriptor} based on the information in `jpegxs`
+         * @param jpegxs A {@link GstMpegts.JpegXsDescriptor}
+         */
+        static from_jpeg_xs(jpegxs: JpegXsDescriptor): Descriptor;
+        /**
+         * @param metadata_descriptor
+         */
+        static from_metadata(metadata_descriptor: MetadataDescriptor): Descriptor;
+        /**
+         * @param metadata_pointer_descriptor a {@link GstMpegts.MetadataPointerDescriptor}
+         */
+        static from_metadata_pointer(metadata_pointer_descriptor: MetadataPointerDescriptor): Descriptor;
         /**
          * Creates a {@link GstMpegts.DescriptorType.REGISTRATION} {@link GstMpegts.Descriptor}
          * @param format_identifier a 4 character format identifier string
@@ -2520,6 +2602,11 @@ export namespace GstMpegts {
 
         // Methods
 
+        /**
+         * Copy the given descriptor.
+         * @returns A copy of `desc`.
+         */
+        copy(): Descriptor;
         /**
          * Frees `desc`
          */
@@ -2699,6 +2786,11 @@ export namespace GstMpegts {
          * @returns The number of languages in `descriptor`
          */
         parse_iso_639_language_nb(): number;
+        /**
+         * Parses the JPEG-XS descriptor information from `descriptor`:
+         * @returns TRUE if the information could be parsed, else FALSE.
+         */
+        parse_jpeg_xs(): [boolean, JpegXsDescriptor];
         /**
          * Extracts the logical channels from `descriptor`.
          * @returns `true` if parsing succeeded, else `false`.
@@ -2937,6 +3029,81 @@ export namespace GstMpegts {
     }
 
     /**
+     * JPEG-XS descriptor
+     * @gir-type Struct
+     * @since 1.26
+     */
+    class JpegXsDescriptor {
+        static $gtype: GObject.GType<JpegXsDescriptor>;
+
+        // Fields
+
+        descriptor_version: number;
+        horizontal_size: number;
+        vertical_size: number;
+        brat: number;
+        frat: number;
+        schar: number;
+        Ppih: number;
+        Plev: number;
+        max_buffer_size: number;
+        buffer_model_type: number;
+        colour_primaries: number;
+        transfer_characteristics: number;
+        matrix_coefficients: number;
+        video_full_range_flag: boolean;
+        still_mode: boolean;
+        mdm_flag: boolean;
+        X_c0: number;
+        Y_c0: number;
+        X_c1: number;
+        Y_c1: number;
+        X_c2: number;
+        Y_c2: number;
+        X_wp: number;
+        Y_wp: number;
+        L_max: number;
+        L_min: number;
+        MaxCLL: number;
+        MaxFALL: number;
+
+        // Constructors
+
+        constructor(
+            properties?: Partial<{
+                descriptor_version: number;
+                horizontal_size: number;
+                vertical_size: number;
+                brat: number;
+                frat: number;
+                schar: number;
+                Ppih: number;
+                Plev: number;
+                max_buffer_size: number;
+                buffer_model_type: number;
+                colour_primaries: number;
+                transfer_characteristics: number;
+                matrix_coefficients: number;
+                video_full_range_flag: boolean;
+                still_mode: boolean;
+                mdm_flag: boolean;
+                X_c0: number;
+                Y_c0: number;
+                X_c1: number;
+                Y_c1: number;
+                X_c2: number;
+                Y_c2: number;
+                X_wp: number;
+                Y_wp: number;
+                L_max: number;
+                L_min: number;
+                MaxCLL: number;
+                MaxFALL: number;
+            }>,
+        );
+    }
+
+    /**
      * @gir-type Struct
      */
     class LogicalChannel {
@@ -2995,12 +3162,36 @@ export namespace GstMpegts {
 
         // Fields
 
-        metadata_application_format: number;
+        metadata_application_format: MetadataApplicationFormat;
         metadata_format: MetadataFormat;
         metadata_format_identifier: number;
         metadata_service_id: number;
         decoder_config_flags: number;
         dsm_cc_flag: boolean;
+    }
+
+    /**
+     * This structure is not complete. The following fields are missing in comparison to the standard (ISO/IEC 13818-1:2023 Section 2.6.58):
+     * * metadata_locator_record_flag: hardcoded to 0. Indicating no metadata_locator_record present in the descriptor.
+     * * MPEG_carriage_flags: hardcoded to 0b00, indicating the metadata is carried in the same transport steam.
+     * * metadata_locator_record_length.
+     * * transport_stream_location.
+     * * transport_stream_id.
+     *
+     * See also: gst_mpegts_descriptor_from_metadata_pointer
+     * @gir-type Struct
+     * @since 1.26
+     */
+    class MetadataPointerDescriptor {
+        static $gtype: GObject.GType<MetadataPointerDescriptor>;
+
+        // Fields
+
+        metadata_application_format: MetadataApplicationFormat;
+        metadata_format: MetadataFormat;
+        metadata_format_identifier: number;
+        metadata_service_id: number;
+        program_number: number;
     }
 
     /**
@@ -3467,7 +3658,7 @@ export namespace GstMpegts {
         /**
          * @param mgt a {@link GstMpegts.AtscMGT} to create the {@link GstMpegts.Section} from
          */
-        static from_atsc_mgt(mgt: AtscMGT): Section;
+        static from_atsc_mgt(mgt: AtscMGT): Section | null;
         /**
          * @param rrt
          */
@@ -3480,7 +3671,7 @@ export namespace GstMpegts {
          * Ownership of `nit` is taken. The data in `nit` is managed by the {@link GstMpegts.Section}
          * @param nit a {@link GstMpegts.NIT} to create the {@link GstMpegts.Section} from
          */
-        static from_nit(nit: NIT): Section;
+        static from_nit(nit: NIT): Section | null;
         /**
          * Creates a PAT {@link GstMpegts.Section} from the `programs` array of `GstMpegtsPatPrograms`
          * @param programs an array of {@link GstMpegts.PatProgram}
@@ -3492,18 +3683,18 @@ export namespace GstMpegts {
          * @param pmt a {@link GstMpegts.PMT} to create a {@link GstMpegts.Section} from
          * @param pid The PID that the {@link GstMpegts.PMT} belongs to
          */
-        static from_pmt(pmt: PMT, pid: number): Section;
+        static from_pmt(pmt: PMT, pid: number): Section | null;
         /**
          * Ownership of `sit` is taken. The data in `sit` is managed by the {@link GstMpegts.Section}
          * @param sit a {@link GstMpegts.SCTESIT} to create the {@link GstMpegts.Section} from
          * @param pid
          */
-        static from_scte_sit(sit: SCTESIT, pid: number): Section;
+        static from_scte_sit(sit: SCTESIT, pid: number): Section | null;
         /**
          * Ownership of `sdt` is taken. The data in `sdt` is managed by the {@link GstMpegts.Section}
          * @param sdt a {@link GstMpegts.SDT} to create the {@link GstMpegts.Section} from
          */
-        static from_sdt(sdt: SDT): Section;
+        static from_sdt(sdt: SDT): Section | null;
 
         // Methods
 
@@ -3511,7 +3702,7 @@ export namespace GstMpegts {
          * Returns the {@link GstMpegts.AtscVCT} contained in the `section`
          * @returns The {@link GstMpegts.AtscVCT} contained in the section, or `null` if an error happened.
          */
-        get_atsc_cvct(): AtscVCT;
+        get_atsc_cvct(): AtscVCT | null;
         /**
          * Returns the {@link GstMpegts.AtscEIT} contained in the `section`.
          * @returns The {@link GstMpegts.AtscEIT} contained in the section, or `null` if an error happened.
@@ -3526,7 +3717,7 @@ export namespace GstMpegts {
          * Returns the {@link GstMpegts.AtscMGT} contained in the `section`.
          * @returns The {@link GstMpegts.AtscMGT} contained in the section, or `null` if an error happened.
          */
-        get_atsc_mgt(): AtscMGT;
+        get_atsc_mgt(): AtscMGT | null;
         /**
          * Returns the {@link GstMpegts.AtscRRT} contained in the `section`.
          * @returns The {@link GstMpegts.AtscRRT} contained in the section, or `null` if an error happened.
@@ -3541,12 +3732,12 @@ export namespace GstMpegts {
          * Returns the {@link GstMpegts.AtscVCT} contained in the `section`
          * @returns The {@link GstMpegts.AtscVCT} contained in the section, or `null` if an error happened.
          */
-        get_atsc_tvct(): AtscVCT;
+        get_atsc_tvct(): AtscVCT | null;
         /**
          * Returns the {@link GstMpegts.BAT} contained in the `section`.
          * @returns The {@link GstMpegts.BAT} contained in the section, or `null` if an error happened.
          */
-        get_bat(): BAT;
+        get_bat(): BAT | null;
         /**
          * Parses a Conditional Access Table.
          *
@@ -3554,7 +3745,7 @@ export namespace GstMpegts {
          * Access Table.
          * @returns The array of {@link GstMpegts.Descriptor} contained in the section, or `null` if an error happened. Release with `g_array_unref` when done.
          */
-        get_cat(): Descriptor[];
+        get_cat(): Descriptor[] | null;
         /**
          * Gets the original unparsed section data.
          * @returns The original unparsed section data.
@@ -3564,12 +3755,12 @@ export namespace GstMpegts {
          * Returns the {@link GstMpegts.EIT} contained in the `section`.
          * @returns The {@link GstMpegts.EIT} contained in the section, or `null` if an error happened.
          */
-        get_eit(): EIT;
+        get_eit(): EIT | null;
         /**
          * Returns the {@link GstMpegts.NIT} contained in the `section`.
          * @returns The {@link GstMpegts.NIT} contained in the section, or `null` if an error happened.
          */
-        get_nit(): NIT;
+        get_nit(): NIT | null;
         /**
          * Parses a Program Association Table (ITU H.222.0, ISO/IEC 13818-1).
          *
@@ -3579,44 +3770,44 @@ export namespace GstMpegts {
          * "subtable_extension" field of the provided `section`.
          * @returns The {@link GstMpegts.PatProgram} contained in the section, or `null` if an error happened or the `section` did not contain a valid PAT. Release with `g_ptr_array_unref` when done.
          */
-        get_pat(): PatProgram[];
+        get_pat(): PatProgram[] | null;
         /**
          * Parses the Program Map Table contained in the `section`.
          * @returns The {@link GstMpegts.PMT} contained in the section, or `null` if an error happened.
          */
-        get_pmt(): PMT;
+        get_pmt(): PMT | null;
         /**
          * Returns the {@link GstMpegts.SCTESIT} contained in the `section`.
          * @returns The {@link GstMpegts.SCTESIT} contained in the section, or `null` if an error happened.
          */
-        get_scte_sit(): SCTESIT;
+        get_scte_sit(): SCTESIT | null;
         /**
          * Returns the {@link GstMpegts.SDT} contained in the `section`.
          * @returns The {@link GstMpegts.SDT} contained in the section, or `null` if an error happened.
          */
-        get_sdt(): SDT;
+        get_sdt(): SDT | null;
         /**
          * Returns the {@link GstMpegts.SIT} contained in the `section`.
          * @returns The {@link GstMpegts.SIT} contained in the section, or `null` if an error happened.
          */
-        get_sit(): SIT;
+        get_sit(): SIT | null;
         /**
          * Returns the {@link Gst.DateTime} of the TDT
          * @returns The {@link Gst.DateTime} contained in the section, or `null` if an error happened. Release with `gst_date_time_unref` when done.
          */
-        get_tdt(): Gst.DateTime;
+        get_tdt(): Gst.DateTime | null;
         /**
          * Returns the {@link GstMpegts.TOT} contained in the `section`.
          * @returns The {@link GstMpegts.TOT} contained in the section, or `null` if an error happened.
          */
-        get_tot(): TOT;
+        get_tot(): TOT | null;
         /**
          * Parses a Transport Stream Description Table.
          *
          * Returns the array of {@link GstMpegts.Descriptor} contained in the section
          * @returns The array of {@link GstMpegts.Descriptor} contained in the section, or `null` if an error happened. Release with `g_array_unref` when done.
          */
-        get_tsdt(): Descriptor[];
+        get_tsdt(): Descriptor[] | null;
         /**
          * Packetize (i.e. serialize) the `section`. If the data in `section` has already
          * been packetized, the data pointer is returned immediately. Otherwise, the

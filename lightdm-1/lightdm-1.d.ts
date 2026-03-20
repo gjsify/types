@@ -1417,7 +1417,7 @@ export namespace LightDM {
          * Get the uid of a user.
          * @returns The uid of the given user
          */
-        get_uid(): number;
+        get_uid(): never;
     }
 
     namespace UserList {

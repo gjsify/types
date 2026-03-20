@@ -106,13 +106,9 @@ export namespace Polkit {
      */
     function identity_from_string(str: string): Identity | null;
     /**
-     * @param string
-     * @param out_implicit_authorization
+     * @param string A string
      */
-    function implicit_authorization_from_string(
-        string: string,
-        out_implicit_authorization: ImplicitAuthorization | null,
-    ): boolean;
+    function implicit_authorization_from_string(string: string): [boolean, ImplicitAuthorization];
     /**
      * @param implicit_authorization
      */
@@ -169,6 +165,10 @@ export namespace Polkit {
          * means that the method used for checking authorization is likely to block for a long time.
          */
         ALLOW_USER_INTERACTION,
+        /**
+         * Check access against policy even for root user.
+         */
+        ALWAYS_CHECK,
     }
 
     namespace ActionDescription {
@@ -295,6 +295,12 @@ export namespace Polkit {
              * @run-last
              */
             changed: () => void;
+            /**
+             * Emitted when sessions change
+             * @signal
+             * @run-last
+             */
+            'sessions-changed': () => void;
             'notify::backend-features': (pspec: GObject.ParamSpec) => void;
             'notify::backend-name': (pspec: GObject.ParamSpec) => void;
             'notify::backend-version': (pspec: GObject.ParamSpec) => void;
@@ -539,6 +545,53 @@ export namespace Polkit {
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
+         * Asynchronously provide response that `identity` successfully authenticated
+         * for the authentication request identified by `cookie` as requested by `subject`.
+         *
+         * This function is only used by the socket-activated agent helper, running as uiid
+         * 0, and will fail otherwise. The requesting process is identified via `subject`
+         * which will contain a PID FD identifying the process.
+         *
+         * When the operation is finished, `callback` will be invoked in the
+         * <link linkend="g-main-context-push-thread-default">thread-default
+         * main loop</link> of the thread you are calling this method
+         * from. You can then call
+         * `polkit_authority_authentication_agent_response_finish()` to get the
+         * result of the operation.
+         * @param cookie The cookie passed to the authentication agent from the authority.
+         * @param identity The identity that was authenticated.
+         * @param subject The subject that requested the authentication.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        authentication_agent_response_with_subject(
+            cookie: string,
+            identity: Identity,
+            subject: Subject,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Provide response that `identity` successfully authenticated for the
+         * authentication request identified by `cookie`. See `polkit_authority_authentication_agent_response_with_subject()`
+         * for limitations on who is allowed is to call this method.
+         *
+         * The calling thread is blocked until a reply is received. See
+         * `polkit_authority_authentication_agent_response_with_subject()` for the
+         * asynchronous version.
+         * @param cookie The cookie passed to the authentication agent from the authority.
+         * @param identity The identity that was authenticated.
+         * @param subject The subject that requested the authentication.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if `authority` acknowledged the call, `false` if `error` is set.
+         */
+        authentication_agent_response_with_subject_sync(
+            cookie: string,
+            identity: Identity,
+            subject: Subject,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        /**
          * Asynchronously checks if `subject` is authorized to perform the action represented
          * by `action_id`.
          *
@@ -561,7 +614,7 @@ export namespace Polkit {
          * the <link linkend="eggdbus-method-org.freedesktop.PolicyKit1.Authority.CheckAuthorization">D-Bus method</link> for more details.
          *
          * If `details` is non-empty then the request will fail with
-         * #POLKIT_ERROR_FAILED unless the process doing the check itsef is
+         * #POLKIT_ERROR_FAILED unless the process doing the check itself is
          * sufficiently authorized (e.g. running as uid 0).
          * @param subject A {@link Polkit.Subject}.
          * @param action_id The action to check for.
@@ -599,7 +652,7 @@ export namespace Polkit {
          * the <link linkend="eggdbus-method-org.freedesktop.PolicyKit1.Authority.CheckAuthorization">D-Bus method</link> for more details.
          *
          * If `details` is non-empty then the request will fail with
-         * #POLKIT_ERROR_FAILED unless the process doing the check itsef is
+         * #POLKIT_ERROR_FAILED unless the process doing the check itself is
          * sufficiently authorized (e.g. running as uid 0).
          * @param subject A {@link Polkit.Subject}.
          * @param action_id The action to check for.
@@ -639,7 +692,7 @@ export namespace Polkit {
          * the <link linkend="eggdbus-method-org.freedesktop.PolicyKit1.Authority.CheckAuthorization">D-Bus method</link> for more details.
          *
          * If `details` is non-empty then the request will fail with
-         * #POLKIT_ERROR_FAILED unless the process doing the check itsef is
+         * #POLKIT_ERROR_FAILED unless the process doing the check itself is
          * sufficiently authorized (e.g. running as uid 0).
          * @param subject A {@link Polkit.Subject}.
          * @param action_id The action to check for.
@@ -1664,7 +1717,7 @@ export namespace Polkit {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1719,7 +1772,7 @@ export namespace Polkit {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1794,7 +1847,7 @@ export namespace Polkit {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2724,7 +2777,7 @@ export namespace Polkit {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2779,7 +2832,7 @@ export namespace Polkit {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2854,7 +2907,7 @@ export namespace Polkit {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3398,7 +3451,7 @@ export namespace Polkit {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3453,7 +3506,7 @@ export namespace Polkit {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3528,7 +3581,7 @@ export namespace Polkit {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3917,7 +3970,7 @@ export namespace Polkit {
          * `name`.
          * @param name A UNIX group name.
          */
-        static new_for_name(name: string): Identity;
+        static new_for_name(name: string): Identity | null;
 
         // Methods
 
@@ -4066,7 +4119,7 @@ export namespace Polkit {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4121,7 +4174,7 @@ export namespace Polkit {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4196,7 +4249,7 @@ export namespace Polkit {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4639,7 +4692,7 @@ export namespace Polkit {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4694,7 +4747,7 @@ export namespace Polkit {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4769,7 +4822,7 @@ export namespace Polkit {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4996,7 +5049,13 @@ export namespace Polkit {
     namespace UnixProcess {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::cgroupid': (pspec: GObject.ParamSpec) => void;
+            'notify::ctty': (pspec: GObject.ParamSpec) => void;
+            'notify::gids': (pspec: GObject.ParamSpec) => void;
             'notify::pid': (pspec: GObject.ParamSpec) => void;
+            'notify::pidfd': (pspec: GObject.ParamSpec) => void;
+            'notify::pidfd-is-safe': (pspec: GObject.ParamSpec) => void;
+            'notify::ppidfd': (pspec: GObject.ParamSpec) => void;
             'notify::start-time': (pspec: GObject.ParamSpec) => void;
             'notify::uid': (pspec: GObject.ParamSpec) => void;
         }
@@ -5004,7 +5063,14 @@ export namespace Polkit {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Subject.ConstructorProps {
+            cgroupid: number;
+            ctty: number;
+            gids: any[];
             pid: number;
+            pidfd: number;
+            pidfd_is_safe: boolean;
+            pidfdIsSafe: boolean;
+            ppidfd: number;
             start_time: number;
             startTime: number;
             uid: number;
@@ -5012,9 +5078,15 @@ export namespace Polkit {
     }
 
     /**
-     * An object for representing a UNIX process.  NOTE: This object as
-     * designed is now known broken; a mechanism to exploit a delay in
-     * start time in the Linux kernel was identified.  Avoid
+     * An object for representing a UNIX process. In order to be reliable and
+     * race-free, this requires support for PID File Descriptors in the kernel,
+     * dbus-daemon/broker and systemd. With this functionality, we can reliably
+     * track processes without risking PID reuse and race conditions, and compare
+     * them.
+     *
+     * NOTE: If PID FDs are not available, this object will fall back to using
+     * PIDs, and this designed is now known broken; a mechanism to exploit a delay
+     * in start time in the Linux kernel was identified.  Avoid
      * calling `polkit_subject_equal()` to compare two processes.
      *
      * To uniquely identify processes, both the process id and the start
@@ -5036,10 +5108,43 @@ export namespace Polkit {
         // Properties
 
         /**
+         * The start time of the process.
+         * @read-only
+         */
+        get cgroupid(): number;
+        /**
+         * The UNIX process controlling TTY.
+         * @read-only
+         */
+        get ctty(): number;
+        /**
+         * The UNIX group ids of the process.
+         */
+        get gids(): any[];
+        set gids(val: any[]);
+        /**
          * The UNIX process id.
          */
         get pid(): number;
         set pid(val: number);
+        /**
+         * The UNIX process id file descriptor.
+         */
+        get pidfd(): number;
+        set pidfd(val: number);
+        /**
+         * @read-only
+         */
+        get pidfd_is_safe(): boolean;
+        /**
+         * @read-only
+         */
+        get pidfdIsSafe(): boolean;
+        /**
+         * The UNIX process' parent id file descriptor.
+         * @read-only
+         */
+        get ppidfd(): number;
         /**
          * The start time of the process.
          */
@@ -5122,9 +5227,32 @@ export namespace Polkit {
          * @param start_time The start time for `pid`.
          */
         static new_full(pid: number, start_time: number): Subject;
+        /**
+         * Creates a new {@link Polkit.UnixProcess} object for `pidfd` and `uid`.
+         * @param pidfd The process id file descriptor.
+         * @param uid The (real, not effective) uid of the owner of `pid` or -1 to look it up in e.g. <filename>/proc</filename>.
+         * @param gids The (real, not effective) gids of the owner of `pid` or `null`.
+         */
+        static new_pidfd(pidfd: number, uid: number, gids?: number[] | null): Subject;
 
         // Methods
 
+        /**
+         * Gets the cgroupid of `process`.
+         * @returns The cgroupid of `process`.
+         */
+        get_cgroupid(): number;
+        /**
+         * Gets the controlling TTY for `process`.
+         * @returns The dev_t of the controlling TTY of `process`.
+         */
+        get_ctty(): number;
+        /**
+         * Gets the group ids for `process`. Note that this is the real group-ids,
+         * not the effective group-ids.
+         * @returns a {@link GLib.Array}          of `gid_t` containing the group ids for `process` or NULL if unknown,          as a new reference to the array, caller must deref it when done.
+         */
+        get_gids(): any[][] | null;
         /**
          * (deprecated)
          */
@@ -5134,6 +5262,27 @@ export namespace Polkit {
          * @returns The process id for `process`.
          */
         get_pid(): number;
+        /**
+         * Gets the process id file descriptor for `process`.
+         * @returns The process id file descriptor for `process`.
+         */
+        get_pidfd(): number;
+        /**
+         * Checks if the process id file descriptor for `process` is safe
+         * or if it was opened locally and thus vulnerable to reuse.
+         * @returns TRUE or FALSE.
+         */
+        get_pidfd_is_safe(): boolean;
+        /**
+         * Gets the process' parent id for `process`.
+         * @returns The process id for the parent of `process`.
+         */
+        get_ppid(): number;
+        /**
+         * Gets the process' parent id file descriptor for `process`.
+         * @returns The process id file descriptor for the parent of `process`.
+         */
+        get_ppidfd(): number;
         /**
          * Gets the start time of `process`.
          * @returns The start time of `process`.
@@ -5152,10 +5301,20 @@ export namespace Polkit {
          */
         get_uid(): number;
         /**
+         * Sets the (real, not effective) group ids for `process`.
+         * @param gids A {@link GLib.List} of `gid_t` containing the group        ids to set for `process` or NULL to unset them.        A reference to `gids` is taken.
+         */
+        set_gids(gids: any[][]): void;
+        /**
          * Sets `pid` for `process`.
          * @param pid A process id.
          */
         set_pid(pid: number): void;
+        /**
+         * Sets `pidfd` for `process`.
+         * @param pidfd A process id file descriptor.
+         */
+        set_pidfd(pidfd: number): void;
         /**
          * Set the start time of `process`.
          * @param start_time The start time for `pid`.
@@ -5388,7 +5547,7 @@ export namespace Polkit {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5443,7 +5602,7 @@ export namespace Polkit {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5518,7 +5677,7 @@ export namespace Polkit {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6392,7 +6551,7 @@ export namespace Polkit {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6447,7 +6606,7 @@ export namespace Polkit {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6522,7 +6681,7 @@ export namespace Polkit {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6976,7 +7135,7 @@ export namespace Polkit {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7031,7 +7190,7 @@ export namespace Polkit {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7106,7 +7265,7 @@ export namespace Polkit {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

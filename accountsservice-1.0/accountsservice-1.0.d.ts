@@ -538,7 +538,7 @@ export namespace AccountsService {
          * Retrieves the ID of `user`.
          * @returns a pointer to an array of characters which must not be modified or  freed, or `null`.
          */
-        get_uid(): number;
+        get_uid(): never;
         /**
          * Retrieves the login name of `user`.
          * @returns a pointer to an array of characters which must not be modified or  freed, or `null`.
@@ -1080,7 +1080,7 @@ export namespace AccountsService {
          * @param id the uid of the user to get.
          * @returns {@link AccountsService.User} object
          */
-        get_user_by_id(id: number): User;
+        get_user_by_id(id: never): User;
         /**
          * Switch the display to the login manager.
          * @returns whether successful or not

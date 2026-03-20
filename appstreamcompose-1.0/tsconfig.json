@@ -31,9 +31,6 @@
       "@girs/gmodule-2.0": [
             "../gmodule-2.0/index.d.ts"
       ],
-      "@girs/gdkpixbuf-2.0": [
-            "../gdkpixbuf-2.0/index.d.ts"
-      ],
       "@girs/appstream-1.0": [
             "../appstream-1.0/index.d.ts"
       ],

@@ -230,7 +230,6 @@ export namespace GstRtspServer {
      *     port pair in multicast.
      */
     const RTSP_TOKEN_TRANSPORT_CLIENT_SETTINGS: string;
-    function rtsp_context_get_type(): GObject.GType;
     /**
      * Get parameters (not implemented yet)
      * @param client a {@link GstRtspServer.RTSPClient}
@@ -624,11 +623,19 @@ export namespace GstRtspServer {
             errors: Gio.TlsCertificateFlags,
         ): boolean;
         /**
+         * check the authentication of a client. The default implementation
+         *         checks if the authentication in the header matches one of the basic
+         *         authentication tokens. This function should set the authgroup field
+         *         in the context.
          * @param ctx
          * @virtual
          */
         vfunc_authenticate(ctx: RTSPContext): boolean;
         /**
+         * check if a resource can be accessed. this function should
+         *         call authenticate to authenticate the client when needed. The method
+         *         should also construct and send an appropriate response message on
+         *         error.
          * @param ctx
          * @param check
          * @virtual
@@ -808,6 +815,14 @@ export namespace GstRtspServer {
              */
             'pre-announce-request': (arg0: RTSPContext) => GstRtsp.RTSPStatusCode;
             /**
+             * Provide a way for an application to be notified when a connection is closed,
+             * before the client's sessions are cleaned up.
+             * @signal
+             * @since 1.28
+             * @run-last
+             */
+            'pre-closed': () => void;
+            /**
              * @signal
              * @since 1.12
              * @run-last
@@ -981,6 +996,8 @@ export namespace GstRtspServer {
          */
         vfunc_adjust_error_code(ctx: RTSPContext, code: GstRtsp.RTSPStatusCode): GstRtsp.RTSPStatusCode;
         /**
+         * called to give the application the possibility to adjust
+         *    the range, seek flags, rate and rate-control. Since 1.18
          * @param context
          * @param range
          * @param flags
@@ -998,6 +1015,9 @@ export namespace GstRtspServer {
             enable_rate_control: boolean,
         ): GstRtsp.RTSPStatusCode;
         /**
+         * called to give the implementation the possibility to
+         *    adjust the response to a play request, for example if extra headers were
+         *    parsed when {@link GstRtspServer.RTSPClientClass}.adjust_play_mode was called. Since 1.18
          * @param context
          * @virtual
          */
@@ -1018,6 +1038,9 @@ export namespace GstRtspServer {
          */
         vfunc_closed(): void;
         /**
+         * called when the stream in media needs to be configured.
+         *    The default implementation will configure the blocksize on the payloader when
+         *    spcified in the request headers.
          * @param media
          * @param stream
          * @param ctx
@@ -1025,12 +1048,15 @@ export namespace GstRtspServer {
          */
         vfunc_configure_client_media(media: RTSPMedia, stream: RTSPStream, ctx: RTSPContext): boolean;
         /**
+         * called when the client transport needs to be
+         *    configured.
          * @param ctx
          * @param ct
          * @virtual
          */
         vfunc_configure_client_transport(ctx: RTSPContext, ct: GstRtsp.RTSPTransport): boolean;
         /**
+         * called when the SDP needs to be created for media.
          * @param media
          * @virtual
          */
@@ -1058,6 +1084,7 @@ export namespace GstRtspServer {
          */
         vfunc_handle_sdp(ctx: RTSPContext, media: RTSPMedia, sdp: GstSdp.SDPMessage): boolean;
         /**
+         * called to create path from uri.
          * @param uri
          * @virtual
          */
@@ -1073,11 +1100,15 @@ export namespace GstRtspServer {
          */
         vfunc_options_request(ctx: RTSPContext): void;
         /**
+         * get parameters. This function should also initialize the
+         *    RTSP response(ctx->response) via a call to `gst_rtsp_message_init_response()`
          * @param ctx
          * @virtual
          */
         vfunc_params_get(ctx: RTSPContext): GstRtsp.RTSPResult;
         /**
+         * set parameters. This function should also initialize the
+         *    RTSP response(ctx->response) via a call to `gst_rtsp_message_init_response()`
          * @param ctx
          * @virtual
          */
@@ -1169,6 +1200,8 @@ export namespace GstRtspServer {
          */
         vfunc_teardown_request(ctx: RTSPContext): void;
         /**
+         * called when a response to the GET request is about to
+         *   be sent for a tunneled connection. The response can be modified. Since: 1.4
          * @param request
          * @param response
          * @virtual
@@ -1379,6 +1412,8 @@ export namespace GstRtspServer {
             'notify::clock': (pspec: GObject.ParamSpec) => void;
             'notify::dscp-qos': (pspec: GObject.ParamSpec) => void;
             'notify::element': (pspec: GObject.ParamSpec) => void;
+            'notify::ensure-keyunit-on-start': (pspec: GObject.ParamSpec) => void;
+            'notify::ensure-keyunit-on-start-timeout': (pspec: GObject.ParamSpec) => void;
             'notify::eos-shutdown': (pspec: GObject.ParamSpec) => void;
             'notify::latency': (pspec: GObject.ParamSpec) => void;
             'notify::max-mcast-ttl': (pspec: GObject.ParamSpec) => void;
@@ -1430,6 +1465,22 @@ export namespace GstRtspServer {
              * @run-last
              */
             'handle-message::element': (arg0: Gst.Message) => boolean | void;
+            /**
+             * Will be emitted when a message appears on the pipeline bus.
+             * @signal
+             * @since 1.22
+             * @detailed
+             * @run-last
+             */
+            'handle-message::ensure-keyunit-on-start': (arg0: Gst.Message) => boolean | void;
+            /**
+             * Will be emitted when a message appears on the pipeline bus.
+             * @signal
+             * @since 1.22
+             * @detailed
+             * @run-last
+             */
+            'handle-message::ensure-keyunit-on-start-timeout': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
@@ -1531,6 +1582,10 @@ export namespace GstRtspServer {
             dscp_qos: number;
             dscpQos: number;
             element: Gst.Element;
+            ensure_keyunit_on_start: boolean;
+            ensureKeyunitOnStart: boolean;
+            ensure_keyunit_on_start_timeout: number;
+            ensureKeyunitOnStartTimeout: number;
             eos_shutdown: boolean;
             eosShutdown: boolean;
             latency: number;
@@ -1581,6 +1636,46 @@ export namespace GstRtspServer {
          * @construct-only
          */
         get element(): Gst.Element;
+        /**
+         * Whether or not a keyunit should be ensured when a client connects. It
+         * will also configure the streams to drop delta units to ensure that they start
+         * on a keyunit.
+         *
+         * Note that this will only affect non-shared medias for now.
+         * @since 1.24
+         */
+        get ensure_keyunit_on_start(): boolean;
+        set ensure_keyunit_on_start(val: boolean);
+        /**
+         * Whether or not a keyunit should be ensured when a client connects. It
+         * will also configure the streams to drop delta units to ensure that they start
+         * on a keyunit.
+         *
+         * Note that this will only affect non-shared medias for now.
+         * @since 1.24
+         */
+        get ensureKeyunitOnStart(): boolean;
+        set ensureKeyunitOnStart(val: boolean);
+        /**
+         * The maximum allowed time before the first keyunit is considered
+         * expired.
+         *
+         * Note that this will only have an effect when ensure-keyunit-on-start is
+         * enabled.
+         * @since 1.24
+         */
+        get ensure_keyunit_on_start_timeout(): number;
+        set ensure_keyunit_on_start_timeout(val: number);
+        /**
+         * The maximum allowed time before the first keyunit is considered
+         * expired.
+         *
+         * Note that this will only have an effect when ensure-keyunit-on-start is
+         * enabled.
+         * @since 1.24
+         */
+        get ensureKeyunitOnStartTimeout(): number;
+        set ensureKeyunitOnStartTimeout(val: number);
         get eos_shutdown(): boolean;
         set eos_shutdown(val: boolean);
         get eosShutdown(): boolean;
@@ -1657,12 +1752,14 @@ export namespace GstRtspServer {
         // Virtual methods
 
         /**
+         * convert a range to the given unit
          * @param range
          * @param unit
          * @virtual
          */
         vfunc_convert_range(range: GstRtsp.RTSPTimeRange, unit: GstRtsp.RTSPRangeUnit): boolean;
         /**
+         * handle a message
          * @param message
          * @virtual
          */
@@ -1699,11 +1796,13 @@ export namespace GstRtspServer {
          */
         vfunc_prepared(): void;
         /**
+         * query the current position in the pipeline
          * @param position
          * @virtual
          */
         vfunc_query_position(position: number): boolean;
         /**
+         * query when playback will stop
          * @param stop
          * @virtual
          */
@@ -1840,6 +1939,16 @@ export namespace GstRtspServer {
          * @returns a {@link Gst.Element}. Unref after usage.
          */
         get_element(): Gst.Element;
+        /**
+         * Get ensure-keyunit-on-start flag.
+         * @returns The ensure-keyunit-on-start flag.
+         */
+        get_ensure_keyunit_on_start(): boolean;
+        /**
+         * Get ensure-keyunit-on-start-timeout time.
+         * @returns The ensure-keyunit-on-start-timeout time.
+         */
+        get_ensure_keyunit_on_start_timeout(): number;
         /**
          * Get the latency that is used for receiving media.
          * @returns latency in milliseconds
@@ -2080,6 +2189,24 @@ export namespace GstRtspServer {
          */
         set_dscp_qos(dscp_qos: number): void;
         /**
+         * Set whether or not a keyunit should be ensured when a client connects. It
+         * will also configure the streams to drop delta units to ensure that they start
+         * on a keyunit.
+         *
+         * Note that this will only affect non-shared medias for now.
+         * @param ensure_keyunit_on_start the new value
+         */
+        set_ensure_keyunit_on_start(ensure_keyunit_on_start: boolean): void;
+        /**
+         * Sets the maximum allowed time before the first keyunit is considered
+         * expired.
+         *
+         * Note that this will only have an effect when ensure-keyunit-on-start is
+         * enabled.
+         * @param timeout the new value
+         */
+        set_ensure_keyunit_on_start_timeout(timeout: number): void;
+        /**
          * Set or unset if an EOS event will be sent to the pipeline for `media` before
          * it is unprepared.
          * @param eos_shutdown the new value
@@ -2243,6 +2370,8 @@ export namespace GstRtspServer {
             'notify::clock': (pspec: GObject.ParamSpec) => void;
             'notify::dscp-qos': (pspec: GObject.ParamSpec) => void;
             'notify::enable-rtcp': (pspec: GObject.ParamSpec) => void;
+            'notify::ensure-keyunit-on-start': (pspec: GObject.ParamSpec) => void;
+            'notify::ensure-keyunit-on-start-timeout': (pspec: GObject.ParamSpec) => void;
             'notify::eos-shutdown': (pspec: GObject.ParamSpec) => void;
             'notify::latency': (pspec: GObject.ParamSpec) => void;
             'notify::launch': (pspec: GObject.ParamSpec) => void;
@@ -2267,6 +2396,10 @@ export namespace GstRtspServer {
             dscpQos: number;
             enable_rtcp: boolean;
             enableRtcp: boolean;
+            ensure_keyunit_on_start: boolean;
+            ensureKeyunitOnStart: boolean;
+            ensure_keyunit_on_start_timeout: number;
+            ensureKeyunitOnStartTimeout: number;
             eos_shutdown: boolean;
             eosShutdown: boolean;
             latency: number;
@@ -2321,6 +2454,52 @@ export namespace GstRtspServer {
          */
         get enableRtcp(): boolean;
         set enableRtcp(val: boolean);
+        /**
+         * If media from this factory should ensure a key unit when a client connects.
+         *
+         * This property will ensure that the stream always starts on a key unit
+         * instead of a delta unit which the client would not be able to decode.
+         *
+         * Note that this will only affect non-shared medias for now.
+         * @since 1.24
+         */
+        get ensure_keyunit_on_start(): boolean;
+        set ensure_keyunit_on_start(val: boolean);
+        /**
+         * If media from this factory should ensure a key unit when a client connects.
+         *
+         * This property will ensure that the stream always starts on a key unit
+         * instead of a delta unit which the client would not be able to decode.
+         *
+         * Note that this will only affect non-shared medias for now.
+         * @since 1.24
+         */
+        get ensureKeyunitOnStart(): boolean;
+        set ensureKeyunitOnStart(val: boolean);
+        /**
+         * Timeout in milliseconds used to determine if a keyunit should be discarded
+         * when a client connects.
+         *
+         * If the timeout has been reached a new keyframe will be forced, otherwise
+         * the currently blocking keyframe will be used.
+         *
+         * This options is only relevant when ensure-keyunit-on-start is enabled.
+         * @since 1.24
+         */
+        get ensure_keyunit_on_start_timeout(): number;
+        set ensure_keyunit_on_start_timeout(val: number);
+        /**
+         * Timeout in milliseconds used to determine if a keyunit should be discarded
+         * when a client connects.
+         *
+         * If the timeout has been reached a new keyframe will be forced, otherwise
+         * the currently blocking keyframe will be used.
+         *
+         * This options is only relevant when ensure-keyunit-on-start is enabled.
+         * @since 1.24
+         */
+        get ensureKeyunitOnStartTimeout(): number;
+        set ensureKeyunitOnStartTimeout(val: number);
         get eos_shutdown(): boolean;
         set eos_shutdown(val: boolean);
         get eosShutdown(): boolean;
@@ -2393,6 +2572,8 @@ export namespace GstRtspServer {
         // Virtual methods
 
         /**
+         * configure the media created with `construct`. The default
+         *       implementation will configure the 'shared' property of the media.
          * @param media
          * @virtual
          */
@@ -2425,16 +2606,21 @@ export namespace GstRtspServer {
          */
         vfunc_create_element(url: GstRtsp.RTSPUrl): Gst.Element | null;
         /**
+         * convert `url` to a key for caching shared {@link GstRtspServer.RTSPMedia} objects.
+         *       The default implementation of this function will use the complete URL
+         *       including the query parameters to return a key.
          * @param url
          * @virtual
          */
         vfunc_gen_key(url: GstRtsp.RTSPUrl): string;
         /**
+         * signal emitted when a media should be configured
          * @param media
          * @virtual
          */
         vfunc_media_configure(media: RTSPMedia): void;
         /**
+         * signal emitted when a media was constructed
          * @param media
          * @virtual
          */
@@ -2501,6 +2687,16 @@ export namespace GstRtspServer {
          * @returns the media DSCP QoS value or -1 if disabled.
          */
         get_dscp_qos(): number;
+        /**
+         * Get ensure-keyunit-on-start flag.
+         * @returns The ensure-keyunit-on-start flag.
+         */
+        get_ensure_keyunit_on_start(): boolean;
+        /**
+         * Get ensure-keyunit-on-start-timeout time.
+         * @returns The ensure-keyunit-on-start-timeout time.
+         */
+        get_ensure_keyunit_on_start_timeout(): number;
         /**
          * Get the latency that is used for receiving media
          * @returns latency in milliseconds
@@ -2624,6 +2820,17 @@ export namespace GstRtspServer {
          */
         set_enable_rtcp(enable: boolean): void;
         /**
+         * If media from this factory should ensure a key unit when a client connects.
+         * @param ensure_keyunit_on_start the new value
+         */
+        set_ensure_keyunit_on_start(ensure_keyunit_on_start: boolean): void;
+        /**
+         * Configures medias from this factory to consider keyunits older than timeout
+         * to be expired. Expired keyunits will be discarded.
+         * @param timeout the new value
+         */
+        set_ensure_keyunit_on_start_timeout(timeout: number): void;
+        /**
          * Configure if media created from this factory will have an EOS sent to the
          * pipeline before shutdown.
          * @param eos_shutdown the new value
@@ -2723,6 +2930,8 @@ export namespace GstRtspServer {
             'notify::clock': (pspec: GObject.ParamSpec) => void;
             'notify::dscp-qos': (pspec: GObject.ParamSpec) => void;
             'notify::enable-rtcp': (pspec: GObject.ParamSpec) => void;
+            'notify::ensure-keyunit-on-start': (pspec: GObject.ParamSpec) => void;
+            'notify::ensure-keyunit-on-start-timeout': (pspec: GObject.ParamSpec) => void;
             'notify::eos-shutdown': (pspec: GObject.ParamSpec) => void;
             'notify::latency': (pspec: GObject.ParamSpec) => void;
             'notify::launch': (pspec: GObject.ParamSpec) => void;
@@ -2981,6 +3190,8 @@ export namespace GstRtspServer {
             'notify::clock': (pspec: GObject.ParamSpec) => void;
             'notify::dscp-qos': (pspec: GObject.ParamSpec) => void;
             'notify::element': (pspec: GObject.ParamSpec) => void;
+            'notify::ensure-keyunit-on-start': (pspec: GObject.ParamSpec) => void;
+            'notify::ensure-keyunit-on-start-timeout': (pspec: GObject.ParamSpec) => void;
             'notify::eos-shutdown': (pspec: GObject.ParamSpec) => void;
             'notify::latency': (pspec: GObject.ParamSpec) => void;
             'notify::max-mcast-ttl': (pspec: GObject.ParamSpec) => void;
@@ -3076,6 +3287,8 @@ export namespace GstRtspServer {
             'notify::clock': (pspec: GObject.ParamSpec) => void;
             'notify::dscp-qos': (pspec: GObject.ParamSpec) => void;
             'notify::enable-rtcp': (pspec: GObject.ParamSpec) => void;
+            'notify::ensure-keyunit-on-start': (pspec: GObject.ParamSpec) => void;
+            'notify::ensure-keyunit-on-start-timeout': (pspec: GObject.ParamSpec) => void;
             'notify::eos-shutdown': (pspec: GObject.ParamSpec) => void;
             'notify::latency': (pspec: GObject.ParamSpec) => void;
             'notify::launch': (pspec: GObject.ParamSpec) => void;
@@ -3151,6 +3364,18 @@ export namespace GstRtspServer {
 
         // Virtual methods
 
+        /**
+         * Called by the factory from {@link GstRtspServer.RTSPMediaFactoryClass.SignalSignatures.construct | GstRtspServer.RTSPMediaFactoryClass::construct}(). The default implementation
+         * creates the * {@link GstRtspServer.RTSPStream} for the backchannel receiver by calling
+         * gst_rtsp_onvif_media_collect_backchannel (media). Implementations
+         * that want to create the backchannel later should return TRUE here
+         * and call `gst_rtsp_onvif_media_collect_backchannel()` later, but must
+         * do so before the media finishes preparing.
+         * @param media a {@link GstRtspServer.RTSPOnvifMedia}
+         * @param ctx a {@link GstRtspServer.RTSPContext}
+         * @virtual
+         */
+        vfunc_create_backchannel_stream(media: RTSPOnvifMedia, ctx: RTSPContext): boolean;
         /**
          * Returns `true` if an ONVIF backchannel is supported by the media factory.
          * @virtual
@@ -3399,6 +3624,7 @@ export namespace GstRtspServer {
         // Virtual methods
 
         /**
+         * emitted when a new client connected.
          * @param client
          * @virtual
          */
@@ -3968,10 +4194,13 @@ export namespace GstRtspServer {
         // Virtual methods
 
         /**
+         * create a new random session id. Subclasses can create
+         *    custom session ids and should not check if the session exists.
          * @virtual
          */
         vfunc_create_session_id(): string;
         /**
+         * a session was removed from the pool
          * @param session
          * @virtual
          */
@@ -4665,11 +4894,16 @@ export namespace GstRtspServer {
 
     namespace RTSPStreamTransport {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::timed-out': (pspec: GObject.ParamSpec) => void;
+        }
 
         // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            timed_out: boolean;
+            timedOut: boolean;
+        }
     }
 
     /**
@@ -4678,6 +4912,21 @@ export namespace GstRtspServer {
      */
     class RTSPStreamTransport extends GObject.Object {
         static $gtype: GObject.GType<RTSPStreamTransport>;
+
+        // Properties
+
+        /**
+         * Whether this transport is timed out
+         * @since 1.28
+         * @read-only
+         */
+        get timed_out(): boolean;
+        /**
+         * Whether this transport is timed out
+         * @since 1.28
+         * @read-only
+         */
+        get timedOut(): boolean;
 
         /**
          * Compile-time signal type information.
@@ -4927,6 +5176,8 @@ export namespace GstRtspServer {
         // Virtual methods
 
         /**
+         * configure a thread object. this vmethod is called when
+         *       a new thread has been created and should be configured.
          * @param thread
          * @param ctx
          * @virtual
@@ -4940,11 +5191,13 @@ export namespace GstRtspServer {
          */
         vfunc_get_thread(type: RTSPThreadType, ctx: RTSPContext): RTSPThread | null;
         /**
+         * called from the thread when it is entered
          * @param thread
          * @virtual
          */
         vfunc_thread_enter(thread: RTSPThread): void;
         /**
+         * called from the thread when it is left
          * @param thread
          * @virtual
          */

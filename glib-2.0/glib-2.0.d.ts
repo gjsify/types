@@ -2931,6 +2931,10 @@ export namespace GLib {
          * Virama (VI). Since: 2.80
          */
         VIRAMA,
+        /**
+         * Unambiguous Hyphen (HH). Since: 2.88
+         */
+        UNAMBIGUOUS_HYPHEN,
     }
 
     /**
@@ -3645,6 +3649,22 @@ export namespace GLib {
          * Ol Onal. Since: 2.84
          */
         OL_ONAL,
+        /**
+         * Sidetic. Since: 2.88
+         */
+        SIDETIC,
+        /**
+         * Tolong Siki. Since: 2.88
+         */
+        TOLONG_SIKI,
+        /**
+         * Tai Yo. Since: 2.88
+         */
+        TAI_YO,
+        /**
+         * Beria Erfe. Since: 2.88
+         */
+        BERIA_ERFE,
     }
 
     /**
@@ -3781,22 +3801,6 @@ export namespace GLib {
          * General category "Separator, Space" (Zs)
          */
         SPACE_SEPARATOR,
-    }
-
-    /**
-     * Mnemonic constants for the ends of a Unix pipe.
-     * @gir-type Enum
-     * @since 2.80
-     */
-    enum UnixPipeEnd {
-        /**
-         * The readable file descriptor 0
-         */
-        READ,
-        /**
-         * The writable file descriptor 1
-         */
-        WRITE,
     }
 
     /**
@@ -4543,6 +4547,12 @@ export namespace GLib {
      */
     const MINOR_VERSION: number;
     const MODULE_SUFFIX: string;
+    /**
+     * Number of nanoseconds in one second (1 billion).
+     * This macro is provided for code readability.
+     * @since 2.88
+     */
+    const NSEC_PER_SEC: number;
     /**
      * If a long option in the main group has this name, it is not treated as a
      * regular option. Instead it collects all non-option arguments which would
@@ -5440,7 +5450,7 @@ export namespace GLib {
      * Gets the current value of `atomic`.
      *
      * This call acts as a full compiler and hardware
-     * memory barrier (before the get).
+     * memory barrier.
      *
      * While `atomic` has a `volatile` qualifier, this is a historical artifact and
      * the pointer passed to it should not be `volatile`.
@@ -5483,7 +5493,7 @@ export namespace GLib {
      * Sets the value of `atomic` to `newval`.
      *
      * This call acts as a full compiler and hardware
-     * memory barrier (after the set).
+     * memory barrier.
      *
      * While `atomic` has a `volatile` qualifier, this is a historical artifact and
      * the pointer passed to it should not be `volatile`.
@@ -5613,7 +5623,7 @@ export namespace GLib {
      * Gets the current value of `atomic`.
      *
      * This call acts as a full compiler and hardware
-     * memory barrier (before the get).
+     * memory barrier.
      *
      * While `atomic` has a `volatile` qualifier, this is a historical artifact and
      * the pointer passed to it should not be `volatile`.
@@ -5647,7 +5657,7 @@ export namespace GLib {
      * Sets the value of `atomic` to `newval`.
      *
      * This call acts as a full compiler and hardware
-     * memory barrier (after the set).
+     * memory barrier.
      *
      * While `atomic` has a `volatile` qualifier, this is a historical artifact and
      * the pointer passed to it should not be `volatile`.
@@ -6355,27 +6365,6 @@ export namespace GLib {
      */
     function close(fd: number): boolean;
     /**
-     * Close every file descriptor equal to or greater than `lowfd`.
-     *
-     * Typically `lowfd` will be 3, to leave standard input, standard output
-     * and standard error open.
-     *
-     * This is the same as Linux `close_range (lowfd, ~0U, 0)`,
-     * but portable to other OSs and to older versions of Linux.
-     * Equivalently, it is the same as BSD `closefrom (lowfd)`, but portable,
-     * and async-signal-safe on all OSs.
-     *
-     * This function is async-signal safe, making it safe to call from a
-     * signal handler or a {@link GLib.SpawnChildSetupFunc}, as long as `lowfd` is
-     * non-negative.
-     * See [`signal(7)`](man:signal(7)) and
-     * [`signal-safety(7)`](man:signal-safety(7)) for more details.
-     * @param lowfd Minimum fd to close, which must be non-negative
-     * @returns 0 on success, -1 with errno set on error
-     * @since 2.80
-     */
-    function closefrom(lowfd: number): number;
-    /**
      * Computes the checksum for a binary `data`. This is a
      * convenience wrapper for `g_checksum_new()`, `g_checksum_get_string()`
      * and `g_checksum_free()`.
@@ -7014,26 +7003,6 @@ export namespace GLib {
         error_type_copy: ErrorCopyFunc,
         error_type_clear: ErrorClearFunc,
     ): Quark;
-    /**
-     * Mark every file descriptor equal to or greater than `lowfd` to be closed
-     * at the next `execve()` or similar, as if via the `FD_CLOEXEC` flag.
-     *
-     * Typically `lowfd` will be 3, to leave standard input, standard output
-     * and standard error open after exec.
-     *
-     * This is the same as Linux `close_range (lowfd, ~0U, CLOSE_RANGE_CLOEXEC)`,
-     * but portable to other OSs and to older versions of Linux.
-     *
-     * This function is async-signal safe, making it safe to call from a
-     * signal handler or a {@link GLib.SpawnChildSetupFunc}, as long as `lowfd` is
-     * non-negative.
-     * See [`signal(7)`](man:signal(7)) and
-     * [`signal-safety(7)`](man:signal-safety(7)) for more details.
-     * @param lowfd Minimum fd to act on, which must be non-negative
-     * @returns 0 on success, -1 with errno set on error
-     * @since 2.80
-     */
-    function fdwalk_set_cloexec(lowfd: number): number;
     /**
      * Gets a {@link GLib.FileError} constant based on the passed-in `err_no`.
      *
@@ -7750,7 +7719,7 @@ export namespace GLib {
      */
     function get_locale_variants(locale: string): string[];
     /**
-     * Queries the system monotonic time.
+     * Queries the system monotonic time in microseconds.
      *
      * The monotonic clock will always increase and doesn’t suffer
      * discontinuities when the user (or NTP) changes the system time.  It
@@ -7761,10 +7730,33 @@ export namespace GLib {
      * the passage of time as measured by system calls such as
      * [`poll()`](man:poll(2)) but it
      * may not always be possible to do this.
+     *
+     * A more accurate version of this function exists.
+     * {@link GLib.get_monotonic_time_ns} returns the time in nanoseconds.
      * @returns the monotonic time, in microseconds
      * @since 2.28
      */
     function get_monotonic_time(): number;
+    /**
+     * Queries the system monotonic time in nanoseconds.
+     *
+     * The monotonic clock will always increase and doesn’t suffer
+     * discontinuities when the user (or NTP) changes the system time.  It
+     * may or may not continue to tick during times where the machine is
+     * suspended.
+     *
+     * We try to use the clock that corresponds as closely as possible to
+     * the passage of time as measured by system calls such as
+     * [`poll()`](man:poll(2)) but it
+     * may not always be possible to do this.
+     *
+     * Another version of this function exists.
+     * {@link GLib.get_monotonic_time} returns the time in microseconds.
+     * If you want to support older GLib versions, it is an alternative.
+     * @returns the monotonic time, in nanoseconds
+     * @since 2.88
+     */
+    function get_monotonic_time_ns(): number;
     /**
      * Determine the approximate number of threads that the system will
      * schedule simultaneously for this process.  This is intended to be
@@ -11454,7 +11446,7 @@ export namespace GLib {
      * - `\r` → [U+000D Carriage Return](https://en.wikipedia.org/wiki/Carriage_return)
      * - `\t` → [U+0009 Horizontal Tabulation](https://en.wikipedia.org/wiki/Tab_character)
      * - `\v` → [U+000B Vertical Tabulation](https://en.wikipedia.org/wiki/Vertical_Tab)
-     * - `\` followed by one to three octal digits → the numeric value (mod 255)
+     * - `\` followed by one to three octal digits → the numeric value (mod 256)
      * - `\` followed by any other character → the character as is.
      *   For example, `\\` will turn into a backslash (`\`) and `\"` into a double quote (`"`).
      *
@@ -11727,18 +11719,21 @@ export namespace GLib {
      */
     function strsplit(string: string, delimiter: string, max_tokens: number): string[];
     /**
-     * Splits `string` into a number of tokens not containing any of the characters
-     * in `delimiters`. A token is the (possibly empty) longest string that does not
-     * contain any of the characters in `delimiters`. If `max_tokens` is reached, the
-     * remainder is appended to the last token.
+     * Splits `string` into a number of tokens not containing any of the
+     * bytes in `delimiters`.
      *
-     * For example, the result of g_strsplit_set ("abc:def/ghi", ":/", -1) is an
-     * array containing the three strings "abc", "def", and "ghi".
+     * A token is the (possibly empty) longest string that does not
+     * contain any of the bytes in `delimiters`. Note that separators
+     * will only be single bytes from `delimiters`. If `max_tokens` is reached,
+     * the remainder is appended to the last token.
      *
-     * The result of g_strsplit_set (":def/ghi:", ":/", -1) is an array containing
-     * the four strings "", "def", "ghi", and "".
+     * For example, the result of `g_strsplit_set ("abc:def/ghi", ":/", -1)`
+     * is an array containing the three strings `"abc"`, `"def"`, and `"ghi"`.
      *
-     * As a special case, the result of splitting the empty string "" is an empty
+     * The result of `g_strsplit_set (":def/ghi:/x", ":/", -1)` is an array
+     * containing the five strings `""`, `"def"`, `"ghi"`, `""`, `"x"`.
+     *
+     * As a special case, the result of splitting the empty string `""` is an empty
      * array, not an array containing a single string. The reason for this
      * special case is that being able to represent an empty array is typically
      * more useful than consistent handling of empty elements. If you do need
@@ -11748,12 +11743,12 @@ export namespace GLib {
      * Note that this function works on bytes not characters, so it can't be used
      * to delimit UTF-8 strings for anything but ASCII characters.
      * @param string a string to split
-     * @param delimiters a string containing characters that are used to split the   string. Can be empty, which will result in no string splitting
+     * @param delimiters a   nul-terminated byte array containing bytes that are used to   split the string; can be empty (just a nul byte), which will result in no   string splitting
      * @param max_tokens the maximum number of tokens to split `string` into.   If this is less than 1, the string is split completely
      * @returns a newly-allocated array of strings. Use   {@link GLib.strfreev} to free it.
      * @since 2.4
      */
-    function strsplit_set(string: string, delimiters: string, max_tokens: number): string[];
+    function strsplit_set(string: string, delimiters: Uint8Array | string, max_tokens: number): string[];
     /**
      * Searches the string `haystack` for the first occurrence
      * of the string `needle`, limiting the length of the search
@@ -12324,6 +12319,12 @@ export namespace GLib {
     function test_trap_has_passed(): boolean;
     /**
      * Checks the result of the last {@link GLib.test_trap_subprocess} call.
+     * @returns true if the last test subprocess was skipped
+     * @since 2.88
+     */
+    function test_trap_has_skipped(): boolean;
+    /**
+     * Checks the result of the last {@link GLib.test_trap_subprocess} call.
      * @returns true if the last test subprocess got killed due to a timeout
      * @since 2.16
      */
@@ -12785,7 +12786,7 @@ export namespace GLib {
      *
      * The result will be terminated with a nul byte.
      * @param str a UCS-4 encoded string
-     * @returns a pointer to a newly allocated UTF-8 string.   This value must be freed with {@link GLib.free}. If an error occurs,   `items_read` will be set to the position of the first invalid input   character.
+     * @returns a pointer to a newly allocated UTF-8 string.   This value must be freed with {@link GLib.free}.
      */
     function ucs4_to_utf8(str: string): [string, number, number];
     /**
@@ -13085,7 +13086,7 @@ export namespace GLib {
     /**
      * Converts a single character to UTF-8.
      * @param c a Unicode character code
-     * @returns number of bytes written
+     * @returns number of bytes written, guaranteed to be in the range [1, 6]
      */
     function unichar_to_utf8(c: string): [number, string];
     /**
@@ -13174,134 +13175,6 @@ export namespace GLib {
      * @since 2.30
      */
     function unicode_script_to_iso15924(script: UnicodeScript | null): number;
-    function unix_error_quark(): Quark;
-    /**
-     * Sets a function to be called when the IO condition, as specified by
-     * `condition` becomes true for `fd`.
-     *
-     * This is the same as `g_unix_fd_add()`, except that it allows you to
-     * specify a non-default priority and a provide a {@link GLib.DestroyNotify} for
-     * `user_data`.
-     * @param priority the priority of the source
-     * @param fd a file descriptor
-     * @param condition IO conditions to watch for on `fd`
-     * @param _function a {@link GLib.UnixFDSourceFunc}
-     * @returns the ID (greater than 0) of the event source
-     * @since 2.36
-     */
-    function unix_fd_add_full(
-        priority: number,
-        fd: number,
-        condition: IOCondition | null,
-        _function: UnixFDSourceFunc,
-    ): number;
-    /**
-     * Creates a {@link GLib.Source} to watch for a particular I/O condition on a file
-     * descriptor.
-     *
-     * The source will never close the `fd` — you must do it yourself.
-     *
-     * Any callback attached to the returned {@link GLib.Source} must have type
-     * {@link GLib.UnixFDSourceFunc}.
-     * @param fd a file descriptor
-     * @param condition I/O conditions to watch for on `fd`
-     * @returns the newly created {@link GLib.Source}
-     * @since 2.36
-     */
-    function unix_fd_source_new(fd: number, condition: IOCondition | null): Source;
-    /**
-     * Get the `passwd` file entry for the given `user_name` using `getpwnam_r()`.
-     * This can fail if the given `user_name` doesn’t exist.
-     *
-     * The returned `struct passwd` has been allocated using `g_malloc()` and should
-     * be freed using `g_free()`. The strings referenced by the returned struct are
-     * included in the same allocation, so are valid until the `struct passwd` is
-     * freed.
-     *
-     * This function is safe to call from multiple threads concurrently.
-     *
-     * You will need to include `pwd.h` to get the definition of `struct passwd`.
-     * @param user_name the username to get the passwd file entry for
-     * @returns passwd entry, or `null` on error; free the returned    value with `g_free()`
-     * @since 2.64
-     */
-    function unix_get_passwd_entry(user_name: string): any | null;
-    /**
-     * Similar to the UNIX `pipe()` call, but on modern systems like Linux
-     * uses the `pipe2()` system call, which atomically creates a pipe with
-     * the configured flags.
-     *
-     * As of GLib 2.78, the supported flags are `O_CLOEXEC`/`FD_CLOEXEC` (see below)
-     * and `O_NONBLOCK`. Prior to GLib 2.78, only `FD_CLOEXEC` was supported — if
-     * you wanted to configure `O_NONBLOCK` then that had to be done separately with
-     * `fcntl()`.
-     *
-     * Since GLib 2.80, the constants {@link GLib.UnixPipeEnd.READ} and
-     * {@link GLib.UnixPipeEnd.WRITE} can be used as mnemonic indexes in `fds`.
-     *
-     * It is a programmer error to call this function with unsupported flags, and a
-     * critical warning will be raised.
-     *
-     * As of GLib 2.78, it is preferred to pass `O_CLOEXEC` in, rather than
-     * `FD_CLOEXEC`, as that matches the underlying `pipe()` API more closely. Prior
-     * to 2.78, only `FD_CLOEXEC` was supported. Support for `FD_CLOEXEC` may be
-     * deprecated and removed in future.
-     * @param fds Array of two integers
-     * @param flags Bitfield of file descriptor flags, as for `fcntl()`
-     * @returns `true` on success, `false` if not (and errno will be set).
-     * @since 2.30
-     */
-    function unix_open_pipe(fds: number[], flags: number): boolean;
-    /**
-     * Control the non-blocking state of the given file descriptor,
-     * according to `nonblock`. On most systems this uses `O_NONBLOCK`, but
-     * on some older ones may use `O_NDELAY`.
-     * @param fd A file descriptor
-     * @param nonblock If `true`, set the descriptor to be non-blocking
-     * @returns `true` if successful
-     * @since 2.30
-     */
-    function unix_set_fd_nonblocking(fd: number, nonblock: boolean): boolean;
-    /**
-     * A convenience function for `g_unix_signal_source_new()`, which
-     * attaches to the default {@link GLib.MainContext}.  You can remove the watch
-     * using `g_source_remove()`.
-     * @param priority the priority of the signal source. Typically this will be in            the range between `G_PRIORITY_DEFAULT` and `G_PRIORITY_HIGH`.
-     * @param signum Signal number
-     * @param handler Callback
-     * @returns An ID (greater than 0) for the event source
-     * @since 2.30
-     */
-    function unix_signal_add(priority: number, signum: number, handler: SourceFunc): number;
-    /**
-     * Create a {@link GLib.Source} that will be dispatched upon delivery of the UNIX
-     * signal `signum`.  In GLib versions before 2.36, only `SIGHUP`, `SIGINT`,
-     * `SIGTERM` can be monitored.  In GLib 2.36, `SIGUSR1` and `SIGUSR2`
-     * were added. In GLib 2.54, `SIGWINCH` was added.
-     *
-     * Note that unlike the UNIX default, all sources which have created a
-     * watch will be dispatched, regardless of which underlying thread
-     * invoked `g_unix_signal_source_new()`.
-     *
-     * For example, an effective use of this function is to handle `SIGTERM`
-     * cleanly; flushing any outstanding files, and then calling
-     * `g_main_loop_quit()`.  It is not safe to do any of this from a regular
-     * UNIX signal handler; such a handler may be invoked while `malloc()` or
-     * another library function is running, causing reentrancy issues if the
-     * handler attempts to use those functions.  None of the GLib/GObject
-     * API is safe against this kind of reentrancy.
-     *
-     * The interaction of this source when combined with native UNIX
-     * functions like `sigprocmask()` is not defined.
-     *
-     * The source will not initially be associated with any {@link GLib.MainContext}
-     * and must be added to one with `g_source_attach()` before it will be
-     * executed.
-     * @param signum A signal number
-     * @returns A newly created {@link GLib.Source}
-     * @since 2.30
-     */
-    function unix_signal_source_new(signum: number): Source;
     /**
      * A wrapper for the POSIX `unlink()` function. The `unlink()` function
      * deletes a name from the filesystem. If this was the last link to the
@@ -14723,12 +14596,6 @@ export namespace GLib {
     /**
      * @gir-type Callback
      */
-    interface UnixFDSourceFunc {
-        (fd: number, condition: IOCondition): boolean;
-    }
-    /**
-     * @gir-type Callback
-     */
     interface VoidFunc {
         (): void;
     }
@@ -14869,11 +14736,7 @@ export namespace GLib {
          * set if the hook is currently being run
          */
         IN_CALL,
-        /**
-         * A mask covering all bits reserved for
-         *   hook flags; see `G_HOOK_FLAG_USER_SHIFT`
-         */
-        MASK,
+        RESERVED1,
     }
 
     /**
@@ -15335,30 +15198,7 @@ export namespace GLib {
          *     is '\n'.
          */
         NEWLINE_LF,
-        /**
-         * Usually any newline character or character sequence is
-         *     recognized. If this option is set, the only recognized newline character
-         *     sequence is '\r\n'.
-         */
-        NEWLINE_CRLF,
-        /**
-         * Usually any newline character or character sequence
-         *     is recognized. If this option is set, the only recognized newline character
-         *     sequences are '\r', '\n', and '\r\n'. Since: 2.34
-         */
-        NEWLINE_ANYCRLF,
-        /**
-         * Usually any newline character or character sequence
-         *     is recognised. If this option is set, then "\R" only recognizes the newline
-         *    characters '\r', '\n' and '\r\n'. Since: 2.34
-         */
-        BSR_ANYCRLF,
-        /**
-         * Changes behaviour so that it is compatible with
-         *     JavaScript rather than PCRE. Since GLib 2.74 this is no longer supported,
-         *     as libpcre2 does not support it. Since: 2.34 Deprecated: 2.74
-         */
-        JAVASCRIPT_COMPAT,
+        NEWLINE_RESERVED1,
     }
 
     /**
@@ -15582,6 +15422,11 @@ export namespace GLib {
          *   later tests with {@link GLib.test_trap_assert_stderr}.
          */
         INHERIT_STDERR,
+        /**
+         * If this flag is given, the
+         *   child process will inherit the parent’s open file descriptors.
+         */
+        INHERIT_DESCRIPTORS,
     }
 
     /**
@@ -16908,6 +16753,8 @@ export namespace GLib {
 
         static ['new'](data?: Uint8Array | null): Bytes;
 
+        static new_from_bytes(bytes: Bytes | Uint8Array, offset: number, length: number): Bytes;
+
         static new_take(data?: Uint8Array | null): Bytes;
 
         // Methods
@@ -16994,24 +16841,6 @@ export namespace GLib {
          * @returns a hash value corresponding to the key.
          */
         hash(): number;
-        /**
-         * Creates a {@link GLib.Bytes} which is a subsection of another {@link GLib.Bytes}.
-         *
-         * The `offset` + `length` may not be longer than the size of `bytes`.
-         *
-         * A reference to `bytes` will be held by the newly created {@link GLib.Bytes} until
-         * the byte data is no longer needed.
-         *
-         * Since 2.56, if `offset` is 0 and `length` matches the size of `bytes`, then
-         * `bytes` will be returned with the reference count incremented by 1. If `bytes`
-         * is a slice of another {@link GLib.Bytes}, then the resulting {@link GLib.Bytes} will reference
-         * the same {@link GLib.Bytes} instead of `bytes`. This allows consumers to simplify the
-         * usage of {@link GLib.Bytes} when asynchronously writing to streams.
-         * @param offset offset which subsection starts at
-         * @param length length of subsection
-         * @returns a new {@link GLib.Bytes}
-         */
-        new_from_bytes(offset: number, length: number): Bytes;
         /**
          * Increase the reference count on `bytes`.
          * @returns the {@link GLib.Bytes}
@@ -20875,12 +20704,38 @@ export namespace GLib {
          */
         get_element_stack(): string[];
         /**
+         * Retrieves the current offset from the beginning of the document,
+         * in bytes.
+         *
+         * The information is meant to accompany the values returned by
+         * {@link GLib.MarkupParseContext.get_position}, and comes with the
+         * same accuracy guarantees.
+         * @returns the offset
+         */
+        get_offset(): number;
+        /**
          * Retrieves the current line number and the number of the character on
          * that line. Intended for use in error messages; there are no strict
          * semantics for what constitutes the "current" line number other than
          * "the best number we could come up with for error messages."
          */
         get_position(): [number, number];
+        /**
+         * Retrieves the start position of the current start or end tag.
+         *
+         * This function can be used in the `start_element` or `end_element`
+         * callbacks to obtain location information for error reporting.
+         *
+         * Note that `line_number` and `char_number` are intended for human
+         * readable error messages and are therefore 1-based and in Unicode
+         * characters. `offset` on the other hand is meant for programmatic
+         * use, and thus is 0-based and in bytes.
+         *
+         * The information is meant to accompany the values returned by
+         * {@link GLib.MarkupParseContext.get_position}, and comes with the
+         * same accuracy guarantees.
+         */
+        get_tag_start(): [number, number, number];
         /**
          * Returns the user_data associated with `context`.
          *
@@ -25269,10 +25124,14 @@ export namespace GLib {
          * replacement will be inserted no more than once per possible position
          * (beginning of string, end of string and between characters). This did
          * not work correctly in earlier versions.
+         *
+         * If `limit` is zero and more than `G_MAXUINT` instances of `find` are in
+         * the input string, they will all be replaced, but the return value will
+         * be capped at `G_MAXUINT`.
          * @param find the string to find in `string`
          * @param replace the string to insert in place of `find`
          * @param limit the maximum instances of `find` to replace with `replace`, or `0` for no limit
-         * @returns the number of find and replace operations performed.
+         * @returns the number of find and replace operations performed,   up to `G_MAXUINT`
          */
         replace(find: string, replace: string, limit: number): number;
         /**
@@ -26577,29 +26436,6 @@ export namespace GLib {
          * @returns the field of the record.
          */
         index(index_: number, field: number): any | null;
-    }
-
-    /**
-     * A Unix pipe. The advantage of this type over `int[2]` is that it can
-     * be closed automatically when it goes out of scope, using `g_auto(GUnixPipe)`,
-     * on compilers that support that feature.
-     * @gir-type Struct
-     * @since 2.80
-     */
-    class UnixPipe {
-        static $gtype: GObject.GType<UnixPipe>;
-
-        // Fields
-
-        fds: number[];
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                fds: number[];
-            }>,
-        );
     }
 
     /**

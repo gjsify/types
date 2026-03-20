@@ -32,6 +32,10 @@ export namespace GstCuda {
         NONE,
         GL_BUFFER,
         D3D11_RESOURCE,
+        /**
+         * Resource represents a EGL resource.
+         */
+        EGL_RESOURCE,
     }
 
     /**
@@ -73,6 +77,11 @@ export namespace GstCuda {
      */
     const CAPS_FEATURE_MEMORY_CUDA_MEMORY: string;
     /**
+     * #G_TYPE_BOOLEAN Allows stream ordered allocation. Default is `false`
+     * @since 1.26
+     */
+    const CUDA_ALLOCATOR_OPT_STREAM_ORDERED: string;
+    /**
      * @since 1.22
      */
     const CUDA_CONTEXT_TYPE: string;
@@ -94,6 +103,16 @@ export namespace GstCuda {
      */
     const MAP_CUDA: number;
     /**
+     * GstMapFlags value alias for GST_MAP_READ | GST_MAP_CUDA
+     * @since 1.28
+     */
+    const MAP_READ_CUDA: Gst.MapFlags;
+    /**
+     * GstMapFlags value alias for GST_MAP_WRITE | GST_MAP_CUDA
+     * @since 1.28
+     */
+    const MAP_WRITE_CUDA: Gst.MapFlags;
+    /**
      * Gets configured allocation method
      * @param config a buffer pool config
      * @since 1.24
@@ -105,6 +124,12 @@ export namespace GstCuda {
      * @since 1.24
      */
     function buffer_pool_config_get_cuda_stream(config: Gst.Structure): CudaStream | null;
+    /**
+     * @param config a buffer pool config
+     * @returns `true` stream ordered allocation option was specified
+     * @since 1.26
+     */
+    function buffer_pool_config_get_cuda_stream_ordered_alloc(config: Gst.Structure): [boolean, boolean];
     /**
      * Sets allocation method
      * @param config a buffer pool config
@@ -122,6 +147,13 @@ export namespace GstCuda {
      * @since 1.24
      */
     function buffer_pool_config_set_cuda_stream(config: Gst.Structure, stream: CudaStream): void;
+    /**
+     * Sets stream ordered allocation option
+     * @param config a buffer pool config
+     * @param stream_ordered whether stream ordered allocation is allowed
+     * @since 1.26
+     */
+    function buffer_pool_config_set_cuda_stream_ordered_alloc(config: Gst.Structure, stream_ordered: boolean): void;
     /**
      * @param cuda_ctx a {@link GstCuda.CudaContext}
      * @returns a new {@link Gst.Context} embedding the `cuda_ctx`
@@ -316,6 +348,13 @@ export namespace GstCuda {
         // Conflicted with Gst.Allocator.alloc
         alloc(...args: never[]): any;
         /**
+         * @param context a {@link GstCuda.CudaContext}
+         * @param stream a {@link GstCuda.CudaStream}
+         * @param info a {@link GstVideo.VideoInfo}
+         * @returns a newly allocated {@link GstCuda.CudaMemory}
+         */
+        alloc_stream_ordered(context: CudaContext, stream: CudaStream, info: GstVideo.VideoInfo): Gst.Memory | null;
+        /**
          * Allocates a new memory that wraps the given CUDA device memory.
          *
          * `info` must represent actual memory layout, in other words, offset, stride
@@ -437,7 +476,11 @@ export namespace GstCuda {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'notify::cuda-device-id': (pspec: GObject.ParamSpec) => void;
+            'notify::default-gpu-stack-size': (pspec: GObject.ParamSpec) => void;
+            'notify::external-resource-interop': (pspec: GObject.ParamSpec) => void;
             'notify::os-handle': (pspec: GObject.ParamSpec) => void;
+            'notify::prefer-stream-ordered-alloc': (pspec: GObject.ParamSpec) => void;
+            'notify::stream-ordered-alloc': (pspec: GObject.ParamSpec) => void;
             'notify::virtual-memory': (pspec: GObject.ParamSpec) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
             'notify::parent': (pspec: GObject.ParamSpec) => void;
@@ -448,8 +491,16 @@ export namespace GstCuda {
         interface ConstructorProps extends Gst.Object.ConstructorProps {
             cuda_device_id: number;
             cudaDeviceId: number;
+            default_gpu_stack_size: number;
+            defaultGpuStackSize: number;
+            external_resource_interop: boolean;
+            externalResourceInterop: boolean;
             os_handle: boolean;
             osHandle: boolean;
+            prefer_stream_ordered_alloc: boolean;
+            preferStreamOrderedAlloc: boolean;
+            stream_ordered_alloc: boolean;
+            streamOrderedAlloc: boolean;
             virtual_memory: boolean;
             virtualMemory: boolean;
         }
@@ -473,6 +524,30 @@ export namespace GstCuda {
          */
         get cudaDeviceId(): number;
         /**
+         * The default stack size for each GPU thread.
+         * @since 1.26
+         */
+        get default_gpu_stack_size(): number;
+        set default_gpu_stack_size(val: number);
+        /**
+         * The default stack size for each GPU thread.
+         * @since 1.26
+         */
+        get defaultGpuStackSize(): number;
+        set defaultGpuStackSize(val: number);
+        /**
+         * External resource interop API support
+         * @since 1.26
+         * @read-only
+         */
+        get external_resource_interop(): boolean;
+        /**
+         * External resource interop API support
+         * @since 1.26
+         * @read-only
+         */
+        get externalResourceInterop(): boolean;
+        /**
          * OS handle supportability in virtual memory management
          * @since 1.24
          * @read-only
@@ -484,6 +559,26 @@ export namespace GstCuda {
          * @read-only
          */
         get osHandle(): boolean;
+        /**
+         * @since 1.26
+         */
+        get prefer_stream_ordered_alloc(): boolean;
+        set prefer_stream_ordered_alloc(val: boolean);
+        /**
+         * @since 1.26
+         */
+        get preferStreamOrderedAlloc(): boolean;
+        set preferStreamOrderedAlloc(val: boolean);
+        /**
+         * @since 1.26
+         * @read-only
+         */
+        get stream_ordered_alloc(): boolean;
+        /**
+         * @since 1.26
+         * @read-only
+         */
+        get streamOrderedAlloc(): boolean;
         /**
          * Virtual memory management supportability
          * @since 1.24
@@ -624,6 +719,13 @@ export namespace GstCuda {
             info: GstVideo.VideoInfo,
             prop: CudaGst.memAllocationProp,
             granularity_flags: CudaGst.memAllocationGranularity_flags,
+        ): CudaPoolAllocator;
+
+        static new_full(
+            context: CudaContext,
+            stream: CudaStream | null,
+            info: GstVideo.VideoInfo,
+            config?: Gst.Structure | null,
         ): CudaPoolAllocator;
 
         // Signals
@@ -776,6 +878,48 @@ export namespace GstCuda {
          * Performs synchronization if needed
          */
         sync(): void;
+    }
+
+    /**
+     * @gir-type Struct
+     * @since 1.26
+     */
+    class CudaMemoryPool {
+        static $gtype: GObject.GType<CudaMemoryPool>;
+
+        // Fields
+
+        context: CudaContext;
+
+        // Constructors
+
+        constructor(context: CudaContext, props?: CudaGst.memPoolProps | null);
+
+        static ['new'](context: CudaContext, props?: CudaGst.memPoolProps | null): CudaMemoryPool;
+
+        // Methods
+
+        /**
+         * Get CUDA memory pool handle
+         * @returns a CUmemoryPool handle
+         */
+        get_handle(): CudaGst.memoryPool;
+        /**
+         * Increase the reference count of `pool`.
+         * @returns `pool`
+         */
+        ref(): CudaMemoryPool;
+        /**
+         * Decrease the reference count of `pool`.
+         */
+        unref(): void;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class CudaMemoryPoolPrivate {
+        static $gtype: GObject.GType<CudaMemoryPoolPrivate>;
     }
 
     /**

@@ -415,6 +415,17 @@ export namespace Tracker {
          *   SPARQL 1.1 syntax. Namely, they cannot be used as URIs. This flag is available since Tracker 3.3.
          */
         ANONYMOUS_BNODES,
+        /**
+         * Disables no longer recommended [legacy syntax extensions to the SPARQL 1.1
+         * specifications](sparql-and-tracker.md#legacy-syntax-extensions).
+         */
+        DISABLE_SYNTAX_EXTENSIONS,
+        /**
+         * Enables all behavior that provides most adherence to SPARQL 1.1 standards.
+         * Currently this is equivalent to `ANONYMOUS_BNODES | DISABLE_SYNTAX_EXTENSIONS`.
+         * More flags may be added in the future.
+         */
+        SPARQL_STRICT,
     }
 
     namespace Batch {
@@ -1150,7 +1161,7 @@ export namespace Tracker {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1205,7 +1216,7 @@ export namespace Tracker {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1280,7 +1291,7 @@ export namespace Tracker {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1829,7 +1840,7 @@ export namespace Tracker {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1884,7 +1895,7 @@ export namespace Tracker {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1959,7 +1970,7 @@ export namespace Tracker {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3050,6 +3061,17 @@ export namespace Tracker {
 
         static new_finish(result: Gio.AsyncResult): SparqlConnection;
 
+        static new_from_rdf(
+            flags: SparqlConnectionFlags,
+            store: Gio.File | null,
+            deserialize_flags: DeserializeFlags,
+            rdf_format: RdfFormat,
+            rdf_stream: Gio.InputStream,
+            cancellable?: Gio.Cancellable | null,
+        ): SparqlConnection;
+
+        static new_from_rdf_finish(result: Gio.AsyncResult): SparqlConnection;
+
         static remote_new(uri_base: string): SparqlConnection;
 
         // Signals
@@ -3105,6 +3127,25 @@ export namespace Tracker {
             flags: SparqlConnectionFlags,
             store?: Gio.File | null,
             ontology?: Gio.File | null,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<SparqlConnection> | null,
+        ): void;
+        /**
+         * Asynchronous version of {@link SparqlConnection.new_from_rdf}.
+         * @param flags Connection flags to define the SPARQL connection behavior
+         * @param store The database location as a {@link Gio.File}, or `null`
+         * @param deserialize_flags Deserialization flags
+         * @param rdf_format RDF format of the `rdf_stream` argument
+         * @param rdf_stream RDF Schema definition of the database format
+         * @param cancellable Optional {@link Gio.Cancellable}
+         * @param callback User-defined {@link Gio.AsyncReadyCallback} to be called when            the asynchronous operation is finished.
+         */
+        static new_from_rdf_async(
+            flags: SparqlConnectionFlags,
+            store: Gio.File | null,
+            deserialize_flags: DeserializeFlags,
+            rdf_format: RdfFormat,
+            rdf_stream: Gio.InputStream,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<SparqlConnection> | null,
         ): void;

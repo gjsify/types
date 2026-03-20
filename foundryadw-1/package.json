@@ -1,0 +1,78 @@
+{
+    "name": "@girs/foundryadw-1",
+    "version": "1.0.0-4.0.0-beta.41",
+    "description": "GJS TypeScript type definitions for FoundryAdw-1, generated from library version 1.0.0",
+    "type": "module",
+    "module": "foundryadw-1.js",
+    "main": "foundryadw-1.js",
+    "exports": {
+        "./ambient": {
+            "types": "./foundryadw-1-ambient.d.ts",
+            "import": "./foundryadw-1-ambient.js",
+            "default": "./foundryadw-1-ambient.js"
+        },
+        "./import": {
+            "types": "./foundryadw-1-import.d.ts",
+            "import": "./foundryadw-1-import.js",
+            "default": "./foundryadw-1-import.js"
+        },
+        "./foundryadw-1": {
+            "types": "./foundryadw-1.d.ts",
+            "import": "./foundryadw-1.js",
+            "default": "./foundryadw-1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
+    },
+    "scripts": {
+        "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+        "@girs/adw-1": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/dex-1": "workspace:^",
+        "@girs/foundry-1": "workspace:^",
+        "@girs/foundrygtk-1": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdk-4.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/gsk-4.0": "workspace:^",
+        "@girs/gtk-4.0": "workspace:^",
+        "@girs/gtksource-5": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^",
+        "@girs/peas-2": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "FoundryAdw-1"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/foundryadw-1#readme"
+}

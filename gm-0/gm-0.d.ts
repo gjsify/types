@@ -21,6 +21,16 @@ export namespace Gm {
      */
 
     /**
+     * @gir-type Enum
+     */
+    enum CornerPosition {
+        TOP_LEFT,
+        TOP_RIGHT,
+        BOTTOM_RIGHT,
+        BOTTOM_LEFT,
+    }
+
+    /**
      * Error codes returned by gmobile functions.
      * @gir-type Struct
      */
@@ -64,6 +74,23 @@ export namespace Gm {
      */
     function init(): void;
     /**
+     * List device tree names of known devices.
+     * @returns The devices
+     * @since 0.2.2
+     */
+    function list_devices(): string[] | null;
+    /**
+     * Get the ISO 3316-1 country code based on a given mobile country
+     * code (MCC). It's sufficient for the given string to have the
+     * MCC as prefix. In other words it is o.k. to pass an IMSI.
+     *
+     * On error `NULL` is returned and `error` is set.
+     * @param mcc The mcc
+     * @returns The country code or NULL.
+     * @since 0.4.0
+     */
+    function mcc_to_iso(mcc: string): string;
+    /**
      * Returns the bounding box of an SVG path. As this is meant for
      * display cutouts we operate on integer (whole pixel) values.  When
      * parsing fails, `FALSE` is returned and `error` contains the error
@@ -72,7 +99,7 @@ export namespace Gm {
      * @param x1 The lower x coordinate
      * @param x2 The upper x coordinate
      * @param y1 The lower y coordinate
-     * @param y2 The upper x coordinate
+     * @param y2 The upper y coordinate
      * @returns `TRUE` when parsing was successful, `FALSE` otherwise. See https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths for path syntax introduction.
      * @since 0.0.1
      */
@@ -81,13 +108,40 @@ export namespace Gm {
      * Sets a function to be called after a timeout with priority `priority`.
      * Correctly calculates the timeout even when the system is suspended in between.
      *
-     * This internally creates a main loop source using
-     * `g_timeout_source_new_seconds()` and attaches it to the main loop context
-     * using `g_source_attach()`.
-     *
      * The timeout given is in terms of `CLOCK_BOOTTIME` time, it hence is also
      * correct across suspend and resume. If that doesn't matter use
      * `g_timeout_add_seconds_full` instead.
+     *
+     * Note that glib's `g_timeout_add_seconds()` doesn't take system
+     * suspend/resume into account: https://gitlab.gnome.org/GNOME/glib/-/issues/2739
+     *
+     * Changed in 0.3.0: Returns 0 when timer setup failed
+     * @param priority the priority of the timeout source. Typically this will be in   the range between `G_PRIORITY_DEFAULT` and `G_PRIORITY_HIGH`.
+     * @param seconds the timeout in seconds
+     * @param _function function to call
+     * @param notify function to call when the timeout is removed, or `null`
+     * @returns the ID (greater than 0) of the event source or 0 in case of error.
+     * @since 0.0.1
+     */
+    function timeout_add_seconds_once(
+        priority: number,
+        seconds: number,
+        _function: GLib.SourceOnceFunc,
+        notify?: GLib.DestroyNotify | null,
+    ): number;
+    /**
+     * Sets a function to be called after a timeout with the default
+     * priority, `G_PRIORITY_DEFAULT`. Correctly calculates the timeout
+     * even when the system is suspended in between. It will wake up the
+     * system when needed.
+     *
+     * If the process doesn't have enough permissions to wake the system
+     * creating the timer will fail. On Linux at least `CAP_WAKE_ALARM` capabilities
+     * are needed.
+     *
+     * The timeout given is in terms of `CLOCK_BOOTTIME_ALARM` time, it hence is also
+     * correct across suspend and resume. If that doesn't matter use
+     * `g_timeout_add_seconds` instead.
      *
      * Note that glib's `g_timeout_add_seconds()` doesn't take system
      * suspend/resume into account: https://gitlab.gnome.org/GNOME/glib/-/issues/2739
@@ -95,10 +149,10 @@ export namespace Gm {
      * @param seconds the timeout in seconds
      * @param _function function to call
      * @param notify function to call when the timeout is removed, or `null`
-     * @returns the ID (greater than 0) of the event source.
-     * @since 0.0.1
+     * @returns the ID (greater than 0) of the event source or 0 in case of error.
+     * @since 0.3.0
      */
-    function timeout_add_seconds_once(
+    function wakeup_timeout_add_seconds_once(
         priority: number,
         seconds: number,
         _function: GLib.SourceOnceFunc,
@@ -304,6 +358,7 @@ export namespace Gm {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::border-radius': (pspec: GObject.ParamSpec) => void;
+            'notify::corner-radii': (pspec: GObject.ParamSpec) => void;
             'notify::cutouts': (pspec: GObject.ParamSpec) => void;
             'notify::height': (pspec: GObject.ParamSpec) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -317,6 +372,8 @@ export namespace Gm {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             border_radius: number;
             borderRadius: number;
+            corner_radii: any[];
+            cornerRadii: any[];
             cutouts: Gio.ListStore;
             height: number;
             name: string;
@@ -340,19 +397,33 @@ export namespace Gm {
         // Properties
 
         /**
-         * The border radius of the panel edges in device pixels
-         * If a single border radius isn't enough use multiple {@link Cutout}.
+         * The corner radius of the panel edges in device pixels.
          * @since 0.0.1
+         * @deprecated since 0.6.0: Use {@link DisplayPanel.corner_radii} instead
          */
         get border_radius(): number;
         set border_radius(val: number);
         /**
-         * The border radius of the panel edges in device pixels
-         * If a single border radius isn't enough use multiple {@link Cutout}.
+         * The corner radius of the panel edges in device pixels.
          * @since 0.0.1
+         * @deprecated since 0.6.0: Use {@link DisplayPanel.corner_radii} instead
          */
         get borderRadius(): number;
         set borderRadius(val: number);
+        /**
+         * The radii of the panels corner starting top-left and going
+         * clockwise.
+         * @since 0.6.0
+         */
+        get corner_radii(): any[];
+        set corner_radii(val: any[]);
+        /**
+         * The radii of the panels corner starting top-left and going
+         * clockwise.
+         * @since 0.6.0
+         */
+        get cornerRadii(): any[];
+        set cornerRadii(val: any[]);
         /**
          * The display cutouts as {@link Gio.ListModel} of {@link Cutout}.
          * @since 0.0.1
@@ -447,11 +518,18 @@ export namespace Gm {
         // Methods
 
         /**
-         * Gets the panels border radius. 0 indicates rectangular corners.  If
-         * given applies to all corners of the panel.
+         * Gets the panels border radius. 0 indicates rectangular corners. If
+         * top and bottom border radius are different then this matches the
+         * top border radius.  given applies to all corners of the panel.
          * @returns The panel's border radius.
          */
         get_border_radius(): number;
+        /**
+         * Gets the panels border radii starting with the top-left corner
+         * clockwise.
+         * @returns The panel's border radii.
+         */
+        get_corner_radii(): number[];
         /**
          * Get the display cutouts.
          * @returns The display cutouts

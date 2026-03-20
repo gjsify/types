@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/coglpango-9)
 
 
-GJS TypeScript type definitions for CoglPango-9, generated from library version 9.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.40.
+GJS TypeScript type definitions for CoglPango-9, generated from library version 9.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.41.
 
 ## Install
 

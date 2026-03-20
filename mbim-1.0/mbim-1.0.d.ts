@@ -455,6 +455,29 @@ export namespace Mbim {
     /**
      * @gir-type Enum
      */
+    export namespace CidCompal {
+        export const $gtype: GObject.GType<CidCompal>;
+    }
+
+    /**
+     * MBIM commands in the {@link Mbim.Service.COMPAL} service.
+     * @gir-type Enum
+     * @since 1.32
+     */
+    enum CidCompal {
+        /**
+         * Unknown command.
+         */
+        UNKNOWN,
+        /**
+         * AT over MBIM message.
+         */
+        AT_COMMAND,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     export namespace CidDss {
         export const $gtype: GObject.GType<CidDss>;
     }
@@ -473,6 +496,29 @@ export namespace Mbim {
          * Connect.
          */
         CONNECT,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace CidFibocom {
+        export const $gtype: GObject.GType<CidFibocom>;
+    }
+
+    /**
+     * MBIM commands in the {@link Mbim.Service.FIBOCOM} service.
+     * @gir-type Enum
+     * @since 1.32
+     */
+    enum CidFibocom {
+        /**
+         * Unknown command.
+         */
+        UNKNOWN,
+        /**
+         * AT over MBIM message.
+         */
+        AT_COMMAND,
     }
 
     /**
@@ -927,6 +973,10 @@ export namespace Mbim {
          * Read firmware version (Quectel specific). Since 1.28.
          */
         QUECTEL_READ_VERSION,
+        /**
+         * Send AT or system command by mbim port. Since 1.32.
+         */
+        COMMAND,
     }
 
     /**
@@ -2750,6 +2800,52 @@ export namespace Mbim {
     /**
      * @gir-type Enum
      */
+    export namespace QuectelCommandResponseStatus {
+        export const $gtype: GObject.GType<QuectelCommandResponseStatus>;
+    }
+
+    /**
+     * The status returned by sending commands via MBIM.
+     * @gir-type Enum
+     * @since 1.32
+     */
+    enum QuectelCommandResponseStatus {
+        /**
+         * Command return status OK.
+         */
+        OK,
+        /**
+         * Command return status FAIL.
+         */
+        FAIL,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace QuectelCommandType {
+        export const $gtype: GObject.GType<QuectelCommandType>;
+    }
+
+    /**
+     * The types of commands sent via MBIM.
+     * @gir-type Enum
+     * @since 1.32
+     */
+    enum QuectelCommandType {
+        /**
+         * Command type is AT.
+         */
+        AT,
+        /**
+         * Command type is SYSTEM.
+         */
+        SYSTEM,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     export namespace QuectelRadioSwitchState {
         export const $gtype: GObject.GType<QuectelRadioSwitchState>;
     }
@@ -3068,6 +3164,14 @@ export namespace Mbim {
          * Google specific service. Since 1.30
          */
         GOOGLE,
+        /**
+         * Fibocom specific service. Since 1.32.
+         */
+        FIBOCOM,
+        /**
+         * Compal specific service. Since 1.32.
+         */
+        COMPAL,
     }
 
     /**
@@ -3470,6 +3574,18 @@ export namespace Mbim {
          * Format not supported in SMS.
          */
         static SMSFORMATNOTSUPPORTED: number;
+        /**
+         * Logical channel open not successful due to channels not available. Defined by Microsoft for UICC low level access. Since 1.32.
+         */
+        static NOLOGICALCHANNELS: number;
+        /**
+         * Logical channel open not successful due to SELECT failure. Defined by Microsoft for UICC low level access. Since 1.32.
+         */
+        static SELECTFAILED: number;
+        /**
+         * Logical channel number invalid. Defined by Microsoft for UICC low level access. Since 1.32.
+         */
+        static INVALIDLOGICALCHANNEL: number;
         /**
          * Invalid signature. Defined by Google for the carrier lock operation. Since 1.30.
          */
@@ -4516,12 +4632,26 @@ export namespace Mbim {
      */
     function cid_can_set(service: Service | null, cid: number): boolean;
     /**
+     * Gets the nickname string for the {@link Mbim.CidCompal} specified at `val`.
+     * @param val a MbimCidCompal.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.32
+     */
+    function cid_compal_get_string(val: CidCompal | null): string;
+    /**
      * Gets the nickname string for the {@link Mbim.CidDss} specified at `val`.
      * @param val a MbimCidDss.
      * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
      * @since 1.0
      */
     function cid_dss_get_string(val: CidDss | null): string;
+    /**
+     * Gets the nickname string for the {@link Mbim.CidFibocom} specified at `val`.
+     * @param val a MbimCidFibocom.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.32
+     */
+    function cid_fibocom_get_string(val: CidFibocom | null): string;
     /**
      * Gets a printable string for the command specified by the `service` and the
      * `cid`.
@@ -5114,6 +5244,20 @@ export namespace Mbim {
      * @since 1.26
      */
     function qdu_session_type_get_string(val: QduSessionType | null): string;
+    /**
+     * Gets the nickname string for the {@link Mbim.QuectelCommandResponseStatus} specified at `val`.
+     * @param val a MbimQuectelCommandResponseStatus.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.32
+     */
+    function quectel_command_response_status_get_string(val: QuectelCommandResponseStatus | null): string;
+    /**
+     * Gets the nickname string for the {@link Mbim.QuectelCommandType} specified at `val`.
+     * @param val a MbimQuectelCommandType.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.32
+     */
+    function quectel_command_type_get_string(val: QuectelCommandType | null): string;
     /**
      * Gets the nickname string for the {@link Mbim.QuectelRadioSwitchState} specified at `val`.
      * @param val a MbimQuectelRadioSwitchState.
@@ -7082,7 +7226,7 @@ export namespace Mbim {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7137,7 +7281,7 @@ export namespace Mbim {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7212,7 +7356,7 @@ export namespace Mbim {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8380,6 +8524,8 @@ export namespace Mbim {
             command_type: MessageCommandType,
         ): Message;
 
+        static compal_at_command_query_new(command_req: Uint8Array | string): Message;
+
         static connect_query_new(
             session_id: number,
             activation_state: ActivationState,
@@ -8420,6 +8566,8 @@ export namespace Mbim {
         static emergency_mode_set_new(state: EmergencyModeState): Message;
 
         static error_new(transaction_id: number, error_status_code: ProtocolError): Message;
+
+        static fibocom_at_command_set_new(command_req: Uint8Array | string): Message;
 
         static function_error_new(transaction_id: number, error_status_code: ProtocolError): Message;
 
@@ -8722,6 +8870,8 @@ export namespace Mbim {
 
         static proxy_control_configuration_set_new(device_path: string, timeout: number): Message;
 
+        static qdu_command_set_new(command_type: QuectelCommandType, command_string: Uint8Array | string): Message;
+
         static qdu_file_open_query_new(): Message;
 
         static qdu_file_open_set_new(file_type: QduFileType, file_size: number): Message;
@@ -8935,6 +9085,11 @@ export namespace Mbim {
          */
         command_get_service_id(): Uuid;
         /**
+         * Parses and returns parameters of the 'AT Command' response command in the 'Compal' service.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         */
+        compal_at_command_response_parse(): [boolean, Uint8Array | null];
+        /**
          * Parses and returns parameters of the 'Connect' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
@@ -9028,6 +9183,11 @@ export namespace Mbim {
          * @returns a {@link Mbim.ProtocolError}.
          */
         error_get_error_status_code(): ProtocolError;
+        /**
+         * Parses and returns parameters of the 'AT Command' response command in the 'Fibocom' service.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         */
+        fibocom_at_command_response_parse(): [boolean, Uint8Array | null];
         /**
          * Gets the whole message length.
          * @returns the length of the message.
@@ -9945,6 +10105,11 @@ export namespace Mbim {
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         proxy_control_version_notification_parse(): [boolean, number, number];
+        /**
+         * Parses and returns parameters of the 'Command' response command in the 'QDU' service.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         */
+        qdu_command_response_parse(): [boolean, QuectelCommandResponseStatus | null, Uint8Array | null];
         /**
          * Parses and returns parameters of the 'File Open' response command in the 'QDU' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.

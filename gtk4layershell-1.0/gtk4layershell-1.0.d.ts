@@ -131,7 +131,7 @@ export namespace Gtk4LayerShell {
     function get_anchor(window: Gtk.Window, edge: Edge | null): boolean;
     /**
      * @param window A layer surface.
-     * @returns the window's exclusive zone (which may have been set manually or automatically)
+     * @returns the window's exclusive zone(which may have been set manually or automatically)
      */
     function get_exclusive_zone(window: Gtk.Window): number;
     /**
@@ -164,16 +164,16 @@ export namespace Gtk4LayerShell {
     function get_minor_version(): number;
     /**
      * NOTE: To get which monitor the surface is actually on, use
-     * `gdk_display_get_monitor_at_window()`.
+     * `gdk_display_get_monitor_at_surface()`.
      * @param window A layer surface.
-     * @returns the monitor this surface will/has requested to be on, can be `null`.
+     * @returns the monitor this surface will/has requested to be on.
      */
-    function get_monitor(window: Gtk.Window): Gdk.Monitor;
+    function get_monitor(window: Gtk.Window): Gdk.Monitor | null;
     /**
      * NOTE: this function does not return ownership of the string. Do not free the returned string.
      * Future calls into the library may invalidate the returned string.
      * @param window A layer surface.
-     * @returns a reference to the namespace property. If namespace is unset, returns the default namespace ("gtk4-layer-shell"). Never returns `null`.
+     * @returns a reference to the namespace property. If namespace is unset, returns the default namespace("gtk4-layer-shell"). Never returns `null`.
      */
     function get_namespace(window: Gtk.Window): string;
     /**
@@ -181,6 +181,12 @@ export namespace Gtk4LayerShell {
      * @returns version of the zwlr_layer_shell_v1 protocol supported by the compositor or 0 if the protocol is not supported.
      */
     function get_protocol_version(): number;
+    /**
+     * @param window A layer surface.
+     * @returns if the respect_close behavior is enabled, see `gtk_layer_set_respect_close()`
+     * @since 1.3
+     */
+    function get_respect_close(window: Gtk.Window): boolean;
     /**
      * @param window A layer surface.
      * @returns The underlying layer surface Wayland object
@@ -226,7 +232,8 @@ export namespace Gtk4LayerShell {
     function set_exclusive_zone(window: Gtk.Window, exclusive_zone: number): void;
     /**
      * Sets if/when `window` should receive keyboard events from the compositor, see
-     * GtkLayerShellKeyboardMode for details.
+     * GtkLayerShellKeyboardMode for details. To control mouse/touch interactivity use input regions,
+     * see [#61](https://github.com/wmww/gtk4-layer-shell/issues/61) for details.
      *
      * Default is {@link Gtk4LayerShell.KeyboardMode.NONE}
      * @param window A layer surface.
@@ -234,7 +241,7 @@ export namespace Gtk4LayerShell {
      */
     function set_keyboard_mode(window: Gtk.Window, mode: KeyboardMode | null): void;
     /**
-     * Set the "layer" on which the surface appears (controls if it is over top of or below other surfaces). The layer may
+     * Set the "layer" on which the surface appears(controls if it is over top of or below other surfaces). The layer may
      * be changed on-the-fly in the current version of the layer shell protocol, but on compositors that only support an
      * older version the `window` is remapped so the change can take effect.
      *
@@ -245,7 +252,7 @@ export namespace Gtk4LayerShell {
     function set_layer(window: Gtk.Window, layer: Layer | null): void;
     /**
      * Set the margin for a specific `edge` of a `window`. Effects both surface's distance from
-     * the edge and its exclusive zone size (if auto exclusive zone enabled).
+     * the edge and its exclusive zone size(if auto exclusive zone enabled).
      *
      * Default is 0 for each {@link Gtk4LayerShell.Edge}
      * @param window A layer surface.
@@ -261,7 +268,7 @@ export namespace Gtk4LayerShell {
      * @param window A layer surface.
      * @param monitor The output this layer surface will be placed on (`null` to let the compositor decide).
      */
-    function set_monitor(window: Gtk.Window, monitor: Gdk.Monitor): void;
+    function set_monitor(window: Gtk.Window, monitor?: Gdk.Monitor | null): void;
     /**
      * Set the "namespace" of the surface.
      *
@@ -274,7 +281,19 @@ export namespace Gtk4LayerShell {
      * @param window A layer surface.
      * @param name_space The namespace of this layer surface.
      */
-    function set_namespace(window: Gtk.Window, name_space: string): void;
+    function set_namespace(window: Gtk.Window, name_space?: string | null): void;
+    /**
+     * Compositors may send the `zwlr_layer_surface_v1.closed` event in some cases (such as
+     * when an output is destroyed). Prior to v1.3 this always triggered a GTK `close-request`
+     * signal, which would destroy the window if not intercepted by application code. In v1.3+
+     * this behavior is disabled by default, and can be turned back on by calling this
+     * function with `true`. To handle the `.closed` event without destroying your window
+     * turn respect_close on and connect a `close-request` listener that returns `true`.
+     * @param window A layer surface.
+     * @param respect_close If to forward the .closed event to GTK.
+     * @since 1.3
+     */
+    function set_respect_close(window: Gtk.Window, respect_close: boolean): void;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

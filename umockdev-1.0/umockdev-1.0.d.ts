@@ -211,6 +211,15 @@ export namespace UMockdev {
          */
         load_script(dev: string | null, recordfile: string): boolean;
         /**
+         * @param dev
+         * @param script
+         */
+        load_script_from_string(dev: string | null, script: string): boolean;
+        /**
+         * @param dev
+         */
+        wait_script(dev: string): boolean;
+        /**
          * @param path
          * @param type
          * @param recordfile
@@ -221,6 +230,11 @@ export namespace UMockdev {
          * @param eventsfile
          */
         load_evemu_events(dev: string | null, eventsfile: string): boolean;
+        /**
+         * @param dev
+         * @param events
+         */
+        load_evemu_events_from_string(dev: string | null, events: string): boolean;
         disable(): void;
         enable(): void;
         clear(): void;

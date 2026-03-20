@@ -6608,6 +6608,12 @@ export namespace Clutter {
      * @since 1.12
      */
     function actor_box_alloc(): ActorBox;
+    /**
+     * Clamps the components of `box` to the nearest integer
+     * @param box the {@link Clutter.ActorBox} to clamp
+     * @since 1.2
+     */
+    function actor_box_clamp_to_pixel(box: ActorBox): ActorBox;
     function base_init(): void;
     /**
      * Utility function to clear a Cairo context.
@@ -11473,21 +11479,28 @@ export namespace Clutter {
          */
         vfunc_allocate(box: ActorBox, flags: AllocationFlags): void;
         /**
+         * virtual function, used when applying the transformations
+         *   to an actor before painting it or when transforming coordinates or
+         *   the allocation; it must chain up to the parent's implementation
          * @param matrix
          * @virtual
          */
         vfunc_apply_transform(matrix: Matrix): void;
         /**
+         * class handler for {@link Clutter.Actor.SignalSignatures.button_press_event | Clutter.Actor::button-press-event}
          * @param event
          * @virtual
          */
         vfunc_button_press_event(event: ButtonEvent): boolean;
         /**
+         * class handler for
+         *   {@link Clutter.Actor.SignalSignatures.button_release_event | Clutter.Actor::button-release-event}
          * @param event
          * @virtual
          */
         vfunc_button_release_event(event: ButtonEvent): boolean;
         /**
+         * signal class closure for {@link Clutter.Actor.SignalSignatures.captured_event | Clutter.Actor::captured-event}
          * @param event
          * @virtual
          */
@@ -11505,11 +11518,13 @@ export namespace Clutter {
          */
         vfunc_destroy(): void;
         /**
+         * signal class closure for {@link Clutter.Actor.SignalSignatures.enter_event | Clutter.Actor::enter-event}
          * @param event
          * @virtual
          */
         vfunc_enter_event(event: CrossingEvent): boolean;
         /**
+         * class handler for {@link Clutter.Actor.SignalSignatures.event | Clutter.Actor::event}
          * @param event
          * @virtual
          */
@@ -11531,6 +11546,8 @@ export namespace Clutter {
          */
         vfunc_get_accessible(): Atk.Object;
         /**
+         * virtual function, for sub-classes to define their
+         *   {@link Clutter.PaintVolume}
          * @param volume
          * @virtual
          */
@@ -11594,24 +11611,30 @@ export namespace Clutter {
          */
         vfunc_hide_all(): void;
         /**
+         * signal class closure for {@link Clutter.Actor.SignalSignatures.key_focus_in | Clutter.Actor::key-focus-in}
          * @virtual
          */
         vfunc_key_focus_in(): void;
         /**
+         * signal class closure for {@link Clutter.Actor.SignalSignatures.key_focus_out | Clutter.Actor::key-focus-out}
          * @virtual
          */
         vfunc_key_focus_out(): void;
         /**
+         * signal class closure for {@link Clutter.Actor.SignalSignatures.key_press_event | Clutter.Actor::key-press-event}
          * @param event
          * @virtual
          */
         vfunc_key_press_event(event: KeyEvent): boolean;
         /**
+         * signal class closure for
+         *   {@link Clutter.Actor.SignalSignatures.key_release_event | Clutter.Actor::key-release-event}
          * @param event
          * @virtual
          */
         vfunc_key_release_event(event: KeyEvent): boolean;
         /**
+         * signal class closure for {@link Clutter.Actor.SignalSignatures.leave_event | Clutter.Actor::leave-event}
          * @param event
          * @virtual
          */
@@ -11631,6 +11654,7 @@ export namespace Clutter {
          */
         vfunc_map(): void;
         /**
+         * signal class closure for {@link Clutter.Actor.SignalSignatures.motion_event | Clutter.Actor::motion-event}
          * @param event
          * @virtual
          */
@@ -11653,21 +11677,27 @@ export namespace Clutter {
          */
         vfunc_paint(): void;
         /**
+         * virtual function for creating paint nodes and attaching
+         *   them to the render tree
          * @param root
          * @virtual
          */
         vfunc_paint_node(root: PaintNode): void;
         /**
+         * signal class handler for the {@link Clutter.Actor.SignalSignatures.parent_set | Clutter.Actor::parent-set}
          * @param old_parent
          * @virtual
          */
         vfunc_parent_set(old_parent: Actor): void;
         /**
+         * virtual function, used to draw an outline of the actor with
+         *   the given color
          * @param color
          * @virtual
          */
         vfunc_pick(color: Color): void;
         /**
+         * class handler for {@link Clutter.Actor.SignalSignatures.queue_redraw | Clutter.Actor::queue-redraw}
          * @param leaf_that_queued
          * @virtual
          */
@@ -11701,6 +11731,7 @@ export namespace Clutter {
          */
         vfunc_realize(): void;
         /**
+         * signal class closure for {@link Clutter.Actor.SignalSignatures.scroll_event | Clutter.Actor::scroll-event}
          * @param event
          * @virtual
          */
@@ -11723,6 +11754,7 @@ export namespace Clutter {
          */
         vfunc_show_all(): void;
         /**
+         * signal class closure for {@link Clutter.Actor.SignalSignatures.touch_event | Clutter.Actor::touch-event}
          * @param event
          * @virtual
          */
@@ -14531,11 +14563,13 @@ export namespace Clutter {
          */
         sort_depth_order(): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_added | Clutter.Container::actor-added}
          * @param actor
          * @virtual
          */
         vfunc_actor_added(actor: Actor): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_removed | Clutter.Container::actor-removed}
          * @param actor
          * @virtual
          */
@@ -14825,7 +14859,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -14880,7 +14914,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -14955,7 +14989,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -15774,7 +15808,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -15829,7 +15863,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -15904,7 +15938,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -16282,6 +16316,7 @@ export namespace Clutter {
          */
         vfunc_completed(): void;
         /**
+         * class handler for the {@link Clutter.Animation.SignalSignatures.started | Clutter.Animation::started} signal
          * @virtual
          */
         vfunc_started(): void;
@@ -16601,7 +16636,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -16656,7 +16691,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -16731,7 +16766,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -17319,7 +17354,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -17374,7 +17409,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -17449,7 +17484,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -17927,16 +17962,22 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * virtual function, called each time the {@link Clutter.Alpha}
+         *   computes a new alpha value; the actors to which the behaviour applies
+         *   should be changed in this function. Every subclass of {@link Clutter.Behaviour}
+         *   must implement this virtual function
          * @param alpha_value
          * @virtual
          */
         vfunc_alpha_notify(alpha_value: number): void;
         /**
+         * signal class handler for the ClutterBehaviour::applied signal
          * @param actor
          * @virtual
          */
         vfunc_applied(actor: Actor): void;
         /**
+         * signal class handler for the ClutterBehaviour::removed signal
          * @param actor
          * @virtual
          */
@@ -18172,7 +18213,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -18227,7 +18268,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -18302,7 +18343,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -18800,7 +18841,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -18855,7 +18896,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -18930,7 +18971,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -19585,7 +19626,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -19640,7 +19681,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -19715,7 +19756,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -20215,7 +20256,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -20270,7 +20311,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -20345,7 +20386,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -20652,6 +20693,8 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * signal class handler for the
+         *   ClutterBehaviourPath::knot_reached signal
          * @param knot_num
          * @virtual
          */
@@ -20836,7 +20879,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -20891,7 +20934,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -20966,7 +21009,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -21561,7 +21604,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -21616,7 +21659,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -21691,7 +21734,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -22231,7 +22274,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -22286,7 +22329,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -22361,7 +22404,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -23637,11 +23680,13 @@ export namespace Clutter {
          */
         sort_depth_order(): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_added | Clutter.Container::actor-added}
          * @param actor
          * @virtual
          */
         vfunc_actor_added(actor: Actor): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_removed | Clutter.Container::actor-removed}
          * @param actor
          * @virtual
          */
@@ -23931,7 +23976,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -23986,7 +24031,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -24061,7 +24106,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -25030,12 +25075,15 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * class handler for the {@link Clutter.CairoTexture.SignalSignatures.create_surface | Clutter.CairoTexture::create-surface}
+         *   signal
          * @param width
          * @param height
          * @virtual
          */
         vfunc_create_surface(width: number, height: number): cairo.Surface;
         /**
+         * class handler for the {@link Clutter.CairoTexture.SignalSignatures.draw | Clutter.CairoTexture::draw} signal
          * @param cr
          * @virtual
          */
@@ -25222,7 +25270,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -25277,7 +25325,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -25352,7 +25400,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -25733,6 +25781,7 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * class handler for the {@link Clutter.Canvas.SignalSignatures.draw | Clutter.Canvas::draw} signal
          * @param cr
          * @param width
          * @param height
@@ -25801,11 +25850,15 @@ export namespace Clutter {
          */
         invalidate(): void;
         /**
+         * virtual function; called each time a {@link Clutter.Content} is attached
+         *   to a {@link Clutter.Actor}.
          * @param actor
          * @virtual
          */
         vfunc_attached(actor: Actor): void;
         /**
+         * virtual function; called each time a {@link Clutter.Content} is detached
+         *   from a {@link Clutter.Actor}.
          * @param actor
          * @virtual
          */
@@ -25829,6 +25882,8 @@ export namespace Clutter {
          */
         vfunc_invalidate(): void;
         /**
+         * virtual function; called each time the content needs to
+         *   paint itself
          * @param actor
          * @param node
          * @virtual
@@ -25931,7 +25986,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -25986,7 +26041,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -26061,7 +26116,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -26565,11 +26620,13 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * class handler for the {@link Clutter.ClickAction.SignalSignatures.clicked | Clutter.ClickAction::clicked} signal
          * @param actor
          * @virtual
          */
         vfunc_clicked(actor: Actor): void;
         /**
+         * class handler for the {@link Clutter.ClickAction.SignalSignatures.long_press | Clutter.ClickAction::long-press} signal
          * @param actor
          * @param state
          * @virtual
@@ -27083,11 +27140,13 @@ export namespace Clutter {
          */
         sort_depth_order(): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_added | Clutter.Container::actor-added}
          * @param actor
          * @virtual
          */
         vfunc_actor_added(actor: Actor): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_removed | Clutter.Container::actor-removed}
          * @param actor
          * @virtual
          */
@@ -27377,7 +27436,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -27432,7 +27491,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -27507,7 +27566,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -27919,12 +27978,17 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * virtual function used to update the allocation
+         *   of the {@link Clutter.Actor} using the {@link Clutter.Constraint}
          * @param actor
          * @param allocation
          * @virtual
          */
         vfunc_update_allocation(actor: Actor, allocation: ActorBox): void;
         /**
+         * virtual function used to update the preferred
+         *   size of the {@link Clutter.Actor} using the {@link Clutter.Constraint}; optional,
+         *   since 1.22
          * @param actor
          * @param direction
          * @param for_size
@@ -28040,6 +28104,8 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * virtual function; sub-classes should override this
+         *   function to compute the deformation of each vertex
          * @param width
          * @param height
          * @param vertex
@@ -28610,6 +28676,7 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * class handler of the {@link Clutter.DragAction.SignalSignatures.drag_begin | Clutter.DragAction::drag-begin} signal
          * @param actor
          * @param event_x
          * @param event_y
@@ -28618,6 +28685,7 @@ export namespace Clutter {
          */
         vfunc_drag_begin(actor: Actor, event_x: number, event_y: number, modifiers: ModifierType): void;
         /**
+         * class handler of the {@link Clutter.DragAction.SignalSignatures.drag_end | Clutter.DragAction::drag-end} signal
          * @param actor
          * @param event_x
          * @param event_y
@@ -28626,6 +28694,7 @@ export namespace Clutter {
          */
         vfunc_drag_end(actor: Actor, event_x: number, event_y: number, modifiers: ModifierType): void;
         /**
+         * class handler of the {@link Clutter.DragAction.SignalSignatures.drag_motion | Clutter.DragAction::drag-motion} signal
          * @param actor
          * @param delta_x
          * @param delta_y
@@ -28633,6 +28702,7 @@ export namespace Clutter {
          */
         vfunc_drag_motion(actor: Actor, delta_x: number, delta_y: number): void;
         /**
+         * class handler of the {@link Clutter.DragAction.SignalSignatures.drag_progress | Clutter.DragAction::drag-progress} signal
          * @param actor
          * @param delta_x
          * @param delta_y
@@ -28821,6 +28891,7 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * class handler for the {@link Clutter.DropAction.SignalSignatures.can_drop | Clutter.DropAction::can-drop} signal
          * @param actor
          * @param event_x
          * @param event_y
@@ -28828,6 +28899,7 @@ export namespace Clutter {
          */
         vfunc_can_drop(actor: Actor, event_x: number, event_y: number): boolean;
         /**
+         * class handler for the {@link Clutter.DropAction.SignalSignatures.drop | Clutter.DropAction::drop} signal
          * @param actor
          * @param event_x
          * @param event_y
@@ -28835,11 +28907,13 @@ export namespace Clutter {
          */
         vfunc_drop(actor: Actor, event_x: number, event_y: number): void;
         /**
+         * class handler for the {@link Clutter.DropAction.SignalSignatures.over_in | Clutter.DropAction::over-in} signal
          * @param actor
          * @virtual
          */
         vfunc_over_in(actor: Actor): void;
         /**
+         * class handler for the {@link Clutter.DropAction.SignalSignatures.over_out | Clutter.DropAction::over-out} signal
          * @param actor
          * @virtual
          */
@@ -28907,25 +28981,30 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * virtual function
          * @param volume
          * @virtual
          */
         vfunc_get_paint_volume(volume: PaintVolume): boolean;
         /**
+         * virtual function
          * @param flags
          * @virtual
          */
         vfunc_paint(flags: EffectPaintFlags): void;
         /**
+         * virtual function
          * @param flags
          * @virtual
          */
         vfunc_pick(flags: EffectPaintFlags): void;
         /**
+         * virtual function
          * @virtual
          */
         vfunc_post_paint(): void;
         /**
+         * virtual function
          * @virtual
          */
         vfunc_pre_paint(): boolean;
@@ -29493,26 +29572,32 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * class handler for the {@link Clutter.GestureAction.SignalSignatures.gesture_begin | Clutter.GestureAction::gesture-begin} signal
          * @param actor
          * @virtual
          */
         vfunc_gesture_begin(actor: Actor): boolean;
         /**
+         * class handler for the {@link Clutter.GestureAction.SignalSignatures.gesture_cancel | Clutter.GestureAction::gesture-cancel} signal
          * @param actor
          * @virtual
          */
         vfunc_gesture_cancel(actor: Actor): void;
         /**
+         * class handler for the {@link Clutter.GestureAction.SignalSignatures.gesture_end | Clutter.GestureAction::gesture-end} signal
          * @param actor
          * @virtual
          */
         vfunc_gesture_end(actor: Actor): void;
         /**
+         * virtual function called before emitting the
+         *   {@link Clutter.GestureAction.SignalSignatures.gesture_cancel | Clutter.GestureAction::gesture-cancel} signal
          * @param actor
          * @virtual
          */
         vfunc_gesture_prepare(actor: Actor): boolean;
         /**
+         * class handler for the {@link Clutter.GestureAction.SignalSignatures.gesture_progress | Clutter.GestureAction::gesture-progress} signal
          * @param actor
          * @virtual
          */
@@ -30313,11 +30398,13 @@ export namespace Clutter {
          */
         sort_depth_order(): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_added | Clutter.Container::actor-added}
          * @param actor
          * @virtual
          */
         vfunc_actor_added(actor: Actor): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_removed | Clutter.Container::actor-removed}
          * @param actor
          * @virtual
          */
@@ -30607,7 +30694,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -30662,7 +30749,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -30737,7 +30824,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -31146,11 +31233,15 @@ export namespace Clutter {
          */
         invalidate(): void;
         /**
+         * virtual function; called each time a {@link Clutter.Content} is attached
+         *   to a {@link Clutter.Actor}.
          * @param actor
          * @virtual
          */
         vfunc_attached(actor: Actor): void;
         /**
+         * virtual function; called each time a {@link Clutter.Content} is detached
+         *   from a {@link Clutter.Actor}.
          * @param actor
          * @virtual
          */
@@ -31174,6 +31265,8 @@ export namespace Clutter {
          */
         vfunc_invalidate(): void;
         /**
+         * virtual function; called each time the content needs to
+         *   paint itself
          * @param actor
          * @param node
          * @virtual
@@ -31276,7 +31369,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -31331,7 +31424,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -31406,7 +31499,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -32446,7 +32539,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -32501,7 +32594,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -32576,7 +32669,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -33025,7 +33118,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -33080,7 +33173,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -33155,7 +33248,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -33506,6 +33599,8 @@ export namespace Clutter {
          */
         vfunc_get_animation_progress(): number;
         /**
+         * virtual function; override to return the {@link GObject.GType}
+         *   of the {@link Clutter.LayoutMeta} sub-class used by the {@link Clutter.LayoutManager}
          * @virtual
          */
         vfunc_get_child_meta_type(): GObject.GType;
@@ -33975,7 +34070,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -34030,7 +34125,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -34105,7 +34200,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -34462,6 +34557,7 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * signal class handler for ClutterModel::filter-changed
          * @virtual
          */
         vfunc_filter_changed(): void;
@@ -34499,26 +34595,31 @@ export namespace Clutter {
          */
         vfunc_get_n_rows(): number;
         /**
+         * virtual function for removing a row at the given index
          * @param row
          * @virtual
          */
         vfunc_remove_row(row: number): void;
         /**
+         * signal class handler for ClutterModel::row-added
          * @param iter
          * @virtual
          */
         vfunc_row_added(iter: ModelIter): void;
         /**
+         * signal class handler for ClutterModel::row-changed
          * @param iter
          * @virtual
          */
         vfunc_row_changed(iter: ModelIter): void;
         /**
+         * signal class handler for ClutterModel::row-removed
          * @param iter
          * @virtual
          */
         vfunc_row_removed(iter: ModelIter): void;
         /**
+         * signal class handler for ClutterModel::sort-changed
          * @virtual
          */
         vfunc_sort_changed(): void;
@@ -34845,7 +34946,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -34900,7 +35001,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -34975,7 +35076,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -35880,12 +35981,14 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * class handler for the {@link Clutter.PanAction.SignalSignatures.pan | Clutter.PanAction::pan} signal
          * @param actor
          * @param is_interpolated
          * @virtual
          */
         vfunc_pan(actor: Actor, is_interpolated: boolean): boolean;
         /**
+         * class handler for the {@link Clutter.PanAction.SignalSignatures.pan_stopped | Clutter.PanAction::pan-stopped} signal
          * @param actor
          * @virtual
          */
@@ -36594,7 +36697,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -36649,7 +36752,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -36724,7 +36827,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -37447,11 +37550,13 @@ export namespace Clutter {
          */
         sort_depth_order(): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_added | Clutter.Container::actor-added}
          * @param actor
          * @virtual
          */
         vfunc_actor_added(actor: Actor): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_removed | Clutter.Container::actor-removed}
          * @param actor
          * @virtual
          */
@@ -37741,7 +37846,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -37796,7 +37901,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -37871,7 +37976,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -38171,6 +38276,7 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * class handler for the {@link Clutter.RotateAction.SignalSignatures.rotate | Clutter.RotateAction::rotate} signal
          * @param actor
          * @param angle
          * @virtual
@@ -38294,23 +38400,29 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * handler for the {@link Clutter.Score.SignalSignatures.completed | Clutter.Score::completed} signal
          * @virtual
          */
         vfunc_completed(): void;
         /**
+         * handler for the {@link Clutter.Score.SignalSignatures.paused | Clutter.Score::paused} signal
          * @virtual
          */
         vfunc_paused(): void;
         /**
+         * handler for the {@link Clutter.Score.SignalSignatures.started | Clutter.Score::started} signal
          * @virtual
          */
         vfunc_started(): void;
         /**
+         * handler for the {@link Clutter.Score.SignalSignatures.timeline_completed | Clutter.Score::timeline-completed}
+         *   signal
          * @param timeline
          * @virtual
          */
         vfunc_timeline_completed(timeline: Timeline): void;
         /**
+         * handler for the {@link Clutter.Score.SignalSignatures.timeline_started | Clutter.Score::timeline-started} signal
          * @param timeline
          * @virtual
          */
@@ -39115,11 +39227,13 @@ export namespace Clutter {
          */
         sort_depth_order(): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_added | Clutter.Container::actor-added}
          * @param actor
          * @virtual
          */
         vfunc_actor_added(actor: Actor): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_removed | Clutter.Container::actor-removed}
          * @param actor
          * @virtual
          */
@@ -39409,7 +39523,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -39464,7 +39578,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -39539,7 +39653,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -40361,6 +40475,11 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * Returns the GLSL source code to use for
+         *  instances of this shader effect. Note that this function is only
+         *  called once per subclass of {@link Clutter.ShaderEffect} regardless of how
+         *  many instances are used. It is expected that subclasses will return
+         *  a copy of a static string from this function.
          * @virtual
          */
         vfunc_get_static_shader_source(): string;
@@ -41081,23 +41200,28 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * handler for the {@link Clutter.Stage.SignalSignatures.activate | Clutter.Stage::activate} signal
          * @virtual
          */
         vfunc_activate(): void;
         /**
+         * handler for the {@link Clutter.Stage.SignalSignatures.deactivate | Clutter.Stage::deactivate} signal
          * @virtual
          */
         vfunc_deactivate(): void;
         /**
+         * handler for the {@link Clutter.Stage.SignalSignatures.delete_event | Clutter.Stage::delete-event} signal
          * @param event
          * @virtual
          */
         vfunc_delete_event(event: Event): boolean;
         /**
+         * handler for the {@link Clutter.Stage.SignalSignatures.fullscreen | Clutter.Stage::fullscreen} signal
          * @virtual
          */
         vfunc_fullscreen(): void;
         /**
+         * handler for the {@link Clutter.Stage.SignalSignatures.unfullscreen | Clutter.Stage::unfullscreen} signal
          * @virtual
          */
         vfunc_unfullscreen(): void;
@@ -41560,7 +41684,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -41615,7 +41739,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -41690,7 +41814,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -42143,6 +42267,7 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * class handler for the {@link Clutter.State.SignalSignatures.completed | Clutter.State::completed} signal
          * @virtual
          */
         vfunc_completed(): void;
@@ -42455,7 +42580,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -42510,7 +42635,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -42585,7 +42710,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -42893,12 +43018,15 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * class handler for the {@link Clutter.SwipeAction.SignalSignatures.swept | Clutter.SwipeAction::swept} signal;
+         *   deprecated since 1.14
          * @param actor
          * @param direction
          * @virtual
          */
         vfunc_swept(actor: Actor, direction: SwipeDirection): void;
         /**
+         * class handler for the {@link Clutter.SwipeAction.SignalSignatures.swipe | Clutter.SwipeAction::swipe} signal
          * @param actor
          * @param direction
          * @virtual
@@ -43306,6 +43434,7 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * class handler for the {@link Clutter.TapAction.SignalSignatures.tap | Clutter.TapAction::tap} signal
          * @param actor
          * @virtual
          */
@@ -43964,19 +44093,23 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * class handler for the {@link Clutter.Text.SignalSignatures.activate | Clutter.Text::activate} signal
          * @virtual
          */
         vfunc_activate(): void;
         /**
+         * class handler for the {@link Clutter.Text.SignalSignatures.cursor_changed | Clutter.Text::cursor-changed} signal
          * @virtual
          */
         vfunc_cursor_changed(): void;
         /**
+         * class handler for the {@link Clutter.Text.SignalSignatures.cursor_event | Clutter.Text::cursor-event} signal
          * @param geometry
          * @virtual
          */
         vfunc_cursor_event(geometry: Geometry): void;
         /**
+         * class handler for the {@link Clutter.Text.SignalSignatures.text_changed | Clutter.Text::text-changed} signal
          * @virtual
          */
         vfunc_text_changed(): void;
@@ -44770,11 +44903,13 @@ export namespace Clutter {
          */
         sort_depth_order(): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_added | Clutter.Container::actor-added}
          * @param actor
          * @virtual
          */
         vfunc_actor_added(actor: Actor): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_removed | Clutter.Container::actor-removed}
          * @param actor
          * @virtual
          */
@@ -45064,7 +45199,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -45119,7 +45254,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -45194,7 +45329,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -45543,6 +45678,7 @@ export namespace Clutter {
          */
         vfunc_delete_text(position: number, n_chars: number): number;
         /**
+         * default hanlder for the {@link Clutter.TextBuffer.SignalSignatures.deleted_text | Clutter.TextBuffer::deleted-text} signal
          * @param position
          * @param n_chars
          * @virtual
@@ -45554,6 +45690,7 @@ export namespace Clutter {
          */
         vfunc_get_length(): number;
         /**
+         * virtual function
          * @param n_bytes
          * @virtual
          */
@@ -45575,6 +45712,7 @@ export namespace Clutter {
          */
         vfunc_insert_text(position: number, chars: string, n_chars: number): number;
         /**
+         * default handler for the {@link Clutter.TextBuffer.SignalSignatures.inserted_text | Clutter.TextBuffer::inserted-text} signal
          * @param position
          * @param chars
          * @param n_chars
@@ -46049,15 +46187,18 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * handler for the {@link Clutter.Texture.SignalSignatures.load_finished | Clutter.Texture::load-finished} signal
          * @param error
          * @virtual
          */
         vfunc_load_finished(error: GLib.Error): void;
         /**
+         * handler for the {@link Clutter.Texture.SignalSignatures.pixbuf_change | Clutter.Texture::pixbuf-change} signal
          * @virtual
          */
         vfunc_pixbuf_change(): void;
         /**
+         * handler for the {@link Clutter.Texture.SignalSignatures.size_change | Clutter.Texture::size-change} signal
          * @param width
          * @param height
          * @virtual
@@ -46573,11 +46714,13 @@ export namespace Clutter {
          */
         sort_depth_order(): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_added | Clutter.Container::actor-added}
          * @param actor
          * @virtual
          */
         vfunc_actor_added(actor: Actor): void;
         /**
+         * class handler for {@link Clutter.Container.SignalSignatures.actor_removed | Clutter.Container::actor-removed}
          * @param actor
          * @virtual
          */
@@ -46867,7 +47010,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -46922,7 +47065,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -46997,7 +47140,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -47714,29 +47857,35 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * class handler for the {@link Clutter.Timeline.SignalSignatures.completed | Clutter.Timeline::completed} signal
          * @virtual
          */
         vfunc_completed(): void;
         /**
+         * class handler for the {@link Clutter.Timeline.SignalSignatures.marker_reached | Clutter.Timeline::marker-reached} signal
          * @param marker_name
          * @param msecs
          * @virtual
          */
         vfunc_marker_reached(marker_name: string, msecs: number): void;
         /**
+         * class handler for the {@link Clutter.Timeline.SignalSignatures.new_frame | Clutter.Timeline::new-frame} signal
          * @param msecs
          * @virtual
          */
         vfunc_new_frame(msecs: number): void;
         /**
+         * class handler for the {@link Clutter.Timeline.SignalSignatures.paused | Clutter.Timeline::paused} signal
          * @virtual
          */
         vfunc_paused(): void;
         /**
+         * class handler for the {@link Clutter.Timeline.SignalSignatures.started | Clutter.Timeline::started} signal
          * @virtual
          */
         vfunc_started(): void;
         /**
+         * class handler for the {@link Clutter.Timeline.SignalSignatures.stopped | Clutter.Timeline::stopped} signal
          * @param is_finished
          * @virtual
          */
@@ -48237,7 +48386,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -48292,7 +48441,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -48367,7 +48516,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -48706,11 +48855,15 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * virtual function; called when a transition is attached to
+         *   a {@link Clutter.Animatable} instance
          * @param animatable
          * @virtual
          */
         vfunc_attached(animatable: Animatable): void;
         /**
+         * virtual function; called each frame to compute and apply
+         *   the interpolation of the interval
          * @param animatable
          * @param interval
          * @param progress
@@ -48718,6 +48871,8 @@ export namespace Clutter {
          */
         vfunc_compute_value(animatable: Animatable, interval: Interval, progress: number): void;
         /**
+         * virtual function; called when a transition is detached from
+         *   a {@link Clutter.Animatable} instance
          * @param animatable
          * @virtual
          */
@@ -48968,7 +49123,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -49023,7 +49178,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -49098,7 +49253,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -49511,7 +49666,7 @@ export namespace Clutter {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -49566,7 +49721,7 @@ export namespace Clutter {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -49641,7 +49796,7 @@ export namespace Clutter {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -49965,6 +50120,7 @@ export namespace Clutter {
         // Virtual methods
 
         /**
+         * class handler of the {@link Clutter.ZoomAction.SignalSignatures.zoom | Clutter.ZoomAction::zoom} signal
          * @param actor
          * @param focal_point
          * @param factor
@@ -50034,13 +50190,14 @@ export namespace Clutter {
          * Allocates a new {@link Clutter.ActorBox}.
          */
         static alloc(): ActorBox;
+        /**
+         * Clamps the components of `box` to the nearest integer
+         * @param box the {@link Clutter.ActorBox} to clamp
+         */
+        static clamp_to_pixel(box: ActorBox): ActorBox;
 
         // Methods
 
-        /**
-         * Clamps the components of `box` to the nearest integer
-         */
-        clamp_to_pixel(): void;
         /**
          * Checks whether a point with `x`, `y` coordinates is contained
          * withing `box`
@@ -53013,11 +53170,13 @@ export namespace Clutter {
             // Virtual methods
 
             /**
+             * class handler for {@link Clutter.Container.SignalSignatures.actor_added | Clutter.Container::actor-added}
              * @param actor
              * @virtual
              */
             vfunc_actor_added(actor: Actor): void;
             /**
+             * class handler for {@link Clutter.Container.SignalSignatures.actor_removed | Clutter.Container::actor-removed}
              * @param actor
              * @virtual
              */
@@ -53331,11 +53490,15 @@ export namespace Clutter {
             // Virtual methods
 
             /**
+             * virtual function; called each time a {@link Clutter.Content} is attached
+             *   to a {@link Clutter.Actor}.
              * @param actor
              * @virtual
              */
             vfunc_attached(actor: Actor): void;
             /**
+             * virtual function; called each time a {@link Clutter.Content} is detached
+             *   from a {@link Clutter.Actor}.
              * @param actor
              * @virtual
              */
@@ -53359,6 +53522,8 @@ export namespace Clutter {
              */
             vfunc_invalidate(): void;
             /**
+             * virtual function; called each time the content needs to
+             *   paint itself
              * @param actor
              * @param node
              * @virtual
@@ -53416,10 +53581,12 @@ export namespace Clutter {
             // Virtual methods
 
             /**
+             * handler for the {@link Clutter.Media.SignalSignatures.eos | Clutter.Media::eos} signal
              * @virtual
              */
             vfunc_eos(): void;
             /**
+             * handler for the {@link Clutter.Media.SignalSignatures.error | Clutter.Media::error} signal
              * @param error
              * @virtual
              */

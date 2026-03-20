@@ -54,6 +54,7 @@ export namespace CudaGst {
         HANDLE_TYPE_POSIX_FILE_DESCRIPTOR_SUPPORTED,
         HANDLE_TYPE_WIN32_HANDLE_SUPPORTED,
         HANDLE_TYPE_WIN32_KMT_HANDLE_SUPPORTED,
+        MEMORY_POOLS_SUPPORTED,
     }
 
     /**
@@ -64,6 +65,36 @@ export namespace CudaGst {
         BLOCKING_SYNC,
         DISABLE_TIMING,
         INTERPROCESS,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum externalMemoryHandleType {
+        OPAQUE_FD,
+        OPAQUE_WIN32,
+        OPAQUE_WIN32_KMT,
+        D3D12_HEAP,
+        D3D12_RESOURCE,
+        D3D11_RESOURCE,
+        D3D11_RESOURCE_KMT,
+        NVSCIBUF,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum externalSemaphoreHandleType {
+        OPAQUE_FD,
+        OPAQUE_WIN32,
+        OPAQUE_WIN32_KMT,
+        D3D12_FENCE,
+        D3D11_FENCE,
+        NVSCISYNC,
+        D3D11_KEYED_MUTEX,
+        D3D11_KEYED_MUTEX_KMT,
+        TIMELINE_SEMAPHORE_FD,
+        TIMELINE_SEMAPHORE_WIN32,
     }
 
     /**
@@ -99,6 +130,22 @@ export namespace CudaGst {
      */
     enum ipcMem_flags {
         IPC_MEM_LAZY_ENABLE_PEER_ACCESS,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum limit {
+        STACK_SIZE,
+        PRINTF_FIFO_SIZE,
+        MALLOC_HEAP_SIZE,
+        DEV_RUNTIME_SYNC_DEPTH,
+        DEV_RUNTIME_PENDING_LAUNCH_COUNT,
+        MAX_L2_FETCH_GRANULARITY,
+        PERSISTING_L2_CACHE_SIZE,
+        SHMEM_SIZE,
+        CIG_ENABLED,
+        CIG_SHMEM_FALLBACK_ENABLED,
     }
 
     /**
@@ -151,6 +198,20 @@ export namespace CudaGst {
     /**
      * @gir-type Enum
      */
+    enum memPool_attribute {
+        REUSE_FOLLOW_EVENT_DEPENDENCIES,
+        REUSE_ALLOW_OPPORTUNISTIC,
+        REUSE_ALLOW_INTERNAL_DEPENDENCIES,
+        RELEASE_THRESHOLD,
+        RESERVED_MEM_CURRENT,
+        RESERVED_MEM_HIGH,
+        USED_MEM_CURRENT,
+        USED_MEM_HIGH,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     enum memorytype {
         HOST,
         DEVICE,
@@ -196,6 +257,57 @@ export namespace CudaGst {
     const IPC_HANDLE_SIZE: number;
     const TRSF_READ_AS_INTEGER: number;
     const VERSION: number;
+    /**
+     * @gir-type Struct
+     */
+    class DA_ARRAY3D_DESCRIPTOR {
+        static $gtype: GObject.GType<DA_ARRAY3D_DESCRIPTOR>;
+
+        // Fields
+
+        Width: number;
+        Height: number;
+        Depth: number;
+        Format: array_format;
+        NumChannels: number;
+        Flags: number;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DA_EXTERNAL_MEMORY_BUFFER_DESC {
+        static $gtype: GObject.GType<DA_EXTERNAL_MEMORY_BUFFER_DESC>;
+
+        // Fields
+
+        flags: number;
+        reserved: number[];
+
+        // Constructors
+
+        constructor(
+            properties?: Partial<{
+                offset: number;
+                size: number;
+                flags: number;
+                reserved: number[];
+            }>,
+        );
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC {
+        static $gtype: GObject.GType<DA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC>;
+
+        // Fields
+
+        numLevels: number;
+        reserved: number[];
+    }
+
     /**
      * @gir-type Struct
      */
@@ -374,6 +486,21 @@ export namespace CudaGst {
     }
 
     /**
+     * @gir-type Struct
+     */
+    class memPoolProps {
+        static $gtype: GObject.GType<memPoolProps>;
+
+        // Fields
+
+        allocType: memAllocationType;
+        handleTypes: memAllocationHandleType;
+        win32SecurityAttributes: any;
+        maxSize: number;
+        reserved: Uint8Array;
+    }
+
+    /**
      * @gir-type Alias
      */
     type array = any;
@@ -396,11 +523,23 @@ export namespace CudaGst {
     /**
      * @gir-type Alias
      */
+    type externalMemory = any;
+    /**
+     * @gir-type Alias
+     */
+    type externalSemaphore = any;
+    /**
+     * @gir-type Alias
+     */
     type __function = any;
     /**
      * @gir-type Alias
      */
     type graphicsResource = any;
+    /**
+     * @gir-type Alias
+     */
+    type memoryPool = any;
     /**
      * @gir-type Alias
      */

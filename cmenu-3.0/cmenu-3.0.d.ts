@@ -246,32 +246,6 @@ export namespace CMenu {
          */
         launch_action(action_name: string, launch_context?: Gio.AppLaunchContext | null): void;
         /**
-         * This function performs the equivalent of `g_app_info_launch_uris()`,
-         * but is intended primarily for operating system components that
-         * launch applications.  Ordinary applications should use
-         * `g_app_info_launch_uris()`.
-         *
-         * If the application is launched via GSpawn, then `spawn_flags`, `user_setup`
-         * and `user_setup_data` are used for the call to `g_spawn_async()`.
-         * Additionally, `pid_callback` (with `pid_callback_data`) will be called to
-         * inform about the PID of the created process. See `g_spawn_async_with_pipes()`
-         * for information on certain parameter conditions that can enable an
-         * optimized `posix_spawn()` codepath to be used.
-         *
-         * If application launching occurs via some other mechanism (eg: D-Bus
-         * activation) then `spawn_flags`, `user_setup`, `user_setup_data`,
-         * `pid_callback` and `pid_callback_data` are ignored.
-         * @param uris List of URIs
-         * @param launch_context a {@link Gio.AppLaunchContext}
-         * @param spawn_flags {@link GLib.SpawnFlags}, used for each process
-         * @returns `true` on successful launch, `false` otherwise.
-         */
-        launch_uris_as_manager(
-            uris: string[],
-            launch_context: Gio.AppLaunchContext | null,
-            spawn_flags: GLib.SpawnFlags | null,
-        ): boolean;
-        /**
          * Returns the list of "additional application actions" supported on the
          * desktop file, as per the desktop file specification.
          *
@@ -378,7 +352,7 @@ export namespace CMenu {
          * the application.
          * @returns a list of content types.
          */
-        get_supported_types(): string[];
+        get_supported_types(): string[] | null;
         /**
          * Launches the application. Passes `files` to the launched application
          * as arguments, using the optional `context` to get information
@@ -629,7 +603,7 @@ export namespace CMenu {
          * the application.
          * @virtual
          */
-        vfunc_get_supported_types(): string[];
+        vfunc_get_supported_types(): string[] | null;
         /**
          * Launches the application. Passes `files` to the launched application
          * as arguments, using the optional `context` to get information
@@ -846,7 +820,7 @@ export namespace CMenu {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -901,7 +875,7 @@ export namespace CMenu {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -976,7 +950,7 @@ export namespace CMenu {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

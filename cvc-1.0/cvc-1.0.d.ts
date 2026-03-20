@@ -547,11 +547,11 @@ export namespace Cvc {
         // Methods
 
         /**
-         * @param input This method is called from the UI when the user selects a previously unselected device. - Firstly it queries the stream from the device.   - It assumes that if the stream is null that it cannot be a bluetooth or network stream (they never show unless they have valid sinks and sources)   In the scenario of a NULL stream on the device        - It fetches the device's preferred profile or if NUll the profile with the highest priority on that device.        - It then caches this device in control->priv->cached_desired_input_id so that when the update_source triggered          from when we attempt to change profile we will know exactly what device to highlight on that stream.        - It attempts to swap the profile on the card from that device and returns. - Next, it handles network or bluetooth streams that only require their stream to be made the default. - Next it deals with port changes so if the stream's active port is not the same as the port on the device   it will attempt to change the port on that stream to be same as the device. If this fails it will return. - Finally it will set this new stream to be the default stream and emit a signal for the UI confirming the active input device.
+         * @param input This method is called from the UI when the user selects a previously unselected device. - Firstly it queries the stream from the device.   - It assumes that if the stream is null that it cannot be a bluetooth or network stream (they never show unless they have valid sinks and sources)   In the scenario of a NULL stream on the device        - It fetches the device's preferred profile or if NULL the profile with the highest priority on that device.        - It then caches this device in control->priv->cached_desired_input_id so that when the update_source triggered          from when we attempt to change profile we will know exactly what device to highlight on that stream.        - It attempts to swap the profile on the card from that device and returns. - Next, it handles network or bluetooth streams that only require their stream to be made the default. - Next it deals with port changes so if the stream's active port is not the same as the port on the device   it will attempt to change the port on that stream to be same as the device. If this fails it will return. - Finally it will set this new stream to be the default stream and emit a signal for the UI confirming the active input device.
          */
         change_input(input: MixerUIDevice): void;
         /**
-         * @param output This method is called from the UI when the user selects a previously unselected device. - Firstly it queries the stream from the device.   - It assumes that if the stream is null that it cannot be a bluetooth or network stream (they never show unless they have valid sinks and sources)   In the scenario of a NULL stream on the device        - It fetches the device's preferred profile or if NUll the profile with the highest priority on that device.        - It then caches this device in control->priv->cached_desired_output_id so that when the update_sink triggered          from when we attempt to change profile we will know exactly what device to highlight on that stream.        - It attempts to swap the profile on the card from that device and returns. - Next, it handles network or bluetooth streams that only require their stream to be made the default. - Next it deals with port changes so if the stream's active port is not the same as the port on the device   it will attempt to change the port on that stream to be same as the device. If this fails it will return. - Finally it will set this new stream to be the default stream and emit a signal for the UI confirming the active output device.
+         * @param output This method is called from the UI when the user selects a previously unselected device. - Firstly it queries the stream from the device.   - It assumes that if the stream is null that it cannot be a bluetooth or network stream (they never show unless they have valid sinks and sources)   In the scenario of a NULL stream on the device        - It fetches the device's preferred profile or if NULL the profile with the highest priority on that device.        - It then caches this device in control->priv->cached_desired_output_id so that when the update_sink triggered          from when we attempt to change profile we will know exactly what device to highlight on that stream.        - It attempts to swap the profile on the card from that device and returns. - Next, it handles network or bluetooth streams that only require their stream to be made the default. - Next it deals with port changes so if the stream's active port is not the same as the port on the device   it will attempt to change the port on that stream to be same as the device. If this fails it will return. - Finally it will set this new stream to be the default stream and emit a signal for the UI confirming the active output device.
          */
         change_output(output: MixerUIDevice): void;
         /**
@@ -1204,7 +1204,6 @@ export namespace Cvc {
         change_port(port: string): boolean;
         create_monitor(): void;
         get_application_id(): string;
-        get_base_volume(): number;
         get_can_decibel(): boolean;
         get_card_index(): number;
         get_channel_map(): ChannelMap;
@@ -1224,7 +1223,6 @@ export namespace Cvc {
         get_ports(): MixerStreamPort[];
         get_state(): MixerStreamState;
         get_sysfs_path(): string;
-        get_volume(): number;
         is_running(): boolean;
         push_volume(): boolean;
         remove_monitor(): void;

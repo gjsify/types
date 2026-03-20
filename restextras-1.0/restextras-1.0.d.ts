@@ -160,9 +160,9 @@ export namespace RestExtras {
         get_shared_secret(): string;
         /**
          * Get the current token.
-         * @returns the token, or `null` if there is no token yet.  This string is owned by {@link RestExtras.FlickrProxy} and should not be freed.
+         * @returns the token, or `null` if there is no token yet. This string is owned by {@link RestExtras.FlickrProxy} and should not be freed.
          */
-        get_token(): string;
+        get_token(): string | null;
         /**
          * Create a new {@link Rest.ProxyCall} that can be used for uploading.
          *
@@ -190,9 +190,11 @@ export namespace RestExtras {
          */
         set_token(token: string): void;
         /**
-         * @param params
+         * Get the md5 checksum of the request.
+         * @param params the request parameters
+         * @returns The md5 checksum of the request
          */
-        sign(params: { [key: string]: any } | GLib.HashTable<any, any>): string;
+        sign(params: { [key: string]: any } | GLib.HashTable<string, string>): string;
     }
 
     namespace FlickrProxyCall {
@@ -384,18 +386,20 @@ export namespace RestExtras {
         get_secret(): string;
         /**
          * Get the current session key.
-         * @returns the session key, or `null` if there is no session key yet.  This string is owned by {@link RestExtras.LastfmProxy} and should not be freed.
+         * @returns the session key, or `null` if there is no session key yet. This string is owned by {@link RestExtras.LastfmProxy} and should not be freed.
          */
-        get_session_key(): string;
+        get_session_key(): string | null;
         /**
          * Set the session key.
          * @param session_key the access session_key
          */
         set_session_key(session_key: string): void;
         /**
-         * @param params
+         * Get the md5 checksum of the request.
+         * @param params the request parameters
+         * @returns The md5 checksum of the request
          */
-        sign(params: { [key: string]: any } | GLib.HashTable<any, any>): string;
+        sign(params: { [key: string]: any } | GLib.HashTable<string, string>): string;
     }
 
     namespace LastfmProxyCall {
@@ -556,10 +560,10 @@ export namespace RestExtras {
          */
         upload_async(
             filename: string,
-            fields: { [key: string]: any } | GLib.HashTable<any, any>,
+            fields: { [key: string]: any } | GLib.HashTable<string, string>,
             incomplete: boolean,
             callback: YoutubeProxyUploadCallback,
-            weak_object: GObject.Object,
+            weak_object?: GObject.Object | null,
         ): boolean;
     }
 

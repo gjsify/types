@@ -9,7 +9,5 @@
 
 import './casilda-0.1-ambient.d.ts';
 
-import './casilda-0.1-import.d.ts';
-
 import Casilda from './casilda-0.1.js';
 export default Casilda;

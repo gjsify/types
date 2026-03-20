@@ -277,6 +277,8 @@ export namespace BlockDev {
         WRITECACHE,
         DEVICES,
         SHARED,
+        CONFIG,
+        VG_CFG_BACKUP_RESTORE,
     }
 
     /**
@@ -1332,6 +1334,13 @@ export namespace BlockDev {
      * @returns whether the given `label` and `subsystem` were successfully set or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.MODIFY}
      */
     function crypto_luks_set_label(device: string, label?: string | null, subsystem?: string | null): boolean;
+    /**
+     * Note: This function is valid only for LUKS2.
+     * @param device a LUKS device to set the persistent flags on
+     * @param flags flags to set
+     * @returns whether the given `flags` were successfully set or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.MODIFY}
+     */
+    function crypto_luks_set_persistent_flags(device: string, flags: CryptoLUKSPersistentFlags | null): boolean;
     /**
      * @param device device to set UUID on
      * @param uuid UUID to set or `null` to generate a new one
@@ -2399,6 +2408,13 @@ export namespace BlockDev {
      */
     function loop_set_autoclear(loop: string, autoclear: boolean): boolean;
     /**
+     * Force the loop driver to reread the size of the file associated with the
+     * specified `loop` device.
+     * @param loop path or name of the loop device
+     * @returns whether the LOOP_SET_CAPACITY ioctl was successfully issued or not. Tech category: {@link BlockDev.LoopTech.LOOP_TECH_LOOP}-{@link BlockDev.LoopTechMode.MODIFY}
+     */
+    function loop_set_capacity(loop: string): boolean;
+    /**
      * @param file file to setup as a loop device
      * @param offset offset of the start of the device (in `file`)
      * @param size maximum size of the device (or 0 to leave unspecified)
@@ -2564,6 +2580,23 @@ export namespace BlockDev {
      */
     function lvm_cache_stats(vg_name: string, cached_lv: string): LVMCacheStats;
     /**
+     * @param section LVM config section, e.g. 'global' or `null` to print the entire config
+     * @param setting name of the specific setting, e.g. 'umask' or `null` to print the entire `section`
+     * @param type type of the config, e.g. 'full' or 'current'
+     * @param values_only whether to include only values without keys in the output
+     * @param global_config whether to include our internal global config in the call or not
+     * @param extra extra options for the lvmconfig command                                               (just passed to LVM as is)
+     * @returns Requested LVM config `section` and `setting` configuration or `null` in case of error. Tech category: {@link BlockDev.LVMTech.CONFIG} no mode (it is ignored)
+     */
+    function lvm_config_get(
+        section: string | null,
+        setting: string | null,
+        type: string,
+        values_only: boolean,
+        global_config: boolean,
+        extra?: ExtraArg[] | null,
+    ): string;
+    /**
      * @param vg_name name of the VG that contains the LV to set tags on
      * @param lv_name name of the LV to set tags on
      * @param tags list of tags to remove
@@ -2602,7 +2635,7 @@ export namespace BlockDev {
      */
     function lvm_get_devices_filter(): string[];
     /**
-     * @returns a copy of a string representation of the currently set LVM global          configuration Tech category: {@link BlockDev.LVMTech.GLOB_CONF} no mode (it is ignored)
+     * @returns a copy of a string representation of the currently                           set libblockdev LVM global configuration Note: This function does not change the global `lvm.conf` config       file, see %bd_lvm_set_global_config for details. Tech category: {@link BlockDev.LVMTech.GLOB_CONF} no mode (it is ignored)
      */
     function lvm_get_global_config(): string;
     /**
@@ -2867,7 +2900,12 @@ export namespace BlockDev {
      */
     function lvm_set_devices_filter(devices?: string[] | null): boolean;
     /**
-     * @param new_config string representation of the new global LVM                            configuration to set or `null` to reset to default
+     * Note: This function sets configuration options for LVM calls internally
+     *       in libblockdev, it doesn't change the global lvm.conf config file.
+     *       Calling this function with `backup {backup=0 archive=0}` for example
+     *       means `--config=backup {backup=0 archive=0}"` will be added to all
+     *       calls libblockdev makes.
+     * @param new_config string representation of the new global libblockdev LVM                          configuration to set or `null` to reset to default
      * @returns whether the new requested global config `new_config` was successfully          set or not Tech category: {@link BlockDev.LVMTech.GLOB_CONF} no mode (it is ignored)
      */
     function lvm_set_global_config(new_config?: string | null): boolean;
@@ -3069,6 +3107,24 @@ export namespace BlockDev {
      * @returns whether the VG was successfully activated or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
      */
     function lvm_vgactivate(vg_name: string, extra?: ExtraArg[] | null): boolean;
+    /**
+     * Note: This function does not back up the data content of LVs. See `vgcfbackup(8)` man page
+     *       for more information.
+     * @param vg_name name of the VG to backup configuration
+     * @param backup_file file to save the backup to or `null` for using the default backup file                           in /etc/lvm/backup
+     * @param extra extra options for the vgcfgbackup command                                               (just passed to LVM as is)
+     * @returns Whether the backup was successfully created or not. Tech category: {@link BlockDev.LVMTech.VG_CFG_BACKUP_RESTORE} no mode (it is ignored)
+     */
+    function lvm_vgcfgbackup(vg_name: string, backup_file?: string | null, extra?: ExtraArg[] | null): boolean;
+    /**
+     * Note: This function restores VG configuration created by %bd_lvm_vgcfgbackup from given
+     *       `backup_file` or from the latest backup in /etc/lvm/backup.
+     * @param vg_name name of the VG to restore configuration
+     * @param backup_file file to restore VG configuration from to or `null` for using the                           latest backup in /etc/lvm/backup
+     * @param extra extra options for the vgcfgrestore command                                               (just passed to LVM as is)
+     * @returns Whether the configuration was successfully restored or not. Tech category: {@link BlockDev.LVMTech.VG_CFG_BACKUP_RESTORE} no mode (it is ignored)
+     */
+    function lvm_vgcfgrestore(vg_name: string, backup_file?: string | null, extra?: ExtraArg[] | null): boolean;
     /**
      * @param name name of the newly created VG
      * @param pv_list list of PVs the newly created VG should use
@@ -3471,7 +3527,7 @@ export namespace BlockDev {
      * @param subsysnqn The name for the NVMe subsystem to connect to.
      * @param transport The network fabric used for a NVMe-over-Fabrics network.
      * @param transport_addr The network address of the Controller. For transports using IP addressing (e.g. `rdma`) this should be an IP-based address.
-     * @param transport_svcid The transport service id.  For transports using IP addressing (e.g. `rdma`) this field is the port number. By default, the IP port number for the `RDMA` transport is `4420`.
+     * @param transport_svcid The transport service ID.  For transports using IP addressing (e.g. `tcp`, `rdma`) this field is the port number. The default port number for the `tcp` and `rdma` transports is `4420` and `8009` respectively when the well-known Discovery NQN is specified.
      * @param host_traddr The network address used on the host to connect to the Controller. For TCP, this sets the source address on the socket.
      * @param host_iface The network interface used on the host to connect to the Controller (e.g. IP `eth1`, `enp2s0`). This forces the connection to be made on a specific interface instead of letting the system decide.
      * @param host_nqn Overrides the default Host NQN that identifies the NVMe Host. If this option is `null`, the default is read from `/etc/nvme/hostnqn` first.                        If that does not exist, the autogenerated NQN value from the NVMe Host kernel module is used next. The Host NQN uniquely identifies the NVMe Host.
@@ -4209,6 +4265,19 @@ export namespace BlockDev {
         RECALCULATE,
         RECALCULATE_RESET,
         ALLOW_DISCARDS,
+    }
+
+    /**
+     * @gir-type Flags
+     */
+    enum CryptoLUKSPersistentFlags {
+        ALLOW_DISCARDS,
+        SAME_CPU_CRYPT,
+        SUBMIT_FROM_CRYPT_CPUS,
+        NO_JOURNAL,
+        NO_READ_WORKQUEUE,
+        NO_WRITE_WORKQUEUE,
+        HIGH_PRIORITY,
     }
 
     /**
@@ -5047,6 +5116,8 @@ export namespace BlockDev {
         features: FSFeatureFlags;
         partition_id: string;
         partition_type: string;
+        min_size: number;
+        max_size: number;
     }
 
     /**

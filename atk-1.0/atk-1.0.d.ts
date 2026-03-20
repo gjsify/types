@@ -250,32 +250,33 @@ export namespace Atk {
          */
         NODE_PARENT_OF,
         /**
-         * Reciprocal of {@link Atk.RelationType.DETAILS_FOR}. Indicates that this object
-         * has a detailed or extended description, the contents of which can be found in the target
-         * object(s). This relation type is most appropriate for information that is sufficiently
-         * lengthy as to make navigation to the container of that information desirable. For less
-         * verbose information suitable for announcement only, see {@link Atk.RelationType.DESCRIBED_BY}. If
-         * the detailed information describes an error condition, {@link Atk.RelationType.ERROR_FOR} should be
-         * used instead. `Since`: ATK-2.26.
+         * Reciprocal of {@link Atk.RelationType.DETAILS_FOR}. Indicates that this object has a
+         * detailed or extended description, the contents of which can be found in the
+         * target object(s). This relation type is most appropriate for information
+         * that is sufficiently lengthy as to make navigation to the container of that
+         * information desirable. For less verbose information suitable for
+         * announcement only, see {@link Atk.RelationType.DESCRIBED_BY}. If the detailed
+         * information describes an error condition, {@link Atk.RelationType.ERROR_FOR} should be
+         * used instead.
          */
         DETAILS,
         /**
-         * Reciprocal of {@link Atk.RelationType.DETAILS}. Indicates that this object
-         * provides a detailed or extended description about the target object(s). See also
-         * {@link Atk.RelationType.DESCRIPTION_FOR} and {@link Atk.RelationType.ERROR_FOR}. `Since`: ATK-2.26.
+         * Reciprocal of {@link Atk.RelationType.DETAILS}. Indicates that this object provides a
+         * detailed or extended description about the target object(s). See also
+         * {@link Atk.RelationType.DESCRIPTION_FOR} and {@link Atk.RelationType.ERROR_FOR}.
          */
         DETAILS_FOR,
         /**
-         * Reciprocal of {@link Atk.RelationType.ERROR_FOR}. Indicates that this object
-         * has one or more errors, the nature of which is described in the contents of the target
-         * object(s). Objects that have this relation type should also contain {@link Atk.StateType.INVALID_ENTRY}
-         * in their {@link Atk.StateSet}. `Since`: ATK-2.26.
+         * Reciprocal of {@link Atk.RelationType.ERROR_FOR}. Indicates that this object has one or
+         * more errors, the nature of which is described in the contents of the target
+         * object(s). Objects that have this relation type should also contain
+         * {@link Atk.StateType.INVALID_ENTRY} in their {@link Atk.StateSet}.
          */
         ERROR_MESSAGE,
         /**
          * Reciprocal of {@link Atk.RelationType.ERROR_MESSAGE}. Indicates that this object
-         * contains an error message describing an invalid condition in the target object(s). `Since`:
-         * ATK_2.26.
+         * contains an error message describing an invalid condition in the target
+         * object(s).
          */
         ERROR_FOR,
         /**
@@ -537,7 +538,7 @@ export namespace Atk {
          */
         TEAR_OFF_MENU_ITEM,
         /**
-         * An object that represents an accessible terminal.  (Since: 0.6)
+         * An object that represents an accessible terminal.
          */
         TERMINAL,
         /**
@@ -567,7 +568,8 @@ export namespace Atk {
          */
         TREE,
         /**
-         * An object capable of expanding and collapsing rows as well as showing multiple columns of data.   (Since: 0.7)
+         * An object capable of expanding and collapsing rows as well as showing
+         * multiple columns of data.
          */
         TREE_TABLE,
         /**
@@ -583,238 +585,259 @@ export namespace Atk {
          */
         WINDOW,
         /**
-         * An object that serves as a document header. (Since: 1.1.1)
+         * An object that serves as a document header.
          */
         HEADER,
         /**
-         * An object that serves as a document footer.  (Since: 1.1.1)
+         * An object that serves as a document footer.
          */
         FOOTER,
         /**
-         * An object which is contains a paragraph of text content.   (Since: 1.1.1)
+         * An object which contains a paragraph of text content.
          */
         PARAGRAPH,
         /**
-         * An object which describes margins and tab stops, etc. for text objects which it controls (should have CONTROLLER_FOR relation to such).   (Since: 1.1.1)
+         * An object which describes margins and tab stops, etc. for text objects
+         * which it controls (should have CONTROLLER_FOR relation to such).
          */
         RULER,
         /**
-         * The object is an application object, which may contain `ATK_ROLE_FRAME` objects or other types of accessibles.  The root accessible of any application's ATK hierarchy should have ATK_ROLE_APPLICATION.   (Since: 1.1.4)
+         * The object is an application object, which may contain `ATK_ROLE_FRAME`
+         * objects or other types of accessibles.  The root accessible of any
+         * application's ATK hierarchy should have ATK_ROLE_APPLICATION.
          */
         APPLICATION,
         /**
-         * The object is a dialog or list containing items for insertion into an entry widget, for instance a list of words for completion of a text entry.   (Since: 1.3)
+         * The object is a dialog or list containing items for insertion into an entry
+         * widget, for instance a list of words for completion of a text entry.
          */
         AUTOCOMPLETE,
         /**
-         * The object is an editable text object in a toolbar.  (Since: 1.5)
+         * The object is an editable text object in a toolbar.
          */
         EDIT_BAR,
         /**
-         * The object is an embedded container within a document or panel.  This role is a grouping "hint" indicating that the contained objects share a context.  (Since: 1.7.2)
+         * The object is an embedded container within a document or panel.  This role
+         * is a grouping "hint" indicating that the contained objects share a context.
          */
         EMBEDDED,
         /**
-         * The object is a component whose textual content may be entered or modified by the user, provided `ATK_STATE_EDITABLE` is present.   (Since: 1.11)
+         * The object is a component whose textual content may be entered or modified
+         * by the user, provided `ATK_STATE_EDITABLE` is present.
          */
         ENTRY,
         /**
-         * The object is a graphical depiction of quantitative data. It may contain multiple subelements whose attributes and/or description may be queried to obtain both the quantitative data and information about how the data is being presented. The LABELLED_BY relation is particularly important in interpreting objects of this type, as is the accessible-description property.  (Since: 1.11)
+         * The object is a graphical depiction of quantitative data. It may contain
+         * multiple subelements whose attributes and/or description may be queried to
+         * obtain both the quantitative data and information about how the data is
+         * being presented. The LABELLED_BY relation is particularly important in
+         * interpreting objects of this type, as is the accessible-description
+         * property.
          */
         CHART,
         /**
-         * The object contains descriptive information, usually textual, about another user interface element such as a table, chart, or image.  (Since: 1.11)
+         * The object contains descriptive information, usually textual, about another
+         * user interface element such as a table, chart, or image.
          */
         CAPTION,
         /**
-         * The object is a visual frame or container which contains a view of document content. Document frames may occur within another Document instance, in which case the second document may be said to be embedded in the containing instance. HTML frames are often ROLE_DOCUMENT_FRAME. Either this object, or a singleton descendant, should implement the Document interface.  (Since: 1.11)
+         * The object is a visual frame or container which contains a view of document
+         * content. Document frames may occur within another Document instance, in
+         * which case the second document may be said to be embedded in the containing
+         * instance. HTML frames are often ROLE_DOCUMENT_FRAME. Either this object, or
+         * a singleton descendant, should implement the Document interface.
          */
         DOCUMENT_FRAME,
         /**
-         * The object serves as a heading for content which follows it in a document. The 'heading level' of the heading, if availabe, may be obtained by querying the object's attributes.
+         * The object serves as a heading for content which follows it in a document. The 'heading level' of the heading, if available, may be obtained by querying the object's attributes.
          */
         HEADING,
         /**
-         * The object is a containing instance which encapsulates a page of information. `ATK_ROLE_PAGE` is used in documents and content which support a paginated navigation model.  (Since: 1.11)
+         * The object is a containing instance which encapsulates a page of
+         * information. `ATK_ROLE_PAGE` is used in documents and content which support a
+         * paginated navigation model.
          */
         PAGE,
         /**
-         * The object is a containing instance of document content which constitutes a particular 'logical' section of the document. The type of content within a section, and the nature of the section division itself, may be obtained by querying the object's attributes. Sections may be nested. (Since: 1.11)
+         * The object is a containing instance of document content which constitutes a
+         * particular 'logical' section of the document. The type of content within a
+         * section, and the nature of the section division itself, may be obtained by
+         * querying the object's attributes. Sections may be nested.
          */
         SECTION,
         /**
-         * The object is redundant with another object in the hierarchy, and is exposed for purely technical reasons.  Objects of this role should normally be ignored by clients. (Since: 1.11)
+         * The object is redundant with another object in the hierarchy, and is
+         * exposed for purely technical reasons.  Objects of this role should normally
+         * be ignored by clients.
          */
         REDUNDANT_OBJECT,
         /**
-         * The object is a container for form controls, for instance as part of a
-         * web form or user-input form within a document.  This role is primarily a tag/convenience for
-         * clients when navigating complex documents, it is not expected that ordinary GUI containers will
-         * always have ATK_ROLE_FORM. (Since: 1.12.0)
+         * The object is a container for form controls, for instance as part of a web
+         * form or user-input form within a document.  This role is primarily a
+         * tag/convenience for clients when navigating complex documents, it is not
+         * expected that ordinary GUI containers will always have ATK_ROLE_FORM.
          */
         FORM,
         /**
-         * The object is a hypertext anchor, i.e. a "link" in a
-         * hypertext document.  Such objects are distinct from 'inline'
-         * content which may also use the Hypertext/Hyperlink interfaces
-         * to indicate the range/location within a text object where
-         * an inline or embedded object lies.  (Since: 1.12.1)
+         * The object is a hypertext anchor, i.e. a "link" in a hypertext document.
+         * Such objects are distinct from 'inline' content which may also use the
+         * Hypertext/Hyperlink interfaces to indicate the range/location within a text
+         * object where an inline or embedded object lies.
          */
         LINK,
         /**
-         * The object is a window or similar viewport
-         * which is used to allow composition or input of a 'complex character',
-         * in other words it is an "input method window." (Since: 1.12.1)
+         * The object is a window or similar viewport which is used to allow
+         * composition or input of a 'complex character', in other words it is an
+         * "input method window."
          */
         INPUT_METHOD_WINDOW,
         /**
-         * A row in a table.  (Since: 2.1.0)
+         * A row in a table.
          */
         TABLE_ROW,
         /**
-         * An object that represents an element of a tree.  (Since: 2.1.0)
+         * An object that represents an element of a tree.
          */
         TREE_ITEM,
         /**
-         * A document frame which contains a spreadsheet.  (Since: 2.1.0)
+         * A document frame which contains a spreadsheet.
          */
         DOCUMENT_SPREADSHEET,
         /**
-         * A document frame which contains a presentation or slide content.  (Since: 2.1.0)
+         * A document frame which contains a presentation or slide content.
          */
         DOCUMENT_PRESENTATION,
         /**
-         * A document frame which contains textual content, such as found in a word processing application.  (Since: 2.1.0)
+         * A document frame which contains textual content, such as found in a word
+         * processing application.
          */
         DOCUMENT_TEXT,
         /**
-         * A document frame which contains HTML or other markup suitable for display in a web browser.  (Since: 2.1.0)
+         * A document frame which contains HTML or other markup suitable for display
+         * in a web browser.
          */
         DOCUMENT_WEB,
         /**
-         * A document frame which contains email content to be displayed or composed either in plain text or HTML.  (Since: 2.1.0)
+         * A document frame which contains email content to be displayed or composed
+         * either in plain text or HTML.
          */
         DOCUMENT_EMAIL,
         /**
-         * An object found within a document and designed to present a comment, note, or other annotation. In some cases, this object might not be visible until activated.  (Since: 2.1.0)
+         * An object found within a document and designed to present a comment, note,
+         * or other annotation. In some cases, this object might not be visible until
+         * activated.
          */
         COMMENT,
         /**
-         * A non-collapsible list of choices the user can select from. (Since: 2.1.0)
+         * A non-collapsible list of choices the user can select from.
          */
         LIST_BOX,
         /**
-         * A group of related widgets. This group typically has a label. (Since: 2.1.0)
+         * A group of related widgets. This group typically has a label.
          */
         GROUPING,
         /**
-         * An image map object. Usually a graphic with multiple hotspots, where each hotspot can be activated resulting in the loading of another document or section of a document. (Since: 2.1.0)
+         * An image map object. Usually a graphic with multiple hotspots, where
+         * each hotspot can be activated resulting in the loading of another
+         * document or section of a document.
          */
         IMAGE_MAP,
         /**
-         * A transitory object designed to present a message to the user, typically at the desktop level rather than inside a particular application.  (Since: 2.1.0)
+         * A transitory object designed to present a message to the user, typically
+         * at the desktop level rather than inside a particular application.
          */
         NOTIFICATION,
         /**
-         * An object designed to present a message to the user within an existing window. (Since: 2.1.0)
+         * An object designed to present a message to the user within an existing
+         * window.
          */
         INFO_BAR,
         /**
-         * A bar that serves as a level indicator to, for instance, show the strength of a password or the state of a battery.  (Since: 2.7.3)
+         * A bar that serves as a level indicator to, for instance, show the strength of a
+         * password or the state of a battery.
          */
         LEVEL_BAR,
         /**
-         * A bar that serves as the title of a window or a
-         * dialog. (Since: 2.12)
+         * A bar that serves as the title of a window or a dialog.
          */
         TITLE_BAR,
         /**
-         * An object which contains a text section
-         * that is quoted from another source. (Since: 2.12)
+         * An object which contains a text section that is quoted from another source.
          */
         BLOCK_QUOTE,
         /**
-         * An object which represents an audio element. (Since: 2.12)
+         * An object which represents an audio element.
          */
         AUDIO,
         /**
-         * An object which represents a video element. (Since: 2.12)
+         * An object which represents a video element.
          */
         VIDEO,
         /**
-         * A definition of a term or concept. (Since: 2.12)
+         * A definition of a term or concept.
          */
         DEFINITION,
         /**
-         * A section of a page that consists of a
-         * composition that forms an independent part of a document, page, or
-         * site. Examples: A blog entry, a news story, a forum post. (Since: 2.12)
+         * A section of a page that consists of a composition that forms an independent
+         * part of a document, page, or site. Examples: A blog entry, a news story,
+         * a forum post.
          */
         ARTICLE,
         /**
-         * A region of a web page intended as a
-         * navigational landmark. This is designed to allow Assistive
-         * Technologies to provide quick navigation among key regions within a
-         * document. (Since: 2.12)
+         * A region of a web page intended as a * navigational landmark. This is
+         * designed to allow Assistive Technologies to provide quick navigation
+         * among key regions within a * document.
          */
         LANDMARK,
         /**
-         * A text widget or container holding log content, such
-         * as chat history and error logs. In this role there is a
-         * relationship between the arrival of new items in the log and the
-         * reading order. The log contains a meaningful sequence and new
-         * information is added only to the end of the log, not at arbitrary
-         * points. (Since: 2.12)
+         * A text widget or container holding log content, such as chat history
+         * and error logs. In this role there is a relationship between the arrival
+         * of new items in the log and the reading order. The log contains a
+         * meaningful sequence and new information is added only to the end of
+         * the log, not at arbitrary points.
          */
         LOG,
         /**
-         * A container where non-essential information
-         * changes frequently. Common usages of marquee include stock tickers
-         * and ad banners. The primary difference between a marquee and a log
-         * is that logs usually have a meaningful order or sequence of
-         * important content changes. (Since: 2.12)
+         * A container where non-essential information changes frequently. Common
+         * usages of marquee include stock tickers * and ad banners. The primary
+         * difference between a marquee and a log is that logs usually have a
+         * meaningful order or sequence of important content changes.
          */
         MARQUEE,
         /**
-         * A text widget or container that holds a mathematical
-         * expression. (Since: 2.12)
+         * A text widget or container that holds a mathematical expression.
          */
         MATH,
         /**
-         * A widget whose purpose is to display a rating,
-         * such as the number of stars associated with a song in a media
-         * player. Objects of this role should also implement
-         * AtkValue. (Since: 2.12)
+         * A widget whose purpose is to display a rating, such as the number of
+         * stars associated with a song in a media player. Objects of this role should
+         * also implement AtkValue.
          */
         RATING,
         /**
-         * An object containing a numerical counter which
-         * indicates an amount of elapsed time from a start point, or the time
-         * remaining until an end point. (Since: 2.12)
+         * An object containing a numerical counter which indicates an amount of
+         * elapsed time from a start point, or the time remaining until an end point.
          */
         TIMER,
         /**
-         * An object that represents a list of
-         * term-value groups. A term-value group represents a individual
-         * description and consist of one or more names
+         * An object that represents a list of term-value groups. A term-value group
+         * represents an individual description and consist of one or more names
          * (ATK_ROLE_DESCRIPTION_TERM) followed by one or more values
          * (ATK_ROLE_DESCRIPTION_VALUE). For each list, there should not be
-         * more than one group with the same term name. (Since: 2.12)
+         * more than one group with the same term name.
          */
         DESCRIPTION_LIST,
         /**
-         * An object that represents a term or phrase
-         * with a corresponding definition. (Since: 2.12)
+         * An object that represents a term or phrase with a corresponding definition.
          */
         DESCRIPTION_TERM,
         /**
-         * An object that represents the
-         * description, definition or value of a term. (Since: 2.12)
+         * An object that represents the description, definition or value of a term.
          */
         DESCRIPTION_VALUE,
         /**
-         * A generic non-container object whose purpose is to display a
-         * brief amount of information to the user and whose role is known by the
+         * A generic non-container object whose purpose is to display a brief
+         * amount of information to the user and whose role is known by the
          * implementor but lacks semantic value for the user. Examples in which
          * {@link Atk.Role.STATIC} is appropriate include the message displayed in a message box
          * and an image used as an alternative means to display text. {@link Atk.Role.STATIC}
@@ -825,71 +848,64 @@ export namespace Atk {
          * inappropriate, it may indicate that a different role should be used. For
          * labels which describe another widget, see {@link Atk.Role.LABEL}. For text views, see
          * {@link Atk.Role.TEXT}. For generic containers, see {@link Atk.Role.PANEL}. For objects whose
-         * role is not known by the implementor, see {@link Atk.Role.UNKNOWN}. (Since: 2.16)
+         * role is not known by the implementor, see {@link Atk.Role.UNKNOWN}.
          */
         STATIC,
         /**
          * An object that represents a mathematical fraction.
-         * (Since: 2.16)
          */
         MATH_FRACTION,
         /**
-         * An object that represents a mathematical expression
-         * displayed with a radical. (Since: 2.16)
+         * An object that represents a mathematical expression displayed with a
+         * radical.
          */
         MATH_ROOT,
         /**
-         * An object that contains text that is displayed as a
-         * subscript. (Since: 2.16)
+         * An object that contains text that is displayed as a subscript.
          */
         SUBSCRIPT,
         /**
-         * An object that contains text that is displayed as a
-         * superscript. (Since: 2.16)
+         * An object that contains text that is displayed as a superscript.
          */
         SUPERSCRIPT,
         /**
-         * An object that contains the text of a footnote. (Since: 2.26)
+         * An object that contains the text of a footnote.
          */
         FOOTNOTE,
         /**
-         * Content previously deleted or proposed to be
-         * deleted, e.g. in revision history or a content view providing suggestions
-         * from reviewers. (Since: 2.34)
+         * Content previously deleted or proposed to be deleted, e.g. in revision
+         * history or a content view providing suggestions from reviewers.
          */
         CONTENT_DELETION,
         /**
-         * Content previously inserted or proposed to be
-         * inserted, e.g. in revision history or a content view providing suggestions
-         * from reviewers. (Since: 2.34)
+         * Content previously inserted or proposed to be inserted, e.g. in revision
+         * history or a content view providing suggestions from reviewers.
          */
         CONTENT_INSERTION,
         /**
-         * A run of content that is marked or highlighted, such as for
-         * reference purposes, or to call it out as having a special purpose. If the
-         * marked content has an associated section in the document elaborating on the
+         * A run of content that is marked or highlighted, such as for reference
+         *  purposes, or to call it out as having a special purpose. If the marked
+         * content has an associated section in the document elaborating on the
          * reason for the mark, then {@link Atk.RelationType.DETAILS} should be used on the mark
          * to point to that associated section. In addition, the reciprocal relation
          * {@link Atk.RelationType.DETAILS_FOR} should be used on the associated content section
-         * to point back to the mark. (Since: 2.36)
+         * to point back to the mark.
          */
         MARK,
         /**
-         * A container for content that is called out as a proposed
-         * change from the current version of the document, such as by a reviewer of the
+         * A container for content that is called out as a proposed change from
+         * the current version of the document, such as by a reviewer of the
          * content. This role should include either {@link Atk.Role.CONTENT_DELETION} and/or
          * {@link Atk.Role.CONTENT_INSERTION} children, in any order, to indicate what the
-         * actual change is. (Since: 2.36)
+         * actual change is.
          */
         SUGGESTION,
         /**
          * A specialized push button to open a menu.
-         * (Since: 2.46)
          */
         PUSH_BUTTON_MENU,
         /**
          * A switch that can be toggled on/off.
-         * (Since: 2.56)
          */
         SWITCH,
         /**
@@ -1173,36 +1189,34 @@ export namespace Atk {
          */
         VISITED,
         /**
-         * Indicates this object has the potential to be
-         *  checked, such as a checkbox or toggle-able table cell. `Since`:
-         *  ATK-2.12
+         * Indicates this object has the potential to be  checked, such as a checkbox
+         * or toggle-able table cell.
          */
         CHECKABLE,
         /**
-         * Indicates that the object has a popup context
-         * menu or sub-level menu which may or may not be showing. This means
-         * that activation renders conditional content.  Note that ordinary
-         * tooltips are not considered popups in this context. `Since`: ATK-2.12
+         * Indicates that the object has a popup context menu or sub-level menu which
+         * may or may not be showing. This means that activation renders conditional
+         * content.  Note that ordinary tooltips are not considered popups in this
+         * context.
          */
         HAS_POPUP,
         /**
-         * Indicates this object has a tooltip. `Since`: ATK-2.16
+         * Indicates this object has a tooltip.
          */
         HAS_TOOLTIP,
         /**
-         * Indicates that a widget which is ENABLED and SENSITIVE
-         * has a value which can be read, but not modified, by the user. Note that this
-         * state should only be applied to widget types whose value is normally directly
-         * user modifiable, such as check boxes, radio buttons, spin buttons, text input
-         * fields, and combo boxes, as a means to convey that the expected interaction
-         * with that widget is not possible. When the expected interaction with a
-         * widget does not include modification by the user, as is the case with
-         * labels and containers, ATK_STATE_READ_ONLY should not be applied. See also
-         * ATK_STATE_EDITABLE. `Since`: ATK-2-16
+         * Indicates that a widget which is ENABLED and SENSITIVE has a value which
+         * can be read, but not modified, by the user. Note that this state should only
+         * be applied to widget types whose value is normally directly user modifiable,
+         * such as check boxes, radio buttons, spin buttons, text input fields, and
+         * combo boxes, as a means to convey that the expected interaction with that
+         * widget is not possible. When the expected interaction with a widget does not
+         * include modification by the user, as is the case with labels and containers,
+         * ATK_STATE_READ_ONLY should not be applied. See also ATK_STATE_EDITABLE.
          */
         READ_ONLY,
         /**
-         * Indicates this object is collapsed. `Since`: ATK-2.38
+         * Indicates this object is collapsed.
          */
         COLLAPSED,
         /**
@@ -1240,11 +1254,11 @@ export namespace Atk {
          */
         INDENT,
         /**
-         * Either "true" or "false" indicating whether text is visible or not
+         * Either "true" or "false" indicating whether text is visible or not.
          */
         INVISIBLE,
         /**
-         * Either "true" or "false" indicating whether text is editable or not
+         * Either "true" or "false" indicating whether text is editable or not.
          */
         EDITABLE,
         /**
@@ -1339,6 +1353,14 @@ export namespace Atk {
          * The vertical position with respect to the baseline. Values are "baseline", "super", or "sub". Note that a super or sub text attribute refers to position with respect to the baseline of the prior character.
          */
         TEXT_POSITION,
+        /**
+         * A run of content that is marked or highlighted, such as for reference
+         * purposes, or to call it out as having a special purpose that is clear from
+         * context. This is similar to ATK_ROLE_MARK, but this is used where it may
+         * apply to a partial span of text in an object, rather than to an entire
+         * object. Values are "true" or "false".
+         */
+        MARK,
         /**
          * not a valid text attribute, used for finding end of enumeration
          */
@@ -2423,7 +2445,7 @@ export namespace Atk {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2478,7 +2500,7 @@ export namespace Atk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2553,7 +2575,7 @@ export namespace Atk {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5266,7 +5288,7 @@ export namespace Atk {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5321,7 +5343,7 @@ export namespace Atk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5396,7 +5418,7 @@ export namespace Atk {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7996,7 +8018,7 @@ export namespace Atk {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -8051,7 +8073,7 @@ export namespace Atk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8126,7 +8148,7 @@ export namespace Atk {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9160,7 +9182,7 @@ export namespace Atk {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -9215,7 +9237,7 @@ export namespace Atk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -9290,7 +9312,7 @@ export namespace Atk {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

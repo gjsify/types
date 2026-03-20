@@ -4363,6 +4363,15 @@ export namespace GMime {
          * Parses the `value` and then re-formats it to conform to the formatting options,
          * folding the value if necessary.
          * @param options a {@link GMime.FormatOptions} or `null`
+         * @param value a Newsgroups header value
+         * @param charset a charset (note: unused)
+         * @returns a newly allocated string containing the reformatted value.
+         */
+        format_newsgroups(options: FormatOptions | null, value: string, charset: string): string;
+        /**
+         * Parses the `value` and then re-formats it to conform to the formatting options,
+         * folding the value if necessary.
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @param value a Received header value
          * @param charset a charset (note: unused)
          * @returns a newly allocated string containing the reformatted value.
@@ -6121,7 +6130,7 @@ export namespace GMime {
          * @param header header name
          * @returns the value of the requested header if it exists or `null` otherwise.
          */
-        get_header(header: string): string;
+        get_header(header: string): string | null;
         /**
          * Get the header list for `object`.
          * @returns the {@link GMime.HeaderList} for `object`. Do not free this pointer when you are done with it.

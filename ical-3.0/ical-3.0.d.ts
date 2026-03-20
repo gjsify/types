@@ -2003,10 +2003,15 @@ export namespace ICal {
      * @param parser
      */
     function icalparser_free(parser: parser): void;
+    function icalparser_get_ctrl(): any | null;
     /**
      * @param parser
      */
     function icalparser_get_state(parser: parser): parser_state;
+    /**
+     * @param ctrl
+     */
+    function icalparser_set_ctrl(ctrl?: any | null): void;
     /**
      * @param parser
      * @param data

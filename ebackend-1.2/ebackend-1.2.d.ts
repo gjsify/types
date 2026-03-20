@@ -412,27 +412,38 @@ export namespace EBackend {
 
         // Properties
 
+        /**
+         * Socket endpoint of a network service
+         */
         get connectable(): Gio.SocketConnectable;
         set connectable(val: Gio.SocketConnectable);
         /**
+         * The main loop context on which to attach event sources
          * @read-only
          */
         get main_context(): GLib.MainContext;
         /**
+         * The main loop context on which to attach event sources
          * @read-only
          */
         get mainContext(): GLib.MainContext;
+        /**
+         * Whether the backend is online
+         */
         get online(): boolean;
         set online(val: boolean);
         /**
+         * The data source being acted upon
          * @construct-only
          */
         get source(): EDataServer.Source;
         /**
+         * User prompter instance
          * @read-only
          */
         get user_prompter(): UserPrompter;
         /**
+         * User prompter instance
          * @read-only
          */
         get userPrompter(): UserPrompter;
@@ -476,6 +487,7 @@ export namespace EBackend {
         // Virtual methods
 
         /**
+         * Authenticate synchronously
          * @param credentials
          * @param out_certificate_pem
          * @param out_certificate_errors
@@ -1824,7 +1836,7 @@ export namespace EBackend {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1879,7 +1891,7 @@ export namespace EBackend {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1954,7 +1966,7 @@ export namespace EBackend {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2235,14 +2247,17 @@ export namespace EBackend {
         // Properties
 
         /**
+         * The proxy resolver for this backend
          * @read-only
          */
         get proxy_resolver(): Gio.ProxyResolver;
         /**
+         * The proxy resolver for this backend
          * @read-only
          */
         get proxyResolver(): Gio.ProxyResolver;
         /**
+         * The server to which the backend belongs
          * @construct-only
          */
         get server(): SourceRegistryServer;
@@ -3157,7 +3172,7 @@ export namespace EBackend {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3212,7 +3227,7 @@ export namespace EBackend {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3287,7 +3302,7 @@ export namespace EBackend {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3546,22 +3561,27 @@ export namespace EBackend {
         // Properties
 
         /**
+         * Override backend-per-process compile-time option
          * @construct-only
          */
         get backend_per_process(): number;
         /**
+         * Override backend-per-process compile-time option
          * @construct-only
          */
         get backendPerProcess(): number;
         /**
+         * Data source registry
          * @read-only
          */
         get registry(): EDataServer.SourceRegistry;
         /**
+         * Whether the data factory supports Reload
          * @construct-only
          */
         get reload_supported(): boolean;
         /**
+         * Whether the data factory supports Reload
          * @construct-only
          */
         get reloadSupported(): boolean;
@@ -3932,7 +3952,7 @@ export namespace EBackend {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3987,7 +4007,7 @@ export namespace EBackend {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4062,7 +4082,7 @@ export namespace EBackend {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4478,35 +4498,90 @@ export namespace EBackend {
         // Properties
 
         /**
+         * Whether the source has been exported over D-Bus
          * @read-only
          */
         get exported(): boolean;
         /**
+         * The key file for the data source
          * @construct-only
          */
         get file(): Gio.File;
+        /**
+         * The object providing OAuth 2.0 support
+         */
         get oauth2_support(): OAuth2Support;
         set oauth2_support(val: OAuth2Support);
+        /**
+         * The object providing OAuth 2.0 support
+         */
         get oauth2Support(): OAuth2Support;
         set oauth2Support(val: OAuth2Support);
+        /**
+         * Whether the data source can create remote resources
+         *
+         * Note: This overrides the "remote-creatable" property in ESourceClass with a writable
+         * version.
+         */
         get remote_creatable(): boolean;
         set remote_creatable(val: boolean);
+        /**
+         * Whether the data source can create remote resources
+         *
+         * Note: This overrides the "remote-creatable" property in ESourceClass with a writable
+         * version.
+         */
         get remoteCreatable(): boolean;
         set remoteCreatable(val: boolean);
+        /**
+         * Whether the data source can delete remote resources
+         *
+         * Note: This overrides the "remote-deletable" property in ESourceClass with a writable
+         * version.
+         */
         get remote_deletable(): boolean;
         set remote_deletable(val: boolean);
+        /**
+         * Whether the data source can delete remote resources
+         *
+         * Note: This overrides the "remote-deletable" property in ESourceClass with a writable
+         * version.
+         */
         get remoteDeletable(): boolean;
         set remoteDeletable(val: boolean);
+        /**
+         * Whether the data source is removable
+         *
+         * Note: This overrides the "removable" property in ESourceClass with a writable version.
+         */
         get removable(): boolean;
         set removable(val: boolean);
         /**
+         * The server to which the data source belongs
          * @construct-only
          */
         get server(): SourceRegistryServer;
+        /**
+         * Whether the data source is writable
+         *
+         * Note: This overrides the "writable" property in ESourceClass with a writable version.
+         */
         get writable(): boolean;
         set writable(val: boolean);
+        /**
+         * Directory in which to write changes to disk
+         *
+         * Note: Do not use G_PARAM_CONSTRUCT.  We initialize the property ourselves in
+         * `e_server_side_source_init()`.
+         */
         get write_directory(): string;
         set write_directory(val: string);
+        /**
+         * Directory in which to write changes to disk
+         *
+         * Note: Do not use G_PARAM_CONSTRUCT.  We initialize the property ourselves in
+         * `e_server_side_source_init()`.
+         */
         get writeDirectory(): string;
         set writeDirectory(val: string);
 
@@ -5022,7 +5097,7 @@ export namespace EBackend {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5077,7 +5152,7 @@ export namespace EBackend {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5152,7 +5227,7 @@ export namespace EBackend {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5566,7 +5641,7 @@ export namespace EBackend {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5621,7 +5696,7 @@ export namespace EBackend {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5696,7 +5771,7 @@ export namespace EBackend {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6514,7 +6589,7 @@ export namespace EBackend {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6569,7 +6644,7 @@ export namespace EBackend {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6644,7 +6719,7 @@ export namespace EBackend {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6893,6 +6968,7 @@ export namespace EBackend {
         // Properties
 
         /**
+         * Data source registry
          * @read-only
          */
         get registry(): EDataServer.SourceRegistry;
@@ -7215,7 +7291,7 @@ export namespace EBackend {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7270,7 +7346,7 @@ export namespace EBackend {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7345,7 +7421,7 @@ export namespace EBackend {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8078,7 +8154,7 @@ export namespace EBackend {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -8133,7 +8209,7 @@ export namespace EBackend {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8208,7 +8284,7 @@ export namespace EBackend {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

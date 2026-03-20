@@ -794,9 +794,9 @@ export namespace GdkWayland {
          *
          * Use {@link Gdk.Display.supports_input_shapes} to find out if
          * a particular backend supports input regions.
-         * @param region region of surface to be reactive
+         * @param region region of surface to be reactive,   or `null` to make the entire surface reactive
          */
-        set_input_region(region: cairo.Region): void;
+        set_input_region(region?: cairo.Region | null): void;
         /**
          * Marks a region of the {@link Gdk.Surface} as opaque.
          *
@@ -1337,6 +1337,7 @@ export namespace GdkWayland {
         focus(timestamp: number): void;
         /**
          * The capabilities that are available for this toplevel.
+         * @returns the capabilities of the {@link Gdk.Toplevel}.
          */
         get_capabilities(): Gdk.ToplevelCapabilities;
         /**
@@ -1741,9 +1742,9 @@ export namespace GdkWayland {
          *
          * Use {@link Gdk.Display.supports_input_shapes} to find out if
          * a particular backend supports input regions.
-         * @param region region of surface to be reactive
+         * @param region region of surface to be reactive,   or `null` to make the entire surface reactive
          */
-        set_input_region(region: cairo.Region): void;
+        set_input_region(region?: cairo.Region | null): void;
         /**
          * Marks a region of the {@link Gdk.Surface} as opaque.
          *

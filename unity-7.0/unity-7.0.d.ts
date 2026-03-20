@@ -10,9 +10,9 @@
 import '@girs/gjs';
 
 // Module dependencies
-import type GLib from '@girs/glib-2.0';
 import type Dbusmenu from '@girs/dbusmenu-0.4';
 import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
 import type Dee from '@girs/dee-1.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
@@ -375,7 +375,7 @@ export namespace Unity {
     /**
      * @param object
      */
-    function object_unref(object: any): void;
+    function object_unref(object?: any | null): void;
     /**
      * @gir-type Callback
      */
@@ -386,7 +386,7 @@ export namespace Unity {
      * @gir-type Callback
      */
     interface AbstractPreviewCallback {
-        (previewer: ResultPreviewer, preview: AbstractPreview): void;
+        (previewer: ResultPreviewer, preview?: AbstractPreview | null): void;
     }
     namespace AppInfoManager {
         // Signal signatures
@@ -394,7 +394,7 @@ export namespace Unity {
             /**
              * @signal
              */
-            changed: (arg0: string, arg1: Gio.AppInfo) => void;
+            changed: (arg0: string, arg1: Gio.AppInfo | null) => void;
         }
 
         // Constructor properties interface
@@ -454,37 +454,40 @@ export namespace Unity {
         /**
          * @param id
          */
-        lookup(id: string): Gio.AppInfo;
+        lookup(id: string): Gio.AppInfo | null;
         /**
          * @param id
          */
-        get_categories(id: string): string[];
+        get_categories(id: string): string[] | null;
         /**
          * @param id
          */
-        get_keywords(id: string): string[];
+        get_keywords(id: string): string[] | null;
         /**
          * @param id
          */
-        get_path(id: string): string;
+        get_path(id: string): string | null;
         /**
          * @param id
          */
-        lookup_async(id: string): globalThis.Promise<Gio.AppInfo>;
-        /**
-         * @param id
-         * @param _callback_
-         */
-        lookup_async(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        lookup_async(id: string): globalThis.Promise<Gio.AppInfo | null>;
         /**
          * @param id
          * @param _callback_
          */
-        lookup_async(id: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Gio.AppInfo> | void;
+        lookup_async(id: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param id
+         * @param _callback_
+         */
+        lookup_async(
+            id: string,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<Gio.AppInfo | null> | void;
         /**
          * @param _res_
          */
-        lookup_finish(_res_: Gio.AsyncResult): Gio.AppInfo;
+        lookup_finish(_res_: Gio.AsyncResult): Gio.AppInfo | null;
         clear(): void;
     }
 
@@ -682,7 +685,7 @@ export namespace Unity {
         // Methods
 
         get_unity_running(): boolean;
-        get_unity_bus_name(): string;
+        get_unity_bus_name(): string | null;
     }
 
     namespace LauncherEntry {
@@ -825,11 +828,11 @@ export namespace Unity {
          * @param value
          */
         set_urgent(value: boolean): void;
-        get_quicklist(): Dbusmenu.Menuitem;
+        get_quicklist(): Dbusmenu.Menuitem | null;
         /**
          * @param value
          */
-        set_quicklist(value: Dbusmenu.Menuitem): void;
+        set_quicklist(value?: Dbusmenu.Menuitem | null): void;
         /**
          * Build an externalized form of `self` which can be used together with
          * `dee_serializable_parse_external()` to rebuild a copy of `self`.
@@ -955,7 +958,7 @@ export namespace Unity {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1010,7 +1013,7 @@ export namespace Unity {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1085,7 +1088,7 @@ export namespace Unity {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1382,7 +1385,7 @@ export namespace Unity {
         /**
          * @param app_id
          */
-        lookup(app_id: string): Gio.AppInfo;
+        lookup(app_id: string): Gio.AppInfo | null;
         enumerate_ids(): string[];
         enumerate_app_infos(): Gio.AppInfo[];
     }
@@ -1437,6 +1440,21 @@ export namespace Unity {
             ...args: GObject.GjsParameters<MetadataProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
+
+        // Virtual methods
+
+        /**
+         * @param hints
+         * @virtual
+         */
+        vfunc_update_hints(hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): void;
+
+        // Methods
+
+        /**
+         * @param hints
+         */
+        update_hints(hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): void;
     }
 
     namespace ProgressSourceProvider {
@@ -1647,7 +1665,7 @@ export namespace Unity {
         add_metadata_provider(provider: MetadataProvider): void;
         get_id(): string;
         get_name(): string;
-        get_icon_hint(): Gio.Icon;
+        get_icon_hint(): Gio.Icon | null;
         get_default_renderer(): CategoryRenderer;
         get_content_type(): CategoryContentType;
         /**
@@ -1764,11 +1782,28 @@ export namespace Unity {
         ): void;
         emit(signal: string, ...args: any[]): void;
 
+        // Virtual methods
+
+        /**
+         * @virtual
+         */
+        vfunc_get_hints(): GLib.HashTable<string, GLib.Variant>;
+        /**
+         * @param properties
+         * @virtual
+         */
+        vfunc_update(properties: GLib.Variant): void;
+
         // Methods
 
+        get_hints(): GLib.HashTable<string, GLib.Variant>;
+        /**
+         * @param properties
+         */
+        update(properties: GLib.Variant): void;
         get_id(): string;
         get_display_name(): string;
-        get_icon_hint(): Gio.Icon;
+        get_icon_hint(): Gio.Icon | null;
         get_renderer(): FilterRenderer;
         get_visible(): boolean;
         /**
@@ -1902,7 +1937,7 @@ export namespace Unity {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1957,7 +1992,7 @@ export namespace Unity {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2032,7 +2067,7 @@ export namespace Unity {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2323,7 +2358,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, active: boolean): FilterOption;
+        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon | null, active: boolean): FilterOption;
 
         // Signals
 
@@ -2448,11 +2483,11 @@ export namespace Unity {
          * @param display_name
          * @param icon_hint
          */
-        add_option(id: string, display_name: string, icon_hint: Gio.Icon): FilterOption;
+        add_option(id: string, display_name: string, icon_hint?: Gio.Icon | null): FilterOption;
         /**
          * @param id
          */
-        get_option(id: string): FilterOption;
+        get_option(id: string): FilterOption | null;
         /**
          * @param id
          */
@@ -2509,7 +2544,12 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, collapsed: boolean): RadioOptionFilter;
+        static ['new'](
+            id: string,
+            display_name: string,
+            icon_hint: Gio.Icon | null,
+            collapsed: boolean,
+        ): RadioOptionFilter;
         // Conflicted with Unity.OptionsFilter.new
 
         static ['new'](...args: never[]): any;
@@ -2537,7 +2577,7 @@ export namespace Unity {
 
         // Methods
 
-        get_active_option(): FilterOption;
+        get_active_option(): FilterOption | null;
     }
 
     namespace CheckOptionFilter {
@@ -2580,7 +2620,12 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, collapsed: boolean): CheckOptionFilter;
+        static ['new'](
+            id: string,
+            display_name: string,
+            icon_hint: Gio.Icon | null,
+            collapsed: boolean,
+        ): CheckOptionFilter;
         // Conflicted with Unity.OptionsFilter.new
 
         static ['new'](...args: never[]): any;
@@ -2650,7 +2695,7 @@ export namespace Unity {
         static ['new'](
             id: string,
             display_name: string,
-            icon_hint: Gio.Icon,
+            icon_hint: Gio.Icon | null,
             collapsed: boolean,
         ): CheckOptionFilterCompact;
         // Conflicted with Unity.OptionsFilter.new
@@ -2727,7 +2772,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, collapsed: boolean): RatingsFilter;
+        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon | null, collapsed: boolean): RatingsFilter;
 
         // Signals
 
@@ -2795,7 +2840,12 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, collapsed: boolean): MultiRangeFilter;
+        static ['new'](
+            id: string,
+            display_name: string,
+            icon_hint: Gio.Icon | null,
+            collapsed: boolean,
+        ): MultiRangeFilter;
         // Conflicted with Unity.OptionsFilter.new
 
         static ['new'](...args: never[]): any;
@@ -2823,8 +2873,8 @@ export namespace Unity {
 
         // Methods
 
-        get_first_active(): FilterOption;
-        get_last_active(): FilterOption;
+        get_first_active(): FilterOption | null;
+        get_last_active(): FilterOption | null;
     }
 
     namespace PreferencesManager {
@@ -3079,7 +3129,7 @@ export namespace Unity {
         /**
          * @param filter_id
          */
-        get_filter(filter_id: string): Filter;
+        get_filter(filter_id: string): Filter | null;
         /**
          * @param other
          */
@@ -3179,7 +3229,7 @@ export namespace Unity {
             scope_id: string,
             search_string: string,
             search_type: SearchType | null,
-            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
+            hints?: GLib.HashTable<string, GLib.Variant> | null,
         ): globalThis.Promise<GLib.HashTable<string, GLib.Variant>>;
         /**
          * @param scope_id
@@ -3192,8 +3242,8 @@ export namespace Unity {
             scope_id: string,
             search_string: string,
             search_type: SearchType | null,
-            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            _callback_: Gio.AsyncReadyCallback<this>,
+            hints: GLib.HashTable<string, GLib.Variant> | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param scope_id
@@ -3206,8 +3256,8 @@ export namespace Unity {
             scope_id: string,
             search_string: string,
             search_type: SearchType | null,
-            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            _callback_?: Gio.AsyncReadyCallback<this>,
+            hints?: GLib.HashTable<string, GLib.Variant> | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.HashTable<string, GLib.Variant>> | void;
         /**
          * @param _res_
@@ -3233,7 +3283,7 @@ export namespace Unity {
             scope_id: string,
             results_model: Dee.SerializableModel,
             category_ids: string[],
-            _callback_: Gio.AsyncReadyCallback<this>,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * @param scope_id
@@ -3245,7 +3295,7 @@ export namespace Unity {
             scope_id: string,
             results_model: Dee.SerializableModel,
             category_ids: string[],
-            _callback_?: Gio.AsyncReadyCallback<this>,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
          * @param _res_
@@ -3339,8 +3389,16 @@ export namespace Unity {
         ): void;
         emit(signal: string, ...args: any[]): void;
 
+        // Virtual methods
+
+        /**
+         * @virtual
+         */
+        vfunc_create_raw<T = GObject.Object>(): T;
+
         // Methods
 
+        create_raw<T = GObject.Object>(): T;
         /**
          * @param action
          */
@@ -3369,11 +3427,11 @@ export namespace Unity {
          * @param value
          */
         set_image_source_uri(value: string): void;
-        get_image(): Gio.Icon;
+        get_image(): Gio.Icon | null;
         /**
          * @param value
          */
-        set_image(value: Gio.Icon): void;
+        set_image(value?: Gio.Icon | null): void;
         /**
          * Build an externalized form of `self` which can be used together with
          * `dee_serializable_parse_external()` to rebuild a copy of `self`.
@@ -3499,7 +3557,7 @@ export namespace Unity {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3554,7 +3612,7 @@ export namespace Unity {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3629,7 +3687,7 @@ export namespace Unity {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3944,16 +4002,16 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon): PreviewAction;
+        static ['new'](id: string, display_name: string, icon_hint?: Gio.Icon | null): PreviewAction;
 
         static with_layout_hint(
             id: string,
             display_name: string,
-            icon_hint: Gio.Icon,
+            icon_hint: Gio.Icon | null,
             layout: LayoutHint,
         ): PreviewAction;
 
-        static with_uri(uri: string, display_name: string, icon_hint: Gio.Icon): PreviewAction;
+        static with_uri(uri: string, display_name: string, icon_hint?: Gio.Icon | null): PreviewAction;
 
         // Signals
 
@@ -3985,9 +4043,9 @@ export namespace Unity {
          * @param value
          */
         set_extra_text(value: string): void;
-        get_icon_hint(): Gio.Icon;
+        get_icon_hint(): Gio.Icon | null;
         get_layout_hint(): LayoutHint;
-        get_hints(): GLib.HashTable<string, GLib.Variant>;
+        get_hints(): GLib.HashTable<string, GLib.Variant> | null;
         /**
          * Build an externalized form of `self` which can be used together with
          * `dee_serializable_parse_external()` to rebuild a copy of `self`.
@@ -4113,7 +4171,7 @@ export namespace Unity {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4168,7 +4226,7 @@ export namespace Unity {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4243,7 +4301,7 @@ export namespace Unity {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4536,9 +4594,9 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, data: string): InfoHint;
+        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon | null, data: string): InfoHint;
 
-        static with_variant(id: string, display_name: string, icon_hint: Gio.Icon, data: GLib.Variant): InfoHint;
+        static with_variant(id: string, display_name: string, icon_hint: Gio.Icon | null, data: GLib.Variant): InfoHint;
 
         // Signals
 
@@ -4565,7 +4623,7 @@ export namespace Unity {
 
         get_id(): string;
         get_display_name(): string;
-        get_icon_hint(): Gio.Icon;
+        get_icon_hint(): Gio.Icon | null;
         get_data(): GLib.Variant;
         /**
          * @param args
@@ -4610,7 +4668,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](title: string, description: string, image: Gio.Icon): GenericPreview;
+        static ['new'](title: string, description: string, image?: Gio.Icon | null): GenericPreview;
 
         // Signals
 
@@ -4700,8 +4758,8 @@ export namespace Unity {
             title: string,
             subtitle: string,
             description: string,
-            icon: Gio.Icon,
-            screenshot: Gio.Icon,
+            icon?: Gio.Icon | null,
+            screenshot?: Gio.Icon | null,
         ): ApplicationPreview;
 
         // Signals
@@ -4790,7 +4848,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](title: string, subtitle: string, image: Gio.Icon): MusicPreview;
+        static ['new'](title: string, subtitle: string, image?: Gio.Icon | null): MusicPreview;
 
         // Signals
 
@@ -4897,15 +4955,20 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](title: string, subtitle: string, image: Gio.Icon): PaymentPreview;
+        static ['new'](title: string, subtitle: string, image?: Gio.Icon | null): PaymentPreview;
 
-        static for_type(title: string, subtitle: string, image: Gio.Icon, type: PaymentPreviewType): PaymentPreview;
+        static for_type(
+            title: string,
+            subtitle: string,
+            image: Gio.Icon | null,
+            type: PaymentPreviewType,
+        ): PaymentPreview;
 
-        static for_application(title: string, subtitle: string, image: Gio.Icon): PaymentPreview;
+        static for_application(title: string, subtitle: string, image?: Gio.Icon | null): PaymentPreview;
 
-        static for_music(title: string, subtitle: string, image: Gio.Icon): PaymentPreview;
+        static for_music(title: string, subtitle: string, image?: Gio.Icon | null): PaymentPreview;
 
-        static for_error(title: string, subtitle: string, image: Gio.Icon): PaymentPreview;
+        static for_error(title: string, subtitle: string, image?: Gio.Icon | null): PaymentPreview;
 
         // Signals
 
@@ -5006,7 +5069,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](title: string, subtitle: string, description: string, image: Gio.Icon): MoviePreview;
+        static ['new'](title: string, subtitle: string, description: string, image?: Gio.Icon | null): MoviePreview;
 
         // Signals
 
@@ -5095,7 +5158,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](sender: string, subtitle: string, content: string, avatar: Gio.Icon): SocialPreview;
+        static ['new'](sender: string, subtitle: string, content: string, avatar?: Gio.Icon | null): SocialPreview;
 
         // Signals
 
@@ -5285,8 +5348,8 @@ export namespace Unity {
 
         static with_search(
             search_string: string,
-            filter_set: FilterSet,
-            search_metadata: SearchMetadata,
+            filter_set?: FilterSet | null,
+            search_metadata?: SearchMetadata | null,
         ): ActivationResponse;
 
         static with_preview(preview: Preview): ActivationResponse;
@@ -5393,7 +5456,7 @@ export namespace Unity {
             channel_id: string,
             scope_id: string,
             action_type: number,
-            result: ScopeResult,
+            _result_?: ScopeResult | null,
         ): AggregatorActivation;
 
         // Signals
@@ -5436,11 +5499,11 @@ export namespace Unity {
          * @param value
          */
         set_action_type(value: number): void;
-        get_scope_result(): ScopeResult;
+        get_scope_result(): ScopeResult | null;
         /**
          * @param value
          */
-        set_scope_result(value: ScopeResult): void;
+        set_scope_result(value?: ScopeResult | null): void;
         get_hints(): GLib.HashTable<string, GLib.Variant>;
     }
 
@@ -5508,7 +5571,7 @@ export namespace Unity {
          * @param filter_id
          * @virtual
          */
-        vfunc_get_filter_by_id(filter_id: string): Filter;
+        vfunc_get_filter_by_id(filter_id: string): Filter | null;
         /**
          * @virtual
          */
@@ -5523,7 +5586,7 @@ export namespace Unity {
         /**
          * @param filter_id
          */
-        get_filter_by_id(filter_id: string): Filter;
+        get_filter_by_id(filter_id: string): Filter | null;
         get_filters(): Filter[];
     }
 
@@ -5747,13 +5810,13 @@ export namespace Unity {
         /**
          * @virtual
          */
-        vfunc_get_gcancellable(): Gio.Cancellable;
+        vfunc_get_gcancellable(): Gio.Cancellable | null;
 
         // Methods
 
         cancel(): void;
         is_cancelled(): boolean;
-        get_gcancellable(): Gio.Cancellable;
+        get_gcancellable(): Gio.Cancellable | null;
     }
 
     namespace ScopeSearchBase {
@@ -5895,10 +5958,10 @@ export namespace Unity {
         // Virtual methods
 
         /**
-         * @param result
+         * @param _result_
          * @virtual
          */
-        vfunc_add_result(result: ScopeResult): void;
+        vfunc_add_result(_result_: ScopeResult): void;
         /**
          * @param variant
          * @virtual
@@ -5912,9 +5975,9 @@ export namespace Unity {
         // Methods
 
         /**
-         * @param result
+         * @param _result_
          */
-        add_result(result: ScopeResult): void;
+        add_result(_result_: ScopeResult): void;
         /**
          * @param variant
          */
@@ -6050,7 +6113,7 @@ export namespace Unity {
         /**
          * @virtual
          */
-        vfunc_run(): AbstractPreview;
+        vfunc_run(): AbstractPreview | null;
         /**
          * @param async_callback
          * @virtual
@@ -6059,7 +6122,7 @@ export namespace Unity {
 
         // Methods
 
-        run(): AbstractPreview;
+        run(): AbstractPreview | null;
         /**
          * @param async_callback
          */
@@ -6160,7 +6223,7 @@ export namespace Unity {
         /**
          * @param metadata
          */
-        static create(metadata: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): SearchMetadata;
+        static create(metadata?: GLib.HashTable<string, GLib.Variant> | null): SearchMetadata;
         /**
          * @param metadata
          */
@@ -6168,9 +6231,9 @@ export namespace Unity {
 
         // Methods
 
-        get_locale(): string;
-        get_form_factor(): string;
-        get_location(): GeoCoordinate;
+        get_locale(): string | null;
+        get_form_factor(): string | null;
+        get_location(): GeoCoordinate | null;
     }
 
     namespace GeoCoordinate {
@@ -6303,11 +6366,11 @@ export namespace Unity {
          */
         vfunc_create_search_for_query(search_context: SearchContext): ScopeSearchBase;
         /**
-         * @param result
+         * @param _result_
          * @param metadata
          * @virtual
          */
-        vfunc_create_previewer(result: ScopeResult, metadata: SearchMetadata): ResultPreviewer;
+        vfunc_create_previewer(_result_: ScopeResult, metadata: SearchMetadata): ResultPreviewer;
         /**
          * @virtual
          */
@@ -6333,12 +6396,16 @@ export namespace Unity {
          */
         vfunc_get_unique_name(): string;
         /**
-         * @param result
+         * @param _result_
          * @param metadata
          * @param action_id
          * @virtual
          */
-        vfunc_activate(result: ScopeResult, metadata: SearchMetadata, action_id: string): ActivationResponse;
+        vfunc_activate(
+            _result_: ScopeResult,
+            metadata: SearchMetadata,
+            action_id?: string | null,
+        ): ActivationResponse | null;
         /**
          * @param search_query
          * @virtual
@@ -6352,10 +6419,10 @@ export namespace Unity {
          */
         create_search_for_query(search_context: SearchContext): ScopeSearchBase;
         /**
-         * @param result
+         * @param _result_
          * @param metadata
          */
-        create_previewer(result: ScopeResult, metadata: SearchMetadata): ResultPreviewer;
+        create_previewer(_result_: ScopeResult, metadata: SearchMetadata): ResultPreviewer;
         get_categories(): CategorySet;
         get_filters(): FilterSet;
         get_schema(): Schema;
@@ -6363,11 +6430,11 @@ export namespace Unity {
         get_group_name(): string;
         get_unique_name(): string;
         /**
-         * @param result
+         * @param _result_
          * @param metadata
          * @param action_id
          */
-        activate(result: ScopeResult, metadata: SearchMetadata, action_id: string): ActivationResponse;
+        activate(_result_: ScopeResult, metadata: SearchMetadata, action_id?: string | null): ActivationResponse | null;
         /**
          * @param search_query
          */
@@ -6578,8 +6645,16 @@ export namespace Unity {
         ): void;
         emit(signal: string, ...args: any[]): void;
 
+        // Virtual methods
+
+        /**
+         * @virtual
+         */
+        vfunc_create_impl<T = GObject.Object>(): T;
+
         // Methods
 
+        create_impl<T = GObject.Object>(): T;
         ['export'](): void;
         unexport(): void;
         get_id(): string;
@@ -6624,11 +6699,11 @@ export namespace Unity {
             /**
              * @signal
              */
-            'activate-uri': (arg0: string) => ActivationResponse;
+            'activate-uri': (arg0: string) => ActivationResponse | null;
             /**
              * @signal
              */
-            'preview-uri': (arg0: string) => Preview;
+            'preview-uri': (arg0: string) => Preview | null;
             /**
              * @signal
              */
@@ -6701,72 +6776,72 @@ export namespace Unity {
         // Virtual methods
 
         /**
-         * @param result
+         * @param _result_
          * @param _callback_
          * @virtual
          */
-        vfunc_preview_result(result: ScopeResult, _callback_: Gio.AsyncReadyCallback<this>): void;
+        vfunc_preview_result(_result_: ScopeResult, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
          */
-        vfunc_preview_result_finish(_res_: Gio.AsyncResult): Preview;
+        vfunc_preview_result_finish(_res_: Gio.AsyncResult): Preview | null;
         /**
-         * @param result
+         * @param _result_
          * @param _callback_
          * @virtual
          */
-        vfunc_activate_result(result: ScopeResult, _callback_: Gio.AsyncReadyCallback<this>): void;
+        vfunc_activate_result(_result_: ScopeResult, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
          */
-        vfunc_activate_result_finish(_res_: Gio.AsyncResult): ActivationResponse;
+        vfunc_activate_result_finish(_res_: Gio.AsyncResult): ActivationResponse | null;
 
         // Methods
 
         /**
-         * @param result
+         * @param _result_
          */
-        preview_result(result: ScopeResult): globalThis.Promise<Preview>;
+        preview_result(_result_: ScopeResult): globalThis.Promise<Preview | null>;
         /**
-         * @param result
+         * @param _result_
          * @param _callback_
          */
-        preview_result(result: ScopeResult, _callback_: Gio.AsyncReadyCallback<this>): void;
+        preview_result(_result_: ScopeResult, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * @param result
+         * @param _result_
          * @param _callback_
          */
         preview_result(
-            result: ScopeResult,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<Preview> | void;
+            _result_: ScopeResult,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<Preview | null> | void;
         /**
          * @param _res_
          */
-        preview_result_finish(_res_: Gio.AsyncResult): Preview;
+        preview_result_finish(_res_: Gio.AsyncResult): Preview | null;
         /**
-         * @param result
+         * @param _result_
          */
-        activate_result(result: ScopeResult): globalThis.Promise<ActivationResponse>;
+        activate_result(_result_: ScopeResult): globalThis.Promise<ActivationResponse | null>;
         /**
-         * @param result
+         * @param _result_
          * @param _callback_
          */
-        activate_result(result: ScopeResult, _callback_: Gio.AsyncReadyCallback<this>): void;
+        activate_result(_result_: ScopeResult, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * @param result
+         * @param _result_
          * @param _callback_
          */
         activate_result(
-            result: ScopeResult,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<ActivationResponse> | void;
+            _result_: ScopeResult,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<ActivationResponse | null> | void;
         /**
          * @param _res_
          */
-        activate_result_finish(_res_: Gio.AsyncResult): ActivationResponse;
+        activate_result_finish(_res_: Gio.AsyncResult): ActivationResponse | null;
         /**
          * @param search_type
          */
@@ -6872,7 +6947,7 @@ export namespace Unity {
          * @param _callback_
          * @virtual
          */
-        vfunc_search(scope_search: AggregatedScopeSearch, _callback_: Gio.AsyncReadyCallback<this>): void;
+        vfunc_search(scope_search: AggregatedScopeSearch, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
@@ -6883,12 +6958,12 @@ export namespace Unity {
          * @param _callback_
          * @virtual
          */
-        vfunc_activate(activation: AggregatorActivation, _callback_: Gio.AsyncReadyCallback<this>): void;
+        vfunc_activate(activation: AggregatorActivation, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param _res_
          * @virtual
          */
-        vfunc_activate_finish(_res_: Gio.AsyncResult): ActivationResponse;
+        vfunc_activate_finish(_res_: Gio.AsyncResult): ActivationResponse | null;
 
         // Methods
 
@@ -6915,14 +6990,14 @@ export namespace Unity {
          * @param scope_search
          * @param _callback_
          */
-        search(scope_search: AggregatedScopeSearch, _callback_: Gio.AsyncReadyCallback<this>): void;
+        search(scope_search: AggregatedScopeSearch, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param scope_search
          * @param _callback_
          */
         search(
             scope_search: AggregatedScopeSearch,
-            _callback_?: Gio.AsyncReadyCallback<this>,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
          * @param _res_
@@ -6931,24 +7006,24 @@ export namespace Unity {
         /**
          * @param activation
          */
-        activate(activation: AggregatorActivation): globalThis.Promise<ActivationResponse>;
+        activate(activation: AggregatorActivation): globalThis.Promise<ActivationResponse | null>;
         /**
          * @param activation
          * @param _callback_
          */
-        activate(activation: AggregatorActivation, _callback_: Gio.AsyncReadyCallback<this>): void;
+        activate(activation: AggregatorActivation, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param activation
          * @param _callback_
          */
         activate(
             activation: AggregatorActivation,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<ActivationResponse> | void;
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<ActivationResponse | null> | void;
         /**
          * @param _res_
          */
-        activate_finish(_res_: Gio.AsyncResult): ActivationResponse;
+        activate_finish(_res_: Gio.AsyncResult): ActivationResponse | null;
         get_merge_mode(): AggregatorScopeMergeMode;
         /**
          * @param value
@@ -7071,13 +7146,13 @@ export namespace Unity {
             (search: ScopeSearchBase, cb: ScopeSearchBaseCallback): void;
         }
         interface PreviewRunFunc {
-            (previewer: ResultPreviewer): AbstractPreview;
+            (previewer: ResultPreviewer): AbstractPreview | null;
         }
         interface PreviewRunAsyncFunc {
             (previewer: ResultPreviewer, cb: AbstractPreviewCallback): void;
         }
         interface ActivateFunc {
-            (result: ScopeResult, metadata: SearchMetadata, action_id: string): ActivationResponse;
+            (_result_: ScopeResult, metadata: SearchMetadata, action_id?: string | null): ActivationResponse | null;
         }
 
         // Constructor properties interface
@@ -7175,11 +7250,11 @@ export namespace Unity {
         /**
          * @param func
          */
-        set_search_async_func(func: SimpleScope.SearchRunAsyncFunc): void;
+        set_search_async_func(func?: SimpleScope.SearchRunAsyncFunc | null): void;
         /**
          * @param func
          */
-        set_activate_func(func: SimpleScope.ActivateFunc): void;
+        set_activate_func(func?: SimpleScope.ActivateFunc | null): void;
         /**
          * @param func
          */
@@ -7187,7 +7262,7 @@ export namespace Unity {
         /**
          * @param func
          */
-        set_preview_async_func(func: SimpleScope.PreviewRunAsyncFunc): void;
+        set_preview_async_func(func?: SimpleScope.PreviewRunAsyncFunc | null): void;
         get_filter_set(): FilterSet;
         /**
          * @param value
@@ -7280,7 +7355,7 @@ export namespace Unity {
          * @param module_type
          * @virtual
          */
-        vfunc_get_scopes(module_name: string, module_type: string): AbstractScope[];
+        vfunc_get_scopes(module_name: string, module_type?: string | null): AbstractScope[];
         /**
          * @param scopes
          * @virtual
@@ -7293,7 +7368,7 @@ export namespace Unity {
          * @param module_name
          * @param module_type
          */
-        get_scopes(module_name: string, module_type: string): AbstractScope[];
+        get_scopes(module_name: string, module_type?: string | null): AbstractScope[];
         /**
          * @param scopes
          */
@@ -7310,7 +7385,7 @@ export namespace Unity {
          * @param module
          * @param module_type
          */
-        load_module(module: string, module_type: string): void;
+        load_module(module: string, module_type?: string | null): void;
     }
 
     namespace TrackMetadata {
@@ -7827,16 +7902,16 @@ export namespace Unity {
          * @param value
          */
         set_current_playlist(value: Playlist): void;
-        get_track_menu(): Dbusmenu.Menuitem;
+        get_track_menu(): Dbusmenu.Menuitem | null;
         /**
          * @param value
          */
-        set_track_menu(value: Dbusmenu.Menuitem): void;
-        get_player_menu(): Dbusmenu.Menuitem;
+        set_track_menu(value?: Dbusmenu.Menuitem | null): void;
+        get_player_menu(): Dbusmenu.Menuitem | null;
         /**
          * @param value
          */
-        set_player_menu(value: Dbusmenu.Menuitem): void;
+        set_player_menu(value?: Dbusmenu.Menuitem | null): void;
     }
 
     /**
@@ -8456,7 +8531,7 @@ export namespace Unity {
          */
         static create(
             uri: string,
-            icon_hint: string,
+            icon_hint: string | null,
             category: number,
             result_type: ResultType,
             mimetype: string,
@@ -8464,11 +8539,11 @@ export namespace Unity {
             comment: string,
             dnd_uri: string,
             metadata: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-        ): ScopeResult;
+        ): ScopeResult | null;
         /**
          * @param variant
          */
-        static create_from_variant(variant: GLib.Variant): ScopeResult;
+        static create_from_variant(variant: GLib.Variant): ScopeResult | null;
     }
 
     /**
@@ -8499,11 +8574,11 @@ export namespace Unity {
         static create(
             search_query: string,
             search_type: SearchType,
-            filter_state: FilterSet,
-            metadata: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
+            filter_state: FilterSet | null,
+            metadata: GLib.HashTable<string, GLib.Variant> | null,
             result_set: ResultSet,
-            cancellable: Cancellable,
-        ): SearchContext;
+            cancellable?: Cancellable | null,
+        ): SearchContext | null;
 
         // Methods
 

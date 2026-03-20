@@ -19,6 +19,9 @@
     // Show diagnostics
     "diagnostics": true,
     "paths": {
+      "@girs/gstvideo-1.0": [
+            "../gstvideo-1.0/index.d.ts"
+      ],
       "@girs/gstbase-1.0": [
             "../gstbase-1.0/index.d.ts"
       ],

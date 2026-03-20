@@ -727,17 +727,20 @@ export namespace Dbusmenu {
         // Virtual methods
 
         /**
+         * Slot for {@link Dbusmenu.Menuitem.SignalSignatures.child_added | Dbusmenu.Menuitem::child-added}.
          * @param position
          * @virtual
          */
         vfunc_child_added(position: number): void;
         /**
+         * Slot for {@link Dbusmenu.Menuitem.SignalSignatures.child_moved | Dbusmenu.Menuitem::child-moved}.
          * @param newpos
          * @param oldpos
          * @virtual
          */
         vfunc_child_moved(newpos: number, oldpos: number): void;
         /**
+         * Slot for {@link Dbusmenu.Menuitem.SignalSignatures.child_removed | Dbusmenu.Menuitem::child-removed}.
          * @virtual
          */
         vfunc_child_removed(): void;
@@ -760,6 +763,7 @@ export namespace Dbusmenu {
          */
         vfunc_handle_event(name: string, variant: GLib.Variant, timestamp: number): void;
         /**
+         * Slot for {@link Dbusmenu.Menuitem.SignalSignatures.show_to_user | Dbusmenu.Menuitem::show-to-user}.
          * @param timestamp
          * @param cb_data
          * @virtual

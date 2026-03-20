@@ -1784,7 +1784,7 @@ export namespace GitgExt {
              * @param name
              * @virtual
              */
-            vfunc_lookup(name: string): Gitg.Remote | null;
+            vfunc_lookup(name?: string | null): Gitg.Remote | null;
         }
 
         // Constructor properties interface
@@ -1805,7 +1805,7 @@ export namespace GitgExt {
         /**
          * @param name
          */
-        lookup(name: string): Gitg.Remote | null;
+        lookup(name?: string | null): Gitg.Remote | null;
     }
 
     export const RemoteLookup: RemoteLookupNamespace & {
@@ -1820,6 +1820,16 @@ export namespace GitgExt {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param key
+             * @param up
+             * @virtual
+             */
+            vfunc_search_move(key: string, up: boolean): void;
+            /**
+             * @virtual
+             */
+            vfunc_show_buttons(): boolean;
             /**
              * @virtual
              */
@@ -1900,6 +1910,12 @@ export namespace GitgExt {
 
         // Methods
 
+        /**
+         * @param key
+         * @param up
+         */
+        search_move(key: string, up: boolean): void;
+        show_buttons(): boolean;
         get_search_text(): string;
         /**
          * @param value

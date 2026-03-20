@@ -1,0 +1,63 @@
+{
+    "name": "@girs/ags-8.0",
+    "version": "8.0.0-4.0.0-beta.41",
+    "description": "GJS TypeScript type definitions for Ags-8.0, generated from library version 8.0.0",
+    "type": "module",
+    "module": "ags-8.0.js",
+    "main": "ags-8.0.js",
+    "exports": {
+        "./ambient": {
+            "types": "./ags-8.0-ambient.d.ts",
+            "import": "./ags-8.0-ambient.js",
+            "default": "./ags-8.0-ambient.js"
+        },
+        "./import": {
+            "types": "./ags-8.0-import.d.ts",
+            "import": "./ags-8.0-import.js",
+            "default": "./ags-8.0-import.js"
+        },
+        "./ags-8.0": {
+            "types": "./ags-8.0.d.ts",
+            "import": "./ags-8.0.js",
+            "default": "./ags-8.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
+    },
+    "scripts": {
+        "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^",
+        "@girs/soup-3.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Ags-8.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/ags-8.0#readme"
+}

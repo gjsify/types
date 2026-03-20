@@ -11,17 +11,18 @@ import '@girs/gjs';
 
 // Module dependencies
 import type libxml2 from '@girs/libxml2-2.0';
+import type Json from '@girs/json-1.0';
+import type Gio from '@girs/gio-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
 import type Gdk from '@girs/gdk-3.0';
 import type cairo from 'cairo';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
-import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
@@ -64,17 +65,6 @@ export namespace Liferea {
     /**
      * @gir-type Enum
      */
-    enum nodeSourceState {
-        NONE,
-        IN_PROGRESS,
-        ACTIVE,
-        NO_AUTH,
-        MIGRATE,
-    }
-
-    /**
-     * @gir-type Enum
-     */
     enum nodeViewSortType {
         TIME,
         TITLE,
@@ -89,6 +79,15 @@ export namespace Liferea {
         NORMAL,
         WIDE,
         AUTO,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum request_state {
+        PENDING,
+        PROCESSING,
+        FINISHED,
     }
 
     const NODE_SOURCE_MAX_AUTH_FAILURES: number;
@@ -128,12 +127,11 @@ export namespace Liferea {
      * @param subscription
      */
     function auth_info_store(subscription?: any | null): void;
+    function download_show(): void;
     /**
-     * Get MIME type from enclosure string
-     * @param str enclosure string to parse
-     * @returns MIME type string, free after use
+     * @param url
      */
-    function enclosure_get_mime(str: string): string;
+    function download_url(url: string): void;
     /**
      * Get URL from enclosure string
      * @param str enclosure string to parse
@@ -170,23 +168,19 @@ export namespace Liferea {
      */
     function icon_get(icon: lifereaIcon | null): Gio.Icon;
     /**
-     * @param ptr
-     * @param func
-     * @param params
-     * @param user_data
+     * Interactive node adding (e.g. feed menu->new subscription),
+     * launches some dialog that upon success adds a feed of the
+     * given type.
+     * @param provider the node provider
+     * @returns TRUE on success
      */
-    function node_foreach_child_full(ptr: nodePtr, func: any | null, params: number, user_data?: any | null): void;
+    function node_provider_request_add(provider: nodeProviderPtr): boolean;
     /**
-     * Returns a new unused unique node id.
-     * @returns new id (to be free'd using g_free)
+     * Registers a new node source type. Needs to be called before feed list import!
+     * To be used only via NodeSourceTypeActivatable
+     * @param iface the type interface to register
      */
-    function node_new_id(): string;
-    /**
-     * @param node
-     * @param item
-     * @param newState
-     */
-    function node_source_item_set_flag(node: nodePtr, item: itemPtr, newState: boolean): void;
+    function node_source_type_register(iface: typeof NodeSourceProvider): void;
     /**
      * @param action
      * @param parameter
@@ -254,6 +248,47 @@ export namespace Liferea {
      */
     function social_unregister_bookmark_site(name: string): void;
     /**
+     * Frees the given update state.
+     * @param updateState the update state
+     */
+    function update_state_free(updateState: updateStatePtr): void;
+    /**
+     * @param state
+     */
+    function update_state_get_cache_maxage(state: updateStatePtr): number;
+    /**
+     * @param state
+     */
+    function update_state_get_cookies(state: updateStatePtr): string;
+    /**
+     * @param state
+     */
+    function update_state_get_etag(state: updateStatePtr): string;
+    /**
+     * @param state
+     */
+    function update_state_get_lastmodified(state: updateStatePtr): number;
+    /**
+     * @param state
+     * @param maxage
+     */
+    function update_state_set_cache_maxage(state: updateStatePtr, maxage: number): void;
+    /**
+     * @param state
+     * @param cookies
+     */
+    function update_state_set_cookies(state: updateStatePtr, cookies: string): void;
+    /**
+     * @param state
+     * @param etag
+     */
+    function update_state_set_etag(state: updateStatePtr, etag: string): void;
+    /**
+     * @param state
+     * @param lastmodified
+     */
+    function update_state_set_lastmodified(state: updateStatePtr, lastmodified: number): void;
+    /**
      * @gir-type Callback
      */
     interface itemActionFunc {
@@ -263,13 +298,19 @@ export namespace Liferea {
      * @gir-type Callback
      */
     interface nodeActionDataFunc {
-        (node: nodePtr): void;
+        (node: Node): void;
     }
     /**
      * @gir-type Callback
      */
     interface nodeActionFunc {
-        (node: nodePtr): void;
+        (node: Node): void;
+    }
+    /**
+     * @gir-type Callback
+     */
+    interface update_result_cb {
+        (result: UpdateResult, flags: updateFlags): void;
     }
     /**
      * @gir-type Flags
@@ -291,9 +332,29 @@ export namespace Liferea {
     /**
      * @gir-type Flags
      */
+    enum nodeSourceState {
+        NONE,
+        IN_PROGRESS,
+        ACTIVE,
+        NO_AUTH,
+        MIGRATE,
+    }
+
+    /**
+     * @gir-type Flags
+     */
     enum nodeSourceUpdate {
         LIST,
         LOGIN,
+    }
+
+    /**
+     * @gir-type Flags
+     */
+    enum updateFlags {
+        RESET_TITLE,
+        PRIORITY_HIGH,
+        NO_FEED,
     }
 
     namespace Application {
@@ -470,7 +531,7 @@ export namespace Liferea {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -525,7 +586,7 @@ export namespace Liferea {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -600,7 +661,7 @@ export namespace Liferea {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -845,12 +906,15 @@ export namespace Liferea {
              * @run-last
              */
             'title-changed': (arg0: string) => void;
+            'notify::hidden-urlbar': (pspec: GObject.ParamSpec) => void;
             'notify::renderwidget': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            hidden_urlbar: boolean;
+            hiddenUrlbar: boolean;
             renderwidget: Gtk.Widget;
         }
     }
@@ -863,6 +927,10 @@ export namespace Liferea {
 
         // Properties
 
+        get hidden_urlbar(): boolean;
+        set hidden_urlbar(val: boolean);
+        get hiddenUrlbar(): boolean;
+        set hiddenUrlbar(val: boolean);
         /**
          * @read-only
          */
@@ -931,10 +999,6 @@ export namespace Liferea {
         /**
          * @param location
          */
-        load_finished(location: string): void;
-        /**
-         * @param location
-         */
         location_changed(location: string): void;
         /**
          * @param url
@@ -970,18 +1034,6 @@ export namespace Liferea {
          * @param title
          */
         title_changed(title: string): void;
-        /**
-         * Renders item or node info into the given HTML view.
-         *
-         * `param` browser	HTML view to render to
-         * `param` mode		item view mode (see type itemViewMode)
-         * @param mode
-         */
-        update(mode: number): void;
-        /**
-         * Update the user stylesheet of the WebView
-         */
-        update_stylesheet(): void;
     }
 
     namespace BrowserTabs {
@@ -1156,6 +1208,22 @@ export namespace Liferea {
          */
         static add_folder(title: string): void;
         /**
+         * Adds a new subscription to the feed list. Does not check for duplicates.
+         * Is interactive.
+         * @param url the subscription URL to add
+         */
+        static add_subscription_by_url(url: string): void;
+        /**
+         * Search trough list of subscriptions for a node matching exactly
+         * to an criteria defined by the find type and comparison string.
+         * Searches recursively from a given parent node or the root node.
+         * Always returns just the first occurence in traversal order.
+         * @param parent parent node to traverse from (or NULL)
+         * @param type NODE_BY_(URL|FOLDER_TITLE|ID)
+         * @param str string to compare to
+         */
+        static find_node(parent: Node | null, type: feedListFindType, str: string): Node | null;
+        /**
          * Query overall number of new items.
          *
          * Note: result might be slightly off, but error
@@ -1163,10 +1231,75 @@ export namespace Liferea {
          */
         static get_new_item_count(): number;
         /**
+         * Helper function to query the feed list root node.
+         */
+        static get_root(): Node;
+        /**
+         * Get currently selected feed list node
+         */
+        static get_selected(): Node | null;
+        /**
          * Query overall number of unread items.
          */
         static get_unread_item_count(): number;
         static is_writable(): boolean;
+        /**
+         * Triggers a recursive mark-all-read on the given node
+         * and updates the feed list afterwards.
+         * @param node the node to start with
+         */
+        static mark_all_read(node: Node): void;
+        /**
+         * To be called when node subscription update gained new items.
+         * @param newCount number of new and unread items
+         */
+        static new_items(newCount: number): void;
+        /**
+         * Notifies the feed list controller that a new node
+         * was added to the feed list. This method will insert
+         * the new node into the feed list view and select
+         * the new node.
+         *
+         * This method is used for all node types (feeds, folders...).
+         *
+         * Before calling this method the node must be given
+         * a parent node using `node_set_parent()`.
+         * @param node the new node
+         */
+        static node_added(node: Node): void;
+        /**
+         * Notifies the feed list controller that a new node
+         * was added to the feed list. Similar to `feedlist_node_added()`
+         * the new node will be added to the feed list but the
+         * selection won't be changed.
+         *
+         * This method is used for all node types (feeds, folders...).
+         *
+         * Before calling this method the node must be given
+         * a parent node using `node_set_parent()`.
+         * @param node the new node
+         */
+        static node_imported(node: Node): void;
+        /**
+         * Notifies the feed list controller that an existing
+         * node was removed from it's source (feed list subtree)
+         * and is to be destroyed and to be removed from the
+         * feed list view.
+         * @param node the removed node
+         */
+        static node_removed(node: Node): void;
+        /**
+         * To be called when a feed is updated and has
+         * new or dropped items forcing a node unread count
+         * update for all affected nodes in the feed list.
+         * @param node the updated node
+         */
+        static node_was_updated(node: Node): void;
+        /**
+         * Removes the given node from the feed list.
+         * @param node the node to remove
+         */
+        static remove_node(node: Node): void;
         /**
          * Reset the global feed list new item counter.
          *
@@ -1231,6 +1364,8 @@ export namespace Liferea {
 
         _init(...args: any[]): void;
 
+        static ['new'](): Item;
+
         // Signals
 
         /** @signal */
@@ -1252,12 +1387,93 @@ export namespace Liferea {
         ): void;
         emit(signal: string, ...args: any[]): void;
 
+        // Static methods
+
+        /**
+         * Returns the item structure for the given item id or
+         * NULL if no such item does exist. The caller has to free
+         * the item with `item_unload()` once it is not used anymore.
+         * @param id item id to load
+         */
+        static load(id: number): Item | null;
+
         // Methods
 
+        /**
+         * Method to create a copy of an item. The copy will be
+         * linked to the original item to allow state update
+         * propagation (to be used with vfolders).
+         * @returns copy of the item.
+         */
+        copy(): Item;
+        /**
+         * Returns the resolved author for the item
+         * @returns pointer to string in GSList meta data
+         */
+        get_author(): string;
+        /**
+         * Returns the base URL for the given item.
+         * @returns base URL
+         */
+        get_base_url(): string;
+        /**
+         * Returns the description of the item.
+         */
         get_description(): string;
+        /**
+         * @returns the id of the item.
+         */
         get_id(): string;
+        /**
+         * Returns the source of the item.
+         */
         get_source(): string;
+        /**
+         * Create a plain text teaser from the item description
+         * @returns newly allocated string to be free'd using `g_free()` (or NULL)
+         */
+        get_teaser(): string;
+        /**
+         * Returns the text direction of the item based on title or description.
+         */
+        get_text_direction(): string;
+        /**
+         * Returns the title of the item.
+         */
         get_title(): string;
+        /**
+         * Returns the resolved link for the item.
+         * @returns newly allocated URI to be free'd using `g_free()`
+         */
+        make_link(): string;
+        /**
+         * Sets the item description. If called more than once it
+         * will merge the new description against the old one deciding
+         * on the best to keep.
+         * @param description the content
+         */
+        set_description(description: string): void;
+        /**
+         * Sets the item id
+         * @param id the id
+         */
+        set_id(id: string): void;
+        /**
+         * Sets the item source
+         * @param source the source
+         */
+        set_source(source: string): void;
+        /**
+         * Sets the item time. Always use this when a valid date was
+         * supplied for the item!
+         * @param time the time
+         */
+        set_time(time: number): void;
+        /**
+         * Sets the item title
+         * @param title the title
+         */
+        set_title(title: string): void;
     }
 
     namespace ItemList {
@@ -1321,14 +1537,27 @@ export namespace Liferea {
         // Static methods
 
         /**
+         * Returns the currently displayed node.
+         */
+        static get_displayed_node(): Node | null;
+        /**
          * Returns the id of the currently selected item.
          */
         static get_selected_id(): number;
+        /**
+         * Loads the passed nodes items into the item list.
+         * @param node the node
+         */
+        static load(node: Node): void;
         /**
          * Tries to select the next unread item that is currently in the
          * item list. Or does nothing if there are no unread items left.
          */
         static select_next_unread(): void;
+        /**
+         * Clears the item list.
+         */
+        static unload(): void;
         /**
          * @param item
          */
@@ -1507,6 +1736,10 @@ export namespace Liferea {
          */
         static do_zoom(zoom: number): void;
         /**
+         * Returns the effective layout mode. Never returns NODE_VIEW_MODE_AUTO.
+         */
+        static get_effective_layout(): number;
+        /**
          * Returns the viewing mode property of the currently displayed item set.
          */
         static get_layout(): number;
@@ -1642,6 +1875,262 @@ export namespace Liferea {
          * @param mode
          */
         static set_online(mode: boolean): void;
+    }
+
+    namespace Node {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class Node extends GObject.Object {
+        static $gtype: GObject.GType<Node>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: Node.SignalSignatures;
+
+        // Fields
+
+        data: any;
+        subscription: any;
+        provider: any;
+        source: any;
+        iconFile: string;
+        children: any[];
+        id: string;
+        itemCount: number;
+        unreadCount: number;
+        popupCount: number;
+        newCount: number;
+        title: string;
+        icon: any;
+        available: boolean;
+        expanded: boolean;
+        sortColumn: nodeViewSortType;
+        sortReversed: boolean;
+        needsUpdate: boolean;
+        needsRecount: boolean;
+
+        // Constructors
+
+        constructor(properties?: Partial<Node.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](name: string): Node;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Node *lookup by node id. Will report an error if the queried
+         * id does not exist.
+         * @param id the node id to look up
+         */
+        static from_id(id: string): Node | null;
+        /**
+         * Can be used to check whether an id is used or not.
+         * @param id the node id to check
+         */
+        static is_used_id(id: string): Node | null;
+        /**
+         * Returns a new unused unique node id.
+         */
+        static new_id(): string;
+
+        // Methods
+
+        /**
+         * Helper function to be used with `node_foreach_child()`
+         * to mass-auto-update subscriptions.
+         */
+        auto_update_subscription(): void;
+        /**
+         * Query whether a feed be added to the given node.
+         * @returns TRUE if a feed can be added
+         */
+        can_add_child_feed(): boolean;
+        /**
+         * Query whether a folder be added to the given node.
+         * @returns TRUE if a folder can be added
+         */
+        can_add_child_folder(): boolean;
+        /**
+         * Do not call this method directly! Do use
+         * `node_foreach_child()` or `node_foreach_child_data()`!
+         * @param func the function to process all found elements
+         * @param params 0 if func should be called without user_data, 1 if func should be called with user_data
+         * @param user_data specifies the second argument that func should be passed
+         */
+        foreach_child_full(func: any | null, params: number, user_data?: any | null): void;
+        /**
+         * Returns the base URL for the given node.
+         * If it is a mixed item set NULL will be returned.
+         * @returns base URL
+         */
+        get_base_url(): string;
+        /**
+         * Returns the name of the favicon cache file for the given node.
+         * If there is no favicon a default icon file name will be returned.
+         * @returns a file name
+         */
+        get_favicon_file(): string;
+        /**
+         * Query the unique id string of the node.
+         * @returns id string
+         */
+        get_id(): string;
+        /**
+         * Query the node's title for the feed list.
+         * @returns the title
+         */
+        get_title(): string;
+        /**
+         * Determines whether node1 is an ancestor of node2
+         * @param node2 the possible child
+         * @returns TRUE if node1 is ancestor of node2
+         */
+        is_ancestor(node2: Node): boolean;
+        /**
+         * Load node icon in memory. Should be called only once on startup
+         * and when the node icon has changed.
+         */
+        load_icon(): void;
+        /**
+         * Maps node type to string. For feed nodes
+         * it maps to the feed type string.
+         * @returns type string (or NULL if unknown)
+         */
+        provider_get_name(): string;
+        /**
+         * Test whether a node belongs to of a given provider type name
+         * @param name the node provider name to test for
+         * @returns TRUE if node is of the given type
+         */
+        provider_is(name: string): boolean;
+        /**
+         * Removes all data associated with the given node.
+         */
+        remove(): void;
+        /**
+         * Set a node's new parent and update UI. If a node already has a parent,
+         * it will be removed from its parent children list.
+         * @param new_parent nodes new parent
+         */
+        reparent(new_parent: Node): void;
+        /**
+         * Helper function to be used with `node_foreach_child()`
+         * to mass-auto-update subscriptions.
+         * @param now the current timestamp
+         */
+        reset_update_counter(now: number): void;
+        /**
+         * Saves the given node to cache.
+         */
+        save(): void;
+        /**
+         * Exports all items in this node as a RSS2 feed.
+         * @param filename the destination file name
+         */
+        save_items_to_file(filename: string): void;
+        /**
+         * Attaches a data structure to the given node.
+         * @param data the structure
+         */
+        set_data(data?: any | null): void;
+        /**
+         * @param args
+         */
+        // Conflicted with GObject.Object.set_data
+        set_data(...args: never[]): any;
+        /**
+         * Set the unique id string of the node.
+         * @param id the id string
+         */
+        set_id(id: string): void;
+        /**
+         * Sets a nodes parent. If no parent node is given the
+         * parent node of the currently selected feed or the
+         * selected folder will be used.
+         *
+         * To be used before calling `feedlist_node_added()`
+         * @param parent the parent node (optional can be NULL)
+         * @param position insert position (optional can be 0)
+         */
+        set_parent(parent: Node | null, position: number): void;
+        /**
+         * Change/Set the sort column of a given node.
+         * @param sortColumn sort column id
+         * @param reversed TRUE if order should be reversed
+         * @returns TRUE if the passed settings were different from the previous ones
+         */
+        set_sort_column(sortColumn: nodeViewSortType | null, reversed: boolean): boolean;
+        /**
+         * Attaches the subscription to the given node.
+         * @param subscription the subscription
+         */
+        set_subscription(subscription?: any | null): void;
+        /**
+         * Sets the node's title for the feed list.
+         * @param title the title
+         */
+        set_title(title: string): void;
+        /**
+         * @param item
+         * @param newState
+         */
+        source_item_set_flag(item: itemPtr, newState: boolean): void;
+        /**
+         * Returns a JSON representation of the node to be free'd with `g_free()`
+         */
+        to_json(): string;
+        /**
+         * Update the number of items and unread items of a node from
+         * the DB. This method ensures propagation to parent folders.
+         */
+        update_counters(): void;
+        /**
+         * Called when updating favicons is requested.
+         */
+        update_favicon(): void;
+        /**
+         * Helper function to be used with `node_foreach_child()`
+         * to mass-update subscriptions.
+         * @param user_data update flags
+         */
+        update_subscription(user_data?: any | null): void;
     }
 
     namespace Shell {
@@ -1785,6 +2274,244 @@ export namespace Liferea {
         static toggle_visibility(): void;
     }
 
+    namespace UpdateJob {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class UpdateJob extends GObject.Object {
+        static $gtype: GObject.GType<UpdateJob>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: UpdateJob.SignalSignatures;
+
+        // Fields
+
+        request: UpdateRequest;
+        result: UpdateResult;
+        owner: any;
+        callback: update_result_cb;
+        user_data: any;
+        flags: updateFlags;
+        state: number;
+
+        // Constructors
+
+        constructor(properties?: Partial<UpdateJob.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof UpdateJob.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, UpdateJob.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof UpdateJob.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, UpdateJob.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof UpdateJob.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<UpdateJob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Queues the given job. The job might be delayed if other requests are pending.
+         * @param job the job to queue
+         * @param flags request/result processing flags
+         */
+        static queue_add(job: any | null, flags: updateFlags): void;
+
+        // Methods
+
+        /**
+         * To be called when an update job has been executed. Triggers
+         * the job specific result processing callback.
+         */
+        finished(): void;
+        /**
+         * `returns` update job state (see enum request_state)
+         * Method to query the update state of currently processed jobs.
+         * @returns enum state
+         */
+        get_state(): number;
+    }
+
+    namespace UpdateRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class UpdateRequest extends GObject.Object {
+        static $gtype: GObject.GType<UpdateRequest>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: UpdateRequest.SignalSignatures;
+
+        // Fields
+
+        source: string;
+        postdata: string;
+        authValue: string;
+        filtercmd: string;
+        allowCommands: boolean;
+
+        // Constructors
+
+        constructor(properties?: Partial<UpdateRequest.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](source: string, state: updateStatePtr, options: updateOptionsPtr): UpdateRequest;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof UpdateRequest.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, UpdateRequest.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof UpdateRequest.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, UpdateRequest.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof UpdateRequest.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<UpdateRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Allows *this* request to run local commands.
+         *
+         * At first it may look this flag should be in updateOptions, but we can
+         * take a safer path: feed commands are restricted to a few use cases while
+         * options are propagated to downstream requests (feed enrichment, comments,
+         * etc.), so it is a good idea to prevent these from running commands in the
+         * local system via tricky URLs without needing to validate these options
+         * everywhere (which is error-prone).
+         * @param allowCommands TRUE if the request can run commands, FALSE otherwise.
+         */
+        allow_commands(allowCommands: boolean): void;
+        /**
+         * Sets a custom authorization header value.
+         * @param authValue the authorization header value
+         */
+        set_auth_value(authValue: string): void;
+        /**
+         * Sets the source for an updateRequest. Only use this when the source
+         * is not known at `update_request_new()` calling time.
+         * @param source the new source URL
+         */
+        set_source(source: string): void;
+    }
+
+    namespace UpdateResult {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class UpdateResult extends GObject.Object {
+        static $gtype: GObject.GType<UpdateResult>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: UpdateResult.SignalSignatures;
+
+        // Fields
+
+        source: string;
+        httpstatus: number;
+        data: string;
+        size: number;
+        contentType: string;
+        filterErrors: string;
+
+        // Constructors
+
+        constructor(properties?: Partial<UpdateResult.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof UpdateResult.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, UpdateResult.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof UpdateResult.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, UpdateResult.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof UpdateResult.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<UpdateResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
+    /**
+     * @gir-type Alias
+     */
+    type ActivatableInterface = typeof Activatable;
     /**
      * @gir-type Alias
      */
@@ -1801,6 +2528,10 @@ export namespace Liferea {
      * @gir-type Alias
      */
     type BrowserTabsClass = typeof BrowserTabs;
+    /**
+     * @gir-type Alias
+     */
+    type DownloadActivatableInterface = typeof DownloadActivatable;
     /**
      * @gir-type Alias
      */
@@ -1842,7 +2573,15 @@ export namespace Liferea {
     /**
      * @gir-type Alias
      */
+    type NodeClass = typeof Node;
+    /**
+     * @gir-type Alias
+     */
     type NodeSourceActivatableInterface = typeof NodeSourceActivatable;
+    /**
+     * @gir-type Alias
+     */
+    type NodeSourceProviderInterface = typeof NodeSourceProvider;
     /**
      * @gir-type Alias
      */
@@ -1852,37 +2591,17 @@ export namespace Liferea {
      */
     type ShellClass = typeof Shell;
     /**
-     * @gir-type Struct
+     * @gir-type Alias
      */
-    class encType {
-        static $gtype: GObject.GType<encType>;
-
-        // Fields
-
-        mime: string;
-        extension: string;
-        cmd: string;
-        permanent: boolean;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                mime: string;
-                extension: string;
-                cmd: string;
-                permanent: boolean;
-            }>,
-        );
-    }
-
+    type UpdateJobClass = typeof UpdateJob;
     /**
-     * @gir-type Struct
+     * @gir-type Alias
      */
-    abstract class encTypePtr {
-        static $gtype: GObject.GType<encTypePtr>;
-    }
-
+    type UpdateRequestClass = typeof UpdateRequest;
+    /**
+     * @gir-type Alias
+     */
+    type UpdateResultClass = typeof UpdateResult;
     /**
      * @gir-type Struct
      */
@@ -1909,11 +2628,6 @@ export namespace Liferea {
 
         // Static methods
 
-        /**
-         * Get MIME type from enclosure string
-         * @param str enclosure string to parse
-         */
-        static get_mime(str: string): string;
         /**
          * Get URL from enclosure string
          * @param str enclosure string to parse
@@ -1976,51 +2690,41 @@ export namespace Liferea {
     /**
      * @gir-type Struct
      */
-    class node {
-        static $gtype: GObject.GType<node>;
+    class nodeProvider {
+        static $gtype: GObject.GType<nodeProvider>;
 
         // Fields
 
-        data: any;
-        subscription: any;
-        type: any;
-        source: any;
-        iconFile: string;
-        children: any[];
+        capabilities: number;
         id: string;
-        itemCount: number;
-        unreadCount: number;
-        popupCount: number;
-        newCount: number;
-        title: string;
-        icon: any;
-        available: boolean;
-        expanded: boolean;
-        sortColumn: nodeViewSortType;
-        sortReversed: boolean;
-        needsUpdate: boolean;
-        needsRecount: boolean;
+        icon: number;
+
+        // Constructors
+
+        constructor(
+            properties?: Partial<{
+                capabilities: number;
+                id: string;
+                icon: number;
+            }>,
+        );
 
         // Static methods
 
         /**
-         * @param ptr
-         * @param func
-         * @param params
-         * @param user_data
+         * Interactive node adding (e.g. feed menu->new subscription),
+         * launches some dialog that upon success adds a feed of the
+         * given type.
+         * @param provider the node provider
          */
-        static foreach_child_full(ptr: nodePtr, func: any | null, params: number, user_data?: any | null): void;
-        /**
-         * Returns a new unused unique node id.
-         */
-        static new_id(): string;
+        static request_add(provider: nodeProviderPtr): boolean;
     }
 
     /**
      * @gir-type Struct
      */
-    abstract class nodePtr {
-        static $gtype: GObject.GType<nodePtr>;
+    abstract class nodeProviderPtr {
+        static $gtype: GObject.GType<nodeProviderPtr>;
     }
 
     /**
@@ -2031,6 +2735,7 @@ export namespace Liferea {
 
         // Fields
 
+        root: Node;
         actionQueue: GLib.Queue;
         loginState: number;
         authToken: string;
@@ -2039,11 +2744,11 @@ export namespace Liferea {
         // Static methods
 
         /**
-         * @param node
-         * @param item
-         * @param newState
+         * Registers a new node source type. Needs to be called before feed list import!
+         * To be used only via NodeSourceTypeActivatable
+         * @param iface the type interface to register
          */
-        static item_set_flag(node: nodePtr, item: itemPtr, newState: boolean): void;
+        static type_register(iface: typeof NodeSourceProvider): void;
     }
 
     /**
@@ -2051,26 +2756,6 @@ export namespace Liferea {
      */
     abstract class nodeSourcePtr {
         static $gtype: GObject.GType<nodeSourcePtr>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class nodeSourceType {
-        static $gtype: GObject.GType<nodeSourceType>;
-
-        // Fields
-
-        id: string;
-        name: string;
-        capabilities: number;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class nodeSourceTypePtr {
-        static $gtype: GObject.GType<nodeSourceTypePtr>;
     }
 
     /**
@@ -2119,9 +2804,140 @@ export namespace Liferea {
         static $gtype: GObject.GType<subscriptionTypePtr>;
     }
 
-    namespace AuthActivatable {
+    /**
+     * @gir-type Struct
+     */
+    class updateCommandState {
+        static $gtype: GObject.GType<updateCommandState>;
+
+        // Fields
+
+        pid: GLib.Pid;
+        timeout_id: number;
+        io_watch_id: number;
+        child_watch_id: number;
+        fd: number;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class updateOptions {
+        static $gtype: GObject.GType<updateOptions>;
+
+        // Fields
+
+        username: string;
+        password: string;
+        dontUseProxy: boolean;
+
+        // Constructors
+
+        constructor(
+            properties?: Partial<{
+                username: string;
+                password: string;
+                dontUseProxy: boolean;
+            }>,
+        );
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class updateOptionsPtr {
+        static $gtype: GObject.GType<updateOptionsPtr>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class updateState {
+        static $gtype: GObject.GType<updateState>;
+
+        // Fields
+
+        lastModified: number;
+        lastPoll: number;
+        lastFaviconPoll: number;
+        cookies: string;
+        etag: string;
+        maxAgeMinutes: number;
+        synFrequency: number;
+        synPeriod: number;
+        timeToLive: number;
+
+        // Constructors
+
+        constructor(
+            properties?: Partial<{
+                lastModified: number;
+                lastPoll: number;
+                lastFaviconPoll: number;
+                cookies: string;
+                etag: string;
+                maxAgeMinutes: number;
+                synFrequency: number;
+                synPeriod: number;
+                timeToLive: number;
+            }>,
+        );
+
+        // Static methods
+
         /**
-         * Interface for implementing AuthActivatable.
+         * Frees the given update state.
+         * @param updateState the update state
+         */
+        static free(updateState: updateStatePtr): void;
+        /**
+         * @param state
+         */
+        static get_cache_maxage(state: updateStatePtr): number;
+        /**
+         * @param state
+         */
+        static get_cookies(state: updateStatePtr): string;
+        /**
+         * @param state
+         */
+        static get_etag(state: updateStatePtr): string;
+        /**
+         * @param state
+         */
+        static get_lastmodified(state: updateStatePtr): number;
+        /**
+         * @param state
+         * @param maxage
+         */
+        static set_cache_maxage(state: updateStatePtr, maxage: number): void;
+        /**
+         * @param state
+         * @param cookies
+         */
+        static set_cookies(state: updateStatePtr, cookies: string): void;
+        /**
+         * @param state
+         * @param etag
+         */
+        static set_etag(state: updateStatePtr, etag: string): void;
+        /**
+         * @param state
+         * @param lastmodified
+         */
+        static set_lastmodified(state: updateStatePtr, lastmodified: number): void;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class updateStatePtr {
+        static $gtype: GObject.GType<updateStatePtr>;
+    }
+
+    namespace Activatable {
+        /**
+         * Interface for implementing Activatable.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
@@ -2133,10 +2949,60 @@ export namespace Liferea {
              */
             vfunc_activate(): void;
             /**
+             * Creates the configure widget for the extension.
+             * This interface method is optional.
+             * @virtual
+             */
+            vfunc_create_configure_widget(): void;
+            /**
              * Deactivates the extension.
              * @virtual
              */
             vfunc_deactivate(): void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface ActivatableNamespace {
+        $gtype: GObject.GType<Activatable>;
+        prototype: Activatable;
+    }
+    /**
+     * @gir-type Interface
+     */
+    interface Activatable extends GObject.Object, Activatable.Interface {
+        // Methods
+
+        /**
+         * Activates the extension.
+         */
+        activate(): void;
+        /**
+         * Creates the configure widget for the extension.
+         * This interface method is optional.
+         */
+        create_configure_widget(): void;
+        /**
+         * Deactivates the extension.
+         */
+        deactivate(): void;
+    }
+
+    export const Activatable: ActivatableNamespace & {
+        new (): Activatable; // This allows `obj instanceof Activatable`
+    };
+
+    namespace AuthActivatable {
+        /**
+         * Interface for implementing AuthActivatable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface extends Activatable.Interface {
+            // Virtual methods
+
             /**
              * Triggers a query for authentication infos for a given subscription.
              * Expects triggered plugins to use `liferea_auth_info_add()` to provide
@@ -2159,7 +3025,7 @@ export namespace Liferea {
 
         // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        interface ConstructorProps extends Activatable.ConstructorProps {}
     }
 
     export interface AuthActivatableNamespace {
@@ -2169,17 +3035,9 @@ export namespace Liferea {
     /**
      * @gir-type Interface
      */
-    interface AuthActivatable extends GObject.Object, AuthActivatable.Interface {
+    interface AuthActivatable extends Activatable, AuthActivatable.Interface {
         // Methods
 
-        /**
-         * Activates the extension.
-         */
-        activate(): void;
-        /**
-         * Deactivates the extension.
-         */
-        deactivate(): void;
         /**
          * Triggers a query for authentication infos for a given subscription.
          * Expects triggered plugins to use `liferea_auth_info_add()` to provide
@@ -2202,27 +3060,70 @@ export namespace Liferea {
         new (): AuthActivatable; // This allows `obj instanceof AuthActivatable`
     };
 
-    namespace NodeSourceActivatable {
+    namespace DownloadActivatable {
         /**
-         * Interface for implementing NodeSourceActivatable.
+         * Interface for implementing DownloadActivatable.
          * Contains only the virtual methods that need to be implemented.
          */
-        interface Interface {
+        interface Interface extends Activatable.Interface {
             // Virtual methods
 
             /**
+             * Triggers a download.
+             * @param url an URL to download
              * @virtual
              */
-            vfunc_activate(): void;
+            vfunc_download(url: string): void;
             /**
+             * Show the download GUI
              * @virtual
              */
-            vfunc_deactivate(): void;
+            vfunc_show(): void;
         }
 
         // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        interface ConstructorProps extends Activatable.ConstructorProps {
+            shell: Shell;
+        }
+    }
+
+    export interface DownloadActivatableNamespace {
+        $gtype: GObject.GType<DownloadActivatable>;
+        prototype: DownloadActivatable;
+    }
+    /**
+     * @gir-type Interface
+     */
+    interface DownloadActivatable extends Activatable, DownloadActivatable.Interface {
+        // Properties
+
+        /**
+         * @construct-only
+         */
+        get shell(): Shell;
+
+        // Methods
+
+        /**
+         * Triggers a download.
+         * @param url an URL to download
+         */
+        download(url: string): void;
+        /**
+         * Show the download GUI
+         */
+        show(): void;
+    }
+
+    export const DownloadActivatable: DownloadActivatableNamespace & {
+        new (): DownloadActivatable; // This allows `obj instanceof DownloadActivatable`
+    };
+
+    namespace NodeSourceActivatable {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Activatable.ConstructorProps {}
     }
 
     export interface NodeSourceActivatableNamespace {
@@ -2232,15 +3133,29 @@ export namespace Liferea {
     /**
      * @gir-type Interface
      */
-    interface NodeSourceActivatable extends GObject.Object, NodeSourceActivatable.Interface {
-        // Methods
-
-        activate(): void;
-        deactivate(): void;
-    }
+    interface NodeSourceActivatable extends Activatable {}
 
     export const NodeSourceActivatable: NodeSourceActivatableNamespace & {
         new (): NodeSourceActivatable; // This allows `obj instanceof NodeSourceActivatable`
+    };
+
+    namespace NodeSourceProvider {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface NodeSourceProviderNamespace {
+        $gtype: GObject.GType<NodeSourceProvider>;
+        prototype: NodeSourceProvider;
+    }
+    /**
+     * @gir-type Interface
+     */
+    interface NodeSourceProvider extends GObject.Object {}
+
+    export const NodeSourceProvider: NodeSourceProviderNamespace & {
+        new (): NodeSourceProvider; // This allows `obj instanceof NodeSourceProvider`
     };
 
     namespace ShellActivatable {
@@ -2248,19 +3163,9 @@ export namespace Liferea {
          * Interface for implementing ShellActivatable.
          * Contains only the virtual methods that need to be implemented.
          */
-        interface Interface {
+        interface Interface extends Activatable.Interface {
             // Virtual methods
 
-            /**
-             * Activates the extension on the shell property.
-             * @virtual
-             */
-            vfunc_activate(): void;
-            /**
-             * Deactivates the extension on the shell property.
-             * @virtual
-             */
-            vfunc_deactivate(): void;
             /**
              * Triggers an update of the extension internal state to take into account
              * state changes in the window, due to some event or user action.
@@ -2271,7 +3176,7 @@ export namespace Liferea {
 
         // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
+        interface ConstructorProps extends Activatable.ConstructorProps {
             shell: Shell;
         }
     }
@@ -2283,7 +3188,7 @@ export namespace Liferea {
     /**
      * @gir-type Interface
      */
-    interface ShellActivatable extends GObject.Object, ShellActivatable.Interface {
+    interface ShellActivatable extends Activatable, ShellActivatable.Interface {
         // Properties
 
         /**
@@ -2293,14 +3198,6 @@ export namespace Liferea {
 
         // Methods
 
-        /**
-         * Activates the extension on the shell property.
-         */
-        activate(): void;
-        /**
-         * Deactivates the extension on the shell property.
-         */
-        deactivate(): void;
         /**
          * Triggers an update of the extension internal state to take into account
          * state changes in the window, due to some event or user action.

@@ -3134,6 +3134,20 @@ export namespace Flatpak {
          */
         add_install_flatpakref(flatpakref_data: GLib.Bytes | Uint8Array): boolean;
         /**
+         * Install a Flatpak from a container image. The image is specified
+         *
+         * If the reference from the image was previously installed, then
+         * that remote will be used as the remote for the newly installed image. If the
+         * reference was not previously installed, then a remote will be created for the
+         * reference.
+         *
+         * `image_location` is specified in containers-transports(5) form. Only a subset
+         * of transports are supported: oci:, oci-archive:, and docker:.
+         * @param image_location location string to install from.
+         * @returns `true` on success; `false` with `error` set on failure.
+         */
+        add_install_image(image_location?: string | null): boolean;
+        /**
          * Adds updating the `previous_ids` of the given ref to this transaction, via either
          * installing the `ref` if it was not already present or updating it. This will
          * treat `ref` as the result of following an eol-rebase, and data migration from
@@ -3182,6 +3196,18 @@ export namespace Flatpak {
             previous_ids?: string[] | null,
         ): boolean;
         /**
+         * Adds a set of images to be used as source for installation. This is similar
+         * to `flatpak_transaction_add_sideload_repo()`, but the Flatpaks are stored
+         * as OCI images rather than ostree commits, and the images are used for
+         * all OCI remotes without regard to collection ID.
+         *
+         * Currently `location` should be either 'oci:<path>' or 'oci-archive:<path>'.
+         * Additional schemes may be added in the future.
+         * @param location source of images for installation
+         * @param cancellable
+         */
+        add_sideload_image_collection(location: string, cancellable?: Gio.Cancellable | null): boolean;
+        /**
          * Adds an extra local ostree repo as source for installation. This is
          * equivalent to using the sideload-repos directories (see flatpak(1)), but can
          * be done dynamically. Any path added here is used in addition to ones in
@@ -3189,6 +3215,13 @@ export namespace Flatpak {
          * @param path a path to a local flatpak repository
          */
         add_sideload_repo(path: string): void;
+        /**
+         * Adds preinstall operations to this transaction. This can involve both
+         * installing and removing refs, based on /etc/preinstall.d contents and what
+         * the system had preinstalled before.
+         * @returns `true` on success; `false` with `error` set on failure.
+         */
+        add_sync_preinstalled(): boolean;
         /**
          * Adds uninstalling the given ref to this transaction. If the transaction is
          * set to not deploy updates, the request is ignored.
@@ -3597,7 +3630,7 @@ export namespace Flatpak {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3652,7 +3685,7 @@ export namespace Flatpak {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3727,7 +3760,7 @@ export namespace Flatpak {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

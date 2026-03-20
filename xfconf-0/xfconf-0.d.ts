@@ -117,6 +117,9 @@ export namespace Xfconf {
      * may or may not already exist in the Xfconf store.  The type of
      * `object_property` will be determined automatically.  If the two
      * types do not match, a conversion will be attempted.
+     *
+     * If you are binding a `GdkColor` or `GdkRGBA` property, pass #G_TYPE_PTR_ARRAY
+     * for `xfconf_property_type`.
      * @param channel An {@link Xfconf.Channel}.
      * @param xfconf_property A property on `channel`.
      * @param xfconf_property_type The type of `xfconf_property`.
@@ -128,7 +131,7 @@ export namespace Xfconf {
         channel: Channel,
         xfconf_property: string,
         xfconf_property_type: GObject.GType,
-        object: any | null,
+        object: any,
         object_property: string,
     ): number;
     /**
@@ -149,11 +152,12 @@ export namespace Xfconf {
      * @param object A {@link GObject.Object}.
      * @param object_property A valid property on `object`.
      * @returns an ID number that can be used to later remove the          binding.
+     * @deprecated since 4.19.3: Use `xfconf_g_property_bind`() with #G_TYPE_PTR_ARRAY instead.
      */
     function property_bind_gdkcolor(
         channel: Channel,
         xfconf_property: string,
-        object: any | null,
+        object: any,
         object_property: string,
     ): number;
     /**
@@ -173,11 +177,12 @@ export namespace Xfconf {
      * @param object_property A valid property on `object`.
      * @returns an ID number that can be used to later remove the          binding.
      * @since 4.12.1
+     * @deprecated since 4.19.3: Use `xfconf_g_property_bind`() with #G_TYPE_PTR_ARRAY instead.
      */
     function property_bind_gdkrgba(
         channel: Channel,
         xfconf_property: string,
-        object: any | null,
+        object: any,
         object_property: string,
     ): number;
     /**
@@ -194,7 +199,7 @@ export namespace Xfconf {
      * removed.
      * @param channel_or_object A {@link GObject.Object} or {@link Xfconf.Channel}.
      */
-    function property_unbind_all(channel_or_object?: any | null): void;
+    function property_unbind_all(channel_or_object: any): void;
     /**
      * Causes an Xfconf channel previously bound to a {@link GObject.Object} property
      * (see `xfconf_g_property_bind()`) to no longer be bound.
@@ -206,7 +211,7 @@ export namespace Xfconf {
     function property_unbind_by_property(
         channel: Channel,
         xfconf_property: string,
-        object: any | null,
+        object: any,
         object_property: string,
     ): void;
     /**
@@ -368,6 +373,8 @@ export namespace Xfconf {
 
         _init(...args: any[]): void;
 
+        static get(channel_name: string): Channel;
+
         static ['new'](channel_name: string): Channel;
 
         static new_with_property_base(channel_name: string, property_base: string): Channel;
@@ -393,18 +400,6 @@ export namespace Xfconf {
         ): void;
         emit(signal: string, ...args: any[]): void;
 
-        // Static methods
-
-        /**
-         * Either creates a new channel, or fetches a singleton object for
-         * `channel_name`.  This function always returns a valid object; no
-         * checking is done to see if the channel exists or has a valid name.
-         *
-         * The reference count of the returned channel is owned by libxfconf.
-         * @param channel_name A channel name.
-         */
-        static get(channel_name: string): Channel;
-
         // Methods
 
         /**
@@ -419,21 +414,21 @@ export namespace Xfconf {
          * Retrieves the boolean value associated with `property` on `channel`.
          * @param property A property name.
          * @param default_value A fallback value.
-         * @returns The boolean value, or, if `property` is not in `channel`,          `default_value` is returned.
+         * @returns The boolean value, or, if `property` is not in `channel` or if its type does not match,          `default_value` is returned.
          */
         get_bool(property: string, default_value: boolean): boolean;
         /**
          * Retrieves the double value associated with `property` on `channel`.
          * @param property A property name.
          * @param default_value A fallback value.
-         * @returns The double value, or, if `property` is not in `channel`,          `default_value` is returned.
+         * @returns The double value, or, if `property` is not in `channel` or if its type does not match,          `default_value` is returned.
          */
         get_double(property: string, default_value: number): number;
         /**
          * Retrieves the int value associated with `property` on `channel`.
          * @param property A property name.
          * @param default_value A fallback value.
-         * @returns The int value, or, if `property` is not in `channel`,          `default_value` is returned.
+         * @returns The int value, or, if `property` is not in `channel` or if its type does not match,          `default_value` is returned.
          */
         get_int(property: string, default_value: number): number;
         /**
@@ -460,7 +455,7 @@ export namespace Xfconf {
          * @param property_base The base property name of properties to retrieve.
          * @returns A newly-allocated {@link GLib.HashTable}, which should be freed with          `g_hash_table_destroy()` when no longer needed.
          */
-        get_properties(property_base: string): GLib.HashTable<string, GObject.Value>;
+        get_properties(property_base?: string | null): GLib.HashTable<string, GObject.Value>;
         /**
          * Gets a property on `channel` and stores it in `value`.  The caller is
          * responsible for calling `g_value_unset()` when finished with `value`.
@@ -487,9 +482,9 @@ export namespace Xfconf {
          * Retrieves the string value associated with `property` on `channel`.
          * @param property A property name.
          * @param default_value A fallback value.
-         * @returns A newly-allocated string which should be freed with `g_free()`          when no longer needed.  If `property` is not in `channel`,          a `g_strdup()`ed copy of `default_value` is returned.
+         * @returns A newly-allocated string which should                                      be freed with `g_free()` when no longer                                      needed.  If `property` is not in                                      `channel` or if its type does not match,                                      a `g_strdup()`ed copy of                                      `default_value` is returned.
          */
-        get_string(property: string, default_value: string): string;
+        get_string(property: string, default_value?: string | null): string | null;
         /**
          * Retrieves the string list value associated with `property` on `channel`.
          * @param property A property name.
@@ -519,14 +514,14 @@ export namespace Xfconf {
          * Retrieves the unsigned int value associated with `property` on `channel`.
          * @param property A property name.
          * @param default_value A fallback value.
-         * @returns The uint value, or, if `property` is not in `channel`,          `default_value` is returned.
+         * @returns The uint value, or, if `property` is not in `channel` or if its type does not match,          `default_value` is returned.
          */
         get_uint(property: string, default_value: number): number;
         /**
          * Retrieves the 64-bit int value associated with `property` on `channel`.
          * @param property A property name.
          * @param default_value A fallback value.
-         * @returns The uint64 value, or, if `property` is not in `channel`,          `default_value` is returned.
+         * @returns The uint64 value, or, if `property` is not in `channel` or if its type does not match,          `default_value` is returned.
          */
         get_uint64(property: string, default_value: number): number;
         /**
@@ -620,6 +615,8 @@ export namespace Xfconf {
         set_property(...args: never[]): any;
         /**
          * Sets `value` for `property` on `channel` in the configuration store.
+         *
+         * If `value` is `null`, the empty string ("") will be stored.
          * @param property A property name.
          * @param value The value to set.
          * @returns `true` on success, `false` if an error occured.

@@ -10,18 +10,18 @@
 import '@girs/gjs';
 
 // Module dependencies
-import type xlib from '@girs/xlib-2.0';
-import type cairo from 'cairo';
+import type Json from '@girs/json-1.0';
+import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
+import type Gtk from '@girs/gtk-3.0';
+import type xlib from '@girs/xlib-2.0';
+import type Gdk from '@girs/gdk-3.0';
+import type cairo from 'cairo';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
-import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type Json from '@girs/json-1.0';
-import type Gtk from '@girs/gtk-3.0';
-import type Gdk from '@girs/gdk-3.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
@@ -552,7 +552,7 @@ export namespace TimezoneMap {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -607,7 +607,7 @@ export namespace TimezoneMap {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -682,7 +682,7 @@ export namespace TimezoneMap {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -912,8 +912,11 @@ export namespace TimezoneMap {
             'notify::comment': (pspec: GObject.ParamSpec) => void;
             'notify::country': (pspec: GObject.ParamSpec) => void;
             'notify::dist': (pspec: GObject.ParamSpec) => void;
+            'notify::en-name': (pspec: GObject.ParamSpec) => void;
+            'notify::full-country': (pspec: GObject.ParamSpec) => void;
             'notify::latitude': (pspec: GObject.ParamSpec) => void;
             'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
             'notify::zone': (pspec: GObject.ParamSpec) => void;
         }
 
@@ -923,8 +926,13 @@ export namespace TimezoneMap {
             Comment: string;
             country: string;
             dist: number;
+            en_name: string;
+            enName: string;
+            full_country: string;
+            fullCountry: string;
             latitude: number;
             longitude: number;
+            state: string;
             zone: string;
         }
     }
@@ -943,10 +951,20 @@ export namespace TimezoneMap {
         set country(val: string);
         get dist(): number;
         set dist(val: number);
+        get en_name(): string;
+        set en_name(val: string);
+        get enName(): string;
+        set enName(val: string);
+        get full_country(): string;
+        set full_country(val: string);
+        get fullCountry(): string;
+        set fullCountry(val: string);
         get latitude(): number;
         set latitude(val: number);
         get longitude(): number;
         set longitude(val: number);
+        get state(): string;
+        set state(val: string);
         get zone(): string;
         set zone(val: string);
 
@@ -987,6 +1005,54 @@ export namespace TimezoneMap {
             ...args: GObject.GjsParameters<TimezoneLocation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        get_comment(): string;
+        get_country(): string;
+        get_dist(): number;
+        get_en_name(): string;
+        get_full_country(): string;
+        get_latitude(): number;
+        get_longitude(): number;
+        get_state(): string;
+        get_zone(): string;
+        /**
+         * @param comment
+         */
+        set_comment(comment: string): void;
+        /**
+         * @param country
+         */
+        set_country(country: string): void;
+        /**
+         * @param dist
+         */
+        set_dist(dist: number): void;
+        /**
+         * @param en_name
+         */
+        set_en_name(en_name: string): void;
+        /**
+         * @param full_country
+         */
+        set_full_country(full_country: string): void;
+        /**
+         * @param lat
+         */
+        set_latitude(lat: number): void;
+        /**
+         * @param lng
+         */
+        set_longitude(lng: number): void;
+        /**
+         * @param state
+         */
+        set_state(state: string): void;
+        /**
+         * @param zone
+         */
+        set_zone(zone: string): void;
     }
 
     namespace TimezoneMap {
@@ -997,6 +1063,7 @@ export namespace TimezoneMap {
              * @run-first
              */
             'location-changed': (arg0: TimezoneLocation) => void;
+            'notify::selected-offset': (pspec: GObject.ParamSpec) => void;
             'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
             'notify::can-default': (pspec: GObject.ParamSpec) => void;
             'notify::can-focus': (pspec: GObject.ParamSpec) => void;
@@ -1041,10 +1108,10 @@ export namespace TimezoneMap {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends
-                Gtk.Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+            selected_offset: string;
+            selectedOffset: string;
+        }
     }
 
     /**
@@ -1052,6 +1119,13 @@ export namespace TimezoneMap {
      */
     class TimezoneMap extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TimezoneMap>;
+
+        // Properties
+
+        get selected_offset(): string;
+        set selected_offset(val: string);
+        get selectedOffset(): string;
+        set selectedOffset(val: string);
 
         /**
          * Compile-time signal type information.
@@ -1094,6 +1168,21 @@ export namespace TimezoneMap {
         // Methods
 
         /**
+         * Clear the location currently set for the {@link TimezoneMap.TimezoneMap}. This will remove
+         * the highlight and reset the map to its original state.
+         */
+        clear_location(): void;
+        /**
+         * Returns the current location set for the map.
+         * @returns the map location.
+         */
+        get_location(): TimezoneLocation;
+        /**
+         * Returns the currently selected offset in hours from GMT.
+         * @returns The selected offset.
+         */
+        get_selected_offset(): number;
+        /**
          * @param lon
          * @param lat
          */
@@ -1103,6 +1192,17 @@ export namespace TimezoneMap {
          * @param lat
          */
         set_coords(lon: number, lat: number): void;
+        /**
+         * @param lon
+         * @param lat
+         */
+        set_location(lon: number, lat: number): void;
+        /**
+         * Set the currently selected offset for the map and redraw the highlighted
+         * time zone.
+         * @param offset The offset from GMT in hours
+         */
+        set_selected_offset(offset: number): void;
         /**
          * @param timezone
          */
@@ -1394,7 +1494,7 @@ export namespace TimezoneMap {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1449,7 +1549,7 @@ export namespace TimezoneMap {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1524,7 +1624,7 @@ export namespace TimezoneMap {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

@@ -319,9 +319,19 @@ export namespace GjsPrivate {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
+        /**
+         * @param args
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -337,9 +347,20 @@ export namespace GjsPrivate {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+        /**
+         * @param args
+         * @virtual
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -445,7 +466,7 @@ export namespace GjsPrivate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -500,7 +521,7 @@ export namespace GjsPrivate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -575,7 +596,7 @@ export namespace GjsPrivate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

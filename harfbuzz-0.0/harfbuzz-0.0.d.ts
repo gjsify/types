@@ -1820,7 +1820,7 @@ export namespace HarfBuzz {
      *   #HB_BUFFER_SERIALIZE_FLAG_NO_GLYPH_NAMES flag is set. Then,
      *   - If #HB_BUFFER_SERIALIZE_FLAG_NO_CLUSTERS is not set, `=` then {@link HarfBuzz.glyph_info_t}.cluster.
      *   - If #HB_BUFFER_SERIALIZE_FLAG_NO_POSITIONS is not set, the {@link HarfBuzz.glyph_position_t} in the format:
-     *     - If both {@link HarfBuzz.glyph_position_t}.x_offset and {@link HarfBuzz.glyph_position_t}.y_offset are not 0, ``x_offset`,y_offset`. Then,
+     *     - If {@link HarfBuzz.glyph_position_t}.x_offset and {@link HarfBuzz.glyph_position_t}.y_offset are not both 0, ``x_offset`,y_offset`. Then,
      *     - `+x_advance`, then `,y_advance` if {@link HarfBuzz.glyph_position_t}.y_advance is not 0. Then,
      *   - If #HB_BUFFER_SERIALIZE_FLAG_GLYPH_EXTENTS is set, the {@link HarfBuzz.glyph_extents_t} in the format `<x_bearing,y_bearing,width,height>`
      *
@@ -4839,6 +4839,38 @@ export namespace HarfBuzz {
         script_index: number,
         language_index: number,
     ): [bool_t, number];
+    /**
+     * Collects alternates of glyphs from a given GSUB lookup index.
+     *
+     * For one-to-one GSUB glyph substitutions, this function collects the
+     * substituted glyph.
+     *
+     * For lookups that assign multiple alternates to a glyph, all alternate glyphs are collected.
+     *
+     * For other lookup types, nothing is performed and `false` is returned.
+     *
+     * The `alternate_count` mapping will contain the number of alternates for each glyph id.
+     * Upon entry, this mapping should contain the glyph ids as keys, and the number of alternates
+     * currently known for each glyph id as values.
+     *
+     * The `alternate_glyphs` mapping will contain the alternate glyph ids for each glyph id.
+     * The mapping is encoded in the following way, upon entry and after processing:
+     * If G is the glyph id, and A0, A1, ..., A(n-1) are the alternate glyph ids,
+     * the mapping will contain the following entries: (G + (i << 24)) -> A(i)
+     * for i = 0, 1, ..., n-1 where n is the number of alternates for G as per `alternate_count`.
+     * @param face a face.
+     * @param lookup_index index of the feature lookup to query.
+     * @param alternate_count mapping from glyph index to number of alternates for that glyph.
+     * @param alternate_glyphs mapping from encoded glyph index and alternate index, to alternate glyph ids.
+     * @returns `true` if alternates were collected, `false` otherwise.
+     * @since 12.1.0
+     */
+    function ot_layout_lookup_collect_glyph_alternates(
+        face: face_t,
+        lookup_index: number,
+        alternate_count: map_t,
+        alternate_glyphs: map_t,
+    ): [bool_t, map_t, map_t];
     /**
      * Fetches a list of all glyphs affected by the specified lookup in the
      * specified face's GSUB table or GPOS table.

@@ -537,16 +537,19 @@ export namespace Geoclue {
          */
         emit_location_updated(arg_old: string, arg_new: string): void;
         /**
+         * Handler for the {@link Geoclue.Client.SignalSignatures.handle_start | Geoclue.Client::handle-start} signal.
          * @param invocation
          * @virtual
          */
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
         /**
+         * Handler for the {@link Geoclue.Client.SignalSignatures.handle_stop | Geoclue.Client::handle-stop} signal.
          * @param invocation
          * @virtual
          */
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation): boolean;
         /**
+         * Handler for the {@link Geoclue.Client.SignalSignatures.location_updated | Geoclue.Client::location-updated} signal.
          * @param arg_old
          * @param arg_new
          * @virtual
@@ -766,9 +769,14 @@ export namespace Geoclue {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -784,9 +792,14 @@ export namespace Geoclue {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -978,7 +991,7 @@ export namespace Geoclue {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1033,7 +1046,7 @@ export namespace Geoclue {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1108,7 +1121,7 @@ export namespace Geoclue {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1590,16 +1603,19 @@ export namespace Geoclue {
          */
         emit_location_updated(arg_old: string, arg_new: string): void;
         /**
+         * Handler for the {@link Geoclue.Client.SignalSignatures.handle_start | Geoclue.Client::handle-start} signal.
          * @param invocation
          * @virtual
          */
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
         /**
+         * Handler for the {@link Geoclue.Client.SignalSignatures.handle_stop | Geoclue.Client::handle-stop} signal.
          * @param invocation
          * @virtual
          */
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation): boolean;
         /**
+         * Handler for the {@link Geoclue.Client.SignalSignatures.location_updated | Geoclue.Client::location-updated} signal.
          * @param arg_old
          * @param arg_new
          * @virtual
@@ -1613,9 +1629,19 @@ export namespace Geoclue {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
+        /**
+         * @param args
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -1631,9 +1657,20 @@ export namespace Geoclue {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+        /**
+         * @param args
+         * @virtual
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -1739,7 +1776,7 @@ export namespace Geoclue {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1794,7 +1831,7 @@ export namespace Geoclue {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1869,7 +1906,7 @@ export namespace Geoclue {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2535,9 +2572,14 @@ export namespace Geoclue {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -2553,9 +2595,14 @@ export namespace Geoclue {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -2747,7 +2794,7 @@ export namespace Geoclue {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2802,7 +2849,7 @@ export namespace Geoclue {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2877,7 +2924,7 @@ export namespace Geoclue {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3240,9 +3287,19 @@ export namespace Geoclue {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
+        /**
+         * @param args
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -3258,9 +3315,20 @@ export namespace Geoclue {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+        /**
+         * @param args
+         * @virtual
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -3366,7 +3434,7 @@ export namespace Geoclue {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3421,7 +3489,7 @@ export namespace Geoclue {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3496,7 +3564,7 @@ export namespace Geoclue {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4143,23 +4211,27 @@ export namespace Geoclue {
          */
         complete_get_client(invocation: Gio.DBusMethodInvocation, client: string): void;
         /**
+         * Handler for the {@link Geoclue.Manager.SignalSignatures.handle_add_agent | Geoclue.Manager::handle-add-agent} signal.
          * @param invocation
          * @param arg_id
          * @virtual
          */
         vfunc_handle_add_agent(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
         /**
+         * Handler for the {@link Geoclue.Manager.SignalSignatures.handle_create_client | Geoclue.Manager::handle-create-client} signal.
          * @param invocation
          * @virtual
          */
         vfunc_handle_create_client(invocation: Gio.DBusMethodInvocation): boolean;
         /**
+         * Handler for the {@link Geoclue.Manager.SignalSignatures.handle_delete_client | Geoclue.Manager::handle-delete-client} signal.
          * @param invocation
          * @param arg_client
          * @virtual
          */
         vfunc_handle_delete_client(invocation: Gio.DBusMethodInvocation, arg_client: string): boolean;
         /**
+         * Handler for the {@link Geoclue.Manager.SignalSignatures.handle_get_client | Geoclue.Manager::handle-get-client} signal.
          * @param invocation
          * @virtual
          */
@@ -4378,9 +4450,14 @@ export namespace Geoclue {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -4396,9 +4473,14 @@ export namespace Geoclue {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -4590,7 +4672,7 @@ export namespace Geoclue {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4645,7 +4727,7 @@ export namespace Geoclue {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4720,7 +4802,7 @@ export namespace Geoclue {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5270,23 +5352,27 @@ export namespace Geoclue {
          */
         complete_get_client(invocation: Gio.DBusMethodInvocation, client: string): void;
         /**
+         * Handler for the {@link Geoclue.Manager.SignalSignatures.handle_add_agent | Geoclue.Manager::handle-add-agent} signal.
          * @param invocation
          * @param arg_id
          * @virtual
          */
         vfunc_handle_add_agent(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
         /**
+         * Handler for the {@link Geoclue.Manager.SignalSignatures.handle_create_client | Geoclue.Manager::handle-create-client} signal.
          * @param invocation
          * @virtual
          */
         vfunc_handle_create_client(invocation: Gio.DBusMethodInvocation): boolean;
         /**
+         * Handler for the {@link Geoclue.Manager.SignalSignatures.handle_delete_client | Geoclue.Manager::handle-delete-client} signal.
          * @param invocation
          * @param arg_client
          * @virtual
          */
         vfunc_handle_delete_client(invocation: Gio.DBusMethodInvocation, arg_client: string): boolean;
         /**
+         * Handler for the {@link Geoclue.Manager.SignalSignatures.handle_get_client | Geoclue.Manager::handle-get-client} signal.
          * @param invocation
          * @virtual
          */
@@ -5299,9 +5385,19 @@ export namespace Geoclue {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
+        /**
+         * @param args
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -5317,9 +5413,20 @@ export namespace Geoclue {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+        /**
+         * @param args
+         * @virtual
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -5425,7 +5532,7 @@ export namespace Geoclue {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5480,7 +5587,7 @@ export namespace Geoclue {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5555,7 +5662,7 @@ export namespace Geoclue {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5987,12 +6094,12 @@ export namespace Geoclue {
          * when inside the Flatpak sandbox).
          * @returns The client object.
          */
-        get_client(): ClientProxy;
+        get_client(): ClientProxy | null;
         /**
          * Gets the current location.
          * @returns The last known location as {@link Geoclue.Location}.
          */
-        get_location(): Location;
+        get_location(): Location | null;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -6291,7 +6398,7 @@ export namespace Geoclue {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6346,7 +6453,7 @@ export namespace Geoclue {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6421,7 +6528,7 @@ export namespace Geoclue {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6743,16 +6850,19 @@ export namespace Geoclue {
             // Virtual methods
 
             /**
+             * Handler for the {@link Geoclue.Client.SignalSignatures.handle_start | Geoclue.Client::handle-start} signal.
              * @param invocation
              * @virtual
              */
             vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
             /**
+             * Handler for the {@link Geoclue.Client.SignalSignatures.handle_stop | Geoclue.Client::handle-stop} signal.
              * @param invocation
              * @virtual
              */
             vfunc_handle_stop(invocation: Gio.DBusMethodInvocation): boolean;
             /**
+             * Handler for the {@link Geoclue.Client.SignalSignatures.location_updated | Geoclue.Client::location-updated} signal.
              * @param arg_old
              * @param arg_new
              * @virtual
@@ -7099,23 +7209,27 @@ export namespace Geoclue {
             // Virtual methods
 
             /**
+             * Handler for the {@link Geoclue.Manager.SignalSignatures.handle_add_agent | Geoclue.Manager::handle-add-agent} signal.
              * @param invocation
              * @param arg_id
              * @virtual
              */
             vfunc_handle_add_agent(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
             /**
+             * Handler for the {@link Geoclue.Manager.SignalSignatures.handle_create_client | Geoclue.Manager::handle-create-client} signal.
              * @param invocation
              * @virtual
              */
             vfunc_handle_create_client(invocation: Gio.DBusMethodInvocation): boolean;
             /**
+             * Handler for the {@link Geoclue.Manager.SignalSignatures.handle_delete_client | Geoclue.Manager::handle-delete-client} signal.
              * @param invocation
              * @param arg_client
              * @virtual
              */
             vfunc_handle_delete_client(invocation: Gio.DBusMethodInvocation, arg_client: string): boolean;
             /**
+             * Handler for the {@link Geoclue.Manager.SignalSignatures.handle_get_client | Geoclue.Manager::handle-get-client} signal.
              * @param invocation
              * @virtual
              */

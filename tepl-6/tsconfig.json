@@ -19,8 +19,8 @@
     // Show diagnostics
     "diagnostics": true,
     "paths": {
-      "@girs/gtksource-4": [
-            "../gtksource-4/index.d.ts"
+      "@girs/gtksource-300": [
+            "../gtksource-300/index.d.ts"
       ],
       "@girs/gtk-3.0": [
             "../gtk-3.0/index.d.ts"

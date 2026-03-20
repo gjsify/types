@@ -19,6 +19,9 @@
     // Show diagnostics
     "diagnostics": true,
     "paths": {
+      "@girs/libxml2-2.0": [
+            "../libxml2-2.0/index.d.ts"
+      ],
       "@girs/gtk-3.0": [
             "../gtk-3.0/index.d.ts"
       ],
@@ -60,9 +63,6 @@
       ],
       "@girs/gda-6.0": [
             "../gda-6.0/index.d.ts"
-      ],
-      "@girs/libxml2-2.0": [
-            "../libxml2-2.0/index.d.ts"
       ],
       "@girs/gjs": [
             "../gjs/index.d.ts"

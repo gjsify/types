@@ -1,6 +1,6 @@
 {
     "name": "@girs/meta-8",
-    "version": "8.0.0-4.0.0-beta.40",
+    "version": "8.0.0-4.0.0-beta.41",
     "description": "GJS TypeScript type definitions for Meta-8, generated from library version 8.0.0",
     "type": "module",
     "module": "meta-8.js",

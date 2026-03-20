@@ -56,6 +56,32 @@ export namespace GstWebRTC {
     /**
      * @gir-type Enum
      */
+    export namespace WebRTCDTLSRole {
+        export const $gtype: GObject.GType<WebRTCDTLSRole>;
+    }
+
+    /**
+     * @gir-type Enum
+     * @since 1.28
+     */
+    enum WebRTCDTLSRole {
+        /**
+         * client
+         */
+        CLIENT,
+        /**
+         * server
+         */
+        SERVER,
+        /**
+         * unknown
+         */
+        UNKNOWN,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCDTLSSetup {
         export const $gtype: GObject.GType<WebRTCDTLSSetup>;
     }
@@ -236,6 +262,61 @@ export namespace GstWebRTC {
     /**
      * @gir-type Enum
      */
+    export namespace WebRTCICECandidateProtocolType {
+        export const $gtype: GObject.GType<WebRTCICECandidateProtocolType>;
+    }
+
+    /**
+     * @gir-type Enum
+     * @since 1.28
+     */
+    enum WebRTCICECandidateProtocolType {
+        TCP,
+        UDP,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace WebRTCICECandidateType {
+        export const $gtype: GObject.GType<WebRTCICECandidateType>;
+    }
+
+    /**
+     * @gir-type Enum
+     * @since 1.28
+     */
+    enum WebRTCICECandidateType {
+        /**
+         * The candidate is a host candidate, whose
+         *   IP address as specified in the RTCIceCandidate.address property is in fact the
+         *   true address of the remote peer.
+         */
+        HOST,
+        /**
+         * The candidate is a server
+         *   reflexive candidate; the ip and port are a binding allocated by a NAT for an
+         *   agent when it sent a packet through the NAT to a server. They can be learned by
+         *   the STUN server and TURN server to represent the candidate's peer anonymously.
+         */
+        SERVER_REFLEXIVE,
+        /**
+         * The candidate is a peer
+         *   reflexive candidate; the ip and port are a binding allocated by a NAT when it
+         *   sent a STUN request to represent the candidate's peer anonymously.
+         */
+        PEER_REFLEXIVE,
+        /**
+         * The candidate is a relay candidate,
+         *   obtained from a TURN server. The relay candidate's IP address is an address the
+         *   TURN server uses to forward the media between the two peers.
+         */
+        RELAYED,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCICEComponent {
         export const $gtype: GObject.GType<WebRTCICEComponent>;
     }
@@ -346,6 +427,41 @@ export namespace GstWebRTC {
     /**
      * @gir-type Enum
      */
+    export namespace WebRTCICETcpCandidateType {
+        export const $gtype: GObject.GType<WebRTCICETcpCandidateType>;
+    }
+
+    /**
+     * @gir-type Enum
+     * @since 1.28
+     */
+    enum WebRTCICETcpCandidateType {
+        /**
+         * An "active" TCP candidate is one for which the transport
+         *                                            will attempt to open an outbound connection but will not
+         *                                            receive incoming connection requests.
+         */
+        ACTIVE,
+        /**
+         * A "passive" TCP candidate is one for which the transport
+         *                                             will receive incoming connection attempts but not attempt
+         *                                             a connection.
+         */
+        PASSIVE,
+        /**
+         * An "so" candidate is one for which the transport will attempt
+         *                                        to open a connection simultaneously with its peer.
+         */
+        SO,
+        /**
+         * Value used for non-TCP candidate type.
+         */
+        NONE,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCICETransportPolicy {
         export const $gtype: GObject.GType<WebRTCICETransportPolicy>;
     }
@@ -389,7 +505,7 @@ export namespace GstWebRTC {
          */
         AUDIO,
         /**
-         * Kind is audio
+         * Kind is video
          */
         VIDEO,
     }
@@ -825,12 +941,14 @@ export namespace GstWebRTC {
             'on-open': () => void;
             /**
              * @signal
+             * @deprecated since 1.22: Use `gst_webrtc_data_channel_send_data_full()` instead
              * @action
              * @run-last
              */
             'send-data': (arg0: GLib.Bytes | null) => void;
             /**
              * @signal
+             * @deprecated since 1.22: Use `gst_webrtc_data_channel_send_string_full()` instead
              * @action
              * @run-last
              */
@@ -1133,6 +1251,13 @@ export namespace GstWebRTC {
          */
         vfunc_add_turn_server(uri: string): boolean;
         /**
+         * Invoke the close procedure as specified in
+         * https://www.w3.org/TR/webrtc/#dom-rtcpeerconnection-close.
+         * @param promise a {@link Gst.Promise} to be notified when the task is complete.
+         * @virtual
+         */
+        vfunc_close(promise?: Gst.Promise | null): void;
+        /**
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @param component The {@link GstWebRTC.WebRTCICEComponent}
          * @virtual
@@ -1182,7 +1307,7 @@ export namespace GstWebRTC {
         vfunc_set_force_relay(force_relay: boolean): void;
         /**
          * Set HTTP Proxy to be used when connecting to TURN server.
-         * @param uri URI of the HTTP proxy of the form   http://[username:password@]hostname[:port]
+         * @param uri URI of the HTTP proxy of the form   http://[username:password@]hostname[:port][?alpn=<alpn>]
          * @virtual
          */
         vfunc_set_http_proxy(uri: string): void;
@@ -1246,6 +1371,12 @@ export namespace GstWebRTC {
          */
         add_turn_server(uri: string): boolean;
         /**
+         * Invoke the close procedure as specified in
+         * https://www.w3.org/TR/webrtc/#dom-rtcpeerconnection-close.
+         * @param promise a {@link Gst.Promise} to be notified when the task is complete.
+         */
+        close(promise?: Gst.Promise | null): void;
+        /**
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @param component The {@link GstWebRTC.WebRTCICEComponent}
          * @returns The {@link GstWebRTC.WebRTCICETransport}, or `null`
@@ -1257,7 +1388,7 @@ export namespace GstWebRTC {
          */
         gather_candidates(stream: WebRTCICEStream): boolean;
         /**
-         * @returns URI of the HTTP proxy of the form   http://[username:password@]hostname[:port] Get HTTP Proxy to be used when connecting to TURN server.
+         * @returns URI of the HTTP proxy of the form   http://[username:password@]hostname[:port][?alpn=<alpn>] Get HTTP Proxy to be used when connecting to TURN server.
          */
         get_http_proxy(): string;
         /**
@@ -1293,7 +1424,7 @@ export namespace GstWebRTC {
         set_force_relay(force_relay: boolean): void;
         /**
          * Set HTTP Proxy to be used when connecting to TURN server.
-         * @param uri URI of the HTTP proxy of the form   http://[username:password@]hostname[:port]
+         * @param uri URI of the HTTP proxy of the form   http://[username:password@]hostname[:port][?alpn=<alpn>]
          */
         set_http_proxy(uri: string): void;
         /**
@@ -1531,6 +1662,12 @@ export namespace GstWebRTC {
          * @virtual
          */
         vfunc_gather_candidates(): boolean;
+        /**
+         * See also
+         * https://w3c.github.io/webrtc-pc/#dom-rtcicetransport-getselectedcandidatepair
+         * @virtual
+         */
+        vfunc_get_selected_candidate_pair(): WebRTCICECandidatePair | null;
 
         // Methods
 
@@ -1542,6 +1679,12 @@ export namespace GstWebRTC {
          * @param new_state
          */
         gathering_state_change(new_state: WebRTCICEGatheringState | null): void;
+        /**
+         * See also
+         * https://w3c.github.io/webrtc-pc/#dom-rtcicetransport-getselectedcandidatepair
+         * @returns A {@link GstWebRTC.WebRTCICECandidatePair}
+         */
+        get_selected_candidate_pair(): WebRTCICECandidatePair | null;
         /**
          * @param stream_id
          * @param component
@@ -1959,6 +2102,73 @@ export namespace GstWebRTC {
     type WebRTCDataChannelClass = typeof WebRTCDataChannel;
     /**
      * @gir-type Struct
+     * @since 1.28
+     */
+    class WebRTCICECandidate {
+        static $gtype: GObject.GType<WebRTCICECandidate>;
+
+        // Fields
+
+        candidate: string;
+        component: number;
+        sdp_mid: string;
+        sdp_mline_index: number;
+        stats: WebRTCICECandidateStats;
+
+        // Constructors
+
+        constructor(
+            properties?: Partial<{
+                candidate: string;
+                component: number;
+                sdp_mid: string;
+                sdp_mline_index: number;
+                _gst_reserved: any[];
+            }>,
+        );
+
+        // Methods
+
+        /**
+         * @returns A copy of `candidate`
+         */
+        copy(): WebRTCICECandidate;
+        /**
+         * Helper function to free {@link GstWebRTC.WebRTCICECandidate}
+         */
+        free(): void;
+    }
+
+    /**
+     * @gir-type Struct
+     * @since 1.28
+     */
+    class WebRTCICECandidatePair {
+        static $gtype: GObject.GType<WebRTCICECandidatePair>;
+
+        // Fields
+
+        local: WebRTCICECandidate;
+        remote: WebRTCICECandidate;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+
+        // Methods
+
+        /**
+         * @returns A copy of `pair`
+         */
+        copy(): WebRTCICECandidatePair;
+        /**
+         * Helper function to free {@link GstWebRTC.WebRTCICECandidatePair}
+         */
+        free(): void;
+    }
+
+    /**
+     * @gir-type Struct
      * @since 1.22
      */
     class WebRTCICECandidateStats {
@@ -1987,7 +2197,6 @@ export namespace GstWebRTC {
                 relay_proto: string;
                 prio: number;
                 url: string;
-                _gst_reserved: any[];
             }>,
         );
 

@@ -311,6 +311,14 @@ export namespace GstAudio {
          * Surround right (between rear right and side right)
          */
         SURROUND_RIGHT,
+        /**
+         * Top surround left (between rear left and side left).
+         */
+        TOP_SURROUND_LEFT,
+        /**
+         * Top surround right (between rear right and side right).
+         */
+        TOP_SURROUND_RIGHT,
     }
 
     /**
@@ -484,6 +492,22 @@ export namespace GstAudio {
          */
         F64BE,
         /**
+         * 20 bits in 32 bits, signed, little endian.
+         */
+        S20_32LE,
+        /**
+         * 20 bits in 32 bits, signed, big endian.
+         */
+        S20_32BE,
+        /**
+         * 20 bits in 32 bits, unsigned, little endian.
+         */
+        U20_32LE,
+        /**
+         * 20 bits in 32 bits, unsigned, big endian.
+         */
+        U20_32BE,
+        /**
          * 16 bits in 16 bits, signed, native endianness
          */
         S16,
@@ -523,6 +547,14 @@ export namespace GstAudio {
          * 20 bits in 24 bits, unsigned, native endianness
          */
         U20,
+        /**
+         * 20 bits in 32 bits, signed, native endian.
+         */
+        S20_32,
+        /**
+         * 20 bits in 32 bits, unsigned, native endian.
+         */
+        U20_32,
         /**
          * 18 bits in 24 bits, signed, native endianness
          */
@@ -766,6 +798,10 @@ export namespace GstAudio {
          * samples in FLAC format (Since: 1.12)
          */
         FLAC,
+        /**
+         * samples in DSD format (Since: 1.24)
+         */
+        DSD,
     }
 
     /**
@@ -798,6 +834,57 @@ export namespace GstAudio {
          *     disconnected (Since: 1.2)
          */
         ERROR,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace DsdFormat {
+        export const $gtype: GObject.GType<DsdFormat>;
+    }
+
+    /**
+     * Enum value describing how DSD bits are grouped.
+     * @gir-type Enum
+     * @since 1.24
+     */
+    enum DsdFormat {
+        /**
+         * unknown / invalid DSD format
+         */
+        DSD_FORMAT_UNKNOWN,
+        /**
+         * 8 DSD bits in 1 byte
+         */
+        DSD_FORMAT_U8,
+        /**
+         * 16 DSD bits in 2 bytes, little endian order
+         */
+        DSD_FORMAT_U16LE,
+        /**
+         * 16 DSD bits in 2 bytes, big endian order
+         */
+        DSD_FORMAT_U16BE,
+        /**
+         * 32 DSD bits in 4 bytes, little endian order
+         */
+        DSD_FORMAT_U32LE,
+        /**
+         * 32 DSD bits in 4 bytes, big endian order
+         */
+        DSD_FORMAT_U32BE,
+        /**
+         * number of valid DSD formats
+         */
+        NUM_DSD_FORMATS,
+        /**
+         * 16 DSD bits in 2 bytes, native endianness
+         */
+        DSD_FORMAT_U16,
+        /**
+         * 32 DSD bits in 4 bytes, native endianness
+         */
+        DSD_FORMAT_U32,
     }
 
     /**
@@ -933,6 +1020,11 @@ export namespace GstAudio {
      */
     const AUDIO_FORMATS_ALL: string;
     /**
+     * Number of audio formats in {@link GstAudio.AudioFormat}.
+     * @since 1.26
+     */
+    const AUDIO_FORMAT_LAST: number;
+    /**
      * Maximum range of allowed sample rates, for use in template caps strings.
      */
     const AUDIO_RATE_RANGE: string;
@@ -1006,6 +1098,29 @@ export namespace GstAudio {
     const AUDIO_RESAMPLER_QUALITY_MAX: number;
     const AUDIO_RESAMPLER_QUALITY_MIN: number;
     /**
+     * List of all DSD formats, for use in template caps strings.
+     *
+     * Big endian formats are preferred, since little-endian ones flip around
+     * the DSD bytes, and most DSD hardware uses big endian formats.
+     * @since 1.24
+     */
+    const DSD_FORMATS_ALL: string;
+    /**
+     * The GStreamer media type for DSD.
+     * @since 1.24
+     */
+    const DSD_MEDIA_TYPE: string;
+    /**
+     * Silence pattern for DSD data.
+     *
+     * In DSD, a nullbyte does not correspond to silence. To fill memory regions
+     * with "DSD silence", these regions must be filled with byte 0x69 instead
+     * (this is the DSD silence pattern). This constant provides that pattern
+     * in a more readable fashion.
+     * @since 1.24
+     */
+    const DSD_SILENCE_PATTERN_BYTE: number;
+    /**
      * This metadata stays relevant as long as channels are unchanged.
      * @since 1.2
      */
@@ -1020,6 +1135,11 @@ export namespace GstAudio {
      * @since 1.2
      */
     const META_TAG_AUDIO_STR: string;
+    /**
+     * This metadata stays relevant as long as the DSD plane offsets are unchanged.
+     * @since 1.24
+     */
+    const META_TAG_DSD_PLANE_OFFSETS_STR: string;
     /**
      * Clip the buffer to the given %GstSegment.
      *
@@ -1200,9 +1320,13 @@ export namespace GstAudio {
      * @returns The {@link GstAudio.AudioFormatInfo} for `format`.
      */
     function audio_format_get_info(format: AudioFormat | null): AudioFormatInfo;
-    function audio_format_info_get_type(): GObject.GType;
     /**
-     * @param format
+     * Returns a string containing a descriptive name for the {@link GstAudio.AudioFormat}.
+     *
+     * Since 1.26 this can also be used with {@link GstAudio.AudioFormat.UNKNOWN}, previous
+     * versions were printing a critical warning and returned `null`.
+     * @param format a {@link GstAudio.AudioFormat} audio format
+     * @returns the name corresponding to `format`
      */
     function audio_format_to_string(format: AudioFormat | null): string;
     /**
@@ -1292,6 +1416,12 @@ export namespace GstAudio {
      * positions `to`. `from` and `to` must contain the same number of
      * positions and the same positions, only in a different order.
      *
+     * This function internally calls `gst_audio_get_channel_reorder_map()` and
+     * `gst_audio_reorder_channels_with_reorder_map()`. It is more efficient to call
+     * `gst_audio_get_channel_reorder_map()` once to retrieve the reorder map and
+     * then call `gst_audio_reorder_channels_with_reorder_map()` with the same
+     * reorder map until the channel positions change.
+     *
      * Note: this function assumes the audio data is in interleaved layout
      * @param data The pointer to   the memory.
      * @param format The %GstAudioFormat of the buffer.
@@ -1305,6 +1435,23 @@ export namespace GstAudio {
         from: AudioChannelPosition[] | null,
         to: AudioChannelPosition[] | null,
     ): boolean;
+    /**
+     * Reorders `data` with the given `reorder_map`.
+     *
+     * The reorder map can be retrieved for example with
+     * `gst_audio_get_channel_reorder_map()`.
+     *
+     * Note: this function assumes the audio data is in interleaved layout
+     * @param data The pointer to   the memory.
+     * @param bps The number of bytes per sample.
+     * @param reorder_map The channel reorder map.
+     * @since 1.26
+     */
+    function audio_reorder_channels_with_reorder_map(
+        data: Uint8Array | string,
+        bps: number,
+        reorder_map: number[],
+    ): void;
     /**
      * Make a new resampler.
      * @param method a {@link GstAudio.AudioResamplerMethod}
@@ -1357,25 +1504,6 @@ export namespace GstAudio {
         end: number,
     ): AudioClippingMeta;
     /**
-     * Attaches {@link GstAudio.AudioDownmixMeta} metadata to `buffer` with the given parameters.
-     *
-     * `matrix` is an two-dimensional array of `to_channels` times `from_channels`
-     * coefficients, i.e. the i-th output channels is constructed by multiplicating
-     * the input channels with the coefficients in `matrix`[i] and taking the sum
-     * of the results.
-     * @param buffer a {@link Gst.Buffer}
-     * @param from_position the channel positions   of the source
-     * @param to_position the channel positions of   the destination
-     * @param matrix The matrix coefficients.
-     * @returns the {@link GstAudio.AudioDownmixMeta} on `buffer`.
-     */
-    function buffer_add_audio_downmix_meta(
-        buffer: Gst.Buffer,
-        from_position: AudioChannelPosition[] | null,
-        to_position: AudioChannelPosition[] | null,
-        matrix: number,
-    ): AudioDownmixMeta;
-    /**
      * Attaches audio level information to `buffer`. (RFC 6464)
      * @param buffer a {@link Gst.Buffer}
      * @param level the -dBov from 0-127 (127 is silence).
@@ -1418,8 +1546,41 @@ export namespace GstAudio {
         buffer: Gst.Buffer,
         info: AudioInfo,
         samples: number,
-        offsets?: number | null,
+        offsets?: number[] | null,
     ): AudioMeta;
+    /**
+     * Allocates and attaches a {@link GstAudio.DsdPlaneOffsetMeta} on `buffer`, which must be
+     * writable for that purpose. The fields of the {@link GstAudio.DsdPlaneOffsetMeta} are
+     * directly populated from the arguments of this function.
+     *
+     * If `offsets` is NULL, then the meta's offsets field is left uninitialized.
+     * This is useful if for example offset values are to be calculated in the
+     * meta's offsets field in-place. Similarly, `num_bytes_per_channel` can be
+     * set to 0, but only if `offsets` is NULL. This is useful if the number of
+     * bytes per channel is known only later.
+     *
+     * It is not allowed for channels to overlap in memory,
+     * i.e. for each i in [0, channels), the range
+     * [`offsets`[i], `offsets`[i] + `num_bytes_per_channel`) must not overlap
+     * with any other such range. This function will assert if the parameters
+     * specified cause this restriction to be violated.
+     *
+     * It is, obviously, also not allowed to specify parameters that would cause
+     * out-of-bounds memory access on `buffer`. This is also checked, which means
+     * that you must add enough memory on the `buffer` before adding this meta.
+     *
+     * This meta is only needed for non-interleaved (= planar) DSD data.
+     * @param buffer a {@link Gst.Buffer}
+     * @param num_bytes_per_channel Number of bytes per channel
+     * @param offsets the offsets (in bytes) where each channel plane starts   in the buffer
+     * @returns the {@link GstAudio.DsdPlaneOffsetMeta} that was attached   on the `buffer`
+     * @since 1.24
+     */
+    function buffer_add_dsd_plane_offset_meta(
+        buffer: Gst.Buffer,
+        num_bytes_per_channel: number,
+        offsets?: number[] | null,
+    ): DsdPlaneOffsetMeta;
     /**
      * Find the {@link GstAudio.AudioDownmixMeta} on `buffer` for the given destination
      * channel positions.
@@ -1438,6 +1599,83 @@ export namespace GstAudio {
      * @since 1.20
      */
     function buffer_get_audio_level_meta(buffer: Gst.Buffer): AudioLevelMeta | null;
+    /**
+     * Converts DSD data from one layout and grouping format to another.
+     * `num_bytes` must be an integer multiple of the width of both input
+     * and output format. For example, if the input format is GST_DSD_FORMAT_U32LE,
+     * and the output format is GST_DSD_FORMAT_U16BE, then `num_bytes` must
+     * be an integer multiple of both 4 (U32LE width) and 2 (U16BE width).
+     *
+     * `reverse_byte_bits` is necessary if the bit order within the DSD bytes
+     * needs to be reversed. This is rarely necessary, and is not to be
+     * confused with the endianness of formats (which determines the ordering
+     * of *bytes*).
+     *
+     * `input_plane_offsets` must not be NULL if `input_layout` is set to
+     * #GST_AUDIO_LAYOUT_NON_INTERLEAVED. The same applies to `output_plane_offsets`.
+     * These plane offsets define the starting offset of the planes (there is
+     * exactly one plane per channel) within `input_data` and `output_data`
+     * respectively. If GST_AUDIO_LAYOUT_INTERLEAVED is used, the plane offsets
+     * are ignored.
+     * @param input_data the DSD format conversion's input source
+     * @param output_data the DSD format conversion's output destination
+     * @param input_format DSD format of the input data to convert from
+     * @param output_format DSD format of the output data to convert to
+     * @param input_layout Input data layout
+     * @param output_layout Output data layout
+     * @param input_plane_offsets Plane offsets for non-interleaved input data
+     * @param output_plane_offsets Plane offsets for non-interleaved output data
+     * @param num_dsd_bytes How many bytes with DSD data to convert
+     * @param reverse_byte_bits If TRUE, reverse the bits in each DSD byte
+     * @since 1.24
+     */
+    function dsd_convert(
+        input_data: Uint8Array | string,
+        output_data: Uint8Array | string,
+        input_format: DsdFormat | null,
+        output_format: DsdFormat | null,
+        input_layout: AudioLayout | null,
+        output_layout: AudioLayout | null,
+        input_plane_offsets: number[] | null,
+        output_plane_offsets: number[] | null,
+        num_dsd_bytes: number,
+        reverse_byte_bits: boolean,
+    ): void;
+    /**
+     * Convert the DSD format string `str` to its {@link GstAudio.DsdFormat}.
+     * @param str a DSD format string
+     * @returns the {@link GstAudio.DsdFormat} for `format` or GST_DSD_FORMAT_UNKNOWN when the string is not a known format.
+     * @since 1.24
+     */
+    function dsd_format_from_string(str: string): DsdFormat;
+    /**
+     * @param format a {@link GstAudio.DsdFormat}
+     * @returns Number of bytes in this DSD grouping format.
+     * @since 1.24
+     */
+    function dsd_format_get_width(format: DsdFormat | null): number;
+    /**
+     * Returns a string containing a descriptive name for
+     * the {@link GstAudio.DsdFormat} if there is one, or NULL otherwise.
+     * @param format a {@link GstAudio.DsdFormat}
+     * @returns the name corresponding to `format`
+     * @since 1.24
+     */
+    function dsd_format_to_string(format: DsdFormat | null): string;
+    /**
+     * Parse `caps` and update `info`.
+     * @param caps a {@link Gst.Caps}
+     * @returns TRUE if `caps` could be parsed
+     * @since 1.24
+     */
+    function dsd_info_from_caps(caps: Gst.Caps): [boolean, DsdInfo];
+    /**
+     * Initialize `info` with default values.
+     * @since 1.24
+     */
+    function dsd_info_init(): DsdInfo;
+    function dsd_plane_offset_meta_api_get_type(): GObject.GType;
+    function dsd_plane_offset_meta_get_info(): Gst.MetaInfo;
     /**
      * @param from {@link GstAudio.StreamVolumeFormat} to convert from
      * @param to {@link GstAudio.StreamVolumeFormat} to convert to
@@ -1899,6 +2137,10 @@ export namespace GstAudio {
         // Virtual methods
 
         /**
+         * Aggregates one input buffer to the output
+         *  buffer.  The in_offset and out_offset are in "frames", which is
+         *  the size of a sample times the number of channels. Returns TRUE if
+         *  any non-silence was added to the buffer
          * @param pad
          * @param inbuf
          * @param in_offset
@@ -1916,6 +2158,7 @@ export namespace GstAudio {
             num_frames: number,
         ): boolean;
         /**
+         * Create a new output buffer contains num_frames frames.
          * @param num_frames
          * @virtual
          */
@@ -1935,6 +2178,9 @@ export namespace GstAudio {
         interface SignalSignatures extends AudioAggregatorPad.SignalSignatures {
             'notify::converter-config': (pspec: GObject.ParamSpec) => void;
             'notify::qos-messages': (pspec: GObject.ParamSpec) => void;
+            'notify::current-level-buffers': (pspec: GObject.ParamSpec) => void;
+            'notify::current-level-bytes': (pspec: GObject.ParamSpec) => void;
+            'notify::current-level-time': (pspec: GObject.ParamSpec) => void;
             'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
             'notify::caps': (pspec: GObject.ParamSpec) => void;
             'notify::direction': (pspec: GObject.ParamSpec) => void;
@@ -2012,6 +2258,9 @@ export namespace GstAudio {
         // Signal signatures
         interface SignalSignatures extends GstBase.AggregatorPad.SignalSignatures {
             'notify::qos-messages': (pspec: GObject.ParamSpec) => void;
+            'notify::current-level-buffers': (pspec: GObject.ParamSpec) => void;
+            'notify::current-level-bytes': (pspec: GObject.ParamSpec) => void;
+            'notify::current-level-time': (pspec: GObject.ParamSpec) => void;
             'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
             'notify::caps': (pspec: GObject.ParamSpec) => void;
             'notify::direction': (pspec: GObject.ParamSpec) => void;
@@ -2091,6 +2340,7 @@ export namespace GstAudio {
         // Virtual methods
 
         /**
+         * Convert a buffer from one format to another.
          * @param in_info
          * @param out_info
          * @param buffer
@@ -2098,6 +2348,8 @@ export namespace GstAudio {
          */
         vfunc_convert_buffer(in_info: AudioInfo, out_info: AudioInfo, buffer: Gst.Buffer): Gst.Buffer;
         /**
+         * Called when either the input or output
+         *  formats have changed.
          * @virtual
          */
         vfunc_update_conversion_info(): void;
@@ -2267,6 +2519,10 @@ export namespace GstAudio {
          */
         vfunc_create_ringbuffer(): AudioRingBuffer | null;
         /**
+         * payload data in a format suitable to write to the sink. If no
+         *           payloading is required, returns a reffed copy of the original
+         *           buffer, else returns the payloaded buffer with all other metadata
+         *           copied.
          * @param buffer
          * @virtual
          */
@@ -2653,15 +2909,18 @@ export namespace GstAudio {
         // Virtual methods
 
         /**
+         * closing the device
          * @virtual
          */
         vfunc_close(): void;
         /**
+         * opening the device
          * @param device
          * @virtual
          */
         vfunc_open(device: string): boolean;
         /**
+         * reading a sector
          * @param sector
          * @virtual
          */
@@ -2808,7 +3067,7 @@ export namespace GstAudio {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2863,7 +3122,7 @@ export namespace GstAudio {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2943,7 +3202,7 @@ export namespace GstAudio {
         ref(...args: never[]): any;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3459,25 +3718,49 @@ export namespace GstAudio {
         // Virtual methods
 
         /**
+         * Optional.
+         *                  Called when the element changes to GST_STATE_NULL.
+         *                  Allows closing external resources.
          * @virtual
          */
         vfunc_close(): boolean;
         /**
+         * Optional.
+         *                     Setup the allocation parameters for allocating output
+         *                     buffers. The passed in query contains the result of the
+         *                     downstream allocation query.
+         *                     Subclasses should chain up to the parent implementation to
+         *                     invoke the default handler.
          * @param query
          * @virtual
          */
         vfunc_decide_allocation(query: Gst.Query): boolean;
         /**
+         * Optional.
+         *                  Instructs subclass to clear any codec caches and discard
+         *                  any pending samples and not yet returned decoded data.
+         *                  `hard` indicates whether a FLUSH is being processed,
+         *                  or otherwise a DISCONT (or conceptually similar).
          * @param hard
          * @virtual
          */
         vfunc_flush(hard: boolean): void;
         /**
+         * Optional.
+         *                  Allows for a custom sink getcaps implementation.
+         *                  If not implemented,
+         *                  default returns gst_audio_decoder_proxy_getcaps
+         *                  applied to sink template caps.
          * @param filter
          * @virtual
          */
         vfunc_getcaps(filter: Gst.Caps): Gst.Caps;
         /**
+         * Provides input data (or NULL to clear any remaining data)
+         *                  to subclass.  Input data ref management is performed by
+         *                  base class, subclass should not care or intervene,
+         *                  and input data is only valid until next call to base class,
+         *                  most notably a call to `gst_audio_decoder_finish_frame()`.
          * @param buffer
          * @virtual
          */
@@ -3490,6 +3773,9 @@ export namespace GstAudio {
          */
         vfunc_negotiate(): boolean;
         /**
+         * Optional.
+         *                  Called when the element changes to GST_STATE_READY.
+         *                  Allows opening external resources.
          * @virtual
          */
         vfunc_open(): boolean;
@@ -3499,49 +3785,85 @@ export namespace GstAudio {
          */
         vfunc_parse(adapter: GstBase.Adapter): [Gst.FlowReturn, number, number];
         /**
+         * Optional.
+         *                  Called just prior to pushing (encoded data) buffer downstream.
+         *                  Subclass has full discretionary access to buffer,
+         *                  and a not OK flow return will abort downstream pushing.
          * @param buffer
          * @virtual
          */
         vfunc_pre_push(buffer: Gst.Buffer): Gst.FlowReturn;
         /**
+         * Optional.
+         *                      Propose buffer allocation parameters for upstream elements.
+         *                      Subclasses should chain up to the parent implementation to
+         *                      invoke the default handler.
          * @param query
          * @virtual
          */
         vfunc_propose_allocation(query: Gst.Query): boolean;
         /**
+         * Notifies subclass of incoming data format (caps).
          * @param caps
          * @virtual
          */
         vfunc_set_format(caps: Gst.Caps): boolean;
         /**
+         * Optional.
+         *                  Event handler on the sink pad. Subclasses should chain up to
+         *                  the parent implementation to invoke the default handler.
          * @param event
          * @virtual
          */
         vfunc_sink_event(event: Gst.Event): boolean;
         /**
+         * Optional.
+         *                  Query handler on the sink pad. This function should
+         *                  return TRUE if the query could be performed. Subclasses
+         *                  should chain up to the parent implementation to invoke the
+         *                  default handler. Since: 1.6
          * @param query
          * @virtual
          */
         vfunc_sink_query(query: Gst.Query): boolean;
         /**
+         * Optional.
+         *                  Event handler on the src pad. Subclasses should chain up to
+         *                  the parent implementation to invoke the default handler.
          * @param event
          * @virtual
          */
         vfunc_src_event(event: Gst.Event): boolean;
         /**
+         * Optional.
+         *                  Query handler on the source pad. This function should
+         *                  return TRUE if the query could be performed. Subclasses
+         *                  should chain up to the parent implementation to invoke the
+         *                  default handler. Since: 1.6
          * @param query
          * @virtual
          */
         vfunc_src_query(query: Gst.Query): boolean;
         /**
+         * Optional.
+         *                  Called when the element starts processing.
+         *                  Allows opening external resources.
          * @virtual
          */
         vfunc_start(): boolean;
         /**
+         * Optional.
+         *                  Called when the element stops processing.
+         *                  Allows closing external resources.
          * @virtual
          */
         vfunc_stop(): boolean;
         /**
+         * Optional. Transform the metadata on the input buffer to the
+         *                  output buffer. By default this method copies all meta without
+         *                  tags and meta with only the "audio" tag. subclasses can
+         *                  implement this method and return `true` if the metadata is to be
+         *                  copied. Since: 1.6
          * @param outbuf
          * @param meta
          * @param inbuf
@@ -3973,24 +4295,47 @@ export namespace GstAudio {
         // Virtual methods
 
         /**
+         * Optional.
+         *                  Called when the element changes to GST_STATE_NULL.
+         *                  Allows closing external resources.
          * @virtual
          */
         vfunc_close(): boolean;
         /**
+         * Optional.
+         *                     Setup the allocation parameters for allocating output
+         *                     buffers. The passed in query contains the result of the
+         *                     downstream allocation query.
+         *                     Subclasses should chain up to the parent implementation to
+         *                     invoke the default handler.
          * @param query
          * @virtual
          */
         vfunc_decide_allocation(query: Gst.Query): boolean;
         /**
+         * Optional.
+         *                  Instructs subclass to clear any codec caches and discard
+         *                  any pending samples and not yet returned encoded data.
          * @virtual
          */
         vfunc_flush(): void;
         /**
+         * Optional.
+         *                  Allows for a custom sink getcaps implementation (e.g.
+         *                  for multichannel input specification).  If not implemented,
+         *                  default returns gst_audio_encoder_proxy_getcaps
+         *                  applied to sink template caps.
          * @param filter
          * @virtual
          */
         vfunc_getcaps(filter: Gst.Caps): Gst.Caps;
         /**
+         * Provides input samples (or NULL to clear any remaining data)
+         *                  according to directions as configured by the subclass
+         *                  using the API.  Input data ref management is performed
+         *                  by base class, subclass should not care or intervene,
+         *                  and input data is only valid until next call to base class,
+         *                  most notably a call to `gst_audio_encoder_finish_frame()`.
          * @param buffer
          * @virtual
          */
@@ -4003,53 +4348,93 @@ export namespace GstAudio {
          */
         vfunc_negotiate(): boolean;
         /**
+         * Optional.
+         *                  Called when the element changes to GST_STATE_READY.
+         *                  Allows opening external resources.
          * @virtual
          */
         vfunc_open(): boolean;
         /**
+         * Optional.
+         *                  Called just prior to pushing (encoded data) buffer downstream.
+         *                  Subclass has full discretionary access to buffer,
+         *                  and a not OK flow return will abort downstream pushing.
          * @param buffer
          * @virtual
          */
         vfunc_pre_push(buffer: Gst.Buffer): Gst.FlowReturn;
         /**
+         * Optional.
+         *                      Propose buffer allocation parameters for upstream elements.
+         *                      Subclasses should chain up to the parent implementation to
+         *                      invoke the default handler.
          * @param query
          * @virtual
          */
         vfunc_propose_allocation(query: Gst.Query): boolean;
         /**
+         * Notifies subclass of incoming data format.
+         *                  GstAudioInfo contains the format according to provided caps.
          * @param info
          * @virtual
          */
         vfunc_set_format(info: AudioInfo): boolean;
         /**
+         * Optional.
+         *                  Event handler on the sink pad. Subclasses should chain up to
+         *                  the parent implementation to invoke the default handler.
          * @param event
          * @virtual
          */
         vfunc_sink_event(event: Gst.Event): boolean;
         /**
+         * Optional.
+         *                  Query handler on the sink pad. This function should
+         *                  return TRUE if the query could be performed. Subclasses
+         *                  should chain up to the parent implementation to invoke the
+         *                  default handler. Since: 1.6
          * @param query
          * @virtual
          */
         vfunc_sink_query(query: Gst.Query): boolean;
         /**
+         * Optional.
+         *                  Event handler on the src pad. Subclasses should chain up to
+         *                  the parent implementation to invoke the default handler.
          * @param event
          * @virtual
          */
         vfunc_src_event(event: Gst.Event): boolean;
         /**
+         * Optional.
+         *                  Query handler on the source pad. This function should
+         *                  return TRUE if the query could be performed. Subclasses
+         *                  should chain up to the parent implementation to invoke the
+         *                  default handler. Since: 1.6
          * @param query
          * @virtual
          */
         vfunc_src_query(query: Gst.Query): boolean;
         /**
+         * Optional.
+         *                  Called when the element starts processing.
+         *                  Allows opening external resources.
          * @virtual
          */
         vfunc_start(): boolean;
         /**
+         * Optional.
+         *                  Called when the element stops processing.
+         *                  Allows closing external resources.
          * @virtual
          */
         vfunc_stop(): boolean;
         /**
+         * Optional. Transform the metadata on the input buffer to the
+         *                  output buffer. By default this method copies all meta without
+         *                  tags and meta with only the "audio" tag. subclasses can
+         *                  implement this method and return `true` if the metadata is to be
+         *                  copied. Since: 1.6
          * @param outbuf
          * @param meta
          * @param inbuf
@@ -4494,7 +4879,7 @@ export namespace GstAudio {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4549,7 +4934,7 @@ export namespace GstAudio {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4629,7 +5014,7 @@ export namespace GstAudio {
         ref(...args: never[]): any;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4935,6 +5320,7 @@ export namespace GstAudio {
         // Virtual methods
 
         /**
+         * virtual function called whenever the format changes
          * @param info
          * @virtual
          */
@@ -5131,6 +5517,7 @@ export namespace GstAudio {
          */
         vfunc_release(): boolean;
         /**
+         * resume processing of samples after pause
          * @virtual
          */
         vfunc_resume(): boolean;
@@ -5247,6 +5634,20 @@ export namespace GstAudio {
          */
         device_is_open(): boolean;
         /**
+         * Gets the current segment base number of the ringbuffer.
+         *
+         * MT safe.
+         * @returns Current segment base number of the ringbuffer.
+         */
+        get_segbase(): number;
+        /**
+         * Gets the current segment number of the ringbuffer.
+         *
+         * MT safe.
+         * @returns Current segment number of the ringbuffer.
+         */
+        get_segdone(): number;
+        /**
          * Check if the ringbuffer is acquired and ready to use.
          * @returns TRUE if the ringbuffer is acquired, FALSE on error. MT safe.
          */
@@ -5333,6 +5734,12 @@ export namespace GstAudio {
          */
         set_channel_positions(position: AudioChannelPosition[] | null): void;
         /**
+         * Mark the ringbuffer as errored after it has started.
+         *
+         * MT safe.
+         */
+        set_errored(): void;
+        /**
          * Set the ringbuffer to flushing mode or normal mode.
          *
          * MT safe.
@@ -5351,6 +5758,13 @@ export namespace GstAudio {
          * @param sample the sample number to set
          */
         set_sample(sample: number): void;
+        /**
+         * Sets the current segment number of the ringbuffer.
+         *
+         * MT safe.
+         * @param segdone the segment number to set
+         */
+        set_segdone(segdone: number): void;
         /**
          * @param readseg
          * @param timestamp
@@ -5471,22 +5885,31 @@ export namespace GstAudio {
         // Virtual methods
 
         /**
+         * Close the device.
          * @virtual
          */
         vfunc_close(): boolean;
         /**
+         * Return how many frames are still in the device. Participates in
+         *         computing the time for audio clocks and drives the synchronisation.
          * @virtual
          */
         vfunc_delay(): number;
         /**
+         * Open the device. No configuration needs to be done at this point.
+         *        This function is also used to check if the device is available.
          * @virtual
          */
         vfunc_open(): boolean;
         /**
+         * Pause the device and unblock write as fast as possible.
+         *         For retro compatibility, the audio sink will fallback
+         *         to calling reset if this vmethod is not provided. Since: 1.18
          * @virtual
          */
         vfunc_pause(): void;
         /**
+         * Prepare the device to operate with the specified parameters.
          * @param spec
          * @virtual
          */
@@ -5498,14 +5921,22 @@ export namespace GstAudio {
         // Conflicted with GstBase.BaseSink.vfunc_prepare
         vfunc_prepare(...args: never[]): any;
         /**
+         * Returns as quickly as possible from a write and flush any pending
+         *         samples from the device.
+         *         This vmethod is deprecated. Please provide pause and stop instead.
          * @virtual
          */
         vfunc_reset(): void;
         /**
+         * Resume the device. Since: 1.18
          * @virtual
          */
         vfunc_resume(): void;
         /**
+         * Stop the device and unblock write as fast as possible.
+         *        Pending samples are flushed from the device.
+         *        For retro compatibility, the audio sink will fallback
+         *        to calling reset if this vmethod is not provided. Since: 1.18
          * @virtual
          */
         vfunc_stop(): void;
@@ -5516,6 +5947,7 @@ export namespace GstAudio {
         // Conflicted with GstBase.BaseSink.vfunc_stop
         vfunc_stop(...args: never[]): any;
         /**
+         * Undo operations done in prepare.
          * @virtual
          */
         vfunc_unprepare(): boolean;
@@ -5613,18 +6045,22 @@ export namespace GstAudio {
         // Virtual methods
 
         /**
+         * close the device
          * @virtual
          */
         vfunc_close(): boolean;
         /**
+         * the number of frames queued in the device
          * @virtual
          */
         vfunc_delay(): number;
         /**
+         * open the device with the specified caps
          * @virtual
          */
         vfunc_open(): boolean;
         /**
+         * configure device with format
          * @param spec
          * @virtual
          */
@@ -5636,10 +6072,12 @@ export namespace GstAudio {
          */
         vfunc_read(data: Uint8Array | string): [number, Gst.ClockTime];
         /**
+         * unblock a read to the device and reset.
          * @virtual
          */
         vfunc_reset(): void;
         /**
+         * undo the configuration
          * @virtual
          */
         vfunc_unprepare(): boolean;
@@ -5868,20 +6306,6 @@ export namespace GstAudio {
          * @returns `true` is `mix` is passthrough.
          */
         is_passthrough(): boolean;
-        /**
-         * In case the samples are interleaved, `in` and `out` must point to an
-         * array with a single element pointing to a block of interleaved samples.
-         *
-         * If non-interleaved samples are used, `in` and `out` must point to an
-         * array with pointers to memory blocks, one for each channel.
-         *
-         * Perform channel mixing on `in_data` and write the result to `out_data`.
-         * `in_data` and `out_data` need to be in `format` and `layout`.
-         * @param _in input samples
-         * @param out output samples
-         * @param samples number of samples
-         */
-        samples(_in: any | null, out: any | null, samples: number): void;
     }
 
     /**
@@ -5995,37 +6419,6 @@ export namespace GstAudio {
          */
         reset(): void;
         /**
-         * Perform the conversion with `in_frames` in `in` to `out_frames` in `out`
-         * using `convert`.
-         *
-         * In case the samples are interleaved, `in` and `out` must point to an
-         * array with a single element pointing to a block of interleaved samples.
-         *
-         * If non-interleaved samples are used, `in` and `out` must point to an
-         * array with pointers to memory blocks, one for each channel.
-         *
-         * `in` may be `null`, in which case `in_frames` of silence samples are processed
-         * by the converter.
-         *
-         * This function always produces `out_frames` of output and consumes `in_frames` of
-         * input. Use `gst_audio_converter_get_out_frames()` and
-         * `gst_audio_converter_get_in_frames()` to make sure `in_frames` and `out_frames`
-         * are matching and `in` and `out` point to enough memory.
-         * @param flags extra {@link GstAudio.AudioConverterFlags}
-         * @param _in input frames
-         * @param in_frames number of input frames
-         * @param out output frames
-         * @param out_frames number of output frames
-         * @returns `true` is the conversion could be performed.
-         */
-        samples(
-            flags: AudioConverterFlags | null,
-            _in: any | null,
-            in_frames: number,
-            out: any | null,
-            out_frames: number,
-        ): boolean;
-        /**
          * Returns whether the audio converter can perform the conversion in-place.
          * The return value would be typically input to `gst_base_transform_set_in_place()`
          * @returns `true` when the conversion can be done in place.
@@ -6081,11 +6474,11 @@ export namespace GstAudio {
 
         // Fields
 
-        from_position: AudioChannelPosition;
-        to_position: AudioChannelPosition;
+        from_position: AudioChannelPosition[];
+        to_position: AudioChannelPosition[];
         from_channels: number;
         to_channels: number;
-        matrix: number;
+        matrix: number[];
 
         // Static methods
 
@@ -6270,7 +6663,7 @@ export namespace GstAudio {
         // Fields
 
         samples: number;
-        offsets: number;
+        offsets: number[];
 
         // Static methods
 
@@ -6294,22 +6687,6 @@ export namespace GstAudio {
          * history it might have.
          */
         reset(): void;
-        /**
-         * Perform quantization on `samples` in `in` and write the result to `out`.
-         *
-         * In case the samples are interleaved, `in` and `out` must point to an
-         * array with a single element pointing to a block of interleaved samples.
-         *
-         * If non-interleaved samples are used, `in` and `out` must point to an
-         * array with pointers to memory blocks, one for each channel.
-         *
-         * `in` and `out` may point to the same memory location, in which case samples will be
-         * modified in-place.
-         * @param _in input samples
-         * @param out output samples
-         * @param samples number of samples
-         */
-        samples(_in: any | null, out: any | null, samples: number): void;
     }
 
     /**
@@ -6432,7 +6809,18 @@ export namespace GstAudio {
      */
     type AudioRingBufferClass = typeof AudioRingBuffer;
     /**
+     * @gir-type Struct
+     */
+    abstract class AudioRingBufferPrivate {
+        static $gtype: GObject.GType<AudioRingBufferPrivate>;
+    }
+
+    /**
      * The structure containing the format specification of the ringbuffer.
+     *
+     * When `type` is GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DSD, the `dsd_format`
+     * is valid (otherwise it is unused). Also, when DSD is the sample type,
+     * only the rate, channels, position, and bpf fields in `info` are populated.
      * @gir-type Struct
      */
     class AudioRingBufferSpec {
@@ -6568,6 +6956,181 @@ export namespace GstAudio {
          * @param rate a new sample rate
          */
         set_rate(rate: number): void;
+    }
+
+    /**
+     * Information describing DSD audio properties.
+     *
+     * In DSD, the "sample format" is the bit. Unlike PCM, there are no further
+     * "sample formats" in DSD. However, in software, DSD bits are grouped into
+     * bytes (since dealing with individual bits is impractical), and these bytes
+     * in turn are grouped into words. This becomes relevant when interleaving
+     * channels and transmitting DSD data through audio APIs. The different
+     * types of grouping DSD bytes are referred to as the "DSD grouping forma"
+     * or just "DSD format". {@link GstAudio.DsdFormat} has a list of valid ways of grouping
+     * DSD bytes into words.
+     *
+     * DSD rates are equivalent to PCM sample rates, except that they specify
+     * how many DSD bytes are consumed per second. This refers to the bytes per
+     * second _per channel_; the rate does not change when the number of channel
+     * changes. (Strictly speaking, it would be more correct to measure the
+     * *bits* per second, since the bit is the DSD "sample format", but it is
+     * more practical to use bytes.) In DSD, bit rates are always an integer
+     * multiple of the CD audio rate (44100) or the DAT rate (48000). DSD64-44x
+     * is 44100 * 64 = 2822400 bits per second, or 352800 bytes per second
+     * (the latter would be used in this info structure). DSD64-48x is
+     * 48000 * 64 = 3072000 bits per second, or 384000 bytes per second.
+     * #GST_DSD_MAKE_DSD_RATE_44x can be used for specifying DSD-44x rates,
+     * *and #GST_DSD_MAKE_DSD_RATE_48x can be used for specifying DSD-48x ones.
+     * Also, since DSD-48x is less well known, when the multiplier is given
+     * without the 44x/48x specifier, 44x is typically implied.
+     *
+     * It is important to know that in DSD, different format widths correspond
+     * to different playtimes. That is, a word with 32 DSD bits covers two times
+     * as much playtime as a word with 16 DSD bits. This is in contrast to PCM,
+     * where one word (= one PCM sample) always covers a time period of 1/samplerate,
+     * no matter how many bits a PCM sample is made of. For this reason, DSD
+     * and PCM widths and strides cannot be used the same way.
+     *
+     * Multiple channels are arranged in DSD data either interleaved or non-
+     * interleaved. This is similar to PCM. Interleaved layouts rotate between
+     * channels and words. First, word 0 of channel 0 is present. Then word
+     * 0 of channel 1 follows. Then word 0 of channel 2 etc. until all
+     * channels are through, then comes word 1 of channel 0 etc.
+     *
+     * Non-interleaved data is planar. First, all words of channel 0 are
+     * present, then all words of channel 1 etc. Unlike interleaved data,
+     * non-interleaved data can be sparse, that is, there can be space in
+     * between the planes. the `positions` array specifies the plane offsets.
+     *
+     * In uncommon cases, the DSD bits in the data bytes can be stored in reverse
+     * order. For example, normally, in DSDU8, the first byte contains DSD bits
+     * 0 to 7, and the most significant bit of that byte is DSD bit 0. If this
+     * order is reversed, then bit 7 is the first one instead. In that ase,
+     * `reversed_bytes` is set to TRUE.
+     *
+     * Use the provided macros to access the info in this structure.
+     * @gir-type Struct
+     * @since 1.24
+     */
+    class DsdInfo {
+        static $gtype: GObject.GType<DsdInfo>;
+
+        // Fields
+
+        format: DsdFormat;
+        rate: number;
+        channels: number;
+        layout: AudioLayout;
+        reversed_bytes: boolean;
+        positions: AudioChannelPosition[];
+        flags: AudioFlags;
+
+        // Constructors
+
+        constructor(
+            properties?: Partial<{
+                format: DsdFormat;
+                rate: number;
+                channels: number;
+                layout: AudioLayout;
+                reversed_bytes: boolean;
+                positions: AudioChannelPosition[];
+                flags: AudioFlags;
+            }>,
+        );
+
+        static ['new'](): DsdInfo;
+
+        static new_from_caps(caps: Gst.Caps): DsdInfo;
+
+        // Static methods
+
+        /**
+         * Parse `caps` and update `info`.
+         * @param caps a {@link Gst.Caps}
+         */
+        static from_caps(caps: Gst.Caps): [boolean, DsdInfo];
+        /**
+         * Initialize `info` with default values.
+         */
+        static init(): DsdInfo;
+
+        // Methods
+
+        /**
+         * Copy a GstDsdInfo structure.
+         * @returns a new {@link GstAudio.DsdInfo}. free with gst_dsd_info_free.
+         */
+        copy(): DsdInfo;
+        /**
+         * Free a GstDsdInfo structure previously allocated with `gst_dsd_info_new()`
+         * or `gst_dsd_info_copy()`.
+         */
+        free(): void;
+        /**
+         * Compares two {@link GstAudio.DsdInfo} and returns whether they are equal or not
+         * @param other a {@link GstAudio.DsdInfo}
+         * @returns `true` if `info` and `other` are equal, else `false`.
+         */
+        is_equal(other: DsdInfo): boolean;
+        /**
+         * Set the default info for the DSD info of `format` and `rate` and `channels`.
+         *
+         * Note: This initializes `info` first, no values are preserved.
+         * @param format the format
+         * @param rate the DSD rate
+         * @param channels the number of channels
+         * @param positions the channel positions
+         */
+        set_format(
+            format: DsdFormat | null,
+            rate: number,
+            channels: number,
+            positions?: AudioChannelPosition[] | null,
+        ): void;
+        /**
+         * Convert the values of `info` into a {@link Gst.Caps}.
+         * @returns the new {@link Gst.Caps} containing the          info of `info`.
+         */
+        to_caps(): Gst.Caps;
+    }
+
+    /**
+     * Buffer metadata describing planar DSD contents in the buffer. This is not needed
+     * for interleaved DSD data, and is required for non-interleaved (= planar) data.
+     *
+     * The different channels in `offsets` are always in the GStreamer channel order.
+     * Zero-copy channel reordering can be implemented by swapping the values in
+     * `offsets`.
+     *
+     * It is not allowed for channels to overlap in memory,
+     * i.e. for each i in [0, channels), the range
+     * [`offsets`[i], `offsets`[i] + `num_bytes_per_channel`) must not overlap
+     * with any other such range.
+     *
+     * It is, however, allowed to have parts of the buffer memory unused, by using
+     * `offsets` and `num_bytes_per_channel` in such a way that leave gaps on it.
+     * This is used to implement zero-copy clipping in non-interleaved buffers.
+     *
+     * Obviously, due to the above, it is not safe to infer the
+     * number of valid bytes from the size of the buffer. You should always
+     * use the `num_bytes_per_channel` variable of this metadata.
+     * @gir-type Struct
+     * @since 1.24
+     */
+    class DsdPlaneOffsetMeta {
+        static $gtype: GObject.GType<DsdPlaneOffsetMeta>;
+
+        // Fields
+
+        num_channels: number;
+        num_bytes_per_channel: number;
+        offsets: number;
+
+        // Static methods
+
+        static get_info(): Gst.MetaInfo;
     }
 
     /**

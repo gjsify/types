@@ -992,6 +992,7 @@ export namespace Rest {
         // Virtual methods
 
         /**
+         * class handler for the {@link Rest.Proxy.SignalSignatures.authenticate | Rest.Proxy::authenticate} signal
          * @param auth
          * @param retrying
          * @virtual
@@ -1177,6 +1178,8 @@ export namespace Rest {
         // Virtual methods
 
         /**
+         * Virtual function called before making the request, This allows the
+         * call to be modified, for example to add a signature.
          * @virtual
          */
         vfunc_prepare(): boolean;

@@ -159,6 +159,7 @@ export namespace GUdev {
         // Virtual methods
 
         /**
+         * Signal class handler for the {@link GUdev.Client.SignalSignatures.uevent | GUdev.Client::uevent} signal.
          * @param action
          * @param device
          * @virtual

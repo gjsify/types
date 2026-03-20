@@ -62,6 +62,10 @@ export namespace EDataCal {
      */
     function cal_meta_backend_info_free(ptr?: any | null): void;
     /**
+     * @param queue
+     */
+    function cal_queue_free_strings(queue: GLib.Queue): void;
+    /**
      * @gir-type Callback
      */
     interface CalBackendCustomOpFunc {
@@ -142,26 +146,39 @@ export namespace EDataCal {
 
         // Properties
 
+        /**
+         * The backend's cache directory
+         */
         get cache_dir(): string;
         set cache_dir(val: string);
+        /**
+         * The backend's cache directory
+         */
         get cacheDir(): string;
         set cacheDir(val: string);
         /**
+         * The kind of iCalendar components this backend manages
          * @construct-only
          */
         get kind(): number;
         /**
+         * The proxy resolver for this backend
          * @read-only
          */
         get proxy_resolver(): Gio.ProxyResolver;
         /**
+         * The proxy resolver for this backend
          * @read-only
          */
         get proxyResolver(): Gio.ProxyResolver;
         /**
+         * Data source registry
          * @construct-only
          */
         get registry(): EDataServer.SourceRegistry;
+        /**
+         * Whether the backend will accept changes
+         */
         get writable(): boolean;
         set writable(val: boolean);
 
@@ -226,11 +243,13 @@ export namespace EDataCal {
         // Virtual methods
 
         /**
+         * A signal notifying that the backend was closed
          * @param sender
          * @virtual
          */
         vfunc_closed(sender: string): void;
         /**
+         * FIXME: Document me
          * @param cal
          * @param opid
          * @param cancellable
@@ -244,6 +263,7 @@ export namespace EDataCal {
             tzobject: string,
         ): void;
         /**
+         * FIXME: Document me
          * @param cal
          * @param opid
          * @param cancellable
@@ -263,6 +283,7 @@ export namespace EDataCal {
             opflags: ECal.OperationFlags,
         ): void;
         /**
+         * FIXME: Document me
          * @param cal
          * @param opid
          * @param cancellable
@@ -278,11 +299,13 @@ export namespace EDataCal {
             rid: string,
         ): void;
         /**
+         * Fetch a property value by name from the backend
          * @param prop_name
          * @virtual
          */
         vfunc_impl_get_backend_property(prop_name: string): string;
         /**
+         * Fetch a calendar object
          * @param cal
          * @param opid
          * @param cancellable
@@ -298,6 +321,7 @@ export namespace EDataCal {
             rid: string,
         ): void;
         /**
+         * FIXME: Document me
          * @param cal
          * @param opid
          * @param cancellable
@@ -306,6 +330,7 @@ export namespace EDataCal {
          */
         vfunc_impl_get_object_list(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, sexp: string): void;
         /**
+         * FIXME: Document me
          * @param cal
          * @param opid
          * @param cancellable
@@ -314,6 +339,7 @@ export namespace EDataCal {
          */
         vfunc_impl_get_timezone(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, tzid: string): void;
         /**
+         * Open the backend
          * @param cal
          * @param opid
          * @param cancellable
@@ -321,6 +347,7 @@ export namespace EDataCal {
          */
         vfunc_impl_open(cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null): void;
         /**
+         * FIXME: Document me
          * @param cal
          * @param opid
          * @param cancellable
@@ -336,6 +363,7 @@ export namespace EDataCal {
             opflags: ECal.OperationFlags,
         ): void;
         /**
+         * Refresh the backend
          * @param cal
          * @param opid
          * @param cancellable
@@ -343,6 +371,7 @@ export namespace EDataCal {
          */
         vfunc_impl_refresh(cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null): void;
         /**
+         * FIXME: Document me
          * @param cal
          * @param opid
          * @param cancellable
@@ -358,16 +387,19 @@ export namespace EDataCal {
             opflags: ECal.OperationFlags,
         ): void;
         /**
+         * Start up the specified view
          * @param view
          * @virtual
          */
         vfunc_impl_start_view(view: DataCalView): void;
         /**
+         * Stop the specified view
          * @param view
          * @virtual
          */
         vfunc_impl_stop_view(view: DataCalView): void;
         /**
+         * A signal notifying that the backend is being shut down
          * @virtual
          */
         vfunc_shutdown(): void;
@@ -635,7 +667,7 @@ export namespace EDataCal {
          * @param func an {@link EDataCal.CalBackendForeachViewFunc} function to call
          * @returns whether the call had been stopped by `func`
          */
-        foreach_view(func?: CalBackendForeachViewFunc | null): boolean;
+        foreach_view(func: CalBackendForeachViewFunc): boolean;
         /**
          * Notifies each view of the `backend` about progress. When `only_completed_views`
          * is `true`, notifies only completed views.
@@ -1266,8 +1298,7 @@ export namespace EDataCal {
          */
         open_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Obtains the {@link Gio.SimpleAsyncResult} for `opid` and sets `result_queue` as a
-         * place to deposit results prior to completing the {@link Gio.SimpleAsyncResult}.
+         * Obtains the {@link Gio.Task} for `opid`.
          *
          * <note>
          *   <para>
@@ -1277,10 +1308,9 @@ export namespace EDataCal {
          *   </para>
          * </note>
          * @param opid an operation ID given to {@link EDataCal.DataCal}
-         * @param result_queue return location for a {@link GLib.Queue}, or `null`
-         * @returns a {@link Gio.SimpleAsyncResult}
+         * @returns a {@link Gio.Task}
          */
-        prepare_for_completion(opid: number, result_queue: GLib.Queue): Gio.SimpleAsyncResult;
+        prepare_for_completion(opid: number): Gio.Task;
         /**
          * Asynchronously receives the set of iCalendar objects specified by
          * `calobj`.  This is used for iTIP confirmation and cancellation messages
@@ -1785,7 +1815,7 @@ export namespace EDataCal {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1840,7 +1870,7 @@ export namespace EDataCal {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1915,7 +1945,7 @@ export namespace EDataCal {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2354,6 +2384,7 @@ export namespace EDataCal {
         // Virtual methods
 
         /**
+         * Add specified timezone
          * @param cal
          * @param cancellable
          * @param tzobject
@@ -2361,6 +2392,7 @@ export namespace EDataCal {
          */
         vfunc_add_timezone_sync(cal: DataCal, cancellable: Gio.Cancellable | null, tzobject: string): void;
         /**
+         * Discard alarm
          * @param cal
          * @param cancellable
          * @param uid
@@ -2378,6 +2410,7 @@ export namespace EDataCal {
             opflags: ECal.OperationFlags,
         ): void;
         /**
+         * Get single object
          * @param cal
          * @param cancellable
          * @param uid
@@ -2393,6 +2426,7 @@ export namespace EDataCal {
             calobj: string,
         ): void;
         /**
+         * Get specified timezone
          * @param cal
          * @param cancellable
          * @param tzid
@@ -2406,12 +2440,14 @@ export namespace EDataCal {
             tzobject: string,
         ): void;
         /**
+         * Open the calendar
          * @param cal
          * @param cancellable
          * @virtual
          */
         vfunc_open_sync(cal: DataCal, cancellable?: Gio.Cancellable | null): void;
         /**
+         * Receive objects
          * @param cal
          * @param cancellable
          * @param calobj
@@ -2425,6 +2461,7 @@ export namespace EDataCal {
             opflags: ECal.OperationFlags,
         ): void;
         /**
+         * Refresh the calendar
          * @param cal
          * @param cancellable
          * @virtual
@@ -2787,7 +2824,7 @@ export namespace EDataCal {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2842,7 +2879,7 @@ export namespace EDataCal {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2917,7 +2954,7 @@ export namespace EDataCal {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3601,10 +3638,15 @@ export namespace EDataCal {
          * Searches the `cal_cache` with the given `sexp` and calls `func` for each
          * row which satisfy the search expression.
          * @param sexp search expression; use `null` or an empty string to list all stored components
+         * @param func an {@link EDataCal.CalCacheSearchFunc} callback to call for each row which satisfies `sexp`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        search_with_callback(sexp?: string | null, cancellable?: Gio.Cancellable | null): boolean;
+        search_with_callback(
+            sexp: string | null,
+            func: CalCacheSearchFunc,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
         /**
          * Sets or replaces the custom flags associated with a component
          * identified by `uid` and optionally `rid`.
@@ -3779,7 +3821,7 @@ export namespace EDataCal {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3834,7 +3876,7 @@ export namespace EDataCal {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3909,7 +3951,7 @@ export namespace EDataCal {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5005,7 +5047,7 @@ export namespace EDataCal {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5060,7 +5102,7 @@ export namespace EDataCal {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5135,7 +5177,7 @@ export namespace EDataCal {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5386,18 +5428,22 @@ export namespace EDataCal {
         // Properties
 
         /**
+         * The backend driving this connection
          * @construct-only
          */
         get backend(): CalBackend;
         /**
+         * The {@link Gio.DBusConnection} on which to export the calendar interface
          * @construct-only
          */
         get connection(): Gio.DBusConnection;
         /**
+         * The object path at which to export the calendar interface
          * @construct-only
          */
         get object_path(): string;
         /**
+         * The object path at which to export the calendar interface
          * @construct-only
          */
         get objectPath(): string;
@@ -5484,7 +5530,7 @@ export namespace EDataCal {
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_add_timezone(opid: number, error: GLib.Error): void;
+        respond_add_timezone(opid: number, error?: GLib.Error | null): void;
         /**
          * Notifies listeners of the completion of the create_objects method call.
          * @param opid associated operation id
@@ -5492,20 +5538,25 @@ export namespace EDataCal {
          * @param uids UIDs of the objects created.
          * @param new_components The newly created {@link ECal.Component} objects.
          */
-        respond_create_objects(opid: number, error: GLib.Error, uids: string[], new_components: ECal.Component[]): void;
+        respond_create_objects(
+            opid: number,
+            error: GLib.Error | null,
+            uids: string[],
+            new_components: ECal.Component[],
+        ): void;
         /**
          * Notifies listeners of the completion of the discard_alarm method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_discard_alarm(opid: number, error: GLib.Error): void;
+        respond_discard_alarm(opid: number, error?: GLib.Error | null): void;
         /**
          * Notifies listeners of the completion of the get_attachment_uris method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          * @param attachment_uris List of retrieved attachment uri's.
          */
-        respond_get_attachment_uris(opid: number, error: GLib.Error, attachment_uris: string[]): void;
+        respond_get_attachment_uris(opid: number, error: GLib.Error | null, attachment_uris: string[]): void;
         /**
          * Notifies listeners of the completion of the get_free_busy method call.
          * To pass actual free/busy objects to the client asynchronously
@@ -5515,28 +5566,28 @@ export namespace EDataCal {
          * @param error Operation error, if any, automatically freed if passed it.
          * @param freebusy a {@link GLib.SList} of iCalendar strings with all gathered free/busy components.
          */
-        respond_get_free_busy(opid: number, error: GLib.Error, freebusy: string[]): void;
+        respond_get_free_busy(opid: number, error: GLib.Error | null, freebusy: string[]): void;
         /**
          * Notifies listeners of the completion of the get_object method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          * @param object The object retrieved as an iCalendar string.
          */
-        respond_get_object(opid: number, error: GLib.Error, object: string): void;
+        respond_get_object(opid: number, error: GLib.Error | null, object: string): void;
         /**
          * Notifies listeners of the completion of the get_object_list method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          * @param objects List of retrieved objects.
          */
-        respond_get_object_list(opid: number, error: GLib.Error, objects: string[]): void;
+        respond_get_object_list(opid: number, error: GLib.Error | null, objects: string[]): void;
         /**
          * Notifies listeners of the completion of the get_timezone method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          * @param tzobject The requested timezone as an iCalendar string.
          */
-        respond_get_timezone(opid: number, error: GLib.Error, tzobject: string): void;
+        respond_get_timezone(opid: number, error: GLib.Error | null, tzobject: string): void;
         /**
          * Notifies listeners of the completion of the modify_objects method call.
          * @param opid associated operation id
@@ -5546,7 +5597,7 @@ export namespace EDataCal {
          */
         respond_modify_objects(
             opid: number,
-            error: GLib.Error,
+            error: GLib.Error | null,
             old_components: ECal.Component[],
             new_components: ECal.Component[],
         ): void;
@@ -5555,19 +5606,19 @@ export namespace EDataCal {
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_open(opid: number, error: GLib.Error): void;
+        respond_open(opid: number, error?: GLib.Error | null): void;
         /**
          * Notifies listeners of the completion of the receive_objects method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_receive_objects(opid: number, error: GLib.Error): void;
+        respond_receive_objects(opid: number, error?: GLib.Error | null): void;
         /**
          * Notifies listeners of the completion of the refresh method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_refresh(opid: number, error: GLib.Error): void;
+        respond_refresh(opid: number, error?: GLib.Error | null): void;
         /**
          * Notifies listeners of the completion of the remove_objects method call.
          * @param opid associated operation id
@@ -5578,7 +5629,7 @@ export namespace EDataCal {
          */
         respond_remove_objects(
             opid: number,
-            error: GLib.Error,
+            error: GLib.Error | null,
             ids: ECal.ComponentId[],
             old_components: ECal.Component[],
             new_components: ECal.Component[],
@@ -5590,7 +5641,7 @@ export namespace EDataCal {
          * @param users List of users.
          * @param calobj An iCalendar string representing the object sent.
          */
-        respond_send_objects(opid: number, error: GLib.Error, users: string[], calobj: string): void;
+        respond_send_objects(opid: number, error: GLib.Error | null, users: string[], calobj: string): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -5774,7 +5825,7 @@ export namespace EDataCal {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5829,7 +5880,7 @@ export namespace EDataCal {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5904,7 +5955,7 @@ export namespace EDataCal {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6371,7 +6422,7 @@ export namespace EDataCal {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6426,7 +6477,7 @@ export namespace EDataCal {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6501,7 +6552,7 @@ export namespace EDataCal {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6754,22 +6805,27 @@ export namespace EDataCal {
         // Properties
 
         /**
+         * The backend being monitored
          * @construct-only
          */
         get backend(): CalBackend;
         /**
+         * The {@link Gio.DBusConnection} on which to export the view interface
          * @construct-only
          */
         get connection(): Gio.DBusConnection;
         /**
+         * The object path at which to export the view interface
          * @construct-only
          */
         get object_path(): string;
         /**
+         * The object path at which to export the view interface
          * @construct-only
          */
         get objectPath(): string;
         /**
+         * The query expression for this view
          * @construct-only
          */
         get sexp(): CalBackendSExp;
@@ -7128,7 +7184,7 @@ export namespace EDataCal {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7183,7 +7239,7 @@ export namespace EDataCal {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7258,7 +7314,7 @@ export namespace EDataCal {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7800,7 +7856,7 @@ export namespace EDataCal {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7855,7 +7911,7 @@ export namespace EDataCal {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7930,7 +7986,7 @@ export namespace EDataCal {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8370,6 +8426,26 @@ export namespace EDataCal {
      */
     abstract class CalMetaBackendPrivate {
         static $gtype: GObject.GType<CalMetaBackendPrivate>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class CalQueueTuple {
+        static $gtype: GObject.GType<CalQueueTuple>;
+
+        // Fields
+
+        first: GLib.Queue;
+        second: GLib.Queue;
+        third: GLib.Queue;
+        first_free_func: GLib.DestroyNotify;
+        second_free_func: GLib.DestroyNotify;
+        third_free_func: GLib.DestroyNotify;
+
+        // Methods
+
+        free(): void;
     }
 
     /**

@@ -454,22 +454,34 @@ export namespace EDataBook {
 
         // Properties
 
+        /**
+         * The backend's cache directory
+         */
         get cache_dir(): string;
         set cache_dir(val: string);
+        /**
+         * The backend's cache directory
+         */
         get cacheDir(): string;
         set cacheDir(val: string);
         /**
+         * The proxy resolver for this backend
          * @read-only
          */
         get proxy_resolver(): Gio.ProxyResolver;
         /**
+         * The proxy resolver for this backend
          * @read-only
          */
         get proxyResolver(): Gio.ProxyResolver;
         /**
+         * Data source registry
          * @construct-only
          */
         get registry(): EDataServer.SourceRegistry;
+        /**
+         * Whether the backend will accept changes
+         */
         get writable(): boolean;
         set writable(val: boolean);
 
@@ -512,16 +524,21 @@ export namespace EDataBook {
         // Virtual methods
 
         /**
+         * A signal notifying that the backend was closed
          * @param sender
          * @virtual
          */
         vfunc_closed(sender: string): void;
         /**
+         * For addressbook backends which support Direct Read Access, configure a
+         *                    backend instantiated on the client side for Direct Read Access, using data
+         *                    reported from the server via the `get_direct_book` method.
          * @param config
          * @virtual
          */
         vfunc_impl_configure_direct(config: string): void;
         /**
+         * Checkes whether the backend contains an email address
          * @param book
          * @param opid
          * @param cancellable
@@ -535,6 +552,7 @@ export namespace EDataBook {
             email_address: string,
         ): void;
         /**
+         * Add and store the passed vcards
          * @param book
          * @param opid
          * @param cancellable
@@ -550,25 +568,31 @@ export namespace EDataBook {
             opflags: number,
         ): void;
         /**
+         * Delete an {@link EDataBook.DataBookCursor} previously created by this backend
          * @param cursor
          * @virtual
          */
         vfunc_impl_delete_cursor(cursor: DataBookCursor): boolean;
         /**
+         * Return the currently set locale setting (must be a string duplicate, for thread safety).
          * @virtual
          */
         vfunc_impl_dup_locale(): string;
         /**
+         * retrieve indexes into an alphabet for contacts in the "manual query" view; default
+         *    implementation returns value set by `e_book_backend_set_view_indices()`. Since: 3.50
          * @param view_id
          * @virtual
          */
         vfunc_impl_dup_view_indices(view_id: number): EBookContacts.BookIndices;
         /**
+         * Fetch a property value by name from the backend
          * @param prop_name
          * @virtual
          */
         vfunc_impl_get_backend_property(prop_name: string): string;
         /**
+         * Fetch a contact by UID
          * @param book
          * @param opid
          * @param cancellable
@@ -577,6 +601,7 @@ export namespace EDataBook {
          */
         vfunc_impl_get_contact(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, id: string): void;
         /**
+         * Fetch a list of contacts based on a search expression
          * @param book
          * @param opid
          * @param cancellable
@@ -590,6 +615,7 @@ export namespace EDataBook {
             query: string,
         ): void;
         /**
+         * Fetch a list of contact UIDs based on a search expression
          * @param book
          * @param opid
          * @param cancellable
@@ -603,11 +629,14 @@ export namespace EDataBook {
             query: string,
         ): void;
         /**
+         * retrieve how many contacts a "manual query" view has; default implementation
+         *    returns value set by `e_book_backend_set_view_n_total()`. Since: 3.50
          * @param view_id
          * @virtual
          */
         vfunc_impl_get_view_n_total(view_id: number): number;
         /**
+         * Modify the existing contacts using the passed vcards
          * @param book
          * @param opid
          * @param cancellable
@@ -623,11 +652,13 @@ export namespace EDataBook {
             opflags: number,
         ): void;
         /**
+         * Notify changes which might have occured for a given contact
          * @param contact
          * @virtual
          */
         vfunc_impl_notify_update(contact: EBookContacts.Contact): void;
         /**
+         * Open the backend
          * @param book
          * @param opid
          * @param cancellable
@@ -635,6 +666,7 @@ export namespace EDataBook {
          */
         vfunc_impl_open(book: DataBook, opid: number, cancellable?: Gio.Cancellable | null): void;
         /**
+         * Refresh the backend
          * @param book
          * @param opid
          * @param cancellable
@@ -642,6 +674,7 @@ export namespace EDataBook {
          */
         vfunc_impl_refresh(book: DataBook, opid: number, cancellable?: Gio.Cancellable | null): void;
         /**
+         * Remove the contacts specified by the passed UIDs
          * @param book
          * @param opid
          * @param cancellable
@@ -657,28 +690,34 @@ export namespace EDataBook {
             opflags: number,
         ): void;
         /**
+         * Store & remember the passed locale setting
          * @param locale
          * @param cancellable
          * @virtual
          */
         vfunc_impl_set_locale(locale: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
+         * sets sort fields for "manual query" views; default implementation saves
+         *    the values into internal structures, which can be read back with `e_book_backend_dup_view_sort_fields()`. Since 3.50
          * @param view_id
          * @param fields
          * @virtual
          */
         vfunc_impl_set_view_sort_fields(view_id: number, fields: EBookContacts.BookClientViewSortFields): void;
         /**
+         * Start up the specified view
          * @param view
          * @virtual
          */
         vfunc_impl_start_view(view: DataBookView): void;
         /**
+         * Stop the specified view
          * @param view
          * @virtual
          */
         vfunc_impl_stop_view(view: DataBookView): void;
         /**
+         * A signal notifying that the backend is being shut down
          * @virtual
          */
         vfunc_shutdown(): void;
@@ -946,7 +985,7 @@ export namespace EDataBook {
          * @param func an {@link EDataBook.BookBackendForeachViewFunc} function to call
          * @returns whether the call had been stopped by `func`
          */
-        foreach_view(func?: BookBackendForeachViewFunc | null): boolean;
+        foreach_view(func: BookBackendForeachViewFunc): boolean;
         /**
          * Notifies each view of the `backend` about progress. When `only_completed_views`
          * is `true`, notifies only completed views.
@@ -1397,8 +1436,7 @@ export namespace EDataBook {
          */
         open_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Obtains the {@link Gio.SimpleAsyncResult} for `opid` and sets `result_queue` as a
-         * place to deposit results prior to completing the {@link Gio.SimpleAsyncResult}.
+         * Obtains the {@link Gio.Task} for `opid`.
          *
          * <note>
          *   <para>
@@ -1408,10 +1446,9 @@ export namespace EDataBook {
          *   </para>
          * </note>
          * @param opid an operation ID given to {@link EDataBook.DataBook}
-         * @param result_queue return location for a {@link GLib.Queue}, or `null`
-         * @returns a {@link Gio.SimpleAsyncResult}
+         * @returns a {@link Gio.Task}
          */
-        prepare_for_completion(opid: number, result_queue: GLib.Queue): Gio.SimpleAsyncResult;
+        prepare_for_completion(opid: number): Gio.Task;
         /**
          * Returns the {@link EDataBook.DataBook} for `backend`.  The {@link EDataBook.DataBook} is essentially
          * the glue between incoming D-Bus requests and `backend`'s native API.
@@ -1925,11 +1962,13 @@ export namespace EDataBook {
          */
         vfunc_contains_email_sync(email_address: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
+         * Open the backend
          * @param cancellable
          * @virtual
          */
         vfunc_open_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
+         * Refresh the backend
          * @param cancellable
          * @virtual
          */
@@ -2143,6 +2182,7 @@ export namespace EDataBook {
         // Properties
 
         /**
+         * The locale currently being used
          * @read-only
          */
         get locale(): string;
@@ -2588,10 +2628,15 @@ export namespace EDataBook {
         /**
          * Similar to `e_book_cache_search()`, but calls the `func` for each found contact.
          * @param sexp search expression; use `null` or an empty string to get all stored contacts
+         * @param func an {@link EDataBook.BookCacheSearchFunc} callback to call for each found row
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        search_with_callback(sexp?: string | null, cancellable?: Gio.Cancellable | null): boolean;
+        search_with_callback(
+            sexp: string | null,
+            func: BookCacheSearchFunc,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
         /**
          * Sets or replaces the custom flags associated with a contact
          * identified by the `uid`.
@@ -2746,7 +2791,7 @@ export namespace EDataBook {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2801,7 +2846,7 @@ export namespace EDataBook {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2876,7 +2921,7 @@ export namespace EDataBook {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4389,7 +4434,7 @@ export namespace EDataBook {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4444,7 +4489,7 @@ export namespace EDataBook {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4519,7 +4564,7 @@ export namespace EDataBook {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4770,18 +4815,22 @@ export namespace EDataBook {
         // Properties
 
         /**
+         * The backend driving this connection
          * @construct-only
          */
         get backend(): BookBackend;
         /**
+         * The GDBusConnection on which to export the address book interface
          * @construct-only
          */
         get connection(): Gio.DBusConnection;
         /**
+         * The object path at which to export the address book interface
          * @construct-only
          */
         get object_path(): string;
         /**
+         * The object path at which to export the address book interface
          * @construct-only
          */
         get objectPath(): string;
@@ -5120,7 +5169,7 @@ export namespace EDataBook {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5175,7 +5224,7 @@ export namespace EDataBook {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5250,7 +5299,7 @@ export namespace EDataBook {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5502,14 +5551,17 @@ export namespace EDataBook {
         // Properties
 
         /**
+         * The backend which created this cursor
          * @construct-only
          */
         get backend(): BookBackend;
         /**
+         * The current position of this cursor
          * @read-only
          */
         get position(): number;
         /**
+         * The total results for this cursor
          * @read-only
          */
         get total(): number;
@@ -5553,26 +5605,31 @@ export namespace EDataBook {
         // Virtual methods
 
         /**
+         * The {@link EDataBook.DataBookCursorCompareContactFunc} delegate to compare an {@link EBookContacts.Contact} with the cursor position
          * @param contact the {@link EBookContacts.Contact} to compare with `cursor`
          * @virtual
          */
         vfunc_compare_contact(contact: EBookContacts.Contact): [number, boolean];
         /**
+         * The {@link EDataBook.DataBookCursorGetPositionFunc} delegate to calculate the current total and position values
          * @param cancellable A {@link Gio.Cancellable}
          * @virtual
          */
         vfunc_get_position(cancellable?: Gio.Cancellable | null): [boolean, number, number];
         /**
+         * The {@link EDataBook.DataBookCursorLoadLocaleFunc} delegate used to reload the locale setting
          * @virtual
          */
         vfunc_load_locale(): [boolean, string];
         /**
+         * The {@link EDataBook.DataBookCursorSetAlphabetIndexFunc} delegate to set the alphabetic position
          * @param index the alphabetic index
          * @param locale the locale in which `index` is expected to be a valid alphabetic index
          * @virtual
          */
         vfunc_set_alphabetic_index(index: number, locale: string): boolean;
         /**
+         * The {@link EDataBook.DataBookCursorSetSexpFunc} delegate to set the search expression
          * @param sexp the search expression to set, or `null` for unfiltered results
          * @virtual
          */
@@ -5771,14 +5828,17 @@ export namespace EDataBook {
         // Properties
 
         /**
+         * The {@link EDataBook.BookCache} to use for queries
          * @construct-only
          */
         set book_cache(val: BookCache);
         /**
+         * The {@link EDataBook.BookCache} to use for queries
          * @construct-only
          */
         set bookCache(val: BookCache);
         /**
+         * The {@link EDataBook.BookCacheCursor} pointer
          * @construct-only
          */
         set cursor(val: any);
@@ -5861,18 +5921,22 @@ export namespace EDataBook {
         // Properties
 
         /**
+         * The {@link EDataBook.bSqlCursor} pointer
          * @construct-only
          */
         set cursor(val: any);
         /**
+         * The {@link EDataBook.BookSqlite} to use for queries
          * @construct-only
          */
         set ebsql(val: BookSqlite);
         /**
+         * The key name to fetch the revision from the sqlite backend
          * @construct-only
          */
         set revision_key(val: string);
         /**
+         * The key name to fetch the revision from the sqlite backend
          * @construct-only
          */
         set revisionKey(val: string);
@@ -6230,7 +6294,7 @@ export namespace EDataBook {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6285,7 +6349,7 @@ export namespace EDataBook {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6360,7 +6424,7 @@ export namespace EDataBook {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6648,28 +6712,42 @@ export namespace EDataBook {
         // Properties
 
         /**
+         * The backend being monitored
          * @construct-only
          */
         get backend(): BookBackend;
         /**
+         * The {@link Gio.DBusConnection} on which to export the view interface
          * @construct-only
          */
         get connection(): Gio.DBusConnection;
+        /**
+         * List of {@link EBookContacts.BookIndices} holding indices of the contacts in the view
+         */
         get indices(): any;
         set indices(val: any);
+        /**
+         * How many contacts are available in the view
+         */
         get n_total(): number;
         set n_total(val: number);
+        /**
+         * How many contacts are available in the view
+         */
         get nTotal(): number;
         set nTotal(val: number);
         /**
+         * The object path at which to export the view interface
          * @construct-only
          */
         get object_path(): string;
         /**
+         * The object path at which to export the view interface
          * @construct-only
          */
         get objectPath(): string;
         /**
+         * The query expression for this view
          * @construct-only
          */
         get sexp(): BookBackendSExp;
@@ -7098,7 +7176,7 @@ export namespace EDataBook {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7153,7 +7231,7 @@ export namespace EDataBook {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7228,7 +7306,7 @@ export namespace EDataBook {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7934,7 +8012,7 @@ export namespace EDataBook {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7989,7 +8067,7 @@ export namespace EDataBook {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8064,7 +8142,7 @@ export namespace EDataBook {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

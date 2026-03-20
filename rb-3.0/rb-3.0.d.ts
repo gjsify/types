@@ -1990,6 +1990,9 @@ export namespace RB {
     }
 
     /**
+     * RBApplication contains some interactions with the desktop
+     * environment, such as the app menu and processing of files specified
+     * on the command line.
      * @gir-type Class
      */
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
@@ -2215,7 +2218,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2270,7 +2273,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2345,7 +2348,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2727,6 +2730,19 @@ export namespace RB {
     }
 
     /**
+     * A playlist populated with the results of a database query.
+     *
+     * The query, limit, and sort settings are saved to the playlists file, so
+     * they are persistent.
+     *
+     * Searching is implemented by appending the query criteria generated from
+     * the search text to the query.  Browsing is implemented by using the base
+     * query model (or a query model using the query generated from the search text,
+     * there is some) as the input to a {@link RB.LibraryBrowser}.
+     *
+     * If the user has not set a sort order as part of the playlist definition,
+     * the entry view columns are made clickable to allow the user to sort the
+     * results.
      * @gir-type Class
      */
     class AutoPlaylistSource extends PlaylistSource implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -2874,7 +2890,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2929,7 +2945,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3004,7 +3020,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3307,6 +3323,12 @@ export namespace RB {
     }
 
     /**
+     * This class simplifies implementation of sources that include genre/artist/album browsers.
+     * It also handles searching (using the search box) and a few other UI niceties.
+     *
+     * Instances of browser sources will use a query that will match all entries of
+     * the entry type assigned to the source, so it's mostly suited for sources that
+     * have an entry type of their own.
      * @gir-type Class
      */
     abstract class BrowserSource extends Source implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -3476,7 +3498,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3531,7 +3553,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3606,7 +3628,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4083,7 +4105,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4138,7 +4160,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4213,7 +4235,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4480,6 +4502,8 @@ export namespace RB {
     }
 
     /**
+     * This is similar to {@link Gtk.CellRendererPixbuf}, except that it also emits a signal
+     * when the pixbuf is clicked on, and it can only use pixbuf objects.
      * @gir-type Class
      */
     class CellRendererPixbuf extends Gtk.CellRendererPixbuf {
@@ -4568,6 +4592,8 @@ export namespace RB {
     }
 
     /**
+     * This cell renderer is used to display song ratings in the {@link RB.EntryView},
+     * and allows the user to modify ratings directly in the track listing.
      * @gir-type Class
      */
     class CellRendererRating extends Gtk.CellRenderer {
@@ -4803,6 +4829,16 @@ export namespace RB {
     }
 
     /**
+     * This is the base class for items that appear in the display page tree and can
+     * occupy the main display area.  Sources and source groups are display pages.
+     * Other types of display, such as music visualization, could be implemented as
+     * display pages too.
+     *
+     * The display page object itself is the widget shown in the main display area.
+     * The icon and name properties control its appearance in the display page
+     * tree, and its location is determined by its parent display page, the sorting
+     * rules for its source group (if any), and insertion order.  The visibility property
+     * controls whether the display page is actually shown in the display page tree at all.
      * @gir-type Class
      */
     abstract class DisplayPage extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -5130,7 +5166,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5185,7 +5221,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5260,7 +5296,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5557,6 +5593,13 @@ export namespace RB {
     }
 
     /**
+     * Page groups define sections of the display page tree.  A page group
+     * consists of an internal name, a display name, and a category.
+     * The internal name can be used to locate a registered page group.
+     * The category is used to sort the page groups.
+     *
+     * While {@link RB.DisplayPageGroup} is a subclass of {@link RB.DisplayPage}, by default page
+     * groups are never selectable so they have no content.
      * @gir-type Class
      */
     class DisplayPageGroup extends DisplayPage implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -5736,7 +5779,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5791,7 +5834,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5866,7 +5909,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6121,6 +6164,23 @@ export namespace RB {
     }
 
     /**
+     * The {@link RB.DisplayPageTree} widget is backed by a {@link Gtk.TreeStore} containing
+     * the sources and a set of attributes used to structure and display
+     * them, and a {@link Gtk.TreeModelFilter} that hides sources with the
+     * visibility property set to FALSE.  This class implements the filter
+     * model and also creates the actual model.
+     *
+     * The display page model supports drag and drop in a variety of formats.
+     * The simplest of these are text/uri-list and application/x-rhythmbox-entry,
+     * which convey URIs and IDs of existing database entries.  When dragged
+     * to an existing source, these just add the URIs or entries to the target
+     * source.  When dragged to an empty space in the tree widget, this results
+     * in the creation of a static playlist.
+     *
+     * text/x-rhythmbox-artist, text/x-rhythmbox-album, and text/x-rhythmbox-genre
+     * are used when dragging items from the library browser.  When dragged to
+     * the display page tree, these result in the creation of a new auto playlist with
+     * the dragged items as criteria.
      * @gir-type Class
      */
     class DisplayPageModel extends Gtk.TreeModelFilter implements Gtk.TreeDragSource, Gtk.TreeModel {
@@ -6796,7 +6856,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6851,7 +6911,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6926,7 +6986,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7231,6 +7291,18 @@ export namespace RB {
     }
 
     /**
+     * The display page tree widget is a GtkTreeView backed by a GtkListStore
+     * containing the display page instances (sources and other things).  Display
+     * pages include sources, such as the library and playlists, and other things
+     * like the visualization display.
+     *
+     * Display pages are shown in the list with an icon and the name.  The current
+     * playing source is displayed in bold.
+     *
+     * Sources are divided into groups - library, stores, playlists, devices,
+     * network shares.  Groups are displayed as headers, with expanders for hiding
+     * and showing the sources in the group.  Sources themselves may also have
+     * child sources, such as playlists on portable audio players.
      * @gir-type Class
      */
     class DisplayPageTree extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -7438,7 +7510,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7493,7 +7565,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7568,7 +7640,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8022,6 +8094,18 @@ export namespace RB {
     }
 
     /**
+     * This class provides a predefined set of columns for displaying the
+     * common set of {@link RB.RhythmDBEntry} properties, but also allows custom columns
+     * to be appended.  The 'playing' column is always created as the first
+     * column in the tree view, displaying a playing or paused image next to
+     * the currently playing entry, and also an error image next to entries for
+     * which a playback error message has been set.  Clicking on the error
+     * image opens a dialog displaying the full message.
+     *
+     * All columns added to entry view columns should be expandable, or have a fixed
+     * minimum width set.  Otherwise, the tree view must measure the contents of each
+     * row to assign sizes, which is very slow for large track lists.  All the predefined
+     * column types handle this correctly.
      * @gir-type Class
      */
     class EntryView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -8485,7 +8569,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -8540,7 +8624,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8615,7 +8699,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8885,6 +8969,13 @@ export namespace RB {
     }
 
     /**
+     * This class simplifies searching for and providing external metadata
+     * such as album art or lyrics.  A metadata provider connects to a signal
+     * on the database and in response provides a URI, a buffer containing the
+     * data, or an object representation of the data (such as a GdkPixbuf).
+     * A metadata requestor calls rb_ext_db_request and specifies a callback,
+     * or alternatively connects to a signal to receive all metadata as it is
+     * stored.
      * @gir-type Class
      */
     class ExtDB extends GObject.Object {
@@ -9082,6 +9173,8 @@ export namespace RB {
     }
 
     /**
+     * This widget displays images, performing a simple fade transition between
+     * them.  It also emits signals when URIs or pixbufs are dropped onto it.
      * @gir-type Class
      */
     class FadingImage extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
@@ -9440,7 +9533,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -9495,7 +9588,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -9570,7 +9663,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9812,6 +9905,12 @@ export namespace RB {
     }
 
     /**
+     * RBHistory is a GSequence that maintains a "current" pointer and can delete
+     * an arbitrary element in amortized O(log(N)) time. It can call a deletion
+     * callback when it removes one of its entries.
+     *
+     * All operations take amortized O(log(N)) (worst-case O(N)) time unless noted
+     * otherwise.
      * @gir-type Class
      */
     class History extends GObject.Object {
@@ -10070,6 +10169,20 @@ export namespace RB {
     }
 
     /**
+     * This widget contains a set of {@link RB.PropertyView}<!-- -->s backed by
+     * {@link RB.RhythmDBPropertyModel}<!-- -->s and constructs a chain of
+     * {@link RB.RhythmDBQueryModel}<!-- -->s to perform filtering of the entries
+     * in a source.
+     *
+     * It operates on an input query model, containing the full set of
+     * entries that may be displayed in the source, and produces an
+     * output query model containing those entries that match the current
+     * selection.
+     *
+     * When the selection in any of the property views changes, or when
+     * `rb_library_browser_reset` or `rb_library_browser_set_selection` are
+     * called to manipulate the selection, the query chain is rebuilt
+     * asynchronously to update the property views.
      * @gir-type Class
      */
     class LibraryBrowser extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -10342,7 +10455,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -10397,7 +10510,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -10472,7 +10585,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -10712,6 +10825,7 @@ export namespace RB {
     }
 
     /**
+     * Stores a list of items and emits notification signals on changes.
      * @gir-type Class
      */
     class ListModel extends GObject.Object {
@@ -11200,7 +11314,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -11255,7 +11369,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -11330,7 +11444,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -11564,6 +11678,7 @@ export namespace RB {
     }
 
     /**
+     * Provides a simple synchronous interface for metadata extraction and updating.
      * @gir-type Class
      */
     class MetaData extends GObject.Object {
@@ -11724,6 +11839,20 @@ export namespace RB {
     }
 
     /**
+     * A play order defines an ordering of the entries from a {@link RB.RhythmDBQueryModel} that
+     * the {@link RB.ShellPlayer} uses to get the next or previous entry to play.
+     *
+     * Play order methods are invoked when changes are made to the query model, when
+     * the query model is replaced, the playing source is changed, or a new playing
+     * entry is selected.
+     *
+     * The play order must implement methods to check for, retrieve, and move to the
+     * next and previous entries in the play order.  Only the go_next and go_previous
+     * methods actually change anything.
+     *
+     * The play order should also emit the have-next-previous-changed signal to hint that
+     * the availability of either a next or previous entry in the order may have changed.
+     * This information is used to update the sensitivity of the next and previous buttons.
      * @gir-type Class
      */
     class PlayOrder extends GObject.Object {
@@ -12006,6 +12135,9 @@ export namespace RB {
     }
 
     /**
+     * The playlist manager loads and saves the on-disk playlist file, provides
+     * UI actions and a DBus interface for dealing with playlists, and internal
+     * interfaces for creating playlists.
      * @gir-type Class
      */
     class PlaylistManager extends GObject.Object {
@@ -12273,6 +12405,16 @@ export namespace RB {
     }
 
     /**
+     * This class provides some common infrastructure for playlist
+     * sources.  A playlist, in this context, is a persistent user-defined
+     * selection from a set of songs.  Playlists (static and auto) based
+     * on the main library are saved to the playlists.xml file stored
+     * alongside the rhythmdb.xml file.  Playlists on portable music players
+     * are saved on the device in the format the player itself supports.
+     *
+     * This class provides most of the source UI (excluding the search bar),
+     * holds some of the framework for loading and saving the playlists.xml
+     * file, and records which playlists need to be saved.
      * @gir-type Class
      */
     abstract class PlaylistSource extends Source implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -12524,7 +12666,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -12579,7 +12721,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -12654,7 +12796,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -12970,10 +13112,12 @@ export namespace RB {
          * @param name
          * @param title
          * @param subtitle
-         * @param generator
+         * @param channel_author
+         * @param item_author
          * @param uri
          * @param description
          * @param guid
+         * @param img
          * @param date
          * @param duration
          * @param position
@@ -12986,10 +13130,12 @@ export namespace RB {
             name: string,
             title: string,
             subtitle: string,
-            generator: string,
+            channel_author: string,
+            item_author: string,
             uri: string,
             description: string,
             guid: string,
+            img: string,
             date: number,
             duration: number,
             position: number,
@@ -13323,6 +13469,14 @@ export namespace RB {
     }
 
     /**
+     * A simple {@link Gtk.TreeView} that displays the contents of a {@link RB.RhythmDBPropertyModel}.
+     * The first row in the tree view displays the total number of properties and entries,
+     * in the form "All 473 artists (6241)".  Each subsequent row in the tree view
+     * displays a property value and the number of entries from the {@link RB.RhythmDBQueryModel}
+     * with that value.
+     *
+     * The property view itself creates a single column, but additional columns can be
+     * added.
      * @gir-type Class
      */
     class PropertyView extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
@@ -13577,7 +13731,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -13632,7 +13786,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -13707,7 +13861,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -14006,6 +14160,8 @@ export namespace RB {
     }
 
     /**
+     * This widget displays a rating (0-5 stars) and allows the user to
+     * alter the rating by clicking.
      * @gir-type Class
      */
     class Rating extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
@@ -14358,7 +14514,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -14413,7 +14569,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -14488,7 +14644,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -14762,6 +14918,8 @@ export namespace RB {
     }
 
     /**
+     * The removable media manager maintains the mapping between GIO GVolume and GMount
+     * objects and rhythmbox sources.
      * @gir-type Class
      */
     class RemovableMediaManager extends GObject.Object {
@@ -15715,6 +15873,14 @@ export namespace RB {
     }
 
     /**
+     * This is the base class for database entry type classes, which provide
+     * some aspects of the behaviour of database entry types.  There are different
+     * entry types for songs, radio streams, podcast feeds and episodes, and so on.
+     *
+     * Plugins written in Python or Vala can create new entry types by subclassing
+     * and overriding any methods required.  Plugins written in C can create a new
+     * instance of the RhythmDBEntryType base class and use its function pointer
+     * members rather than subclassing.
      * @gir-type Class
      */
     class RhythmDBEntryType extends GObject.Object {
@@ -15824,6 +15990,12 @@ export namespace RB {
         vfunc_can_sync_metadata(entry: RhythmDBEntry): boolean;
         /**
          * @param entry
+         * @param prop
+         * @virtual
+         */
+        vfunc_create_ext_db_key(entry: RhythmDBEntry, prop: RhythmDBPropType): ExtDBKey;
+        /**
+         * @param entry
          * @virtual
          */
         vfunc_destroy_entry(entry: RhythmDBEntry): void;
@@ -15928,6 +16100,11 @@ export namespace RB {
     }
 
     /**
+     * Tracks the addition to the database of files under a set of
+     * directories, providing status information.
+     *
+     * The entry types to use for the database entries added by the import
+     * job are specified on creation.
      * @gir-type Class
      */
     class RhythmDBImportJob extends GObject.Object implements TaskProgress {
@@ -16222,7 +16399,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -16277,7 +16454,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -16352,7 +16529,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -16601,6 +16778,13 @@ export namespace RB {
     }
 
     /**
+     * A RhythmDBPropertyModel groups the entries in a {@link RB.RhythmDBQueryModel} by
+     * the value of a property.  For example, a RhythmDBPropertyModel using
+     * the RHYTHMDB_PROP_ARTIST property can be used as the model for a
+     * {@link Gtk.TreeView} that will list the artists present in the query model.
+     *
+     * The album/artist/genre browsers displayed in the library and other sources are
+     * populated using a RhythmDBPropertyModel for each property.
      * @gir-type Class
      */
     class RhythmDBPropertyModel extends GObject.Object implements Gtk.TreeModel {
@@ -17209,7 +17393,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -17264,7 +17448,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -17339,7 +17523,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -17653,6 +17837,33 @@ export namespace RB {
     }
 
     /**
+     * A RhythmDBQueryModel contains an ordered set of {@link RB.RhythmDBEntry} items,
+     * either generated by running a query against the database, or populated
+     * by adding individual entries.
+     *
+     * All sources use a {@link RB.RhythmDBQueryModel} to provide their track listing.
+     * Since most sources provide a search or filtering capacity, there is
+     * usually a distinction between the source's base query model, which contains
+     * all entries for the source, and its current query model, which reflects
+     * the current search terms and filter selections.
+     *
+     * A RhythmDBQueryModel can be populated directly from the {@link RB.RhythmDB}, or it
+     * can be chained to another query model.  Chained query models inherit the
+     * set of entries from the query model they chain to and then restrict the
+     * set using a query.
+     *
+     * The query model consists of a {@link GLib.Sequence}, which provides ordering of entries,
+     * and a {@link GLib.HashTable}, which allows efficient checks to see if a given entry
+     * is in the model.  A side effect of this is that an entry can only be placed
+     * into a query model in one location.
+     *
+     * In addition to the query, a {@link RB.RhythmDBQueryModel} can have a sort order and
+     * a limit, specified in terms of file size, duration, or number of entries.
+     * A query model can only have a limit if it also has a sort order, as the
+     * sort order is required to determine which entries fall inside the limit.
+     * When a limit is applied, entries that match the query but fall outside the
+     * limit are maintained in a separate {@link GLib.Sequence} and {@link GLib.HashTable} inside the
+     * query model.
      * @gir-type Class
      */
     class RhythmDBQueryModel extends GObject.Object implements Gtk.TreeModel, RhythmDBQueryResults {
@@ -18556,7 +18767,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -18611,7 +18822,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -18686,7 +18897,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -19113,7 +19324,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -19168,7 +19379,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -19243,7 +19454,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -19556,6 +19767,12 @@ export namespace RB {
     }
 
     /**
+     * The search entry contains a label and a text entry box.
+     * The text entry box contains an icon that acts as a 'clear'
+     * button.
+     *
+     * Signals are emitted when the search text changes,
+     * arbitrarily rate-limited to one every 300ms.
      * @gir-type Class
      */
     class SearchEntry extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -19791,7 +20008,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -19846,7 +20063,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -19921,7 +20138,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -20595,7 +20812,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -20650,7 +20867,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -20725,7 +20942,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -21054,6 +21271,9 @@ export namespace RB {
     }
 
     /**
+     * RBShell is the main application class in Rhythmbox.  It creates and holds
+     * references to the other main objects ({@link RB.ShellPlayer}, {@link RB.RhythmDB}, {@link RB.DisplayPageTree}),
+     * constructs the main window UI, and provides the basic DBus interface.
      * @gir-type Class
      */
     class Shell extends GObject.Object {
@@ -21541,6 +21761,24 @@ export namespace RB {
     }
 
     /**
+     * The shell player (or player shell, depending on who you're talking to)
+     * manages the {@link RB.Player} instance, tracks the current playing {@link RB.RhythmDBEntry},
+     * and manages the various {@link RB.PlayOrder} instances.  It provides simple operations
+     * such as next, previous, play/pause, and seek.
+     *
+     * When playing internet radio streams, it first attempts to read the stream URL
+     * as a playlist.  If this succeeds, the URLs from the playlist are stored in a
+     * list and tried in turn in case of errors.  If the playlist parsing fails, the
+     * stream URL is played directly.
+     *
+     * The mapping from the separate shuffle and repeat settings to an {@link RB.PlayOrder}
+     * instance occurs in here.  The play order logic can also support a number of
+     * additional play orders not accessible via the shuffle and repeat buttons.
+     *
+     * If the player backend supports multiple streams, the shell player crossfades
+     * between streams by watching the elapsed time of the current stream and simulating
+     * an end-of-stream event when it gets within the crossfade duration of the actual
+     * end.
      * @gir-type Class
      */
     class ShellPlayer extends GObject.Object {
@@ -21996,6 +22234,19 @@ export namespace RB {
     }
 
     /**
+     * The preferences dialog is built around a {@link Gtk.Notebook} widget, with two built-in
+     * pages and additional pages for various sources.
+     *
+     * The 'general' preferences page controls the set of browser views that are visible
+     * (artist and album; genre and artist; or genre, artist, and album), the columns
+     * that are visible, and the appearance of buttons in the main toolbar.  The browser
+     * and column settings apply to all sources.
+     *
+     * The 'playback' preferences page controls whether the crossfading player backend is used,
+     * and if enabled, the crossfade duration and network buffer size.
+     *
+     * Currently, the library and podcast sources add pages to the notebook, for configuring the
+     * location and layout of the library and the podcast download location and update frequency.
      * @gir-type Class
      */
     class ShellPreferences extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
@@ -22163,7 +22414,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -22218,7 +22469,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -22293,7 +22544,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -22632,6 +22883,29 @@ export namespace RB {
     }
 
     /**
+     * Displays song properties and, if we know how to edit tags in the file,
+     * allows the user to edit them.
+     *
+     * This class has two modes.  It can display and edit properties of a single
+     * entry, in which case it uses a {@link Gtk.Notebook} to split the properties across
+     * 'basic' and 'details' pages, and it can display and edit properties of
+     * multiple entries at a time, in which case a smaller set of properties is
+     * displayed in a single set.
+     *
+     * In single-entry mode, it is possible to add extra pages to the {@link Gtk.Notebook}
+     * widget in the dialog.  The 'create-song-info' signal is emitted by the {@link RB.Shell}
+     * object, allowing signal handlers to add pages by calling `rb_song_info_append_page`.
+     * The lyrics plugin is currently the only place where this ability is used.
+     * In this mode, the dialog features 'back' and 'forward' buttons that move to the
+     * next or previous entries from the currently displayed track list.
+     *
+     * In multiple-entry mode, only the set of properties that can usefully be set
+     * across multiple entries at once are displayed.
+     *
+     * When the dialog is closed, any changes made will be applied to the entry (or entries)
+     * that were displayed in the dialog.  For songs in the library, this will result
+     * in the song tags being updated on disk.  For other entry types, this only updates
+     * the data store in the database.
      * @gir-type Class
      */
     class SongInfo extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
@@ -22846,7 +23120,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -22901,7 +23175,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -22976,7 +23250,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -23317,6 +23591,20 @@ export namespace RB {
     }
 
     /**
+     * This class provides methods for requesting information
+     * about the UI capabilities of the source, and defines the
+     * expectations that apply to all sources - that they will
+     * provide {@link RB.EntryView} and {@link RB.RhythmDBQueryModel} objects, mostly.
+     *
+     * Many of the methods on this class come in can_do_x and do_x
+     * pairs.  When can_do_x always returns FALSE, the class does not
+     * need to implement the do_x method.
+     *
+     * Useful subclasses include {@link RB.BrowserSource}, which includes a {@link RB.LibraryBrowser}
+     * and takes care of constructing an {@link RB.EntryView} too; `RBRemovableMediaSource`,
+     * which takes care of many aspects of implementing a source that represents a
+     * removable device; and {@link RB.PlaylistSource}, which provides functionality for
+     * playlist-like sources.
      * @gir-type Class
      */
     abstract class Source extends DisplayPage implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -23545,6 +23833,12 @@ export namespace RB {
          */
         vfunc_can_rename(): boolean;
         /**
+         * Checks if a database entry matches the entry type for the source.
+         * @param entry a {@link RB.RhythmDBEntry}
+         * @virtual
+         */
+        vfunc_check_entry_type(entry: RhythmDBEntry): boolean;
+        /**
          * Copies the selected entries to the clipboard.
          * @virtual
          */
@@ -23744,6 +24038,12 @@ export namespace RB {
          * @returns TRUE if showing properties is supported
          */
         can_show_properties(): boolean;
+        /**
+         * Checks if a database entry matches the entry type for the source.
+         * @param entry a {@link RB.RhythmDBEntry}
+         * @returns `true` if the entry matches the source's entry type.
+         */
+        check_entry_type(entry: RhythmDBEntry): boolean;
         /**
          * Copies the selected entries to the clipboard.
          * @returns a list containing the currently selected entries from the source.
@@ -23983,7 +24283,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -24038,7 +24338,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -24113,7 +24413,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -24347,6 +24647,16 @@ export namespace RB {
     }
 
     /**
+     * These translate the text in the search entry box into a
+     * RhythmDBQuery.  The basic implementation will return
+     * a query like RHYTHMDB_QUERY_PROP_LIKE, RHYTHMDB_PROP_SEARCH_MATCH,
+     * text.  Simple variants can restrict the search to single
+     * properties (artist, album, genre).  More complicated searches
+     * could implement something like the Xesam User Query spec.
+     *
+     * The source header finds the search instance to use by looking
+     * for the 'rb-source-search' data item on the active search
+     * action.
      * @gir-type Class
      */
     class SourceSearch extends GObject.Object {
@@ -24475,6 +24785,9 @@ export namespace RB {
     }
 
     /**
+     * This implementation of {@link RB.SourceSearch} constructs queries that
+     * search on a single {@link RB.RhythmDBEntry} property.  It's useful for
+     * providing basic searches.
      * @gir-type Class
      */
     class SourceSearchBasic extends SourceSearch {
@@ -24638,6 +24951,11 @@ export namespace RB {
     }
 
     /**
+     * This class combines a toolbar for custom source actions with a
+     * search entry.  The toolbar content is specified using a UI path.
+     * The {@link RB.SourceToolbar} takes care of preserving search state when
+     * the selected page changes, and performs searches when the user
+     * selects a new search type or changes the search text.
      * @gir-type Class
      */
     class SourceToolbar extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -24833,7 +25151,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -24888,7 +25206,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -24963,7 +25281,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -25266,6 +25584,15 @@ export namespace RB {
     }
 
     /**
+     * Static playlists are not defined by a query, but instead by manually selected
+     * and ordered tracks.
+     *
+     * This class is used for static playlists built from the user's library, and is
+     * also a base class for the play queue and for playlists on devices and network
+     * shares.
+     *
+     * It has some ability to track locations that are not yet present in the database
+     * and to add them to the playlist once they are added.
      * @gir-type Class
      */
     class StaticPlaylistSource extends PlaylistSource implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -25467,7 +25794,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -25522,7 +25849,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -25597,7 +25924,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -25897,6 +26224,8 @@ export namespace RB {
     }
 
     /**
+     * This class provides handling of buffering signals and streaming song metadata
+     * common to different types of sources that play continuous streaming media.
      * @gir-type Class
      */
     class StreamingSource extends Source implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -26060,7 +26389,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -26115,7 +26444,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -26190,7 +26519,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -26424,6 +26753,9 @@ export namespace RB {
     }
 
     /**
+     * Simplifies the use of string:GValue maps with respect to copying of the values
+     * inserted into the map.  Except for rb_string_value_map_peek, the caller retains
+     * ownership of values passed in, and assumes ownership of all values returned.
      * @gir-type Class
      */
     class StringValueMap extends GObject.Object {
@@ -26616,6 +26948,9 @@ export namespace RB {
     }
 
     /**
+     * This implementation of {@link RB.TaskProgress} can be used to represent
+     * tasks that aren't bound to the lifecycle of an object that can
+     * implement the interface directly.
      * @gir-type Class
      */
     class TaskProgressSimple extends GObject.Object implements TaskProgress {
@@ -26801,7 +27136,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -26856,7 +27191,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -26931,7 +27266,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -27285,6 +27620,8 @@ export namespace RB {
     }
 
     /**
+     * Manages the transfer of a set of tracks (using {@link RB.Encoder}), providing overall
+     * status information and allowing the transfer to be cancelled as a single unit.
      * @gir-type Class
      */
     class TrackTransferBatch extends GObject.Object implements TaskProgress {
@@ -27640,7 +27977,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -27695,7 +28032,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -27770,7 +28107,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -28222,6 +28559,7 @@ export namespace RB {
     }
 
     /**
+     * A simple dialog used to request a single URI from the user.
      * @gir-type Class
      */
     class URIDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
@@ -28380,7 +28718,7 @@ export namespace RB {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -28435,7 +28773,7 @@ export namespace RB {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -28510,7 +28848,7 @@ export namespace RB {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -28880,6 +29218,10 @@ export namespace RB {
      */
     type ExtDBClass = typeof ExtDB;
     /**
+     * An external metadata key consists of one or more required fields (such as
+     * the album name for album art lookups), zero or more optional fields
+     * (such as the artist name), and zero or more informational fields (such as
+     * the musicbrainz album ID).
      * @gir-type Struct
      */
     abstract class ExtDBKey {
@@ -28969,6 +29311,14 @@ export namespace RB {
          * @returns whether the key is a lookup key
          */
         is_lookup(): boolean;
+        /**
+         * Checks whether `store` has a null value in an optional
+         * field of `lookup`, which means it's not the most specific
+         * possible match for a query.
+         * @param store store key to compare
+         * @returns `true` if the storage key has a null value for the lookup key's optional field
+         */
+        is_null_match(store: ExtDBKey): boolean;
         /**
          * Checks whether the fields specified in `a` match `b`.
          * For keys to match, they must have the same set of required fields,
@@ -29130,6 +29480,7 @@ export namespace RB {
         description: string;
         author: string;
         guid: string;
+        img: string;
         pub_date: number;
         duration: number;
         filesize: number;
@@ -29143,6 +29494,7 @@ export namespace RB {
                 description: string;
                 author: string;
                 guid: string;
+                img: string;
                 pub_date: number;
                 duration: number;
                 filesize: number;
@@ -29750,6 +30102,13 @@ export namespace RB {
         want_uri(source: Source, uri: string): number;
     }
     /**
+     * Sources that represent physical devices should implement this interface.
+     * It exposes the ability to eject the device, and also can be used to
+     * implement some {@link RB.Source} methods by using details from a {@link Gio.Volume} or
+     * {@link Gio.Mount} accessed via 'volume' and 'mount' properties on the source object.
+     * Devices that are not based on a {@link Gio.Volume} or {@link Gio.Mount} can still use the
+     * interface, but they must provide implementations of the `can_eject` and
+     * `eject` methods.
      * @gir-type Interface
      */
     interface DeviceSource extends GObject.Object, DeviceSource.Interface {
@@ -29846,6 +30205,11 @@ export namespace RB {
         ['new'](): Encoder;
     }
     /**
+     * The RBEncoder interface provides transcoding between audio formats based on
+     * encoding profiles.  The encoder implementation operates asynchronously and
+     * provides status updates in the form of signals emitted on the main thread.
+     * A new encoder instance should be created for each file that is transcoded
+     * or copied.
      * @gir-type Interface
      */
     interface Encoder extends GObject.Object, Encoder.Interface {
@@ -30079,6 +30443,35 @@ export namespace RB {
         ['new'](want_crossfade: boolean): Player;
     }
     /**
+     * This is the interface implemented by the rhythmbox playback backends.
+     * It allows the caller to control playback (open, play, pause, close),
+     * seek (set_time), control volume (get_volume, set_volume)
+     * and receive playback state information (get_time, various signals).
+     *
+     * The playback interface allows for multiple streams to be playing (or at
+     * least open) concurrently. The caller associates some data with each stream
+     * it opens (`rb_player_open`), which is included in the paramters with each
+     * signal emitted. The caller should not assume that the new stream is playing
+     * immediately upon returning from `rb_player_play`. Instead, it should use
+     * the 'playing-stream' signal to determine that.
+     *
+     * The player implementation should emit signals for metadata extracted from the
+     * stream using the 'info' signal
+     *
+     * While playing, the player implementation should emit 'tick' signals frequently
+     * enough to update an elapsed/remaining time display consistently.  The duration
+     * value included in tick signal emissions is used to prepare the next stream before
+     * the current stream reaches EOS, so it should be updated for each emission to account
+     * for variable bitrate streams that produce inaccurate duration estimates early on.
+     *
+     * When playing a stream from the network, the player can report buffering status
+     * using the 'buffering' signal.  The value included in the signal indicates the
+     * percentage of the buffer that has been filled.
+     *
+     * The 'event' signal can be used to communicate events from the player to the application.
+     * For GStreamer-based player implementations, events are triggered by elements in the
+     * pipeline posting application messages.  The name of the message becomes the name of the
+     * event.
      * @gir-type Interface
      */
     interface Player extends GObject.Object, Player.Interface {
@@ -30233,6 +30626,8 @@ export namespace RB {
         prototype: PlayerGstFilter;
     }
     /**
+     * This interface allows a caller to add filter elements to the GStreamer playback
+     * pipeline.
      * @gir-type Interface
      */
     interface PlayerGstFilter extends GObject.Object, PlayerGstFilter.Interface {
@@ -30306,6 +30701,8 @@ export namespace RB {
         prototype: PlayerGstTee;
     }
     /**
+     * This interface allows a caller to add a new sink to the GStreamer playback
+     * pipeline.
      * @gir-type Interface
      */
     interface PlayerGstTee extends GObject.Object, PlayerGstTee.Interface {
@@ -30369,6 +30766,11 @@ export namespace RB {
         prototype: RhythmDBQueryResults;
     }
     /**
+     * This is the interface that {@link RB.RhythmDB} uses to report results of database
+     * queries.  When running a query, it first calls rhythmdb_query_results_set_query,
+     * then passes entries matching the query to rhythmdb_query_results_add_results
+     * in batches, and finally calls rhythmdb_query_results_query_complete.
+     * There are no guarantees as to which threads the calls are made from.
      * @gir-type Interface
      */
     interface RhythmDBQueryResults extends GObject.Object, RhythmDBQueryResults.Interface {
@@ -30552,6 +30954,12 @@ export namespace RB {
         prototype: TransferTarget;
     }
     /**
+     * Sources that can accept track transfers should implement this interface
+     * and call the associated functions to perform transfers.  The source
+     * needs to be able to construct target URIs for transfers, and can optionally
+     * perform its own processing after transfers have finished.  The source
+     * must also provide a {@link GstPbutils.EncodingTarget} that describes the formats it
+     * accepts.
      * @gir-type Interface
      */
     interface TransferTarget extends GObject.Object, TransferTarget.Interface {

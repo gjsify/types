@@ -40,6 +40,9 @@
       "@girs/gstcodecs-1.0": [
             "../gstcodecs-1.0/index.d.ts"
       ],
+      "@girs/gstcodecparsers-1.0": [
+            "../gstcodecparsers-1.0/index.d.ts"
+      ],
       "@girs/gjs": [
             "../gjs/index.d.ts"
       ]

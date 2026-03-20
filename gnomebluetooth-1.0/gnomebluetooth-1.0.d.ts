@@ -66,7 +66,7 @@ export namespace GnomeBluetooth {
          */
         PROXY,
         /**
-         * a {@link Gio.DBusProxy} object for DBus.Properties
+         * Used to be {@link Gio.DBusProxy} object for DBus.Properties, now always `null`
          */
         PROPERTIES,
         /**
@@ -196,6 +196,13 @@ export namespace GnomeBluetooth {
     const UUID_SPP: number;
     const UUID_VDP_SOURCE: number;
     /**
+     * Returns the type of device corresponding to the given `appearance` value,
+     * as usually found in the GAP service.
+     * @param appearance a Bluetooth device appearance
+     * @returns a {@link GnomeBluetooth.Type}.
+     */
+    function appearance_to_type(appearance: number): Type;
+    /**
      * Returns the type of device corresponding to the given `class` value.
      * @param _class a Bluetooth device class
      * @returns a {@link GnomeBluetooth.Type}.
@@ -207,6 +214,14 @@ export namespace GnomeBluetooth {
      * @param alias Remote device's name
      */
     function send_to_address(address: string, alias: string): void;
+    /**
+     * Returns a human-readable string representation of `type` usable for display to users,
+     * when type filters are displayed. Do not free the return value.
+     * The returned string is already translated with `gettext()`.
+     * @param type a {@link GnomeBluetooth.Type}
+     * @returns a string.
+     */
+    function type_to_filter_string(type: number): string;
     /**
      * Returns a human-readable string representation of `type` usable for display to users. Do not free the return value.
      * The returned string is already translated with `gettext()`.
@@ -311,6 +326,10 @@ export namespace GnomeBluetooth {
          * a toy or game
          */
         TOY,
+        /**
+         * audio speaker or speakers
+         */
+        SPEAKERS,
     }
 
     namespace Chooser {
@@ -702,7 +721,7 @@ export namespace GnomeBluetooth {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -757,7 +776,7 @@ export namespace GnomeBluetooth {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -832,7 +851,7 @@ export namespace GnomeBluetooth {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2065,7 +2084,7 @@ export namespace GnomeBluetooth {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2120,7 +2139,7 @@ export namespace GnomeBluetooth {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2195,7 +2214,7 @@ export namespace GnomeBluetooth {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6084,8 +6103,6 @@ export namespace GnomeBluetooth {
     }
 
     /**
-     * The <structname>BluetoothChooserCombo</structname> struct contains
-     * only private fields and should not be directly accessed.
      * @gir-type Class
      */
     class ChooserCombo extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -6141,14 +6158,6 @@ export namespace GnomeBluetooth {
             ...args: GObject.GjsParameters<ChooserCombo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Virtual methods
-
-        /**
-         * @param chooser
-         * @virtual
-         */
-        vfunc_chooser_created(chooser: Gtk.Widget): void;
         /**
          * The orientation of the orientable.
          * @since 2.16
@@ -6263,7 +6272,7 @@ export namespace GnomeBluetooth {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6318,7 +6327,7 @@ export namespace GnomeBluetooth {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6393,7 +6402,7 @@ export namespace GnomeBluetooth {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6671,12 +6680,12 @@ export namespace GnomeBluetooth {
          */
         get defaultAdapter(): string;
         /**
-         * `true` if the default Bluetooth adapter is discoverable.
+         * `true` if the default Bluetooth adapter is discoverable during discovery.
          */
         get default_adapter_discoverable(): boolean;
         set default_adapter_discoverable(val: boolean);
         /**
-         * `true` if the default Bluetooth adapter is discoverable.
+         * `true` if the default Bluetooth adapter is discoverable during discovery.
          */
         get defaultAdapterDiscoverable(): boolean;
         set defaultAdapterDiscoverable(val: boolean);
@@ -7096,7 +7105,7 @@ export namespace GnomeBluetooth {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7151,7 +7160,7 @@ export namespace GnomeBluetooth {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7226,7 +7235,7 @@ export namespace GnomeBluetooth {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7691,7 +7700,7 @@ export namespace GnomeBluetooth {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7746,7 +7755,7 @@ export namespace GnomeBluetooth {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7821,7 +7830,7 @@ export namespace GnomeBluetooth {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8057,13 +8066,6 @@ export namespace GnomeBluetooth {
      * @gir-type Alias
      */
     type ChooserComboClass = typeof ChooserCombo;
-    /**
-     * @gir-type Struct
-     */
-    abstract class ChooserComboPrivate {
-        static $gtype: GObject.GType<ChooserComboPrivate>;
-    }
-
     /**
      * @gir-type Alias
      */

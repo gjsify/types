@@ -14,48 +14,12 @@ import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type AppStream from '@girs/appstream-1.0';
 
 export namespace AppStreamCompose {
     /**
      * AppStreamCompose-1.0
      */
-
-    /**
-     * A drawing error.
-     * @gir-type Struct
-     */
-    class CanvasError extends GLib.Error {
-        static $gtype: GObject.GType<GLib.Error>;
-
-        // Static fields
-
-        /**
-         * Generic failure.
-         */
-        static FAILED: number;
-        /**
-         * Drawing operation failed.
-         */
-        static DRAWING: number;
-        /**
-         * Issue with font or font selection.
-         */
-        static FONT: number;
-        /**
-         * The requested action was not supported.
-         */
-        static UNSUPPORTED: number;
-
-        // Constructors
-
-        constructor(options: { message: string; code: number });
-
-        // Static methods
-
-        static quark(): GLib.Quark;
-    }
 
     /**
      * A metadata composition error.
@@ -158,13 +122,17 @@ export namespace AppStreamCompose {
          */
         PNG,
         /**
-         * JPEG format
+         * JPEG-XL format
          */
-        JPEG,
+        JXL,
         /**
-         * GIF format
+         * AVIF format
          */
-        GIF,
+        AVIF,
+        /**
+         * WebP format
+         */
+        WEBP,
         /**
          * SVG format
          */
@@ -174,13 +142,13 @@ export namespace AppStreamCompose {
          */
         SVGZ,
         /**
-         * WebP format
+         * JPEG format
          */
-        WEBP,
+        JPEG,
         /**
-         * AVIF format
+         * GIF format
          */
-        AVIF,
+        GIF,
         /**
          * XPM format
          */
@@ -199,10 +167,6 @@ export namespace AppStreamCompose {
      * @param checksum a MD5 hashsum as string generated from the component's combined metadata.
      */
     function build_component_global_id(component_id: string, checksum: string): string;
-    /**
-     * @returns An error quark.
-     */
-    function canvas_error_quark(): GLib.Quark;
     /**
      * @returns An error quark.
      */
@@ -328,23 +292,21 @@ export namespace AppStreamCompose {
      */
     function image_format_to_string(format: ImageFormat | null): string;
     /**
-     * Optimizes a PNG graphic for size with optipng, if its binary
-     * is available and this feature is enabled.
-     * @param fname Filename of the PNG image to optimize.
+     * Renders SVG data from a stream to a file in a specific format.
+     * @param stream Input stream with SVG data.
+     * @param width Target width.
+     * @param height Target height.
+     * @param format Target image format, e.g. {@link AppStreamCompose.ImageFormat.PNG}
+     * @param filename Filename to write to.
+     * @returns `true` for success
      */
-    function optimize_png(fname: string): boolean;
-    /**
-     * @param src
-     * @param radius
-     * @param iterations
-     */
-    function pixbuf_blur(src: GdkPixbuf.Pixbuf, radius: number, iterations: number): void;
-    /**
-     * @param src
-     * @param radius
-     * @param amount
-     */
-    function pixbuf_sharpen(src: GdkPixbuf.Pixbuf, radius: number, amount: number): void;
+    function render_svg_to_file(
+        stream: Gio.InputStream,
+        width: number,
+        height: number,
+        format: ImageFormat | null,
+        filename: string,
+    ): boolean;
     /**
      * @gir-type Callback
      */
@@ -440,81 +402,6 @@ export namespace AppStreamCompose {
          * Blur the image to clear detail
          */
         BLUR,
-    }
-
-    namespace Canvas {
-        // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class Canvas extends GObject.Object {
-        static $gtype: GObject.GType<Canvas>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: Canvas.SignalSignatures;
-
-        // Constructors
-
-        constructor(properties?: Partial<Canvas.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](width: number, height: number): Canvas;
-
-        // Signals
-
-        /** @signal */
-        connect<K extends keyof Canvas.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Canvas.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof Canvas.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Canvas.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Gets the canvas height.
-         */
-        get_height(): number;
-        /**
-         * Gets the canvas width.
-         */
-        get_width(): number;
-        /**
-         * Render an SVG graphic from the SVG data provided.
-         * @param stream SVG data input stream.
-         */
-        render_svg(stream: Gio.InputStream): boolean;
-        /**
-         * Save canvas to PNG file.
-         * @param fname Filename to save to.
-         */
-        save_png(fname: string): boolean;
     }
 
     namespace Compose {
@@ -1080,12 +967,13 @@ export namespace AppStreamCompose {
         static new_from_data(
             data: any | null,
             len: number,
-            dest_size: number,
-            compressed: boolean,
+            dest_width: number,
+            dest_height: number,
             flags: ImageLoadFlags,
+            format_hint: ImageFormat,
         ): Image;
 
-        static new_from_file(fname: string, dest_size: number, flags: ImageLoadFlags): Image;
+        static new_from_file(fname: string, dest_width: number, dest_height: number, flags: ImageLoadFlags): Image;
 
         // Signals
 
@@ -1123,23 +1011,25 @@ export namespace AppStreamCompose {
          */
         get_height(): number;
         /**
-         * Gets the image pixbuf if set.
-         * @returns the {@link GdkPixbuf.Pixbuf}, or `null`
-         */
-        get_pixbuf(): GdkPixbuf.Pixbuf;
-        /**
          * Gets the image width.
          */
         get_width(): number;
         /**
          * Reads an image from a file.
          * @param filename filename to read from
-         * @param dest_size The size of the constructed pixbuf, or 0 for the native size
-         * @param src_size_min The smallest source size allowed, or 0 for none
+         * @param dest_width The suggested width of the constructed pixbuf, or 0 for the native size
+         * @param dest_height The suggested height of the constructed pixbuf, or 0 for the native size
+         * @param src_size_min The smallest source size (width or height) allowed, or 0 for no limit
          * @param flags a {@link AppStreamCompose.ImageLoadFlags}, e.g. {@link AppStreamCompose.ImageLoadFlags.NONE}
          * @returns `true` for success
          */
-        load_filename(filename: string, dest_size: number, src_size_min: number, flags: ImageLoadFlags | null): boolean;
+        load_filename(
+            filename: string,
+            dest_width: number,
+            dest_height: number,
+            src_size_min: number,
+            flags: ImageLoadFlags | null,
+        ): boolean;
         /**
          * Saves the image to a file.
          * @param filename filename to write to
@@ -1149,14 +1039,6 @@ export namespace AppStreamCompose {
          * @returns `true` for success
          */
         save_filename(filename: string, width: number, height: number, flags: ImageSaveFlags | null): boolean;
-        /**
-         * Resamples a pixbuf to a specific size.
-         * @param width target width, or 0 for default
-         * @param height target height, or 0 for default
-         * @param flags some {@link AppStreamCompose.ImageSaveFlags} values, e.g. {@link AppStreamCompose.ImageSaveFlags.PAD_16_9}
-         * @returns A {@link GdkPixbuf.Pixbuf} of the specified size
-         */
-        save_pixbuf(width: number, height: number, flags: ImageSaveFlags | null): GdkPixbuf.Pixbuf;
         /**
          * Scale the image to the given size.
          * @param new_width The new width.
@@ -1181,11 +1063,6 @@ export namespace AppStreamCompose {
          * @param new_width The new width.
          */
         scale_to_width(new_width: number): void;
-        /**
-         * Sets the image pixbuf.
-         * @param pixbuf the {@link GdkPixbuf.Pixbuf}, or `null`
-         */
-        set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
     }
 
     namespace Result {
@@ -1572,10 +1449,6 @@ export namespace AppStreamCompose {
         set_user_data(user_data?: any | null): void;
     }
 
-    /**
-     * @gir-type Alias
-     */
-    type CanvasClass = typeof Canvas;
     /**
      * @gir-type Alias
      */

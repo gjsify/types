@@ -1442,6 +1442,20 @@ export namespace Gegl {
          */
         get_format(): Babl.Object;
         /**
+         * Retrieves the current set color stored as `space`.
+         * If `space` is `null`, this is equivalent to requesting color in the default
+         * sRGB space.
+         * @param space RGB space.
+         */
+        get_hsla(space?: Babl.Object | null): [number, number, number, number];
+        /**
+         * Retrieves the current set color stored as `space`.
+         * If `space` is `null`, this is equivalent to requesting color in the default
+         * sRGB space.
+         * @param space RGB space.
+         */
+        get_hsva(space?: Babl.Object | null): [number, number, number, number];
+        /**
          * Retrieves the current set color as linear light non premultipled RGBA data,
          * any of the return pointers can be omitted.
          */
@@ -1482,6 +1496,26 @@ export namespace Gegl {
          * @param components The color components.
          */
         set_components(format: GObject.Value | any, components: number[]): void;
+        /**
+         * Set color as HSLA data stored as `space`. If `space` is `null`, this is
+         * equivalent to storing with the default sRGB space.
+         * @param hue hue value.
+         * @param saturation saturation value.
+         * @param lightness lightness value.
+         * @param alpha alpha value.
+         * @param space RGB space.
+         */
+        set_hsla(hue: number, saturation: number, lightness: number, alpha: number, space?: Babl.Object | null): void;
+        /**
+         * Set color as HSVA data stored as `space`. If `space` is `null`, this is
+         * equivalent to storing with the default sRGB space.
+         * @param hue hue value.
+         * @param saturation saturation value.
+         * @param value value value.
+         * @param alpha alpha value.
+         * @param space RGB space.
+         */
+        set_hsva(hue: number, saturation: number, value: number, alpha: number, space?: Babl.Object | null): void;
         /**
          * Set color as linear light non premultipled RGBA data
          * @param red red value
@@ -2045,7 +2079,7 @@ export namespace Gegl {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2100,7 +2134,7 @@ export namespace Gegl {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2180,7 +2214,7 @@ export namespace Gegl {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3606,7 +3640,7 @@ export namespace Gegl {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3661,7 +3695,7 @@ export namespace Gegl {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3722,7 +3756,7 @@ export namespace Gegl {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4191,6 +4225,16 @@ export namespace Gegl {
          * @returns Returns a output proxy for the named pad. If no output proxy exists with this name a new one will be created.
          */
         get_output_proxy(pad_name: string): Node;
+        /**
+         * @param pad_name the pad name we are looking for
+         * @returns the longer description for `pad_name`.
+         */
+        get_pad_description(pad_name: string): string;
+        /**
+         * @param pad_name the pad name we are looking for
+         * @returns the display label for `pad_name`.
+         */
+        get_pad_label(pad_name: string): string;
         /**
          * Returns a GeglNode that keeps a reference on a child.
          * @returns the parent of a node or NULL.

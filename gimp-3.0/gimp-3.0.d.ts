@@ -18,9 +18,11 @@ import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GioUnix from '@girs/giounix-2.0';
 import type Gegl from '@girs/gegl-0.4';
 import type Babl from '@girs/babl-0.1';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GExiv2 from '@girs/gexiv2-0.10';
 
 export namespace Gimp {
     // WORKAROUND: As long as ParamObject is not generated
@@ -707,6 +709,50 @@ export namespace Gimp {
     /**
      * @gir-type Enum
      */
+    export namespace CurvePointType {
+        export const $gtype: GObject.GType<CurvePointType>;
+    }
+
+    /**
+     * Extracted from app/core/core-enums.h
+     * @gir-type Enum
+     */
+    enum CurvePointType {
+        /**
+         * GIMP_CURVE_POINT_SMOOTH
+         */
+        SMOOTH,
+        /**
+         * GIMP_CURVE_POINT_CORNER
+         */
+        CORNER,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace CurveType {
+        export const $gtype: GObject.GType<CurveType>;
+    }
+
+    /**
+     * Extracted from app/core/core-enums.h
+     * @gir-type Enum
+     */
+    enum CurveType {
+        /**
+         * GIMP_CURVE_SMOOTH
+         */
+        SMOOTH,
+        /**
+         * GIMP_CURVE_FREE
+         */
+        FREE,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     export namespace DesaturateMode {
         export const $gtype: GObject.GType<DesaturateMode>;
     }
@@ -773,6 +819,43 @@ export namespace Gimp {
          * The chosen transforms were applied to a new image
          */
         EXPORT,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace FileChooserAction {
+        export const $gtype: GObject.GType<FileChooserAction>;
+    }
+
+    /**
+     * A type of file to choose from when actions are expected to choose a
+     * file. This is basically a mapping to %GtkFileChooserAction except for
+     * {@link Gimp.FileChooserAction.ANY} which should not be used for any
+     * GUI functions since we can't know what you are looking for.
+     * @gir-type Enum
+     */
+    enum FileChooserAction {
+        /**
+         * No restriction.
+         */
+        ANY,
+        /**
+         * Opens an existing file.
+         */
+        OPEN,
+        /**
+         * Saves a file (over a new file or an existing one.
+         */
+        SAVE,
+        /**
+         * Picks an existing folder.
+         */
+        SELECT_FOLDER,
+        /**
+         * Picks an existing or new folder.
+         */
+        CREATE_FOLDER,
     }
 
     /**
@@ -1291,6 +1374,14 @@ export namespace Gimp {
          */
         RGB_LINEAR,
         /**
+         * GIMP_LAYER_COLOR_SPACE_RGB_NON_LINEAR
+         */
+        RGB_NON_LINEAR,
+        /**
+         * GIMP_LAYER_COLOR_SPACE_LAB
+         */
+        LAB,
+        /**
          * GIMP_LAYER_COLOR_SPACE_RGB_PERCEPTUAL
          */
         RGB_PERCEPTUAL,
@@ -1590,6 +1681,14 @@ export namespace Gimp {
          * GIMP_LAYER_MODE_PASS_THROUGH
          */
         PASS_THROUGH,
+        /**
+         * GIMP_LAYER_MODE_REPLACE
+         */
+        REPLACE,
+        /**
+         * GIMP_LAYER_MODE_OVERWRITE
+         */
+        OVERWRITE,
     }
 
     /**
@@ -1743,9 +1842,9 @@ export namespace Gimp {
      */
     enum OffsetType {
         /**
-         * Background
+         * Color
          */
-        BACKGROUND,
+        COLOR,
         /**
          * Transparent
          */
@@ -1825,9 +1924,9 @@ export namespace Gimp {
          */
         PLUGIN,
         /**
-         * GIMP Extension
+         * GIMP Persistent Plug-in
          */
-        EXTENSION,
+        PERSISTENT,
         /**
          * Temporary Procedure
          */
@@ -2013,36 +2112,6 @@ export namespace Gimp {
          * 64-bit perceptual floating point
          */
         DOUBLE_PERCEPTUAL,
-        /**
-         * deprecated alias for
-         *                                `GIMP_PRECISION_U8_NON_LINEAR`
-         */
-        U8_GAMMA,
-        /**
-         * deprecated alias for
-         *                                `GIMP_PRECISION_U16_NON_LINEAR`
-         */
-        U16_GAMMA,
-        /**
-         * deprecated alias for
-         *                                `GIMP_PRECISION_U32_NON_LINEAR`
-         */
-        U32_GAMMA,
-        /**
-         * deprecated alias for
-         *                                `GIMP_PRECISION_HALF_NON_LINEAR`
-         */
-        HALF_GAMMA,
-        /**
-         * deprecated alias for
-         *                                `GIMP_PRECISION_FLOAT_NON_LINEAR`
-         */
-        FLOAT_GAMMA,
-        /**
-         * deprecated alias for
-         *                                `GIMP_PRECISION_DOUBLE_NON_LINEAR`
-         */
-        DOUBLE_GAMMA,
     }
 
     /**
@@ -2081,24 +2150,6 @@ export namespace Gimp {
          * Get the window where the progress is shown
          */
         GET_WINDOW,
-    }
-
-    /**
-     * @gir-type Enum
-     */
-    enum RGBCompositeMode {
-        /**
-         * don't do compositing
-         */
-        NONE,
-        /**
-         * composite on top
-         */
-        NORMAL,
-        /**
-         * composite behind
-         */
-        BEHIND,
     }
 
     /**
@@ -2314,6 +2365,32 @@ export namespace Gimp {
     /**
      * @gir-type Enum
      */
+    export namespace TRCType {
+        export const $gtype: GObject.GType<TRCType>;
+    }
+
+    /**
+     * Extracted from app/core/core-enums.h
+     * @gir-type Enum
+     */
+    enum TRCType {
+        /**
+         * GIMP_TRC_LINEAR
+         */
+        LINEAR,
+        /**
+         * GIMP_TRC_NON_LINEAR
+         */
+        NON_LINEAR,
+        /**
+         * GIMP_TRC_PERCEPTUAL
+         */
+        PERCEPTUAL,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     export namespace TextDirection {
         export const $gtype: GObject.GType<TextDirection>;
     }
@@ -2407,6 +2484,58 @@ export namespace Gimp {
          * Filled
          */
         FILL,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace TextOutline {
+        export const $gtype: GObject.GType<TextOutline>;
+    }
+
+    /**
+     * Settings for text stroke and fill.
+     * @gir-type Enum
+     */
+    enum TextOutline {
+        /**
+         * Filled
+         */
+        NONE,
+        /**
+         * Outlined
+         */
+        STROKE_ONLY,
+        /**
+         * Outlined and filled
+         */
+        STROKE_FILL,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace TextOutlineDirection {
+        export const $gtype: GObject.GType<TextOutlineDirection>;
+    }
+
+    /**
+     * Options for how the text outline's stroke is drawn.
+     * @gir-type Enum
+     */
+    enum TextOutlineDirection {
+        /**
+         * Outer
+         */
+        OUTER,
+        /**
+         * Inner
+         */
+        INNER,
+        /**
+         * Centered
+         */
+        CENTERED,
     }
 
     /**
@@ -2684,12 +2813,20 @@ export namespace Gimp {
     const PARASITE_GRANDPARENT_UNDOABLE: number;
     const PARASITE_PARENT_PERSISTENT: number;
     const PARASITE_PARENT_UNDOABLE: number;
+    /**
+     * A persistent parasite will be saved to XCF and can be used again after
+     * reloading. A non persistent parasite will only be available during the
+     * current session.
+     * See {@link Gimp.Parasite}.
+     */
     const PARASITE_PERSISTENT: number;
+    /**
+     * An undoable parasite that was added, can be removed using the Undo action.
+     * If this flag is not set, undoing will not change the parasite.
+     * See {@link Gimp.Parasite}.
+     */
     const PARASITE_UNDOABLE: number;
     const PIXPIPE_MAXDIM: number;
-    const RGB_LUMINANCE_BLUE: number;
-    const RGB_LUMINANCE_GREEN: number;
-    const RGB_LUMINANCE_RED: number;
     /**
      * The GIMP version as a string.
      */
@@ -2753,6 +2890,7 @@ export namespace Gimp {
      * @since 2.8
      */
     function attach_parasite(parasite: Parasite): boolean;
+    function babl_format_get_type(): GObject.GType;
     /**
      * @param x
      * @param y
@@ -2806,12 +2944,12 @@ export namespace Gimp {
      * Retrieve a complete listing of the available brushes.
      *
      * This procedure returns a complete listing of available GIMP brushes.
-     * Each name returned can be used as input to the
-     * `gimp_context_set_brush()` procedure.
+     * Each brush returned can be used as input to
+     * {@link Gimp.context_set_brush}.
      * @param filter An optional regular expression used to filter the list.
-     * @returns The list of brush names.          The returned value must be freed with `g_strfreev()`.
+     * @returns The list of brushes.          The returned value must be freed with `g_free()`.
      */
-    function brushes_get_list(filter: string): string[];
+    function brushes_get_list(filter: string): Brush[];
     /**
      * Invokes the GIMP brush selection dialog.
      *
@@ -2825,8 +2963,8 @@ export namespace Gimp {
     function brushes_popup(
         brush_callback: string,
         popup_title: string,
-        initial_brush: Brush,
-        parent_window: GLib.Bytes | Uint8Array,
+        initial_brush?: Brush | null,
+        parent_window?: GLib.Bytes | null,
     ): boolean;
     /**
      * Refresh current brushes. This function always succeeds.
@@ -2909,7 +3047,7 @@ export namespace Gimp {
      * @returns The list of buffer names.          The returned value must be freed with `g_strfreev()`.
      * @since 2.4
      */
-    function buffers_get_list(filter: string): string[];
+    function buffers_get_name_list(filter?: string | null): string[];
     /**
      * Returns the default top directory for GIMP cached files. If the
      * environment variable GIMP3_CACHEDIR exists, that is used.  It
@@ -2958,8 +3096,34 @@ export namespace Gimp {
      * @param format a Babl format.
      * @returns a {@link Gegl.Buffer}
      * @since 2.10
+     * @deprecated since 3.0.8: Use `gimp_cairo_surface_get_buffer()`.
      */
     function cairo_surface_create_buffer(surface: cairo.Surface, format: Babl.Object): Gegl.Buffer;
+    /**
+     * This function returns a {@link Gegl.Buffer} containing `surface`'s
+     * pixels. It must only be called on image surfaces, calling it on other
+     * surface types is an error.
+     *
+     * If `format` is set, the returned buffer will use it. It has to map
+     * with `surface` Cairo format. If unset, the buffer format will be
+     * determined from `surface`. The main difference is that automatically
+     * determined format has sRGB space and TRC by default.
+     *
+     * If you want the changes to the returned buffer to be synced back to
+     * `surface` data, set `sync_back` to `true`. If you don't need this and
+     * only want a copy of `surface` at a given time, `false` will be less
+     * costly.
+     *
+     * When `sync_back` is `true`, {@link Gegl.Buffer.freeze_changed} and
+     * {@link Gegl.Buffer.thaw_changed} may be useful to block intermediate
+     * syncing.
+     * @param surface a Cairo surface
+     * @param format a Babl format.
+     * @param sync_back whether changes on the returned buffer should be synced             back to `surface`.
+     * @returns a {@link Gegl.Buffer}
+     * @since 3.0.8
+     */
+    function cairo_surface_get_buffer(surface: cairo.Surface, format: Babl.Object, sync_back: boolean): Gegl.Buffer;
     /**
      * This function returns a {@link Babl.Object} format that corresponds to `surface`'s
      * pixel format.
@@ -3142,6 +3306,12 @@ export namespace Gimp {
      *     printf ("Both colors are identical, ignoring their alpha component");
      *   }
      * ```
+     *
+     * Note that this relation is not transitive, because it is based on a
+     * color distance algorithm. It means that if color1 is perceptually
+     * identical to color2, which is perceptually identical to color3, it
+     * does not mean that color1 is perceptually identical to color3, as far
+     * this algorithm is concerned.
      * @param color1 a {@link Gegl.Color}
      * @param color2 a {@link Gegl.Color}
      * @returns whether the 2 colors can be considered the same for the human eyes.
@@ -3263,17 +3433,6 @@ export namespace Gimp {
         nest_level: number,
     ): boolean;
     /**
-     * Sets `value` to new {@link GObject.Strv}.
-     * Scans i.e. consumes serialization to fill the GStrv.
-     *
-     * Requires `value` to be initialized to hold type #G_TYPE_BOXED.
-     * @param value destination {@link GObject.Value} to hold a {@link GObject.Strv}
-     * @param scanner {@link GLib.Scanner} positioned in serialization stream
-     * @returns G_TOKEN_RIGHT_PAREN on success. G_TOKEN_INT on failure to scan length. G_TOKEN_STRING on failure to scan enough quoted strings. On failure, the value in `value` is not touched and could be NULL.
-     * @since 3.0
-     */
-    function config_deserialize_strv(value: GObject.Value | any, scanner: GLib.Scanner): GLib.TokenType;
-    /**
      * Compares all properties of `a` and `b` that have all `flags` set. If
      * `flags` is 0, all properties are compared.
      *
@@ -3319,17 +3478,6 @@ export namespace Gimp {
      * @since 2.4
      */
     function config_reset_property(object: GObject.Object, property_name: string): void;
-    /**
-     * Appends a string repr of the {@link GObject.Strv} value of {@link GObject.Value} to `str`.
-     * Repr is an integer literal greater than or equal to zero,
-     * followed by a possibly empty sequence
-     * of quoted and escaped string literals.
-     * @param value source {@link GObject.Value} holding a {@link GObject.Strv}
-     * @param str destination string
-     * @returns `true` always
-     * @since 3.0
-     */
-    function config_serialize_strv(value: GObject.Value | any, str: GLib.String): boolean;
     /**
      * This utility function appends a string representation of {@link GObject.Value} to `str`.
      * @param value a {@link GObject.Value}.
@@ -3507,7 +3655,17 @@ export namespace Gimp {
      * @returns The name of the active paint dynamics.          The returned value must be freed with `g_free()`.
      * @since 2.8
      */
-    function context_get_dynamics(): string;
+    function context_get_dynamics_name(): string;
+    /**
+     * Retrieve the currently active stroke option's emulate brush dynamics
+     * setting.
+     *
+     * This procedure returns the emulate brush dynamics property of the
+     * currently active stroke options.
+     * @returns The emulate brush dynamics setting.
+     * @since 3.0
+     */
+    function context_get_emulate_brush_dynamics(): boolean;
     /**
      * Get the feather setting.
      *
@@ -3725,6 +3883,23 @@ export namespace Gimp {
      * @since 2.2
      */
     function context_get_opacity(): number;
+    /**
+     * Get the paint fade length.
+     *
+     * Get the paint fade length for paint tools and the gradient tool.
+     * @returns The paint fade length setting.
+     * @since 3.2
+     */
+    function context_get_paint_fade_length(): number;
+    /**
+     * Get the paint fade repeat type.
+     *
+     * Get the paint fade repeat type for paint tools and the gradient
+     * tool.
+     * @returns The paint fade repeat type setting.
+     * @since 3.2
+     */
+    function context_get_paint_fade_repeat(): RepeatMode;
     /**
      * Get the currently active paint method.
      *
@@ -4045,7 +4220,17 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.8
      */
-    function context_set_dynamics(name: string): boolean;
+    function context_set_dynamics_name(name: string): boolean;
+    /**
+     * Set the stroke option's emulate brush dynamics setting.
+     *
+     * This procedure sets the specified emulate brush dynamics setting.
+     * The new method will be used in all subsequent stroke operations.
+     * @param emulate_dynamics The new emulate brush dynamics setting.
+     * @returns TRUE on success.
+     * @since 3.0
+     */
+    function context_set_emulate_brush_dynamics(emulate_dynamics: boolean): boolean;
     /**
      * Set the feather setting.
      *
@@ -4383,6 +4568,25 @@ export namespace Gimp {
      */
     function context_set_opacity(opacity: number): boolean;
     /**
+     * Set the paint fade length.
+     *
+     * Set the paint fade length for paint tools and the gradient tool.
+     * @param fade_length The paint fade length setting.
+     * @returns TRUE on success.
+     * @since 3.2
+     */
+    function context_set_paint_fade_length(fade_length: number): boolean;
+    /**
+     * Set the paint fade repeat type.
+     *
+     * Set the paint fade repeat type for paint tools and the gradient
+     * tool.
+     * @param fade_repeat The paint fade repeat type setting.
+     * @returns TRUE on success.
+     * @since 3.2
+     */
+    function context_set_paint_fade_repeat(fade_repeat: RepeatMode | null): boolean;
+    /**
      * Set the active paint method.
      *
      * Sets the active paint method to the named paint method. The paint
@@ -4591,17 +4795,17 @@ export namespace Gimp {
      */
     function convolve_default(drawable: Drawable, strokes: number[]): boolean;
     /**
+     * @param array a `null`-terminated array of objects.
+     * @returns the number of {@link GObject.Object} in `array`.
+     */
+    function core_object_array_get_length(array: GObject.Object): number;
+    function core_object_array_get_type(): GObject.GType;
+    /**
      * Query for CPU acceleration support.
      * @returns {@link Gimp.CpuAccelFlags} as supported by the CPU.
      * @since 2.4
      */
     function cpu_accel_get_support(): CpuAccelFlags;
-    /**
-     * This function is for internal use only.
-     * @param use whether to use CPU acceleration features or not
-     * @since 2.4
-     */
-    function cpu_accel_set_use(use: boolean): void;
     /**
      * Returns the default top directory for GIMP data. If the environment
      * variable GIMP3_DATADIR exists, that is used.  It should be an
@@ -4661,8 +4865,11 @@ export namespace Gimp {
     /**
      * Removes a global parasite.
      *
-     * This procedure detaches a global parasite from. It has no return
-     * values.
+     * This procedure detaches a global parasite.
+     *
+     * It will return `false` if `name` is invalid (`null` or empty string)
+     * and `true` otherwise (even if there was no parasite removed, because
+     * no parasite was named like this).
      * @param name The name of the parasite to detach.
      * @returns TRUE on success.
      * @since 2.8
@@ -4757,11 +4964,23 @@ export namespace Gimp {
      */
     function dodgeburn_default(drawable: Drawable, strokes: number[]): boolean;
     /**
+     * @param array the {@link Gimp.Array} representing #double values.
+     * @returns a C-array of `gdouble`.
+     */
+    function double_array_get_values(array: Array): number[];
+    /**
+     * @param array the array to modify.
+     * @param values the C-array.
+     * @param static_data whether `data` is a static rather than allocated array.
+     */
+    function double_array_set_values(array: Array, values: number[], static_data: boolean): void;
+    /**
      * Close the drawable selection dialog.
      *
      * Closes an open drawable selection dialog.
      * @param callback The name of the callback registered for this pop-up.
      * @returns TRUE on success.
+     * @deprecated since 3.2: Use `gimp_items_close_popup()` instead.
      */
     function drawables_close_popup(callback: string): boolean;
     /**
@@ -4774,13 +4993,14 @@ export namespace Gimp {
      * @param initial_drawable The drawable to set as the initial choice.
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
+     * @deprecated since 3.2: Use `gimp_items_popup()` instead.
      */
     function drawables_popup(
         callback: string,
         popup_title: string,
         drawable_type: string,
-        initial_drawable: Drawable,
-        parent_window: GLib.Bytes | Uint8Array,
+        initial_drawable?: Drawable | null,
+        parent_window?: GLib.Bytes | null,
     ): boolean;
     /**
      * Sets the selected drawable in a drawable selection dialog.
@@ -4789,6 +5009,7 @@ export namespace Gimp {
      * @param callback The name of the callback registered for this pop-up.
      * @param drawable The drawable to set as selected.
      * @returns TRUE on success.
+     * @deprecated since 3.2: Use `gimp_items_set_popup()` instead.
      */
     function drawables_set_popup(callback: string, drawable: Drawable): boolean;
     /**
@@ -4800,7 +5021,7 @@ export namespace Gimp {
      * @returns The list of paint dynamics names.          The returned value must be freed with `g_strfreev()`.
      * @since 2.8
      */
-    function dynamics_get_list(filter: string): string[];
+    function dynamics_get_name_list(filter?: string | null): string[];
     /**
      * Refresh current paint dynamics. This function always succeeds.
      *
@@ -4827,7 +5048,7 @@ export namespace Gimp {
      * @param drawables Drawables to copy from.
      * @returns TRUE if the cut was successful, FALSE if there was nothing to copy from.
      */
-    function edit_copy(drawables: Item[]): boolean;
+    function edit_copy(drawables: Drawable[]): boolean;
     /**
      * Copy from the projection.
      *
@@ -4857,7 +5078,7 @@ export namespace Gimp {
      * @param drawables The drawables to cut from.
      * @returns TRUE if the cut was successful, FALSE if there was nothing to copy from.
      */
-    function edit_cut(drawables: Item[]): boolean;
+    function edit_cut(drawables: Drawable[]): boolean;
     /**
      * Copy into a named buffer.
      *
@@ -4870,7 +5091,7 @@ export namespace Gimp {
      * @returns The real name given to the buffer, or NULL if the copy failed.          The returned value must be freed with `g_free()`.
      * @since 2.4
      */
-    function edit_named_copy(drawables: Item[], buffer_name: string): string;
+    function edit_named_copy(drawables: Drawable[], buffer_name: string): string;
     /**
      * Copy from the projection into a named buffer.
      *
@@ -4896,7 +5117,7 @@ export namespace Gimp {
      * @returns The real name given to the buffer, or NULL if the cut failed.          The returned value must be freed with `g_free()`.
      * @since 2.4
      */
-    function edit_named_cut(drawables: Item[], buffer_name: string): string;
+    function edit_named_cut(drawables: Drawable[], buffer_name: string): string;
     /**
      * Paste named buffer to the specified drawable.
      *
@@ -4924,24 +5145,25 @@ export namespace Gimp {
      *
      * This procedure pastes a copy of the internal GIMP edit buffer to the
      * specified drawable. The GIMP edit buffer will be empty unless a call
-     * was previously made to either `gimp_edit_cut()` or `gimp_edit_copy()`.
-     * The \"paste_into\" option specifies whether to clear the current
-     * image selection, or to paste the buffer \"behind\" the selection.
-     * This allows the selection to act as a mask for the pasted buffer.
-     * Anywhere that the selection mask is non-zero, the pasted buffer will
-     * show through. The pasted data may be a floating selection when
-     * relevant, layers otherwise. If the image has a floating selection at
-     * the time of pasting, the old floating selection will be anchored to
-     * its drawable before the new floating selection is added.
-     * This procedure returns the new layers (floating or not). If the
+     * was previously made to either {@link Gimp.edit_cut} or
+     * {@link Gimp.edit_copy}. The \"paste_into\" option specifies whether
+     * to clear the current image selection, or to paste the buffer
+     * \"behind\" the selection. This allows the selection to act as a mask
+     * for the pasted buffer. Anywhere that the selection mask is non-zero,
+     * the pasted buffer will show through. The pasted data may be a
+     * floating selection when relevant, layers otherwise. If the image has
+     * a floating selection at the time of pasting, the old floating
+     * selection will be anchored to its drawable before the new floating
+     * selection is added.
+     * This procedure returns the new drawables (floating or not). If the
      * result is a floating selection, it will already be attached to the
-     * specified drawable, and a subsequent call to floating_sel_attach is
-     * not needed.
+     * specified drawable, and a subsequent call to
+     * {@link Gimp.floating_sel_attach} is not needed.
      * @param drawable The drawable to paste to.
      * @param paste_into Clear selection, or paste behind it?
      * @returns The list of pasted layers.          The returned value must be freed with `g_free()`.
      */
-    function edit_paste(drawable: Drawable, paste_into: boolean): Layer[];
+    function edit_paste(drawable: Drawable, paste_into: boolean): Drawable[];
     /**
      * Paste buffer to a new image.
      *
@@ -5028,14 +5250,6 @@ export namespace Gimp {
      * @since 2.4
      */
     function enums_init(): void;
-    /**
-     * You don't need to care about this function. It is being called for
-     * you automatically (by means of the MAIN() macro that every plug-in
-     * runs). Calling it again will cause a fatal error.
-     * @param plug_in must be `true` if this function is called from a plug-in
-     * @since 2.4
-     */
-    function env_init(plug_in: boolean): void;
     /**
      * Erase using the current brush.
      *
@@ -5125,6 +5339,24 @@ export namespace Gimp {
      */
     function export_xmp(): boolean;
     /**
+     * Creates a thumbnail of `image` for the given `file`
+     *
+     * This procedure creates a thumbnail for the given `file` and stores it
+     * according to relevant standards.
+     * In particular, it will follow the [Free Desktop Thumbnail Managing
+     * Standard](https://specifications.freedesktop.org/thumbnail-spec/late
+     * st/thumbsave.html) when relevant.
+     *
+     * The thumbnail is stored so that it belongs to the given `file`. This
+     * means you have to save `image` under this name first. As a fallback,
+     * the call will work if `image` was exported or imported as `file`. In
+     * any other case, this procedure will fail.
+     * @param image The image.
+     * @param file The file the thumbnail belongs to.
+     * @returns TRUE on success.
+     */
+    function file_create_thumbnail(image: Image, file: Gio.File): boolean;
+    /**
      * Unexpands `file`'s path using `gimp_config_path_unexpand()` and
      * returns the unexpanded path.
      *
@@ -5167,7 +5399,7 @@ export namespace Gimp {
      *
      * This procedure invokes the correct file load handler using magic if
      * possible, and falling back on the file's extension and/or prefix if
-     * not.
+     * not. Note that the loaded image will be marked as clean.
      * @param run_mode The run mode.
      * @param file The file to load.
      * @returns The output image.
@@ -5212,33 +5444,20 @@ export namespace Gimp {
      */
     function file_new_for_config_path(path: string): Gio.File | null;
     /**
-     * Saves a file by extension.
+     * Saves to XCF or export `image` to any supported format by extension.
      *
-     * This procedure invokes the correct file save handler according to
-     * the file's extension and/or prefix.
+     * This procedure invokes the correct file save/export handler
+     * according to `file`'s extension and/or prefix.
+     *
      * The `options` argument is currently unused and should be set to `null`
      * right now.
      * @param run_mode The run mode.
      * @param image Input image.
-     * @param file The file to save the image in.
+     * @param file The file to save or export the image in.
      * @param options Export option settings.
      * @returns TRUE on success.
      */
     function file_save(run_mode: RunMode | null, image: Image, file: Gio.File, options?: ExportOptions | null): boolean;
-    /**
-     * Saves a thumbnail for the given image
-     *
-     * This procedure saves a thumbnail for the given image according to
-     * the Free Desktop Thumbnail Managing Standard. The thumbnail is saved
-     * so that it belongs to the given file. This means you have to save
-     * the image under this name first, otherwise this procedure will fail.
-     * This procedure may become useful if you want to explicitly save a
-     * thumbnail with a file.
-     * @param image The image.
-     * @param file The file the thumbnail belongs to.
-     * @returns TRUE on success.
-     */
-    function file_save_thumbnail(image: Image, file: Gio.File): boolean;
     /**
      * Shows `file` in the system file manager.
      * @param file a {@link Gio.File}
@@ -5373,23 +5592,16 @@ export namespace Gimp {
      */
     function fonts_close_popup(font_callback: string): boolean;
     /**
-     * Returns the fonts with the given name.
-     *
-     * Returns the fonts with the given name. There may be more than one.
-     * @param name The name of the font.
-     * @returns The fonts with the given name.          The returned value must be freed with `g_free()`.
-     * @since 3.0
-     */
-    function fonts_get_by_name(name: string): Font[];
-    /**
      * Retrieve the list of loaded fonts.
      *
      * This procedure returns a list of the fonts that are currently
      * available.
+     * Each font returned can be used as input to
+     * {@link Gimp.context_set_font}.
      * @param filter An optional regular expression used to filter the list.
-     * @returns The list of font names.          The returned value must be freed with `g_strfreev()`.
+     * @returns The list of fonts.          The returned value must be freed with `g_free()`.
      */
-    function fonts_get_list(filter: string): string[];
+    function fonts_get_list(filter?: string | null): Font[];
     /**
      * Invokes the Gimp font selection dialog.
      *
@@ -5403,8 +5615,8 @@ export namespace Gimp {
     function fonts_popup(
         font_callback: string,
         popup_title: string,
-        initial_font: Font,
-        parent_window: GLib.Bytes | Uint8Array,
+        initial_font?: Font | null,
+        parent_window?: GLib.Bytes | null,
     ): boolean;
     /**
      * Refresh current fonts. This function always succeeds.
@@ -5562,12 +5774,13 @@ export namespace Gimp {
      * Retrieve the list of loaded gradients.
      *
      * This procedure returns a list of the gradients that are currently
-     * loaded. You can later use the `gimp_context_set_gradient()` function
-     * to set the active gradient.
+     * loaded.
+     * Each gradient returned can be used as input to
+     * {@link Gimp.context_set_gradient}.
      * @param filter An optional regular expression used to filter the list.
-     * @returns The list of gradient names.          The returned value must be freed with `g_strfreev()`.
+     * @returns The list of gradients.          The returned value must be freed with `g_free()`.
      */
-    function gradients_get_list(filter: string): string[];
+    function gradients_get_list(filter?: string | null): Gradient[];
     /**
      * Invokes the Gimp gradients selection dialog.
      *
@@ -5581,8 +5794,8 @@ export namespace Gimp {
     function gradients_popup(
         gradient_callback: string,
         popup_title: string,
-        initial_gradient: Gradient,
-        parent_window: GLib.Bytes | Uint8Array,
+        initial_gradient?: Gradient | null,
+        parent_window?: GLib.Bytes | null,
     ): boolean;
     /**
      * Refresh current gradients. This function always succeeds.
@@ -5647,7 +5860,7 @@ export namespace Gimp {
      * @param help_id The help page's ID.
      * @returns TRUE on success.
      */
-    function help(help_domain: string, help_id: string): boolean;
+    function help(help_domain: string | null, help_id: string): boolean;
     /**
      * Returns the directory of the current icon theme.
      *
@@ -5656,6 +5869,39 @@ export namespace Gimp {
      * @since 2.10.4
      */
     function icon_theme_dir(): string;
+    /**
+     * Close the image selection dialog.
+     *
+     * Closes an open image selection dialog.
+     * @param callback The name of the callback registered for this pop-up.
+     * @returns TRUE on success.
+     */
+    function images_close_popup(callback: string): boolean;
+    /**
+     * Invokes the image selection dialog.
+     *
+     * Opens a dialog letting a user choose an image.
+     * @param callback The callback PDB proc to call when user chooses an image.
+     * @param popup_title Title of the image selection dialog.
+     * @param initial_image The image to set as the initial choice.
+     * @param parent_window An optional parent window handle for the popup to be set transient to.
+     * @returns TRUE on success.
+     */
+    function images_popup(
+        callback: string,
+        popup_title: string,
+        initial_image?: Image | null,
+        parent_window?: GLib.Bytes | null,
+    ): boolean;
+    /**
+     * Sets the selected image in a image selection dialog.
+     *
+     * Sets the selected image in a image selection dialog.
+     * @param callback The name of the callback registered for this pop-up.
+     * @param image The image to set as selected.
+     * @returns TRUE on success.
+     */
+    function images_set_popup(callback: string, image: Image): boolean;
     /**
      * Returns the top installation directory of GIMP. On Unix the
      * compile-time defined installation prefix is used. On Windows, the
@@ -5675,6 +5921,17 @@ export namespace Gimp {
      */
     function installation_directory(): string;
     /**
+     * @param array the {@link Gimp.Array} representing #int32 values.
+     * @returns a C-array of `gint32`.
+     */
+    function int32_array_get_values(array: Array): number[];
+    /**
+     * @param array the array to modify.
+     * @param values the C-array.
+     * @param static_data whether `data` is a static rather than allocated array.
+     */
+    function int32_array_set_values(array: Array, values: number[], static_data: boolean): void;
+    /**
      * Checks if `identifier` is canonical and non-`null`.
      *
      * Canonical identifiers are e.g. expected by the PDB for procedure
@@ -5685,6 +5942,41 @@ export namespace Gimp {
      * @since 3.0
      */
     function is_canonical_identifier(identifier: string): boolean;
+    /**
+     * Close the item selection dialog.
+     *
+     * Closes an open item selection dialog.
+     * @param callback The name of the callback registered for this pop-up.
+     * @returns TRUE on success.
+     */
+    function items_close_popup(callback: string): boolean;
+    /**
+     * Invokes the item selection dialog.
+     *
+     * Opens a dialog letting a user choose an item .
+     * @param callback The callback PDB proc to call when user chooses an item.
+     * @param popup_title Title of the item selection dialog.
+     * @param item_type The name of the GIMP_TYPE_ITEM subtype.
+     * @param initial_item The item to set as the initial choice.
+     * @param parent_window An optional parent window handle for the popup to be set transient to.
+     * @returns TRUE on success.
+     */
+    function items_popup(
+        callback: string,
+        popup_title: string,
+        item_type: string,
+        initial_item?: Item | null,
+        parent_window?: GLib.Bytes | null,
+    ): boolean;
+    /**
+     * Sets the selected item in a item selection dialog.
+     *
+     * Sets the selected item in a item selection dialog.
+     * @param callback The name of the callback registered for this pop-up.
+     * @param item The item to set as selected.
+     * @returns TRUE on success.
+     */
+    function items_set_popup(callback: string, item: Item): boolean;
     /**
      * Returns the top directory for GIMP locale files. If the environment
      * variable GIMP3_LOCALEDIR exists, that is used.  It should be an
@@ -5708,10 +6000,17 @@ export namespace Gimp {
      * {@link Gimp.PlugIn} subclass {@link GObject.GType} and the 'argc' and 'argv' that are passed
      * to the platform's `main()`.
      *
-     * See also: GIMP_MAIN(), {@link Gimp.PlugIn}.
+     * For instance, in Python, you will want to end your plug-in with this
+     * call:
+     *
+     * ```py
+     * Gimp.main(MyPlugIn.__gtype__, sys.argv)
+     * ```
+     *
+     * For C plug-ins, use instead the {@link Gimp.MAIN} macro
      * @param plug_in_type the type of the {@link Gimp.PlugIn} subclass of the plug-in
      * @param argv the arguments
-     * @returns an exit status as defined by the C library,          on success EXIT_SUCCESS.
+     * @returns an exit status as defined by the C library,          on success `EXIT_SUCCESS`.
      * @since 3.0
      */
     function main(plug_in_type: GObject.GType, argv: string[]): number;
@@ -5811,12 +6110,12 @@ export namespace Gimp {
      * Retrieves a list of all of the available palettes
      *
      * This procedure returns a complete listing of available palettes.
-     * Each name returned can be used as input to the command
-     * `gimp_context_set_palette()`.
+     * Each palette returned can be used as input to
+     * {@link Gimp.context_set_palette}.
      * @param filter An optional regular expression used to filter the list.
-     * @returns The list of palette names.          The returned value must be freed with `g_strfreev()`.
+     * @returns The list of palettes.          The returned value must be freed with `g_free()`.
      */
-    function palettes_get_list(filter: string): string[];
+    function palettes_get_list(filter?: string | null): Palette[];
     /**
      * Invokes the Gimp palette selection dialog.
      *
@@ -5830,8 +6129,8 @@ export namespace Gimp {
     function palettes_popup(
         palette_callback: string,
         popup_title: string,
-        initial_palette: Palette,
-        parent_window: GLib.Bytes | Uint8Array,
+        initial_palette?: Palette | null,
+        parent_window?: GLib.Bytes | null,
     ): boolean;
     /**
      * Refreshes current palettes. This function always succeeds.
@@ -5851,7 +6150,7 @@ export namespace Gimp {
      */
     function palettes_set_popup(palette_callback: string, palette: Palette): boolean;
     /**
-     * Creates a new {@link Gimp.ParamSpecArray} specifying a
+     * Creates a new `GimpParamSpecArray` specifying a
      * {@link Array} property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -5859,7 +6158,7 @@ export namespace Gimp {
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecArray}.
+     * @returns The newly created `GimpParamSpecArray`.
      * @since 3.0
      */
     function param_spec_array(
@@ -5869,7 +6168,7 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecBrush} specifying a
+     * Creates a new `GimpParamSpecBrush` specifying a
      * {@link Brush} property. See also {@link Gimp.param_spec_resource}.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
@@ -5878,7 +6177,7 @@ export namespace Gimp {
      * @param default_value Default brush.
      * @param default_to_context Whether the context is the context's brush.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecBrush}.
+     * @returns The newly created `GimpParamSpecBrush`.
      * @since 3.0
      */
     function param_spec_brush(
@@ -5891,7 +6190,7 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecChannel} specifying a
+     * Creates a new `GimpParamSpecChannel` specifying a
      * {@link Channel} property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -5900,7 +6199,7 @@ export namespace Gimp {
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecChannel}.
+     * @returns The newly created `GimpParamSpecChannel`.
      * @since 3.0
      */
     function param_spec_channel(
@@ -5911,7 +6210,7 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecChoice} specifying a
+     * Creates a new `GimpParamSpecChoice` specifying a
      * #G_TYPE_STRING property.
      * This %GimpParamSpecChoice takes ownership of the reference on `choice`.
      *
@@ -5922,7 +6221,7 @@ export namespace Gimp {
      * @param choice the %GimpChoice describing allowed choices.
      * @param default_value
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecChoice}.
+     * @returns The newly created `GimpParamSpecChoice`.
      * @since 3.0
      */
     function param_spec_choice(
@@ -5934,10 +6233,21 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
+     * @param pspec a {@link GObject.ParamSpec} to hold a `GimpParamSpecChoice` value.
+     * @returns the choice object defining the valid values.
+     * @since 3.0
+     */
+    function param_spec_choice_get_choice(pspec: GObject.ParamSpec): Choice;
+    /**
+     * @param pspec a {@link GObject.ParamSpec} to hold a `GimpParamSpecChoice` value.
+     * @returns the default value.
+     * @since 3.0
+     */
+    function param_spec_choice_get_default(pspec: GObject.ParamSpec): string;
+    /**
      * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Color} property.
      * Note that the `default_color` is duplicated, so reusing object will
-     * not change the default color of the returned
-     * {@link Gimp.ParamSpecColor}.
+     * not change the default color of the returned %GimpParamSpecColor.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -6008,7 +6318,53 @@ export namespace Gimp {
      */
     function param_spec_config_path_type(pspec: GObject.ParamSpec): ConfigPathType;
     /**
-     * Creates a new {@link Gimp.ParamSpecDisplay} specifying a
+     * Creates a new `GimpParamSpecCoreObjectArray` specifying a
+     * {@link CoreObjectArray} property.
+     *
+     * See `g_param_spec_internal()` for details on property names.
+     * @param name Canonical name of the property specified.
+     * @param nick Nick name of the property specified.
+     * @param blurb Description of the property specified.
+     * @param object_type GType of the array's elements.
+     * @param flags Flags for the property specified.
+     * @returns The newly created `GimpParamSpecCoreObjectArray`.
+     * @since 3.0
+     */
+    function param_spec_core_object_array(
+        name: string,
+        nick: string,
+        blurb: string,
+        object_type: GObject.GType,
+        flags: GObject.ParamFlags | null,
+    ): GObject.ParamSpec;
+    /**
+     * @param pspec a {@link GObject.ParamSpec} to hold a `GimpParamSpecCoreObjectArray` value.
+     * @returns the type for objects in the object array.
+     * @since 3.0
+     */
+    function param_spec_core_object_array_get_object_type(pspec: GObject.ParamSpec): GObject.GType;
+    /**
+     * Creates a new `GimpParamSpecCurve` specifying a
+     * {@link Curve} property.
+     *
+     * See `g_param_spec_internal()` for details on property names.
+     * @param name Canonical name of the property specified.
+     * @param nick Nick name of the property specified.
+     * @param blurb Description of the property specified.
+     * @param none_ok Whether no is a valid value.
+     * @param flags Flags for the property specified.
+     * @returns The newly created `GimpParamSpecCurve`.
+     * @since 3.2
+     */
+    function param_spec_curve(
+        name: string,
+        nick: string,
+        blurb: string,
+        none_ok: boolean,
+        flags: GObject.ParamFlags | null,
+    ): GObject.ParamSpec;
+    /**
+     * Creates a new `GimpParamSpecDisplay` specifying a
      * {@link Display} property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -6017,7 +6373,7 @@ export namespace Gimp {
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecDisplay}.
+     * @returns The newly created `GimpParamSpecDisplay`.
      * @since 3.0
      */
     function param_spec_display(
@@ -6028,7 +6384,31 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecDrawable} specifying a
+     * @param pspec a {@link GObject.ParamSpec} to hold a {@link Gimp.Display} value.
+     * @returns `true` if a `null` value is allowed.
+     * @since 3.0
+     */
+    function param_spec_display_none_allowed(pspec: GObject.ParamSpec): boolean;
+    /**
+     * Creates a new `GimpParamSpecDoubleArray` specifying a
+     * `GIMP_TYPE_DOUBLE_ARRAY` property.
+     *
+     * See `g_param_spec_internal()` for details on property names.
+     * @param name Canonical name of the property specified.
+     * @param nick Nick name of the property specified.
+     * @param blurb Description of the property specified.
+     * @param flags Flags for the property specified.
+     * @returns The newly created `GimpParamSpecDoubleArray`.
+     * @since 3.0
+     */
+    function param_spec_double_array(
+        name: string,
+        nick: string,
+        blurb: string,
+        flags: GObject.ParamFlags | null,
+    ): GObject.ParamSpec;
+    /**
+     * Creates a new `GimpParamSpecDrawable` specifying a
      * {@link Drawable} property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -6037,7 +6417,7 @@ export namespace Gimp {
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecDrawable}.
+     * @returns The newly created `GimpParamSpecDrawable`.
      * @since 3.0
      */
     function param_spec_drawable(
@@ -6048,45 +6428,92 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecExportOptions} specifying a
+     * Creates a new `GimpParamSpecDrawableFilter` specifying a
+     * {@link DrawableFilter} property.
+     *
+     * See `g_param_spec_internal()` for details on property names.
+     * @param name Canonical name of the property specified.
+     * @param nick Nick name of the property specified.
+     * @param blurb Description of the property specified.
+     * @param none_ok Whether no is a valid value.
+     * @param flags Flags for the property specified.
+     * @returns The newly created `GimpParamSpecPath`.
+     * @since 3.0
+     */
+    function param_spec_drawable_filter(
+        name: string,
+        nick: string,
+        blurb: string,
+        none_ok: boolean,
+        flags: GObject.ParamFlags | null,
+    ): GObject.ParamSpec;
+    /**
+     * @param pspec a {@link GObject.ParamSpec} to hold a {@link Gimp.DrawableFilter} value.
+     * @returns `true` if a `null` value is allowed.
+     * @since 3.0
+     */
+    function param_spec_drawable_filter_none_allowed(pspec: GObject.ParamSpec): boolean;
+    /**
+     * Creates a new `GimpParamSpecExportOptions` specifying a
      * #G_TYPE_INT property.
      *
      * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
-     * @param capabilities Int representing the image export capabilities
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecExportOptions}.
+     * @returns The newly created `GimpParamSpecExportOptions`.
      * @since 3.0
      */
     function param_spec_export_options(
         name: string,
         nick: string,
         blurb: string,
-        capabilities: number,
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecFloatArray} specifying a
-     * `GIMP_TYPE_FLOAT_ARRAY` property.
-     *
-     * See `g_param_spec_internal()` for details on property names.
-     * @param name Canonical name of the property specified.
-     * @param nick Nick name of the property specified.
-     * @param blurb Description of the property specified.
-     * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecFloatArray}.
+     * Creates a param spec to hold a file param.
+     * See `g_param_spec_internal()` for more information.
+     * @param name Canonical name of the param
+     * @param nick Nickname of the param
+     * @param blurb Brief description of param.
+     * @param action The type of file to expect.
+     * @param none_ok Whether `null` is allowed.
+     * @param default_value File to use if none is assigned.
+     * @param flags a combination of {@link GObject.ParamSpecFlags}
+     * @returns a newly allocated {@link GObject.ParamSpec} instance
      * @since 3.0
      */
-    function param_spec_float_array(
+    function param_spec_file(
         name: string,
         nick: string,
         blurb: string,
+        action: FileChooserAction | null,
+        none_ok: boolean,
+        default_value: Gio.File | null,
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecFont} specifying a
+     * @param pspec a {@link GObject.ParamSpec} to hold a {@link Gio.File} value.
+     * @returns the file action tied to `pspec`.
+     * @since 3.0
+     */
+    function param_spec_file_get_action(pspec: GObject.ParamSpec): FileChooserAction;
+    /**
+     * @param pspec a {@link GObject.ParamSpec} to hold a {@link Gio.File} value.
+     * @returns `true` if a `null` value is allowed.
+     * @since 3.0
+     */
+    function param_spec_file_none_allowed(pspec: GObject.ParamSpec): boolean;
+    /**
+     * Change the file action tied to `pspec`.
+     * @param pspec a {@link GObject.ParamSpec} to hold a {@link Gio.File} value.
+     * @param action new action for `pspec`.
+     * @since 3.0
+     */
+    function param_spec_file_set_action(pspec: GObject.ParamSpec, action: FileChooserAction | null): void;
+    /**
+     * Creates a new `GimpParamSpecFont` specifying a
      * {@link Font} property. See also {@link Gimp.param_spec_resource}.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
@@ -6095,7 +6522,7 @@ export namespace Gimp {
      * @param default_value Default font.
      * @param default_to_context Whether the context is the context's font.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecFont}.
+     * @returns The newly created `GimpParamSpecFont`.
      * @since 3.0
      */
     function param_spec_font(
@@ -6108,7 +6535,7 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecGradient} specifying a
+     * Creates a new `GimpParamSpecGradient` specifying a
      * {@link Gradient} property. See also {@link Gimp.param_spec_resource}.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
@@ -6117,7 +6544,7 @@ export namespace Gimp {
      * @param default_value Default gradient.
      * @param default_to_context Whether the context is the context's gradient.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecGradient}.
+     * @returns The newly created `GimpParamSpecGradient`.
      * @since 3.0
      */
     function param_spec_gradient(
@@ -6130,7 +6557,7 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecGroupLayer} specifying a
+     * Creates a new `GimpParamSpecGroupLayer` specifying a
      * {@link GroupLayer} property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -6139,7 +6566,7 @@ export namespace Gimp {
      * @param blurb Description of the property specified.
      * @param none_ok Whether `null` is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecGroupLayer}.
+     * @returns The newly created `GimpParamSpecGroupLayer`.
      * @since 3.0
      */
     function param_spec_group_layer(
@@ -6150,7 +6577,7 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecImage} specifying a
+     * Creates a new `GimpParamSpecImage` specifying a
      * {@link Image} property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -6159,7 +6586,7 @@ export namespace Gimp {
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecImage}.
+     * @returns The newly created `GimpParamSpecImage`.
      * @since 3.0
      */
     function param_spec_image(
@@ -6170,7 +6597,13 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecInt32Array} specifying a
+     * @param pspec a {@link GObject.ParamSpec} to hold a {@link Gimp.Image} value.
+     * @returns `true` if a `null` value is allowed.
+     * @since 3.0
+     */
+    function param_spec_image_none_allowed(pspec: GObject.ParamSpec): boolean;
+    /**
+     * Creates a new `GimpParamSpecInt32Array` specifying a
      * `GIMP_TYPE_INT32_ARRAY` property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -6178,7 +6611,7 @@ export namespace Gimp {
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecInt32Array}.
+     * @returns The newly created `GimpParamSpecInt32Array`.
      * @since 3.0
      */
     function param_spec_int32_array(
@@ -6188,7 +6621,7 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecItem} specifying a
+     * Creates a new `GimpParamSpecItem` specifying a
      * {@link Item} property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -6197,7 +6630,7 @@ export namespace Gimp {
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecItem}.
+     * @returns The newly created `GimpParamSpecItem`.
      * @since 3.0
      */
     function param_spec_item(
@@ -6208,7 +6641,13 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecLayer} specifying a
+     * @param pspec a {@link GObject.ParamSpec} to hold a {@link Gimp.Item} value.
+     * @returns `true` if a `null` value is allowed.
+     * @since 3.0
+     */
+    function param_spec_item_none_allowed(pspec: GObject.ParamSpec): boolean;
+    /**
+     * Creates a new `GimpParamSpecLayer` specifying a
      * {@link Layer} property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -6217,7 +6656,7 @@ export namespace Gimp {
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecLayer}.
+     * @returns The newly created `GimpParamSpecLayer`.
      * @since 3.0
      */
     function param_spec_layer(
@@ -6228,7 +6667,7 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecLayerMask} specifying a
+     * Creates a new `GimpParamSpecLayerMask` specifying a
      * {@link LayerMask} property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -6237,10 +6676,30 @@ export namespace Gimp {
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecLayerMask}.
+     * @returns The newly created `GimpParamSpecLayerMask`.
      * @since 3.0
      */
     function param_spec_layer_mask(
+        name: string,
+        nick: string,
+        blurb: string,
+        none_ok: boolean,
+        flags: GObject.ParamFlags | null,
+    ): GObject.ParamSpec;
+    /**
+     * Creates a new `GimpParamSpecLinkLayer` specifying a
+     * {@link LinkLayer} property.
+     *
+     * See `g_param_spec_internal()` for details on property names.
+     * @param name Canonical name of the property specified.
+     * @param nick Nick name of the property specified.
+     * @param blurb Description of the property specified.
+     * @param none_ok Whether no is a valid value.
+     * @param flags Flags for the property specified.
+     * @returns The newly created `GimpParamSpecLinkLayer`.
+     * @since 3.2
+     */
+    function param_spec_link_layer(
         name: string,
         nick: string,
         blurb: string,
@@ -6306,26 +6765,6 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecObjectArray} specifying a
-     * {@link ObjectArray} property.
-     *
-     * See `g_param_spec_internal()` for details on property names.
-     * @param name Canonical name of the property specified.
-     * @param nick Nick name of the property specified.
-     * @param blurb Description of the property specified.
-     * @param object_type GType of the array's elements.
-     * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecObjectArray}.
-     * @since 3.0
-     */
-    function param_spec_object_array(
-        name: string,
-        nick: string,
-        blurb: string,
-        object_type: GObject.GType,
-        flags: GObject.ParamFlags | null,
-    ): GObject.ParamSpec;
-    /**
      * This function duplicates `pspec` appropriately, depending on the
      * accurate spec type.
      * @param pspec a {@link Gimp.ParamSpecObject}.
@@ -6364,7 +6803,7 @@ export namespace Gimp {
      */
     function param_spec_object_set_default(pspec: GObject.ParamSpec, default_value?: GObject.Object | null): void;
     /**
-     * Creates a new {@link Gimp.ParamSpecPalette} specifying a
+     * Creates a new `GimpParamSpecPalette` specifying a
      * {@link Palette} property. See also {@link Gimp.param_spec_resource}.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
@@ -6373,7 +6812,7 @@ export namespace Gimp {
      * @param default_value Default palette.
      * @param default_to_context Whether the context is the context's palette.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecPalette}.
+     * @returns The newly created `GimpParamSpecPalette`.
      * @since 3.0
      */
     function param_spec_palette(
@@ -6386,7 +6825,7 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecParasite} specifying a
+     * Creates a new `GimpParamSpecParasite` specifying a
      * {@link Parasite} property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -6394,7 +6833,7 @@ export namespace Gimp {
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecParasite}.
+     * @returns The newly created `GimpParamSpecParasite`.
      * @since 2.4
      */
     function param_spec_parasite(
@@ -6404,7 +6843,7 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecPath} specifying a
+     * Creates a new `GimpParamSpecPath` specifying a
      * {@link Path} property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -6413,7 +6852,7 @@ export namespace Gimp {
      * @param blurb Description of the property specified.
      * @param none_ok Whether no is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecPath}.
+     * @returns The newly created `GimpParamSpecPath`.
      * @since 3.0
      */
     function param_spec_path(
@@ -6424,7 +6863,7 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecPattern} specifying a
+     * Creates a new `GimpParamSpecPattern` specifying a
      * {@link Pattern} property. See also {@link Gimp.param_spec_resource}.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
@@ -6433,7 +6872,7 @@ export namespace Gimp {
      * @param default_value Default pattern.
      * @param default_to_context Whether the context is the context's pattern.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecPattern}.
+     * @returns The newly created `GimpParamSpecPattern`.
      * @since 3.0
      */
     function param_spec_pattern(
@@ -6446,7 +6885,27 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecResource} specifying a {@link Resource} property.
+     * Creates a new `GimpParamSpecRasterizable` specifying a
+     * {@link Rasterizable} property.
+     *
+     * See `g_param_spec_internal()` for details on property names.
+     * @param name Canonical name of the property specified.
+     * @param nick Nick name of the property specified.
+     * @param blurb Description of the property specified.
+     * @param none_ok Whether no is a valid value.
+     * @param flags Flags for the property specified.
+     * @returns The newly created `GimpParamSpecRasterizable`.
+     * @since 3.2
+     */
+    function param_spec_rasterizable(
+        name: string,
+        nick: string,
+        blurb: string,
+        none_ok: boolean,
+        flags: GObject.ParamFlags | null,
+    ): GObject.ParamSpec;
+    /**
+     * Creates a new `GimpParamSpecResource` specifying a {@link Resource} property.
      * See {@link GObject.ParamSpec.internal} for details on property names.
      *
      * `default_to_context` cannot be `true` for a `resource_type` of value
@@ -6462,7 +6921,7 @@ export namespace Gimp {
      * @param default_value Default resource.
      * @param default_to_context Whether the context is the context's resource                      for the given `resource_type`.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecResource}.
+     * @returns The newly created `GimpParamSpecResource`.
      * @since 3.0
      */
     function param_spec_resource(
@@ -6476,7 +6935,15 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecSelection} specifying a
+     * @param pspec
+     */
+    function param_spec_resource_defaults_to_context(pspec: GObject.ParamSpec): boolean;
+    /**
+     * @param pspec
+     */
+    function param_spec_resource_none_allowed(pspec: GObject.ParamSpec): boolean;
+    /**
+     * Creates a new `GimpParamSpecSelection` specifying a
      * {@link Selection} property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -6485,7 +6952,7 @@ export namespace Gimp {
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecSelection}.
+     * @returns The newly created `GimpParamSpecSelection`.
      * @since 3.0
      */
     function param_spec_selection(
@@ -6496,7 +6963,7 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecTextLayer} specifying a
+     * Creates a new `GimpParamSpecTextLayer` specifying a
      * {@link TextLayer} property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -6505,7 +6972,7 @@ export namespace Gimp {
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecTextLayer}.
+     * @returns The newly created `GimpParamSpecTextLayer`.
      * @since 3.0
      */
     function param_spec_text_layer(
@@ -6538,7 +7005,19 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new {@link Gimp.ParamSpecValueArray} specifying a
+     * @param pspec a {@link GObject.ParamSpec} to hold an {@link Gimp.Unit} value.
+     * @returns `true` if the {@link Gimp.Unit.percent} unit is allowed.
+     * @since 3.0
+     */
+    function param_spec_unit_percent_allowed(pspec: GObject.ParamSpec): boolean;
+    /**
+     * @param pspec a {@link GObject.ParamSpec} to hold an {@link Gimp.Unit} value.
+     * @returns `true` if the {@link Gimp.Unit.pixel} unit is allowed.
+     * @since 3.0
+     */
+    function param_spec_unit_pixel_allowed(pspec: GObject.ParamSpec): boolean;
+    /**
+     * Creates a new `GimpParamSpecValueArray` specifying a
      * {@link GObject.ValueArray} property.
      *
      * See `g_param_spec_internal()` for details on property names.
@@ -6547,7 +7026,7 @@ export namespace Gimp {
      * @param blurb Description of the property specified.
      * @param element_spec {@link GObject.ParamSpec} the contained array's elements                have comply to, or `null`.
      * @param flags Flags for the property specified.
-     * @returns The newly created {@link Gimp.ParamSpecValueArray}.
+     * @returns The newly created `GimpParamSpecValueArray`.
      * @since 3.0
      */
     function param_spec_value_array(
@@ -6555,6 +7034,32 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         element_spec: GObject.ParamSpec | null,
+        flags: GObject.ParamFlags | null,
+    ): GObject.ParamSpec;
+    /**
+     * @param pspec a {@link GObject.ParamSpec} to hold a `GimpParamSpecValueArray` value.
+     * @returns param spec for elements of the value array.
+     * @since 3.0
+     */
+    function param_spec_value_array_get_element_spec(pspec: GObject.ParamSpec): GObject.ParamSpec;
+    /**
+     * Creates a new `GimpParamSpecVectorLayer` specifying a
+     * {@link VectorLayer} property.
+     *
+     * See `g_param_spec_internal()` for details on property names.
+     * @param name Canonical name of the property specified.
+     * @param nick Nick name of the property specified.
+     * @param blurb Description of the property specified.
+     * @param none_ok Whether no is a valid value.
+     * @param flags Flags for the property specified.
+     * @returns The newly created `GimpParamSpecVectorLayer`.
+     * @since 3.2
+     */
+    function param_spec_vector_layer(
+        name: string,
+        nick: string,
+        blurb: string,
+        none_ok: boolean,
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
@@ -6569,12 +7074,13 @@ export namespace Gimp {
      * Retrieve a complete listing of the available patterns.
      *
      * This procedure returns a complete listing of available GIMP
-     * patterns. Each name returned can be used as input to the
-     * `gimp_context_set_pattern()`.
+     * patterns.
+     * Each pattern returned can be used as input to
+     * {@link Gimp.context_set_pattern}.
      * @param filter An optional regular expression used to filter the list.
-     * @returns The list of pattern names.          The returned value must be freed with `g_strfreev()`.
+     * @returns The list of patterns.          The returned value must be freed with `g_free()`.
      */
-    function patterns_get_list(filter: string): string[];
+    function patterns_get_list(filter?: string | null): Pattern[];
     /**
      * Invokes the Gimp pattern selection.
      *
@@ -6588,8 +7094,8 @@ export namespace Gimp {
     function patterns_popup(
         pattern_callback: string,
         popup_title: string,
-        initial_pattern: Pattern,
-        parent_window: GLib.Bytes | Uint8Array,
+        initial_pattern?: Pattern | null,
+        parent_window?: GLib.Bytes | null,
     ): boolean;
     /**
      * Refresh current patterns. This function always succeeds.
@@ -6659,20 +7165,32 @@ export namespace Gimp {
      */
     function pixels_to_units(pixels: number, unit: Unit, resolution: number): number;
     /**
+     * Do not use this function. It is deprecated and will be removed
+     * eventually.
      * @param params
+     * @deprecated since 3.2: Only for core use.
      */
     function pixpipe_params_build(params: PixPipeParams): string;
     /**
+     * Do not use this function. It is deprecated and will be removed
+     * eventually.
      * @param params
+     * @deprecated since 3.2: Only for core use.
      */
     function pixpipe_params_free(params: PixPipeParams): void;
     /**
+     * Do not use this function. It is deprecated and will be removed
+     * eventually.
      * @param params
+     * @deprecated since 3.2: Only for core use.
      */
     function pixpipe_params_init(params: PixPipeParams): void;
     /**
+     * Do not use this function. It is deprecated and will be removed
+     * eventually.
      * @param parameters
      * @param params
+     * @deprecated since 3.2: Only for core use.
      */
     function pixpipe_params_parse(parameters: string, params: PixPipeParams): void;
     /**
@@ -6752,7 +7270,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.4
      */
-    function progress_set_text(message: string): boolean;
+    function progress_set_text(message?: string | null): boolean;
     /**
      * Uninstalls a temporary progress procedure that was installed using
      * `gimp_progress_install()`.
@@ -6841,37 +7359,6 @@ export namespace Gimp {
         width2: number,
         height2: number,
     ): [number, number, number, number];
-    /**
-     * @param rgba1
-     * @param rgba2
-     */
-    function rgba_distance(rgba1: RGB, rgba2: RGB): number;
-    /**
-     * Gets the 8bit red, green, blue and alpha components of `rgba`.
-     * @param rgba a {@link Gimp.RGB} struct
-     */
-    function rgba_get_uchar(rgba: RGB): [number, number, number, number];
-    /**
-     * Sets the red, green, blue and alpha components of `rgb`. The values
-     * should be between 0.0 and 1.0 but there is no check to enforce this
-     * and the values are set exactly as they are passed in.
-     * @param rgba a {@link Gimp.RGB} struct
-     * @param red the red component
-     * @param green the green component
-     * @param blue the blue component
-     * @param alpha the alpha component
-     */
-    function rgba_set(rgba: RGB, red: number, green: number, blue: number, alpha: number): void;
-    /**
-     * Sets the red, green, blue and alpha components of `rgba` from 8bit
-     * values (0 to 255).
-     * @param rgba a {@link Gimp.RGB} struct
-     * @param red the red component
-     * @param green the green component
-     * @param blue the blue component
-     * @param alpha the alpha component
-     */
-    function rgba_set_uchar(rgba: RGB, red: number, green: number, blue: number, alpha: number): void;
     /**
      * Returns whether or not GimpDialog should automatically add a help
      * button if help_func and help_id are given.
@@ -7011,7 +7498,7 @@ export namespace Gimp {
      * @param extension The extension the file will have.
      * @returns The new temp file.
      */
-    function temp_file(extension: string): Gio.File;
+    function temp_file(extension?: string | null): Gio.File;
     /**
      * Add text at the specified location as a floating selection or a new
      * layer.
@@ -7125,7 +7612,7 @@ export namespace Gimp {
      * Converts a `value` specified in `unit` to pixels.
      * @param value value in units
      * @param unit unit of `value`
-     * @param resolution resloution in DPI
+     * @param resolution resolution in DPI
      * @returns `value` converted to pixels.
      * @since 2.8
      */
@@ -7134,11 +7621,24 @@ export namespace Gimp {
      * Converts a `value` specified in `unit` to points.
      * @param value value in units
      * @param unit unit of `value`
-     * @param resolution resloution in DPI
+     * @param resolution resolution in DPI
      * @returns `value` converted to points.
      * @since 2.8
      */
     function units_to_points(value: number, unit: Unit, resolution: number): number;
+    /**
+     * Returns whether file plug-ins should update the
+     * image's metadata.
+     *
+     * Note that metadata that reflects the image characteristics
+     * will still be updated even if this is set to FALSE. This only
+     * concerns metadata changes that are nonessential, like setting
+     * GIMP in Exif.Image.Software, synchronizing the comment with its
+     * equivalent metadata tags, etc.
+     * @returns TRUE if preferences are set to update the metadata.
+     * @since 3.1
+     */
+    function update_metadata(): boolean;
     /**
      * Returns the timestamp of the user interaction that should be set on
      * the plug-in window. This is handled transparently, plug-in authors
@@ -7159,11 +7659,11 @@ export namespace Gimp {
      */
     function utf8_strtrim(str: string | null, max_chars: number): string;
     /**
-     * Gets the contents of a `GIMP_TYPE_FLOAT_ARRAY` {@link GObject.Value}
-     * @param value A valid value of type `GIMP_TYPE_FLOAT_ARRAY`
+     * Gets the contents of a `GIMP_TYPE_DOUBLE_ARRAY` {@link GObject.Value}
+     * @param value A valid value of type `GIMP_TYPE_DOUBLE_ARRAY`
      * @returns The contents of `value`
      */
-    function value_dup_float_array(value: GObject.Value | any): number[];
+    function value_dup_double_array(value: GObject.Value | any): number[];
     /**
      * Gets the contents of a `GIMP_TYPE_INT32_ARRAY` {@link GObject.Value}
      * @param value A valid value of type `GIMP_TYPE_INT32_ARRAY`
@@ -7171,16 +7671,11 @@ export namespace Gimp {
      */
     function value_dup_int32_array(value: GObject.Value | any): number[];
     /**
-     * @param value a {@link GObject.Value} holding a object {@link Gimp.ObjectArray}.
-     * @returns a deep copy of the array of objects.
-     */
-    function value_dup_object_array<T = GObject.Object>(value: GObject.Value | any): T;
-    /**
-     * Gets the contents of a `GIMP_TYPE_FLOAT_ARRAY` {@link GObject.Value}
-     * @param value A valid value of type `GIMP_TYPE_FLOAT_ARRAY`
+     * Gets the contents of a `GIMP_TYPE_DOUBLE_ARRAY` {@link GObject.Value}
+     * @param value A valid value of type `GIMP_TYPE_DOUBLE_ARRAY`
      * @returns The contents of `value`
      */
-    function value_get_float_array(value: GObject.Value | any): number[];
+    function value_get_double_array(value: GObject.Value | any): number[];
     /**
      * Gets the contents of a `GIMP_TYPE_INT32_ARRAY` {@link GObject.Value}
      * @param value A valid value of type `GIMP_TYPE_INT32_ARRAY`
@@ -7188,16 +7683,11 @@ export namespace Gimp {
      */
     function value_get_int32_array(value: GObject.Value | any): number[];
     /**
-     * @param value a {@link GObject.Value} holding a object {@link Gimp.ObjectArray}.
-     * @returns the internal array of objects.
-     */
-    function value_get_object_array<T = GObject.Object>(value: GObject.Value | any): T;
-    /**
      * Sets the contents of `value` to `data`.
-     * @param value A valid value of type `GIMP_TYPE_FLOAT_ARRAY`
-     * @param data A `gfloat` array
+     * @param value A valid value of type `GIMP_TYPE_DOUBLE_ARRAY`
+     * @param data A `gdouble` array
      */
-    function value_set_float_array(value: GObject.Value | any, data: number[]): void;
+    function value_set_double_array(value: GObject.Value | any, data: number[]): void;
     /**
      * Sets the contents of `value` to `data`.
      * @param value A valid value of type `GIMP_TYPE_INT32_ARRAY`
@@ -7205,22 +7695,11 @@ export namespace Gimp {
      */
     function value_set_int32_array(value: GObject.Value | any, data: number[]): void;
     /**
-     * Sets the contents of `value` to `data`.
-     * @param value A valid value of type `GIMP_TYPE_OBJECT_ARRAY`
-     * @param object_type The {@link GObject.GType} of the object elements
-     * @param data A {@link GObject.Object} array
-     */
-    function value_set_object_array(
-        value: GObject.Value | any,
-        object_type: GObject.GType,
-        data: GObject.Object[],
-    ): void;
-    /**
      * Sets the contents of `value` to `data`, without copying the data.
-     * @param value A valid value of type `GIMP_TYPE_FLOAT_ARRAY`
-     * @param data A `gfloat` array
+     * @param value A valid value of type `GIMP_TYPE_DOUBLE_ARRAY`
+     * @param data A `gdouble` array
      */
-    function value_set_static_float_array(value: GObject.Value | any, data: number[]): void;
+    function value_set_static_double_array(value: GObject.Value | any, data: number[]): void;
     /**
      * Sets the contents of `value` to `data`, without copying the data.
      * @param value A valid value of type `GIMP_TYPE_INT32_ARRAY`
@@ -7228,39 +7707,17 @@ export namespace Gimp {
      */
     function value_set_static_int32_array(value: GObject.Value | any, data: number[]): void;
     /**
-     * Sets the contents of `value` to `data`, without copying the data.
-     * @param value A valid value of type `GIMP_TYPE_OBJECT_ARRAY`
-     * @param object_type The {@link GObject.GType} of the object elements
-     * @param data A {@link GObject.Object} array
-     */
-    function value_set_static_object_array(
-        value: GObject.Value | any,
-        object_type: GObject.GType,
-        data: GObject.Object[],
-    ): void;
-    /**
      * Sets the contents of `value` to `data`, and takes ownership of `data`.
-     * @param value A valid value of type `GIMP_TYPE_FLOAT_ARRAY`
-     * @param data A `gfloat` array
+     * @param value A valid value of type `GIMP_TYPE_DOUBLE_ARRAY`
+     * @param data A `gdouble` array
      */
-    function value_take_float_array(value: GObject.Value | any, data: number[]): void;
+    function value_take_double_array(value: GObject.Value | any, data: number[]): void;
     /**
      * Sets the contents of `value` to `data`, and takes ownership of `data`.
      * @param value A valid value of type %GIMP_TYPE_int32_ARRAY
      * @param data A `gint32` array
      */
     function value_take_int32_array(value: GObject.Value | any, data: number[]): void;
-    /**
-     * Sets the contents of `value` to `data`, and takes ownership of `data`.
-     * @param value A valid value of type `GIMP_TYPE_OBJECT_ARRAY`
-     * @param object_type The {@link GObject.GType} of the object elements
-     * @param data A {@link GObject.Object} array
-     */
-    function value_take_object_array(
-        value: GObject.Value | any,
-        object_type: GObject.GType,
-        data: GObject.Object[],
-    ): void;
     /**
      * Computes the sum of two 2D vectors. The resulting {@link Gimp.Vector2} is
      * stored in `result`.
@@ -7379,8 +7836,8 @@ export namespace Gimp {
     /**
      * @gir-type Callback
      */
-    interface ExportOptionsEditFunc {
-        (procedure: Procedure, config: ProcedureConfig, options: ExportOptions): void;
+    interface ExportGetCapabilitiesFunc {
+        (procedure: Procedure, config: ProcedureConfig, options: ExportOptions): ExportCapabilities;
     }
     /**
      * @gir-type Callback
@@ -7463,12 +7920,6 @@ export namespace Gimp {
     /**
      * @gir-type Callback
      */
-    interface ResourceChoosedCallback {
-        (resource: Resource, is_dialog_closing: boolean): void;
-    }
-    /**
-     * @gir-type Callback
-     */
     interface RunExportFunc {
         (
             procedure: Procedure,
@@ -7534,19 +7985,20 @@ export namespace Gimp {
         ): ValueArray;
     }
     /**
-     * @gir-type Callback
-     */
-    interface SignalHandlerFunc {
-        (signum: number): void;
-    }
-    /**
      * @gir-type Alias
      */
-    type FloatArray = object | null;
+    type DoubleArray = object | null;
     /**
      * @gir-type Alias
      */
     type Int32Array = object | null;
+    /**
+     * @gir-type Flags
+     */
+    export namespace ExportCapabilities {
+        export const $gtype: GObject.GType<ExportCapabilities>;
+    }
+
     /**
      * The types of images and layers an export procedure can handle
      * @gir-type Flags
@@ -7660,6 +8112,11 @@ export namespace Gimp {
          *                                    Since: 3.0
          */
         COMMENT,
+        /**
+         * Update metadata automatically
+         *                                    Since: 3.2
+         */
+        UPDATE,
         /**
          * Save all of the above
          */
@@ -7891,7 +8348,7 @@ export namespace Gimp {
          * Gets the aspect ratio of a generated brush.
          *
          * Gets the aspect ratio of a generated brush. Returns an error when
-         * called for a non-parametric brush. The aspect ratio is a float
+         * called for a non-parametric brush. The aspect ratio is a double
          * between 0.0 and 1000.0.
          * @returns TRUE on success.
          */
@@ -7920,7 +8377,7 @@ export namespace Gimp {
          * Gets the hardness of a generated brush.
          *
          * Gets the hardness of a generated brush. The hardness of a brush is
-         * the amount its intensity fades at the outside edge, as a float
+         * the amount its intensity fades at the outside edge, as a double
          * between 0.0 and 1.0. Returns an error when called for a
          * non-parametric brush.
          * @returns TRUE on success.
@@ -8029,8 +8486,8 @@ export namespace Gimp {
         /**
          * Sets the radius of a generated brush.
          *
-         * Sets the radius for a generated brush. Clamps radius to [0.0,
-         * 32767.0]. Returns the clamped value. Returns an error when brush is
+         * Sets the radius for a generated brush. Clamps radius to [0.1,
+         * 4000.0]. Returns the clamped value. Returns an error when brush is
          * non-parametric or not editable.
          * @param radius_in The desired brush radius in pixel.
          * @returns TRUE on success.
@@ -8165,7 +8622,7 @@ export namespace Gimp {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -8220,7 +8677,7 @@ export namespace Gimp {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8295,7 +8752,7 @@ export namespace Gimp {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8612,8 +9069,10 @@ export namespace Gimp {
          * Copy a channel.
          *
          * This procedure copies the specified channel and returns the copy.
+         *
          * The new channel still needs to be added to the image, as this is not
-         * automatic. Add the new channel with `gimp_image_insert_channel()`.
+         * automatic. Add the new channel with
+         * {@link Gimp.Image.insert_channel}.
          * @returns The newly copied channel.
          */
         copy(): Channel;
@@ -9091,7 +9550,7 @@ export namespace Gimp {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -9146,7 +9605,7 @@ export namespace Gimp {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -9221,7 +9680,7 @@ export namespace Gimp {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9724,14 +10183,6 @@ export namespace Gimp {
          */
         static can_gegl_copy(src_profile: ColorProfile, dest_profile: ColorProfile): boolean;
 
-        // Virtual methods
-
-        /**
-         * @param fraction
-         * @virtual
-         */
-        vfunc_progress(fraction: number): void;
-
         // Methods
 
         /**
@@ -9853,6 +10304,261 @@ export namespace Gimp {
          * @param recode whether `path` is in filesystem encoding or UTF-8
          */
         static unexpand(path: string, recode: boolean): string;
+    }
+
+    namespace Curve {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when any points are added, deleted, or edited in `curve`.
+             * @signal
+             * @since 3.2
+             * @run-first
+             */
+            'points-changed': () => void;
+            /**
+             * Emitted when any sample is edited, or if the number of samples
+             * changed, in `curve`.
+             * @signal
+             * @since 3.2
+             * @run-first
+             */
+            'samples-changed': () => void;
+            'notify::curve-type': (pspec: GObject.ParamSpec) => void;
+            'notify::n-samples': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            curve_type: CurveType;
+            curveType: CurveType;
+            n_samples: number;
+            nSamples: number;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class Curve extends GObject.Object {
+        static $gtype: GObject.GType<Curve>;
+
+        // Properties
+
+        /**
+         * The curve type.
+         * @since 3.2
+         */
+        get curve_type(): CurveType;
+        set curve_type(val: CurveType);
+        /**
+         * The curve type.
+         * @since 3.2
+         */
+        get curveType(): CurveType;
+        set curveType(val: CurveType);
+        /**
+         * The number of samples this {@link Gimp.CurveType.FREE} curve is
+         * split into.
+         * @since 3.2
+         */
+        get n_samples(): number;
+        set n_samples(val: number);
+        /**
+         * The number of samples this {@link Gimp.CurveType.FREE} curve is
+         * split into.
+         * @since 3.2
+         */
+        get nSamples(): number;
+        set nSamples(val: number);
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: Curve.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<Curve.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): Curve;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof Curve.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Curve.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof Curve.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Curve.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof Curve.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<Curve.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Add a new point in a {@link Gimp.CurveType.SMOOTH} `curve`, with
+         * coordinates `(x, y)`. Any value outside the `[0.0, 1.0]` range will
+         * be silently clamped.
+         *
+         * The returned identifier can later be used e.g. in
+         * {@link Gimp.Curve.get_point} or other functions taking a `point` number
+         * as argument.
+         *
+         * Calling this may change identifiers for other points and the total
+         * number of points in this `curve`. Any such information you currently
+         * hold should be considered invalid once the curve is changed.
+         * @param x the point abscissa on a `[0.0, 1.0]` range.
+         * @param y the point ordinate on a `[0.0, 1.0]` range.
+         * @returns a point identifier to be used in other functions.
+         */
+        add_point(x: number, y: number): number;
+        /**
+         * Deletes all points from a {@link Gimp.CurveType.SMOOTH} `curve`.
+         *
+         * A subsequent call to {@link Gimp.Curve.get_n_points} will return 0.
+         */
+        clear_points(): void;
+        /**
+         * Deletes a specific `point` from a {@link Gimp.CurveType.SMOOTH} `curve`.
+         *
+         * The `point` identifier must be between 0 and the value returned by
+         * {@link Gimp.Curve.get_n_points}.
+         *
+         * You may also use a point identifier as returned by
+         * {@link Gimp.Curve.add_point}, which will correspond to the same
+         * point, unless you modified the `curve` since (e.g. by calling
+         * `gimp_curve_add_point` again, or by deleting or modifying a point).
+         * @param point a point identifier.
+         */
+        delete_point(point: number): void;
+        /**
+         * @returns the `curve` type.
+         */
+        get_curve_type(): CurveType;
+        /**
+         * Gets the number of points in a {@link Gimp.CurveType.SMOOTH} curve. Note that it will always
+         * be 0 for a {@link Gimp.CurveType.FREE} curve.
+         *
+         * This can later be used e.g. in {@link Gimp.Curve.get_point} as points
+         * are numbered from 0 (included) to the returned number (excluded).
+         *
+         * Note that the {@link Gimp.Curve} API is not thread-safe. So be careful that
+         * the information on the number of points is still valid when you use
+         * it (you may have added or removed points in particular).
+         * @returns the number of points in a smooth curve.
+         */
+        get_n_points(): number;
+        /**
+         * Gets the number of samples in a {@link Gimp.CurveType.FREE} curve.
+         * @returns the number of samples in a freehand curve.
+         */
+        get_n_samples(): number;
+        /**
+         * Gets the `point` coordinates for a {@link Gimp.CurveType.SMOOTH} `curve`.
+         *
+         * The `point` identifier must be between 0 and the value returned by
+         * {@link Gimp.Curve.get_n_points}.
+         *
+         * You may also use a point identifier as returned by
+         * {@link Gimp.Curve.add_point}, which will correspond to the same
+         * point, unless you modified the `curve` since (e.g. by calling
+         * `gimp_curve_add_point` again, or by deleting or modifying a point).
+         * @param point a point identifier.
+         */
+        get_point(point: number): [number, number];
+        /**
+         * @param point a point identifier.
+         * @returns the `point` type of a {@link Gimp.CurveType.SMOOTH} `curve`.
+         */
+        get_point_type(point: number): CurvePointType;
+        /**
+         * Gets the ordinate `y` value corresponding to the passed `x` abscissa
+         * value, in a {@link Gimp.CurveType.FREE} `curve`.
+         *
+         * Note that while the `y` coordinate will be stored exactly, the `x`
+         * coordinate will be rounded to the closest curve sample on the
+         * abscissa. The more sample was set with
+         * {@link Gimp.Curve.set_n_samples}, the more precise the rounding will
+         * be.
+         * @param x an abscissa on a `[0.0, 1.0]` range.
+         */
+        get_sample(x: number): number;
+        /**
+         * If this function returns `true`, then the curve maps each value to
+         * itself. If it returns `false`, then this assumption can not be made.
+         * @returns `true` if the curve is an identity mapping, `false` otherwise.
+         */
+        is_identity(): boolean;
+        /**
+         * Sets the curve type of `curve`, as follows:
+         *
+         * - Nothing happens if the curve type is unchanged.
+         * - If you change to {@link Gimp.CurveType.SMOOTH}, it will create a
+         *   non-specified number of points and will approximate their position
+         *   along the freehand curve. All default points will be
+         *   {@link Gimp.CurvePointType.SMOOTH}.
+         * - If you change to {@link Gimp.CurveType.FREE}, all existing points
+         *   will be cleared.
+         * @param curve_type the new curve type.
+         */
+        set_curve_type(curve_type: CurveType | null): void;
+        /**
+         * Sets the number of sample in a {@link Gimp.CurveType.FREE} `curve`.
+         *
+         * Samples will be positioned on the curve abscissa at regular interval.
+         * The more samples, the more your curve will have details. Currently,
+         * the value of `n_samples` is limited and must be between `2^8` and `2^12`.
+         *
+         * Note that changing the number of samples will reset the curve to an
+         * identity curve.
+         * @param n_samples the number of samples.
+         */
+        set_n_samples(n_samples: number): void;
+        /**
+         * Sets the `point` coordinates in a {@link Gimp.CurveType.SMOOTH} `curve`.
+         * Any value outside the `[0.0, 1.0]` range will be silently clamped.
+         * @param point a point identifier.
+         * @param x the point abscissa on a `[0.0, 1.0]` range.
+         * @param y the point ordinate on a `[0.0, 1.0]` range.
+         */
+        set_point(point: number, x: number, y: number): void;
+        /**
+         * Sets the `point` type in a {@link Gimp.CurveType.SMOOTH} `curve`.
+         * @param point a point identifier.
+         * @param type a point type.
+         */
+        set_point_type(point: number, type: CurvePointType | null): void;
+        /**
+         * Sets a sample in a {@link Gimp.CurveType.FREE} `curve`, with
+         * coordinates `(x, y)`.
+         *
+         * Note that while the `y` coordinate will be stored exactly, the `x`
+         * coordinate will be rounded to the closest curve sample on the
+         * abscissa. The more sample was set with
+         * {@link Gimp.Curve.set_n_samples}, the more precise the rounding will
+         * be.
+         * @param x the point abscissa on a `[0.0, 1.0]` range.
+         * @param y the point ordinate on a `[0.0, 1.0]` range.
+         */
+        set_sample(x: number, y: number): void;
     }
 
     namespace Display {
@@ -10070,6 +10776,19 @@ export namespace Gimp {
         // Methods
 
         /**
+         * This procedure appends the specified drawable effect at the top of the
+         * effect list of `drawable`.
+         *
+         * The `drawable` argument must be the same as the one used when you
+         * created the effect with {@link Gimp.DrawableFilter.new}.
+         * Some effects may be slower than others to render. In order to
+         * minimize processing time, it is preferred to customize the
+         * operation's arguments as received with
+         * {@link Gimp.DrawableFilter.get_config} before adding the effect.
+         * @param filter The drawable filter to append.
+         */
+        append_filter(filter: DrawableFilter): void;
+        /**
          * Modify brightness/contrast in the specified drawable.
          *
          * This procedures allows the brightness and contrast of the specified
@@ -10136,11 +10855,16 @@ export namespace Gimp {
          * Modifies the intensity curve(s) for specified drawable.
          *
          * Modifies the intensity mapping for one channel in the specified
-         * drawable. The channel can be either an intensity component, or the
-         * value. The 'points' parameter is an array of doubles which define a
-         * set of control points which describe a Catmull Rom spline which
-         * yields the final intensity curve. Use the
-         * `gimp_drawable_curves_explicit()` function to explicitly modify
+         * `drawable`. The `channel` can be either an intensity component, or the
+         * value.
+         *
+         * The `points` parameter is an array of doubles in the range `[0, 1]`
+         * which define a set of control points which describe a Catmull Rom
+         * spline which yields the final intensity curve. Since every point has
+         * 2 coordinates, the size of `points` (`num_coordinates`) must be a
+         * multiple of 2, equal or bigger than 4 (i.e. a minimum of 2 points).
+         *
+         * Use {@link Gimp.Drawable.curves_explicit} to explicitly modify
          * intensity levels.
          * @param channel The channel to modify.
          * @param points The spline control points: { cp1.x, cp1.y, cp2.x, cp2.y, ... }.
@@ -10331,8 +11055,9 @@ export namespace Gimp {
         /**
          * Extract the foreground of a drawable using a given trimap.
          *
-         * Image Segmentation by Uniform Color Clustering, see
-         * https://www.inf.fu-berlin.de/inst/pubs/tr-b-05-07.pdf
+         * This procedure extracts the foreground from `drawable` using `mask` as
+         * a trimap. Set white as foreground, black as background and uncertain
+         * pixels as any other value, for the tri-map.
          * @param mode The algorithm to use.
          * @param mask Tri-Map.
          * @returns TRUE on success.
@@ -10363,6 +11088,15 @@ export namespace Gimp {
          * @returns The {@link Gegl.Buffer}. See Also: `gimp_drawable_get_shadow_buffer()`
          */
         get_buffer(): Gegl.Buffer;
+        /**
+         * Returns the list of filters applied to the drawable.
+         *
+         * This procedure returns the list of filters which are currently
+         * applied non-destructively to `drawable`. The order of filters is from
+         * topmost to bottommost.
+         * @returns The list of filters on the drawable.          The returned value must be freed with `g_free()`.
+         */
+        get_filters(): DrawableFilter[];
         /**
          * Returns the {@link Babl.Object} format of the drawable.
          * @returns The {@link Babl.Object} format.
@@ -10643,6 +11377,21 @@ export namespace Gimp {
          */
         mask_intersect(): [boolean, number, number, number, number];
         /**
+         * This procedure applies the specified drawable effect on `drawable`
+         * and merge it (therefore before any non-destructive effects are
+         * computed).
+         *
+         * The `drawable` argument must be the same as the one used when you
+         * created the effect with {@link Gimp.DrawableFilter.new}.
+         * Once this is run, `filter` is not valid anymore and you should not
+         * try to do anything with it. In particular, you must customize the
+         * operation's arguments as received with
+         * {@link Gimp.DrawableFilter.get_config} or set the filter's opacity
+         * and blend mode before merging the effect.
+         * @param filter The drawable filter to merge.
+         */
+        merge_filter(filter: DrawableFilter): void;
+        /**
          * Merge the layer effect filters to the specified drawable.
          *
          * This procedure combines the contents of the drawable's filter stack
@@ -10673,11 +11422,18 @@ export namespace Gimp {
          * specified by the 'fill-type' parameter.
          * @param wrap_around wrap image around or fill vacated regions.
          * @param fill_type fill vacated regions of drawable with background or transparent.
+         * @param color fills in the background color when fill_type is set to OFFSET-COLOR.
          * @param offset_x offset by this amount in X direction.
          * @param offset_y offset by this amount in Y direction.
          * @returns TRUE on success.
          */
-        offset(wrap_around: boolean, fill_type: OffsetType | null, offset_x: number, offset_y: number): boolean;
+        offset(
+            wrap_around: boolean,
+            fill_type: OffsetType | null,
+            color: Gegl.Color,
+            offset_x: number,
+            offset_y: number,
+        ): boolean;
         /**
          * Posterize the specified drawable.
          *
@@ -10769,6 +11525,305 @@ export namespace Gimp {
         update(x: number, y: number, width: number, height: number): boolean;
     }
 
+    namespace DrawableFilter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            id: number;
+        }
+    }
+
+    /**
+     * Operations on drawable filters: creation, editing.
+     * @gir-type Class
+     */
+    class DrawableFilter extends GObject.Object {
+        static $gtype: GObject.GType<DrawableFilter>;
+
+        // Properties
+
+        /**
+         * @construct-only
+         */
+        get id(): number;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: DrawableFilter.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<DrawableFilter.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](drawable: Drawable, operation_name: string, name?: string | null): DrawableFilter;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof DrawableFilter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DrawableFilter.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof DrawableFilter.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DrawableFilter.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof DrawableFilter.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<DrawableFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * @param filter_id The %GimpDrawableFilter id.
+         */
+        static get_by_id(filter_id: number): DrawableFilter | null;
+        /**
+         * Returns `true` if the drawable filter ID is valid.
+         *
+         * This procedure checks if the given drawable filter ID is valid and
+         * refers to an existing filter.
+         * @param filter_id The filter ID to check.
+         */
+        static id_is_valid(filter_id: number): boolean;
+        /**
+         * Get a list of all available GEGL operation names for drawable
+         * filters.
+         *
+         * This procedure returns a list of all GEGL operation names available
+         * for use with drawable filters.
+         */
+        static operation_get_available(): string[];
+        /**
+         * Get information about a GEGL operation.
+         *
+         * This procedure returns information about a GEGL operation. The
+         * content of the list of information can vary across versions and
+         * currently can contain:
+         * - a human-readable title of the operation, - a description of the
+         * operation's behaviour, - the categories the operation belongs to,
+         * and - the license of the operation.
+         * An operation can belong to no categories or to multiple categories.
+         * Multiple categories are separated by the ':' character.
+         * Some operation's license is not specifically set. In such cases, the
+         * returned license is 'unknown'.
+         * @param operation_name The GEGL operation's name.
+         */
+        static operation_get_details(operation_name: string): [boolean, string[], ValueArray];
+        /**
+         * Get information for all parameters of a GEGL operation.
+         *
+         * This procedure returns a list of all parameters used to configure a
+         * GEGL operation.
+         * Each parameter is represented by GParamSpec.
+         * @param operation_name The GEGL operation's name.
+         */
+        static operation_get_pspecs(operation_name: string): ValueArray;
+
+        // Methods
+
+        /**
+         * Delete a drawable filter.
+         *
+         * This procedure deletes the specified filter. This must not be done
+         * if the drawable whose this filter was applied to was already deleted
+         * or if the drawable was already removed from the image.
+         * Do not use anymore the `filter` object after having deleted it.
+         * @returns TRUE on success.
+         */
+        ['delete'](): boolean;
+        /**
+         * Get the blending mode of the specified filter.
+         *
+         * This procedure returns the specified filter's mode.
+         * @returns The effect blending mode.
+         */
+        get_blend_mode(): LayerMode;
+        /**
+         * Get the {@link Gimp.Config} with properties that match `filter`'s arguments.
+         *
+         * The config object will be created at the first call of this method
+         * and its properties will be synced with the settings of this filter as
+         * set in the core application.
+         *
+         * Further changes to the config's properties are not synced back
+         * immediately with the core application. Use
+         * {@link Gimp.Drawable.update} to trigger an actual update.
+         * @returns The {@link Gimp.DrawableFilterConfig}. Further                           calls will return the same object.
+         */
+        get_config(): DrawableFilterConfig;
+        /**
+         * @returns the drawable's filter ID.
+         */
+        get_id(): number;
+        /**
+         * Get a drawable filter's name.
+         *
+         * This procedure returns the specified filter's name.
+         * Since it is not possible to set a drawable filter's name yet, this
+         * will be the operation's name. Eventually this filter's name will be
+         * a free form field so do not rely on this information for any
+         * processing.
+         * @returns The filter's name.          The returned value must be freed with `g_free()`.
+         */
+        get_name(): string;
+        /**
+         * Get the opacity of the specified filter.
+         *
+         * This procedure returns the specified filter's opacity.
+         * @returns The filter's opacity.
+         */
+        get_opacity(): number;
+        /**
+         * Get a drawable filter's operation name.
+         *
+         * This procedure returns the specified filter's operation name.
+         * @returns The filter's operation name.          The returned value must be freed with `g_free()`.
+         */
+        get_operation_name(): string;
+        /**
+         * Get the visibility of the specified filter.
+         *
+         * This procedure returns the specified filter's visibility.
+         * @returns The filter visibility.
+         */
+        get_visible(): boolean;
+        /**
+         * Returns TRUE if the `drawable_filter` is valid.
+         *
+         * This procedure checks if the given filter is valid and refers to an
+         * existing %GimpDrawableFilter.
+         * @returns Whether `drawable_filter` is valid.
+         */
+        is_valid(): boolean;
+        /**
+         * When a filter has one or several auxiliary inputs, you can use this
+         * function to set them.
+         *
+         * The change is not synced immediately with the core application.
+         * Use {@link Gimp.Drawable.update} to trigger an actual update.
+         * @param input_pad_name name of the filter's input pad.
+         * @param input the drawable to use as auxiliary input.
+         */
+        set_aux_input(input_pad_name: string, input: Drawable): void;
+        /**
+         * This procedure sets the blend mode of `filter`.
+         *
+         * The change is not synced immediately with the core application.
+         * Use {@link Gimp.Drawable.update} to trigger an actual update.
+         * @param mode blend mode.
+         */
+        set_blend_mode(mode: LayerMode | null): void;
+        /**
+         * This procedure sets the opacity of `filter` on a range from 0.0
+         * (transparent) to 1.0 (opaque).
+         *
+         * The change is not synced immediately with the core application.
+         * Use {@link Gimp.Drawable.update} to trigger an actual update.
+         * @param opacity the opacity.
+         */
+        set_opacity(opacity: number): void;
+        /**
+         * Set the visibility of the specified filter.
+         *
+         * This procedure sets the specified filter's visibility.
+         * The drawable won't be immediately rendered. Use
+         * {@link Gimp.Drawable.update} to trigger an update.
+         * @param visible The new filter visibility.
+         * @returns TRUE on success.
+         */
+        set_visible(visible: boolean): boolean;
+        /**
+         * Syncs the {@link Gimp.Config} with properties that match `filter`'s arguments.
+         * This procedure updates the settings of the specified filter all at
+         * once, including the arguments of the {@link Gimp.DrawableFilterConfig}
+         * obtained with {@link Gimp.DrawableFilter.get_config} as well as the
+         * blend mode and opacity.
+         *
+         * In particular, if the image is displayed, rendering will be frozen
+         * and will happen only once for all changed settings.
+         */
+        update(): void;
+    }
+
+    namespace DrawableFilterConfig {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * The base class for {@link DrawableFilter} specific config objects.
+     *
+     * A drawable filter config is created by a {@link DrawableFilter} using
+     * {@link DrawableFilter.get_config} and its properties match the
+     * filter's arguments in number, order and type.
+     * @gir-type Class
+     * @since 3.0
+     */
+    abstract class DrawableFilterConfig extends GObject.Object {
+        static $gtype: GObject.GType<DrawableFilterConfig>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: DrawableFilterConfig.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<DrawableFilterConfig.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof DrawableFilterConfig.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DrawableFilterConfig.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof DrawableFilterConfig.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, DrawableFilterConfig.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof DrawableFilterConfig.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<DrawableFilterConfig.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
     namespace ExportOptions {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -10778,7 +11833,7 @@ export namespace Gimp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            capabilities: number;
+            capabilities: ExportCapabilities;
         }
     }
 
@@ -10803,8 +11858,8 @@ export namespace Gimp {
          * What {@link ExportCapabilities} are supported.
          * @since 3.0.0
          */
-        get capabilities(): number;
-        set capabilities(val: number);
+        get capabilities(): ExportCapabilities;
+        set capabilities(val: ExportCapabilities);
 
         /**
          * Compile-time signal type information.
@@ -10886,7 +11941,7 @@ export namespace Gimp {
         // Constructor properties interface
 
         interface ConstructorProps extends FileProcedure.ConstructorProps {
-            capabilities: number;
+            capabilities: ExportCapabilities;
             supports_comment: boolean;
             supportsComment: boolean;
             supports_exif: boolean;
@@ -10920,8 +11975,8 @@ export namespace Gimp {
          * What {@link Gimp.ExportCapabilities} are supported
          * @since 3.0.0
          */
-        get capabilities(): number;
-        set capabilities(val: number);
+        get capabilities(): ExportCapabilities;
+        set capabilities(val: ExportCapabilities);
         /**
          * Whether the export procedure supports storing a comment.
          * @since 3.0.0
@@ -11071,14 +12126,23 @@ export namespace Gimp {
         get_support_xmp(): boolean;
         /**
          * Sets default {@link Gimp.ExportCapabilities} for image export.
-         * @param capabilities a {@link Gimp.ExportCapabilities} enum
-         * @param edit_func callback function to update export options
-         * @param edit_data_destroy free function for `edit_data`, or `null`
+         *
+         * `capabilities` and `get_capabilities_func` are overlapping arguments.
+         * Either set `capabilities` if your format capabilities are stable or
+         * `get_capabilities_func` if they depend on other options.
+         * If `get_capabilities_func` is set, `capabilities` must be 0.
+         *
+         * If set, `get_capabilities_func` will be called every time an argument
+         * in the {@link Gimp.ProcedureConfig} is edited and it will be used to
+         * edit the export capabilities dynamically.
+         * @param capabilities a {@link Gimp.ExportCapabilities} bitfield.
+         * @param get_capabilities_func callback function to update export options
+         * @param get_capabilities_data_destroy free function for `get_capabilities_data`, or `null`
          */
         set_capabilities(
             capabilities: ExportCapabilities | null,
-            edit_func?: ExportOptionsEditFunc | null,
-            edit_data_destroy?: GLib.DestroyNotify | null,
+            get_capabilities_func?: ExportGetCapabilitiesFunc | null,
+            get_capabilities_data_destroy?: GLib.DestroyNotify | null,
         ): void;
         /**
          * Determine whether `procedure` supports exporting a comment. By default,
@@ -11087,9 +12151,9 @@ export namespace Gimp {
          *
          * This will have several consequences:
          *
-         * - Automatically adds a standard auxiliary argument "save-comment"
-         *   in the end of the argument list of `procedure`, with relevant blurb
-         *   and description.
+         * - Automatically adds a standard argument "include-comment" in the end
+         *   of the argument list of `procedure`, with relevant blurb and
+         *   description.
          * - If used with other gimp_export_procedure_set_support_*() functions,
          *   they will always be ordered the same (the order of the calls don't
          *   matter), keeping all export procedures consistent.
@@ -11099,9 +12163,7 @@ export namespace Gimp {
          * - API from {@link ProcedureConfig} will automatically process these
          *   properties to decide whether to export a given metadata or not.
          *
-         * Note that since this is an auxiliary argument, it won't be part of
-         * the PDB arguments. By default, the value will be
-         * {@link export_comment}.
+         * By default, the value will be {@link export_comment}.
          * @param supports whether a comment can be stored.
          */
         set_support_comment(supports: boolean): void;
@@ -11112,7 +12174,7 @@ export namespace Gimp {
          *
          * This will have several consequences:
          *
-         * - Automatically adds a standard auxiliary argument "save-exif" in the
+         * - Automatically adds a standard argument "include-exif" in the
          *   end of the argument list of `procedure`, with relevant blurb and
          *   description.
          * - If used with other gimp_export_procedure_set_support_*() functions,
@@ -11124,8 +12186,7 @@ export namespace Gimp {
          * - API from {@link ProcedureConfig} will automatically process these
          *   properties to decide whether to export a given metadata or not.
          *
-         * Note that since this is an auxiliary argument, it won't be part of
-         * the PDB arguments. By default, the value will be {@link export_exif}.
+         * By default, the value will be {@link export_exif}.
          * @param supports whether Exif metadata are supported.
          */
         set_support_exif(supports: boolean): void;
@@ -11136,7 +12197,7 @@ export namespace Gimp {
          *
          * This will have several consequences:
          *
-         * - Automatically adds a standard auxiliary argument "save-iptc" in the
+         * - Automatically adds a standard argument "include-iptc" in the
          *   end of the argument list of `procedure`, with relevant blurb and
          *   description.
          * - If used with other gimp_export_procedure_set_support_*() functions,
@@ -11148,8 +12209,7 @@ export namespace Gimp {
          * - API from {@link ProcedureConfig} will automatically process these
          *   properties to decide whether to export a given metadata or not.
          *
-         * Note that since this is an auxiliary argument, it won't be part of
-         * the PDB arguments. By default, the value will be {@link export_iptc}.
+         * By default, the value will be {@link export_iptc}.
          * @param supports whether IPTC metadata are supported.
          */
         set_support_iptc(supports: boolean): void;
@@ -11160,9 +12220,9 @@ export namespace Gimp {
          *
          * This will have several consequences:
          *
-         * - Automatically adds a standard auxiliary argument
-         *   "save-color-profile" in the end of the argument list of `procedure`,
-         *   with relevant blurb and description.
+         * - Automatically adds a standard argument "include-color-profile" in
+         *   the end of the argument list of `procedure`, with relevant blurb and
+         *   description.
          * - If used with other gimp_export_procedure_set_support_*() functions,
          *   they will always be ordered the same (the order of the calls don't
          *   matter), keeping all export procedures consistent.
@@ -11172,8 +12232,7 @@ export namespace Gimp {
          * - API from {@link ProcedureConfig} will automatically process these
          *   properties to decide whether to export a given metadata or not.
          *
-         * Note that since this is an auxiliary argument, it won't be part of
-         * the PDB arguments. By default, the value will be {@link export_color_profile}.
+         * By default, the value will be {@link export_color_profile}.
          * @param supports whether color profiles can be stored.
          */
         set_support_profile(supports: boolean): void;
@@ -11184,8 +12243,8 @@ export namespace Gimp {
          *
          * This will have several consequences:
          *
-         * - Automatically adds a standard auxiliary argument "save-thumbnail"
-         *   in the end of the argument list of `procedure`, with relevant blurb
+         * - Automatically adds a standard argument "include-thumbnail" in the
+         *   end of the argument list of `procedure`, with relevant blurb
          *   and description.
          * - If used with other gimp_export_procedure_set_support_*() functions,
          *   they will always be ordered the same (the order of the calls don't
@@ -11196,9 +12255,7 @@ export namespace Gimp {
          * - API from {@link ProcedureConfig} will automatically process these
          *   properties to decide whether to export a given metadata or not.
          *
-         * Note that since this is an auxiliary argument, it won't be part of
-         * the PDB arguments. By default, the value will be
-         * {@link export_thumbnail}.
+         * By default, the value will be {@link export_thumbnail}.
          * @param supports whether a thumbnail can be stored.
          */
         set_support_thumbnail(supports: boolean): void;
@@ -11209,7 +12266,7 @@ export namespace Gimp {
          *
          * This will have several consequences:
          *
-         * - Automatically adds a standard auxiliary argument "save-xmp" in the
+         * - Automatically adds a standard argument "include-xmp" in the
          *   end of the argument list of `procedure`, with relevant blurb and
          *   description.
          * - If used with other gimp_export_procedure_set_support_*() functions,
@@ -11221,8 +12278,7 @@ export namespace Gimp {
          * - API from {@link ProcedureConfig} will automatically process these
          *   properties to decide whether to export a given metadata or not.
          *
-         * Note that since this is an auxiliary argument, it won't be part of
-         * the PDB arguments. By default, the value will be {@link export_xmp}.
+         * By default, the value will be {@link export_xmp}.
          * @param supports whether XMP metadata are supported.
          */
         set_support_xmp(supports: boolean): void;
@@ -11243,7 +12299,7 @@ export namespace Gimp {
 
     /**
      * File procedures implement file support. They cannot be created directly.
-     * Instead, you will create an instance of one of the sublasses (such as export
+     * Instead, you will create an instance of one of the subclasses (such as export
      * or load procedures). This provides a common interface for file-related
      * functions on these objects.
      * @gir-type Class
@@ -11313,6 +12369,13 @@ export namespace Gimp {
          */
         get_magics(): string;
         /**
+         * Returns whether `procedure` is a meta file procedure as set with
+         * {@link FileProcedure.set_meta}. If `meta_extensions` is not `null`,
+         * the generic extensions will be returned too.
+         * @returns `true` is `procedure` is a meta file procedure.
+         */
+        get_meta(): [boolean, string];
+        /**
          * Returns the procedure's mime-type as set with
          * {@link FileProcedure.set_mime_types}.
          * @returns The procedure's registered mime-types.
@@ -11375,6 +12438,22 @@ export namespace Gimp {
          * @param magics A comma-separated list of magic file information (i.e. "0,string,GIF").
          */
         set_magics(magics: string): void;
+        /**
+         * Some {@link Gimp.LoadProcedure} or {@link Gimp.ExportProcedure} may
+         * actually be a *meta* procedure. Meta procedures are typically
+         * supporting container formats which will call another procedure for
+         * the actual format within the container.
+         *
+         * Note that you should still call {@link FileProcedure.set_extensions},
+         * usually with a list of standard full formats, such as "xcf.gz,xcfgz",
+         * or again "hgt.zip". Nevertheless the `meta_extensions` should be only
+         * "gz" or "zip" respectively. This would allow this meta format to work
+         * even on less common combinations. For instance, I could export an
+         * image as "png.gz" even though it is not explicitly listed.
+         * @param is_meta Whether `procedure` is a meta file procedure.
+         * @param meta_extensions A comma separated list of generic extensions this procedure can                   handle (i.e. "gz").
+         */
+        set_meta(is_meta: boolean, meta_extensions: string): void;
         /**
          * Associates MIME types with a file handler procedure.
          *
@@ -11468,7 +12547,7 @@ export namespace Gimp {
          * this function should be considered random. This can be used when you
          * know you won't have multiple fonts of this name or that you don't
          * want to choose (non-interactive scripts, etc.).
-         * If you need more control, you should use `gimp_fonts_get_by_name()`
+         * If you need more control, you should use {@link fonts_get_list}
          * instead.
          * Returns `null` when no font exists of that name.
          * @param name The name of the font.
@@ -11584,7 +12663,7 @@ export namespace Gimp {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -11639,7 +12718,7 @@ export namespace Gimp {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -11714,7 +12793,7 @@ export namespace Gimp {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -12017,13 +13096,13 @@ export namespace Gimp {
          *
          * Samples the color of the gradient at positions from a list. The left
          * endpoint of the gradient corresponds to position 0.0, and the right
-         * endpoint corresponds to 1.0. Returns a list of floating-point
-         * values, four for each sample (RGBA.)
+         * endpoint corresponds to 1.0. Returns a list of colors, one for each
+         * sample.
          * @param positions The list of positions to sample along the gradient.
          * @param reverse Use the reverse gradient.
-         * @returns TRUE on success.
+         * @returns Color samples.          The returned value must be freed with `gimp_color_array_free()`.
          */
-        get_custom_samples(positions: number[], reverse: boolean): [boolean, number[]];
+        get_custom_samples(positions: number[], reverse: boolean): Gegl.Color[];
         /**
          * Gets the number of segments of the gradient
          *
@@ -12035,16 +13114,16 @@ export namespace Gimp {
          * Sample the gradient in uniform parts.
          *
          * Samples colors uniformly across the gradient. It returns a list of
-         * floating-point values which correspond to the RGBA values for each
-         * sample. The minimum number of samples to take is 2, in which case
-         * the returned colors will correspond to the { 0.0, 1.0 } positions in
-         * the gradient. For example, if the number of samples is 3, the
-         * procedure will return the colors at positions { 0.0, 0.5, 1.0 }.
+         * colors for each sample. The minimum number of samples to take is 2,
+         * in which case the returned colors will correspond to the `{ 0.0, 1.0
+         * }` positions in the gradient. For example, if the number of samples
+         * is 3, the procedure will return the colors at positions `{ 0.0, 0.5,
+         * 1.0 }`.
          * @param num_samples The number of samples to take.
          * @param reverse Use the reverse gradient.
-         * @returns TRUE on success.
+         * @returns Color samples.          The returned value must be freed with `gimp_color_array_free()`.
          */
-        get_uniform_samples(num_samples: number, reverse: boolean): [boolean, number[]];
+        get_uniform_samples(num_samples: number, reverse: boolean): Gegl.Color[];
         /**
          * Gets the gradient segment's blending function
          *
@@ -12423,7 +13502,7 @@ export namespace Gimp {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -12478,7 +13557,7 @@ export namespace Gimp {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -12553,7 +13632,7 @@ export namespace Gimp {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -12997,6 +14076,35 @@ export namespace Gimp {
          */
         attach_parasite(parasite: Parasite): boolean;
         /**
+         * Remove empty borders from the image
+         *
+         * Remove empty borders from the `image` based on empty borders of the
+         * input `drawable`.
+         *
+         * The input drawable serves as a base for detecting cropping extents
+         * (transparency or background color).
+         * With a `null` input drawable, the image itself will serve as a base
+         * for detecting cropping extents.
+         * @param drawable Input drawable.
+         * @returns TRUE on success.
+         */
+        autocrop(drawable?: Drawable | null): boolean;
+        /**
+         * Crop the selected layers based on empty borders of the input
+         * drawable
+         *
+         * Crop the selected layers of the input `image` based on empty borders
+         * of the input `drawable`.
+         * The input drawable serves as a base for detecting cropping extents
+         * (transparency or background color), and is not necessarily among the
+         * cropped layers (the current selected layers).
+         * With a `null` input drawable, the image itself will serve as a base
+         * for detecting cropping extents.
+         * @param drawable Input drawable.
+         * @returns TRUE on success.
+         */
+        autocrop_selected_layers(drawable?: Drawable | null): boolean;
+        /**
          * Set the image dirty count to 0.
          *
          * This procedure sets the specified image's dirty count to 0, allowing
@@ -13009,17 +14117,18 @@ export namespace Gimp {
          */
         clean_all(): boolean;
         /**
-         * Convert the image's layers to a color profile
-         *
          * This procedure converts from the image's color profile (or the
-         * default RGB profile if none is set) to the given color profile. Only
-         * RGB color profiles are accepted.
+         * built-in profile if none is set) to the given color profile.
+         *
+         * Make sure you use a valid color profile, according to the image's
+         * type (e.g. RGB or grayscale color profiles respectively for RGB or
+         * grayscale images).
          * @param profile The color profile to convert to.
          * @param intent Rendering intent.
          * @param bpc Black point compensation.
-         * @returns TRUE on success.
+         * @returns `true` on success.
          */
-        convert_color_profile(profile: ColorProfile, intent: ColorRenderingIntent | null, bpc: boolean): boolean;
+        convert_color_profile(profile: ColorProfile | null, intent: ColorRenderingIntent | null, bpc: boolean): boolean;
         /**
          * Convert the image's layers to a color profile
          *
@@ -13142,8 +14251,11 @@ export namespace Gimp {
         /**
          * Removes a parasite from an image.
          *
-         * This procedure detaches a parasite from an image. It has no return
-         * values.
+         * This procedure detaches a parasite from an image.
+         *
+         * It will return `false` if `name` is invalid (`null` or empty string)
+         * and `true` otherwise (even if there was no parasite removed, because
+         * no parasite was named like this).
          * @param name The name of the parasite to detach from an image.
          * @returns TRUE on success.
          */
@@ -13209,8 +14321,9 @@ export namespace Gimp {
          * invisible layers.
          *
          * This procedure combines the visible layers in a manner analogous to
-         * merging with the CLIP_TO_IMAGE merge type. Non-visible layers are
-         * discarded, and the resulting image is stripped of its alpha channel.
+         * merging with the {@link Gimp.MergeType.CLIP_TO_IMAGE} merge type.
+         * Non-visible layers are discarded, and the resulting image is
+         * stripped of its alpha channel.
          * @returns The resulting layer.
          */
         flatten(): Layer;
@@ -13240,7 +14353,7 @@ export namespace Gimp {
          * applying changes affecting the channel list.
          *
          * Each call to `gimp_image_freeze_channels()` should be matched by a
-         * corresponding call to `gimp_image_thaw_channels()`, undoing its
+         * corresponding call to {@link Gimp.Image.thaw_channels}, undoing its
          * effects.
          * @returns TRUE on success.
          */
@@ -13254,7 +14367,8 @@ export namespace Gimp {
          * changes affecting the layer list.
          *
          * Each call to `gimp_image_freeze_layers()` should be matched by a
-         * corresponding call to `gimp_image_thaw_layers()`, undoing its effects.
+         * corresponding call to {@link Gimp.Image.thaw_layers}, undoing its
+         * effects.
          * @returns TRUE on success.
          */
         freeze_layers(): boolean;
@@ -13267,7 +14381,8 @@ export namespace Gimp {
          * changes affecting the path list.
          *
          * Each call to `gimp_image_freeze_paths()` should be matched by a
-         * corresponding call to gimp_image_thaw_paths (), undoing its effects.
+         * corresponding call to {@link Gimp.Image.thaw_paths}, undoing its
+         * effects.
          * @returns TRUE on success.
          */
         freeze_paths(): boolean;
@@ -13309,22 +14424,15 @@ export namespace Gimp {
          */
         get_channels(): Channel[];
         /**
-         * Returns the image's color profile
+         * This procedure returns the image's color profile, or `null` if the
+         * image uses the built-in color profile.
          *
-         * This procedure returns the image's color profile, or NULL if the
-         * image has no color profile assigned.
-         * @returns The image's color profile. The returned          value must be freed with `g_object_unref()`.
+         * See also {@link Gimp.Image.get_effective_color_profile} if you want
+         * the effective color profile and don't want to have to deal with `null`
+         * return values.
+         * @returns The image's color profile. The          returned value must be freed with {@link GObject.Object.unref}.
          */
-        get_color_profile(): ColorProfile;
-        /**
-         * Returns the image's colormap
-         *
-         * This procedure returns an actual pointer to the image's colormap, as
-         * well as the number of colors contained in the colormap. If the image
-         * is not of base type INDEXED, this pointer will be NULL.
-         * @returns The image's colormap.
-         */
-        get_colormap(): [Uint8Array, number];
+        get_color_profile(): ColorProfile | null;
         /**
          * Returns if the specified image's image component is active.
          *
@@ -13356,15 +14464,11 @@ export namespace Gimp {
          */
         get_default_new_layer_mode(): LayerMode;
         /**
-         * Returns the color profile that is used for the image.
-         *
          * This procedure returns the color profile that is actually used for
          * this image, which is the profile returned by
-         * `gimp_image_get_color_profile()` if the image has a profile assigned,
-         * or the default RGB profile from preferences if no profile is
-         * assigned to the image. If there is no default RGB profile configured
-         * in preferences either, a generated default RGB profile is returned.
-         * @returns The color profile. The returned value must          be freed with `g_object_unref()`.
+         * {@link Gimp.Image.get_color_profile} if the image has a profile
+         * assigned, or a built-in profile for the given color space otherwise.
+         * @returns The color profile. The returned value must          be freed with {@link GObject.Object.unref}.
          */
         get_effective_color_profile(): ColorProfile;
         /**
@@ -13503,9 +14607,10 @@ export namespace Gimp {
         /**
          * Returns the image's colormap
          *
-         * This procedure returns the image's colormap as a GimpPalette. If the
-         * image is not in Indexed color mode, `null` is returned.
-         * @returns The image's colormap.
+         * This procedure returns the image's colormap as a
+         * {@link Gimp.Palette}. If the image is not in Indexed color mode,
+         * `null` is returned.
+         * @returns The image's colormap palette.
          */
         get_palette(): Palette;
         /**
@@ -13597,7 +14702,7 @@ export namespace Gimp {
          * mask is the active drawable.
          * @returns The list of selected drawables in the image.          The returned value must be freed with `g_free()`.
          */
-        get_selected_drawables(): Item[];
+        get_selected_drawables(): Drawable[];
         /**
          * Returns the specified image's selected layers.
          *
@@ -13639,13 +14744,11 @@ export namespace Gimp {
          */
         get_simulation_intent(): ColorRenderingIntent;
         /**
-         * Returns the image's simulation color profile
-         *
-         * This procedure returns the image's simulation color profile, or NULL if
+         * This procedure returns the image's simulation color profile, or `null` if
          * the image has no simulation color profile assigned.
-         * @returns The image's simulation color profile. The          returned value must be freed with `g_object_unref()`.
+         * @returns The image's simulation color profile. The          returned value must be freed with {@link GObject.Object.unref}.
          */
-        get_simulation_profile(): ColorProfile;
+        get_simulation_profile(): ColorProfile | null;
         /**
          * Returns the tattoo state associated with the image.
          *
@@ -13828,15 +14931,15 @@ export namespace Gimp {
          *
          * This procedure adds the specified layer to the image at the given
          * position. If the specified parent is a valid layer group (See
-         * `gimp_item_is_group()` and `gimp_layer_group_new()`) then the layer is
-         * added inside the group. If the parent is 0, the layer is added
-         * inside the main stack, outside of any group. The position argument
-         * specifies the location of the layer inside the stack (or the group,
-         * if a valid parent was supplied), starting from the top (0) and
-         * increasing. If the position is specified as -1 and the parent is
-         * specified as 0, then the layer is inserted above the active layer,
-         * or inside the group if the active layer is a layer group. The layer
-         * type must be compatible with the image base type.
+         * {@link Gimp.Item.is_group} and {@link Gimp.GroupLayer.new}) then the
+         * layer is added inside the group. If the parent is 0, the layer is
+         * added inside the main stack, outside of any group. The position
+         * argument specifies the location of the layer inside the stack (or
+         * the group, if a valid parent was supplied), starting from the top
+         * (0) and increasing. If the position is specified as -1 and the
+         * parent is specified as 0, then the layer is inserted above the
+         * active layer, or inside the group if the active layer is a layer
+         * group. The layer type must be compatible with the image base type.
          * @param layer The layer.
          * @param parent The parent layer.
          * @param position The layer position.
@@ -13863,8 +14966,14 @@ export namespace Gimp {
          *
          * This procedure checks the specified image's dirty count to see if it
          * needs to be saved. Note that saving the image does not automatically
-         * set the dirty count to 0, you need to call `gimp_image_clean_all()`
-         * after calling a save procedure to make the image clean.
+         * set the dirty count to 0, you need to call
+         * {@link Gimp.Image.clean_all} after calling a save procedure to make
+         * the image clean.
+         *
+         * When loading an image using e.g. {@link Gimp.file_load}, or when
+         * created by a {@link Gimp.LoadProcedure}, the image will be marked as
+         * clean. In other cases, it may sometimes be useful to clean
+         * programmatically created image yourself.
          * @returns TRUE if the image has unsaved changes.
          */
         is_dirty(): boolean;
@@ -13900,11 +15009,12 @@ export namespace Gimp {
          *
          * This procedure combines the passed layer and the first visible layer
          * below it using the specified merge type. A merge type of
-         * EXPAND_AS_NECESSARY expands the final layer to encompass the areas
-         * of the visible layers. A merge type of CLIP_TO_IMAGE clips the final
-         * layer to the extents of the image. A merge type of
-         * CLIP_TO_BOTTOM_LAYER clips the final layer to the size of the
-         * bottommost layer.
+         * {@link Gimp.MergeType.EXPAND_AS_NECESSARY} expands the final layer to
+         * encompass the areas of the visible layers. A merge type of
+         * {@link Gimp.MergeType.CLIP_TO_IMAGE} clips the final layer to the
+         * extents of the image. A merge type of
+         * {@link Gimp.MergeType.CLIP_TO_BOTTOM_LAYER} clips the final layer to
+         * the size of the bottommost layer.
          * @param merge_layer The layer to merge down from.
          * @param merge_type The type of merge.
          * @returns The resulting layer.
@@ -13914,48 +15024,38 @@ export namespace Gimp {
          * Merge the visible image layers into one.
          *
          * This procedure combines the visible layers into a single layer using
-         * the specified merge type. A merge type of EXPAND_AS_NECESSARY
-         * expands the final layer to encompass the areas of the visible
-         * layers. A merge type of CLIP_TO_IMAGE clips the final layer to the
-         * extents of the image. A merge type of CLIP_TO_BOTTOM_LAYER clips the
-         * final layer to the size of the bottommost layer.
+         * the specified merge type. A merge type of
+         * {@link Gimp.MergeType.EXPAND_AS_NECESSARY} expands the final layer to
+         * encompass the areas of the visible layers. A merge type of
+         * {@link Gimp.MergeType.CLIP_TO_IMAGE} clips the final layer to the
+         * extents of the image. A merge type of
+         * {@link Gimp.MergeType.CLIP_TO_BOTTOM_LAYER} clips the final layer to
+         * the size of the bottommost layer.
          * @param merge_type The type of merge.
          * @returns The resulting layer.
          */
         merge_visible_layers(merge_type: MergeType | null): Layer;
         /**
-         * Applies the `metadata` previously loaded with
-         * `gimp_image_metadata_load_prepare()` to the image, taking into account
-         * the passed `flags`.
-         * @param mime_type The loaded file's mime-type
-         * @param metadata The metadata to set on the image
-         * @param flags Flags to specify what of the metadata to apply to the image
-         */
-        metadata_load_finish(mime_type: string, metadata: Metadata, flags: MetadataLoadFlags | null): void;
-        /**
-         * Loads and returns metadata from `file` to be passed into
-         * `gimp_image_metadata_load_finish()`.
-         * @param mime_type The loaded file's mime-type
-         * @param file The file to load the metadata from
-         * @returns The file's metadata.
-         */
-        metadata_load_prepare(mime_type: string, file: Gio.File): Metadata;
-        /**
          * Filters the `metadata` retrieved from the image with
-         * `gimp_image_metadata_save_prepare()`,
-         * taking into account the passed `flags`.
+         * {@link Gimp.Image.metadata_save_prepare}, taking into account the
+         * passed `flags`.
+         *
+         * *Note: There is normally no need to call this function because it's
+         * already called by {@link ExportProcedure} after the `run()`
+         * callback.*
          *
          * Note that the `image` passed to this function might be different
          * from the image passed to `gimp_image_metadata_save_prepare()`, due
          * to whatever file export conversion happened in the meantime
          *
-         * This is an alternative to gimp_image_metadata_save_finish when you
-         * want to save metadata yourself and you need only filtering processing.
+         * This can be used as an alternative to core metadata handling when you
+         * want to save metadata yourself and you need only filtering
+         * processing.
          * @param mime_type The saved file's mime-type
          * @param metadata The metadata to export
          * @param flags Flags to specify what of the metadata to save
          * @param file The file `image` was saved to or NULL if file was not saved yet
-         * @returns Filtered metadata or NULL in case of failure. Use `g_object_unref()` when returned metadata are no longer needed
+         * @returns Filtered metadata or `null` in case of failure.          Use [GObject.Object.unref] when returned metadata are no          longer needed
          */
         metadata_save_filter(
             mime_type: string,
@@ -13964,42 +15064,31 @@ export namespace Gimp {
             file: Gio.File,
         ): Metadata;
         /**
-         * Saves the `metadata` retrieved from the image with
-         * `gimp_image_metadata_save_prepare()` to `file`, taking into account
-         * the passed `flags`.
+         * Gets the image metadata for storing it in an exported file.
          *
-         * Note that the `image` passed to this function might be different
-         * from the image passed to `gimp_image_metadata_save_prepare()`, due
-         * to whatever file export conversion happened in the meantime
-         * @param mime_type The saved file's mime-type
-         * @param metadata The metadata to write to `file`
-         * @param flags Flags to specify what of the metadata to save
-         * @param file The file `image` was saved to
-         * @returns Whether the save was successful.
-         */
-        metadata_save_finish(
-            mime_type: string,
-            metadata: Metadata,
-            flags: MetadataSaveFlags | null,
-            file: Gio.File,
-        ): boolean;
-        /**
-         * Gets the image metadata for saving it using
-         * `gimp_image_metadata_save_finish()`.
+         * *Note: There is normally no need to call this function because it's
+         * already called by {@link ExportProcedure} at the start and the
+         * metadata is passed to the `run()` callback.*
          *
-         * The `suggested_flags` are determined from what kind of metadata
-         * (Exif, XMP, ...) is actually present in the image and the preferences
-         * for metadata exporting.
-         * The calling application may still update `available_flags`, for
+         * *You may call it separately for instance if you set `export_metadata`
+         * to `null` in {@link Gimp.ExportProcedure.new} to prevent `libgimp`
+         * from trying to store the metadata in the exported file, yet you wish
+         * to process and store the metadata yourself using custom API.*
+         *
+         * The `suggested_flags` are determined from what kind of metadata (Exif,
+         * XMP, ...) is actually present in the image and the preferences for
+         * metadata exporting.
+         * The calling application may still ignore `suggested_flags`, for
          * instance to follow the settings from a previous export in the same
          * session, or a previous export of the same image. But it should not
          * override the preferences without a good reason since it is a data
          * leak.
          *
-         * The suggested value for {@link Gimp.MetadataSaveFlags.THUMBNAIL} is determined by
-         * whether there was a thumbnail in the previously imported image.
+         * The suggested value for {@link Gimp.MetadataSaveFlags.THUMBNAIL} is
+         * determined by whether there was a thumbnail in the previously
+         * imported image.
          * @param mime_type The saved file's mime-type
-         * @param suggested_flags Suggested default values for the `flags` passed to                   `gimp_image_metadata_save_finish()`
+         * @param suggested_flags Suggested default values for the metadata to export.
          * @returns The image's metadata, prepared for saving.
          */
         metadata_save_prepare(mime_type: string, suggested_flags: MetadataSaveFlags | null): Metadata;
@@ -14030,7 +15119,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         pick_color(
-            drawables: Item[],
+            drawables: Drawable[],
             x: number,
             y: number,
             sample_merged: boolean,
@@ -14145,7 +15234,17 @@ export namespace Gimp {
         /**
          * Reorder the specified item within its item tree
          *
-         * This procedure reorders the specified item within its item tree.
+         * Reorders or moves item within an item tree. Requires parent is `null`
+         * or a GroupLayer, else returns error. When parent is not `null` and
+         * item is in parent, reorders item within parent group. When parent is
+         * not `null` and item is not in parent, moves item into parent group.
+         * When parent is `null`, moves item from current parent to top level.
+         *
+         * Requires item is in same tree as not `null` parent, else returns
+         * error. Layers, Channels, and Paths are in separate trees.
+         *
+         * Requires item is not ancestor of parent, else returns error, to
+         * preclude cycles.
          * @param item The item to reorder.
          * @param parent The new parent item.
          * @param position The new position of the item.
@@ -14286,7 +15385,7 @@ export namespace Gimp {
          * This procedure renders the item's outline into the current selection
          * of the image the item belongs to. What exactly the item's outline is
          * depends on the item type: for layers, it's the layer's alpha
-         * channel, for vectors the vector's shape.
+         * channel, for paths the path's shape.
          *
          * This procedure is affected by the following context setters:
          * `gimp_context_set_antialias()`, `gimp_context_set_feather()`,
@@ -14364,9 +15463,10 @@ export namespace Gimp {
             corner_radius_y: number,
         ): boolean;
         /**
-         * Sets the image's color profile
-         *
          * This procedure sets the image's color profile.
+         *
+         * If `null` is passed as `profile`, then the built-in profile for
+         * `image`'s color model is set.
          * @param profile A {@link Gimp.ColorProfile}, or `null`.
          * @returns `true` on success.
          */
@@ -14384,18 +15484,6 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         set_color_profile_from_file(file: Gio.File): boolean;
-        /**
-         * Sets the entries in the image's colormap.
-         *
-         * This procedure sets the entries in the specified image's colormap.
-         * The number of colors is specified by the "num_colors" parameter
-         * and corresponds to the number of INT8 triples that must be contained
-         * in the "cmap" array.
-         * @param colormap The new colormap values.
-         * @param num_colors Number of colors in the colormap array.
-         * @returns TRUE on success.
-         */
-        set_colormap(colormap: Uint8Array | string, num_colors: number): boolean;
         /**
          * Sets if the specified image's image component is active.
          *
@@ -14440,6 +15528,17 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         set_metadata(metadata: Metadata): boolean;
+        /**
+         * Set the image's colormap to a copy of `palette`
+         *
+         * This procedure changes the image's colormap to an exact copy of
+         * `palette` and returns the palette of `image`.
+         * If the image is not in Indexed color mode, nothing happens and `null`
+         * is returned.
+         * @param new_palette The palette to copy from.
+         * @returns The image's colormap palette.
+         */
+        set_palette(new_palette: Palette): Palette;
         /**
          * Sets the specified image's resolution.
          *
@@ -14500,13 +15599,13 @@ export namespace Gimp {
          */
         set_simulation_intent(intent: ColorRenderingIntent | null): boolean;
         /**
-         * Sets the image's simulation color profile
-         *
          * This procedure sets the image's simulation color profile.
+         *
+         * If `null` is passed as `profile`, then the simulation profile is unset.
          * @param profile A {@link Gimp.ColorProfile}, or `null`.
          * @returns `true` on success.
          */
-        set_simulation_profile(profile: ColorProfile): boolean;
+        set_simulation_profile(profile?: ColorProfile | null): boolean;
         /**
          * Sets the image's simulation color profile from an ICC file
          *
@@ -14580,7 +15679,7 @@ export namespace Gimp {
          * updates to the Channels dialog.
          *
          * This procedure should match a corresponding call to
-         * `gimp_image_freeze_channels()`.
+         * {@link Gimp.Image.freeze_channels}.
          * @returns TRUE on success.
          */
         thaw_channels(): boolean;
@@ -14591,7 +15690,7 @@ export namespace Gimp {
          * updates to the Layers dialog.
          *
          * This procedure should match a corresponding call to
-         * `gimp_image_freeze_layers()`.
+         * {@link Gimp.Image.freeze_layers}.
          * @returns TRUE on success.
          */
         thaw_layers(): boolean;
@@ -14602,7 +15701,7 @@ export namespace Gimp {
          * to the Paths dialog.
          *
          * This procedure should match a corresponding call to
-         * `gimp_image_freeze_paths()`.
+         * {@link Gimp.Image.freeze_paths}.
          * @returns TRUE on success.
          */
         thaw_paths(): boolean;
@@ -14926,6 +16025,17 @@ export namespace Gimp {
          */
         static id_is_layer_mask(item_id: number): boolean;
         /**
+         * Returns whether the item ID is a link layer.
+         *
+         * This procedure returns `true` if the specified item ID is a link
+         * layer.
+         *
+         * *Note*: in most use cases, you should not use this function. See
+         * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
+         * @param item_id The item ID.
+         */
+        static id_is_link_layer(item_id: number): boolean;
+        /**
          * Returns whether the item ID is a path.
          *
          * This procedure returns `true` if the specified item ID is a path.
@@ -14969,6 +16079,17 @@ export namespace Gimp {
          * @param item_id The item ID to check.
          */
         static id_is_valid(item_id: number): boolean;
+        /**
+         * Returns whether the item ID is a vector layer.
+         *
+         * This procedure returns `true` if the specified item ID is a vector
+         * layer.
+         *
+         * *Note*: in most use cases, you should not use this function. See
+         * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
+         * @param item_id The item ID.
+         */
+        static id_is_vector_layer(item_id: number): boolean;
 
         // Methods
 
@@ -15148,6 +16269,14 @@ export namespace Gimp {
          */
         is_layer_mask(): boolean;
         /**
+         * Returns whether the item is a link layer.
+         *
+         * This procedure returns TRUE if the specified item is a link
+         * layer.
+         * @returns TRUE if the item is a link layer, FALSE otherwise.
+         */
+        is_link_layer(): boolean;
+        /**
          * Returns whether the item is a path.
          *
          * This procedure returns TRUE if the specified item is a path.
@@ -15177,6 +16306,14 @@ export namespace Gimp {
          * @returns Whether the item is valid.
          */
         is_valid(): boolean;
+        /**
+         * Returns whether the item is a vector layer.
+         *
+         * This procedure returns TRUE if the specified item is a vector
+         * layer.
+         * @returns TRUE if the item is a vector layer, FALSE otherwise.
+         */
+        is_vector_layer(): boolean;
         /**
          * Set the color tag of the specified item.
          *
@@ -15626,7 +16763,7 @@ export namespace Gimp {
             progress_end: number,
         ): Layer;
 
-        static new_from_visible(image: Image, dest_image: Image, name: string): Layer;
+        static new_from_visible(image: Image, dest_image: Image, name?: string | null): Layer;
 
         // Signals
 
@@ -15667,18 +16804,6 @@ export namespace Gimp {
          */
         static get_by_id(layer_id: number): Layer | null;
 
-        // Virtual methods
-
-        /**
-         * Copy a layer.
-         *
-         * This procedure copies the specified layer and returns the copy. The
-         * newly copied layer is for use within the original layer's image. It
-         * should not be subsequently added to any other image.
-         * @virtual
-         */
-        vfunc_copy(): Layer;
-
         // Methods
 
         /**
@@ -15712,7 +16837,14 @@ export namespace Gimp {
          * This procedure copies the specified layer and returns the copy. The
          * newly copied layer is for use within the original layer's image. It
          * should not be subsequently added to any other image.
-         * @returns The newly copied layer.          The object belongs to libgimp and you should not free it.
+         *
+         * The new layer still needs to be added to the image as this is not
+         * automatic. Add the new layer with the {@link Image.insert_layer}
+         * method.
+         *
+         * Other attributes such as layer mask and offsets should be set with
+         * explicit procedure calls.
+         * @returns The newly copied layer. The object belongs to libgimp and you should not free it.
          */
         copy(): Layer;
         /**
@@ -15721,6 +16853,7 @@ export namespace Gimp {
          * This procedure creates a layer mask for the specified layer.
          * Layer masks serve as an additional alpha channel for a layer.
          * Different types of masks are allowed for initialisation:
+         *
          * - white mask (leaves the layer fully visible);
          * - black mask (gives the layer complete transparency);
          * - the layer's alpha channel (either a copy, or a transfer, which
@@ -16045,6 +17178,902 @@ export namespace Gimp {
         static get_by_id(layer_mask_id: number): LayerMask | null;
     }
 
+    namespace LinkLayer {
+        // Signal signatures
+        interface SignalSignatures extends Layer.SignalSignatures {
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Layer.ConstructorProps, Rasterizable.ConstructorProps {}
+    }
+
+    /**
+     * Functions for querying and manipulating link layers.
+     * @gir-type Class
+     */
+    class LinkLayer extends Layer implements Rasterizable {
+        static $gtype: GObject.GType<LinkLayer>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: LinkLayer.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<LinkLayer.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](image: Image, file: Gio.File): LinkLayer;
+        // Conflicted with Gimp.Layer.new
+
+        static ['new'](...args: never[]): any;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof LinkLayer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, LinkLayer.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof LinkLayer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, LinkLayer.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof LinkLayer.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<LinkLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Returns a {@link Gimp.LinkLayer} representing `layer_id`. This function calls
+         * {@link Gimp.Item.get_by_id} and returns the item if it is a link
+         * layer or `null` otherwise.
+         * @param layer_id The layer id.
+         */
+        static get_by_id(layer_id: number): LinkLayer | null;
+
+        // Methods
+
+        /**
+         * Get the monitored file.
+         *
+         * This procedure returns the file which is being monitored.
+         * @returns The monitored file.
+         */
+        get_file(): Gio.File;
+        /**
+         * Get the mime type of the monitored file.
+         *
+         * This procedure returns the mime type of the file which is being
+         * monitored by `layer`.
+         *
+         * Note that this will be the real mime type, corresponding to our
+         * format support, as returned by the {@link Gimp.LoadProcedure} which
+         * actually performs the external image file import.
+         *
+         * This function may also return `null` in case of error (for instance
+         * if the external file doesn't exist anymore).
+         * @returns The mime type of the monitored file.          The returned value must be freed with `g_free()`.
+         */
+        get_mime_type(): string;
+        /**
+         * Set the monitored file.
+         *
+         * This procedure sets the file to be monitored. It may change the
+         * layer's render.
+         * @param file The file to monitor.
+         * @returns TRUE on success.
+         */
+        set_file(file: Gio.File): boolean;
+        /**
+         * Return whether `item` has been rasterized.
+         *
+         * This procedure returns `true` if the specified `item` has been
+         * previously rasterized. In this case, you should treat this `item` as
+         * the generic raster variant.
+         *
+         * For instance, a {@link Gimp.TextLayer} object implements the
+         * %GimpRasterizable interface. If a text layer instance were to return
+         * `true`, you should only consider its rendering as returned by
+         * {@link Gimp.Drawable.get_buffer}.
+         *
+         * On the other hand, if this returned `false`, depending on your
+         * intents, you may prefer to use the text contents and its properties
+         * with the various procedures provided by the {@link Gimp.TextLayer}
+         * class interface.
+         * @returns TRUE if `item` is rasterized.
+         */
+        is_rasterized(): boolean;
+        /**
+         * Rasterize the object.
+         *
+         * This procedure makes the item behave like a typical raster layer.
+         *
+         * Note that the source information (text contents and properties for a
+         * text layer, source file for a link layer, path and render properties
+         * for a vector layer, etc.) are not actually discarded, and it is
+         * possible to retrieve the original behavior with
+         * {@link Gimp.Rasterizable.restore}.
+         * @returns TRUE on success.
+         */
+        rasterize(): boolean;
+        /**
+         * Revert the rasterization of `item`.
+         *
+         * Restore the information making the item non-destructive, such as
+         * text contents and properties of a text layer, source file of a link
+         * layer, path and render properties of a vector layer, etc.
+         * This item won't behave anymore like a raster item. In particular, it
+         * will prevent direct modification of its pixels and will be rendered
+         * when its properties are updated.
+         * @returns TRUE on success.
+         */
+        restore(): boolean;
+        /**
+         * This procedure appends the specified drawable effect at the top of the
+         * effect list of `drawable`.
+         *
+         * The `drawable` argument must be the same as the one used when you
+         * created the effect with {@link Gimp.DrawableFilter.new}.
+         * Some effects may be slower than others to render. In order to
+         * minimize processing time, it is preferred to customize the
+         * operation's arguments as received with
+         * {@link Gimp.DrawableFilter.get_config} before adding the effect.
+         * @param filter The drawable filter to append.
+         */
+        append_filter(filter: DrawableFilter): void;
+        /**
+         * Modify brightness/contrast in the specified drawable.
+         *
+         * This procedures allows the brightness and contrast of the specified
+         * drawable to be modified. Both 'brightness' and 'contrast' parameters
+         * are defined between -1.0 and 1.0.
+         * @param brightness Brightness adjustment.
+         * @param contrast Contrast adjustment.
+         * @returns TRUE on success.
+         */
+        brightness_contrast(brightness: number, contrast: number): boolean;
+        /**
+         * Modify the color balance of the specified drawable.
+         *
+         * Modify the color balance of the specified drawable. There are three
+         * axis which can be modified: cyan-red, magenta-green, and
+         * yellow-blue. Negative values increase the amount of the former,
+         * positive values increase the amount of the latter. Color balance can
+         * be controlled with the 'transfer_mode' setting, which allows
+         * shadows, mid-tones, and highlights in an image to be affected
+         * differently. The 'preserve-lum' parameter, if TRUE, ensures that the
+         * luminosity of each pixel remains fixed.
+         * @param transfer_mode Transfer mode.
+         * @param preserve_lum Preserve luminosity values at each pixel.
+         * @param cyan_red Cyan-Red color balance.
+         * @param magenta_green Magenta-Green color balance.
+         * @param yellow_blue Yellow-Blue color balance.
+         * @returns TRUE on success.
+         */
+        color_balance(
+            transfer_mode: TransferMode | null,
+            preserve_lum: boolean,
+            cyan_red: number,
+            magenta_green: number,
+            yellow_blue: number,
+        ): boolean;
+        /**
+         * Render the drawable as a grayscale image seen through a colored
+         * glass.
+         *
+         * Desaturates the drawable, then tints it with the specified color.
+         * This tool is only valid on RGB color images. It will not operate on
+         * grayscale drawables.
+         * @param hue Hue in degrees.
+         * @param saturation Saturation in percent.
+         * @param lightness Lightness in percent.
+         * @returns TRUE on success.
+         */
+        colorize_hsl(hue: number, saturation: number, lightness: number): boolean;
+        /**
+         * Modifies the intensity curve(s) for specified drawable.
+         *
+         * Modifies the intensity mapping for one channel in the specified
+         * drawable. The channel can be either an intensity component, or the
+         * value. The 'values' parameter is an array of doubles which
+         * explicitly defines how each pixel value in the drawable will be
+         * modified. Use the `gimp_drawable_curves_spline()` function to modify
+         * intensity levels with Catmull Rom splines.
+         * @param channel The channel to modify.
+         * @param values The explicit curve.
+         * @returns TRUE on success.
+         */
+        curves_explicit(channel: HistogramChannel | null, values: number[]): boolean;
+        /**
+         * Modifies the intensity curve(s) for specified drawable.
+         *
+         * Modifies the intensity mapping for one channel in the specified
+         * `drawable`. The `channel` can be either an intensity component, or the
+         * value.
+         *
+         * The `points` parameter is an array of doubles in the range `[0, 1]`
+         * which define a set of control points which describe a Catmull Rom
+         * spline which yields the final intensity curve. Since every point has
+         * 2 coordinates, the size of `points` (`num_coordinates`) must be a
+         * multiple of 2, equal or bigger than 4 (i.e. a minimum of 2 points).
+         *
+         * Use {@link Gimp.Drawable.curves_explicit} to explicitly modify
+         * intensity levels.
+         * @param channel The channel to modify.
+         * @param points The spline control points: { cp1.x, cp1.y, cp2.x, cp2.y, ... }.
+         * @returns TRUE on success.
+         */
+        curves_spline(channel: HistogramChannel | null, points: number[]): boolean;
+        /**
+         * Desaturate the contents of the specified drawable, with the
+         * specified formula.
+         *
+         * This procedure desaturates the contents of the specified drawable,
+         * with the specified formula. This procedure only works on drawables
+         * of type RGB color.
+         * @param desaturate_mode The formula to use to desaturate.
+         * @returns TRUE on success.
+         */
+        desaturate(desaturate_mode: DesaturateMode | null): boolean;
+        /**
+         * Fill the area by a seed fill starting at the specified coordinates.
+         *
+         * This procedure does a seed fill at the specified coordinates, using
+         * various parameters from the current context.
+         * In the case of merged sampling, the x and y coordinates are relative
+         * to the image's origin; otherwise, they are relative to the
+         * drawable's origin.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
+         * `gimp_context_set_pattern()`, `gimp_context_set_sample_threshold()`,
+         * `gimp_context_set_sample_merged()`,
+         * `gimp_context_set_sample_criterion()`,
+         * `gimp_context_set_diagonal_neighbors()`, `gimp_context_set_antialias()`.
+         * @param fill_type The type of fill.
+         * @param x The x coordinate of this bucket fill's application.
+         * @param y The y coordinate of this bucket fill's application.
+         * @returns TRUE on success.
+         */
+        edit_bucket_fill(fill_type: FillType | null, x: number, y: number): boolean;
+        /**
+         * Clear selected area of drawable.
+         *
+         * This procedure clears the specified drawable. If the drawable has an
+         * alpha channel, the cleared pixels will become transparent. If the
+         * drawable does not have an alpha channel, cleared pixels will be set
+         * to the background color. This procedure only affects regions within
+         * a selection if there is a selection active.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_background()`.
+         * @returns TRUE on success.
+         */
+        edit_clear(): boolean;
+        /**
+         * Fill selected area of drawable.
+         *
+         * This procedure fills the specified drawable according to fill mode.
+         * This procedure only affects regions within a selection if there is a
+         * selection active. If you want to fill the whole drawable, regardless
+         * of the selection, use `gimp_drawable_fill()`.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
+         * `gimp_context_set_pattern()`.
+         * @param fill_type The type of fill.
+         * @returns TRUE on success.
+         */
+        edit_fill(fill_type: FillType | null): boolean;
+        /**
+         * Draw a gradient between the starting and ending coordinates with the
+         * specified gradient type.
+         *
+         * This tool requires information on the gradient type. It creates the
+         * specified variety of gradient using the starting and ending
+         * coordinates as defined for each gradient type. For shapeburst
+         * gradient types, the context's distance metric is also relevant and
+         * can be updated with `gimp_context_set_distance_metric()`.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
+         * `gimp_context_set_gradient()` and all gradient property settings,
+         * `gimp_context_set_distance_metric()`.
+         * @param gradient_type The type of gradient.
+         * @param offset Offset relates to the starting and ending coordinates specified for the blend. This parameter is mode dependent.
+         * @param supersample Do adaptive supersampling.
+         * @param supersample_max_depth Maximum recursion levels for supersampling.
+         * @param supersample_threshold Supersampling threshold.
+         * @param dither Use dithering to reduce banding.
+         * @param x1 The x coordinate of this gradient's starting point.
+         * @param y1 The y coordinate of this gradient's starting point.
+         * @param x2 The x coordinate of this gradient's ending point.
+         * @param y2 The y coordinate of this gradient's ending point.
+         * @returns TRUE on success.
+         */
+        edit_gradient_fill(
+            gradient_type: GradientType | null,
+            offset: number,
+            supersample: boolean,
+            supersample_max_depth: number,
+            supersample_threshold: number,
+            dither: boolean,
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+        ): boolean;
+        /**
+         * Stroke the specified item
+         *
+         * This procedure strokes the specified item, painting along its
+         * outline (e.g. along a path, or along a channel's boundary), with the
+         * active paint method and brush, or using a plain line with
+         * configurable properties.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_paint_method()`, `gimp_context_set_stroke_method()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_brush()` and all
+         * brush property settings, `gimp_context_set_gradient()` and all
+         * gradient property settings, `gimp_context_set_line_width()` and all
+         * line property settings, `gimp_context_set_antialias()`.
+         * @param item The item to stroke.
+         * @returns TRUE on success.
+         */
+        edit_stroke_item(item: Item): boolean;
+        /**
+         * Stroke the current selection
+         *
+         * This procedure strokes the current selection, painting along the
+         * selection boundary with the active paint method and brush, or using
+         * a plain line with configurable properties. The paint is applied to
+         * the specified drawable regardless of the active selection.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_paint_method()`, `gimp_context_set_stroke_method()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_brush()` and all
+         * brush property settings, `gimp_context_set_gradient()` and all
+         * gradient property settings, `gimp_context_set_line_width()` and all
+         * line property settings, `gimp_context_set_antialias()`.
+         * @returns TRUE on success.
+         */
+        edit_stroke_selection(): boolean;
+        /**
+         * Equalize the contents of the specified drawable.
+         *
+         * This procedure equalizes the contents of the specified drawable.
+         * Each intensity channel is equalized independently. The equalized
+         * intensity is given as inten' = (255 - inten). The 'mask_only' option
+         * specifies whether to adjust only the area of the image within the
+         * selection bounds, or the entire image based on the histogram of the
+         * selected area. If there is no selection, the entire image is
+         * adjusted based on the histogram for the entire image.
+         * @param mask_only Equalization option.
+         * @returns TRUE on success.
+         */
+        equalize(mask_only: boolean): boolean;
+        /**
+         * Extract a color model component.
+         *
+         * Extract a color model component.
+         * @param component Component (RGB Red (0), RGB Green (1), RGB Blue (2), Hue (3), HSV Saturation (4), HSV Value (5), HSL Saturation (6), HSL Lightness (7), CMYK Cyan (8), CMYK Magenta (9), CMYK Yellow (10), CMYK Key (11), Y'CbCr Y' (12), Y'CbCr Cb (13), Y'CbCr Cr (14), LAB L (15), LAB A (16), LAB B (17), LCH C(ab) (18), LCH H(ab) (19), Alpha (20)).
+         * @param invert Invert the extracted component.
+         * @param linear Use linear output instead of gamma corrected.
+         * @returns TRUE on success.
+         */
+        extract_component(component: number, invert: boolean, linear: boolean): boolean;
+        /**
+         * Fill the drawable with the specified fill mode.
+         *
+         * This procedure fills the drawable. If the fill mode is foreground
+         * the current foreground color is used. If the fill mode is
+         * background, the current background color is used. If the fill type
+         * is white, then white is used. Transparent fill only affects layers
+         * with an alpha channel, in which case the alpha channel is set to
+         * transparent. If the drawable has no alpha channel, it is filled to
+         * white. No fill leaves the drawable's contents undefined.
+         * This procedure is unlike `gimp_drawable_edit_fill()` or the bucket
+         * fill tool because it fills regardless of a selection. Its main
+         * purpose is to fill a newly created drawable before adding it to the
+         * image. This operation cannot be undone.
+         * @param fill_type The type of fill.
+         * @returns TRUE on success.
+         */
+        fill(fill_type: FillType | null): boolean;
+        /**
+         * Extract the foreground of a drawable using a given trimap.
+         *
+         * This procedure extracts the foreground from `drawable` using `mask` as
+         * a trimap. Set white as foreground, black as background and uncertain
+         * pixels as any other value, for the tri-map.
+         * @param mode The algorithm to use.
+         * @param mask Tri-Map.
+         * @returns TRUE on success.
+         */
+        foreground_extract(mode: ForegroundExtractMode | null, mask: Drawable): boolean;
+        /**
+         * Free the specified drawable's shadow data (if it exists).
+         *
+         * This procedure is intended as a memory saving device. If any shadow
+         * memory has been allocated, it will be freed automatically when the
+         * drawable is removed from the image, or when the plug-in procedure
+         * which allocated it returns.
+         * @returns TRUE on success.
+         */
+        free_shadow(): boolean;
+        /**
+         * Returns the bytes per pixel.
+         *
+         * This procedure returns the number of bytes per pixel.
+         * @returns Bytes per pixel.
+         */
+        get_bpp(): number;
+        /**
+         * Returns a {@link Gegl.Buffer} of a specified drawable. The buffer can be used
+         * like any other GEGL buffer. Its data will we synced back with the core
+         * drawable when the buffer gets destroyed, or when `gegl_buffer_flush()`
+         * is called.
+         * @returns The {@link Gegl.Buffer}. See Also: `gimp_drawable_get_shadow_buffer()`
+         */
+        get_buffer(): Gegl.Buffer;
+        /**
+         * Returns the list of filters applied to the drawable.
+         *
+         * This procedure returns the list of filters which are currently
+         * applied non-destructively to `drawable`. The order of filters is from
+         * topmost to bottommost.
+         * @returns The list of filters on the drawable.          The returned value must be freed with `g_free()`.
+         */
+        get_filters(): DrawableFilter[];
+        /**
+         * Returns the {@link Babl.Object} format of the drawable.
+         * @returns The {@link Babl.Object} format.
+         */
+        get_format(): Babl.Object;
+        /**
+         * Returns the height of the drawable.
+         *
+         * This procedure returns the specified drawable's height in pixels.
+         * @returns Height of drawable.
+         */
+        get_height(): number;
+        /**
+         * Returns the offsets for the drawable.
+         *
+         * This procedure returns the specified drawable's offsets. This only
+         * makes sense if the drawable is a layer since channels are anchored.
+         * The offsets of a channel will be returned as 0.
+         * @returns TRUE on success.
+         */
+        get_offsets(): [boolean, number, number];
+        /**
+         * Gets the value of the pixel at the specified coordinates.
+         *
+         * This procedure gets the pixel value at the specified coordinates.
+         * @param x_coord The x coordinate.
+         * @param y_coord The y coordinate.
+         * @returns The pixel color.
+         */
+        get_pixel(x_coord: number, y_coord: number): Gegl.Color;
+        /**
+         * Returns a {@link Gegl.Buffer} of a specified drawable's shadow tiles. The
+         * buffer can be used like any other GEGL buffer. Its data will we
+         * synced back with the core drawable's shadow tiles when the buffer
+         * gets destroyed, or when `gegl_buffer_flush()` is called.
+         * @returns The {@link Gegl.Buffer}.
+         */
+        get_shadow_buffer(): Gegl.Buffer;
+        /**
+         * Retrieves a thumbnail pixbuf for the drawable identified by
+         * `drawable`. The thumbnail will be not larger than the requested
+         * size.
+         * @param src_x the x coordinate of the area
+         * @param src_y the y coordinate of the area
+         * @param src_width the width of the area
+         * @param src_height the height of the area
+         * @param dest_width the requested thumbnail width  (<= 1024 pixels)
+         * @param dest_height the requested thumbnail height (<= 1024 pixels)
+         * @param alpha how to handle an alpha channel
+         * @returns a new {@link GdkPixbuf.Pixbuf}
+         */
+        get_sub_thumbnail(
+            src_x: number,
+            src_y: number,
+            src_width: number,
+            src_height: number,
+            dest_width: number,
+            dest_height: number,
+            alpha: PixbufTransparency | null,
+        ): GdkPixbuf.Pixbuf;
+        /**
+         * Retrieves thumbnail data for the drawable identified by `drawable`.
+         * The thumbnail will be not larger than the requested size.
+         * @param src_x the x coordinate of the area
+         * @param src_y the y coordinate of the area
+         * @param src_width the width of the area
+         * @param src_height the height of the area
+         * @param dest_width the requested thumbnail width  (<= 1024 pixels)
+         * @param dest_height the requested thumbnail height (<= 1024 pixels)
+         * @returns thumbnail data or `null` if          `drawable` is invalid.
+         */
+        get_sub_thumbnail_data(
+            src_x: number,
+            src_y: number,
+            src_width: number,
+            src_height: number,
+            dest_width: number,
+            dest_height: number,
+        ): [GLib.Bytes, number, number, number];
+        /**
+         * Retrieves a thumbnail pixbuf for the drawable identified by
+         * `drawable`. The thumbnail will be not larger than the requested
+         * size.
+         * @param width the requested thumbnail width  (<= 1024 pixels)
+         * @param height the requested thumbnail height (<= 1024 pixels)
+         * @param alpha how to handle an alpha channel
+         * @returns a new {@link GdkPixbuf.Pixbuf}
+         */
+        get_thumbnail(width: number, height: number, alpha: PixbufTransparency | null): GdkPixbuf.Pixbuf;
+        /**
+         * Retrieves thumbnail data for the drawable identified by `drawable`.
+         * The thumbnail will be not larger than the requested size.
+         * @param width the requested thumbnail width  (<= 1024 pixels)
+         * @param height the requested thumbnail height (<= 1024 pixels)
+         * @returns thumbnail data or `null` if          `drawable` is invalid.
+         */
+        get_thumbnail_data(width: number, height: number): [GLib.Bytes | null, number, number, number];
+        /**
+         * Returns the {@link Babl.Object} thumbnail format of the drawable.
+         * @returns The {@link Babl.Object} thumbnail format.
+         */
+        get_thumbnail_format(): Babl.Object;
+        /**
+         * Returns the width of the drawable.
+         *
+         * This procedure returns the specified drawable's width in pixels.
+         * @returns Width of drawable.
+         */
+        get_width(): number;
+        /**
+         * Returns TRUE if the drawable has an alpha channel.
+         *
+         * This procedure returns whether the specified drawable has an alpha
+         * channel. This can only be true for layers, and the associated type
+         * will be one of: { RGBA , GRAYA, INDEXEDA }.
+         * @returns Does the drawable have an alpha channel?
+         */
+        has_alpha(): boolean;
+        /**
+         * Returns information on the intensity histogram for the specified
+         * drawable.
+         *
+         * This tool makes it possible to gather information about the
+         * intensity histogram of a drawable. A channel to examine is first
+         * specified. This can be either value, red, green, or blue, depending
+         * on whether the drawable is of type color or grayscale. Second, a
+         * range of intensities are specified. The `gimp_drawable_histogram()`
+         * function returns statistics based on the pixels in the drawable that
+         * fall under this range of values. Mean, standard deviation, median,
+         * number of pixels, and percentile are all returned. Additionally, the
+         * total count of pixels in the image is returned. Counts of pixels are
+         * weighted by any associated alpha values and by the current selection
+         * mask. That is, pixels that lie outside an active selection mask will
+         * not be counted. Similarly, pixels with transparent alpha values will
+         * not be counted. The returned mean, std_dev and median are in the
+         * range (0..255) for 8-bit images or if the plug-in is not
+         * precision-aware, and in the range (0.0..1.0) otherwise.
+         * @param channel The channel to query.
+         * @param start_range Start of the intensity measurement range.
+         * @param end_range End of the intensity measurement range.
+         * @returns TRUE on success.
+         */
+        histogram(
+            channel: HistogramChannel | null,
+            start_range: number,
+            end_range: number,
+        ): [boolean, number, number, number, number, number, number];
+        /**
+         * Modify hue, lightness, and saturation in the specified drawable.
+         *
+         * This procedure allows the hue, lightness, and saturation in the
+         * specified drawable to be modified. The 'hue-range' parameter
+         * provides the capability to limit range of affected hues. The
+         * 'overlap' parameter provides blending into neighboring hue channels
+         * when rendering.
+         * @param hue_range Range of affected hues.
+         * @param hue_offset Hue offset in degrees.
+         * @param lightness Lightness modification.
+         * @param saturation Saturation modification.
+         * @param overlap Overlap other hue channels.
+         * @returns TRUE on success.
+         */
+        hue_saturation(
+            hue_range: HueRange | null,
+            hue_offset: number,
+            lightness: number,
+            saturation: number,
+            overlap: number,
+        ): boolean;
+        /**
+         * Invert the contents of the specified drawable.
+         *
+         * This procedure inverts the contents of the specified drawable. Each
+         * intensity channel is inverted independently. The inverted intensity
+         * is given as inten' = (255 - inten). If 'linear' is TRUE, the
+         * drawable is inverted in linear space.
+         * @param linear Whether to invert in linear space.
+         * @returns TRUE on success.
+         */
+        invert(linear: boolean): boolean;
+        /**
+         * Returns whether the drawable is a grayscale type.
+         *
+         * This procedure returns TRUE if the specified drawable is of type {
+         * Gray, GrayA }.
+         * @returns TRUE if the drawable is a grayscale type.
+         */
+        is_gray(): boolean;
+        /**
+         * Returns whether the drawable is an indexed type.
+         *
+         * This procedure returns TRUE if the specified drawable is of type {
+         * Indexed, IndexedA }.
+         * @returns TRUE if the drawable is an indexed type.
+         */
+        is_indexed(): boolean;
+        /**
+         * Returns whether the drawable is an RGB type.
+         *
+         * This procedure returns TRUE if the specified drawable is of type {
+         * RGB, RGBA }.
+         * @returns TRUE if the drawable is an RGB type.
+         */
+        is_rgb(): boolean;
+        /**
+         * Modifies intensity levels in the specified drawable.
+         *
+         * This tool allows intensity levels in the specified drawable to be
+         * remapped according to a set of parameters. The low/high input levels
+         * specify an initial mapping from the source intensities. The gamma
+         * value determines how intensities between the low and high input
+         * intensities are interpolated. A gamma value of 1.0 results in a
+         * linear interpolation. Higher gamma values result in more high-level
+         * intensities. Lower gamma values result in more low-level
+         * intensities. The low/high output levels constrain the final
+         * intensity mapping--that is, no final intensity will be lower than
+         * the low output level and no final intensity will be higher than the
+         * high output level. This tool is only valid on RGB color and
+         * grayscale images.
+         * @param channel The channel to modify.
+         * @param low_input Intensity of lowest input.
+         * @param high_input Intensity of highest input.
+         * @param clamp_input Clamp input values before applying output levels.
+         * @param gamma Gamma adjustment factor.
+         * @param low_output Intensity of lowest output.
+         * @param high_output Intensity of highest output.
+         * @param clamp_output Clamp final output values.
+         * @returns TRUE on success.
+         */
+        levels(
+            channel: HistogramChannel | null,
+            low_input: number,
+            high_input: number,
+            clamp_input: boolean,
+            gamma: number,
+            low_output: number,
+            high_output: number,
+            clamp_output: boolean,
+        ): boolean;
+        /**
+         * Automatically modifies intensity levels in the specified drawable.
+         *
+         * This procedure allows intensity levels in the specified drawable to
+         * be remapped according to a set of guessed parameters. It is
+         * equivalent to clicking the \"Auto\" button in the Levels tool.
+         * @returns TRUE on success.
+         */
+        levels_stretch(): boolean;
+        /**
+         * Find the bounding box of the current selection in relation to the
+         * specified drawable.
+         *
+         * This procedure returns whether there is a selection. If there is
+         * one, the upper left and lower right-hand corners of its bounding box
+         * are returned. These coordinates are specified relative to the
+         * drawable's origin, and bounded by the drawable's extents. Please
+         * note that the pixel specified by the lower right-hand coordinate of
+         * the bounding box is not part of the selection. The selection ends at
+         * the upper left corner of this pixel. This means the width of the
+         * selection can be calculated as (x2 - x1), its height as (y2 - y1).
+         * Note that the returned boolean does NOT correspond with the returned
+         * region being empty or not, it always returns whether the selection
+         * is non_empty. See `gimp_drawable_mask_intersect()` for a boolean
+         * return value which is more useful in most cases.
+         * @returns TRUE if there is a selection.
+         */
+        mask_bounds(): [boolean, number, number, number, number];
+        /**
+         * Find the bounding box of the current selection in relation to the
+         * specified drawable.
+         *
+         * This procedure returns whether there is an intersection between the
+         * drawable and the selection. Unlike `gimp_drawable_mask_bounds()`, the
+         * intersection's bounds are returned as x, y, width, height.
+         * If there is no selection this function returns TRUE and the returned
+         * bounds are the extents of the whole drawable.
+         * @returns TRUE if the returned area is not empty.
+         */
+        mask_intersect(): [boolean, number, number, number, number];
+        /**
+         * This procedure applies the specified drawable effect on `drawable`
+         * and merge it (therefore before any non-destructive effects are
+         * computed).
+         *
+         * The `drawable` argument must be the same as the one used when you
+         * created the effect with {@link Gimp.DrawableFilter.new}.
+         * Once this is run, `filter` is not valid anymore and you should not
+         * try to do anything with it. In particular, you must customize the
+         * operation's arguments as received with
+         * {@link Gimp.DrawableFilter.get_config} or set the filter's opacity
+         * and blend mode before merging the effect.
+         * @param filter The drawable filter to merge.
+         */
+        merge_filter(filter: DrawableFilter): void;
+        /**
+         * Merge the layer effect filters to the specified drawable.
+         *
+         * This procedure combines the contents of the drawable's filter stack
+         * (for export) with the specified drawable.
+         * @returns TRUE on success.
+         */
+        merge_filters(): boolean;
+        /**
+         * Merge the shadow buffer with the specified drawable.
+         *
+         * This procedure combines the contents of the drawable's shadow buffer
+         * (for temporary processing) with the specified drawable. The 'undo'
+         * parameter specifies whether to add an undo step for the operation.
+         * Requesting no undo is useful for such applications as 'auto-apply'.
+         * @param undo Push merge to undo stack?
+         * @returns TRUE on success.
+         */
+        merge_shadow(undo: boolean): boolean;
+        /**
+         * Offset the drawable by the specified amounts in the X and Y
+         * directions
+         *
+         * This procedure offsets the specified drawable by the amounts
+         * specified by 'offset_x' and 'offset_y'. If 'wrap_around' is set to
+         * TRUE, then portions of the drawable which are offset out of bounds
+         * are wrapped around. Alternatively, the undefined regions of the
+         * drawable can be filled with transparency or the background color, as
+         * specified by the 'fill-type' parameter.
+         * @param wrap_around wrap image around or fill vacated regions.
+         * @param fill_type fill vacated regions of drawable with background or transparent.
+         * @param color fills in the background color when fill_type is set to OFFSET-COLOR.
+         * @param offset_x offset by this amount in X direction.
+         * @param offset_y offset by this amount in Y direction.
+         * @returns TRUE on success.
+         */
+        offset(
+            wrap_around: boolean,
+            fill_type: OffsetType | null,
+            color: Gegl.Color,
+            offset_x: number,
+            offset_y: number,
+        ): boolean;
+        /**
+         * Posterize the specified drawable.
+         *
+         * This procedures reduces the number of shades allows in each
+         * intensity channel to the specified 'levels' parameter.
+         * @param levels Levels of posterization.
+         * @returns TRUE on success.
+         */
+        posterize(levels: number): boolean;
+        /**
+         * Sets the value of the pixel at the specified coordinates.
+         *
+         * This procedure sets the pixel value at the specified coordinates.
+         * Note that this function is not undoable, you should use it only on
+         * drawables you just created yourself.
+         * @param x_coord The x coordinate.
+         * @param y_coord The y coordinate.
+         * @param color The pixel color.
+         * @returns TRUE on success.
+         */
+        set_pixel(x_coord: number, y_coord: number, color: Gegl.Color): boolean;
+        /**
+         * Perform shadows and highlights correction.
+         *
+         * This filter allows adjusting shadows and highlights in the image
+         * separately. The implementation closely follow its counterpart in the
+         * Darktable photography software.
+         * @param shadows Adjust exposure of shadows.
+         * @param highlights Adjust exposure of highlights.
+         * @param whitepoint Shift white point.
+         * @param radius Spatial extent.
+         * @param compress Compress the effect on shadows/highlights and preserve midtones.
+         * @param shadows_ccorrect Adjust saturation of shadows.
+         * @param highlights_ccorrect Adjust saturation of highlights.
+         * @returns TRUE on success.
+         */
+        shadows_highlights(
+            shadows: number,
+            highlights: number,
+            whitepoint: number,
+            radius: number,
+            compress: number,
+            shadows_ccorrect: number,
+            highlights_ccorrect: number,
+        ): boolean;
+        /**
+         * Threshold the specified drawable.
+         *
+         * This procedures generates a threshold map of the specified drawable.
+         * All pixels between the values of 'low_threshold' and
+         * 'high_threshold', on the scale of 'channel' are replaced with white,
+         * and all other pixels with black.
+         * @param channel The channel to base the threshold on.
+         * @param low_threshold The low threshold value.
+         * @param high_threshold The high threshold value.
+         * @returns TRUE on success.
+         */
+        threshold(channel: HistogramChannel | null, low_threshold: number, high_threshold: number): boolean;
+        /**
+         * Returns the drawable's type.
+         *
+         * This procedure returns the drawable's type.
+         * @returns The drawable's type.
+         */
+        type(): ImageType;
+        /**
+         * Returns the drawable's type with alpha.
+         *
+         * This procedure returns the drawable's type as if had an alpha
+         * channel. If the type is currently Gray, for instance, the returned
+         * type would be GrayA. If the drawable already has an alpha channel,
+         * the drawable's type is simply returned.
+         * @returns The drawable's type with alpha.
+         */
+        type_with_alpha(): ImageType;
+        /**
+         * Update the specified region of the drawable.
+         *
+         * This procedure updates the specified region of the drawable. The (x,
+         * y) coordinate pair is relative to the drawable's origin, not to the
+         * image origin. Therefore, the entire drawable can be updated using
+         * (0, 0, width, height).
+         * @param x x coordinate of upper left corner of update region.
+         * @param y y coordinate of upper left corner of update region.
+         * @param width Width of update region.
+         * @param height Height of update region.
+         * @returns TRUE on success.
+         */
+        update(x: number, y: number, width: number, height: number): boolean;
+    }
+
     namespace LoadProcedure {
         // Signal signatures
         interface SignalSignatures extends FileProcedure.SignalSignatures {
@@ -16222,18 +18251,18 @@ export namespace Gimp {
 
     namespace Metadata {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GExiv2.Metadata.SignalSignatures {}
 
         // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        interface ConstructorProps extends GExiv2.Metadata.ConstructorProps {}
     }
 
     /**
      * Basic functions for handling {@link Gimp.Metadata} objects.
      * @gir-type Class
      */
-    class Metadata extends GObject.Object {
+    class Metadata extends GExiv2.Metadata {
         static $gtype: GObject.GType<Metadata>;
 
         /**
@@ -16346,6 +18375,16 @@ export namespace Gimp {
          * @param colorspace The color space.
          */
         set_colorspace(colorspace: MetadataColorspace | null): void;
+        /**
+         * Sets `Iptc.Application2.DateCreated`, `Iptc.Application2.TimeCreated`,
+         * `Exif.Image.DateTime`, `Exif.Image.DateTimeOriginal`,
+         * `Exif.Photo.DateTimeOriginal`, `Exif.Photo.DateTimeDigitized`,
+         * `Exif.Photo.OffsetTime`, `Exif.Photo.OffsetTimeOriginal`,
+         * `Exif.Photo.OffsetTimeDigitized`, `Xmp.xmp.CreateDate`, `Xmp.xmp.ModifyDate`,
+         * `Xmp.xmp.MetadataDate`, `Xmp.photoshop.DateCreated` of `metadata`.
+         * @param datetime A {@link GLib.DateTime} value
+         */
+        set_creation_date(datetime: GLib.DateTime): void;
         /**
          * Sets the tags from a piece of Exif data on `metadata`.
          * @param exif_data The blob of Exif data to set
@@ -16665,7 +18704,7 @@ export namespace Gimp {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -16720,7 +18759,7 @@ export namespace Gimp {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -16795,7 +18834,7 @@ export namespace Gimp {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -17309,7 +19348,7 @@ export namespace Gimp {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -17364,7 +19403,7 @@ export namespace Gimp {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -17439,7 +19478,7 @@ export namespace Gimp {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -17895,7 +19934,7 @@ export namespace Gimp {
          * @param color The color for the added entry.
          * @returns TRUE on success.
          */
-        add_entry(entry_name: string, color: Gegl.Color): [boolean, number];
+        add_entry(entry_name: string | null, color: Gegl.Color): [boolean, number];
         /**
          * Deletes an entry from the palette.
          *
@@ -17908,46 +19947,6 @@ export namespace Gimp {
          */
         delete_entry(entry_num: number): boolean;
         /**
-         * Gets the color of an entry in the palette.
-         *
-         * Returns the color of the entry at the given zero-based index into
-         * the palette. Returns `null` when the index is out of range.
-         * @param entry_num The index of the entry to get the color of.
-         * @returns The color at the index.
-         */
-        entry_get_color(entry_num: number): Gegl.Color;
-        /**
-         * Gets the name of an entry in the palette.
-         *
-         * Gets the name of the entry at the zero-based index into the palette.
-         * Returns an error when the index is out of range.
-         * @param entry_num The entry to get.
-         * @returns TRUE on success.
-         */
-        entry_get_name(entry_num: number): [boolean, string];
-        /**
-         * Sets the color of an entry in the palette.
-         *
-         * Sets the color of the entry at the zero-based index into the
-         * palette. Returns an error when the index is out of range. Returns an
-         * error when the palette is not editable.
-         * @param entry_num The entry to get.
-         * @param color The new color.
-         * @returns TRUE on success.
-         */
-        entry_set_color(entry_num: number, color: Gegl.Color): boolean;
-        /**
-         * Sets the name of an entry in the palette.
-         *
-         * Sets the name of the entry at the zero-based index into the palette.
-         * Returns an error if the index is out or range. Returns an error if
-         * the palette is not editable.
-         * @param entry_num The entry to get.
-         * @param entry_name The new name.
-         * @returns TRUE on success.
-         */
-        entry_set_name(entry_num: number, entry_name: string): boolean;
-        /**
          * Get the count of colors in the palette.
          *
          * Returns the number of colors in the palette.
@@ -17955,11 +19954,30 @@ export namespace Gimp {
          */
         get_color_count(): number;
         /**
+         * This procedure returns a palette's colormap as an array of bytes with
+         * all colors converted to a given Babl `format`.
+         *
+         * The byte-size of the returned colormap depends on the number of
+         * colors and on the bytes-per-pixel size of `format`. E.g. that the
+         * following equality is ensured:
+         *
+         * ```C
+         * num_bytes == num_colors * babl_format_get_bytes_per_pixel (format)
+         * ```
+         *
+         * Therefore `num_colors` and `num_bytes` are kinda redundant since both
+         * indicate the size of the return value in a different way. You may
+         * both set them to `null` but not at the same time.
+         * @param format The desired color format.
+         * @returns The palette's colormap.
+         */
+        get_colormap(format: Babl.Object): [Uint8Array, number];
+        /**
          * Gets colors in the palette.
          *
          * Returns an array of colors in the palette. Free the returned array
          * with `gimp_color_array_free()`.
-         * @returns The colors in the palette.
+         * @returns The colors in the palette.          The returned value must be freed with `gimp_color_array_free()`.
          */
         get_colors(): Gegl.Color[];
         /**
@@ -17970,6 +19988,38 @@ export namespace Gimp {
          */
         get_columns(): number;
         /**
+         * Gets the color of an entry in the palette.
+         *
+         * Returns the color of the entry at the given zero-based index into
+         * the palette. Returns `null` when the index is out of range.
+         * @param entry_num The index of the entry to get the color of.
+         * @returns The color at the index.
+         */
+        get_entry_color(entry_num: number): Gegl.Color;
+        /**
+         * Gets the name of an entry in the palette.
+         *
+         * Gets the name of the entry at the zero-based index into the palette.
+         * Returns an error when the index is out of range.
+         * @param entry_num The entry to get.
+         * @returns TRUE on success.
+         */
+        get_entry_name(entry_num: number): [boolean, string];
+        /**
+         * This procedure sets the entries in the specified palette in one go,
+         * though they must all be in the same `format`.
+         *
+         * The number of entries depens on the `num_bytes` size of `colormap` and
+         * the bytes-per-pixel size of `format`.
+         * The procedure will fail if `num_bytes` is not an exact multiple of the
+         * number of bytes per pixel of `format`.
+         * @param format The desired color format. `colormap` (array length=num_bytes): The new colormap values.
+         * @param colormap
+         * @param num_bytes The byte-size of `colormap`.
+         * @returns `true` on success.
+         */
+        set_colormap(format: Babl.Object, colormap: number, num_bytes: number): boolean;
+        /**
          * Sets the number of columns used to display the palette
          *
          * Set the number of colors shown per row when the palette is
@@ -17979,6 +20029,28 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         set_columns(columns: number): boolean;
+        /**
+         * Sets the color of an entry in the palette.
+         *
+         * Sets the color of the entry at the zero-based index into the
+         * palette. Returns an error when the index is out of range. Returns an
+         * error when the palette is not editable.
+         * @param entry_num The entry to get.
+         * @param color The new color.
+         * @returns TRUE on success.
+         */
+        set_entry_color(entry_num: number, color: Gegl.Color): boolean;
+        /**
+         * Sets the name of an entry in the palette.
+         *
+         * Sets the name of the entry at the zero-based index into the palette.
+         * Returns an error if the index is out or range. Returns an error if
+         * the palette is not editable.
+         * @param entry_num The entry to get.
+         * @param entry_name The new name.
+         * @returns TRUE on success.
+         */
+        set_entry_name(entry_num: number, entry_name?: string | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -18076,7 +20148,7 @@ export namespace Gimp {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -18131,7 +20203,7 @@ export namespace Gimp {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -18206,7 +20278,7 @@ export namespace Gimp {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -18541,6 +20613,43 @@ export namespace Gimp {
         emit(signal: string, ...args: any[]): void;
     }
 
+    namespace ParamDoubleArray {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class ParamDoubleArray extends ParamArray {
+        static $gtype: GObject.GType<ParamDoubleArray>;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof ParamDoubleArray.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ParamDoubleArray.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof ParamDoubleArray.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ParamDoubleArray.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof ParamDoubleArray.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<ParamDoubleArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
     namespace ParamDrawable {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -18578,7 +20687,7 @@ export namespace Gimp {
         emit(signal: string, ...args: any[]): void;
     }
 
-    namespace ParamFloatArray {
+    namespace ParamFile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
@@ -18586,8 +20695,8 @@ export namespace Gimp {
     /**
      * @gir-type Class
      */
-    class ParamFloatArray extends ParamArray {
-        static $gtype: GObject.GType<ParamFloatArray>;
+    class ParamFile extends ParamObject {
+        static $gtype: GObject.GType<ParamFile>;
 
         // Constructors
 
@@ -18596,21 +20705,21 @@ export namespace Gimp {
         // Signals
 
         /** @signal */
-        connect<K extends keyof ParamFloatArray.SignalSignatures>(
+        connect<K extends keyof ParamFile.SignalSignatures>(
             signal: K,
-            callback: GObject.SignalCallback<this, ParamFloatArray.SignalSignatures[K]>,
+            callback: GObject.SignalCallback<this, ParamFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
         /** @signal */
-        connect_after<K extends keyof ParamFloatArray.SignalSignatures>(
+        connect_after<K extends keyof ParamFile.SignalSignatures>(
             signal: K,
-            callback: GObject.SignalCallback<this, ParamFloatArray.SignalSignatures[K]>,
+            callback: GObject.SignalCallback<this, ParamFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
         /** @signal */
-        emit<K extends keyof ParamFloatArray.SignalSignatures>(
+        emit<K extends keyof ParamFile.SignalSignatures>(
             signal: K,
-            ...args: GObject.GjsParameters<ParamFloatArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+            ...args: GObject.GjsParameters<ParamFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -18837,6 +20946,43 @@ export namespace Gimp {
         emit(signal: string, ...args: any[]): void;
     }
 
+    namespace ParamLinkLayer {
+        // Signal signatures
+        interface SignalSignatures extends ParamLayer.SignalSignatures {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class ParamLinkLayer extends ParamLayer {
+        static $gtype: GObject.GType<ParamLinkLayer>;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof ParamLinkLayer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ParamLinkLayer.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof ParamLinkLayer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ParamLinkLayer.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof ParamLinkLayer.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<ParamLinkLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
     namespace ParamPalette {
         // Signal signatures
         interface SignalSignatures extends ParamResource.SignalSignatures {}
@@ -18944,6 +21090,43 @@ export namespace Gimp {
         emit<K extends keyof ParamPattern.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamPattern.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
+    namespace ParamRasterizable {
+        // Signal signatures
+        interface SignalSignatures extends ParamDrawable.SignalSignatures {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class ParamRasterizable extends ParamDrawable {
+        static $gtype: GObject.GType<ParamRasterizable>;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof ParamRasterizable.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ParamRasterizable.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof ParamRasterizable.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ParamRasterizable.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof ParamRasterizable.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<ParamRasterizable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
     }
@@ -19096,6 +21279,43 @@ export namespace Gimp {
         emit(signal: string, ...args: any[]): void;
     }
 
+    namespace ParamVectorLayer {
+        // Signal signatures
+        interface SignalSignatures extends ParamLayer.SignalSignatures {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class ParamVectorLayer extends ParamLayer {
+        static $gtype: GObject.GType<ParamVectorLayer>;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof ParamVectorLayer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ParamVectorLayer.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof ParamVectorLayer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ParamVectorLayer.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof ParamVectorLayer.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<ParamVectorLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
     namespace Path {
         // Signal signatures
         interface SignalSignatures extends Item.SignalSignatures {
@@ -19129,7 +21349,7 @@ export namespace Gimp {
 
         _init(...args: any[]): void;
 
-        static ['new'](image: Image, name: string): Path;
+        static ['new'](image: Image, name?: string | null): Path;
 
         static new_from_text_layer(image: Image, layer: Layer): Path;
 
@@ -19259,6 +21479,10 @@ export namespace Gimp {
          *
          * This procedure copies the specified path object and returns the
          * copy.
+         *
+         * The new path still needs to be added to the image as this is not
+         * automatic. Add the new path with the {@link Image.insert_path}
+         * method.
          * @returns The newly copied path object.
          */
         copy(): Path;
@@ -19364,10 +21588,11 @@ export namespace Gimp {
          * Adds a stroke of a given type to the path object. The coordinates of
          * the control points can be specified. For now only strokes of the
          * type GIMP_PATH_STROKE_TYPE_BEZIER are supported. The control points
-         * are specified as a pair of float values for the x- and y-coordinate.
-         * The Bezier stroke type needs a multiple of three control points.
-         * Each Bezier segment endpoint (anchor, A) has two additional control
-         * points (C) associated. They are specified in the order CACCACCAC...
+         * are specified as a pair of double values for the x- and
+         * y-coordinate. The Bezier stroke type needs a multiple of three
+         * control points. Each Bezier segment endpoint (anchor, A) has two
+         * additional control points (C) associated. They are specified in the
+         * order CACCACCAC...
          * @param type type of the stroke (always GIMP_PATH_STROKE_TYPE_BEZIER for now).
          * @param controlpoints List of the x- and y-coordinates of the control points.
          * @param closed Whether the stroke is to be closed or not.
@@ -19493,7 +21718,7 @@ export namespace Gimp {
          * size without changing its ratio. If the pattern is smaller than this size to
          * begin with, it will not be scaled up.
          *
-         * If `max_width` or `max_height` are `null`, the buffer is returned in the pattern's
+         * If `max_width` or `max_height` are 0, the buffer is returned in the pattern's
          * native size.
          *
          * Make sure you called {@link Gegl.init} before calling any function using
@@ -19609,7 +21834,7 @@ export namespace Gimp {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -19664,7 +21889,7 @@ export namespace Gimp {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -19739,7 +21964,7 @@ export namespace Gimp {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -20247,7 +22472,7 @@ export namespace Gimp {
         add_menu_branch(menu_path: string, menu_label: string): void;
         /**
          * This function adds a temporary procedure to `plug_in`. It is usually
-         * called from a {@link Gimp.PDBProcType.EXTENSION} procedure's
+         * called from a {@link Gimp.PDBProcType.PERSISTENT} procedure's
          * {@link Procedure.run}.
          *
          * A temporary procedure is a procedure which is only available while
@@ -20259,50 +22484,12 @@ export namespace Gimp {
          * NOTE: Normally, plug-in communication is triggered by the plug-in
          * and the GIMP core only responds to the plug-in's requests. You must
          * explicitly enable receiving of temporary procedure run requests
-         * using either {@link PlugIn.extension_enable} or
-         * {@link PlugIn.extension_process}. See their respective documentation
-         * for details.
+         * using either {@link PlugIn.persistent_enable} or
+         * {@link PlugIn.persistent_process}. See their respective
+         * documentation for details.
          * @param procedure A {@link Gimp.Procedure} of type {@link Gimp.PDBProcType.TEMPORARY}.
          */
         add_temp_procedure(procedure: Procedure): void;
-        /**
-         * Enables asynchronous processing of messages from the main GIMP
-         * application.
-         *
-         * Normally, a plug-in is not called by GIMP except for the call to
-         * the procedure it implements. All subsequent communication is
-         * triggered by the plug-in and all messages sent from GIMP to the
-         * plug-in are just answers to requests the plug-in made.
-         *
-         * If the plug-in however registered temporary procedures using
-         * {@link PlugIn.add_temp_procedure}, it needs to be able to receive
-         * requests to execute them. Usually this will be done by running
-         * {@link PlugIn.extension_process} in an endless loop.
-         *
-         * If the plug-in cannot use {@link PlugIn.extension_process}, i.e. if
-         * it has a GUI and is hanging around in a {@link GLib.MainLoop}, it
-         * must call {@link PlugIn.extension_enable}.
-         *
-         * Note that the plug-in does not need to be a
-         * {@link Gimp.PDBProcType.EXTENSION} to register temporary procedures.
-         *
-         * See also: {@link PlugIn.add_temp_procedure}.
-         */
-        extension_enable(): void;
-        /**
-         * Processes one message sent by GIMP and returns.
-         *
-         * Call this function in an endless loop after calling
-         * `gimp_procedure_extension_ready()` to process requests for running
-         * temporary procedures.
-         *
-         * See {@link PlugIn.extension_enable} for an asynchronous way of
-         * doing the same if running an endless loop is not an option.
-         *
-         * See also: {@link PlugIn.add_temp_procedure}.
-         * @param timeout The timeout (in ms) to use for the `select()` call.
-         */
-        extension_process(timeout: number): void;
         /**
          * Retrieves the active error handler for procedure calls.
          *
@@ -20325,6 +22512,44 @@ export namespace Gimp {
          * @returns The list of          procedures.
          */
         get_temp_procedures(): Procedure[];
+        /**
+         * Enables asynchronous processing of messages from the main GIMP
+         * application.
+         *
+         * Normally, a plug-in is not called by GIMP except for the call to
+         * the procedure it implements. All subsequent communication is
+         * triggered by the plug-in and all messages sent from GIMP to the
+         * plug-in are just answers to requests the plug-in made.
+         *
+         * If the plug-in however registered temporary procedures using
+         * {@link PlugIn.add_temp_procedure}, it needs to be able to receive
+         * requests to execute them. Usually this will be done by running
+         * {@link PlugIn.persistent_process} in an endless loop.
+         *
+         * If the plug-in cannot use {@link PlugIn.persistent_process}, i.e. if
+         * it has a GUI and is hanging around in a {@link GLib.MainLoop}, it
+         * must call {@link PlugIn.persistent_enable}.
+         *
+         * Note that the plug-in does not need to be a
+         * {@link Gimp.PDBProcType.PERSISTENT} to register temporary procedures.
+         *
+         * See also: {@link PlugIn.add_temp_procedure}.
+         */
+        persistent_enable(): void;
+        /**
+         * Processes one message sent by GIMP and returns.
+         *
+         * Call this function in an endless loop after calling
+         * {@link Gimp.Procedure.persistent_ready} to process requests for
+         * running temporary procedures.
+         *
+         * See {@link PlugIn.persistent_enable} for an asynchronous way of
+         * doing the same if running an endless loop is not an option.
+         *
+         * See also: {@link PlugIn.add_temp_procedure}.
+         * @param timeout The timeout (in ms) to use for the `select()` call.
+         */
+        persistent_process(timeout: number): void;
         /**
          * This function removes a temporary procedure from `plug_in` by the
          * procedure's `procedure_name`.
@@ -20505,7 +22730,7 @@ export namespace Gimp {
         add_boolean_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             value: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -20520,7 +22745,7 @@ export namespace Gimp {
         add_boolean_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             value: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -20535,7 +22760,7 @@ export namespace Gimp {
         add_boolean_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             value: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -20552,7 +22777,7 @@ export namespace Gimp {
         add_brush_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             default_value: Brush | null,
             default_to_context: boolean,
@@ -20570,7 +22795,7 @@ export namespace Gimp {
         add_brush_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             default_value: Brush | null,
             default_to_context: boolean,
             flags: GObject.ParamFlags | null,
@@ -20582,7 +22807,12 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_brush_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_brush_return_value(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new {@link GLib.Bytes} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -20590,7 +22820,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_bytes_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_bytes_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags | null): void;
         /**
          * Add a new {@link GLib.Bytes} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -20598,7 +22828,12 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_bytes_aux_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_bytes_aux_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new {@link GLib.Bytes} return value to `procedure`.
          * @param name the name of the argument to be created.
@@ -20606,7 +22841,12 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_bytes_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_bytes_return_value(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new {@link Gimp.Channel} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -20618,7 +22858,7 @@ export namespace Gimp {
         add_channel_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -20633,7 +22873,7 @@ export namespace Gimp {
         add_channel_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -20648,7 +22888,7 @@ export namespace Gimp {
         add_channel_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -20664,7 +22904,7 @@ export namespace Gimp {
         add_choice_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             choice: Choice,
             value: string,
             flags: GObject.ParamFlags | null,
@@ -20681,7 +22921,7 @@ export namespace Gimp {
         add_choice_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             choice: Choice,
             value: string,
             flags: GObject.ParamFlags | null,
@@ -20698,7 +22938,7 @@ export namespace Gimp {
         add_choice_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             choice: Choice,
             value: string,
             flags: GObject.ParamFlags | null,
@@ -20715,7 +22955,7 @@ export namespace Gimp {
         add_color_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             has_alpha: boolean,
             value: Gegl.Color,
             flags: GObject.ParamFlags | null,
@@ -20732,7 +22972,7 @@ export namespace Gimp {
         add_color_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             has_alpha: boolean,
             value: Gegl.Color,
             flags: GObject.ParamFlags | null,
@@ -20749,7 +22989,7 @@ export namespace Gimp {
         add_color_from_string_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             has_alpha: boolean,
             value: string,
             flags: GObject.ParamFlags | null,
@@ -20766,7 +23006,7 @@ export namespace Gimp {
         add_color_from_string_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             has_alpha: boolean,
             value: string,
             flags: GObject.ParamFlags | null,
@@ -20783,7 +23023,7 @@ export namespace Gimp {
         add_color_from_string_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             has_alpha: boolean,
             value: string,
             flags: GObject.ParamFlags | null,
@@ -20800,9 +23040,54 @@ export namespace Gimp {
         add_color_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             has_alpha: boolean,
             value: Gegl.Color,
+            flags: GObject.ParamFlags | null,
+        ): void;
+        /**
+         * Add a new object array argument to `procedure`.
+         * @param name the name of the argument to be created.
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description. `object_type`  the type of object stored in the array
+         * @param object_type
+         * @param flags argument flags.
+         */
+        add_core_object_array_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            object_type: GObject.GType,
+            flags: GObject.ParamFlags | null,
+        ): void;
+        /**
+         * Add a new object array auxiliary argument to `procedure`.
+         * @param name the name of the argument to be created.
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description. `object_type`  the type of object stored in the array
+         * @param object_type
+         * @param flags argument flags.
+         */
+        add_core_object_array_aux_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            object_type: GObject.GType,
+            flags: GObject.ParamFlags | null,
+        ): void;
+        /**
+         * Add a new object array return value to `procedure`.
+         * @param name the name of the argument to be created.
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description. `object_type`  the type of object stored in the array
+         * @param object_type
+         * @param flags argument flags.
+         */
+        add_core_object_array_return_value(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            object_type: GObject.GType,
             flags: GObject.ParamFlags | null,
         ): void;
         /**
@@ -20816,7 +23101,7 @@ export namespace Gimp {
         add_display_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -20831,7 +23116,7 @@ export namespace Gimp {
         add_display_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -20846,12 +23131,12 @@ export namespace Gimp {
         add_display_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new double argument to `procedure`.
+         * Add a new floating-point in double precision argument to `procedure`.
          * @param name the name of the argument to be created.
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
@@ -20863,14 +23148,53 @@ export namespace Gimp {
         add_double_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             min: number,
             max: number,
             value: number,
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new double auxiliary argument to `procedure`.
+         * Add a new double array argument to `procedure`.
+         * @param name the name of the argument to be created.
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description.
+         * @param flags argument flags.
+         */
+        add_double_array_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
+        /**
+         * Add a new double array auxiliary argument to `procedure`.
+         * @param name the name of the argument to be created.
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description.
+         * @param flags argument flags.
+         */
+        add_double_array_aux_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
+        /**
+         * Add a new double array return value to `procedure`.
+         * @param name the name of the argument to be created.
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description.
+         * @param flags argument flags.
+         */
+        add_double_array_return_value(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
+        /**
+         * Add a new floating-point in double precision auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
@@ -20882,14 +23206,14 @@ export namespace Gimp {
         add_double_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             min: number,
             max: number,
             value: number,
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new double return value to `procedure`.
+         * Add a new floating-point in double precision return value to `procedure`.
          * @param name the name of the argument to be created.
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
@@ -20901,7 +23225,7 @@ export namespace Gimp {
         add_double_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             min: number,
             max: number,
             value: number,
@@ -20918,7 +23242,7 @@ export namespace Gimp {
         add_drawable_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -20933,7 +23257,7 @@ export namespace Gimp {
         add_drawable_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -20948,7 +23272,7 @@ export namespace Gimp {
         add_drawable_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -20964,7 +23288,7 @@ export namespace Gimp {
         add_enum_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             enum_type: GObject.GType,
             value: number,
             flags: GObject.ParamFlags | null,
@@ -20981,7 +23305,7 @@ export namespace Gimp {
         add_enum_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             enum_type: GObject.GType,
             value: number,
             flags: GObject.ParamFlags | null,
@@ -20998,27 +23322,49 @@ export namespace Gimp {
         add_enum_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             enum_type: GObject.GType,
             value: number,
             flags: GObject.ParamFlags | null,
         ): void;
         /**
          * Add a new {@link Gio.File} argument to `procedure`.
-         * @param name the name of the argument to be created.
-         * @param nick the label used in `GimpProcedureDialog`.
-         * @param blurb a more detailed help description.
-         * @param flags argument flags.
+         * @param name The name of the argument to be created.
+         * @param nick The label used in `GimpProcedureDialog`.
+         * @param blurb A more detailed help description.
+         * @param action The type of file to expect.
+         * @param none_ok Whether `null` is allowed.
+         * @param default_file File to use if none is assigned.
+         * @param flags Argument flags.
          */
-        add_file_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_file_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            action: FileChooserAction | null,
+            none_ok: boolean,
+            default_file: Gio.File | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new {@link Gio.File} auxiliary argument to `procedure`.
-         * @param name the name of the argument to be created.
-         * @param nick the label used in `GimpProcedureDialog`.
-         * @param blurb a more detailed help description.
-         * @param flags argument flags.
+         * @param name The name of the argument to be created.
+         * @param nick The label used in `GimpProcedureDialog`.
+         * @param blurb A more detailed help description.
+         * @param action The type of file to expect.
+         * @param none_ok Whether `null` is allowed.
+         * @param default_file File to use if none is assigned.
+         * @param flags Argument flags.
          */
-        add_file_aux_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_file_aux_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            action: FileChooserAction | null,
+            none_ok: boolean,
+            default_file: Gio.File | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new {@link Gio.File} return value to `procedure`.
          * @param name the name of the argument to be created.
@@ -21026,31 +23372,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_file_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
-        /**
-         * Add a new float array argument to `procedure`.
-         * @param name the name of the argument to be created.
-         * @param nick the label used in `GimpProcedureDialog`.
-         * @param blurb a more detailed help description.
-         * @param flags argument flags.
-         */
-        add_float_array_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
-        /**
-         * Add a new float array auxiliary argument to `procedure`.
-         * @param name the name of the argument to be created.
-         * @param nick the label used in `GimpProcedureDialog`.
-         * @param blurb a more detailed help description.
-         * @param flags argument flags.
-         */
-        add_float_array_aux_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
-        /**
-         * Add a new float array return value to `procedure`.
-         * @param name the name of the argument to be created.
-         * @param nick the label used in `GimpProcedureDialog`.
-         * @param blurb a more detailed help description.
-         * @param flags argument flags.
-         */
-        add_float_array_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_file_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags | null): void;
         /**
          * Add a new {@link Gimp.Font} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -21064,7 +23386,7 @@ export namespace Gimp {
         add_font_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             default_value: Font | null,
             default_to_context: boolean,
@@ -21082,7 +23404,7 @@ export namespace Gimp {
         add_font_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             default_value: Font | null,
             default_to_context: boolean,
             flags: GObject.ParamFlags | null,
@@ -21094,7 +23416,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_font_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_font_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags | null): void;
         /**
          * Add a new {@link Gimp.Gradient} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -21108,7 +23430,7 @@ export namespace Gimp {
         add_gradient_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             default_value: Gradient | null,
             default_to_context: boolean,
@@ -21126,7 +23448,7 @@ export namespace Gimp {
         add_gradient_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             default_value: Gradient | null,
             default_to_context: boolean,
             flags: GObject.ParamFlags | null,
@@ -21138,7 +23460,12 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_gradient_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_gradient_return_value(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new {@link GroupLayer} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -21150,7 +23477,7 @@ export namespace Gimp {
         add_group_layer_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21165,7 +23492,7 @@ export namespace Gimp {
         add_group_layer_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21180,7 +23507,7 @@ export namespace Gimp {
         add_group_layer_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21195,7 +23522,7 @@ export namespace Gimp {
         add_image_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21210,7 +23537,7 @@ export namespace Gimp {
         add_image_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21225,7 +23552,7 @@ export namespace Gimp {
         add_image_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21236,7 +23563,12 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_int32_array_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_int32_array_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new integer array auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -21244,7 +23576,12 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_int32_array_aux_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_int32_array_aux_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new integer array return value to `procedure`.
          * @param name the name of the argument to be created.
@@ -21252,7 +23589,12 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_int32_array_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_int32_array_return_value(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new integer argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -21266,7 +23608,7 @@ export namespace Gimp {
         add_int_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             min: number,
             max: number,
             value: number,
@@ -21285,7 +23627,7 @@ export namespace Gimp {
         add_int_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             min: number,
             max: number,
             value: number,
@@ -21304,7 +23646,7 @@ export namespace Gimp {
         add_int_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             min: number,
             max: number,
             value: number,
@@ -21321,7 +23663,7 @@ export namespace Gimp {
         add_item_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21336,7 +23678,7 @@ export namespace Gimp {
         add_item_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21351,7 +23693,7 @@ export namespace Gimp {
         add_item_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21366,7 +23708,7 @@ export namespace Gimp {
         add_layer_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21381,7 +23723,7 @@ export namespace Gimp {
         add_layer_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21396,7 +23738,7 @@ export namespace Gimp {
         add_layer_mask_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21411,7 +23753,7 @@ export namespace Gimp {
         add_layer_mask_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21426,7 +23768,7 @@ export namespace Gimp {
         add_layer_mask_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21441,7 +23783,52 @@ export namespace Gimp {
         add_layer_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
+            none_ok: boolean,
+            flags: GObject.ParamFlags | null,
+        ): void;
+        /**
+         * Add a new {@link Gimp.LinkLayer} argument to `procedure`.
+         * @param name the name of the argument to be created.
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description.
+         * @param none_ok Whether no is a valid value.
+         * @param flags argument flags.
+         */
+        add_link_layer_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            none_ok: boolean,
+            flags: GObject.ParamFlags | null,
+        ): void;
+        /**
+         * Add a new {@link Gimp.LinkLayer} auxiliary argument to `procedure`.
+         * @param name the name of the argument to be created.
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description.
+         * @param none_ok Whether no is a valid value.
+         * @param flags argument flags.
+         */
+        add_link_layer_aux_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            none_ok: boolean,
+            flags: GObject.ParamFlags | null,
+        ): void;
+        /**
+         * Add a new {@link Gimp.LinkLayer} return value to `procedure`.
+         * @param name the name of the argument to be created.
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description.
+         * @param none_ok Whether no is a valid value.
+         * @param flags argument flags.
+         */
+        add_link_layer_return_value(
+            name: string,
+            nick: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21479,51 +23866,6 @@ export namespace Gimp {
          */
         add_menu_path(menu_path: string): void;
         /**
-         * Add a new object array argument to `procedure`.
-         * @param name the name of the argument to be created.
-         * @param nick the label used in `GimpProcedureDialog`.
-         * @param blurb a more detailed help description. `object_type`  the type of object stored in the array
-         * @param object_type
-         * @param flags argument flags.
-         */
-        add_object_array_argument(
-            name: string,
-            nick: string,
-            blurb: string,
-            object_type: GObject.GType,
-            flags: GObject.ParamFlags | null,
-        ): void;
-        /**
-         * Add a new object array auxiliary argument to `procedure`.
-         * @param name the name of the argument to be created.
-         * @param nick the label used in `GimpProcedureDialog`.
-         * @param blurb a more detailed help description. `object_type`  the type of object stored in the array
-         * @param object_type
-         * @param flags argument flags.
-         */
-        add_object_array_aux_argument(
-            name: string,
-            nick: string,
-            blurb: string,
-            object_type: GObject.GType,
-            flags: GObject.ParamFlags | null,
-        ): void;
-        /**
-         * Add a new object array return value to `procedure`.
-         * @param name the name of the argument to be created.
-         * @param nick the label used in `GimpProcedureDialog`.
-         * @param blurb a more detailed help description. `object_type`  the type of object stored in the array
-         * @param object_type
-         * @param flags argument flags.
-         */
-        add_object_array_return_value(
-            name: string,
-            nick: string,
-            blurb: string,
-            object_type: GObject.GType,
-            flags: GObject.ParamFlags | null,
-        ): void;
-        /**
          * Add a new {@link Gimp.Palette} argument to `procedure`.
          * @param name the name of the argument to be created.
          * @param nick the label used in `GimpProcedureDialog`.
@@ -21536,7 +23878,7 @@ export namespace Gimp {
         add_palette_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             default_value: Palette | null,
             default_to_context: boolean,
@@ -21554,7 +23896,7 @@ export namespace Gimp {
         add_palette_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             default_value: Palette | null,
             default_to_context: boolean,
             flags: GObject.ParamFlags | null,
@@ -21566,7 +23908,12 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_palette_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_palette_return_value(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new param argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -21578,7 +23925,7 @@ export namespace Gimp {
         add_param_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             param_type: GObject.GType,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21593,7 +23940,7 @@ export namespace Gimp {
         add_param_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             param_type: GObject.GType,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21608,7 +23955,7 @@ export namespace Gimp {
         add_param_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             param_type: GObject.GType,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21619,7 +23966,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_parasite_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_parasite_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags | null): void;
         /**
          * Add a new {@link Gimp.Parasite} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -21627,7 +23974,12 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_parasite_aux_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_parasite_aux_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new {@link Gimp.Parasite} return value to `procedure`.
          * @param name the name of the argument to be created.
@@ -21635,7 +23987,12 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_parasite_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_parasite_return_value(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new {@link Gimp.Path} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -21647,7 +24004,7 @@ export namespace Gimp {
         add_path_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21662,7 +24019,7 @@ export namespace Gimp {
         add_path_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21677,7 +24034,7 @@ export namespace Gimp {
         add_path_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21694,7 +24051,7 @@ export namespace Gimp {
         add_pattern_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             default_value: Pattern | null,
             default_to_context: boolean,
@@ -21712,7 +24069,7 @@ export namespace Gimp {
         add_pattern_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             default_value: Pattern | null,
             default_to_context: boolean,
             flags: GObject.ParamFlags | null,
@@ -21724,7 +24081,12 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_pattern_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_pattern_return_value(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new {@link Gimp.Resource} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -21737,7 +24099,7 @@ export namespace Gimp {
         add_resource_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             default_value: Resource | null,
             flags: GObject.ParamFlags | null,
@@ -21753,7 +24115,7 @@ export namespace Gimp {
         add_resource_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             default_value: Resource | null,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21764,7 +24126,12 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_resource_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_resource_return_value(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new {@link Gimp.Selection} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -21776,7 +24143,7 @@ export namespace Gimp {
         add_selection_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21791,7 +24158,7 @@ export namespace Gimp {
         add_selection_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21806,7 +24173,7 @@ export namespace Gimp {
         add_selection_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21821,7 +24188,7 @@ export namespace Gimp {
         add_string_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             value: string,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21832,7 +24199,12 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_string_array_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
+        add_string_array_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            flags: GObject.ParamFlags | null,
+        ): void;
         /**
          * Add a new string array auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -21843,7 +24215,7 @@ export namespace Gimp {
         add_string_array_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             flags: GObject.ParamFlags | null,
         ): void;
         /**
@@ -21856,7 +24228,7 @@ export namespace Gimp {
         add_string_array_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             flags: GObject.ParamFlags | null,
         ): void;
         /**
@@ -21870,7 +24242,7 @@ export namespace Gimp {
         add_string_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             value: string,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21885,7 +24257,7 @@ export namespace Gimp {
         add_string_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             value: string,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21900,7 +24272,7 @@ export namespace Gimp {
         add_text_layer_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21915,7 +24287,7 @@ export namespace Gimp {
         add_text_layer_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21930,7 +24302,7 @@ export namespace Gimp {
         add_text_layer_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
@@ -21947,7 +24319,7 @@ export namespace Gimp {
         add_uint_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             min: number,
             max: number,
             value: number,
@@ -21966,7 +24338,7 @@ export namespace Gimp {
         add_uint_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             min: number,
             max: number,
             value: number,
@@ -21985,7 +24357,7 @@ export namespace Gimp {
         add_uint_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             min: number,
             max: number,
             value: number,
@@ -22004,7 +24376,7 @@ export namespace Gimp {
         add_unit_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             show_pixels: boolean,
             show_percent: boolean,
             value: Unit,
@@ -22023,7 +24395,7 @@ export namespace Gimp {
         add_unit_aux_argument(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             show_pixels: boolean,
             show_percent: boolean,
             value: Unit,
@@ -22042,10 +24414,55 @@ export namespace Gimp {
         add_unit_return_value(
             name: string,
             nick: string,
-            blurb: string,
+            blurb: string | null,
             show_pixels: boolean,
             show_percent: boolean,
             value: Unit,
+            flags: GObject.ParamFlags | null,
+        ): void;
+        /**
+         * Add a new {@link Gimp.VectorLayer} argument to `procedure`.
+         * @param name the name of the argument to be created.
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description.
+         * @param none_ok Whether no is a valid value.
+         * @param flags argument flags.
+         */
+        add_vector_layer_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            none_ok: boolean,
+            flags: GObject.ParamFlags | null,
+        ): void;
+        /**
+         * Add a new {@link Gimp.VectorLayer} auxiliary argument to `procedure`.
+         * @param name the name of the argument to be created.
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description.
+         * @param none_ok Whether no is a valid value.
+         * @param flags argument flags.
+         */
+        add_vector_layer_aux_argument(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            none_ok: boolean,
+            flags: GObject.ParamFlags | null,
+        ): void;
+        /**
+         * Add a new {@link Gimp.VectorLayer} return value to `procedure`.
+         * @param name the name of the argument to be created.
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description.
+         * @param none_ok Whether no is a valid value.
+         * @param flags argument flags.
+         */
+        add_vector_layer_return_value(
+            name: string,
+            nick: string,
+            blurb: string | null,
+            none_ok: boolean,
             flags: GObject.ParamFlags | null,
         ): void;
         /**
@@ -22054,20 +24471,6 @@ export namespace Gimp {
          * @returns The new {@link Gimp.Config}.
          */
         create_config(): ProcedureConfig;
-        /**
-         * Notify the main GIMP application that the extension has been
-         * properly initialized and is ready to run.
-         *
-         * This function _must_ be called from every procedure's {@link RunFunc}
-         * that was created as #GIMP_PDB_PROC_TYPE_EXTENSION.
-         *
-         * Subsequently, extensions can process temporary procedure run
-         * requests using either {@link PlugIn.extension_enable} or
-         * {@link PlugIn.extension_process}.
-         *
-         * See also: {@link Procedure.new}.
-         */
-        extension_ready(): void;
         /**
          * Searches the `procedure`'s arguments for a {@link GObject.ParamSpec} called `name`.
          * @param name An argument name
@@ -22183,12 +24586,33 @@ export namespace Gimp {
          */
         get_sensitivity_mask(): number;
         /**
+         * Provide the information if `procedure` is an internal procedure. Only
+         * a procedure looked up in the {@link Gimp.PDB} can be internal.
+         * Procedures created by a plug-in in particular are never internal.
+         * @returns Whether `procedure` is an internal procedure or not.
+         */
+        is_internal(): boolean;
+        /**
          * Format the expected return values from procedures.
          * @param status the success status of the procedure run.
          * @param error an optional {@link GLib.Error}. This parameter should be set if             `status` is either #GIMP_PDB_EXECUTION_ERROR or             #GIMP_PDB_CALLING_ERROR.
          * @returns the expected {@link Gimp.ValueArray} as could be returned by a {@link RunFunc}.
          */
         new_return_values(status: PDBStatusType | null, error?: GLib.Error | null): ValueArray;
+        /**
+         * Notify the main GIMP application that the persistent procedure has
+         * been properly initialized and is ready to run.
+         *
+         * This function _must_ be called from every procedure's {@link RunFunc}
+         * that was created as {@link Gimp.PDBProcType.PERSISTENT}.
+         *
+         * Subsequently, extensions can process temporary procedure run
+         * requests using either {@link PlugIn.persistent_enable} or
+         * {@link PlugIn.persistent_process}.
+         *
+         * See also: {@link Procedure.new}.
+         */
+        persistent_ready(): void;
         /**
          * Runs `procedure`, calling the run_func given in {@link Procedure.new}.
          *
@@ -22259,7 +24683,7 @@ export namespace Gimp {
         /**
          * This is a comma separated list of image types, or actually drawable
          * types, that this procedure can deal with. Wildcards are possible
-         * here, so you could say "RGB*" instead of "RGB, RGBA" or "*" for all
+         * here, so you could say "RGB\*" instead of "RGB, RGBA" or "\*" for all
          * image types.
          *
          * Supported types are "RGB", "GRAY", "INDEXED" and their variants
@@ -22278,7 +24702,8 @@ export namespace Gimp {
          */
         set_menu_label(menu_label: string): void;
         /**
-         * Sets the case when `procedure` is supposed to be sensitive or not.
+         * Sets the cases when `procedure` is supposed to be sensitive or not.
+         *
          * Note that it will be used by the core to determine whether to show a
          * procedure as sensitive (hence forbid running it otherwise), yet it
          * will not forbid thid-party plug-ins for instance to run manually your
@@ -22290,10 +24715,10 @@ export namespace Gimp {
          * a procedure with {@link Procedure.get_sensitivity_mask} when running
          * with dynamic contents.
          *
-         * Note that by default, a procedure works on an image with a single
-         * drawable selected. Hence not setting the mask, setting it with 0 or
-         * setting it with a mask of {@link Gimp.ProcedureSensitivityMask.DRAWABLE} only are
-         * equivalent.
+         * Note that by default, a procedure works on an image with one or more
+         * drawables selected. Hence not setting the mask, setting it with 0 or
+         * setting it with `GIMP_PROCEDURE_SENSITIVE_DRAWABLE |
+         * GIMP_PROCEDURE_SENSITIVE_DRAWABLES` are equivalent.
          * @param sensitivity_mask A binary mask of {@link Gimp.ProcedureSensitivityMask}.
          */
         set_sensitivity_mask(sensitivity_mask: number): void;
@@ -22377,12 +24802,36 @@ export namespace Gimp {
 
         /**
          * A utility function which will get the current string value of a
-         * {@link ParamSpecChoice} property in `config` and convert it to the integer ID
-         * mapped to this value.
+         * `GimpParamSpecChoice` property in `config` and convert it to the
+         * integer ID mapped to this value.
          * This makes it easy to work with an Enum type locally, within a plug-in code.
-         * @param property_name the name of a {@link ParamSpecChoice} property.
+         * @param property_name the name of a `GimpParamSpecChoice` property.
          */
         get_choice_id(property_name: string): number;
+        /**
+         * A function for bindings to get a {@link ColorArray} property. Getting
+         * these with {@link GObject.Object.get} or {@link GObject.Object.get_property} won't
+         * [work for the time being](https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/492)
+         * so all our boxed array types must be set and get using these
+         * alternative functions instead.
+         *
+         * C plug-ins should just use {@link GObject.Object.get}.
+         * @param property_name the name of a {@link GObject.ParamSpecBoxed} param spec with {@link ColorArray} value type.
+         * @returns an array of `GObjects`.
+         */
+        get_color_array(property_name: string): Gegl.Color[];
+        /**
+         * A function for bindings to get a {@link CoreObjectArray} property. Getting
+         * these with {@link GObject.Object.get} or {@link GObject.Object.get_property} won't
+         * [work for the time being](https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/492)
+         * so all our boxed array types must be set and get using alternative
+         * functions instead.
+         *
+         * C plug-ins should just use {@link GObject.Object.get}.
+         * @param property_name the name of a `GimpParamSpecCoreObjectArray` param spec.
+         * @returns an array of `GObjects`.
+         */
+        get_core_object_array(property_name: string): GObject.Object[];
         /**
          * This function returns the {@link Procedure} which created `config`, see
          * {@link Procedure.create_config}.
@@ -22390,16 +24839,16 @@ export namespace Gimp {
          */
         get_procedure(): Procedure;
         /**
-         * Note: There is normally no need to call this function because it's
-         * already called by {@link ExportProcedure} at the end of the `run()` callback.
+         * *Note: There is normally no need to call this function because it's
+         * already called by {@link ExportProcedure} after the `run()` callback.*
          *
-         * Only use this function if the {@link Metadata} passed as argument of a
+         * *Only use this function if the {@link Metadata} passed as argument of a
          * {@link ExportProcedure}'s `run()` method needs to be written at a specific
-         * point of the export, other than its end.
+         * point of the export, other than its end.*
          *
          * This function syncs back `config`'s export properties to the
-         * metadata's {@link MetadataSaveFlags} and writes the metadata to `file`
-         * using {@link Image.metadata_save_finish}.
+         * metadata's {@link MetadataSaveFlags} and writes the metadata to
+         * `file`.
          *
          * The metadata is only ever written once. If this function has been
          * called explicitly, it will do nothing when called a second time at the end of
@@ -22408,6 +24857,30 @@ export namespace Gimp {
          * @param file the file `exported_image` was written to
          */
         save_metadata(exported_image: Image, file: Gio.File): void;
+        /**
+         * A function for bindings to set a {@link ColorArray} property. Setting
+         * these with {@link GObject.Object.set} or {@link GObject.Object.set_property} won't
+         * [work for the time being](https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/492)
+         * so all our boxed array types must be set and get using these
+         * alternative functions instead.
+         *
+         * C plug-ins should just use {@link GObject.Object.set}.
+         * @param property_name the name of a {@link GObject.ParamSpecBoxed} param spec with {@link ColorArray} value type.
+         * @param colors an array of {@link Gegl.Color}.
+         */
+        set_color_array(property_name: string, colors: Gegl.Color[]): void;
+        /**
+         * A function for bindings to set a {@link CoreObjectArray} property. Setting
+         * these with {@link GObject.Object.set} or {@link GObject.Object.set_property} won't
+         * [work for the time being](https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/492)
+         * so all our boxed array types must be set and get using alternative
+         * functions instead.
+         *
+         * C plug-ins should just use {@link GObject.Object.set}.
+         * @param property_name the name of a `GimpParamSpecCoreObjectArray` param spec.
+         * @param objects an array of `GObjects`.
+         */
+        set_core_object_array(property_name: string, objects: GObject.Object[]): void;
     }
 
     namespace Resource {
@@ -22544,27 +25017,6 @@ export namespace Gimp {
          * @param resource_id The resource ID to check.
          */
         static id_is_valid(resource_id: number): boolean;
-        /**
-         * Invoke a resource chooser dialog which may call `callback` with the chosen
-         * `resource` and `owner_data`.
-         *
-         * A proxy to a remote dialog in core, which knows the installed resources.
-         * @param title Title of the resource selection dialog.
-         * @param parent_handle
-         * @param resource The resource to set as the initial choice.
-         * @param resource_type The type of the subclass of {@link Resource}.
-         */
-        static select_new(
-            title: string,
-            parent_handle: GLib.Bytes | Uint8Array,
-            resource: Resource,
-            resource_type: GObject.GType,
-        ): string;
-        /**
-         * @param callback_name
-         * @param resource
-         */
-        static select_set(callback_name: string, resource: Resource): void;
 
         // Methods
 
@@ -22754,7 +25206,7 @@ export namespace Gimp {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -22809,7 +25261,7 @@ export namespace Gimp {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -22884,7 +25336,7 @@ export namespace Gimp {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -23332,14 +25784,14 @@ export namespace Gimp {
 
         // Constructor properties interface
 
-        interface ConstructorProps extends Layer.ConstructorProps {}
+        interface ConstructorProps extends Layer.ConstructorProps, Rasterizable.ConstructorProps {}
     }
 
     /**
      * Functions for querying and manipulating text layers.
      * @gir-type Class
      */
-    class TextLayer extends Layer {
+    class TextLayer extends Layer implements Rasterizable {
         static $gtype: GObject.GType<TextLayer>;
 
         /**
@@ -23429,7 +25881,7 @@ export namespace Gimp {
          * Get the font size from a text layer.
          *
          * This procedure returns the size of the font which is used in a text
-         * layer. You will receive the size as a float 'font-size' in 'unit'
+         * layer. You will receive the size as a double 'font-size' in 'unit'
          * units.
          * @returns The font size.
          */
@@ -23501,6 +25953,74 @@ export namespace Gimp {
          * @returns The markup which represents the style of the specified text layer.          The returned value must be freed with `g_free()`.
          */
         get_markup(): string;
+        /**
+         * Get the outline type from a text layer.
+         *
+         * This procedure returns the outline type of a text layer.
+         * @returns The type of outline in the text layer.
+         */
+        get_outline(): TextOutline;
+        /**
+         * Get the outline antialias setting from a text layer.
+         *
+         * This procedure returns the antialias setting of the text outline in
+         * a text layer.
+         * @returns The text outline antialias setting.
+         */
+        get_outline_antialias(): boolean;
+        /**
+         * Get the outline cap style from a text layer.
+         *
+         * This procedure returns the outline cap style of a text layer.
+         * @returns The cap style of the outline in the text layer.
+         */
+        get_outline_cap_style(): CapStyle;
+        /**
+         * Get the color of the text outline in a text layer.
+         *
+         * This procedure returns the color of the text outline in a text
+         * layer.
+         * @returns The color of the text outline.
+         */
+        get_outline_color(): Gegl.Color;
+        /**
+         * Get the outline dash offset from a text layer.
+         *
+         * This procedure returns the dash offset of the text outline in a text
+         * layer.
+         * @returns The text outline dash offset.
+         */
+        get_outline_dash_offset(): number;
+        /**
+         * Get the outline direction from a text layer.
+         *
+         * This procedure returns the outline direction of a text layer.
+         * @returns The direction of the outline in the text layer.
+         */
+        get_outline_direction(): TextOutlineDirection;
+        /**
+         * Get the outline join style from a text layer.
+         *
+         * This procedure returns the outline join style of a text layer.
+         * @returns The join style of the outline in the text layer.
+         */
+        get_outline_join_style(): JoinStyle;
+        /**
+         * Get the outline miter limit from a text layer.
+         *
+         * This procedure returns the miter limit of the text outline in a text
+         * layer.
+         * @returns The text outline miter limit.
+         */
+        get_outline_miter_limit(): number;
+        /**
+         * Get the outline width from a text layer.
+         *
+         * This procedure returns the color of the text outline in a text
+         * layer.
+         * @returns The text outline width.
+         */
+        get_outline_width(): [number, Unit];
         /**
          * Get the text from a text layer as string.
          *
@@ -23640,6 +26160,87 @@ export namespace Gimp {
          */
         set_markup(markup: string): boolean;
         /**
+         * Set the outline type for the text layer.
+         *
+         * This procedure sets the type of the outline in the text layer
+         * 'layer'.
+         * @param outline The type of outline in the text layer.
+         * @returns TRUE on success.
+         */
+        set_outline(outline: TextOutline | null): boolean;
+        /**
+         * Set the outline antialias setting from a text layer.
+         *
+         * This procedure sets the text outline antialias in the text layer
+         * 'layer'.
+         * @param outline_antialias The text outline antialias setting.
+         * @returns TRUE on success.
+         */
+        set_outline_antialias(outline_antialias: boolean): boolean;
+        /**
+         * Set the outline cap style for the text layer.
+         *
+         * This procedure sets the cap style of the outline in the text layer
+         * 'layer'.
+         * @param outline_cap_style The cap style of the outline in the text layer.
+         * @returns TRUE on success.
+         */
+        set_outline_cap_style(outline_cap_style: CapStyle | null): boolean;
+        /**
+         * Set the color of the text outline in the text layer.
+         *
+         * This procedure sets the outline color in the text layer 'layer'.
+         * @param color The color to use for the text outline.
+         * @returns TRUE on success.
+         */
+        set_outline_color(color: Gegl.Color): boolean;
+        /**
+         * Set the outline dash offset from a text layer.
+         *
+         * This procedure sets the outline dash offset in the text layer
+         * 'layer'.
+         * @param outline_dash_offset The text outline dash offset.
+         * @returns TRUE on success.
+         */
+        set_outline_dash_offset(outline_dash_offset: number): boolean;
+        /**
+         * Set the outline direction for the text layer.
+         *
+         * This procedure sets the direction of the outline in the text layer
+         * 'layer'.
+         * @param outline_direction The direction of the outline in the text layer.
+         * @returns TRUE on success.
+         */
+        set_outline_direction(outline_direction: TextOutlineDirection | null): boolean;
+        /**
+         * Set the outline join style for the text layer.
+         *
+         * This procedure sets the join style of the outline in the text layer
+         * 'layer'.
+         * @param outline_join_style The join style of the outline in the text layer.
+         * @returns TRUE on success.
+         */
+        set_outline_join_style(outline_join_style: JoinStyle | null): boolean;
+        /**
+         * Set the outline miter limit from a text layer.
+         *
+         * This procedure sets the text outline miter limit in the text layer
+         * 'layer'.
+         * @param outline_miter_limit The text outline miter limit.
+         * @returns TRUE on success.
+         */
+        set_outline_miter_limit(outline_miter_limit: number): boolean;
+        /**
+         * Set the outline width from a text layer.
+         *
+         * This procedure sets the text outline color in the text layer
+         * 'layer'.
+         * @param outline_width The text outline width.
+         * @param outline_unit The unit to use for the outline width.
+         * @returns TRUE on success.
+         */
+        set_outline_width(outline_width: number, outline_unit: Unit): boolean;
+        /**
          * Set the text of a text layer.
          *
          * This procedure changes the text of a text layer.
@@ -23647,6 +26248,798 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         set_text(text: string): boolean;
+        /**
+         * Return whether `item` has been rasterized.
+         *
+         * This procedure returns `true` if the specified `item` has been
+         * previously rasterized. In this case, you should treat this `item` as
+         * the generic raster variant.
+         *
+         * For instance, a {@link Gimp.TextLayer} object implements the
+         * %GimpRasterizable interface. If a text layer instance were to return
+         * `true`, you should only consider its rendering as returned by
+         * {@link Gimp.Drawable.get_buffer}.
+         *
+         * On the other hand, if this returned `false`, depending on your
+         * intents, you may prefer to use the text contents and its properties
+         * with the various procedures provided by the {@link Gimp.TextLayer}
+         * class interface.
+         * @returns TRUE if `item` is rasterized.
+         */
+        is_rasterized(): boolean;
+        /**
+         * Rasterize the object.
+         *
+         * This procedure makes the item behave like a typical raster layer.
+         *
+         * Note that the source information (text contents and properties for a
+         * text layer, source file for a link layer, path and render properties
+         * for a vector layer, etc.) are not actually discarded, and it is
+         * possible to retrieve the original behavior with
+         * {@link Gimp.Rasterizable.restore}.
+         * @returns TRUE on success.
+         */
+        rasterize(): boolean;
+        /**
+         * Revert the rasterization of `item`.
+         *
+         * Restore the information making the item non-destructive, such as
+         * text contents and properties of a text layer, source file of a link
+         * layer, path and render properties of a vector layer, etc.
+         * This item won't behave anymore like a raster item. In particular, it
+         * will prevent direct modification of its pixels and will be rendered
+         * when its properties are updated.
+         * @returns TRUE on success.
+         */
+        restore(): boolean;
+        /**
+         * This procedure appends the specified drawable effect at the top of the
+         * effect list of `drawable`.
+         *
+         * The `drawable` argument must be the same as the one used when you
+         * created the effect with {@link Gimp.DrawableFilter.new}.
+         * Some effects may be slower than others to render. In order to
+         * minimize processing time, it is preferred to customize the
+         * operation's arguments as received with
+         * {@link Gimp.DrawableFilter.get_config} before adding the effect.
+         * @param filter The drawable filter to append.
+         */
+        append_filter(filter: DrawableFilter): void;
+        /**
+         * Modify brightness/contrast in the specified drawable.
+         *
+         * This procedures allows the brightness and contrast of the specified
+         * drawable to be modified. Both 'brightness' and 'contrast' parameters
+         * are defined between -1.0 and 1.0.
+         * @param brightness Brightness adjustment.
+         * @param contrast Contrast adjustment.
+         * @returns TRUE on success.
+         */
+        brightness_contrast(brightness: number, contrast: number): boolean;
+        /**
+         * Modify the color balance of the specified drawable.
+         *
+         * Modify the color balance of the specified drawable. There are three
+         * axis which can be modified: cyan-red, magenta-green, and
+         * yellow-blue. Negative values increase the amount of the former,
+         * positive values increase the amount of the latter. Color balance can
+         * be controlled with the 'transfer_mode' setting, which allows
+         * shadows, mid-tones, and highlights in an image to be affected
+         * differently. The 'preserve-lum' parameter, if TRUE, ensures that the
+         * luminosity of each pixel remains fixed.
+         * @param transfer_mode Transfer mode.
+         * @param preserve_lum Preserve luminosity values at each pixel.
+         * @param cyan_red Cyan-Red color balance.
+         * @param magenta_green Magenta-Green color balance.
+         * @param yellow_blue Yellow-Blue color balance.
+         * @returns TRUE on success.
+         */
+        color_balance(
+            transfer_mode: TransferMode | null,
+            preserve_lum: boolean,
+            cyan_red: number,
+            magenta_green: number,
+            yellow_blue: number,
+        ): boolean;
+        /**
+         * Render the drawable as a grayscale image seen through a colored
+         * glass.
+         *
+         * Desaturates the drawable, then tints it with the specified color.
+         * This tool is only valid on RGB color images. It will not operate on
+         * grayscale drawables.
+         * @param hue Hue in degrees.
+         * @param saturation Saturation in percent.
+         * @param lightness Lightness in percent.
+         * @returns TRUE on success.
+         */
+        colorize_hsl(hue: number, saturation: number, lightness: number): boolean;
+        /**
+         * Modifies the intensity curve(s) for specified drawable.
+         *
+         * Modifies the intensity mapping for one channel in the specified
+         * drawable. The channel can be either an intensity component, or the
+         * value. The 'values' parameter is an array of doubles which
+         * explicitly defines how each pixel value in the drawable will be
+         * modified. Use the `gimp_drawable_curves_spline()` function to modify
+         * intensity levels with Catmull Rom splines.
+         * @param channel The channel to modify.
+         * @param values The explicit curve.
+         * @returns TRUE on success.
+         */
+        curves_explicit(channel: HistogramChannel | null, values: number[]): boolean;
+        /**
+         * Modifies the intensity curve(s) for specified drawable.
+         *
+         * Modifies the intensity mapping for one channel in the specified
+         * `drawable`. The `channel` can be either an intensity component, or the
+         * value.
+         *
+         * The `points` parameter is an array of doubles in the range `[0, 1]`
+         * which define a set of control points which describe a Catmull Rom
+         * spline which yields the final intensity curve. Since every point has
+         * 2 coordinates, the size of `points` (`num_coordinates`) must be a
+         * multiple of 2, equal or bigger than 4 (i.e. a minimum of 2 points).
+         *
+         * Use {@link Gimp.Drawable.curves_explicit} to explicitly modify
+         * intensity levels.
+         * @param channel The channel to modify.
+         * @param points The spline control points: { cp1.x, cp1.y, cp2.x, cp2.y, ... }.
+         * @returns TRUE on success.
+         */
+        curves_spline(channel: HistogramChannel | null, points: number[]): boolean;
+        /**
+         * Desaturate the contents of the specified drawable, with the
+         * specified formula.
+         *
+         * This procedure desaturates the contents of the specified drawable,
+         * with the specified formula. This procedure only works on drawables
+         * of type RGB color.
+         * @param desaturate_mode The formula to use to desaturate.
+         * @returns TRUE on success.
+         */
+        desaturate(desaturate_mode: DesaturateMode | null): boolean;
+        /**
+         * Fill the area by a seed fill starting at the specified coordinates.
+         *
+         * This procedure does a seed fill at the specified coordinates, using
+         * various parameters from the current context.
+         * In the case of merged sampling, the x and y coordinates are relative
+         * to the image's origin; otherwise, they are relative to the
+         * drawable's origin.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
+         * `gimp_context_set_pattern()`, `gimp_context_set_sample_threshold()`,
+         * `gimp_context_set_sample_merged()`,
+         * `gimp_context_set_sample_criterion()`,
+         * `gimp_context_set_diagonal_neighbors()`, `gimp_context_set_antialias()`.
+         * @param fill_type The type of fill.
+         * @param x The x coordinate of this bucket fill's application.
+         * @param y The y coordinate of this bucket fill's application.
+         * @returns TRUE on success.
+         */
+        edit_bucket_fill(fill_type: FillType | null, x: number, y: number): boolean;
+        /**
+         * Clear selected area of drawable.
+         *
+         * This procedure clears the specified drawable. If the drawable has an
+         * alpha channel, the cleared pixels will become transparent. If the
+         * drawable does not have an alpha channel, cleared pixels will be set
+         * to the background color. This procedure only affects regions within
+         * a selection if there is a selection active.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_background()`.
+         * @returns TRUE on success.
+         */
+        edit_clear(): boolean;
+        /**
+         * Fill selected area of drawable.
+         *
+         * This procedure fills the specified drawable according to fill mode.
+         * This procedure only affects regions within a selection if there is a
+         * selection active. If you want to fill the whole drawable, regardless
+         * of the selection, use `gimp_drawable_fill()`.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
+         * `gimp_context_set_pattern()`.
+         * @param fill_type The type of fill.
+         * @returns TRUE on success.
+         */
+        edit_fill(fill_type: FillType | null): boolean;
+        /**
+         * Draw a gradient between the starting and ending coordinates with the
+         * specified gradient type.
+         *
+         * This tool requires information on the gradient type. It creates the
+         * specified variety of gradient using the starting and ending
+         * coordinates as defined for each gradient type. For shapeburst
+         * gradient types, the context's distance metric is also relevant and
+         * can be updated with `gimp_context_set_distance_metric()`.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
+         * `gimp_context_set_gradient()` and all gradient property settings,
+         * `gimp_context_set_distance_metric()`.
+         * @param gradient_type The type of gradient.
+         * @param offset Offset relates to the starting and ending coordinates specified for the blend. This parameter is mode dependent.
+         * @param supersample Do adaptive supersampling.
+         * @param supersample_max_depth Maximum recursion levels for supersampling.
+         * @param supersample_threshold Supersampling threshold.
+         * @param dither Use dithering to reduce banding.
+         * @param x1 The x coordinate of this gradient's starting point.
+         * @param y1 The y coordinate of this gradient's starting point.
+         * @param x2 The x coordinate of this gradient's ending point.
+         * @param y2 The y coordinate of this gradient's ending point.
+         * @returns TRUE on success.
+         */
+        edit_gradient_fill(
+            gradient_type: GradientType | null,
+            offset: number,
+            supersample: boolean,
+            supersample_max_depth: number,
+            supersample_threshold: number,
+            dither: boolean,
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+        ): boolean;
+        /**
+         * Stroke the specified item
+         *
+         * This procedure strokes the specified item, painting along its
+         * outline (e.g. along a path, or along a channel's boundary), with the
+         * active paint method and brush, or using a plain line with
+         * configurable properties.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_paint_method()`, `gimp_context_set_stroke_method()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_brush()` and all
+         * brush property settings, `gimp_context_set_gradient()` and all
+         * gradient property settings, `gimp_context_set_line_width()` and all
+         * line property settings, `gimp_context_set_antialias()`.
+         * @param item The item to stroke.
+         * @returns TRUE on success.
+         */
+        edit_stroke_item(item: Item): boolean;
+        /**
+         * Stroke the current selection
+         *
+         * This procedure strokes the current selection, painting along the
+         * selection boundary with the active paint method and brush, or using
+         * a plain line with configurable properties. The paint is applied to
+         * the specified drawable regardless of the active selection.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_paint_method()`, `gimp_context_set_stroke_method()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_brush()` and all
+         * brush property settings, `gimp_context_set_gradient()` and all
+         * gradient property settings, `gimp_context_set_line_width()` and all
+         * line property settings, `gimp_context_set_antialias()`.
+         * @returns TRUE on success.
+         */
+        edit_stroke_selection(): boolean;
+        /**
+         * Equalize the contents of the specified drawable.
+         *
+         * This procedure equalizes the contents of the specified drawable.
+         * Each intensity channel is equalized independently. The equalized
+         * intensity is given as inten' = (255 - inten). The 'mask_only' option
+         * specifies whether to adjust only the area of the image within the
+         * selection bounds, or the entire image based on the histogram of the
+         * selected area. If there is no selection, the entire image is
+         * adjusted based on the histogram for the entire image.
+         * @param mask_only Equalization option.
+         * @returns TRUE on success.
+         */
+        equalize(mask_only: boolean): boolean;
+        /**
+         * Extract a color model component.
+         *
+         * Extract a color model component.
+         * @param component Component (RGB Red (0), RGB Green (1), RGB Blue (2), Hue (3), HSV Saturation (4), HSV Value (5), HSL Saturation (6), HSL Lightness (7), CMYK Cyan (8), CMYK Magenta (9), CMYK Yellow (10), CMYK Key (11), Y'CbCr Y' (12), Y'CbCr Cb (13), Y'CbCr Cr (14), LAB L (15), LAB A (16), LAB B (17), LCH C(ab) (18), LCH H(ab) (19), Alpha (20)).
+         * @param invert Invert the extracted component.
+         * @param linear Use linear output instead of gamma corrected.
+         * @returns TRUE on success.
+         */
+        extract_component(component: number, invert: boolean, linear: boolean): boolean;
+        /**
+         * Fill the drawable with the specified fill mode.
+         *
+         * This procedure fills the drawable. If the fill mode is foreground
+         * the current foreground color is used. If the fill mode is
+         * background, the current background color is used. If the fill type
+         * is white, then white is used. Transparent fill only affects layers
+         * with an alpha channel, in which case the alpha channel is set to
+         * transparent. If the drawable has no alpha channel, it is filled to
+         * white. No fill leaves the drawable's contents undefined.
+         * This procedure is unlike `gimp_drawable_edit_fill()` or the bucket
+         * fill tool because it fills regardless of a selection. Its main
+         * purpose is to fill a newly created drawable before adding it to the
+         * image. This operation cannot be undone.
+         * @param fill_type The type of fill.
+         * @returns TRUE on success.
+         */
+        fill(fill_type: FillType | null): boolean;
+        /**
+         * Extract the foreground of a drawable using a given trimap.
+         *
+         * This procedure extracts the foreground from `drawable` using `mask` as
+         * a trimap. Set white as foreground, black as background and uncertain
+         * pixels as any other value, for the tri-map.
+         * @param mode The algorithm to use.
+         * @param mask Tri-Map.
+         * @returns TRUE on success.
+         */
+        foreground_extract(mode: ForegroundExtractMode | null, mask: Drawable): boolean;
+        /**
+         * Free the specified drawable's shadow data (if it exists).
+         *
+         * This procedure is intended as a memory saving device. If any shadow
+         * memory has been allocated, it will be freed automatically when the
+         * drawable is removed from the image, or when the plug-in procedure
+         * which allocated it returns.
+         * @returns TRUE on success.
+         */
+        free_shadow(): boolean;
+        /**
+         * Returns the bytes per pixel.
+         *
+         * This procedure returns the number of bytes per pixel.
+         * @returns Bytes per pixel.
+         */
+        get_bpp(): number;
+        /**
+         * Returns a {@link Gegl.Buffer} of a specified drawable. The buffer can be used
+         * like any other GEGL buffer. Its data will we synced back with the core
+         * drawable when the buffer gets destroyed, or when `gegl_buffer_flush()`
+         * is called.
+         * @returns The {@link Gegl.Buffer}. See Also: `gimp_drawable_get_shadow_buffer()`
+         */
+        get_buffer(): Gegl.Buffer;
+        /**
+         * Returns the list of filters applied to the drawable.
+         *
+         * This procedure returns the list of filters which are currently
+         * applied non-destructively to `drawable`. The order of filters is from
+         * topmost to bottommost.
+         * @returns The list of filters on the drawable.          The returned value must be freed with `g_free()`.
+         */
+        get_filters(): DrawableFilter[];
+        /**
+         * Returns the {@link Babl.Object} format of the drawable.
+         * @returns The {@link Babl.Object} format.
+         */
+        get_format(): Babl.Object;
+        /**
+         * Returns the height of the drawable.
+         *
+         * This procedure returns the specified drawable's height in pixels.
+         * @returns Height of drawable.
+         */
+        get_height(): number;
+        /**
+         * Returns the offsets for the drawable.
+         *
+         * This procedure returns the specified drawable's offsets. This only
+         * makes sense if the drawable is a layer since channels are anchored.
+         * The offsets of a channel will be returned as 0.
+         * @returns TRUE on success.
+         */
+        get_offsets(): [boolean, number, number];
+        /**
+         * Gets the value of the pixel at the specified coordinates.
+         *
+         * This procedure gets the pixel value at the specified coordinates.
+         * @param x_coord The x coordinate.
+         * @param y_coord The y coordinate.
+         * @returns The pixel color.
+         */
+        get_pixel(x_coord: number, y_coord: number): Gegl.Color;
+        /**
+         * Returns a {@link Gegl.Buffer} of a specified drawable's shadow tiles. The
+         * buffer can be used like any other GEGL buffer. Its data will we
+         * synced back with the core drawable's shadow tiles when the buffer
+         * gets destroyed, or when `gegl_buffer_flush()` is called.
+         * @returns The {@link Gegl.Buffer}.
+         */
+        get_shadow_buffer(): Gegl.Buffer;
+        /**
+         * Retrieves a thumbnail pixbuf for the drawable identified by
+         * `drawable`. The thumbnail will be not larger than the requested
+         * size.
+         * @param src_x the x coordinate of the area
+         * @param src_y the y coordinate of the area
+         * @param src_width the width of the area
+         * @param src_height the height of the area
+         * @param dest_width the requested thumbnail width  (<= 1024 pixels)
+         * @param dest_height the requested thumbnail height (<= 1024 pixels)
+         * @param alpha how to handle an alpha channel
+         * @returns a new {@link GdkPixbuf.Pixbuf}
+         */
+        get_sub_thumbnail(
+            src_x: number,
+            src_y: number,
+            src_width: number,
+            src_height: number,
+            dest_width: number,
+            dest_height: number,
+            alpha: PixbufTransparency | null,
+        ): GdkPixbuf.Pixbuf;
+        /**
+         * Retrieves thumbnail data for the drawable identified by `drawable`.
+         * The thumbnail will be not larger than the requested size.
+         * @param src_x the x coordinate of the area
+         * @param src_y the y coordinate of the area
+         * @param src_width the width of the area
+         * @param src_height the height of the area
+         * @param dest_width the requested thumbnail width  (<= 1024 pixels)
+         * @param dest_height the requested thumbnail height (<= 1024 pixels)
+         * @returns thumbnail data or `null` if          `drawable` is invalid.
+         */
+        get_sub_thumbnail_data(
+            src_x: number,
+            src_y: number,
+            src_width: number,
+            src_height: number,
+            dest_width: number,
+            dest_height: number,
+        ): [GLib.Bytes, number, number, number];
+        /**
+         * Retrieves a thumbnail pixbuf for the drawable identified by
+         * `drawable`. The thumbnail will be not larger than the requested
+         * size.
+         * @param width the requested thumbnail width  (<= 1024 pixels)
+         * @param height the requested thumbnail height (<= 1024 pixels)
+         * @param alpha how to handle an alpha channel
+         * @returns a new {@link GdkPixbuf.Pixbuf}
+         */
+        get_thumbnail(width: number, height: number, alpha: PixbufTransparency | null): GdkPixbuf.Pixbuf;
+        /**
+         * Retrieves thumbnail data for the drawable identified by `drawable`.
+         * The thumbnail will be not larger than the requested size.
+         * @param width the requested thumbnail width  (<= 1024 pixels)
+         * @param height the requested thumbnail height (<= 1024 pixels)
+         * @returns thumbnail data or `null` if          `drawable` is invalid.
+         */
+        get_thumbnail_data(width: number, height: number): [GLib.Bytes | null, number, number, number];
+        /**
+         * Returns the {@link Babl.Object} thumbnail format of the drawable.
+         * @returns The {@link Babl.Object} thumbnail format.
+         */
+        get_thumbnail_format(): Babl.Object;
+        /**
+         * Returns the width of the drawable.
+         *
+         * This procedure returns the specified drawable's width in pixels.
+         * @returns Width of drawable.
+         */
+        get_width(): number;
+        /**
+         * Returns TRUE if the drawable has an alpha channel.
+         *
+         * This procedure returns whether the specified drawable has an alpha
+         * channel. This can only be true for layers, and the associated type
+         * will be one of: { RGBA , GRAYA, INDEXEDA }.
+         * @returns Does the drawable have an alpha channel?
+         */
+        has_alpha(): boolean;
+        /**
+         * Returns information on the intensity histogram for the specified
+         * drawable.
+         *
+         * This tool makes it possible to gather information about the
+         * intensity histogram of a drawable. A channel to examine is first
+         * specified. This can be either value, red, green, or blue, depending
+         * on whether the drawable is of type color or grayscale. Second, a
+         * range of intensities are specified. The `gimp_drawable_histogram()`
+         * function returns statistics based on the pixels in the drawable that
+         * fall under this range of values. Mean, standard deviation, median,
+         * number of pixels, and percentile are all returned. Additionally, the
+         * total count of pixels in the image is returned. Counts of pixels are
+         * weighted by any associated alpha values and by the current selection
+         * mask. That is, pixels that lie outside an active selection mask will
+         * not be counted. Similarly, pixels with transparent alpha values will
+         * not be counted. The returned mean, std_dev and median are in the
+         * range (0..255) for 8-bit images or if the plug-in is not
+         * precision-aware, and in the range (0.0..1.0) otherwise.
+         * @param channel The channel to query.
+         * @param start_range Start of the intensity measurement range.
+         * @param end_range End of the intensity measurement range.
+         * @returns TRUE on success.
+         */
+        histogram(
+            channel: HistogramChannel | null,
+            start_range: number,
+            end_range: number,
+        ): [boolean, number, number, number, number, number, number];
+        /**
+         * Modify hue, lightness, and saturation in the specified drawable.
+         *
+         * This procedure allows the hue, lightness, and saturation in the
+         * specified drawable to be modified. The 'hue-range' parameter
+         * provides the capability to limit range of affected hues. The
+         * 'overlap' parameter provides blending into neighboring hue channels
+         * when rendering.
+         * @param hue_range Range of affected hues.
+         * @param hue_offset Hue offset in degrees.
+         * @param lightness Lightness modification.
+         * @param saturation Saturation modification.
+         * @param overlap Overlap other hue channels.
+         * @returns TRUE on success.
+         */
+        hue_saturation(
+            hue_range: HueRange | null,
+            hue_offset: number,
+            lightness: number,
+            saturation: number,
+            overlap: number,
+        ): boolean;
+        /**
+         * Invert the contents of the specified drawable.
+         *
+         * This procedure inverts the contents of the specified drawable. Each
+         * intensity channel is inverted independently. The inverted intensity
+         * is given as inten' = (255 - inten). If 'linear' is TRUE, the
+         * drawable is inverted in linear space.
+         * @param linear Whether to invert in linear space.
+         * @returns TRUE on success.
+         */
+        invert(linear: boolean): boolean;
+        /**
+         * Returns whether the drawable is a grayscale type.
+         *
+         * This procedure returns TRUE if the specified drawable is of type {
+         * Gray, GrayA }.
+         * @returns TRUE if the drawable is a grayscale type.
+         */
+        is_gray(): boolean;
+        /**
+         * Returns whether the drawable is an indexed type.
+         *
+         * This procedure returns TRUE if the specified drawable is of type {
+         * Indexed, IndexedA }.
+         * @returns TRUE if the drawable is an indexed type.
+         */
+        is_indexed(): boolean;
+        /**
+         * Returns whether the drawable is an RGB type.
+         *
+         * This procedure returns TRUE if the specified drawable is of type {
+         * RGB, RGBA }.
+         * @returns TRUE if the drawable is an RGB type.
+         */
+        is_rgb(): boolean;
+        /**
+         * Modifies intensity levels in the specified drawable.
+         *
+         * This tool allows intensity levels in the specified drawable to be
+         * remapped according to a set of parameters. The low/high input levels
+         * specify an initial mapping from the source intensities. The gamma
+         * value determines how intensities between the low and high input
+         * intensities are interpolated. A gamma value of 1.0 results in a
+         * linear interpolation. Higher gamma values result in more high-level
+         * intensities. Lower gamma values result in more low-level
+         * intensities. The low/high output levels constrain the final
+         * intensity mapping--that is, no final intensity will be lower than
+         * the low output level and no final intensity will be higher than the
+         * high output level. This tool is only valid on RGB color and
+         * grayscale images.
+         * @param channel The channel to modify.
+         * @param low_input Intensity of lowest input.
+         * @param high_input Intensity of highest input.
+         * @param clamp_input Clamp input values before applying output levels.
+         * @param gamma Gamma adjustment factor.
+         * @param low_output Intensity of lowest output.
+         * @param high_output Intensity of highest output.
+         * @param clamp_output Clamp final output values.
+         * @returns TRUE on success.
+         */
+        levels(
+            channel: HistogramChannel | null,
+            low_input: number,
+            high_input: number,
+            clamp_input: boolean,
+            gamma: number,
+            low_output: number,
+            high_output: number,
+            clamp_output: boolean,
+        ): boolean;
+        /**
+         * Automatically modifies intensity levels in the specified drawable.
+         *
+         * This procedure allows intensity levels in the specified drawable to
+         * be remapped according to a set of guessed parameters. It is
+         * equivalent to clicking the \"Auto\" button in the Levels tool.
+         * @returns TRUE on success.
+         */
+        levels_stretch(): boolean;
+        /**
+         * Find the bounding box of the current selection in relation to the
+         * specified drawable.
+         *
+         * This procedure returns whether there is a selection. If there is
+         * one, the upper left and lower right-hand corners of its bounding box
+         * are returned. These coordinates are specified relative to the
+         * drawable's origin, and bounded by the drawable's extents. Please
+         * note that the pixel specified by the lower right-hand coordinate of
+         * the bounding box is not part of the selection. The selection ends at
+         * the upper left corner of this pixel. This means the width of the
+         * selection can be calculated as (x2 - x1), its height as (y2 - y1).
+         * Note that the returned boolean does NOT correspond with the returned
+         * region being empty or not, it always returns whether the selection
+         * is non_empty. See `gimp_drawable_mask_intersect()` for a boolean
+         * return value which is more useful in most cases.
+         * @returns TRUE if there is a selection.
+         */
+        mask_bounds(): [boolean, number, number, number, number];
+        /**
+         * Find the bounding box of the current selection in relation to the
+         * specified drawable.
+         *
+         * This procedure returns whether there is an intersection between the
+         * drawable and the selection. Unlike `gimp_drawable_mask_bounds()`, the
+         * intersection's bounds are returned as x, y, width, height.
+         * If there is no selection this function returns TRUE and the returned
+         * bounds are the extents of the whole drawable.
+         * @returns TRUE if the returned area is not empty.
+         */
+        mask_intersect(): [boolean, number, number, number, number];
+        /**
+         * This procedure applies the specified drawable effect on `drawable`
+         * and merge it (therefore before any non-destructive effects are
+         * computed).
+         *
+         * The `drawable` argument must be the same as the one used when you
+         * created the effect with {@link Gimp.DrawableFilter.new}.
+         * Once this is run, `filter` is not valid anymore and you should not
+         * try to do anything with it. In particular, you must customize the
+         * operation's arguments as received with
+         * {@link Gimp.DrawableFilter.get_config} or set the filter's opacity
+         * and blend mode before merging the effect.
+         * @param filter The drawable filter to merge.
+         */
+        merge_filter(filter: DrawableFilter): void;
+        /**
+         * Merge the layer effect filters to the specified drawable.
+         *
+         * This procedure combines the contents of the drawable's filter stack
+         * (for export) with the specified drawable.
+         * @returns TRUE on success.
+         */
+        merge_filters(): boolean;
+        /**
+         * Merge the shadow buffer with the specified drawable.
+         *
+         * This procedure combines the contents of the drawable's shadow buffer
+         * (for temporary processing) with the specified drawable. The 'undo'
+         * parameter specifies whether to add an undo step for the operation.
+         * Requesting no undo is useful for such applications as 'auto-apply'.
+         * @param undo Push merge to undo stack?
+         * @returns TRUE on success.
+         */
+        merge_shadow(undo: boolean): boolean;
+        /**
+         * Offset the drawable by the specified amounts in the X and Y
+         * directions
+         *
+         * This procedure offsets the specified drawable by the amounts
+         * specified by 'offset_x' and 'offset_y'. If 'wrap_around' is set to
+         * TRUE, then portions of the drawable which are offset out of bounds
+         * are wrapped around. Alternatively, the undefined regions of the
+         * drawable can be filled with transparency or the background color, as
+         * specified by the 'fill-type' parameter.
+         * @param wrap_around wrap image around or fill vacated regions.
+         * @param fill_type fill vacated regions of drawable with background or transparent.
+         * @param color fills in the background color when fill_type is set to OFFSET-COLOR.
+         * @param offset_x offset by this amount in X direction.
+         * @param offset_y offset by this amount in Y direction.
+         * @returns TRUE on success.
+         */
+        offset(
+            wrap_around: boolean,
+            fill_type: OffsetType | null,
+            color: Gegl.Color,
+            offset_x: number,
+            offset_y: number,
+        ): boolean;
+        /**
+         * Posterize the specified drawable.
+         *
+         * This procedures reduces the number of shades allows in each
+         * intensity channel to the specified 'levels' parameter.
+         * @param levels Levels of posterization.
+         * @returns TRUE on success.
+         */
+        posterize(levels: number): boolean;
+        /**
+         * Sets the value of the pixel at the specified coordinates.
+         *
+         * This procedure sets the pixel value at the specified coordinates.
+         * Note that this function is not undoable, you should use it only on
+         * drawables you just created yourself.
+         * @param x_coord The x coordinate.
+         * @param y_coord The y coordinate.
+         * @param color The pixel color.
+         * @returns TRUE on success.
+         */
+        set_pixel(x_coord: number, y_coord: number, color: Gegl.Color): boolean;
+        /**
+         * Perform shadows and highlights correction.
+         *
+         * This filter allows adjusting shadows and highlights in the image
+         * separately. The implementation closely follow its counterpart in the
+         * Darktable photography software.
+         * @param shadows Adjust exposure of shadows.
+         * @param highlights Adjust exposure of highlights.
+         * @param whitepoint Shift white point.
+         * @param radius Spatial extent.
+         * @param compress Compress the effect on shadows/highlights and preserve midtones.
+         * @param shadows_ccorrect Adjust saturation of shadows.
+         * @param highlights_ccorrect Adjust saturation of highlights.
+         * @returns TRUE on success.
+         */
+        shadows_highlights(
+            shadows: number,
+            highlights: number,
+            whitepoint: number,
+            radius: number,
+            compress: number,
+            shadows_ccorrect: number,
+            highlights_ccorrect: number,
+        ): boolean;
+        /**
+         * Threshold the specified drawable.
+         *
+         * This procedures generates a threshold map of the specified drawable.
+         * All pixels between the values of 'low_threshold' and
+         * 'high_threshold', on the scale of 'channel' are replaced with white,
+         * and all other pixels with black.
+         * @param channel The channel to base the threshold on.
+         * @param low_threshold The low threshold value.
+         * @param high_threshold The high threshold value.
+         * @returns TRUE on success.
+         */
+        threshold(channel: HistogramChannel | null, low_threshold: number, high_threshold: number): boolean;
+        /**
+         * Returns the drawable's type.
+         *
+         * This procedure returns the drawable's type.
+         * @returns The drawable's type.
+         */
+        type(): ImageType;
+        /**
+         * Returns the drawable's type with alpha.
+         *
+         * This procedure returns the drawable's type as if had an alpha
+         * channel. If the type is currently Gray, for instance, the returned
+         * type would be GrayA. If the drawable already has an alpha channel,
+         * the drawable's type is simply returned.
+         * @returns The drawable's type with alpha.
+         */
+        type_with_alpha(): ImageType;
+        /**
+         * Update the specified region of the drawable.
+         *
+         * This procedure updates the specified region of the drawable. The (x,
+         * y) coordinate pair is relative to the drawable's origin, not to the
+         * image origin. Therefore, the entire drawable can be updated using
+         * (0, 0, width, height).
+         * @param x x coordinate of upper left corner of update region.
+         * @param y y coordinate of upper left corner of update region.
+         * @param width Width of update region.
+         * @param height Height of update region.
+         * @returns TRUE on success.
+         */
+        update(x: number, y: number, width: number, height: number): boolean;
     }
 
     namespace ThumbnailProcedure {
@@ -23981,6 +27374,1086 @@ export namespace Gimp {
         set_deletion_flag(deletion_flag: boolean): void;
     }
 
+    namespace VectorLayer {
+        // Signal signatures
+        interface SignalSignatures extends Layer.SignalSignatures {
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Layer.ConstructorProps, Rasterizable.ConstructorProps {}
+    }
+
+    /**
+     * Functions for querying and manipulating vector layers.
+     * @gir-type Class
+     */
+    class VectorLayer extends Layer implements Rasterizable {
+        static $gtype: GObject.GType<VectorLayer>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: VectorLayer.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<VectorLayer.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](image: Image, path: Path): VectorLayer;
+        // Conflicted with Gimp.Layer.new
+
+        static ['new'](...args: never[]): any;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof VectorLayer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, VectorLayer.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof VectorLayer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, VectorLayer.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof VectorLayer.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<VectorLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Returns a {@link Gimp.VectorLayer} representing `layer_id`. This function calls
+         * `gimp_item_get_by_id()` and returns the item if it is layer or `null`
+         * otherwise.
+         * @param layer_id The layer id.
+         */
+        static get_by_id(layer_id: number): VectorLayer | null;
+
+        // Methods
+
+        /**
+         * Check if fill is enabled in the vector layer.
+         *
+         * This procedure checks if fill is enabled in the specified vector
+         * layer.
+         * @returns If the fill is enabled on the vector layer.
+         */
+        get_enable_fill(): boolean;
+        /**
+         * Check if stroke is enabled in the vector layer.
+         *
+         * This procedure checks if stroke is enabled in the specified vector
+         * layer.
+         * @returns If the stroke is enabled on the vector layer.
+         */
+        get_enable_stroke(): boolean;
+        /**
+         * Get the color of the fill in a vector layer.
+         *
+         * This procedure returns the color of the fill in a vector layer.
+         *
+         * Note that there won't be both a fill color and pattern, so either
+         * this procedure or {@link Gimp.VectorLayer.get_fill_pattern} will
+         * return `null` at any given time.
+         * @returns The color of the fill.
+         */
+        get_fill_color(): Gegl.Color;
+        /**
+         * Get the pattern of the fill in a vector layer.
+         *
+         * This procedure returns the pattern of the fill in a vector layer.
+         *
+         * Note that there won't be both a fill color and pattern, so either
+         * this procedure or {@link Gimp.VectorLayer.get_fill_color} will
+         * return `null` at any given time.
+         * @returns The pattern of the fill.
+         */
+        get_fill_pattern(): Pattern;
+        /**
+         * Gets the path from the vector layer if one is associated with it.
+         *
+         * This procedure returns the path from the vector layer if one is
+         * associated with it.
+         * @returns The path associated with the vector layer.
+         */
+        get_path(): Path;
+        /**
+         * Get the stroke cap style of a vector layer.
+         *
+         * This procedure returns the stroke cap style in a vector layer.
+         * @returns The stroke cap style.
+         */
+        get_stroke_cap_style(): CapStyle;
+        /**
+         * Get the color of the stroke in a vector layer.
+         *
+         * This procedure returns the color of the stroke in a vector layer.
+         *
+         * Note that there won't be both a stroke color and pattern, so either
+         * this procedure or {@link Gimp.VectorLayer.get_stroke_pattern} will
+         * return `null` at any given time.
+         * @returns The color of the stroke.
+         */
+        get_stroke_color(): Gegl.Color;
+        /**
+         * Get the stroke dash offset of a vector layer.
+         *
+         * This procedure returns the stroke dash offset in a vector layer.
+         * @returns The stroke dash offset.
+         */
+        get_stroke_dash_offset(): number;
+        /**
+         * Get the stroke dash pattern of a vector layer.
+         *
+         * This procedure returns the stroke dash pattern in a vector layer.
+         * @returns TRUE on success.
+         */
+        get_stroke_dash_pattern(): [boolean, number[]];
+        /**
+         * Get the stroke join style of a vector layer.
+         *
+         * This procedure returns the stroke join style in a vector layer.
+         * @returns The stroke join style.
+         */
+        get_stroke_join_style(): JoinStyle;
+        /**
+         * Get the stroke miter limit of a vector layer.
+         *
+         * This procedure returns the stroke miter limit in a vector layer.
+         * @returns The stroke miter limit.
+         */
+        get_stroke_miter_limit(): number;
+        /**
+         * Get the pattern of the stroke in a vector layer.
+         *
+         * This procedure returns the pattern of the fill in a vector layer.
+         *
+         * Note that there won't be both a stroke color and pattern, so either
+         * this procedure or {@link Gimp.VectorLayer.get_stroke_color} will
+         * return `null` at any given time.
+         * @returns The pattern of the fill.
+         */
+        get_stroke_pattern(): Pattern;
+        /**
+         * Get the stroke width of a vector layer.
+         *
+         * This procedure returns the stroke width in a vector layer.
+         * @returns The stroke width.
+         */
+        get_stroke_width(): number;
+        /**
+         * Get the stroke width unit of a vector layer.
+         *
+         * This procedure returns the stroke width unit in a vector layer.
+         * @returns The stroke width unit.
+         */
+        get_stroke_width_unit(): Unit;
+        /**
+         * Rerender the vector layer
+         *
+         * This procedure causes the vector layer to refresh itself after
+         * changes.
+         * @returns TRUE on success.
+         */
+        refresh(): boolean;
+        /**
+         * Set whether the fill is enabled on the vector layer.
+         *
+         * This procedure sets the fill's visibility in the vector layer
+         * 'layer'.
+         * @param enable_fill Whether to enable the fill on the vector layer.
+         * @returns TRUE on success.
+         */
+        set_enable_fill(enable_fill: boolean): boolean;
+        /**
+         * Set whether the stroke is enabled on the vector layer.
+         *
+         * This procedure sets the stroke's visibility in the vector layer
+         * 'layer'.
+         * @param enable_stroke Whether to enable the stroke on the vector layer.
+         * @returns TRUE on success.
+         */
+        set_enable_stroke(enable_stroke: boolean): boolean;
+        /**
+         * Set the color of the fill in the vector layer.
+         *
+         * This procedure sets the fill color in the vector layer 'layer'.
+         * @param color The color to use for the fill.
+         * @returns TRUE on success.
+         */
+        set_fill_color(color: Gegl.Color): boolean;
+        /**
+         * Set the stroke cap style of a vector layer.
+         *
+         * This procedure sets the stroke cap style in a vector layer.
+         * @param cap_style The stroke cap style.
+         * @returns TRUE on success.
+         */
+        set_stroke_cap_style(cap_style: CapStyle | null): boolean;
+        /**
+         * Set the color of the stroke in the vector layer.
+         *
+         * This procedure sets the stroke color in the vector layer 'layer'.
+         * @param color The color to use for the stroke.
+         * @returns TRUE on success.
+         */
+        set_stroke_color(color: Gegl.Color): boolean;
+        /**
+         * Set the stroke dash offset of a vector layer.
+         *
+         * This procedure sets the stroke dash offset in a vector layer.
+         * @param dash_offset The stroke dash offset.
+         * @returns TRUE on success.
+         */
+        set_stroke_dash_offset(dash_offset: number): boolean;
+        /**
+         * Set the stroke dash pattern of a vector layer.
+         *
+         * This procedure sets the stroke dash pattern in a vector layer.
+         * @param dashes The line dash pattern setting.
+         * @returns TRUE on success.
+         */
+        set_stroke_dash_pattern(dashes: number[]): boolean;
+        /**
+         * Set the stroke join style of a vector layer.
+         *
+         * This procedure sets the stroke join style in a vector layer.
+         * @param join_style The stroke join style.
+         * @returns TRUE on success.
+         */
+        set_stroke_join_style(join_style: JoinStyle | null): boolean;
+        /**
+         * Set the stroke miter limit of a vector layer.
+         *
+         * This procedure sets the stroke miter limit in a vector layer.
+         * @param miter The stroke miter limit.
+         * @returns TRUE on success.
+         */
+        set_stroke_miter_limit(miter: number): boolean;
+        /**
+         * Set the stroke width of a vector layer.
+         *
+         * This procedure sets the stroke width in a vector layer.
+         * @param width The stroke width.
+         * @returns TRUE on success.
+         */
+        set_stroke_width(width: number): boolean;
+        /**
+         * Set the stroke width unit of a vector layer.
+         *
+         * This procedure sets the stroke width unit in a vector layer.
+         * @param unit The stroke width unit.
+         * @returns TRUE on success.
+         */
+        set_stroke_width_unit(unit: Unit): boolean;
+        /**
+         * Return whether `item` has been rasterized.
+         *
+         * This procedure returns `true` if the specified `item` has been
+         * previously rasterized. In this case, you should treat this `item` as
+         * the generic raster variant.
+         *
+         * For instance, a {@link Gimp.TextLayer} object implements the
+         * %GimpRasterizable interface. If a text layer instance were to return
+         * `true`, you should only consider its rendering as returned by
+         * {@link Gimp.Drawable.get_buffer}.
+         *
+         * On the other hand, if this returned `false`, depending on your
+         * intents, you may prefer to use the text contents and its properties
+         * with the various procedures provided by the {@link Gimp.TextLayer}
+         * class interface.
+         * @returns TRUE if `item` is rasterized.
+         */
+        is_rasterized(): boolean;
+        /**
+         * Rasterize the object.
+         *
+         * This procedure makes the item behave like a typical raster layer.
+         *
+         * Note that the source information (text contents and properties for a
+         * text layer, source file for a link layer, path and render properties
+         * for a vector layer, etc.) are not actually discarded, and it is
+         * possible to retrieve the original behavior with
+         * {@link Gimp.Rasterizable.restore}.
+         * @returns TRUE on success.
+         */
+        rasterize(): boolean;
+        /**
+         * Revert the rasterization of `item`.
+         *
+         * Restore the information making the item non-destructive, such as
+         * text contents and properties of a text layer, source file of a link
+         * layer, path and render properties of a vector layer, etc.
+         * This item won't behave anymore like a raster item. In particular, it
+         * will prevent direct modification of its pixels and will be rendered
+         * when its properties are updated.
+         * @returns TRUE on success.
+         */
+        restore(): boolean;
+        /**
+         * This procedure appends the specified drawable effect at the top of the
+         * effect list of `drawable`.
+         *
+         * The `drawable` argument must be the same as the one used when you
+         * created the effect with {@link Gimp.DrawableFilter.new}.
+         * Some effects may be slower than others to render. In order to
+         * minimize processing time, it is preferred to customize the
+         * operation's arguments as received with
+         * {@link Gimp.DrawableFilter.get_config} before adding the effect.
+         * @param filter The drawable filter to append.
+         */
+        append_filter(filter: DrawableFilter): void;
+        /**
+         * Modify brightness/contrast in the specified drawable.
+         *
+         * This procedures allows the brightness and contrast of the specified
+         * drawable to be modified. Both 'brightness' and 'contrast' parameters
+         * are defined between -1.0 and 1.0.
+         * @param brightness Brightness adjustment.
+         * @param contrast Contrast adjustment.
+         * @returns TRUE on success.
+         */
+        brightness_contrast(brightness: number, contrast: number): boolean;
+        /**
+         * Modify the color balance of the specified drawable.
+         *
+         * Modify the color balance of the specified drawable. There are three
+         * axis which can be modified: cyan-red, magenta-green, and
+         * yellow-blue. Negative values increase the amount of the former,
+         * positive values increase the amount of the latter. Color balance can
+         * be controlled with the 'transfer_mode' setting, which allows
+         * shadows, mid-tones, and highlights in an image to be affected
+         * differently. The 'preserve-lum' parameter, if TRUE, ensures that the
+         * luminosity of each pixel remains fixed.
+         * @param transfer_mode Transfer mode.
+         * @param preserve_lum Preserve luminosity values at each pixel.
+         * @param cyan_red Cyan-Red color balance.
+         * @param magenta_green Magenta-Green color balance.
+         * @param yellow_blue Yellow-Blue color balance.
+         * @returns TRUE on success.
+         */
+        color_balance(
+            transfer_mode: TransferMode | null,
+            preserve_lum: boolean,
+            cyan_red: number,
+            magenta_green: number,
+            yellow_blue: number,
+        ): boolean;
+        /**
+         * Render the drawable as a grayscale image seen through a colored
+         * glass.
+         *
+         * Desaturates the drawable, then tints it with the specified color.
+         * This tool is only valid on RGB color images. It will not operate on
+         * grayscale drawables.
+         * @param hue Hue in degrees.
+         * @param saturation Saturation in percent.
+         * @param lightness Lightness in percent.
+         * @returns TRUE on success.
+         */
+        colorize_hsl(hue: number, saturation: number, lightness: number): boolean;
+        /**
+         * Modifies the intensity curve(s) for specified drawable.
+         *
+         * Modifies the intensity mapping for one channel in the specified
+         * drawable. The channel can be either an intensity component, or the
+         * value. The 'values' parameter is an array of doubles which
+         * explicitly defines how each pixel value in the drawable will be
+         * modified. Use the `gimp_drawable_curves_spline()` function to modify
+         * intensity levels with Catmull Rom splines.
+         * @param channel The channel to modify.
+         * @param values The explicit curve.
+         * @returns TRUE on success.
+         */
+        curves_explicit(channel: HistogramChannel | null, values: number[]): boolean;
+        /**
+         * Modifies the intensity curve(s) for specified drawable.
+         *
+         * Modifies the intensity mapping for one channel in the specified
+         * `drawable`. The `channel` can be either an intensity component, or the
+         * value.
+         *
+         * The `points` parameter is an array of doubles in the range `[0, 1]`
+         * which define a set of control points which describe a Catmull Rom
+         * spline which yields the final intensity curve. Since every point has
+         * 2 coordinates, the size of `points` (`num_coordinates`) must be a
+         * multiple of 2, equal or bigger than 4 (i.e. a minimum of 2 points).
+         *
+         * Use {@link Gimp.Drawable.curves_explicit} to explicitly modify
+         * intensity levels.
+         * @param channel The channel to modify.
+         * @param points The spline control points: { cp1.x, cp1.y, cp2.x, cp2.y, ... }.
+         * @returns TRUE on success.
+         */
+        curves_spline(channel: HistogramChannel | null, points: number[]): boolean;
+        /**
+         * Desaturate the contents of the specified drawable, with the
+         * specified formula.
+         *
+         * This procedure desaturates the contents of the specified drawable,
+         * with the specified formula. This procedure only works on drawables
+         * of type RGB color.
+         * @param desaturate_mode The formula to use to desaturate.
+         * @returns TRUE on success.
+         */
+        desaturate(desaturate_mode: DesaturateMode | null): boolean;
+        /**
+         * Fill the area by a seed fill starting at the specified coordinates.
+         *
+         * This procedure does a seed fill at the specified coordinates, using
+         * various parameters from the current context.
+         * In the case of merged sampling, the x and y coordinates are relative
+         * to the image's origin; otherwise, they are relative to the
+         * drawable's origin.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
+         * `gimp_context_set_pattern()`, `gimp_context_set_sample_threshold()`,
+         * `gimp_context_set_sample_merged()`,
+         * `gimp_context_set_sample_criterion()`,
+         * `gimp_context_set_diagonal_neighbors()`, `gimp_context_set_antialias()`.
+         * @param fill_type The type of fill.
+         * @param x The x coordinate of this bucket fill's application.
+         * @param y The y coordinate of this bucket fill's application.
+         * @returns TRUE on success.
+         */
+        edit_bucket_fill(fill_type: FillType | null, x: number, y: number): boolean;
+        /**
+         * Clear selected area of drawable.
+         *
+         * This procedure clears the specified drawable. If the drawable has an
+         * alpha channel, the cleared pixels will become transparent. If the
+         * drawable does not have an alpha channel, cleared pixels will be set
+         * to the background color. This procedure only affects regions within
+         * a selection if there is a selection active.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_background()`.
+         * @returns TRUE on success.
+         */
+        edit_clear(): boolean;
+        /**
+         * Fill selected area of drawable.
+         *
+         * This procedure fills the specified drawable according to fill mode.
+         * This procedure only affects regions within a selection if there is a
+         * selection active. If you want to fill the whole drawable, regardless
+         * of the selection, use `gimp_drawable_fill()`.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
+         * `gimp_context_set_pattern()`.
+         * @param fill_type The type of fill.
+         * @returns TRUE on success.
+         */
+        edit_fill(fill_type: FillType | null): boolean;
+        /**
+         * Draw a gradient between the starting and ending coordinates with the
+         * specified gradient type.
+         *
+         * This tool requires information on the gradient type. It creates the
+         * specified variety of gradient using the starting and ending
+         * coordinates as defined for each gradient type. For shapeburst
+         * gradient types, the context's distance metric is also relevant and
+         * can be updated with `gimp_context_set_distance_metric()`.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
+         * `gimp_context_set_gradient()` and all gradient property settings,
+         * `gimp_context_set_distance_metric()`.
+         * @param gradient_type The type of gradient.
+         * @param offset Offset relates to the starting and ending coordinates specified for the blend. This parameter is mode dependent.
+         * @param supersample Do adaptive supersampling.
+         * @param supersample_max_depth Maximum recursion levels for supersampling.
+         * @param supersample_threshold Supersampling threshold.
+         * @param dither Use dithering to reduce banding.
+         * @param x1 The x coordinate of this gradient's starting point.
+         * @param y1 The y coordinate of this gradient's starting point.
+         * @param x2 The x coordinate of this gradient's ending point.
+         * @param y2 The y coordinate of this gradient's ending point.
+         * @returns TRUE on success.
+         */
+        edit_gradient_fill(
+            gradient_type: GradientType | null,
+            offset: number,
+            supersample: boolean,
+            supersample_max_depth: number,
+            supersample_threshold: number,
+            dither: boolean,
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+        ): boolean;
+        /**
+         * Stroke the specified item
+         *
+         * This procedure strokes the specified item, painting along its
+         * outline (e.g. along a path, or along a channel's boundary), with the
+         * active paint method and brush, or using a plain line with
+         * configurable properties.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_paint_method()`, `gimp_context_set_stroke_method()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_brush()` and all
+         * brush property settings, `gimp_context_set_gradient()` and all
+         * gradient property settings, `gimp_context_set_line_width()` and all
+         * line property settings, `gimp_context_set_antialias()`.
+         * @param item The item to stroke.
+         * @returns TRUE on success.
+         */
+        edit_stroke_item(item: Item): boolean;
+        /**
+         * Stroke the current selection
+         *
+         * This procedure strokes the current selection, painting along the
+         * selection boundary with the active paint method and brush, or using
+         * a plain line with configurable properties. The paint is applied to
+         * the specified drawable regardless of the active selection.
+         *
+         * This procedure is affected by the following context setters:
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_paint_method()`, `gimp_context_set_stroke_method()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_brush()` and all
+         * brush property settings, `gimp_context_set_gradient()` and all
+         * gradient property settings, `gimp_context_set_line_width()` and all
+         * line property settings, `gimp_context_set_antialias()`.
+         * @returns TRUE on success.
+         */
+        edit_stroke_selection(): boolean;
+        /**
+         * Equalize the contents of the specified drawable.
+         *
+         * This procedure equalizes the contents of the specified drawable.
+         * Each intensity channel is equalized independently. The equalized
+         * intensity is given as inten' = (255 - inten). The 'mask_only' option
+         * specifies whether to adjust only the area of the image within the
+         * selection bounds, or the entire image based on the histogram of the
+         * selected area. If there is no selection, the entire image is
+         * adjusted based on the histogram for the entire image.
+         * @param mask_only Equalization option.
+         * @returns TRUE on success.
+         */
+        equalize(mask_only: boolean): boolean;
+        /**
+         * Extract a color model component.
+         *
+         * Extract a color model component.
+         * @param component Component (RGB Red (0), RGB Green (1), RGB Blue (2), Hue (3), HSV Saturation (4), HSV Value (5), HSL Saturation (6), HSL Lightness (7), CMYK Cyan (8), CMYK Magenta (9), CMYK Yellow (10), CMYK Key (11), Y'CbCr Y' (12), Y'CbCr Cb (13), Y'CbCr Cr (14), LAB L (15), LAB A (16), LAB B (17), LCH C(ab) (18), LCH H(ab) (19), Alpha (20)).
+         * @param invert Invert the extracted component.
+         * @param linear Use linear output instead of gamma corrected.
+         * @returns TRUE on success.
+         */
+        extract_component(component: number, invert: boolean, linear: boolean): boolean;
+        /**
+         * Fill the drawable with the specified fill mode.
+         *
+         * This procedure fills the drawable. If the fill mode is foreground
+         * the current foreground color is used. If the fill mode is
+         * background, the current background color is used. If the fill type
+         * is white, then white is used. Transparent fill only affects layers
+         * with an alpha channel, in which case the alpha channel is set to
+         * transparent. If the drawable has no alpha channel, it is filled to
+         * white. No fill leaves the drawable's contents undefined.
+         * This procedure is unlike `gimp_drawable_edit_fill()` or the bucket
+         * fill tool because it fills regardless of a selection. Its main
+         * purpose is to fill a newly created drawable before adding it to the
+         * image. This operation cannot be undone.
+         * @param fill_type The type of fill.
+         * @returns TRUE on success.
+         */
+        fill(fill_type: FillType | null): boolean;
+        /**
+         * Extract the foreground of a drawable using a given trimap.
+         *
+         * This procedure extracts the foreground from `drawable` using `mask` as
+         * a trimap. Set white as foreground, black as background and uncertain
+         * pixels as any other value, for the tri-map.
+         * @param mode The algorithm to use.
+         * @param mask Tri-Map.
+         * @returns TRUE on success.
+         */
+        foreground_extract(mode: ForegroundExtractMode | null, mask: Drawable): boolean;
+        /**
+         * Free the specified drawable's shadow data (if it exists).
+         *
+         * This procedure is intended as a memory saving device. If any shadow
+         * memory has been allocated, it will be freed automatically when the
+         * drawable is removed from the image, or when the plug-in procedure
+         * which allocated it returns.
+         * @returns TRUE on success.
+         */
+        free_shadow(): boolean;
+        /**
+         * Returns the bytes per pixel.
+         *
+         * This procedure returns the number of bytes per pixel.
+         * @returns Bytes per pixel.
+         */
+        get_bpp(): number;
+        /**
+         * Returns a {@link Gegl.Buffer} of a specified drawable. The buffer can be used
+         * like any other GEGL buffer. Its data will we synced back with the core
+         * drawable when the buffer gets destroyed, or when `gegl_buffer_flush()`
+         * is called.
+         * @returns The {@link Gegl.Buffer}. See Also: `gimp_drawable_get_shadow_buffer()`
+         */
+        get_buffer(): Gegl.Buffer;
+        /**
+         * Returns the list of filters applied to the drawable.
+         *
+         * This procedure returns the list of filters which are currently
+         * applied non-destructively to `drawable`. The order of filters is from
+         * topmost to bottommost.
+         * @returns The list of filters on the drawable.          The returned value must be freed with `g_free()`.
+         */
+        get_filters(): DrawableFilter[];
+        /**
+         * Returns the {@link Babl.Object} format of the drawable.
+         * @returns The {@link Babl.Object} format.
+         */
+        get_format(): Babl.Object;
+        /**
+         * Returns the height of the drawable.
+         *
+         * This procedure returns the specified drawable's height in pixels.
+         * @returns Height of drawable.
+         */
+        get_height(): number;
+        /**
+         * Returns the offsets for the drawable.
+         *
+         * This procedure returns the specified drawable's offsets. This only
+         * makes sense if the drawable is a layer since channels are anchored.
+         * The offsets of a channel will be returned as 0.
+         * @returns TRUE on success.
+         */
+        get_offsets(): [boolean, number, number];
+        /**
+         * Gets the value of the pixel at the specified coordinates.
+         *
+         * This procedure gets the pixel value at the specified coordinates.
+         * @param x_coord The x coordinate.
+         * @param y_coord The y coordinate.
+         * @returns The pixel color.
+         */
+        get_pixel(x_coord: number, y_coord: number): Gegl.Color;
+        /**
+         * Returns a {@link Gegl.Buffer} of a specified drawable's shadow tiles. The
+         * buffer can be used like any other GEGL buffer. Its data will we
+         * synced back with the core drawable's shadow tiles when the buffer
+         * gets destroyed, or when `gegl_buffer_flush()` is called.
+         * @returns The {@link Gegl.Buffer}.
+         */
+        get_shadow_buffer(): Gegl.Buffer;
+        /**
+         * Retrieves a thumbnail pixbuf for the drawable identified by
+         * `drawable`. The thumbnail will be not larger than the requested
+         * size.
+         * @param src_x the x coordinate of the area
+         * @param src_y the y coordinate of the area
+         * @param src_width the width of the area
+         * @param src_height the height of the area
+         * @param dest_width the requested thumbnail width  (<= 1024 pixels)
+         * @param dest_height the requested thumbnail height (<= 1024 pixels)
+         * @param alpha how to handle an alpha channel
+         * @returns a new {@link GdkPixbuf.Pixbuf}
+         */
+        get_sub_thumbnail(
+            src_x: number,
+            src_y: number,
+            src_width: number,
+            src_height: number,
+            dest_width: number,
+            dest_height: number,
+            alpha: PixbufTransparency | null,
+        ): GdkPixbuf.Pixbuf;
+        /**
+         * Retrieves thumbnail data for the drawable identified by `drawable`.
+         * The thumbnail will be not larger than the requested size.
+         * @param src_x the x coordinate of the area
+         * @param src_y the y coordinate of the area
+         * @param src_width the width of the area
+         * @param src_height the height of the area
+         * @param dest_width the requested thumbnail width  (<= 1024 pixels)
+         * @param dest_height the requested thumbnail height (<= 1024 pixels)
+         * @returns thumbnail data or `null` if          `drawable` is invalid.
+         */
+        get_sub_thumbnail_data(
+            src_x: number,
+            src_y: number,
+            src_width: number,
+            src_height: number,
+            dest_width: number,
+            dest_height: number,
+        ): [GLib.Bytes, number, number, number];
+        /**
+         * Retrieves a thumbnail pixbuf for the drawable identified by
+         * `drawable`. The thumbnail will be not larger than the requested
+         * size.
+         * @param width the requested thumbnail width  (<= 1024 pixels)
+         * @param height the requested thumbnail height (<= 1024 pixels)
+         * @param alpha how to handle an alpha channel
+         * @returns a new {@link GdkPixbuf.Pixbuf}
+         */
+        get_thumbnail(width: number, height: number, alpha: PixbufTransparency | null): GdkPixbuf.Pixbuf;
+        /**
+         * Retrieves thumbnail data for the drawable identified by `drawable`.
+         * The thumbnail will be not larger than the requested size.
+         * @param width the requested thumbnail width  (<= 1024 pixels)
+         * @param height the requested thumbnail height (<= 1024 pixels)
+         * @returns thumbnail data or `null` if          `drawable` is invalid.
+         */
+        get_thumbnail_data(width: number, height: number): [GLib.Bytes | null, number, number, number];
+        /**
+         * Returns the {@link Babl.Object} thumbnail format of the drawable.
+         * @returns The {@link Babl.Object} thumbnail format.
+         */
+        get_thumbnail_format(): Babl.Object;
+        /**
+         * Returns the width of the drawable.
+         *
+         * This procedure returns the specified drawable's width in pixels.
+         * @returns Width of drawable.
+         */
+        get_width(): number;
+        /**
+         * Returns TRUE if the drawable has an alpha channel.
+         *
+         * This procedure returns whether the specified drawable has an alpha
+         * channel. This can only be true for layers, and the associated type
+         * will be one of: { RGBA , GRAYA, INDEXEDA }.
+         * @returns Does the drawable have an alpha channel?
+         */
+        has_alpha(): boolean;
+        /**
+         * Returns information on the intensity histogram for the specified
+         * drawable.
+         *
+         * This tool makes it possible to gather information about the
+         * intensity histogram of a drawable. A channel to examine is first
+         * specified. This can be either value, red, green, or blue, depending
+         * on whether the drawable is of type color or grayscale. Second, a
+         * range of intensities are specified. The `gimp_drawable_histogram()`
+         * function returns statistics based on the pixels in the drawable that
+         * fall under this range of values. Mean, standard deviation, median,
+         * number of pixels, and percentile are all returned. Additionally, the
+         * total count of pixels in the image is returned. Counts of pixels are
+         * weighted by any associated alpha values and by the current selection
+         * mask. That is, pixels that lie outside an active selection mask will
+         * not be counted. Similarly, pixels with transparent alpha values will
+         * not be counted. The returned mean, std_dev and median are in the
+         * range (0..255) for 8-bit images or if the plug-in is not
+         * precision-aware, and in the range (0.0..1.0) otherwise.
+         * @param channel The channel to query.
+         * @param start_range Start of the intensity measurement range.
+         * @param end_range End of the intensity measurement range.
+         * @returns TRUE on success.
+         */
+        histogram(
+            channel: HistogramChannel | null,
+            start_range: number,
+            end_range: number,
+        ): [boolean, number, number, number, number, number, number];
+        /**
+         * Modify hue, lightness, and saturation in the specified drawable.
+         *
+         * This procedure allows the hue, lightness, and saturation in the
+         * specified drawable to be modified. The 'hue-range' parameter
+         * provides the capability to limit range of affected hues. The
+         * 'overlap' parameter provides blending into neighboring hue channels
+         * when rendering.
+         * @param hue_range Range of affected hues.
+         * @param hue_offset Hue offset in degrees.
+         * @param lightness Lightness modification.
+         * @param saturation Saturation modification.
+         * @param overlap Overlap other hue channels.
+         * @returns TRUE on success.
+         */
+        hue_saturation(
+            hue_range: HueRange | null,
+            hue_offset: number,
+            lightness: number,
+            saturation: number,
+            overlap: number,
+        ): boolean;
+        /**
+         * Invert the contents of the specified drawable.
+         *
+         * This procedure inverts the contents of the specified drawable. Each
+         * intensity channel is inverted independently. The inverted intensity
+         * is given as inten' = (255 - inten). If 'linear' is TRUE, the
+         * drawable is inverted in linear space.
+         * @param linear Whether to invert in linear space.
+         * @returns TRUE on success.
+         */
+        invert(linear: boolean): boolean;
+        /**
+         * Returns whether the drawable is a grayscale type.
+         *
+         * This procedure returns TRUE if the specified drawable is of type {
+         * Gray, GrayA }.
+         * @returns TRUE if the drawable is a grayscale type.
+         */
+        is_gray(): boolean;
+        /**
+         * Returns whether the drawable is an indexed type.
+         *
+         * This procedure returns TRUE if the specified drawable is of type {
+         * Indexed, IndexedA }.
+         * @returns TRUE if the drawable is an indexed type.
+         */
+        is_indexed(): boolean;
+        /**
+         * Returns whether the drawable is an RGB type.
+         *
+         * This procedure returns TRUE if the specified drawable is of type {
+         * RGB, RGBA }.
+         * @returns TRUE if the drawable is an RGB type.
+         */
+        is_rgb(): boolean;
+        /**
+         * Modifies intensity levels in the specified drawable.
+         *
+         * This tool allows intensity levels in the specified drawable to be
+         * remapped according to a set of parameters. The low/high input levels
+         * specify an initial mapping from the source intensities. The gamma
+         * value determines how intensities between the low and high input
+         * intensities are interpolated. A gamma value of 1.0 results in a
+         * linear interpolation. Higher gamma values result in more high-level
+         * intensities. Lower gamma values result in more low-level
+         * intensities. The low/high output levels constrain the final
+         * intensity mapping--that is, no final intensity will be lower than
+         * the low output level and no final intensity will be higher than the
+         * high output level. This tool is only valid on RGB color and
+         * grayscale images.
+         * @param channel The channel to modify.
+         * @param low_input Intensity of lowest input.
+         * @param high_input Intensity of highest input.
+         * @param clamp_input Clamp input values before applying output levels.
+         * @param gamma Gamma adjustment factor.
+         * @param low_output Intensity of lowest output.
+         * @param high_output Intensity of highest output.
+         * @param clamp_output Clamp final output values.
+         * @returns TRUE on success.
+         */
+        levels(
+            channel: HistogramChannel | null,
+            low_input: number,
+            high_input: number,
+            clamp_input: boolean,
+            gamma: number,
+            low_output: number,
+            high_output: number,
+            clamp_output: boolean,
+        ): boolean;
+        /**
+         * Automatically modifies intensity levels in the specified drawable.
+         *
+         * This procedure allows intensity levels in the specified drawable to
+         * be remapped according to a set of guessed parameters. It is
+         * equivalent to clicking the \"Auto\" button in the Levels tool.
+         * @returns TRUE on success.
+         */
+        levels_stretch(): boolean;
+        /**
+         * Find the bounding box of the current selection in relation to the
+         * specified drawable.
+         *
+         * This procedure returns whether there is a selection. If there is
+         * one, the upper left and lower right-hand corners of its bounding box
+         * are returned. These coordinates are specified relative to the
+         * drawable's origin, and bounded by the drawable's extents. Please
+         * note that the pixel specified by the lower right-hand coordinate of
+         * the bounding box is not part of the selection. The selection ends at
+         * the upper left corner of this pixel. This means the width of the
+         * selection can be calculated as (x2 - x1), its height as (y2 - y1).
+         * Note that the returned boolean does NOT correspond with the returned
+         * region being empty or not, it always returns whether the selection
+         * is non_empty. See `gimp_drawable_mask_intersect()` for a boolean
+         * return value which is more useful in most cases.
+         * @returns TRUE if there is a selection.
+         */
+        mask_bounds(): [boolean, number, number, number, number];
+        /**
+         * Find the bounding box of the current selection in relation to the
+         * specified drawable.
+         *
+         * This procedure returns whether there is an intersection between the
+         * drawable and the selection. Unlike `gimp_drawable_mask_bounds()`, the
+         * intersection's bounds are returned as x, y, width, height.
+         * If there is no selection this function returns TRUE and the returned
+         * bounds are the extents of the whole drawable.
+         * @returns TRUE if the returned area is not empty.
+         */
+        mask_intersect(): [boolean, number, number, number, number];
+        /**
+         * This procedure applies the specified drawable effect on `drawable`
+         * and merge it (therefore before any non-destructive effects are
+         * computed).
+         *
+         * The `drawable` argument must be the same as the one used when you
+         * created the effect with {@link Gimp.DrawableFilter.new}.
+         * Once this is run, `filter` is not valid anymore and you should not
+         * try to do anything with it. In particular, you must customize the
+         * operation's arguments as received with
+         * {@link Gimp.DrawableFilter.get_config} or set the filter's opacity
+         * and blend mode before merging the effect.
+         * @param filter The drawable filter to merge.
+         */
+        merge_filter(filter: DrawableFilter): void;
+        /**
+         * Merge the layer effect filters to the specified drawable.
+         *
+         * This procedure combines the contents of the drawable's filter stack
+         * (for export) with the specified drawable.
+         * @returns TRUE on success.
+         */
+        merge_filters(): boolean;
+        /**
+         * Merge the shadow buffer with the specified drawable.
+         *
+         * This procedure combines the contents of the drawable's shadow buffer
+         * (for temporary processing) with the specified drawable. The 'undo'
+         * parameter specifies whether to add an undo step for the operation.
+         * Requesting no undo is useful for such applications as 'auto-apply'.
+         * @param undo Push merge to undo stack?
+         * @returns TRUE on success.
+         */
+        merge_shadow(undo: boolean): boolean;
+        /**
+         * Offset the drawable by the specified amounts in the X and Y
+         * directions
+         *
+         * This procedure offsets the specified drawable by the amounts
+         * specified by 'offset_x' and 'offset_y'. If 'wrap_around' is set to
+         * TRUE, then portions of the drawable which are offset out of bounds
+         * are wrapped around. Alternatively, the undefined regions of the
+         * drawable can be filled with transparency or the background color, as
+         * specified by the 'fill-type' parameter.
+         * @param wrap_around wrap image around or fill vacated regions.
+         * @param fill_type fill vacated regions of drawable with background or transparent.
+         * @param color fills in the background color when fill_type is set to OFFSET-COLOR.
+         * @param offset_x offset by this amount in X direction.
+         * @param offset_y offset by this amount in Y direction.
+         * @returns TRUE on success.
+         */
+        offset(
+            wrap_around: boolean,
+            fill_type: OffsetType | null,
+            color: Gegl.Color,
+            offset_x: number,
+            offset_y: number,
+        ): boolean;
+        /**
+         * Posterize the specified drawable.
+         *
+         * This procedures reduces the number of shades allows in each
+         * intensity channel to the specified 'levels' parameter.
+         * @param levels Levels of posterization.
+         * @returns TRUE on success.
+         */
+        posterize(levels: number): boolean;
+        /**
+         * Sets the value of the pixel at the specified coordinates.
+         *
+         * This procedure sets the pixel value at the specified coordinates.
+         * Note that this function is not undoable, you should use it only on
+         * drawables you just created yourself.
+         * @param x_coord The x coordinate.
+         * @param y_coord The y coordinate.
+         * @param color The pixel color.
+         * @returns TRUE on success.
+         */
+        set_pixel(x_coord: number, y_coord: number, color: Gegl.Color): boolean;
+        /**
+         * Perform shadows and highlights correction.
+         *
+         * This filter allows adjusting shadows and highlights in the image
+         * separately. The implementation closely follow its counterpart in the
+         * Darktable photography software.
+         * @param shadows Adjust exposure of shadows.
+         * @param highlights Adjust exposure of highlights.
+         * @param whitepoint Shift white point.
+         * @param radius Spatial extent.
+         * @param compress Compress the effect on shadows/highlights and preserve midtones.
+         * @param shadows_ccorrect Adjust saturation of shadows.
+         * @param highlights_ccorrect Adjust saturation of highlights.
+         * @returns TRUE on success.
+         */
+        shadows_highlights(
+            shadows: number,
+            highlights: number,
+            whitepoint: number,
+            radius: number,
+            compress: number,
+            shadows_ccorrect: number,
+            highlights_ccorrect: number,
+        ): boolean;
+        /**
+         * Threshold the specified drawable.
+         *
+         * This procedures generates a threshold map of the specified drawable.
+         * All pixels between the values of 'low_threshold' and
+         * 'high_threshold', on the scale of 'channel' are replaced with white,
+         * and all other pixels with black.
+         * @param channel The channel to base the threshold on.
+         * @param low_threshold The low threshold value.
+         * @param high_threshold The high threshold value.
+         * @returns TRUE on success.
+         */
+        threshold(channel: HistogramChannel | null, low_threshold: number, high_threshold: number): boolean;
+        /**
+         * Returns the drawable's type.
+         *
+         * This procedure returns the drawable's type.
+         * @returns The drawable's type.
+         */
+        type(): ImageType;
+        /**
+         * Returns the drawable's type with alpha.
+         *
+         * This procedure returns the drawable's type as if had an alpha
+         * channel. If the type is currently Gray, for instance, the returned
+         * type would be GrayA. If the drawable already has an alpha channel,
+         * the drawable's type is simply returned.
+         * @returns The drawable's type with alpha.
+         */
+        type_with_alpha(): ImageType;
+        /**
+         * Update the specified region of the drawable.
+         *
+         * This procedure updates the specified region of the drawable. The (x,
+         * y) coordinate pair is relative to the drawable's origin, not to the
+         * image origin. Therefore, the entire drawable can be updated using
+         * (0, 0, width, height).
+         * @param x x coordinate of upper left corner of update region.
+         * @param y y coordinate of upper left corner of update region.
+         * @param width Width of update region.
+         * @param height Height of update region.
+         * @returns TRUE on success.
+         */
+        update(x: number, y: number, width: number, height: number): boolean;
+    }
+
     namespace VectorLoadProcedure {
         // Signal signatures
         interface SignalSignatures extends LoadProcedure.SignalSignatures {
@@ -24228,6 +28701,11 @@ export namespace Gimp {
          */
         duplicate(): any | null;
         /**
+         * Returns the current XCF version of the `config`.
+         * @returns the XCF version associated with the `config`.
+         */
+        get_xcf_version(): number;
+        /**
          * Compares the two objects. The default implementation of the
          * {@link Gimp.ConfigInterface} compares the object properties and thus only
          * works for objects that are completely defined by their
@@ -24325,6 +28803,13 @@ export namespace Gimp {
          * @returns a newly allocated NUL-terminated string.
          */
         serialize_to_string(data?: any | null): string;
+        /**
+         * Sets the current XCF version of the `config`. This information can be used
+         * to adjust how properties are serialized depending on the version of the XCF
+         * that it is being saved to.
+         * @param xcf_version a mask of GParamFlags
+         */
+        set_xcf_version(xcf_version: number): void;
     }
 
     /**
@@ -24437,11 +28922,23 @@ export namespace Gimp {
     /**
      * @gir-type Alias
      */
+    type CurveClass = typeof Curve;
+    /**
+     * @gir-type Alias
+     */
     type DisplayClass = typeof Display;
     /**
      * @gir-type Alias
      */
     type DrawableClass = typeof Drawable;
+    /**
+     * @gir-type Alias
+     */
+    type DrawableFilterClass = typeof DrawableFilter;
+    /**
+     * @gir-type Alias
+     */
+    type DrawableFilterConfigClass = typeof DrawableFilterConfig;
     /**
      * This structure is used to register translatable descriptions and
      * help texts for enum values. See `gimp_enum_set_value_descriptions()`.
@@ -24517,50 +29014,6 @@ export namespace Gimp {
      */
     type GroupLayerClass = typeof GroupLayer;
     /**
-     * Used to keep HSL and HSLA colors. All components are in a range of
-     * [0.0..1.0].
-     * @gir-type Struct
-     */
-    class HSL {
-        static $gtype: GObject.GType<HSL>;
-
-        // Fields
-
-        h: number;
-        s: number;
-        l: number;
-        a: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                h: number;
-                s: number;
-                l: number;
-                a: number;
-            }>,
-        );
-
-        // Methods
-
-        /**
-         * @param h
-         * @param s
-         * @param l
-         */
-        set(h: number, s: number, l: number): void;
-        /**
-         * @param a
-         */
-        set_alpha(a: number): void;
-        /**
-         * Convert a HSL color value to an RGB color value.
-         */
-        to_rgb(): RGB;
-    }
-
-    /**
      * @gir-type Alias
      */
     type ImageClass = typeof Image;
@@ -24580,6 +29033,10 @@ export namespace Gimp {
      * @gir-type Alias
      */
     type LayerMaskClass = typeof LayerMask;
+    /**
+     * @gir-type Alias
+     */
+    type LinkLayerClass = typeof LinkLayer;
     /**
      * @gir-type Alias
      */
@@ -24834,35 +29291,6 @@ export namespace Gimp {
     }
 
     /**
-     * @gir-type Struct
-     */
-    class ObjectArray {
-        static $gtype: GObject.GType<ObjectArray>;
-
-        // Fields
-
-        object_type: GObject.GType;
-        data: GObject.Object[];
-        length: number;
-        static_data: boolean;
-
-        // Constructors
-
-        constructor(object_type: GObject.GType, data: GObject.Object[], static_data: boolean);
-
-        static ['new'](object_type: GObject.GType, data: GObject.Object[], static_data: boolean): ObjectArray;
-
-        // Methods
-
-        /**
-         * Creates a new {@link Gimp.ObjectArray} containing a deep copy of `array`.
-         * @returns a new {@link Gimp.ObjectArray}.
-         */
-        copy(): ObjectArray;
-        free(): void;
-    }
-
-    /**
      * @gir-type Alias
      */
     type PDBClass = typeof PDB;
@@ -24870,170 +29298,6 @@ export namespace Gimp {
      * @gir-type Alias
      */
     type PaletteClass = typeof Palette;
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecArray {
-        static $gtype: GObject.GType<ParamSpecArray>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecBrush {
-        static $gtype: GObject.GType<ParamSpecBrush>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecChannel {
-        static $gtype: GObject.GType<ParamSpecChannel>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecChoice {
-        static $gtype: GObject.GType<ParamSpecChoice>;
-
-        // Fields
-
-        default_value: string;
-        choice: Choice;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class ParamSpecColor {
-        static $gtype: GObject.GType<ParamSpecColor>;
-
-        // Static methods
-
-        /**
-         * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Color} property.
-         * @param name canonical name of the property specified
-         * @param nick nick name for the property specified
-         * @param blurb description of the property specified
-         * @param has_alpha `true` if the alpha channel has relevance.
-         * @param default_color_string the default value for the property specified
-         * @param flags flags for the property specified
-         */
-        static from_string(
-            name: string,
-            nick: string,
-            blurb: string,
-            has_alpha: boolean,
-            default_color_string: string,
-            flags: GObject.ParamFlags,
-        ): GObject.ParamSpec;
-        /**
-         * @param pspec a {@link GObject.ParamSpec} to hold an {@link Gegl.Color} value.
-         */
-        static has_alpha(pspec: GObject.ParamSpec): boolean;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecDisplay {
-        static $gtype: GObject.GType<ParamSpecDisplay>;
-
-        // Fields
-
-        none_ok: boolean;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecDrawable {
-        static $gtype: GObject.GType<ParamSpecDrawable>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecExportOptions {
-        static $gtype: GObject.GType<ParamSpecExportOptions>;
-
-        // Fields
-
-        capabilities: number;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecFloatArray {
-        static $gtype: GObject.GType<ParamSpecFloatArray>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecFont {
-        static $gtype: GObject.GType<ParamSpecFont>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecGradient {
-        static $gtype: GObject.GType<ParamSpecGradient>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecGroupLayer {
-        static $gtype: GObject.GType<ParamSpecGroupLayer>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecImage {
-        static $gtype: GObject.GType<ParamSpecImage>;
-
-        // Fields
-
-        none_ok: boolean;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecInt32Array {
-        static $gtype: GObject.GType<ParamSpecInt32Array>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecItem {
-        static $gtype: GObject.GType<ParamSpecItem>;
-
-        // Fields
-
-        none_ok: boolean;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecLayer {
-        static $gtype: GObject.GType<ParamSpecLayer>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecLayerMask {
-        static $gtype: GObject.GType<ParamSpecLayerMask>;
-    }
-
     /**
      * @gir-type Struct
      */
@@ -25082,100 +29346,8 @@ export namespace Gimp {
     /**
      * @gir-type Struct
      */
-    class ParamSpecObjectArray {
-        static $gtype: GObject.GType<ParamSpecObjectArray>;
-
-        // Fields
-
-        object_type: GObject.GType;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class ParamSpecObjectClass {
         static $gtype: GObject.GType<ParamSpecObjectClass>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecPalette {
-        static $gtype: GObject.GType<ParamSpecPalette>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class ParamSpecParasite {
-        static $gtype: GObject.GType<ParamSpecParasite>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecPath {
-        static $gtype: GObject.GType<ParamSpecPath>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecPattern {
-        static $gtype: GObject.GType<ParamSpecPattern>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecResource {
-        static $gtype: GObject.GType<ParamSpecResource>;
-
-        // Fields
-
-        none_ok: boolean;
-        default_to_context: boolean;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecSelection {
-        static $gtype: GObject.GType<ParamSpecSelection>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecTextLayer {
-        static $gtype: GObject.GType<ParamSpecTextLayer>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ParamSpecUnit {
-        static $gtype: GObject.GType<ParamSpecUnit>;
-
-        // Fields
-
-        allow_pixel: boolean;
-        allow_percent: boolean;
-        default_value: Unit;
-    }
-
-    /**
-     * A {@link GObject.ParamSpec} derived structure that contains the meta data for
-     * value array properties.
-     * @gir-type Struct
-     */
-    class ParamSpecValueArray {
-        static $gtype: GObject.GType<ParamSpecValueArray>;
-
-        // Fields
-
-        element_spec: GObject.ParamSpec;
-        fixed_n_elements: number;
     }
 
     /**
@@ -25235,6 +29407,7 @@ export namespace Gimp {
          */
         get_data(): number[];
         /**
+         * Get the flags of the parasite.
          * @returns `parasite` flags.
          */
         get_flags(): number;
@@ -25338,110 +29511,9 @@ export namespace Gimp {
     }
 
     /**
-     * Definitions and Functions relating to RGB colors.
-     * @gir-type Struct
+     * @gir-type Alias
      */
-    class RGB {
-        static $gtype: GObject.GType<RGB>;
-
-        // Fields
-
-        r: number;
-        g: number;
-        b: number;
-        a: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                r: number;
-                g: number;
-                b: number;
-                a: number;
-            }>,
-        );
-
-        // Methods
-
-        /**
-         * @param rgba2
-         */
-        _distance(rgba2: RGB): number;
-        /**
-         * Gets the 8bit red, green, blue and alpha components of `rgba`.
-         */
-        _get_uchar(): [number, number, number, number];
-        /**
-         * Sets the red, green, blue and alpha components of `rgb`. The values
-         * should be between 0.0 and 1.0 but there is no check to enforce this
-         * and the values are set exactly as they are passed in.
-         * @param red the red component
-         * @param green the green component
-         * @param blue the blue component
-         * @param alpha the alpha component
-         */
-        _set(red: number, green: number, blue: number, alpha: number): void;
-        /**
-         * Sets the red, green, blue and alpha components of `rgba` from 8bit
-         * values (0 to 255).
-         * @param red the red component
-         * @param green the green component
-         * @param blue the blue component
-         * @param alpha the alpha component
-         */
-        _set_uchar(red: number, green: number, blue: number, alpha: number): void;
-        /**
-         * @param rgb2
-         */
-        add(rgb2: RGB): void;
-        clamp(): void;
-        /**
-         * @param color2
-         * @param mode
-         */
-        composite(color2: RGB, mode: RGBCompositeMode | null): void;
-        /**
-         * Writes the red, green, blue and alpha components of `rgb` to the
-         * color components `red`, `green` and `blue`.
-         */
-        get_uchar(): [number, number, number];
-        max(): number;
-        min(): number;
-        /**
-         * @param factor
-         */
-        multiply(factor: number): void;
-        /**
-         * Sets the red, green and blue components of `rgb` and leaves the
-         * alpha component unchanged. The color values should be between 0.0
-         * and 1.0 but there is no check to enforce this and the values are
-         * set exactly as they are passed in.
-         * @param red the red component
-         * @param green the green component
-         * @param blue the blue component
-         */
-        set(red: number, green: number, blue: number): void;
-        /**
-         * Sets the alpha component of `rgb` and leaves the RGB components unchanged.
-         * @param alpha the alpha component
-         */
-        set_alpha(alpha: number): void;
-        /**
-         * Sets the red, green and blue components of `rgb` from 8bit values
-         * (0 to 255) and leaves the alpha component unchanged.
-         * @param red the red component
-         * @param green the green component
-         * @param blue the blue component
-         */
-        set_uchar(red: number, green: number, blue: number): void;
-        /**
-         * Convert an RGB color value to a HSL (Hue, Saturation, Lightness)
-         * color value.
-         */
-        to_hsl(): HSL;
-    }
-
+    type RasterizableInterface = typeof Rasterizable;
     /**
      * @gir-type Alias
      */
@@ -25480,7 +29552,7 @@ export namespace Gimp {
         /**
          * @returns `true` on success
          */
-        parse_float(): [boolean, number];
+        parse_double(): [boolean, number];
         /**
          * @returns `true` if the next token is an identifier and if its value matches `identifier`.
          */
@@ -25574,10 +29646,33 @@ export namespace Gimp {
         /**
          * Return a pointer to the value at `index` contained in `value_array`. This value
          * is supposed to be a {@link ColorArray}.
+         *
+         * *Note*: most of the time, you should use the generic {@link Gimp.ValueArray.index}
+         * to retrieve a value, then the relevant `g_value_get_*()` function.
+         * This alternative function is mostly there for bindings because
+         * GObject-Introspection is [not able yet to process correctly known
+         * boxed array types](https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/492).
+         *
+         * There are no reasons to use this function in C code.
          * @param index index of the value of interest
          * @returns the {@link ColorArray} stored at `index` in `value_array`.
          */
         get_color_array(index: number): Gegl.Color[];
+        /**
+         * Return a pointer to the value at `index` contained in `value_array`. This value
+         * is supposed to be a {@link CoreObjectArray}.
+         *
+         * *Note*: most of the time, you should use the generic {@link Gimp.ValueArray.index}
+         * to retrieve a value, then the relevant `g_value_get_*()` function.
+         * This alternative function is mostly there for bindings because
+         * GObject-Introspection is [not able yet to process correctly known
+         * boxed array types](https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/492).
+         *
+         * There are no reasons to use this function in C code.
+         * @param index index of the value of interest
+         * @returns the {@link CoreObjectArray} stored at `index` in `value_array`.
+         */
+        get_core_object_array(index: number): GObject.Object[];
         /**
          * Return a pointer to the value at `index` contained in `value_array`.
          *
@@ -25987,6 +30082,10 @@ export namespace Gimp {
     }
 
     /**
+     * @gir-type Alias
+     */
+    type VectorLayerClass = typeof VectorLayer;
+    /**
      * @gir-type Struct
      */
     class VectorLoadData {
@@ -26193,15 +30292,6 @@ export namespace Gimp {
          */
         deserialize_return(scanner: GLib.Scanner, expected_token: GLib.TokenType, nest_level: number): boolean;
         /**
-         * Sets `value` to new {@link GObject.Strv}.
-         * Scans i.e. consumes serialization to fill the GStrv.
-         *
-         * Requires `value` to be initialized to hold type #G_TYPE_BOXED.
-         * @param value destination {@link GObject.Value} to hold a {@link GObject.Strv}
-         * @param scanner {@link GLib.Scanner} positioned in serialization stream
-         */
-        deserialize_strv(value: GObject.Value | any, scanner: GLib.Scanner): GLib.TokenType;
-        /**
          * Compares all properties of `a` and `b` that have all `flags` set. If
          * `flags` is 0, all properties are compared.
          *
@@ -26239,15 +30329,6 @@ export namespace Gimp {
          * @param property_name name of the property to reset
          */
         reset_property(object: GObject.Object, property_name: string): void;
-        /**
-         * Appends a string repr of the {@link GObject.Strv} value of {@link GObject.Value} to `str`.
-         * Repr is an integer literal greater than or equal to zero,
-         * followed by a possibly empty sequence
-         * of quoted and escaped string literals.
-         * @param value source {@link GObject.Value} holding a {@link GObject.Strv}
-         * @param str destination string
-         */
-        serialize_strv(value: GObject.Value | any, str: GLib.String): boolean;
         /**
          * This utility function appends a string representation of {@link GObject.Value} to `str`.
          * @param value a {@link GObject.Value}.
@@ -26299,6 +30380,85 @@ export namespace Gimp {
         new (): ConfigInterface; // This allows `obj instanceof ConfigInterface`
     };
 
+    namespace Rasterizable {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Drawable.ConstructorProps {}
+    }
+
+    export interface RasterizableNamespace {
+        $gtype: GObject.GType<Rasterizable>;
+        prototype: Rasterizable;
+    }
+    /**
+     * Functions for querying and manipulating rasterizable items.
+     * @gir-type Interface
+     */
+    interface Rasterizable extends Drawable {
+        // Methods
+
+        /**
+         * Return whether `item` has been rasterized.
+         *
+         * This procedure returns `true` if the specified `item` has been
+         * previously rasterized. In this case, you should treat this `item` as
+         * the generic raster variant.
+         *
+         * For instance, a {@link Gimp.TextLayer} object implements the
+         * %GimpRasterizable interface. If a text layer instance were to return
+         * `true`, you should only consider its rendering as returned by
+         * {@link Gimp.Drawable.get_buffer}.
+         *
+         * On the other hand, if this returned `false`, depending on your
+         * intents, you may prefer to use the text contents and its properties
+         * with the various procedures provided by the {@link Gimp.TextLayer}
+         * class interface.
+         * @returns TRUE if `item` is rasterized.
+         */
+        is_rasterized(): boolean;
+        /**
+         * Rasterize the object.
+         *
+         * This procedure makes the item behave like a typical raster layer.
+         *
+         * Note that the source information (text contents and properties for a
+         * text layer, source file for a link layer, path and render properties
+         * for a vector layer, etc.) are not actually discarded, and it is
+         * possible to retrieve the original behavior with
+         * {@link Gimp.Rasterizable.restore}.
+         * @returns TRUE on success.
+         */
+        rasterize(): boolean;
+        /**
+         * Revert the rasterization of `item`.
+         *
+         * Restore the information making the item non-destructive, such as
+         * text contents and properties of a text layer, source file of a link
+         * layer, path and render properties of a vector layer, etc.
+         * This item won't behave anymore like a raster item. In particular, it
+         * will prevent direct modification of its pixels and will be rendered
+         * when its properties are updated.
+         * @returns TRUE on success.
+         */
+        restore(): boolean;
+    }
+
+    export const Rasterizable: RasterizableNamespace & {
+        new (): Rasterizable; // This allows `obj instanceof Rasterizable`
+    };
+
+    /**
+     * This type is simply a wrapper around {@link Babl.Object} when used as
+     * a color format.
+     *
+     * The only reason of this wrapper is to be able to assign a %GType to
+     * Babl formats, e.g. to have typed {@link GObject.Value}, which is mostly used
+     * internally by our plug-in protocol.
+     *
+     * There is no reason whatsoever to use this type directly.
+     * @gir-type Alias
+     */
+    type BablFormat = Babl.Object;
     /**
      * A boxed type which is nothing more than an alias to a `null`-terminated array
      * of {@link Gegl.Color}.
@@ -26328,6 +30488,19 @@ export namespace Gimp {
      * @gir-type Alias
      */
     type ColorArray = Gegl.Color;
+    /**
+     * A boxed type which is nothing more than an alias to a `null`-terminated array
+     * of {@link GObject.Object}. No reference is being hold on contents
+     * because core objects are owned by `libgimp`.
+     *
+     * The reason of existence for this alias is to have common arrays of
+     * objects as a boxed type easy to use as plug-in's procedure argument.
+     *
+     * You should never have to interact with this type directly, though
+     * {@link Gimp.core_object_array_get_length} might be convenient.
+     * @gir-type Alias
+     */
+    type CoreObjectArray = GObject.Object;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

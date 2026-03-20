@@ -37,6 +37,7 @@ export namespace PangoFc {
      * This is equivalent to FC_FONT_FEATURES in versions of
      * fontconfig that have that.
      * @since 1.34
+     * @deprecated since 1.56: Use FC_FONT_FEATURES
      */
     const FONT_FEATURES: string;
     /**
@@ -50,6 +51,7 @@ export namespace PangoFc {
      *
      * This is equivalent to FC_FONT_VARIATIONS in versions of
      * fontconfig that have that.
+     * @deprecated since 1.56: Use FC_FONT_VARIATIONS
      */
     const FONT_VARIATIONS: string;
     /**
@@ -77,6 +79,7 @@ export namespace PangoFc {
      * This is equivalent to FC_PRGNAME in versions of
      * fontconfig that have that.
      * @since 1.24
+     * @deprecated since 1.56: Use FC_PRGNAME
      */
     const PRGNAME: string;
     /**
@@ -442,8 +445,8 @@ export namespace PangoFc {
          */
         cache_clear(): void;
         /**
-         * Informs font map that the fontconfig configuration (i.e., FcConfig
-         * object) used by this font map has changed.
+         * Informs font map that the fontconfig configuration (i.e.,
+         * the {@link fontconfig.Config} object) used by this font map has changed.
          *
          * This currently calls {@link PangoFc.FontMap.cache_clear} which
          * ensures that list of fonts, etc will be regenerated using the
@@ -694,7 +697,7 @@ export namespace PangoFc {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -749,7 +752,7 @@ export namespace PangoFc {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -824,7 +827,7 @@ export namespace PangoFc {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

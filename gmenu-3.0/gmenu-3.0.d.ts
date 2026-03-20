@@ -10,6 +10,7 @@
 import '@girs/gjs';
 
 // Module dependencies
+import type GioUnix from '@girs/giounix-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
@@ -280,9 +281,9 @@ export namespace GMenu {
         // Methods
 
         /**
-         * @returns The `GDesktopAppInfo` for this entry
+         * @returns The {@link GioUnix.DesktopAppInfo} for this entry
          */
-        get_app_info(): never;
+        get_app_info(): GioUnix.DesktopAppInfo;
         get_desktop_file_id(): string;
         get_desktop_file_path(): string;
         get_is_excluded(): boolean;

@@ -85,10 +85,12 @@ export namespace CloudProviders {
     }
 
     /**
-     * {@link CloudProviders.Account} is the basic object used to construct the integrator UI
+     * Base object for representing a single account for clients.
+     *
+     * CloudProvidersAccount is the basic object used to construct the integrator UI
      * and actions that a provider will present to the user, from the client side.
      * Integrators of the cloud providers can use this object to poll the
-     * {@link CloudProviders.Provider} menus, status and actions.
+     * {@link Provider} menus, status and actions.
      * @gir-type Class
      */
     class Account extends GObject.Object {
@@ -97,38 +99,47 @@ export namespace CloudProviders {
         // Properties
 
         /**
+         * The action group associated with the account and menu model.
          * @read-only
          */
         get action_group(): Gio.ActionGroup;
         /**
+         * The action group associated with the account and menu model.
          * @read-only
          */
         get actionGroup(): Gio.ActionGroup;
         /**
+         * The icon representing the account.
          * @read-only
          */
         get icon(): Gio.Icon;
         /**
+         * The menu model associated with the account.
          * @read-only
          */
         get menu_model(): Gio.MenuModel;
         /**
+         * The menu model associated with the account.
          * @read-only
          */
         get menuModel(): Gio.MenuModel;
         /**
+         * The name of the account.
          * @read-only
          */
         get name(): string;
         /**
+         * The path of the directory where files are located.
          * @read-only
          */
         get path(): string;
         /**
+         * The details of the account status.
          * @read-only
          */
         get status_details(): string;
         /**
+         * The details of the account status.
          * @read-only
          */
         get statusDetails(): string;
@@ -175,7 +186,7 @@ export namespace CloudProviders {
 
         /**
          * Get the action group exported in addition to the {@link Gio.MenuModel} from
-         * `cloud_providers_account_get_menu_model()`
+         * {@link Account.get_menu_model}.
          * @returns The action group exported by the cloud provider account
          */
         get_action_group(): Gio.ActionGroup;
@@ -243,6 +254,7 @@ export namespace CloudProviders {
     }
 
     /**
+     * Base object for representing a cloud providers account
      * @gir-type Class
      */
     class AccountExporter extends GObject.Object {
@@ -250,34 +262,64 @@ export namespace CloudProviders {
 
         // Properties
 
+        /**
+         * The action group associated with the account and menu model.
+         */
         get action_group(): Gio.ActionGroup;
         set action_group(val: Gio.ActionGroup);
+        /**
+         * The action group associated with the account and menu model.
+         */
         get actionGroup(): Gio.ActionGroup;
         set actionGroup(val: Gio.ActionGroup);
         /**
+         * The bus name of the account.
          * @construct-only
          */
         get bus_name(): string;
         /**
+         * The bus name of the account.
          * @construct-only
          */
         get busName(): string;
+        /**
+         * The icon representing the account.
+         */
         get icon(): Gio.Icon;
         set icon(val: Gio.Icon);
+        /**
+         * The menu model associated with the account.
+         */
         get menu_model(): Gio.MenuModel;
         set menu_model(val: Gio.MenuModel);
+        /**
+         * The menu model associated with the account.
+         */
         get menuModel(): Gio.MenuModel;
         set menuModel(val: Gio.MenuModel);
+        /**
+         * The name of the account.
+         */
         get name(): string;
         set name(val: string);
+        /**
+         * The path of the directory where files are located.
+         */
         get path(): string;
         set path(val: string);
         /**
+         * The provider associated with the account.
          * @construct-only
          */
         get provider(): ProviderExporter;
+        /**
+         * The details of the account status.
+         */
         get status_details(): string;
         set status_details(val: string);
+        /**
+         * The details of the account status.
+         */
         get statusDetails(): string;
         set statusDetails(val: string);
 
@@ -322,10 +364,9 @@ export namespace CloudProviders {
         // Methods
 
         /**
-         * In order for a menu exported with cloud_providers_account_exporter_export_menu to receive events
-         * that will eventually call your callbacks, it needs the corresponding GActionGroup.
-         * Use this function to export it.
-         * @param action_group The GActionGroup to be used by the menu exported by cloud_providers_account_exporter_export_menu
+         * In order for a menu to receive events that will eventually call your callbacks, it needs the
+         * corresponding {@link Gio.ActionGroup}. Use this function to export it.
+         * @param action_group The action group to be used to render the menu
          */
         set_action_group(action_group: Gio.ActionGroup): void;
         /**
@@ -334,7 +375,7 @@ export namespace CloudProviders {
         set_icon(icon: Gio.Icon): void;
         /**
          * One of the benefits of the integration is to display a menu with available
-         * options for an account. Use this function to export a GMenuModel menu to be
+         * options for an account. Use this function to export a {@link Gio.MenuModel} menu to be
          * displayed by the chosen integration by the desktop environment or application.
          * @param menu_model The menu model to export
          */
@@ -373,10 +414,11 @@ export namespace CloudProviders {
     }
 
     /**
-     * {@link CloudProviders.Collector} is a singleton to track all the changes in all providers.
-     * Using a {@link CloudProviders.Collector} you can implement integration for all of them at once
-     * and represent them in the UI, track new providers added or removed and their
-     * status.
+     * Singleton for tracking all providers.
+     *
+     * This is a singleton to track all the changes in all providers.
+     * Using this class, you can implement integration for all of them at once and represent them in the
+     * UI, track new providers added or removed and their status.
      * @gir-type Class
      */
     class Collector extends GObject.Object {
@@ -428,7 +470,8 @@ export namespace CloudProviders {
         // Methods
 
         /**
-         * @returns A GList* of {@link CloudProviders.Provider} objects.
+         * Get the list of currently managed providers.
+         * @returns A list of {@link Provider} objects.
          */
         get_providers(): Provider[];
         update(): void;
@@ -857,9 +900,14 @@ export namespace CloudProviders {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -875,9 +923,14 @@ export namespace CloudProviders {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -1069,7 +1122,7 @@ export namespace CloudProviders {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1124,7 +1177,7 @@ export namespace CloudProviders {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1199,7 +1252,7 @@ export namespace CloudProviders {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1545,9 +1598,19 @@ export namespace CloudProviders {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
+        /**
+         * @param args
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -1563,9 +1626,20 @@ export namespace CloudProviders {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+        /**
+         * @param args
+         * @virtual
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -1671,7 +1745,7 @@ export namespace CloudProviders {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1726,7 +1800,7 @@ export namespace CloudProviders {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1801,7 +1875,7 @@ export namespace CloudProviders {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2658,7 +2732,7 @@ export namespace CloudProviders {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2713,7 +2787,7 @@ export namespace CloudProviders {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2788,7 +2862,7 @@ export namespace CloudProviders {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3243,7 +3317,7 @@ export namespace CloudProviders {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3298,7 +3372,7 @@ export namespace CloudProviders {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3373,7 +3447,7 @@ export namespace CloudProviders {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3840,7 +3914,7 @@ export namespace CloudProviders {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3895,7 +3969,7 @@ export namespace CloudProviders {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3970,7 +4044,7 @@ export namespace CloudProviders {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4573,9 +4647,14 @@ export namespace CloudProviders {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -4591,9 +4670,14 @@ export namespace CloudProviders {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -4785,7 +4869,7 @@ export namespace CloudProviders {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4840,7 +4924,7 @@ export namespace CloudProviders {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4915,7 +4999,7 @@ export namespace CloudProviders {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5217,9 +5301,19 @@ export namespace CloudProviders {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
+        /**
+         * @param args
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -5235,9 +5329,20 @@ export namespace CloudProviders {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+        /**
+         * @param args
+         * @virtual
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
@@ -5343,7 +5448,7 @@ export namespace CloudProviders {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5398,7 +5503,7 @@ export namespace CloudProviders {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5473,7 +5578,7 @@ export namespace CloudProviders {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5721,9 +5826,10 @@ export namespace CloudProviders {
     }
 
     /**
-     * {@link CloudProviders.Provider} is the basic object object for client implementers
-     * that contains the properties of the provider such as name, and the accounts
-     * associated with it.
+     * Base object for representing a single provider for clients.
+     *
+     * This is the basic object object for client implementers that contains the properties of the
+     * provider such as name, and the accounts associated with it.
      * @gir-type Class
      */
     class Provider extends GObject.Object {
@@ -5732,6 +5838,7 @@ export namespace CloudProviders {
         // Properties
 
         /**
+         * The name of the cloud provider.
          * @read-only
          */
         get name(): string;
@@ -5777,7 +5884,8 @@ export namespace CloudProviders {
         // Methods
 
         /**
-         * @returns A GList* of {@link CloudProviders.Provider} objects.
+         * Get the list of accounts from this provider.
+         * @returns A list of {@link Account} objects.
          */
         get_accounts(): Account[];
         get_name(): string;
@@ -5805,9 +5913,7 @@ export namespace CloudProviders {
     }
 
     /**
-     * {@link CloudProviders.ProviderExporter} is the base object representing a single cloud provider.
-     * Multiple {@link CloudProviders.AccountExporter} objects can be added with `cloud_providers_provider_exporter_add_account()`
-     * After adding the initial set of accounts `cloud_providers_provider_exporter_export_objects()` must be called.
+     * Base object for representing a single single provider.
      * @gir-type Class
      */
     class ProviderExporter extends GObject.Object {
@@ -5816,25 +5922,33 @@ export namespace CloudProviders {
         // Properties
 
         /**
+         * The bus connection object for the provider.
          * @construct-only
          */
         get bus(): Gio.DBusConnection;
         /**
+         * The bus name of the provider.
          * @construct-only
          */
         get bus_name(): string;
         /**
+         * The bus name of the provider.
          * @construct-only
          */
         get busName(): string;
         /**
+         * The bus path of the provider.
          * @construct-only
          */
         get bus_path(): string;
         /**
+         * The bus path of the provider.
          * @construct-only
          */
         get busPath(): string;
+        /**
+         * The name of the cloud provider.
+         */
         get name(): string;
         set name(val: string);
 
@@ -5881,7 +5995,7 @@ export namespace CloudProviders {
         get_name(): string;
         /**
          * Each cloud provider can have a variety of account associated with it. Use this
-         * function to remove the accounts that were added when created by `cloud_providers_account_exporter_new()`.
+         * function to remove the accounts that were added when created by {@link AccountExporter.new}.
          * @param account The account object
          */
         remove_account(account: AccountExporter): void;

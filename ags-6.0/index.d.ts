@@ -9,7 +9,5 @@
 
 import './ags-6.0-ambient.d.ts';
 
-import './ags-6.0-import.d.ts';
-
 import Ags from './ags-6.0.js';
 export default Ags;

@@ -9,7 +9,5 @@
 
 import './budgieraven-1.0-ambient.d.ts';
 
-import './budgieraven-1.0-import.d.ts';
-
 import BudgieRaven from './budgieraven-1.0.js';
 export default BudgieRaven;

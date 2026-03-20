@@ -70,8 +70,6 @@ export namespace Libxfce4panel {
         SET_NROWS,
         SET_LOCKED,
         SET_SENSITIVE,
-        SET_BACKGROUND_COLOR,
-        SET_BACKGROUND_IMAGE,
         ACTION_REMOVED,
         ACTION_SAVE,
         ACTION_QUIT,
@@ -80,7 +78,12 @@ export namespace Libxfce4panel {
         ACTION_SHOW_CONFIGURE,
         ACTION_SHOW_ABOUT,
         ACTION_ASK_REMOVE,
+        EVENT_HIDDEN,
         SET_OPACITY,
+        SET_BACKGROUND_COLOR,
+        SET_BACKGROUND_IMAGE,
+        SET_MONITOR,
+        SET_GEOMETRY,
     }
 
     /**
@@ -186,61 +189,10 @@ export namespace Libxfce4panel {
     }
 
     /**
-     * The major version number of the libxfce4panel library.
-     * Like libxfce4panel_major_version, but from the headers used at
-     * application compile time, rather than from the library
-     * linked against at application run time.
-     * @since 4.8
+     * Defines padding to be used for panel plugin icons (size difference between the button and the icon)
+     * @since 4.19.6
      */
-    const MAJOR_VERSION: number;
-    /**
-     * The micro version number of the libxfce4panel library.
-     * Like libxfce4panel_micro_version, but from the headers used at
-     * application compile time, rather than from the library
-     * linked against at application run time
-     * @since 4.8
-     */
-    const MICRO_VERSION: number;
-    /**
-     * The minor version number of the libxfce4panel library.
-     * Like libxfce4panel_minor_version, but from the headers used at
-     * application compile time, rather than from the library
-     * linked against at application run time.
-     * @since 4.8
-     */
-    const MINOR_VERSION: number;
-    /**
-     * String with the full version of the panel.
-     * @since 4.8
-     */
-    const VERSION: string;
-    /**
-     * Checks that the libxfce4panel library in use is compatible with
-     * the given version. Generally you would pass in the constants
-     * #LIBXFCE4PANEL_MAJOR_VERSION, #LIBXFCE4PANEL_MINOR_VERSION and
-     * #LIBXFCE4PANEL_MICRO_VERSION as the three arguments to this
-     * function; that produces a check that the library in use is
-     * compatible with the version of libxfce4panel the extension was
-     * compiled against.
-     *
-     * <example>
-     * <title>Checking the runtime version of the Libxfce4panel library</title>
-     * <programlisting>
-     * const gchar *mismatch;
-     * mismatch = libxfce4panel_check_version (LIBXFCE4PANEL_MAJOR_VERSION,
-     *                                      LIBXFCE4PANEL_MINOR_VERSION,
-     *                                      LIBXFCE4PANEL_MICRO_VERSION);
-     * if (G_UNLIKELY (mismatch != NULL))
-     *   g_error ("Version mismatch: %<!---->s", mismatch);
-     * </programlisting>
-     * </example>
-     * @param required_major the required major version.
-     * @param required_minor the required minor version.
-     * @param required_micro the required micro version.
-     * @returns `null` if the library is compatible with the given version,          or a string describing the version mismatch. The returned          string is owned by the library and must not be freed or          modified by the caller.
-     * @since 4.8
-     */
-    function check_version(required_major: number, required_minor: number, required_micro: number): string;
+    const PANEL_PLUGIN_ICON_PADDING: number;
     /**
      * Create regular {@link Gtk.Button} with a few properties set to be useful in the
      * Xfce panel: Flat ({@link Gtk.ReliefStyle.NONE}), no focus on click and minimal padding.
@@ -1086,7 +1038,7 @@ export namespace Libxfce4panel {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1141,7 +1093,7 @@ export namespace Libxfce4panel {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1216,7 +1168,7 @@ export namespace Libxfce4panel {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5467,7 +5419,7 @@ export namespace Libxfce4panel {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5522,7 +5474,7 @@ export namespace Libxfce4panel {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5597,7 +5549,7 @@ export namespace Libxfce4panel {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5854,6 +5806,14 @@ export namespace Libxfce4panel {
              * @run-last
              */
             'free-data': () => void;
+            /**
+             * This signal is emmitted when the panel the `plugin` is on
+             * is transitioning between hidden/visble.
+             * @signal
+             * @since 4.21.0
+             * @run-last
+             */
+            'hidden-event': (arg0: boolean) => void;
             /**
              * This signal is emmitted whenever the mode of the panel
              * the `plugin` is on changes.
@@ -6275,6 +6235,12 @@ export namespace Libxfce4panel {
          */
         vfunc_free_data(): void;
         /**
+         * See {@link Libxfce4panel.PanelPlugin.SignalSignatures.hidden_event | Libxfce4panel.PanelPlugin::hidden-event} for more information.
+         * @param hidden
+         * @virtual
+         */
+        vfunc_hidden_event(hidden: boolean): void;
+        /**
          * See {@link Libxfce4panel.PanelPlugin.SignalSignatures.mode_changed | Libxfce4panel.PanelPlugin::mode-changed} for more information.
          * @param mode
          * @virtual
@@ -6503,7 +6469,8 @@ export namespace Libxfce4panel {
          * `xfce_panel_plugin_register_menu()` for the `menu`.
          *
          * For a custom widget that will be used as a popup menu, use
-         * `xfce_panel_plugin_position_widget()` instead.
+         * `xfce_panel_plugin_popup_window()` instead if this widget is a {@link Gtk.Window},
+         * or `xfce_panel_plugin_position_widget()`.
          *
          * See also: `gtk_menu_popup_at_widget()` and `gtk_menu_popup_at_pointer()`.
          * @param menu a {@link Gtk.Menu}.
@@ -6512,6 +6479,27 @@ export namespace Libxfce4panel {
          */
         popup_menu(menu: Gtk.Menu, widget?: Gtk.Widget | null, trigger_event?: Gdk.Event | null): void;
         /**
+         * Pops up `window` at `widget` if `widget` is non-`null`, otherwise pops up `window`
+         * at `plugin`. The user should not have to set any property of `window`: this
+         * function takes care of setting the necessary properties to make `window` appear
+         * as a menu widget.
+         *
+         * This function tries to produce for a {@link Gtk.Window} a behavior similar to that
+         * produced by `xfce_panel_plugin_popup_menu()` for a {@link Gtk.Menu}. In particular,
+         * clicking outside the window or pressing Esc should hide it, and the function
+         * takes care to lock panel autohide when the window is shown.
+         *
+         * However, it may be that, especially on Wayland and depending on the compositor
+         * used, hiding the window works more or less well. Also, `window` positioning at
+         * `widget` only works on Wayland if the compositor supports the layer-shell
+         * protocol, on which many of the panel features also depend.
+         *
+         * See also: `xfce_panel_plugin_popup_menu()` and `xfce_panel_plugin_position_widget()`.
+         * @param window a {@link Gtk.Window}.
+         * @param widget the {@link Gtk.Widget} to align `window` with or `null` to use `plugin` as `widget`.
+         */
+        popup_window(window: Gtk.Window, widget?: Gtk.Widget | null): void;
+        /**
          * Computes the x and y coordinates to position the `menu_widget`
          * relative to `attach_widget`. If `attach_widget` is NULL, the computed
          * position will be relative to `plugin`.
@@ -6519,10 +6507,12 @@ export namespace Libxfce4panel {
          * Note that if the panel is hidden (autohide), you should delay calling this
          * function until the panel is shown, so that it returns the correct coordinates.
          *
-         * This function is intended for custom menu widgets.
-         * For a regular {@link Gtk.Menu} you should use `xfce_panel_plugin_popup_menu()` instead.
+         * This function is intended for custom menu widgets and should rarely be used
+         * since 4.19.0. For a regular {@link Gtk.Menu} you should use `xfce_panel_plugin_popup_menu()`
+         * instead, and for a {@link Gtk.Window} `xfce_panel_plugin_popup_window()`, which take care
+         * of positioning for you, among other things.
          *
-         * See also: `xfce_panel_plugin_popup_menu()`.
+         * See also: `xfce_panel_plugin_popup_menu()` and `xfce_panel_plugin_popup_window()`.
          * @param menu_widget a {@link Gtk.Widget} that will be used as popup menu.
          * @param attach_widget a {@link Gtk.Widget} relative to which the menu should be positioned.
          */
@@ -6588,6 +6578,10 @@ export namespace Libxfce4panel {
          */
         unblock_menu(): void;
         ask_remove(): void;
+        /**
+         * @param hidden
+         */
+        emit_hidden_event(hidden: boolean): void;
         /**
          * @param provider_signal
          */
@@ -6792,7 +6786,7 @@ export namespace Libxfce4panel {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6847,7 +6841,7 @@ export namespace Libxfce4panel {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6922,7 +6916,7 @@ export namespace Libxfce4panel {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7212,6 +7206,11 @@ export namespace Libxfce4panel {
              */
             vfunc_get_unique_id(): number;
             /**
+             * @param hidden
+             * @virtual
+             */
+            vfunc_hidden_event(hidden: boolean): void;
+            /**
              * @param name
              * @param value
              * @param handle
@@ -7287,6 +7286,10 @@ export namespace Libxfce4panel {
         // Methods
 
         ask_remove(): void;
+        /**
+         * @param hidden
+         */
+        emit_hidden_event(hidden: boolean): void;
         /**
          * @param provider_signal
          */

@@ -19,14 +19,14 @@
     // Show diagnostics
     "diagnostics": true,
     "paths": {
-      "@girs/glib-2.0": [
-            "../glib-2.0/index.d.ts"
-      ],
       "@girs/dbusmenu-0.4": [
             "../dbusmenu-0.4/index.d.ts"
       ],
       "@girs/gobject-2.0": [
             "../gobject-2.0/index.d.ts"
+      ],
+      "@girs/glib-2.0": [
+            "../glib-2.0/index.d.ts"
       ],
       "@girs/dee-1.0": [
             "../dee-1.0/index.d.ts"

@@ -63,15 +63,15 @@ export namespace Qmi {
          */
         static UNSUPPORTED: number;
         /**
-         * TLV has no value. Empty TLVs are not a real error, so this error type is never generated. Since: 1.12. Deprecated: 1.22.
+         * TLV has no value. Empty TLVs are not a real error, so this error type is never generated. Since 1.12. Deprecated 1.22.
          */
         static TLVEMPTY: number;
         /**
-         * QMI message is unexpected. Since: 1.16.
+         * QMI message is unexpected. Since 1.16.
          */
         static UNEXPECTEDMESSAGE: number;
         /**
-         * Invalid data found in the message. Since: 1.24.6.
+         * Invalid data found in the message. Since 1.24.6.
          */
         static INVALIDDATA: number;
 
@@ -147,7 +147,7 @@ export namespace Qmi {
          */
         HSUSB,
         /**
-         * PCIe. Since: 1.28.
+         * PCIe. Since 1.28.
          */
         PCIE,
         /**
@@ -1066,6 +1066,37 @@ export namespace Qmi {
     /**
      * @gir-type Enum
      */
+    export namespace GasFirmwareAutoSimMode {
+        export const $gtype: GObject.GType<GasFirmwareAutoSimMode>;
+    }
+
+    /**
+     * Automatic carrier switch according to the SIM mode.
+     * @gir-type Enum
+     * @since 1.36
+     */
+    enum GasFirmwareAutoSimMode {
+        /**
+         * Disable the automatic carrier switch according to the SIM.
+         */
+        DISABLE,
+        /**
+         * Enable the automatic carrier switch according to the SIM.
+         */
+        ENABLE,
+        /**
+         * Enable the automatic carrier switch according to the SIM just for one time.
+         */
+        ENABLE_ONE_SHOT,
+        /**
+         * Indicate the pending status of a single switch (used only in DMS Get Firmware Auto Sim).
+         */
+        PENDING_ONE_SHOT,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     export namespace GasFirmwareListingMode {
         export const $gtype: GObject.GType<GasFirmwareListingMode>;
     }
@@ -1111,6 +1142,122 @@ export namespace Qmi {
          * High-speed inter-chip interface.
          */
         HSIC,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace ImsaImsRegistrationStatus {
+        export const $gtype: GObject.GType<ImsaImsRegistrationStatus>;
+    }
+
+    /**
+     * IMS registration status.
+     * @gir-type Enum
+     * @since 1.34
+     */
+    enum ImsaImsRegistrationStatus {
+        /**
+         * no registration for IMS.
+         */
+        NOT_REGISTERED,
+        /**
+         * IMS is registering.
+         */
+        REGISTERING,
+        /**
+         * IMS is fully registered.
+         */
+        REGISTERED,
+        /**
+         * IMS is limited registered, expect limited services.
+         */
+        LIMITED_REGISTERED,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace ImsaRegistrationTechnology {
+        export const $gtype: GObject.GType<ImsaRegistrationTechnology>;
+    }
+
+    /**
+     * Network technology on which service is available.
+     * @gir-type Enum
+     * @since 1.34
+     */
+    enum ImsaRegistrationTechnology {
+        /**
+         * registered on WLAN interface.
+         */
+        WLAN,
+        /**
+         * registered on WWAN interface.
+         */
+        WWAN,
+        /**
+         * registered on Interworking WLAN interface.
+         */
+        INTERWORKING_WLAN,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace ImsaServiceStatus {
+        export const $gtype: GObject.GType<ImsaServiceStatus>;
+    }
+
+    /**
+     * IMS Application Service availibility status.
+     * @gir-type Enum
+     * @since 1.34
+     */
+    enum ImsaServiceStatus {
+        /**
+         * Service unavailable.
+         */
+        UNAVAILABLE,
+        /**
+         * Service limited available.
+         */
+        LIMITED,
+        /**
+         * Service available.
+         */
+        AVAILABLE,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace ImspEnablerState {
+        export const $gtype: GObject.GType<ImspEnablerState>;
+    }
+
+    /**
+     * IMS Presence enabler state.
+     * @gir-type Enum
+     * @since 1.34
+     */
+    enum ImspEnablerState {
+        /**
+         * IMS is not initialized yet.
+         */
+        UNINITIALIZED,
+        /**
+         * IMS is initialized, but not registered yet with the network IMS service.
+         */
+        INITIALIZED,
+        /**
+         * IMS is initialized but device is in airplane mode.
+         */
+        AIRPLANE,
+        /**
+         * IMS is initialized and registered.
+         */
+        REGISTERED,
     }
 
     /**
@@ -2218,6 +2365,26 @@ export namespace Qmi {
          * NR5G Band 53. Since 1.32.
          */
         NR5G_53,
+        /**
+         * NR5G Band 46. Since 1.36
+         */
+        NR5G_46,
+        /**
+         * NR5G Band 91. Since 1.36
+         */
+        NR5G_91,
+        /**
+         * NR5G Band 92. Since 1.36
+         */
+        NR5G_92,
+        /**
+         * NR5G Band 93. Since 1.36
+         */
+        NR5G_93,
+        /**
+         * NR5G Band 94. Since 1.36
+         */
+        NR5G_94,
     }
 
     /**
@@ -2419,33 +2586,105 @@ export namespace Qmi {
         // Static fields
 
         /**
-         * 1.4 MHz
+         * LTE 1.4 MHz
          */
         static '1_4': number;
         /**
-         * 3 MHz
+         * LTE 3 MHz
          */
         static '3': number;
         /**
-         * 5 MHz
+         * LTE 5 MHz
          */
         static '5': number;
         /**
-         * 10 MHz
+         * LTE 10 MHz
          */
         static '10': number;
         /**
-         * 15 MHz
+         * LTE 15 MHz
          */
         static '15': number;
         /**
-         * 20 MHz
+         * LTE 20 MHz
          */
         static '20': number;
         /**
-         * Invalid
+         * 5G NR 5MHz. Since 1.36
          */
-        static INVALID: number;
+        static '5GNR_5': number;
+        /**
+         * 5G NR 10MHz. Since 1.36
+         */
+        static '5GNR_10': number;
+        /**
+         * 5G NR 15MHz. Since 1.36
+         */
+        static '5GNR_15': number;
+        /**
+         * 5G NR 20MHz. Since 1.36
+         */
+        static '5GNR_20': number;
+        /**
+         * 5G NR 25MHz. Since 1.36
+         */
+        static '5GNR_25': number;
+        /**
+         * 5G NR 30MHz. Since 1.36
+         */
+        static '5GNR_30': number;
+        /**
+         * 5G NR 40MHz. Since 1.36
+         */
+        static '5GNR_40': number;
+        /**
+         * 5G NR 50Mhz. Since 1.36
+         */
+        static '5GNR_50': number;
+        /**
+         * 5G NR 60MHz. Since 1.36
+         */
+        static '5GNR_60': number;
+        /**
+         * 5G NR 80MHz. Since 1.36
+         */
+        static '5GNR_80': number;
+        /**
+         * 5G NR 90MHz. Since 1.36
+         */
+        static '5GNR_90': number;
+        /**
+         * 5G NR 100MHz. Since 1.36
+         */
+        static '5GNR_100': number;
+        /**
+         * 5G NR 200MHz. Since 1.36
+         */
+        static '5GNR_200': number;
+        /**
+         * 5G NR 400MHz. Since 1.36
+         */
+        static '5GNR_400': number;
+        /**
+         * GSM 0.2MHz. Since 1.36
+         */
+        static GSM_02: number;
+        /**
+         * TD-SCDMA 1.6MHz. Since 1.36
+         */
+        static TDSCDMA_16: number;
+        /**
+         * WCDMA 5MHz. Since 1.36
+         */
+        static WCDMA_5: number;
+        /**
+         * WCDMA 10MHz. Since 1.36
+         */
+        static WCDMA_10: number;
+        /**
+         * 5G NR 70MHz. Since 1.36
+         */
+        static '5GNR_70': number;
         /**
          * Unknown
          */
@@ -3092,9 +3331,9 @@ export namespace Qmi {
          */
         CS_PS,
         /**
-         * Unknown service.
+         * Camped. Since 1.36.
          */
-        UNKNOWN,
+        CAMPED,
     }
 
     /**
@@ -4918,11 +5157,11 @@ export namespace Qmi {
          */
         static INVALIDQOSID: number;
         /**
-         * Requested number unsupported. Since: 1.22.
+         * Requested number unsupported. Since 1.22.
          */
         static REQUESTEDNUMBERUNSUPPORTED: number;
         /**
-         * Interface not found. Since: 1.22.
+         * Interface not found. Since 1.22.
          */
         static INTERFACENOTFOUND: number;
         /**
@@ -4930,7 +5169,7 @@ export namespace Qmi {
          */
         static FLOWSUSPENDED: number;
         /**
-         * Invalid data format. Since: 1.22.
+         * Invalid data format. Since 1.22.
          */
         static INVALIDDATAFORMAT: number;
         /**
@@ -4994,19 +5233,19 @@ export namespace Qmi {
          */
         static INVALIDTRANSITION: number;
         /**
-         * Not a multicast interface. Since: 1.22.
+         * Not a multicast interface. Since 1.22.
          */
         static NOTMCASTINTERFACE: number;
         /**
-         * Maximum multicast requests in use. Since: 1.22.
+         * Maximum multicast requests in use. Since 1.22.
          */
         static MAXIMUMMCASTREQUESTSINUSE: number;
         /**
-         * Invalid mulitcast handle. Since: 1.22.
+         * Invalid mulitcast handle. Since 1.22.
          */
         static INVALIDMCASTHANDLE: number;
         /**
-         * Invalid IP family preference. Since: 1.22.
+         * Invalid IP family preference. Since 1.22.
          */
         static INVALIDIPFAMILYPREFERENCE: number;
         /**
@@ -5062,11 +5301,11 @@ export namespace Qmi {
          */
         static BUNDLINGNOTSUPPORTED: number;
         /**
-         * Operation partial failure. Since: 1.22.
+         * Operation partial failure. Since 1.22.
          */
         static OPERATIONPARTIALFAILURE: number;
         /**
-         * Policy mismatch. Since: 1.6.
+         * Policy mismatch. Since 1.6.
          */
         static POLICYMISMATCH: number;
         /**
@@ -5074,7 +5313,7 @@ export namespace Qmi {
          */
         static SIMFILENOTFOUND: number;
         /**
-         * Extended internal error. Since: 1.6.
+         * Extended internal error. Since 1.6.
          */
         static EXTENDEDINTERNAL: number;
         /**
@@ -5086,159 +5325,159 @@ export namespace Qmi {
          */
         static HARDWARERESTRICTED: number;
         /**
-         * ACK not sent. Since: 1.6.
+         * ACK not sent. Since 1.6.
          */
         static ACKNOTSENT: number;
         /**
-         * Inject timeout. Since: 1.6.
+         * Inject timeout. Since 1.6.
          */
         static INJECTTIMEOUT: number;
         /**
-         * Incompatible state. Since: 1.6.
+         * Incompatible state. Since 1.6.
          */
         static INCOMPATIBLESTATE: number;
         /**
-         * FDN restrict. Since: 1.6.
+         * FDN restrict. Since 1.6.
          */
         static FDNRESTRICT: number;
         /**
-         * SUPS failure case. Since: 1.6.
+         * SUPS failure case. Since 1.6.
          */
         static SUPSFAILURECASE: number;
         /**
-         * No radio. Since: 1.6.
+         * No radio. Since 1.6.
          */
         static NORADIO: number;
         /**
-         * Not supported. Since: 1.6.
+         * Not supported. Since 1.6.
          */
         static NOTSUPPORTED: number;
         /**
-         * No subscription. Since: 1.6.
+         * No subscription. Since 1.6.
          */
         static NOSUBSCRIPTION: number;
         /**
-         * Card call control failed. Since: 1.6.
+         * Card call control failed. Since 1.6.
          */
         static CARDCALLCONTROLFAILED: number;
         /**
-         * Network aborted. Since: 1.6.
+         * Network aborted. Since 1.6.
          */
         static NETWORKABORTED: number;
         /**
-         * Message blocked. Since: 1.6.
+         * Message blocked. Since 1.6.
          */
         static MSGBLOCKED: number;
         /**
-         * Invalid session type. Since: 1.6.
+         * Invalid session type. Since 1.6.
          */
         static INVALIDSESSIONTYPE: number;
         /**
-         * Invalid PB type. Since: 1.6.
+         * Invalid PB type. Since 1.6.
          */
         static INVALIDPBTYPE: number;
         /**
-         * No SIM. Since: 1.6.
+         * No SIM. Since 1.6.
          */
         static NOSIM: number;
         /**
-         * PB not ready. Since: 1.6.
+         * PB not ready. Since 1.6.
          */
         static PBNOTREADY: number;
         /**
-         * PIN restriction. Since: 1.6.
+         * PIN restriction. Since 1.6.
          */
         static PINRESTRICTION: number;
         /**
-         * PIN2 restriction. Since: 1.6.
+         * PIN2 restriction. Since 1.6.
          */
         static PIN1RESTRICTION: number;
         /**
-         * PUK restriction. Since: 1.6.
+         * PUK restriction. Since 1.6.
          */
         static PUKRESTRICTION: number;
         /**
-         * PUK2 restriction. Since: 1.6.
+         * PUK2 restriction. Since 1.6.
          */
         static PUK2RESTRICTION: number;
         /**
-         * PB access restricted. Since: 1.6.
+         * PB access restricted. Since 1.6.
          */
         static PBACCESSRESTRICTED: number;
         /**
-         * PB delete in progress. Since: 1.22.
+         * PB delete in progress. Since 1.22.
          */
         static PBDELETEINPROGRESS: number;
         /**
-         * PB text too long. Since: 1.6.
+         * PB text too long. Since 1.6.
          */
         static PBTEXTTOOLONG: number;
         /**
-         * PB number too long. Since: 1.6.
+         * PB number too long. Since 1.6.
          */
         static PBNUMBERTOOLONG: number;
         /**
-         * PB hidden key restriction. Since: 1.6.
+         * PB hidden key restriction. Since 1.6.
          */
         static PBHIDDENKEYRESTRICTION: number;
         /**
-         * PB not available. Since: 1.22.
+         * PB not available. Since 1.22.
          */
         static PBNOTAVAILABLE: number;
         /**
-         * Device memory error. Since: 1.22.
+         * Device memory error. Since 1.22.
          */
         static DEVICEMEMORYERROR: number;
         /**
-         * No permission. Since: 1.22.
+         * No permission. Since 1.22.
          */
         static NOPERMISSION: number;
         /**
-         * Too soon. Since: 1.22.
+         * Too soon. Since 1.22.
          */
         static TOOSOON: number;
         /**
-         * Time not acquired. Since: 1.22.
+         * Time not acquired. Since 1.22.
          */
         static TIMENOTACQUIRED: number;
         /**
-         * Operation in progress. Since: 1.22.
+         * Operation in progress. Since 1.22.
          */
         static OPERATIONINPROGRESS: number;
         /**
-         * Firmware write failed. Since: 1.22.
+         * Firmware write failed. Since 1.22.
          */
         static FWWRITEFAILED: number;
         /**
-         * Firmware info read failed. Since: 1.22.
+         * Firmware info read failed. Since 1.22.
          */
         static FWINFOREADFAILED: number;
         /**
-         * Firmware file not found. Since: 1.22.
+         * Firmware file not found. Since 1.22.
          */
         static FWFILENOTFOUND: number;
         /**
-         * Firmware dir not found. Since: 1.22.
+         * Firmware dir not found. Since 1.22.
          */
         static FWDIRNOTFOUND: number;
         /**
-         * Firmware already activated. Since: 1.22.
+         * Firmware already activated. Since 1.22.
          */
         static FWALREADYACTIVATED: number;
         /**
-         * Firmware cannot generic image. Since: 1.22.
+         * Firmware cannot generic image. Since 1.22.
          */
         static FWCANNOTGENERICIMAGE: number;
         /**
-         * Firmware file open failed. Since: 1.22.
+         * Firmware file open failed. Since 1.22.
          */
         static FWFILEOPENFAILED: number;
         /**
-         * Firmware update discontinuous frame. Since: 1.22.
+         * Firmware update discontinuous frame. Since 1.22.
          */
         static FWUPDATEDISCONTINUOUSFRAME: number;
         /**
-         * Firmware update failed. Since: 1.22.
+         * Firmware update failed. Since 1.22.
          */
         static FWUPDATEFAILED: number;
         /**
@@ -5515,7 +5754,7 @@ export namespace Qmi {
          */
         PBM,
         /**
-         * QCHAT service. Since: 1.8.
+         * QCHAT service. Since 1.8.
          */
         QCHAT,
         /**
@@ -5523,7 +5762,7 @@ export namespace Qmi {
          */
         RMTFS,
         /**
-         * Test service. Since: 1.8.
+         * Test service. Since 1.8.
          */
         TEST,
         /**
@@ -5535,103 +5774,103 @@ export namespace Qmi {
          */
         SAR,
         /**
-         * IMS settings service. Since: 1.8.
+         * IMS settings service. Since 1.8.
          */
         IMS,
         /**
-         * Analog to digital converter driver service. Since: 1.8.
+         * Analog to digital converter driver service. Since 1.8.
          */
         ADC,
         /**
-         * Core sound driver service. Since: 1.8.
+         * Core sound driver service. Since 1.8.
          */
         CSD,
         /**
-         * Modem embedded file system service. Since: 1.8.
+         * Modem embedded file system service. Since 1.8.
          */
         MFS,
         /**
-         * Time service. Since: 1.8.
+         * Time service. Since 1.8.
          */
         TIME,
         /**
-         * Thermal sensors service. Since: 1.8.
+         * Thermal sensors service. Since 1.8.
          */
         TS,
         /**
-         * Thermal mitigation device service. Since: 1.8.
+         * Thermal mitigation device service. Since 1.8.
          */
         TMD,
         /**
-         * Service access proxy service. Since: 1.8.
+         * Service access proxy service. Since 1.8.
          */
         SAP,
         /**
-         * Wireless data administrative service. Since: 1.8.
+         * Wireless data administrative service. Since 1.8.
          */
         WDA,
         /**
-         * TSYNC control service. Since: 1.8.
+         * TSYNC control service. Since 1.8.
          */
         TSYNC,
         /**
-         * Remote file system access service. Since: 1.8.
+         * Remote file system access service. Since 1.8.
          */
         RFSA,
         /**
-         * Circuit switched videotelephony service. Since: 1.8.
+         * Circuit switched videotelephony service. Since 1.8.
          */
         CSVT,
         /**
-         * Qualcomm mobile access point service. Since: 1.8.
+         * Qualcomm mobile access point service. Since 1.8.
          */
         QCMAP,
         /**
-         * IMS presence service. Since: 1.8.
+         * IMS presence service. Since 1.8.
          */
         IMSP,
         /**
-         * IMS videotelephony service. Since: 1.8.
+         * IMS videotelephony service. Since 1.8.
          */
         IMSVT,
         /**
-         * IMS application service. Since: 1.8.
+         * IMS application service. Since 1.8.
          */
         IMSA,
         /**
-         * Coexistence service. Since: 1.8.
+         * Coexistence service. Since 1.8.
          */
         COEX,
         /**
-         * Persistent device configuration service. Since: 1.8.
+         * Persistent device configuration service. Since 1.8.
          */
         PDC,
         /**
-         * Simultaneous transmit service. Since: 1.8.
+         * Simultaneous transmit service. Since 1.8.
          */
         STX,
         /**
-         * Bearer independent transport service. Since: 1.8.
+         * Bearer independent transport service. Since 1.8.
          */
         BIT,
         /**
-         * IMS RTP service. Since: 1.8.
+         * IMS RTP service. Since 1.8.
          */
         IMSRTP,
         /**
-         * RF radiated performance enhancement service. Since: 1.8.
+         * RF radiated performance enhancement service. Since 1.8.
          */
         RFRPE,
         /**
-         * Data system determination service. Since: 1.8.
+         * Data system determination service. Since 1.8.
          */
         DSD,
         /**
-         * Subsystem control service. Since: 1.8.
+         * Subsystem control service. Since 1.8.
          */
         SSCTL,
         /**
-         * Data Port Mapper service. Since: 1.30.
+         * Data Port Mapper service. Since 1.30.
          */
         DPM,
         /**
@@ -5647,25 +5886,29 @@ export namespace Qmi {
          */
         OMA,
         /**
-         * Foxconn General Modem Service. Since: 1.32.
+         * Foxconn General Modem Service. Since 1.32.
          */
         FOX,
         /**
-         * Firmware Over The Air service. Since: 1.24.
+         * Firmware Over The Air service. Since 1.24.
          */
         FOTA,
         /**
-         * Telit General Modem Service. Since: 1.24.
+         * Telit General Modem Service. Since 1.24.
          */
         GMS,
         /**
-         * Telit General Application Service. Since: 1.24.
+         * Telit General Application Service. Since 1.24.
          */
         GAS,
         /**
-         * Telit AT Relay Service. Since: 1.34.
+         * Telit AT Relay Service. Since 1.34.
          */
         ATR,
+        /**
+         * Snapdragon Sensore Core Service. Since 1.34.
+         */
+        SSC,
     }
 
     /**
@@ -5719,6 +5962,29 @@ export namespace Qmi {
          * A2 MUX (BAM-DMUX) port for rmnet7.
          */
         A2_MUX_RMNET7,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace SscReportType {
+        export const $gtype: GObject.GType<SscReportType>;
+    }
+
+    /**
+     * SSC service report types.
+     * @gir-type Enum
+     * @since 1.34
+     */
+    enum SscReportType {
+        /**
+         * Small size report.
+         */
+        SMALL,
+        /**
+         * Large size report.
+         */
+        LARGE,
     }
 
     /**
@@ -6138,6 +6404,41 @@ export namespace Qmi {
          * Unblock personalization
          */
         UNBLOCK,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace UimFileControlInformation {
+        export const $gtype: GObject.GType<UimFileControlInformation>;
+    }
+
+    /**
+     * File Control Information.
+     * @gir-type Enum
+     * @since 1.36
+     */
+    enum UimFileControlInformation {
+        /**
+         * No data.
+         */
+        NO_DATA,
+        /**
+         * File control parameters
+         */
+        FCP,
+        /**
+         * File control information
+         */
+        FCI,
+        /**
+         * FCI with interfaces
+         */
+        FCI_WITH_INTERFACES,
+        /**
+         * File management data
+         */
+        FMD,
     }
 
     /**
@@ -8114,19 +8415,19 @@ export namespace Qmi {
          */
         QMAP,
         /**
-         * QMAPV2 enabled. Since: 1.30.
+         * QMAPV2 enabled. Since 1.30.
          */
         QMAPV2,
         /**
-         * QMAPV3 enabled. Since: 1.30.
+         * QMAPV3 enabled. Since 1.30.
          */
         QMAPV3,
         /**
-         * QMAPV4 enabled. Since: 1.30.
+         * QMAPV4 enabled. Since 1.30.
          */
         QMAPV4,
         /**
-         * QMAPV5 enabled. Since: 1.28.
+         * QMAPV5 enabled. Since 1.28.
          */
         QMAPV5,
     }
@@ -8156,6 +8457,52 @@ export namespace Qmi {
          * Raw IP mode.
          */
         RAW_IP,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace WdaLoopBackState {
+        export const $gtype: GObject.GType<WdaLoopBackState>;
+    }
+
+    /**
+     * Loopback configuration state.
+     * @gir-type Enum
+     * @since 1.36
+     */
+    enum WdaLoopBackState {
+        /**
+         * Disabled.
+         */
+        DISABLED,
+        /**
+         * Enabled.
+         */
+        ENABLED,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace WdsAddressAllocationPreference {
+        export const $gtype: GObject.GType<WdsAddressAllocationPreference>;
+    }
+
+    /**
+     * Address allocation preference.
+     * @gir-type Enum
+     * @since 1.36
+     */
+    enum WdsAddressAllocationPreference {
+        /**
+         * allocate via Network Access Stratum (NAS).
+         */
+        NAS,
+        /**
+         * allocate via DHCP.
+         */
+        DHCP,
     }
 
     /**
@@ -8693,23 +9040,23 @@ export namespace Qmi {
          */
         DCHSDPAPLUS_HSUPA,
         /**
-         * HSDPA+ with 64QAM. Since: 1.18.
+         * HSDPA+ with 64QAM. Since 1.18.
          */
         HSDPAPLUS_PLUS_64QAM,
         /**
-         * HSDPA+ with 64QAM and HSUPA. Since: 1.18.
+         * HSDPA+ with 64QAM and HSUPA. Since 1.18.
          */
         HSDPAPLUS_PLUS_64QAM_HSUPA,
         /**
-         * TD-SCDMA. Since: 1.18.
+         * TD-SCDMA. Since 1.18.
          */
         TDSCDMA,
         /**
-         * TD-SCDMA and HSDPA. Since: 1.18.
+         * TD-SCDMA and HSDPA. Since 1.18.
          */
         TDSCDMA_HSDPA,
         /**
-         * TD-SCDMA and HSUPA. Since: 1.18.
+         * TD-SCDMA and HSUPA. Since 1.18.
          */
         TDSCDMA_HSUPA,
     }
@@ -9036,7 +9383,7 @@ export namespace Qmi {
      */
     enum WdsIpFamily {
         /**
-         * unknown. Since: 1.18.
+         * unknown. Since 1.18.
          */
         UNKNOWN,
         /**
@@ -9105,6 +9452,33 @@ export namespace Qmi {
          * 3GPP network type.
          */
         '3GPP',
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace WdsPdpAccessControl {
+        export const $gtype: GObject.GType<WdsPdpAccessControl>;
+    }
+
+    /**
+     * PDP access control.
+     * @gir-type Enum
+     * @since 1.36
+     */
+    enum WdsPdpAccessControl {
+        /**
+         * no access control.
+         */
+        NONE,
+        /**
+         * reject.
+         */
+        REJECT,
+        /**
+         * permission.
+         */
+        PERMISSION,
     }
 
     /**
@@ -9771,6 +10145,66 @@ export namespace Qmi {
          * Invalid proxy call session control function address. Since 1.24.10.
          */
         INVALID_PROXY_CALL_SESSION_CONTROL_FUNCTION_ADDRESS,
+        /**
+         * Internal call pre-empted by high-priority APN. Since 1.36.
+         */
+        INTERNAL_CALL_PREEMPTED_BY_HIGH_PRIORITY_APN,
+        /**
+         * EMM access barred. Since 1.36.
+         */
+        EMM_ACCESS_BARRED,
+        /**
+         * Emergency interface only. Since 1.36.
+         */
+        EMERGENCY_INTERFACE_ONLY,
+        /**
+         * Interface mismatch. Since 1.36.
+         */
+        INTERFACE_MISMATCH,
+        /**
+         * Companion interface in use. Since 1.36.
+         */
+        COMPANION_INTERFACE_IN_USE,
+        /**
+         * IP address mismatch. Since 1.36.
+         */
+        IP_ADDRESS_MISMATCH,
+        /**
+         * Interface and policy family mismatch. Since 1.36.
+         */
+        INTERFACE_AND_POLICY_FAMILY_MISMATCH,
+        /**
+         * EMM access barred; infinit retry. Since 1.36.
+         */
+        EMM_ACCESS_BARRED_INFINITE_RETRY,
+        /**
+         * Authentication failure on emergency call. Since 1.36.
+         */
+        AUTHENTICATION_FAILURE_ON_EMERGENCY_CALL,
+        /**
+         * Invalid DNS address. Since 1.36.
+         */
+        INVALID_DNS_ADDRESS,
+        /**
+         * Invalid Proxy Call Session Control Function (PCSCF) DNS address. Since 1.36.
+         */
+        INVALID_PROXY_CALL_SESSION_CONTROL_FUNCTION_DNS_ADDRESS,
+        /**
+         * Test loopback mode A or B enabled. Since 1.36.
+         */
+        TEST_LOOPBACK_MODE_A_OR_B_ENABLED,
+        /**
+         * EMM access barred EAB. Since 1.36.
+         */
+        EMM_ACCESS_BARRED_EAB,
+        /**
+         * Call pre-empted by emergency APN. Since 1.36.
+         */
+        CALL_PREEMPTED_BY_EMERGENCY_APN,
+        /**
+         * User Equipment (UE) initialization detach or disconnect. Since 1.36.
+         */
+        UE_INIT_DETACH_OR_DISCONNECT,
     }
 
     /**
@@ -10171,9 +10605,205 @@ export namespace Qmi {
          */
         ESM_PROC_TIMEOUT,
         /**
-         * Message exceed max L2 limit. Since 1.24.10.
+         * Invalid connection ID. Since 1.36.
          */
-        MESSAGE_EXCEED_MAX_L2_LIMIT,
+        INVALID_CONNECTION_ID,
+        /**
+         * Invalid Network Service Access Point Identifier (NSAPI). Since 1.36.
+         */
+        INVALID_NSAPI,
+        /**
+         * Invalid primary Network Service Access Point Identifier (NSAPI). Since 1.36.
+         */
+        INVALID_PRI_NSAPI,
+        /**
+         * Invalid field. Since 1.36.
+         */
+        INVALID_FIELD,
+        /**
+         * Radio Access Bearer (RAB) setup failure. Since 1.36.
+         */
+        RADIO_ACCESS_BEARER_SETUP_FAILURE,
+        /**
+         * PDP establishment max timeout. Since 1.36.
+         */
+        PDP_ESTABLISH_MAX_TIMEOUT,
+        /**
+         * PDP modification max timeout. Since 1.36.
+         */
+        PDP_MODIFY_MAX_TIMEOUT,
+        /**
+         * PDP inactivity max timeout. Since 1.36.
+         */
+        PDP_INACTIVE_MAX_TIMEOUT,
+        /**
+         * PDP lower layer error. Since 1.36.
+         */
+        PDP_LOWERLAYER_ERROR,
+        /**
+         * PPD unknown reason. Since 1.36.
+         */
+        PPD_UNKNOWN_REASON,
+        /**
+         * PDP modification collision. Since 1.36.
+         */
+        PDP_MODIFY_COLLISION,
+        /**
+         * PDP MBMS request collision. Since 1.36.
+         */
+        PDP_MBMS_REQUEST_COLLISION,
+        /**
+         * MBMS duplicate. Since 1.36.
+         */
+        MBMS_DUPLICATE,
+        /**
+         * SM PS detatched. Since 1.36.
+         */
+        SM_PS_DETACHED,
+        /**
+         * SM no radio available. Since 1.36.
+         */
+        SM_NO_RADIO_AVAILABLE,
+        /**
+         * SM abort service not available. Since 1.36.
+         */
+        SM_ABORT_SERVICE_NOT_AVAILABLE,
+        /**
+         * Message exceeds maximum Layer 2 limit. Since 1.36.
+         */
+        MESSAGE_EXCEEDS_MAX_L2_LIMIT,
+        /**
+         * SM NAS service request failure. Since 1.36.
+         */
+        SM_NAS_SERVICE_REQUEST_FAILURE,
+        /**
+         * RRC connection establishment failure; request error. Since 1.36.
+         */
+        RRC_CONNECTION_ESTABLISHMENT_FAILURE_REQUEST_ERROR,
+        /**
+         * RRC connection establishment failure; TAI change. Since 1.36.
+         */
+        RRC_CONNECTION_ESTABLISHMENT_FAILURE_TAI_CHANGE,
+        /**
+         * RRC connection establishment failure; RF unavailable. Since 1.36.
+         */
+        RRC_CONNECTION_ESTABLISHMENT_FAILURE_RF_UNAVAILABLE,
+        /**
+         * RRC connection release; aborted Inter-RAT success. Since 1.36.
+         */
+        RRC_CONNECTION_RELEASE_ABORTED_INTER_RAT_SUCCESS,
+        /**
+         * RRC connection release; RLF security not active. Since 1.36.
+         */
+        RRC_CONNECTION_RELEASE_RLF_SEC_NOT_ACTIVE,
+        /**
+         * RRC connection release; Inter-RAT to LTE aborted. Since 1.36.
+         */
+        RRC_CONNECTION_RELEASE_INTER_RAT_TO_LTE_ABORTED,
+        /**
+         * RRC connection release; Inter-RAT from LTE to GERAN CCO success. Since 1.36.
+         */
+        RRC_CONNECTION_RELEASE_INTER_RAT_FROM_LTE_TO_GERAN_CCO_SUCCESS,
+        /**
+         * RRC connection release; Inter-RAT from LTE to GERAN CCO aborted. Since 1.36.
+         */
+        RRC_CONNECTION_RELEASE_INTER_RAT_FROM_LTE_TO_GERAN_CCO_ABORTED,
+        /**
+         * IMSI unknown in Home Subscriber Service (HSS). Since 1.36.
+         */
+        IMSI_UNKNOWN_IN_HOME_SUBSCRIBER_SERVER,
+        /**
+         * IMEI not accepted. Since 1.36.
+         */
+        IMEI_NOT_ACCEPTED,
+        /**
+         * EPS services and non-EPS services not allowed. Since 1.36.
+         */
+        EPS_SERVICES_AND_NON_EPS_SERVICES_NOT_ALLOWED,
+        /**
+         * EPS services not allowed in PLMN. Since 1.36.
+         */
+        EPS_SERVICES_NOT_ALLOWED_IN_PLMN,
+        /**
+         * MSC temporarily not reachable. Since 1.36.
+         */
+        MSC_TEMPORARILY_NOT_REACHABLE,
+        /**
+         * Circuit-Switched domain not available. Since 1.36.
+         */
+        CS_DOMAIN_NOT_AVAILABLE,
+        /**
+         * ESM failure. Since 1.36.
+         */
+        ESM_FAILURE,
+        /**
+         * MAC failure. Since 1.36.
+         */
+        MAC_FAILURE,
+        /**
+         * Synchronization failure. Since 1.36.
+         */
+        SYNCHRONIZATION_FAILURE,
+        /**
+         * User Equipment (UE) security capabilities mismatch. Since 1.36.
+         */
+        UE_SECURITY_CAPABILITIES_MISMATCH,
+        /**
+         * Security mode reject unspecified. Since 1.36.
+         */
+        SECURITY_MODE_REJECT_UNSPECIFIED,
+        /**
+         * Non-EPS authentication unaccpetable. Since 1.36.
+         */
+        NON_EPS_AUTH_UNACCEPTABLE,
+        /**
+         * Circuit-Switched Fallback (CSFB) call establishment not allowed. Since 1.36.
+         */
+        CS_FALLBACK_CALL_ESTABLISHMENT_NOT_ALLOWED,
+        /**
+         * No EPS bearer context activated. Since 1.36.
+         */
+        NO_EPS_BEARER_CONTEXT_ACTIVATED,
+        /**
+         * EMM invalid state. Since 1.36.
+         */
+        EMM_INVALID_STATE,
+        /**
+         * NAS layer failure. Since 1.36.
+         */
+        NAS_LAYER_FAILURE,
+        /**
+         * Multi-PDN not allowed. Since 1.36.
+         */
+        MULTI_PDN_NOT_ALLOWED,
+        /**
+         * EMBMS not enabled. Since 1.36.
+         */
+        EMBMS_NOT_ENABLED,
+        /**
+         * Pending redial call cleanup. Since 1.36.
+         */
+        PENDING_REDIAL_CALL_CLEANUP,
+        /**
+         * EMBMS regular deactivation. Since 1.36.
+         */
+        EMBMS_REGULAR_DEACTIVATION,
+        /**
+         * TLB regular deactivation. Since 1.36.
+         */
+        TLB_REGULAR_DEACTIVATION,
+        /**
+         * Lower layer registration failure. Since 1.36.
+         */
+        LOWER_LAYER_REGISTRATION_FAILURE,
+        /**
+         * Detach EPS services not allowed. Since 1.36.
+         */
+        DETACH_EPS_SERVICES_NOT_ALLOWED,
+        /**
+         * Session Management internal PDP deactivation. Since 1.36.
+         */
+        SM_INTERNAL_PDP_DEACTIVATION,
         /**
          * CDMA/EVDO specific. Received Connection Deny. General or Network busy.
          */
@@ -10235,6 +10865,10 @@ export namespace Qmi {
          */
         HDR_ACCESS_FAILURE,
         /**
+         * Unsupported 1x PREV. Since 1.36.
+         */
+        UNSUPPORTED_1X_PREV,
+        /**
          * Client end.
          */
         CLIENT_END,
@@ -10290,6 +10924,26 @@ export namespace Qmi {
          * Call control rejected. Since 1.24.10.
          */
         CALL_CONTROL_REJECTED,
+        /**
+         * EMM detached PSM. Since 1.36.
+         */
+        EMM_DETACHED_PSM,
+        /**
+         * Dual switch. Since 1.36.
+         */
+        DUAL_SWITCH,
+        /**
+         * Call Manager. Since 1.36.
+         */
+        CALL_MANAGER,
+        /**
+         * Invalid class 3 APN. Since 1.36.
+         */
+        INVALID_CLASS3_APN,
+        /**
+         * MPLMN in progress. Since 1.36.
+         */
+        MPLMN_IN_PROGRESS,
     }
 
     /**
@@ -10413,67 +11067,67 @@ export namespace Qmi {
          */
         APP_PREEMPTED,
         /**
-         * PDN IPv4 call disallowed. Since: 1.14.
+         * PDN IPv4 call disallowed. Since 1.14.
          */
         PDN_IPV4_CALL_DISALLOWED,
         /**
-         * PDN IPv4 call throttled. Since: 1.14.
+         * PDN IPv4 call throttled. Since 1.14.
          */
         PDN_IPV4_CALL_THROTTLED,
         /**
-         * PDN IPv6 call disallowed. Since: 1.14.
+         * PDN IPv6 call disallowed. Since 1.14.
          */
         PDN_IPV6_CALL_DISALLOWED,
         /**
-         * PDN IPv6 call throttled. Since: 1.14.
+         * PDN IPv6 call throttled. Since 1.14.
          */
         PDN_IPV6_CALL_THROTTLED,
         /**
-         * Modem restart. Since: 1.14.
+         * Modem restart. Since 1.14.
          */
         MODEM_RESTART,
         /**
-         * PDP PPP not supported. Since: 1.14.
+         * PDP PPP not supported. Since 1.14.
          */
         PDP_PPP_NOT_SUPPORTED,
         /**
-         * Unpreferred RAT. Since: 1.14.
+         * Unpreferred RAT. Since 1.14.
          */
         UNPREFERRED_RAT,
         /**
-         * Physical link close in progress. Since: 1.14.
+         * Physical link close in progress. Since 1.14.
          */
         PHYSICAL_LINK_CLOSE_IN_PROGRESS,
         /**
-         * APN pending handover. Since: 1.14.
+         * APN pending handover. Since 1.14.
          */
         APN_PENDING_HANDOVER,
         /**
-         * Profile bearer incompatible. Since: 1.14.
+         * Profile bearer incompatible. Since 1.14.
          */
         PROFILE_BEARER_INCOMPATIBLE,
         /**
-         * MMGDSI Card event. Since: 1.14.
+         * MMGDSI Card event. Since 1.14.
          */
         MMGDSI_CARD_EVENT,
         /**
-         * LPM or power down. Since: 1.14.
+         * LPM or power down. Since 1.14.
          */
         LPM_OR_POWER_DOWN,
         /**
-         * APN disabled. Since: 1.14.
+         * APN disabled. Since 1.14.
          */
         APN_DISABLED,
         /**
-         * MPIT expired. Since: 1.14.
+         * MPIT expired. Since 1.14.
          */
         MPIT_EXPIRED,
         /**
-         * IPv6 address transfer failed. Since: 1.14.
+         * IPv6 address transfer failed. Since 1.14.
          */
         IPV6_ADDRESS_TRANSFER_FAILED,
         /**
-         * TRAT swap failed. Since: 1.14.
+         * TRAT swap failed. Since 1.14.
          */
         TRAT_SWAP_FAILED,
         /**
@@ -10580,6 +11234,74 @@ export namespace Qmi {
          * Validation failure. Since 1.24.10.
          */
         VALIDATION_FAILURE,
+        /**
+         * Profiles not compatible. Since 1.36.
+         */
+        PROFILES_NOT_COMPATIBLE,
+        /**
+         * Null resolved APN no match. Since 1.36.
+         */
+        NULL_RESOLVED_APN_NO_MATCH,
+        /**
+         * Invalid APN name. Since 1.36.
+         */
+        INVALID_APN_NAME,
+        /**
+         * Dedicated Data Subscription (DDS) switch in progress. Since 1.36.
+         */
+        DDS_SWITCH_IN_PROGRESS,
+        /**
+         * Call disallowed in roaming. Since 1.36.
+         */
+        CALL_DISALLOWED_IN_ROAMING,
+        /**
+         * MO Exceptional not supported. Since 1.36.
+         */
+        MO_EXCEPTIONAL_NOT_SUPPORTED,
+        /**
+         * Non-IP not supported. Since 1.36.
+         */
+        NON_IP_NOT_SUPPORTED,
+        /**
+         * Error PDN non-IP call throttled. Since 1.36.
+         */
+        ERROR_PDN_NON_IP_CALL_THROTTLED,
+        /**
+         * Error PDN non-IP call disallowed. Since 1.36.
+         */
+        ERROR_PDN_NON_IP_CALL_DISALLOWED,
+        /**
+         * Error non-IP type mismatch. Since 1.36.
+         */
+        ERROR_NON_IP_TYPE_MISMATCH,
+        /**
+         * Error maximum NB PDN reached. Since 1.36.
+         */
+        ERROR_MAX_NB_PDN_REACHED,
+        /**
+         * Invalid APN. Since 1.36.
+         */
+        INVALID_APN,
+        /**
+         * Slice not allowed. Since 1.36.
+         */
+        SLICE_NOT_ALLOWED,
+        /**
+         * Routing failure. Since 1.36.
+         */
+        ROUTING_FAIL,
+        /**
+         * Routing changed. Since 1.36.
+         */
+        ROUTING_CHANGED,
+        /**
+         * Local Area Data Network (LADN) Data Network Name (DNN) not allowed. Since 1.36.
+         */
+        LOCAL_AREA_DATA_NETWORK_DATA_NETWORK_NAME_NOT_AVAILABLE,
+        /**
+         * APN type mismatch. Since 1.36.
+         */
+        APN_TYPE_MISMATCH,
     }
 
     /**
@@ -11695,10 +12417,18 @@ export namespace Qmi {
      */
     const DEVICE_WWAN_IFACE: string;
     /**
-     * First byte of every QMI message.
+     * First byte of every QMI QMUX message.
      * @since 1.0
      */
     const MESSAGE_QMUX_MARKER: number;
+    /**
+     * Fake header added by libqmi to re-use existing QMUX message parsers for QRTR messages.
+     * QRTR QMI services with a service ID > 0xFF use this fake header where the service ID
+     * is set to 16 bits instead of 8 bits. This header has no purpose outside of libqmi
+     * and is never send to the actual device implementing these QMI services.
+     * @since 1.34
+     */
+    const MESSAGE_QRTR_MARKER: number;
     /**
      * Generic vendor id (0x0000).
      * @since 1.18
@@ -11989,6 +12719,13 @@ export namespace Qmi {
      */
     function fox_firmware_version_type_get_string(val: FoxFirmwareVersionType | null): string;
     /**
+     * Gets the nickname string for the {@link Qmi.GasFirmwareAutoSimMode} specified at `val`.
+     * @param val a QmiGasFirmwareAutoSimMode.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.36
+     */
+    function gas_firmware_auto_sim_mode_get_string(val: GasFirmwareAutoSimMode | null): string;
+    /**
      * Gets the nickname string for the {@link Qmi.GasFirmwareListingMode} specified at `val`.
      * @param val a QmiGasFirmwareListingMode.
      * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
@@ -12002,6 +12739,34 @@ export namespace Qmi {
      * @since 1.32
      */
     function gas_usb_composition_endpoint_type_get_string(val: GasUsbCompositionEndpointType | null): string;
+    /**
+     * Gets the nickname string for the {@link Qmi.ImsaImsRegistrationStatus} specified at `val`.
+     * @param val a QmiImsaImsRegistrationStatus.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.34
+     */
+    function imsa_ims_registration_status_get_string(val: ImsaImsRegistrationStatus | null): string;
+    /**
+     * Gets the nickname string for the {@link Qmi.ImsaRegistrationTechnology} specified at `val`.
+     * @param val a QmiImsaRegistrationTechnology.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.34
+     */
+    function imsa_registration_technology_get_string(val: ImsaRegistrationTechnology | null): string;
+    /**
+     * Gets the nickname string for the {@link Qmi.ImsaServiceStatus} specified at `val`.
+     * @param val a QmiImsaServiceStatus.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.34
+     */
+    function imsa_service_status_get_string(val: ImsaServiceStatus | null): string;
+    /**
+     * Gets the nickname string for the {@link Qmi.ImspEnablerState} specified at `val`.
+     * @param val a QmiImspEnablerState.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.34
+     */
+    function imsp_enabler_state_get_string(val: ImspEnablerState | null): string;
     /**
      * Parses a {@link Qmi.Message} and builds a {@link Qmi.IndicationAtrReceivedOutput} out of it.
      * The operation fails if the message is of the wrong type.
@@ -12026,6 +12791,26 @@ export namespace Qmi {
      * @since 1.34
      */
     function indication_dsd_system_status_indication_parse(message: Message): IndicationDsdSystemStatusOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.IndicationImsaImsRegistrationStatusChangedOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.IndicationImsaImsRegistrationStatusChangedOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_indication_imsa_ims_registration_status_changed_output_unref()`.
+     * @since 1.36
+     */
+    function indication_imsa_ims_registration_status_changed_indication_parse(
+        message: Message,
+    ): IndicationImsaImsRegistrationStatusChangedOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.IndicationImsaImsServicesStatusChangedOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.IndicationImsaImsServicesStatusChangedOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_indication_imsa_ims_services_status_changed_output_unref()`.
+     * @since 1.36
+     */
+    function indication_imsa_ims_services_status_changed_indication_parse(
+        message: Message,
+    ): IndicationImsaImsServicesStatusChangedOutput;
     /**
      * Parses a {@link Qmi.Message} and builds a {@link Qmi.IndicationLocDeleteAssistanceDataOutput} out of it.
      * The operation fails if the message is of the wrong type.
@@ -12327,6 +13112,22 @@ export namespace Qmi {
      */
     function indication_qos_network_status_indication_parse(message: Message): IndicationQosNetworkStatusOutput;
     /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.IndicationSscReportLargeOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.IndicationSscReportLargeOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_indication_ssc_report_large_output_unref()`.
+     * @since 1.34
+     */
+    function indication_ssc_report_large_indication_parse(message: Message): IndicationSscReportLargeOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.IndicationSscReportSmallOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.IndicationSscReportSmallOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_indication_ssc_report_small_output_unref()`.
+     * @since 1.34
+     */
+    function indication_ssc_report_small_indication_parse(message: Message): IndicationSscReportSmallOutput;
+    /**
      * Parses a {@link Qmi.Message} and builds a {@link Qmi.IndicationUimCardStatusOutput} out of it.
      * The operation fails if the message is of the wrong type.
      * @param message a {@link Qmi.Message}.
@@ -12386,6 +13187,16 @@ export namespace Qmi {
      * @since 1.34
      */
     function indication_voice_ussd_indication_parse(message: Message): IndicationVoiceUssdOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.IndicationWdaLoopbackConfigurationOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.IndicationWdaLoopbackConfigurationOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_indication_wda_loopback_configuration_output_unref()`.
+     * @since 1.36
+     */
+    function indication_wda_loopback_configuration_indication_parse(
+        message: Message,
+    ): IndicationWdaLoopbackConfigurationOutput;
     /**
      * Parses a {@link Qmi.Message} and builds a {@link Qmi.IndicationWdsEventReportOutput} out of it.
      * The operation fails if the message is of the wrong type.
@@ -13220,9 +14031,10 @@ export namespace Qmi {
     /**
      * Calls the given function for each TLV found within the {@link Qmi.Message}.
      * @param self a {@link Qmi.Message}.
+     * @param func the function to call for each TLV.
      * @since 1.0
      */
-    function message_foreach_raw_tlv(self: Message): void;
+    function message_foreach_raw_tlv(self: Message, func: MessageForeachRawTlvFn): void;
     /**
      * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageFoxGetFirmwareVersionOutput} out of it.
      * The operation fails if the message is of the wrong type.
@@ -13231,6 +14043,26 @@ export namespace Qmi {
      * @since 1.34
      */
     function message_fox_get_firmware_version_response_parse(message: Message): MessageFoxGetFirmwareVersionOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageGasDmsGetEthernetPduMacAddressOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageGasDmsGetEthernetPduMacAddressOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_gas_dms_get_ethernet_pdu_mac_address_output_unref()`.
+     * @since 1.36
+     */
+    function message_gas_dms_get_ethernet_pdu_mac_address_response_parse(
+        message: Message,
+    ): MessageGasDmsGetEthernetPduMacAddressOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageGasDmsGetFirmwareAutoSimOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageGasDmsGetFirmwareAutoSimOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_gas_dms_get_firmware_auto_sim_output_unref()`.
+     * @since 1.36
+     */
+    function message_gas_dms_get_firmware_auto_sim_response_parse(
+        message: Message,
+    ): MessageGasDmsGetFirmwareAutoSimOutput;
     /**
      * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageGasDmsGetFirmwareListOutput} out of it.
      * The operation fails if the message is of the wrong type.
@@ -13255,6 +14087,16 @@ export namespace Qmi {
      * @since 1.34
      */
     function message_gas_dms_set_active_firmware_response_parse(message: Message): MessageGasDmsSetActiveFirmwareOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageGasDmsSetFirmwareAutoSimOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageGasDmsSetFirmwareAutoSimOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_gas_dms_set_firmware_auto_sim_output_unref()`.
+     * @since 1.36
+     */
+    function message_gas_dms_set_firmware_auto_sim_response_parse(
+        message: Message,
+    ): MessageGasDmsSetFirmwareAutoSimOutput;
     /**
      * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageGasDmsSetUsbCompositionOutput} out of it.
      * The operation fails if the message is of the wrong type.
@@ -13284,6 +14126,13 @@ export namespace Qmi {
      * @since 1.0
      */
     function message_get_length(self: Message): number;
+    /**
+     * Gets the marker of the {@link Qmi.Message}.
+     * @param self a {@link Qmi.Message}.
+     * @returns The message marker.
+     * @since 1.34
+     */
+    function message_get_marker(self: Message): number;
     /**
      * Gets the ID of the message.
      * @param self a {@link Qmi.Message}.
@@ -13372,6 +14221,68 @@ export namespace Qmi {
      * @since 1.34
      */
     function message_gms_test_set_value_response_parse(message: Message): MessageGmsTestSetValueOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageImsBindOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageImsBindOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_ims_bind_output_unref()`.
+     * @since 1.36
+     */
+    function message_ims_bind_response_parse(message: Message): MessageImsBindOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageImsGetImsServicesEnabledSettingOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageImsGetImsServicesEnabledSettingOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_ims_get_ims_services_enabled_setting_output_unref()`.
+     * @since 1.34
+     */
+    function message_ims_get_ims_services_enabled_setting_response_parse(
+        message: Message,
+    ): MessageImsGetImsServicesEnabledSettingOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageImsaBindOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageImsaBindOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_imsa_bind_output_unref()`.
+     * @since 1.36
+     */
+    function message_imsa_bind_response_parse(message: Message): MessageImsaBindOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageImsaGetImsRegistrationStatusOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageImsaGetImsRegistrationStatusOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_imsa_get_ims_registration_status_output_unref()`.
+     * @since 1.34
+     */
+    function message_imsa_get_ims_registration_status_response_parse(
+        message: Message,
+    ): MessageImsaGetImsRegistrationStatusOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageImsaGetImsServicesStatusOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageImsaGetImsServicesStatusOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_imsa_get_ims_services_status_output_unref()`.
+     * @since 1.34
+     */
+    function message_imsa_get_ims_services_status_response_parse(
+        message: Message,
+    ): MessageImsaGetImsServicesStatusOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageImsaRegisterIndicationsOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageImsaRegisterIndicationsOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_imsa_register_indications_output_unref()`.
+     * @since 1.36
+     */
+    function message_imsa_register_indications_response_parse(message: Message): MessageImsaRegisterIndicationsOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageImspGetEnablerStateOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageImspGetEnablerStateOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_imsp_get_enabler_state_output_unref()`.
+     * @since 1.34
+     */
+    function message_imsp_get_enabler_state_response_parse(message: Message): MessageImspGetEnablerStateOutput;
     /**
      * Checks whether the given {@link Qmi.Message} is an indication.
      * @param self a {@link Qmi.Message}.
@@ -13589,6 +14500,14 @@ export namespace Qmi {
      * @since 1.34
      */
     function message_nas_get_lte_cphy_ca_info_response_parse(message: Message): MessageNasGetLteCphyCaInfoOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageNasGetNetworkTimeOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageNasGetNetworkTimeOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_nas_get_network_time_output_unref()`.
+     * @since 1.36
+     */
+    function message_nas_get_network_time_response_parse(message: Message): MessageNasGetNetworkTimeOutput;
     /**
      * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageNasGetOperatorNameOutput} out of it.
      * The operation fails if the message is of the wrong type.
@@ -14158,6 +15077,14 @@ export namespace Qmi {
      */
     function message_set_transaction_id(self: Message, transaction_id: number): void;
     /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageSscControlOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageSscControlOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_ssc_control_output_unref()`.
+     * @since 1.34
+     */
+    function message_ssc_control_response_parse(message: Message): MessageSscControlOutput;
+    /**
      * Reads a string from the TLV.
      *
      * The string written in `out` will need to be NUL-terminated by the caller.
@@ -14637,6 +15564,22 @@ export namespace Qmi {
      */
     function message_uim_get_supported_messages_response_parse(message: Message): MessageUimGetSupportedMessagesOutput;
     /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageUimLogicalChannelOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageUimLogicalChannelOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_uim_logical_channel_output_unref()`.
+     * @since 1.36
+     */
+    function message_uim_logical_channel_response_parse(message: Message): MessageUimLogicalChannelOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageUimOpenLogicalChannelOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageUimOpenLogicalChannelOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_uim_open_logical_channel_output_unref()`.
+     * @since 1.36
+     */
+    function message_uim_open_logical_channel_response_parse(message: Message): MessageUimOpenLogicalChannelOutput;
+    /**
      * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageUimPowerOffSimOutput} out of it.
      * The operation fails if the message is of the wrong type.
      * @param message a {@link Qmi.Message}.
@@ -14716,6 +15659,14 @@ export namespace Qmi {
      * @since 1.34
      */
     function message_uim_reset_response_parse(message: Message): MessageUimResetOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageUimSendApduOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageUimSendApduOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_uim_send_apdu_output_unref()`.
+     * @since 1.36
+     */
+    function message_uim_send_apdu_response_parse(message: Message): MessageUimSendApduOutput;
     /**
      * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageUimSetPinProtectionOutput} out of it.
      * The operation fails if the message is of the wrong type.
@@ -14915,6 +15866,14 @@ export namespace Qmi {
      * @since 1.34
      */
     function message_wda_get_supported_messages_response_parse(message: Message): MessageWdaGetSupportedMessagesOutput;
+    /**
+     * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageWdaLoopbackConfigurationOutput} out of it.
+     * The operation fails if the message is of the wrong type.
+     * @param message a {@link Qmi.Message}.
+     * @returns a {@link Qmi.MessageWdaLoopbackConfigurationOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_wda_loopback_configuration_output_unref()`.
+     * @since 1.36
+     */
+    function message_wda_loopback_configuration_response_parse(message: Message): MessageWdaLoopbackConfigurationOutput;
     /**
      * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageWdaSetDataFormatOutput} out of it.
      * The operation fails if the message is of the wrong type.
@@ -15988,6 +16947,13 @@ export namespace Qmi {
      */
     function sio_port_get_string(val: SioPort | null): string;
     /**
+     * Gets the nickname string for the {@link Qmi.SscReportType} specified at `val`.
+     * @param val a QmiSscReportType.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.34
+     */
+    function ssc_report_type_get_string(val: SscReportType | null): string;
+    /**
      * Gets the nickname string for the {@link Qmi.UimCardApplicationPersonalizationFeature} specified at `val`.
      * @param val a QmiUimCardApplicationPersonalizationFeature.
      * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
@@ -16072,6 +17038,13 @@ export namespace Qmi {
      * @since 1.22.4
      */
     function uim_event_registration_flag_build_string_from_mask(mask: UimEventRegistrationFlag | null): string;
+    /**
+     * Gets the nickname string for the {@link Qmi.UimFileControlInformation} specified at `val`.
+     * @param val a QmiUimFileControlInformation.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.36
+     */
+    function uim_file_control_information_get_string(val: UimFileControlInformation | null): string;
     /**
      * Gets the nickname string for the {@link Qmi.UimFileType} specified at `val`.
      * @param val a QmiUimFileType.
@@ -16334,6 +17307,20 @@ export namespace Qmi {
      */
     function wda_link_layer_protocol_get_string(val: WdaLinkLayerProtocol | null): string;
     /**
+     * Gets the nickname string for the {@link Qmi.WdaLoopBackState} specified at `val`.
+     * @param val a QmiWdaLoopBackState.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.36
+     */
+    function wda_loop_back_state_get_string(val: WdaLoopBackState | null): string;
+    /**
+     * Gets the nickname string for the {@link Qmi.WdsAddressAllocationPreference} specified at `val`.
+     * @param val a QmiWdsAddressAllocationPreference.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.36
+     */
+    function wds_address_allocation_preference_get_string(val: WdsAddressAllocationPreference | null): string;
+    /**
      * Builds a string containing a comma-separated list of nicknames for
      * each {@link Qmi.WdsApnTypeMask} in `mask`.
      * @param mask bitmask of QmiWdsApnTypeMask values.
@@ -16510,6 +17497,13 @@ export namespace Qmi {
      * @since 1.6
      */
     function wds_packet_statistics_mask_flag_build_string_from_mask(mask: WdsPacketStatisticsMaskFlag | null): string;
+    /**
+     * Gets the nickname string for the {@link Qmi.WdsPdpAccessControl} specified at `val`.
+     * @param val a QmiWdsPdpAccessControl.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.36
+     */
+    function wds_pdp_access_control_get_string(val: WdsPdpAccessControl | null): string;
     /**
      * Gets the nickname string for the {@link Qmi.WdsPdpDataCompressionType} specified at `val`.
      * @param val a QmiWdsPdpDataCompressionType.
@@ -16957,31 +17951,31 @@ export namespace Qmi {
          */
         SYNC,
         /**
-         * set network port to "802.3" mode; mutually exclusive with `QMI_DEVICE_OPEN_FLAGS_NET_RAW_IP`
+         * Set network port to "802.3" mode; mutually exclusive with `QMI_DEVICE_OPEN_FLAGS_NET_RAW_IP`
          */
         NET_802_3,
         /**
-         * set network port to "raw IP" mode; mutally exclusive with `QMI_DEVICE_OPEN_FLAGS_NET_802_3`
+         * Set network port to "raw IP" mode; mutally exclusive with `QMI_DEVICE_OPEN_FLAGS_NET_802_3`
          */
         NET_RAW_IP,
         /**
-         * set network port to transmit/receive QoS headers; mutually exclusive with `QMI_DEVICE_OPEN_FLAGS_NET_NO_QOS_HEADER`
+         * Set network port to transmit/receive QoS headers; mutually exclusive with `QMI_DEVICE_OPEN_FLAGS_NET_NO_QOS_HEADER`
          */
         NET_QOS_HEADER,
         /**
-         * set network port to not transmit/receive QoS headers; mutually exclusive with `QMI_DEVICE_OPEN_FLAGS_NET_QOS_HEADER`
+         * Set network port to not transmit/receive QoS headers; mutually exclusive with `QMI_DEVICE_OPEN_FLAGS_NET_QOS_HEADER`
          */
         NET_NO_QOS_HEADER,
         /**
-         * Try to open the port through the 'qmi-proxy'. Since: 1.8.
+         * Try to open the port through the 'qmi-proxy'. Since 1.8.
          */
         PROXY,
         /**
-         * open an MBIM port with QMUX tunneling service. Since: 1.16.
+         * Open an MBIM port with QMUX tunneling service. Since 1.16.
          */
         MBIM,
         /**
-         * open a port either in QMI or MBIM mode, depending on device driver. Since: 1.18.
+         * Open a port either in QMI or MBIM mode, depending on device driver. Since 1.18.
          */
         AUTO,
         /**
@@ -18310,11 +19304,11 @@ export namespace Qmi {
          */
         BC_19,
         /**
-         * WCDMA 850 (Japan). Since: 1.22.
+         * WCDMA 850 (Japan). Since 1.22.
          */
         WCDMA_850_JAPAN,
         /**
-         * WCDMA 1500. Since: 1.22.
+         * WCDMA 1500. Since 1.22.
          */
         WCDMA_1500,
     }
@@ -19174,9 +20168,25 @@ export namespace Qmi {
          */
         MMS,
         /**
+         * DUN/tethering. Since 1.36.
+         */
+        DUN,
+        /**
+         * SUPL server access. Since 1.36.
+         */
+        SUPL,
+        /**
+         * Hi priority. Since 1.36.
+         */
+        HIPRI,
+        /**
          * over the air administration.
          */
         FOTA,
+        /**
+         * CBS. Since 1.36.
+         */
+        CBS,
         /**
          * Initial Attach.
          */
@@ -19185,6 +20195,14 @@ export namespace Qmi {
          * Emergency.
          */
         EMERGENCY,
+        /**
+         * UT. Since 1.36.
+         */
+        UT,
+        /**
+         * Mission critical service. Since 1.36.
+         */
+        MCX,
     }
 
     /**
@@ -19466,13 +20484,17 @@ export namespace Qmi {
          */
         DCHSDPAPLUS,
         /**
-         * 64QAM. Since: 1.18.
+         * 64QAM. Since 1.18.
          */
         '64QAM',
         /**
-         * TD-SCDMA. Since: 1.18.
+         * TD-SCDMA. Since 1.18.
          */
         TDSCDMA,
+        /**
+         * 5GNR. Since 1.36.
+         */
+        '5GNR',
         /**
          * No bearer.
          */
@@ -19514,11 +20536,11 @@ export namespace Qmi {
          */
         EVDO_REVB,
         /**
-         * eHRPD. Since: 1.18.
+         * eHRPD. Since 1.18.
          */
         EHRPD,
         /**
-         * FMC. Since: 1.18.
+         * FMC. Since 1.18.
          */
         FMC,
         /**
@@ -24304,6 +25326,116 @@ export namespace Qmi {
         // Methods
 
         /**
+         * Asynchronously sends a DMS Get Ethernet PDU MAC Address request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_gas_dms_get_ethernet_pdu_mac_address_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        dms_get_ethernet_pdu_mac_address(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageGasDmsGetEthernetPduMacAddressOutput>;
+        /**
+         * Asynchronously sends a DMS Get Ethernet PDU MAC Address request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_gas_dms_get_ethernet_pdu_mac_address_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        dms_get_ethernet_pdu_mac_address(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a DMS Get Ethernet PDU MAC Address request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_gas_dms_get_ethernet_pdu_mac_address_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        dms_get_ethernet_pdu_mac_address(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageGasDmsGetEthernetPduMacAddressOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_gas_dms_get_ethernet_pdu_mac_address()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_gas_dms_get_ethernet_pdu_mac_address()`.
+         * @returns a {@link Qmi.MessageGasDmsGetEthernetPduMacAddressOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_gas_dms_get_ethernet_pdu_mac_address_output_unref()`.
+         */
+        dms_get_ethernet_pdu_mac_address_finish(res: Gio.AsyncResult): MessageGasDmsGetEthernetPduMacAddressOutput;
+        /**
+         * Asynchronously sends a DMS Get Firmware Auto Sim request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_gas_dms_get_firmware_auto_sim_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        dms_get_firmware_auto_sim(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageGasDmsGetFirmwareAutoSimOutput>;
+        /**
+         * Asynchronously sends a DMS Get Firmware Auto Sim request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_gas_dms_get_firmware_auto_sim_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        dms_get_firmware_auto_sim(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a DMS Get Firmware Auto Sim request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_gas_dms_get_firmware_auto_sim_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        dms_get_firmware_auto_sim(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageGasDmsGetFirmwareAutoSimOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_gas_dms_get_firmware_auto_sim()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_gas_dms_get_firmware_auto_sim()`.
+         * @returns a {@link Qmi.MessageGasDmsGetFirmwareAutoSimOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_gas_dms_get_firmware_auto_sim_output_unref()`.
+         */
+        dms_get_firmware_auto_sim_finish(res: Gio.AsyncResult): MessageGasDmsGetFirmwareAutoSimOutput;
+        /**
          * Asynchronously sends a DMS Get Firmware List request to the device.
          *
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
@@ -24468,6 +25600,61 @@ export namespace Qmi {
          * @returns a {@link Qmi.MessageGasDmsSetActiveFirmwareOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_gas_dms_set_active_firmware_output_unref()`.
          */
         dms_set_active_firmware_finish(res: Gio.AsyncResult): MessageGasDmsSetActiveFirmwareOutput;
+        /**
+         * Asynchronously sends a DMS Set Firmware Auto Sim request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_gas_dms_set_firmware_auto_sim_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageGasDmsSetFirmwareAutoSimInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        dms_set_firmware_auto_sim(
+            input: MessageGasDmsSetFirmwareAutoSimInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageGasDmsSetFirmwareAutoSimOutput>;
+        /**
+         * Asynchronously sends a DMS Set Firmware Auto Sim request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_gas_dms_set_firmware_auto_sim_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageGasDmsSetFirmwareAutoSimInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        dms_set_firmware_auto_sim(
+            input: MessageGasDmsSetFirmwareAutoSimInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a DMS Set Firmware Auto Sim request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_gas_dms_set_firmware_auto_sim_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageGasDmsSetFirmwareAutoSimInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        dms_set_firmware_auto_sim(
+            input: MessageGasDmsSetFirmwareAutoSimInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageGasDmsSetFirmwareAutoSimOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_gas_dms_set_firmware_auto_sim()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_gas_dms_set_firmware_auto_sim()`.
+         * @returns a {@link Qmi.MessageGasDmsSetFirmwareAutoSimOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_gas_dms_set_firmware_auto_sim_output_unref()`.
+         */
+        dms_set_firmware_auto_sim_finish(res: Gio.AsyncResult): MessageGasDmsSetFirmwareAutoSimOutput;
         /**
          * Asynchronously sends a DMS Set USB Composition request to the device.
          *
@@ -24698,6 +25885,600 @@ export namespace Qmi {
          * @returns a {@link Qmi.MessageGmsTestSetValueOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_gms_test_set_value_output_unref()`.
          */
         test_set_value_finish(res: Gio.AsyncResult): MessageGmsTestSetValueOutput;
+    }
+
+    namespace ClientIms {
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Client.ConstructorProps {}
+    }
+
+    /**
+     * The {@link Qmi.ClientIms} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Class
+     * @since 1.34
+     */
+    class ClientIms extends Client {
+        static $gtype: GObject.GType<ClientIms>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: ClientIms.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<ClientIms.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof ClientIms.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientIms.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof ClientIms.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientIms.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof ClientIms.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<ClientIms.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Asynchronously sends a Bind request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_ims_bind_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageImsBindInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        bind(
+            input: MessageImsBindInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageImsBindOutput>;
+        /**
+         * Asynchronously sends a Bind request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_ims_bind_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageImsBindInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        bind(
+            input: MessageImsBindInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Bind request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_ims_bind_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageImsBindInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        bind(
+            input: MessageImsBindInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageImsBindOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_ims_bind()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_ims_bind()`.
+         * @returns a {@link Qmi.MessageImsBindOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_ims_bind_output_unref()`.
+         */
+        bind_finish(res: Gio.AsyncResult): MessageImsBindOutput;
+        /**
+         * Asynchronously sends a Get IMS Services Enabled Setting request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_ims_get_ims_services_enabled_setting_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        get_ims_services_enabled_setting(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageImsGetImsServicesEnabledSettingOutput>;
+        /**
+         * Asynchronously sends a Get IMS Services Enabled Setting request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_ims_get_ims_services_enabled_setting_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        get_ims_services_enabled_setting(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Get IMS Services Enabled Setting request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_ims_get_ims_services_enabled_setting_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        get_ims_services_enabled_setting(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageImsGetImsServicesEnabledSettingOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_ims_get_ims_services_enabled_setting()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_ims_get_ims_services_enabled_setting()`.
+         * @returns a {@link Qmi.MessageImsGetImsServicesEnabledSettingOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_ims_get_ims_services_enabled_setting_output_unref()`.
+         */
+        get_ims_services_enabled_setting_finish(res: Gio.AsyncResult): MessageImsGetImsServicesEnabledSettingOutput;
+    }
+
+    namespace ClientImsa {
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            /**
+             * The ::ims-registration-status-changed signal gets emitted when a '<link linkend="libqmi-glib-IMSA-IMS-Registration-Status-Changed-indication.top_of_page">IMS Registration Status Changed</link>' indication is received.
+             * @signal
+             * @since 1.36
+             * @run-last
+             */
+            'ims-registration-status-changed': (arg0: IndicationImsaImsRegistrationStatusChangedOutput) => void;
+            /**
+             * The ::ims-services-status-changed signal gets emitted when a '<link linkend="libqmi-glib-IMSA-IMS-Services-Status-Changed-indication.top_of_page">IMS Services Status Changed</link>' indication is received.
+             * @signal
+             * @since 1.36
+             * @run-last
+             */
+            'ims-services-status-changed': (arg0: IndicationImsaImsServicesStatusChangedOutput) => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Client.ConstructorProps {}
+    }
+
+    /**
+     * The {@link Qmi.ClientImsa} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Class
+     * @since 1.34
+     */
+    class ClientImsa extends Client {
+        static $gtype: GObject.GType<ClientImsa>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: ClientImsa.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<ClientImsa.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof ClientImsa.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientImsa.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof ClientImsa.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientImsa.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof ClientImsa.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<ClientImsa.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Asynchronously sends a Bind request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsa_bind_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageImsaBindInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        bind(
+            input: MessageImsaBindInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageImsaBindOutput>;
+        /**
+         * Asynchronously sends a Bind request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsa_bind_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageImsaBindInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        bind(
+            input: MessageImsaBindInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Bind request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsa_bind_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageImsaBindInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        bind(
+            input: MessageImsaBindInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageImsaBindOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_imsa_bind()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_imsa_bind()`.
+         * @returns a {@link Qmi.MessageImsaBindOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_imsa_bind_output_unref()`.
+         */
+        bind_finish(res: Gio.AsyncResult): MessageImsaBindOutput;
+        /**
+         * Asynchronously sends a Get IMS Registration Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsa_get_ims_registration_status_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        get_ims_registration_status(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageImsaGetImsRegistrationStatusOutput>;
+        /**
+         * Asynchronously sends a Get IMS Registration Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsa_get_ims_registration_status_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        get_ims_registration_status(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Get IMS Registration Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsa_get_ims_registration_status_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        get_ims_registration_status(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageImsaGetImsRegistrationStatusOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_imsa_get_ims_registration_status()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_imsa_get_ims_registration_status()`.
+         * @returns a {@link Qmi.MessageImsaGetImsRegistrationStatusOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_imsa_get_ims_registration_status_output_unref()`.
+         */
+        get_ims_registration_status_finish(res: Gio.AsyncResult): MessageImsaGetImsRegistrationStatusOutput;
+        /**
+         * Asynchronously sends a Get IMS Services Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsa_get_ims_services_status_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        get_ims_services_status(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageImsaGetImsServicesStatusOutput>;
+        /**
+         * Asynchronously sends a Get IMS Services Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsa_get_ims_services_status_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        get_ims_services_status(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Get IMS Services Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsa_get_ims_services_status_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        get_ims_services_status(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageImsaGetImsServicesStatusOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_imsa_get_ims_services_status()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_imsa_get_ims_services_status()`.
+         * @returns a {@link Qmi.MessageImsaGetImsServicesStatusOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_imsa_get_ims_services_status_output_unref()`.
+         */
+        get_ims_services_status_finish(res: Gio.AsyncResult): MessageImsaGetImsServicesStatusOutput;
+        /**
+         * Asynchronously sends a Register Indications request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsa_register_indications_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageImsaRegisterIndicationsInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        register_indications(
+            input: MessageImsaRegisterIndicationsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageImsaRegisterIndicationsOutput>;
+        /**
+         * Asynchronously sends a Register Indications request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsa_register_indications_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageImsaRegisterIndicationsInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        register_indications(
+            input: MessageImsaRegisterIndicationsInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Register Indications request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsa_register_indications_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageImsaRegisterIndicationsInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        register_indications(
+            input: MessageImsaRegisterIndicationsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageImsaRegisterIndicationsOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_imsa_register_indications()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_imsa_register_indications()`.
+         * @returns a {@link Qmi.MessageImsaRegisterIndicationsOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_imsa_register_indications_output_unref()`.
+         */
+        register_indications_finish(res: Gio.AsyncResult): MessageImsaRegisterIndicationsOutput;
+    }
+
+    namespace ClientImsp {
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Client.ConstructorProps {}
+    }
+
+    /**
+     * The {@link Qmi.ClientImsp} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Class
+     * @since 1.34
+     */
+    class ClientImsp extends Client {
+        static $gtype: GObject.GType<ClientImsp>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: ClientImsp.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<ClientImsp.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof ClientImsp.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientImsp.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof ClientImsp.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientImsp.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof ClientImsp.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<ClientImsp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Asynchronously sends a Get Enabler State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsp_get_enabler_state_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        get_enabler_state(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageImspGetEnablerStateOutput>;
+        /**
+         * Asynchronously sends a Get Enabler State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsp_get_enabler_state_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        get_enabler_state(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Get Enabler State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_imsp_get_enabler_state_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        get_enabler_state(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageImspGetEnablerStateOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_imsp_get_enabler_state()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_imsp_get_enabler_state()`.
+         * @returns a {@link Qmi.MessageImspGetEnablerStateOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_imsp_get_enabler_state_output_unref()`.
+         */
+        get_enabler_state_finish(res: Gio.AsyncResult): MessageImspGetEnablerStateOutput;
     }
 
     namespace ClientLoc {
@@ -26316,6 +28097,61 @@ export namespace Qmi {
          * @returns a {@link Qmi.MessageNasGetLteCphyCaInfoOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_nas_get_lte_cphy_ca_info_output_unref()`.
          */
         get_lte_cphy_ca_info_finish(res: Gio.AsyncResult): MessageNasGetLteCphyCaInfoOutput;
+        /**
+         * Asynchronously sends a Get Network Time request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_nas_get_network_time_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        get_network_time(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageNasGetNetworkTimeOutput>;
+        /**
+         * Asynchronously sends a Get Network Time request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_nas_get_network_time_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        get_network_time(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Get Network Time request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_nas_get_network_time_finish()` to get the result of the operation.
+         * @param unused `null`. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        get_network_time(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageNasGetNetworkTimeOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_nas_get_network_time()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_nas_get_network_time()`.
+         * @returns a {@link Qmi.MessageNasGetNetworkTimeOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_nas_get_network_time_output_unref()`.
+         */
+        get_network_time_finish(res: Gio.AsyncResult): MessageNasGetNetworkTimeOutput;
         /**
          * Asynchronously sends a Get Operator Name request to the device.
          *
@@ -30175,6 +32011,140 @@ export namespace Qmi {
         rf_set_state_finish(res: Gio.AsyncResult): MessageSarRfSetStateOutput;
     }
 
+    namespace ClientSsc {
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            /**
+             * The ::report-large signal gets emitted when a '<link linkend="libqmi-glib-SSC-Report-Large-indication.top_of_page">Report Large</link>' indication is received.
+             * @signal
+             * @since 1.34
+             * @run-last
+             */
+            'report-large': (arg0: IndicationSscReportLargeOutput) => void;
+            /**
+             * The ::report-small signal gets emitted when a '<link linkend="libqmi-glib-SSC-Report-Small-indication.top_of_page">Report Small</link>' indication is received.
+             * @signal
+             * @since 1.34
+             * @run-last
+             */
+            'report-small': (arg0: IndicationSscReportSmallOutput) => void;
+            'notify::client-cid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-device': (pspec: GObject.ParamSpec) => void;
+            'notify::client-service': (pspec: GObject.ParamSpec) => void;
+            'notify::client-valid': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-major': (pspec: GObject.ParamSpec) => void;
+            'notify::client-version-minor': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Client.ConstructorProps {}
+    }
+
+    /**
+     * The {@link Qmi.ClientSsc} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Class
+     * @since 1.34
+     */
+    class ClientSsc extends Client {
+        static $gtype: GObject.GType<ClientSsc>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: ClientSsc.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<ClientSsc.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof ClientSsc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientSsc.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof ClientSsc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClientSsc.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof ClientSsc.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<ClientSsc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Asynchronously sends a Control request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_ssc_control_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageSscControlInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        control(
+            input: MessageSscControlInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageSscControlOutput>;
+        /**
+         * Asynchronously sends a Control request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_ssc_control_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageSscControlInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        control(
+            input: MessageSscControlInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Control request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_ssc_control_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageSscControlInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        control(
+            input: MessageSscControlInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageSscControlOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_ssc_control()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_ssc_control()`.
+         * @returns a {@link Qmi.MessageSscControlOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_ssc_control_output_unref()`.
+         */
+        control_finish(res: Gio.AsyncResult): MessageSscControlOutput;
+    }
+
     namespace ClientUim {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
@@ -30699,6 +32669,116 @@ export namespace Qmi {
          * @returns a {@link Qmi.MessageUimGetSupportedMessagesOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_uim_get_supported_messages_output_unref()`.
          */
         get_supported_messages_finish(res: Gio.AsyncResult): MessageUimGetSupportedMessagesOutput;
+        /**
+         * Asynchronously sends a Logical Channel request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_uim_logical_channel_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageUimLogicalChannelInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        logical_channel(
+            input: MessageUimLogicalChannelInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageUimLogicalChannelOutput>;
+        /**
+         * Asynchronously sends a Logical Channel request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_uim_logical_channel_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageUimLogicalChannelInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        logical_channel(
+            input: MessageUimLogicalChannelInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Logical Channel request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_uim_logical_channel_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageUimLogicalChannelInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        logical_channel(
+            input: MessageUimLogicalChannelInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageUimLogicalChannelOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_uim_logical_channel()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_uim_logical_channel()`.
+         * @returns a {@link Qmi.MessageUimLogicalChannelOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_uim_logical_channel_output_unref()`.
+         */
+        logical_channel_finish(res: Gio.AsyncResult): MessageUimLogicalChannelOutput;
+        /**
+         * Asynchronously sends a Open Logical Channel request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_uim_open_logical_channel_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageUimOpenLogicalChannelInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        open_logical_channel(
+            input: MessageUimOpenLogicalChannelInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageUimOpenLogicalChannelOutput>;
+        /**
+         * Asynchronously sends a Open Logical Channel request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_uim_open_logical_channel_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageUimOpenLogicalChannelInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        open_logical_channel(
+            input: MessageUimOpenLogicalChannelInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Open Logical Channel request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_uim_open_logical_channel_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageUimOpenLogicalChannelInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        open_logical_channel(
+            input: MessageUimOpenLogicalChannelInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageUimOpenLogicalChannelOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_uim_open_logical_channel()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_uim_open_logical_channel()`.
+         * @returns a {@link Qmi.MessageUimOpenLogicalChannelOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_uim_open_logical_channel_output_unref()`.
+         */
+        open_logical_channel_finish(res: Gio.AsyncResult): MessageUimOpenLogicalChannelOutput;
         /**
          * Asynchronously sends a Power Off SIM request to the device.
          *
@@ -31249,6 +33329,61 @@ export namespace Qmi {
          * @returns a {@link Qmi.MessageUimResetOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_uim_reset_output_unref()`.
          */
         reset_finish(res: Gio.AsyncResult): MessageUimResetOutput;
+        /**
+         * Asynchronously sends a Send APDU request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_uim_send_apdu_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageUimSendApduInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        send_apdu(
+            input: MessageUimSendApduInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageUimSendApduOutput>;
+        /**
+         * Asynchronously sends a Send APDU request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_uim_send_apdu_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageUimSendApduInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        send_apdu(
+            input: MessageUimSendApduInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Send APDU request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_uim_send_apdu_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageUimSendApduInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        send_apdu(
+            input: MessageUimSendApduInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageUimSendApduOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_uim_send_apdu()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_uim_send_apdu()`.
+         * @returns a {@link Qmi.MessageUimSendApduOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_uim_send_apdu_output_unref()`.
+         */
+        send_apdu_finish(res: Gio.AsyncResult): MessageUimSendApduOutput;
         /**
          * Asynchronously sends a Set PIN Protection request to the device.
          *
@@ -32509,6 +34644,13 @@ export namespace Qmi {
     namespace ClientWda {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
+            /**
+             * The ::loopback-configuration signal gets emitted when a '<link linkend="libqmi-glib-WDA-Loopback-Configuration-indication.top_of_page">Loopback Configuration</link>' indication is received.
+             * @signal
+             * @since 1.36
+             * @run-last
+             */
+            'loopback-configuration': (arg0: IndicationWdaLoopbackConfigurationOutput) => void;
             'notify::client-cid': (pspec: GObject.ParamSpec) => void;
             'notify::client-device': (pspec: GObject.ParamSpec) => void;
             'notify::client-service': (pspec: GObject.ParamSpec) => void;
@@ -32679,6 +34821,61 @@ export namespace Qmi {
          * @returns a {@link Qmi.MessageWdaGetSupportedMessagesOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_wda_get_supported_messages_output_unref()`.
          */
         get_supported_messages_finish(res: Gio.AsyncResult): MessageWdaGetSupportedMessagesOutput;
+        /**
+         * Asynchronously sends a Loopback Configuration request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_wda_loopback_configuration_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageWdaLoopbackConfigurationInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         */
+        loopback_configuration(
+            input: MessageWdaLoopbackConfigurationInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<MessageWdaLoopbackConfigurationOutput>;
+        /**
+         * Asynchronously sends a Loopback Configuration request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_wda_loopback_configuration_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageWdaLoopbackConfigurationInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        loopback_configuration(
+            input: MessageWdaLoopbackConfigurationInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Loopback Configuration request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call `qmi_client_wda_loopback_configuration_finish()` to get the result of the operation.
+         * @param input a {@link Qmi.MessageWdaLoopbackConfigurationInput}.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        loopback_configuration(
+            input: MessageWdaLoopbackConfigurationInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<MessageWdaLoopbackConfigurationOutput> | void;
+        /**
+         * Finishes an async operation started with `qmi_client_wda_loopback_configuration()`.
+         * @param res the {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `qmi_client_wda_loopback_configuration()`.
+         * @returns a {@link Qmi.MessageWdaLoopbackConfigurationOutput}, or `null` if `error` is set. The returned value should be freed with `qmi_message_wda_loopback_configuration_output_unref()`.
+         */
+        loopback_configuration_finish(res: Gio.AsyncResult): MessageWdaLoopbackConfigurationOutput;
         /**
          * Asynchronously sends a Set Data Format request to the device.
          *
@@ -37095,7 +39292,7 @@ export namespace Qmi {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -37150,7 +39347,7 @@ export namespace Qmi {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -37225,7 +39422,7 @@ export namespace Qmi {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -37568,6 +39765,18 @@ export namespace Qmi {
     /**
      * @gir-type Alias
      */
+    type ClientImsClass = typeof ClientIms;
+    /**
+     * @gir-type Alias
+     */
+    type ClientImsaClass = typeof ClientImsa;
+    /**
+     * @gir-type Alias
+     */
+    type ClientImspClass = typeof ClientImsp;
+    /**
+     * @gir-type Alias
+     */
     type ClientLocClass = typeof ClientLoc;
     /**
      * @gir-type Alias
@@ -37604,6 +39813,10 @@ export namespace Qmi {
      * @gir-type Alias
      */
     type ClientSarClass = typeof ClientSar;
+    /**
+     * @gir-type Alias
+     */
+    type ClientSscClass = typeof ClientSsc;
     /**
      * @gir-type Alias
      */
@@ -37785,6 +39998,122 @@ export namespace Qmi {
         technology: DsdDataSystemNetworkType;
         rat: DsdRadioAccessTechnology;
         so_mask: DsdSoMask;
+    }
+
+    /**
+     * The {@link Qmi.IndicationImsaImsRegistrationStatusChangedOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    abstract class IndicationImsaImsRegistrationStatusChangedOutput {
+        static $gtype: GObject.GType<IndicationImsaImsRegistrationStatusChangedOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'IMS Registration Error Code' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_registration_error_code(): [boolean, number];
+        /**
+         * Get the 'IMS Registration Error Message' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_registration_error_message(): [boolean, string];
+        /**
+         * Get the 'IMS Registration Status' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_registration_status(): [boolean, ImsaImsRegistrationStatus | null];
+        /**
+         * Get the 'IMS Registration Technology' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): IndicationImsaImsRegistrationStatusChangedOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.IndicationImsaImsServicesStatusChangedOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    abstract class IndicationImsaImsServicesStatusChangedOutput {
+        static $gtype: GObject.GType<IndicationImsaImsServicesStatusChangedOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'IMS SMS Service Registration Technology' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_sms_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
+        /**
+         * Get the 'IMS SMS Service Status' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_sms_service_status(): [boolean, ImsaServiceStatus | null];
+        /**
+         * Get the 'IMS UE to TAS Service Registration Technology' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_ue_to_tas_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
+        /**
+         * Get the 'IMS UE to TAS Service Status' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_ue_to_tas_service_status(): [boolean, ImsaServiceStatus | null];
+        /**
+         * Get the 'IMS Video Share Service Registration Technology' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_video_share_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
+        /**
+         * Get the 'IMS Video Share Service Status' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_video_share_service_status(): [boolean, ImsaServiceStatus | null];
+        /**
+         * Get the 'IMS Video Telephony Service Registration Technology' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_video_telephony_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
+        /**
+         * Get the 'IMS Video Telephony Service Status' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_video_telephony_service_status(): [boolean, ImsaServiceStatus | null];
+        /**
+         * Get the 'IMS Voice Service Registration Technology' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_voice_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
+        /**
+         * Get the 'IMS Voice Service Status' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_voice_service_status(): [boolean, ImsaServiceStatus | null];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): IndicationImsaImsServicesStatusChangedOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
     }
 
     /**
@@ -39882,6 +42211,72 @@ export namespace Qmi {
     }
 
     /**
+     * The {@link Qmi.IndicationSscReportLargeOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.34
+     */
+    abstract class IndicationSscReportLargeOutput {
+        static $gtype: GObject.GType<IndicationSscReportLargeOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'Client ID' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_client_id(): [boolean, number];
+        /**
+         * Get the 'Data' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_data(): [boolean, Uint8Array | null];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): IndicationSscReportLargeOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.IndicationSscReportSmallOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.34
+     */
+    abstract class IndicationSscReportSmallOutput {
+        static $gtype: GObject.GType<IndicationSscReportSmallOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'Client ID' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_client_id(): [boolean, number];
+        /**
+         * Get the 'Data' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_data(): [boolean, Uint8Array | null];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): IndicationSscReportSmallOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
      * The {@link Qmi.IndicationUimCardStatusOutput} structure contains private data and should only be accessed
      * using the provided API.
      * @gir-type Struct
@@ -40266,6 +42661,39 @@ export namespace Qmi {
     }
 
     /**
+     * The {@link Qmi.IndicationWdaLoopbackConfigurationOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    abstract class IndicationWdaLoopbackConfigurationOutput {
+        static $gtype: GObject.GType<IndicationWdaLoopbackConfigurationOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'Loopback state' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_loopback_state(): [boolean, WdaLoopBackState | null];
+        /**
+         * Get the 'Replication factor' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_replication_factor(): [boolean, number];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): IndicationWdaLoopbackConfigurationOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
      * The {@link Qmi.IndicationWdsEventReportOutput} structure contains private data and should only be accessed
      * using the provided API.
      * @gir-type Struct
@@ -40476,6 +42904,11 @@ export namespace Qmi {
         // Methods
 
         /**
+         * Get the 'Bearer ID' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_bearer_id(): [boolean, number];
+        /**
          * Get the 'Call End Reason' field from `self`.
          * @returns `true` if the field is found, `false` otherwise.
          */
@@ -40500,6 +42933,11 @@ export namespace Qmi {
          * @returns `true` if the field is found, `false` otherwise.
          */
         get_verbose_call_end_reason(): [boolean, WdsVerboseCallEndReasonType | null, number];
+        /**
+         * Get the 'XLAT Capability' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_xlat_capability(): [boolean, boolean];
         /**
          * Atomically increments the reference count of `self` by one.
          * @returns the new reference to `self`.
@@ -44859,6 +47297,82 @@ export namespace Qmi {
     }
 
     /**
+     * The {@link Qmi.MessageGasDmsGetEthernetPduMacAddressOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    abstract class MessageGasDmsGetEthernetPduMacAddressOutput {
+        static $gtype: GObject.GType<MessageGasDmsGetEthernetPduMacAddressOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'MAC Address 0' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_mac_address_0(): [boolean, Uint8Array | null];
+        /**
+         * Get the 'MAC Address 1' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_mac_address_1(): [boolean, Uint8Array | null];
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageGasDmsGetEthernetPduMacAddressOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageGasDmsGetFirmwareAutoSimOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    abstract class MessageGasDmsGetFirmwareAutoSimOutput {
+        static $gtype: GObject.GType<MessageGasDmsGetFirmwareAutoSimOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'Auto Sim Mode' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_auto_sim_mode(): [boolean, GasFirmwareAutoSimMode | null];
+        /**
+         * Get the 'Config Id' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_config_id(): [boolean, number];
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageGasDmsGetFirmwareAutoSimOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
      * The {@link Qmi.MessageGasDmsGetFirmwareListInput} structure contains private data and should only be accessed
      * using the provided API.
      * @gir-type Struct
@@ -45128,6 +47642,85 @@ export namespace Qmi {
     }
 
     /**
+     * The {@link Qmi.MessageGasDmsSetFirmwareAutoSimInput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    class MessageGasDmsSetFirmwareAutoSimInput {
+        static $gtype: GObject.GType<MessageGasDmsSetFirmwareAutoSimInput>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+
+        static ['new'](): MessageGasDmsSetFirmwareAutoSimInput;
+
+        // Methods
+
+        /**
+         * Get the 'Auto Sim Mode' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_auto_sim_mode(): [boolean, GasFirmwareAutoSimMode | null];
+        /**
+         * Get the 'Config Id' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_config_id(): [boolean, number];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageGasDmsSetFirmwareAutoSimInput;
+        /**
+         * Set the 'Auto Sim Mode' field in the message.
+         * @param value_auto_sim_mode a {@link Qmi.GasFirmwareAutoSimMode}.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_auto_sim_mode(value_auto_sim_mode: GasFirmwareAutoSimMode | null): boolean;
+        /**
+         * Set the 'Config Id' field in the message.
+         * @param value_config_id a `guint8`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_config_id(value_config_id: number): boolean;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageGasDmsSetFirmwareAutoSimOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    abstract class MessageGasDmsSetFirmwareAutoSimOutput {
+        static $gtype: GObject.GType<MessageGasDmsSetFirmwareAutoSimOutput>;
+
+        // Methods
+
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageGasDmsSetFirmwareAutoSimOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
      * The {@link Qmi.MessageGasDmsSetUsbCompositionInput} structure contains private data and should only be accessed
      * using the provided API.
      * @gir-type Struct
@@ -45349,6 +47942,443 @@ export namespace Qmi {
          * @returns the new reference to `self`.
          */
         ref(): MessageGmsTestSetValueOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageImsBindInput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    class MessageImsBindInput {
+        static $gtype: GObject.GType<MessageImsBindInput>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+
+        static ['new'](): MessageImsBindInput;
+
+        // Methods
+
+        /**
+         * Get the 'Binding' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_binding(): [boolean, number];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageImsBindInput;
+        /**
+         * Set the 'Binding' field in the message.
+         * @param value_binding a `guint32`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_binding(value_binding: number): boolean;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageImsBindOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    abstract class MessageImsBindOutput {
+        static $gtype: GObject.GType<MessageImsBindOutput>;
+
+        // Methods
+
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageImsBindOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageImsGetImsServicesEnabledSettingOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.34
+     */
+    abstract class MessageImsGetImsServicesEnabledSettingOutput {
+        static $gtype: GObject.GType<MessageImsGetImsServicesEnabledSettingOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'IMS Registration Service Enabled' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_registration_service_enabled(): [boolean, boolean];
+        /**
+         * Get the 'IMS SMS Service Enabled' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_sms_service_enabled(): [boolean, boolean];
+        /**
+         * Get the 'IMS USSD Service Enabled' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_ussd_service_enabled(): [boolean, boolean];
+        /**
+         * Get the 'IMS UT Service Enabled' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_ut_service_enabled(): [boolean, boolean];
+        /**
+         * Get the 'IMS Video Telephony Service Enabled' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_video_telephony_service_enabled(): [boolean, boolean];
+        /**
+         * Get the 'IMS Voice Service Enabled' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_voice_service_enabled(): [boolean, boolean];
+        /**
+         * Get the 'IMS Voice WiFi Service Enabled' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_voice_wifi_service_enabled(): [boolean, boolean];
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageImsGetImsServicesEnabledSettingOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageImsaBindInput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    class MessageImsaBindInput {
+        static $gtype: GObject.GType<MessageImsaBindInput>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+
+        static ['new'](): MessageImsaBindInput;
+
+        // Methods
+
+        /**
+         * Get the 'Binding' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_binding(): [boolean, number];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageImsaBindInput;
+        /**
+         * Set the 'Binding' field in the message.
+         * @param value_binding a `guint32`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_binding(value_binding: number): boolean;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageImsaBindOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    abstract class MessageImsaBindOutput {
+        static $gtype: GObject.GType<MessageImsaBindOutput>;
+
+        // Methods
+
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageImsaBindOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageImsaGetImsRegistrationStatusOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.34
+     */
+    abstract class MessageImsaGetImsRegistrationStatusOutput {
+        static $gtype: GObject.GType<MessageImsaGetImsRegistrationStatusOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'IMS Registration Error Code' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_registration_error_code(): [boolean, number];
+        /**
+         * Get the 'IMS Registration Error Message' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_registration_error_message(): [boolean, string];
+        /**
+         * Get the 'IMS Registration Status' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_registration_status(): [boolean, ImsaImsRegistrationStatus | null];
+        /**
+         * Get the 'IMS Registration Technology' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageImsaGetImsRegistrationStatusOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageImsaGetImsServicesStatusOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.34
+     */
+    abstract class MessageImsaGetImsServicesStatusOutput {
+        static $gtype: GObject.GType<MessageImsaGetImsServicesStatusOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'IMS SMS Service Registration Technology' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_sms_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
+        /**
+         * Get the 'IMS SMS Service Status' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_sms_service_status(): [boolean, ImsaServiceStatus | null];
+        /**
+         * Get the 'IMS UE to TAS Service Registration Technology' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_ue_to_tas_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
+        /**
+         * Get the 'IMS UE to TAS Service Status' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_ue_to_tas_service_status(): [boolean, ImsaServiceStatus | null];
+        /**
+         * Get the 'IMS Video Share Service Registration Technology' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_video_share_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
+        /**
+         * Get the 'IMS Video Share Service Status' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_video_share_service_status(): [boolean, ImsaServiceStatus | null];
+        /**
+         * Get the 'IMS Video Telephony Service Registration Technology' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_video_telephony_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
+        /**
+         * Get the 'IMS Video Telephony Service Status' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_video_telephony_service_status(): [boolean, ImsaServiceStatus | null];
+        /**
+         * Get the 'IMS Voice Service Registration Technology' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_voice_service_registration_technology(): [boolean, ImsaRegistrationTechnology | null];
+        /**
+         * Get the 'IMS Voice Service Status' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_voice_service_status(): [boolean, ImsaServiceStatus | null];
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageImsaGetImsServicesStatusOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageImsaRegisterIndicationsInput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    class MessageImsaRegisterIndicationsInput {
+        static $gtype: GObject.GType<MessageImsaRegisterIndicationsInput>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+
+        static ['new'](): MessageImsaRegisterIndicationsInput;
+
+        // Methods
+
+        /**
+         * Get the 'IMS Registration Status Changed' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_registration_status_changed(): [boolean, boolean];
+        /**
+         * Get the 'IMS Services Status Changed' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ims_services_status_changed(): [boolean, boolean];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageImsaRegisterIndicationsInput;
+        /**
+         * Set the 'IMS Registration Status Changed' field in the message.
+         * @param value_ims_registration_status_changed a `gboolean`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_ims_registration_status_changed(value_ims_registration_status_changed: boolean): boolean;
+        /**
+         * Set the 'IMS Services Status Changed' field in the message.
+         * @param value_ims_services_status_changed a `gboolean`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_ims_services_status_changed(value_ims_services_status_changed: boolean): boolean;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageImsaRegisterIndicationsOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    abstract class MessageImsaRegisterIndicationsOutput {
+        static $gtype: GObject.GType<MessageImsaRegisterIndicationsOutput>;
+
+        // Methods
+
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageImsaRegisterIndicationsOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageImspGetEnablerStateOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.34
+     */
+    abstract class MessageImspGetEnablerStateOutput {
+        static $gtype: GObject.GType<MessageImspGetEnablerStateOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'Enabler State' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_enabler_state(): [boolean, ImspEnablerState | null];
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageImspGetEnablerStateOutput;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -47879,6 +50909,68 @@ export namespace Qmi {
     }
 
     /**
+     * The {@link Qmi.MessageNasGetNetworkTimeOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    abstract class MessageNasGetNetworkTimeOutput {
+        static $gtype: GObject.GType<MessageNasGetNetworkTimeOutput>;
+
+        // Methods
+
+        /**
+         * Get the '3GPP2 Time' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_3gpp2_time(): [
+            boolean,
+            number,
+            number,
+            number,
+            number,
+            number,
+            number,
+            NasDayOfWeek | null,
+            number,
+            NasDaylightSavingsAdjustment | null,
+            NasRadioInterface | null,
+        ];
+        /**
+         * Get the '3GPP Time' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_3gpp_time(): [
+            boolean,
+            number,
+            number,
+            number,
+            number,
+            number,
+            number,
+            NasDayOfWeek | null,
+            number,
+            NasDaylightSavingsAdjustment | null,
+            NasRadioInterface | null,
+        ];
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageNasGetNetworkTimeOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
      * The {@link Qmi.MessageNasGetOperatorNameOutput} structure contains private data and should only be accessed
      * using the provided API.
      * @gir-type Struct
@@ -48234,6 +51326,28 @@ export namespace Qmi {
          */
         get_result(): boolean;
         /**
+         * Get the 'Static MNC PCS Digit Include Status' field from `self`.
+         *
+         * Version of `qmi_message_nas_get_preferred_networks_output_get_static_mnc_pcs_digit_include_status()` using arrays of pointers to
+         * structs instead of arrays of structs, for easier binding in other languages.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_static_mnc_pcs_digit_include_status(): [
+            boolean,
+            MessageNasGetPreferredNetworksOutputStaticMncPcsDigitIncludeStatusElement[] | null,
+        ];
+        /**
+         * Get the 'Static Preferred Networks' field from `self`.
+         *
+         * Version of `qmi_message_nas_get_preferred_networks_output_get_static_preferred_networks()` using arrays of pointers to
+         * structs instead of arrays of structs, for easier binding in other languages.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_static_preferred_networks(): [
+            boolean,
+            MessageNasGetPreferredNetworksOutputStaticPreferredNetworksElement[] | null,
+        ];
+        /**
          * Atomically increments the reference count of `self` by one.
          * @returns the new reference to `self`.
          */
@@ -48277,6 +51391,46 @@ export namespace Qmi {
      */
     class MessageNasGetPreferredNetworksOutputPreferredNetworksElement {
         static $gtype: GObject.GType<MessageNasGetPreferredNetworksOutputPreferredNetworksElement>;
+
+        // Fields
+
+        mcc: number;
+        mnc: number;
+        radio_access_technology: NasPlmnAccessTechnologyIdentifier;
+    }
+
+    /**
+     * A QmiMessageNasGetPreferredNetworksOutputStaticMncPcsDigitIncludeStatusElement struct.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    class MessageNasGetPreferredNetworksOutputStaticMncPcsDigitIncludeStatusElement {
+        static $gtype: GObject.GType<MessageNasGetPreferredNetworksOutputStaticMncPcsDigitIncludeStatusElement>;
+
+        // Fields
+
+        mcc: number;
+        mnc: number;
+        includes_pcs_digit: boolean;
+
+        // Constructors
+
+        constructor(
+            properties?: Partial<{
+                mcc: number;
+                mnc: number;
+                includes_pcs_digit: boolean;
+            }>,
+        );
+    }
+
+    /**
+     * A QmiMessageNasGetPreferredNetworksOutputStaticPreferredNetworksElement struct.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    class MessageNasGetPreferredNetworksOutputStaticPreferredNetworksElement {
+        static $gtype: GObject.GType<MessageNasGetPreferredNetworksOutputStaticPreferredNetworksElement>;
 
         // Fields
 
@@ -53942,6 +57096,95 @@ export namespace Qmi {
     }
 
     /**
+     * The {@link Qmi.MessageSscControlInput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.34
+     */
+    class MessageSscControlInput {
+        static $gtype: GObject.GType<MessageSscControlInput>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+
+        static ['new'](): MessageSscControlInput;
+
+        // Methods
+
+        /**
+         * Get the 'Data' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_data(): [boolean, Uint8Array | null];
+        /**
+         * Get the 'Report Type' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_report_type(): [boolean, SscReportType | null];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageSscControlInput;
+        /**
+         * Set the 'Data' field in the message.
+         * @param value_data a {@link GLib.Array} of `guint8` elements. A new reference to `value_data` will be taken, so the caller must make sure the array was created with the correct {@link GLib.DestroyNotify} as clear function for each element in the array.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_data(value_data: Uint8Array | string): boolean;
+        /**
+         * Set the 'Report Type' field in the message.
+         * @param value_report_type a {@link Qmi.SscReportType}.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_report_type(value_report_type: SscReportType | null): boolean;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageSscControlOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.34
+     */
+    abstract class MessageSscControlOutput {
+        static $gtype: GObject.GType<MessageSscControlOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'Client ID' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_client_id(): [boolean, number];
+        /**
+         * Get the 'Response' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_response(): [boolean, number];
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageSscControlOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
      * The {@link Qmi.MessageUimChangePinInput} structure contains private data and should only be accessed
      * using the provided API.
      * @gir-type Struct
@@ -54678,6 +57921,238 @@ export namespace Qmi {
          * @returns the new reference to `self`.
          */
         ref(): MessageUimGetSupportedMessagesOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageUimLogicalChannelInput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    class MessageUimLogicalChannelInput {
+        static $gtype: GObject.GType<MessageUimLogicalChannelInput>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+
+        static ['new'](): MessageUimLogicalChannelInput;
+
+        // Methods
+
+        /**
+         * Get the 'AID' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_aid(): [boolean, Uint8Array | null];
+        /**
+         * Get the 'Channel ID' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_channel_id(): [boolean, number];
+        /**
+         * Get the 'File Control Information' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_file_control_information(): [boolean, UimFileControlInformation | null];
+        /**
+         * Get the 'Slot' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_slot(): [boolean, number];
+        /**
+         * Get the 'Terminate Application' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_terminate_application(): [boolean, number];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageUimLogicalChannelInput;
+        /**
+         * Set the 'AID' field in the message.
+         * @param value_aid a {@link GLib.Array} of `guint8` elements. A new reference to `value_aid` will be taken, so the caller must make sure the array was created with the correct {@link GLib.DestroyNotify} as clear function for each element in the array.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_aid(value_aid: Uint8Array | string): boolean;
+        /**
+         * Set the 'Channel ID' field in the message.
+         * @param value_channel_id a `guint8`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_channel_id(value_channel_id: number): boolean;
+        /**
+         * Set the 'File Control Information' field in the message.
+         * @param value_file_control_information a {@link Qmi.UimFileControlInformation}.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_file_control_information(value_file_control_information: UimFileControlInformation | null): boolean;
+        /**
+         * Set the 'Slot' field in the message.
+         * @param value_slot a `guint8`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_slot(value_slot: number): boolean;
+        /**
+         * Set the 'Terminate Application' field in the message.
+         * @param value_terminate_application a `guint8`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_terminate_application(value_terminate_application: number): boolean;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageUimLogicalChannelOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    abstract class MessageUimLogicalChannelOutput {
+        static $gtype: GObject.GType<MessageUimLogicalChannelOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'Card result' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_card_result(): [boolean, number, number];
+        /**
+         * Get the 'Channel ID' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_channel_id(): [boolean, number];
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Get the 'Select Response' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_select_response(): [boolean, Uint8Array | null];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageUimLogicalChannelOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageUimOpenLogicalChannelInput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    class MessageUimOpenLogicalChannelInput {
+        static $gtype: GObject.GType<MessageUimOpenLogicalChannelInput>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+
+        static ['new'](): MessageUimOpenLogicalChannelInput;
+
+        // Methods
+
+        /**
+         * Get the 'AID' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_aid(): [boolean, Uint8Array | null];
+        /**
+         * Get the 'File Control Information' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_file_control_information(): [boolean, UimFileControlInformation | null];
+        /**
+         * Get the 'Slot' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_slot(): [boolean, number];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageUimOpenLogicalChannelInput;
+        /**
+         * Set the 'AID' field in the message.
+         * @param value_aid a {@link GLib.Array} of `guint8` elements. A new reference to `value_aid` will be taken, so the caller must make sure the array was created with the correct {@link GLib.DestroyNotify} as clear function for each element in the array.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_aid(value_aid: Uint8Array | string): boolean;
+        /**
+         * Set the 'File Control Information' field in the message.
+         * @param value_file_control_information a {@link Qmi.UimFileControlInformation}.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_file_control_information(value_file_control_information: UimFileControlInformation | null): boolean;
+        /**
+         * Set the 'Slot' field in the message.
+         * @param value_slot a `guint8`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_slot(value_slot: number): boolean;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageUimOpenLogicalChannelOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    abstract class MessageUimOpenLogicalChannelOutput {
+        static $gtype: GObject.GType<MessageUimOpenLogicalChannelOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'Card result' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_card_result(): [boolean, number, number];
+        /**
+         * Get the 'Channel ID' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_channel_id(): [boolean, number];
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Get the 'Select Response' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_select_response(): [boolean, Uint8Array | null];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageUimOpenLogicalChannelOutput;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -55551,6 +59026,112 @@ export namespace Qmi {
          * @returns the new reference to `self`.
          */
         ref(): MessageUimResetOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageUimSendApduInput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    class MessageUimSendApduInput {
+        static $gtype: GObject.GType<MessageUimSendApduInput>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+
+        static ['new'](): MessageUimSendApduInput;
+
+        // Methods
+
+        /**
+         * Get the 'APDU' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_apdu(): [boolean, Uint8Array | null];
+        /**
+         * Get the 'Channel ID' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_channel_id(): [boolean, number];
+        /**
+         * Get the 'Procedure bytes' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_procedure_bytes(): [boolean, number];
+        /**
+         * Get the 'Slot' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_slot(): [boolean, number];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageUimSendApduInput;
+        /**
+         * Set the 'APDU' field in the message.
+         * @param value_apdu a {@link GLib.Array} of `guint8` elements. A new reference to `value_apdu` will be taken, so the caller must make sure the array was created with the correct {@link GLib.DestroyNotify} as clear function for each element in the array.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_apdu(value_apdu: Uint8Array | string): boolean;
+        /**
+         * Set the 'Channel ID' field in the message.
+         * @param value_channel_id a `guint8`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_channel_id(value_channel_id: number): boolean;
+        /**
+         * Set the 'Procedure bytes' field in the message.
+         * @param value_procedure_bytes a `guint8`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_procedure_bytes(value_procedure_bytes: number): boolean;
+        /**
+         * Set the 'Slot' field in the message.
+         * @param value_slot a `guint8`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_slot(value_slot: number): boolean;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageUimSendApduOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    abstract class MessageUimSendApduOutput {
+        static $gtype: GObject.GType<MessageUimSendApduOutput>;
+
+        // Methods
+
+        /**
+         * Get the 'APDU Response' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_apdu_response(): [boolean, Uint8Array | null];
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageUimSendApduOutput;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -57599,6 +61180,85 @@ export namespace Qmi {
     }
 
     /**
+     * The {@link Qmi.MessageWdaLoopbackConfigurationInput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    class MessageWdaLoopbackConfigurationInput {
+        static $gtype: GObject.GType<MessageWdaLoopbackConfigurationInput>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+
+        static ['new'](): MessageWdaLoopbackConfigurationInput;
+
+        // Methods
+
+        /**
+         * Get the 'Loopback state' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_loopback_state(): [boolean, WdaLoopBackState | null];
+        /**
+         * Get the 'Replication factor' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_replication_factor(): [boolean, number];
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageWdaLoopbackConfigurationInput;
+        /**
+         * Set the 'Loopback state' field in the message.
+         * @param value_loopback_state a {@link Qmi.WdaLoopBackState}.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_loopback_state(value_loopback_state: WdaLoopBackState | null): boolean;
+        /**
+         * Set the 'Replication factor' field in the message.
+         * @param value_replication_factor a `guint32`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_replication_factor(value_replication_factor: number): boolean;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * The {@link Qmi.MessageWdaLoopbackConfigurationOutput} structure contains private data and should only be accessed
+     * using the provided API.
+     * @gir-type Struct
+     * @since 1.36
+     */
+    abstract class MessageWdaLoopbackConfigurationOutput {
+        static $gtype: GObject.GType<MessageWdaLoopbackConfigurationOutput>;
+
+        // Methods
+
+        /**
+         * Get the result of the QMI operation.
+         * @returns `true` if the QMI operation succeeded, `false` if `error` is set.
+         */
+        get_result(): boolean;
+        /**
+         * Atomically increments the reference count of `self` by one.
+         * @returns the new reference to `self`.
+         */
+        ref(): MessageWdaLoopbackConfigurationOutput;
+        /**
+         * Atomically decrements the reference count of `self` by one.
+         * If the reference count drops to 0, `self` is completely disposed.
+         */
+        unref(): void;
+    }
+
+    /**
      * The {@link Qmi.MessageWdaSetDataFormatInput} structure contains private data and should only be accessed
      * using the provided API.
      * @gir-type Struct
@@ -58093,6 +61753,11 @@ export namespace Qmi {
         // Methods
 
         /**
+         * Get the 'Address Allocation Preference' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_address_allocation_preference(): [boolean, WdsAddressAllocationPreference | null];
+        /**
          * Get the 'APN Disabled Flag' field from `self`.
          * @returns `true` if the field is found, `false` otherwise.
          */
@@ -58167,6 +61832,11 @@ export namespace Qmi {
          * @returns `true` if the field is found, `false` otherwise.
          */
         get_pcscf_address_using_pco(): [boolean, boolean];
+        /**
+         * Get the 'PDP Access Control' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_pdp_access_control(): [boolean, WdsPdpAccessControl | null];
         /**
          * Get the 'PDP Context Number' field from `self`.
          * @returns `true` if the field is found, `false` otherwise.
@@ -58311,6 +61981,14 @@ export namespace Qmi {
          */
         ref(): MessageWdsCreateProfileInput;
         /**
+         * Set the 'Address Allocation Preference' field in the message.
+         * @param value_address_allocation_preference a {@link Qmi.WdsAddressAllocationPreference}.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_address_allocation_preference(
+            value_address_allocation_preference: WdsAddressAllocationPreference | null,
+        ): boolean;
+        /**
          * Set the 'APN Disabled Flag' field in the message.
          * @param value_apn_disabled_flag a `gboolean`.
          * @returns `true` if `value` was successfully set, `false` otherwise.
@@ -58430,6 +62108,12 @@ export namespace Qmi {
          * @returns `true` if `value` was successfully set, `false` otherwise.
          */
         set_pcscf_address_using_pco(value_pcscf_address_using_pco: boolean): boolean;
+        /**
+         * Set the 'PDP Access Control' field in the message.
+         * @param value_pdp_access_control a {@link Qmi.WdsPdpAccessControl}.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_pdp_access_control(value_pdp_access_control: WdsPdpAccessControl | null): boolean;
         /**
          * Set the 'PDP Context Number' field in the message.
          * @param value_pdp_context_number a `guint8`.
@@ -59241,6 +62925,16 @@ export namespace Qmi {
         // Methods
 
         /**
+         * Get the 'Address Allocation Preference' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_address_allocation_preference(): [boolean, WdsAddressAllocationPreference | null];
+        /**
+         * Get the 'APN Disabled Flag' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_apn_disabled_flag(): [boolean, boolean];
+        /**
          * Get the 'APN Name' field from `self`.
          * @returns `true` if the field is found, `false` otherwise.
          */
@@ -59310,6 +63004,11 @@ export namespace Qmi {
          * @returns `true` if the field is found, `false` otherwise.
          */
         get_pcscf_address_using_pco(): [boolean, boolean];
+        /**
+         * Get the 'PDP Access Control' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_pdp_access_control(): [boolean, WdsPdpAccessControl | null];
         /**
          * Get the 'PDP Context Number' field from `self`.
          * @returns `true` if the field is found, `false` otherwise.
@@ -60020,6 +63719,11 @@ export namespace Qmi {
         // Methods
 
         /**
+         * Get the 'Address Allocation Preference' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_address_allocation_preference(): [boolean, WdsAddressAllocationPreference | null];
+        /**
          * Get the 'APN Disabled Flag' field from `self`.
          * @returns `true` if the field is found, `false` otherwise.
          */
@@ -60039,6 +63743,11 @@ export namespace Qmi {
          * @returns `true` if the field is found, `false` otherwise.
          */
         get_authentication(): [boolean, WdsAuthentication | null];
+        /**
+         * Get the 'CLAT Enabled' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_clat_enabled(): [boolean, boolean];
         /**
          * Get the 'Extended Error Code' field from `self`.
          * @returns `true` if the field is found, `false` otherwise.
@@ -60070,6 +63779,11 @@ export namespace Qmi {
          */
         get_ipv6_address_preference(): [boolean, number[] | null];
         /**
+         * Get the 'IPv6 Prefix Delegation' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ipv6_prefix_delegation(): [boolean, boolean];
+        /**
          * Get the 'IPv6 Primary DNS Address Preference' field from `self`.
          * @returns `true` if the field is found, `false` otherwise.
          */
@@ -60099,6 +63813,11 @@ export namespace Qmi {
          * @returns `true` if the field is found, `false` otherwise.
          */
         get_pcscf_address_using_pco(): [boolean, boolean];
+        /**
+         * Get the 'PDP Access Control' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_pdp_access_control(): [boolean, WdsPdpAccessControl | null];
         /**
          * Get the 'PDP Context Number' field from `self`.
          * @returns `true` if the field is found, `false` otherwise.
@@ -60435,6 +64154,11 @@ export namespace Qmi {
         // Methods
 
         /**
+         * Get the 'Address Allocation Preference' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_address_allocation_preference(): [boolean, WdsAddressAllocationPreference | null];
+        /**
          * Get the 'APN Disabled Flag' field from `self`.
          * @returns `true` if the field is found, `false` otherwise.
          */
@@ -60454,6 +64178,11 @@ export namespace Qmi {
          * @returns `true` if the field is found, `false` otherwise.
          */
         get_authentication(): [boolean, WdsAuthentication | null];
+        /**
+         * Get the 'CLAT Enabled' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_clat_enabled(): [boolean, boolean];
         /**
          * Get the 'GPRS Minimum QoS' field from `self`.
          * @returns `true` if the field is found, `false` otherwise.
@@ -60479,6 +64208,11 @@ export namespace Qmi {
          * @returns `true` if the field is found, `false` otherwise.
          */
         get_ipv6_address_preference(): [boolean, number[] | null];
+        /**
+         * Get the 'IPv6 Prefix Delegation' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_ipv6_prefix_delegation(): [boolean, boolean];
         /**
          * Get the 'IPv6 Primary DNS Address Preference' field from `self`.
          * @returns `true` if the field is found, `false` otherwise.
@@ -60509,6 +64243,11 @@ export namespace Qmi {
          * @returns `true` if the field is found, `false` otherwise.
          */
         get_pcscf_address_using_pco(): [boolean, boolean];
+        /**
+         * Get the 'PDP Access Control' field from `self`.
+         * @returns `true` if the field is found, `false` otherwise.
+         */
+        get_pdp_access_control(): [boolean, WdsPdpAccessControl | null];
         /**
          * Get the 'PDP Context Number' field from `self`.
          * @returns `true` if the field is found, `false` otherwise.
@@ -60653,6 +64392,14 @@ export namespace Qmi {
          */
         ref(): MessageWdsModifyProfileInput;
         /**
+         * Set the 'Address Allocation Preference' field in the message.
+         * @param value_address_allocation_preference a {@link Qmi.WdsAddressAllocationPreference}.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_address_allocation_preference(
+            value_address_allocation_preference: WdsAddressAllocationPreference | null,
+        ): boolean;
+        /**
          * Set the 'APN Disabled Flag' field in the message.
          * @param value_apn_disabled_flag a `gboolean`.
          * @returns `true` if `value` was successfully set, `false` otherwise.
@@ -60676,6 +64423,12 @@ export namespace Qmi {
          * @returns `true` if `value` was successfully set, `false` otherwise.
          */
         set_authentication(value_authentication: WdsAuthentication | null): boolean;
+        /**
+         * Set the 'CLAT Enabled' field in the message.
+         * @param value_clat_enabled a `gboolean`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_clat_enabled(value_clat_enabled: boolean): boolean;
         /**
          * Set the 'GPRS Minimum QoS' field in the message.
          * @param value_gprs_minimum_qos_precedence_class a `guint32`.
@@ -60727,6 +64480,12 @@ export namespace Qmi {
          */
         set_ipv6_address_preference(value_ipv6_address_preference_address: number[]): boolean;
         /**
+         * Set the 'IPv6 Prefix Delegation' field in the message.
+         * @param value_ipv6_prefix_delegation a `gboolean`.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_ipv6_prefix_delegation(value_ipv6_prefix_delegation: boolean): boolean;
+        /**
          * Set the 'IPv6 Primary DNS Address Preference' field in the message.
          * @param value_ipv6_primary_dns_address_preference a {@link GLib.Array} of `guint16` elements. A new reference to `value_ipv6_primary_dns_address_preference` will be taken, so the caller must make sure the array was created with the correct {@link GLib.DestroyNotify} as clear function for each element in the array.
          * @returns `true` if `value` was successfully set, `false` otherwise.
@@ -60772,6 +64531,12 @@ export namespace Qmi {
          * @returns `true` if `value` was successfully set, `false` otherwise.
          */
         set_pcscf_address_using_pco(value_pcscf_address_using_pco: boolean): boolean;
+        /**
+         * Set the 'PDP Access Control' field in the message.
+         * @param value_pdp_access_control a {@link Qmi.WdsPdpAccessControl}.
+         * @returns `true` if `value` was successfully set, `false` otherwise.
+         */
+        set_pdp_access_control(value_pdp_access_control: WdsPdpAccessControl | null): boolean;
         /**
          * Set the 'PDP Context Number' field in the message.
          * @param value_pdp_context_number a `guint8`.

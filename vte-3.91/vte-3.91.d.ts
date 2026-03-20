@@ -1314,7 +1314,7 @@ export namespace Vte {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1369,7 +1369,7 @@ export namespace Vte {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1444,7 +1444,7 @@ export namespace Vte {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4066,6 +4066,10 @@ export namespace Vte {
          * scrollback.  Note that this setting only affects the normal screen buffer.
          * For terminal types which have an alternate screen buffer, no scrollback is
          * allowed on the alternate screen buffer.
+         *
+         * Note that any value greater or equal to `G_MAXINT` is interpreted as unlimited
+         * scrollback, i.e. like `-1` when passed to `vte_terminal_set_scrollback_lines()`,
+         * and the value of this property for unlimited scrollback is `G_MAXUINT`.
          */
         get scrollback_lines(): number;
         set scrollback_lines(val: number);
@@ -4076,6 +4080,10 @@ export namespace Vte {
          * scrollback.  Note that this setting only affects the normal screen buffer.
          * For terminal types which have an alternate screen buffer, no scrollback is
          * allowed on the alternate screen buffer.
+         *
+         * Note that any value greater or equal to `G_MAXINT` is interpreted as unlimited
+         * scrollback, i.e. like `-1` when passed to `vte_terminal_set_scrollback_lines()`,
+         * and the value of this property for unlimited scrollback is `G_MAXUINT`.
          */
         get scrollbackLines(): number;
         set scrollbackLines(val: number);
@@ -5122,6 +5130,17 @@ export namespace Vte {
          */
         reset(clear_tabstops: boolean, clear_history: boolean): void;
         /**
+         * Resets the termprop `prop` to its default value.
+         * @param prop a termprop name
+         */
+        reset_termprop(prop: string): void;
+        /**
+         * Like `vte_terminal_reset_termprop()` except that it takes the termprop
+         * by ID. See that function for more information.
+         * @param prop a termprop ID
+         */
+        reset_termprop_by_id(prop: number): void;
+        /**
          * Searches the next string matching the search regex set with
          * `vte_terminal_search_set_regex()`.
          * @returns `true` if a match was found
@@ -5781,6 +5800,17 @@ export namespace Vte {
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
@@ -5905,6 +5935,17 @@ export namespace Vte {
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -6066,6 +6107,19 @@ export namespace Vte {
          * @virtual
          */
         vfunc_get_selection(): [boolean, Gtk.AccessibleTextRange[] | null];
+        /**
+         * Sets the caret position.
+         * @param offset the text offset in characters
+         * @virtual
+         */
+        vfunc_set_caret_position(offset: number): boolean;
+        /**
+         * Sets the caret position.
+         * @param i the selection to set
+         * @param range the range to set the selection to
+         * @virtual
+         */
+        vfunc_set_selection(i: number, range: Gtk.AccessibleTextRange): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
@@ -6331,7 +6385,7 @@ export namespace Vte {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6386,7 +6440,7 @@ export namespace Vte {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6461,7 +6515,7 @@ export namespace Vte {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

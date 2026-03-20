@@ -19,6 +19,9 @@
     // Show diagnostics
     "diagnostics": true,
     "paths": {
+      "@girs/giounix-2.0": [
+            "../giounix-2.0/index.d.ts"
+      ],
       "@girs/gio-2.0": [
             "../gio-2.0/index.d.ts"
       ],

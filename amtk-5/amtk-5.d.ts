@@ -107,6 +107,7 @@ export namespace Amtk {
      * @param item a {@link Gtk.MenuItem}.
      * @param icon_name an icon name.
      * @since 2.0
+     * @deprecated since 5.9: Use {@link Gtk.ImageMenuItem} instead, even if deprecated. This   function doesn't place the icon at the right place.
      */
     function menu_item_set_icon_name(item: Gtk.MenuItem, icon_name: string): void;
     /**

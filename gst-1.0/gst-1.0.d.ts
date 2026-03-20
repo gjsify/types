@@ -2460,9 +2460,14 @@ export namespace Gst {
      */
     const TAG_ALBUM_ARTIST_SORTNAME: string;
     /**
-     * album gain in db (double)
+     * album gain in dB (double)
      */
     const TAG_ALBUM_GAIN: string;
+    /**
+     * track gain in dB (double)
+     * @since 1.28
+     */
+    const TAG_ALBUM_GAIN_R128: string;
     /**
      * peak of the album (double)
      */
@@ -2870,9 +2875,14 @@ export namespace Gst {
      */
     const TAG_TRACK_COUNT: string;
     /**
-     * track gain in db (double)
+     * track gain in dB (double)
      */
     const TAG_TRACK_GAIN: string;
+    /**
+     * track gain in dB (double)
+     * @since 1.28
+     */
+    const TAG_TRACK_GAIN_R128: string;
     /**
      * track number inside a collection (unsigned integer)
      */
@@ -2895,6 +2905,18 @@ export namespace Gst {
      * codec the video data is stored in (string)
      */
     const TAG_VIDEO_CODEC: string;
+    /**
+     * The well-known context type for sharing a {@link Gst.TaskPool} between elements
+     * in a pipeline.
+     *
+     * Elements that support this context will post a {@link Gst.MessageType.NEED_CONTEXT}
+     * message on the bus when they need a task pool. Applications can respond
+     * by setting the context on the element or the pipeline. Elements will not
+     * query neighbors for this context type as the task pool is optional and
+     * elements will fall back to their default behavior if no pool is provided.
+     * @since 1.28
+     */
+    const TASK_POOL_CONTEXT_TYPE: string;
     /**
      * Special value for the repeat_count set in `gst_toc_entry_set_loop()` or
      * returned by `gst_toc_entry_set_loop()` to indicate infinite looping.
@@ -2983,6 +3005,12 @@ export namespace Gst {
      */
     function buffer_list_take(old_list: BufferList, new_list?: BufferList | null): [boolean, BufferList];
     /**
+     * Calls `func` from another thread and passes `user_data` to it.
+     * @param func function to call asynchronously from another thread
+     * @since 1.28
+     */
+    function call_async(func: CallAsyncFunc): void;
+    /**
      * Creates a {@link Gst.CapsFeatures} from a string representation.
      * @param features a string representation of a {@link Gst.CapsFeatures}.
      * @returns a new {@link Gst.CapsFeatures} or     `null` when the string could not be parsed.
@@ -2999,6 +3027,16 @@ export namespace Gst {
      */
     function caps_from_string(string: string): Caps | null;
     /**
+     * Applications might want to check if the runtime GStreamer version is greater
+     * or equal to the version specified using `major`, `minor` and `micro`.
+     * @param major Major version number
+     * @param minor Minor version number
+     * @param micro Micro version number
+     * @returns `true` if the GStreamer version is greater or equal to `major`\.`minor`\.`micro`, `false` otherwise. Also this function returns `false` when checking for a different `major` version to the current one, as major version bumps are ABI breaks anyway.
+     * @since 1.28
+     */
+    function check_version(major: number, minor: number, micro: number): boolean;
+    /**
      * Modifies a pointer to a {@link Gst.Context} to point to a different {@link Gst.Context}. The
      * modification is done atomically (so this is useful for ensuring thread safety
      * in some cases), and the reference counts are updated appropriately (the old
@@ -3012,6 +3050,66 @@ export namespace Gst {
      */
     function context_replace(old_context: Context, new_context?: Context | null): [boolean, Context];
     function core_error_quark(): GLib.Quark;
+    /**
+     * @returns `true` if NEON (32-bit) is supported by the CPU, `false` otherwise.
+     * @since 1.28
+     */
+    function cpuid_supports_arm_neon(): boolean;
+    /**
+     * @returns `true` if NEON (64-bit) is supported by the CPU, `false` otherwise.
+     * @since 1.28
+     */
+    function cpuid_supports_arm_neon64(): boolean;
+    /**
+     * @returns `true` if 3DNow! is supported by the CPU, `false` otherwise.
+     * @since 1.28
+     */
+    function cpuid_supports_x86_3dnow(): boolean;
+    /**
+     * @returns `true` if AVX is supported by the CPU, `false` otherwise.
+     * @since 1.28
+     */
+    function cpuid_supports_x86_avx(): boolean;
+    /**
+     * @returns `true` if avx2 is supported by the CPU, `false` otherwise.
+     * @since 1.28
+     */
+    function cpuid_supports_x86_avx2(): boolean;
+    /**
+     * @returns `true` if MMX is supported by the CPU, `false` otherwise.
+     * @since 1.28
+     */
+    function cpuid_supports_x86_mmx(): boolean;
+    /**
+     * @returns `true` if extended MMX is supported by the CPU, `false` otherwise.
+     * @since 1.28
+     */
+    function cpuid_supports_x86_mmxext(): boolean;
+    /**
+     * @returns `true` if SSE2 is supported by the CPU, `false` otherwise.
+     * @since 1.28
+     */
+    function cpuid_supports_x86_sse2(): boolean;
+    /**
+     * @returns `true` if SSE3 is supported by the CPU, `false` otherwise.
+     * @since 1.28
+     */
+    function cpuid_supports_x86_sse3(): boolean;
+    /**
+     * @returns `true` if SSE4.1 is supported by the CPU, `false` otherwise.
+     * @since 1.28
+     */
+    function cpuid_supports_x86_sse4_1(): boolean;
+    /**
+     * @returns `true` if SSSE3 is supported by the CPU, `false` otherwise.
+     * @since 1.28
+     */
+    function cpuid_supports_x86_sse4_2(): boolean;
+    /**
+     * @returns `true` if SSSE3 is supported by the CPU, `false` otherwise.
+     * @since 1.28
+     */
+    function cpuid_supports_x86_ssse3(): boolean;
     /**
      * Adds the logging function to the list of logging functions.
      * Be sure to use #G_GNUC_NO_INSTRUMENT on that function, it is needed.
@@ -3193,6 +3291,30 @@ export namespace Gst {
         message_string: string,
     ): void;
     /**
+     * Logs a message with the specified context and ID. If the context has already
+     * seen this message based on its flags configuration, the message will not be
+     * logged.
+     *
+     * `level` >= {@link Gst.DebugLevel.MEMDUMP} is not supported.
+     * @param ctx a {@link Gst.LogContext}
+     * @param level level of the message
+     * @param file the file that emitted the message, usually the __FILE__ identifier
+     * @param _function the function that emitted the message
+     * @param line the line that emitted the message, usually the __LINE__ identifier
+     * @param id the contextual ID of the message
+     * @param message message string
+     * @since 1.28
+     */
+    function debug_log_id_literal_with_context(
+        ctx: LogContext,
+        level: DebugLevel | null,
+        file: string,
+        _function: string,
+        line: number,
+        id: string | null,
+        message: string,
+    ): void;
+    /**
      * Logs the given message using the currently registered debugging handlers.
      * @param category category to log
      * @param level level of the message is in
@@ -3211,6 +3333,29 @@ export namespace Gst {
         line: number,
         object: GObject.Object | null,
         message_string: string,
+    ): void;
+    /**
+     * Logs a literal message with the specified context. Depending on the context
+     * state, the message may not be logged at all.
+     *
+     * `level` >= {@link Gst.DebugLevel.MEMDUMP} is not supported.
+     * @param ctx a {@link Gst.LogContext}
+     * @param level level of the message
+     * @param file the file that emitted the message, usually the __FILE__ identifier
+     * @param _function the function that emitted the message
+     * @param line the line that emitted the message, usually the __LINE__ identifier
+     * @param object the object this message relates to,     or `null` if none
+     * @param message message string
+     * @since 1.28
+     */
+    function debug_log_literal_with_context(
+        ctx: LogContext,
+        level: DebugLevel | null,
+        file: string,
+        _function: string,
+        line: number,
+        object: GObject.Object | null,
+        message: string,
     ): void;
     /**
      * Returns a string that represents `ptr`. This is safe to call with
@@ -3479,7 +3624,7 @@ export namespace Gst {
      * use `gst_init_check()` instead.
      * @param argv pointer to application's argv
      */
-    function init(argv?: string[] | null): string[] | null;
+    function init(argv?: string[]): string[];
     /**
      * Initializes the GStreamer library, setting up internal path lists,
      * registering built-in elements, and loading standard plugins.
@@ -3490,7 +3635,7 @@ export namespace Gst {
      * @param argv pointer to application's argv
      * @returns `true` if GStreamer could be initialized.
      */
-    function init_check(argv?: string[] | null): [boolean, string[] | null];
+    function init_check(argv?: string[]): [boolean, string[]];
     /**
      * Checks if `obj` is a {@link Gst.CapsFeatures}
      * @param obj
@@ -3574,6 +3719,13 @@ export namespace Gst {
      */
     function meta_api_type_set_params_aggregator(api: GObject.GType, aggregator: AllocationMetaParamsAggregator): void;
     /**
+     * @param api an API
+     * @param valid_tags a list of valid tags
+     * @returns `true` if `api` only contains tags from `valid_tags`.
+     * @since 1.28
+     */
+    function meta_api_type_tags_contain_only(api: GObject.GType, valid_tags: string[]): boolean;
+    /**
      * Recreate a {@link Gst.Meta} from serialized data returned by
      * `gst_meta_serialize()` and add it to `buffer`.
      *
@@ -3585,11 +3737,10 @@ export namespace Gst {
      * not allow to determine that size, `consumed` is set to 0.
      * @param buffer a {@link Gst.Buffer}
      * @param data serialization data obtained from `gst_meta_serialize()`
-     * @param size size of `data`
      * @returns the metadata owned by `buffer`, or `null`.
      * @since 1.24
      */
-    function meta_deserialize(buffer: Buffer, data: number, size: number): [Meta | null, number];
+    function meta_deserialize(buffer: Buffer, data: Uint8Array | string): [Meta | null, number];
     /**
      * Lookup a previously registered meta info structure by its implementation name
      * `impl`.
@@ -3908,6 +4059,20 @@ export namespace Gst {
      * @since 1.14
      */
     function state_change_get_name(transition: StateChange | null): string;
+    /**
+     * Gets a string representing the given state change result.
+     * @param state_ret a {@link Gst.StateChangeReturn} to get the name of.
+     * @returns a string with the name of the state    result.
+     * @since 1.28
+     */
+    function state_change_return_get_name(state_ret: StateChangeReturn | null): string;
+    /**
+     * Gets a string representing the given state.
+     * @param state a {@link Gst.State} to get the name of.
+     * @returns a string with the name of the state.
+     * @since 1.28
+     */
+    function state_get_name(state: State | null): string;
     function stream_error_quark(): GLib.Quark;
     /**
      * Get a descriptive string for a given {@link Gst.StreamType}
@@ -4431,7 +4596,12 @@ export namespace Gst {
      * @param threshold threshold (typical value: 333)
      * @since 1.24
      */
-    function util_simplify_fraction(numerator: number, denominator: number, n_terms: number, threshold: number): void;
+    function util_simplify_fraction(
+        numerator: number,
+        denominator: number,
+        n_terms: number,
+        threshold: number,
+    ): [number, number];
     /**
      * Scale `val` by the rational number `num` / `denom`, avoiding overflows and
      * underflows and without loss of precision.
@@ -4710,6 +4880,14 @@ export namespace Gst {
      */
     function value_get_structure(value: GObject.Value | any): Structure;
     /**
+     * Compute a hash value of `value`.
+     * {@link GObject.Value} considered as equals by `gst_value_compare()` will have the same hash value.
+     * @param value a {@link GObject.Value} to hash
+     * @returns `true`, or `false` if `value` cannot be hashed.
+     * @since 1.28
+     */
+    function value_hash(value: GObject.Value | any): [boolean, number];
+    /**
      * Initialises the target value to be of the same type as source and then copies
      * the contents from source to target.
      * @param src the source value
@@ -4735,10 +4913,12 @@ export namespace Gst {
      */
     function value_is_fixed(value: GObject.Value | any): boolean;
     /**
-     * Check that `value1` is a subset of `value2`.
+     * Check that `value1` is a subset of `value2`. If `value1` and `value2` is are
+     * fixed value, value1 must be a subset of value2 and not equal to `value2` to
+     * be a subset of `value2`.
      * @param value1 a {@link GObject.Value}
      * @param value2 a {@link GObject.Value}
-     * @returns `true` is `value1` is a subset of `value2`
+     * @returns `true` is `value1` is a subset, strict subset if both values are  of `value2`
      */
     function value_is_subset(value1: GObject.Value | any, value2: GObject.Value | any): boolean;
     /**
@@ -4902,13 +5082,13 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface BufferForeachMetaFunc {
-        (buffer: Buffer): boolean;
+        (buffer: Buffer, meta?: Meta | null): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface BufferListFunc {
-        (idx: number): boolean;
+        (buffer: Buffer | null, idx: number): boolean;
     }
     /**
      * @gir-type Callback
@@ -4921,6 +5101,12 @@ export namespace Gst {
      */
     interface BusSyncHandler {
         (bus: Bus, message: Message): BusSyncReply;
+    }
+    /**
+     * @gir-type Callback
+     */
+    interface CallAsyncFunc {
+        (user_data?: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -5149,6 +5335,12 @@ export namespace Gst {
     /**
      * @gir-type Callback
      */
+    interface ObjectCallAsyncFunc {
+        (object: Object): void;
+    }
+    /**
+     * @gir-type Callback
+     */
     interface PadActivateFunction {
         (pad: Pad, parent: Object): boolean;
     }
@@ -5349,6 +5541,12 @@ export namespace Gst {
      */
     interface ValueDeserializeWithPSpecFunc {
         (dest: GObject.Value | any, s: string, pspec: GObject.ParamSpec): boolean;
+    }
+    /**
+     * @gir-type Callback
+     */
+    interface ValueHashFunc {
+        (value: GObject.Value | any): boolean;
     }
     /**
      * @gir-type Callback
@@ -5952,6 +6150,76 @@ export namespace Gst {
     /**
      * @gir-type Flags
      */
+    export namespace LogContextFlags {
+        export const $gtype: GObject.GType<LogContextFlags>;
+    }
+
+    /**
+     * Flags to control the behavior of a {@link Gst.LogContext}.
+     * @gir-type Flags
+     * @since 1.28
+     */
+    enum LogContextFlags {
+        /**
+         * No special behavior (empty flags)
+         */
+        NONE,
+        /**
+         * Enable message throttling/deduplication. This
+         *  makes the context track which messages have been logged already based on
+         *  their message hash, and only log them once (or periodically if an
+         *  interval is set). Without this flag, all messages will be logged regardless
+         *  of whether they've been logged before.
+         */
+        THROTTLE,
+    }
+
+    /**
+     * @gir-type Flags
+     */
+    export namespace LogContextHashFlags {
+        export const $gtype: GObject.GType<LogContextHashFlags>;
+    }
+
+    /**
+     * Flags to control how the message hash is calculated in a {@link Gst.LogContext}.
+     * The message hash is used to determine if a message is a duplicate of a previously
+     * logged message.
+     * @gir-type Flags
+     * @since 1.28
+     */
+    enum LogContextHashFlags {
+        /**
+         * Default behavior for logging context
+         *                          (uses object, format, file but not line number or string args)
+         */
+        DEFAULT,
+        /**
+         * Ignore object pointer or object ID when calculating message hash
+         */
+        IGNORE_OBJECT,
+        /**
+         * Ignore the "format" part of the debug
+         * log message
+         */
+        IGNORE_FORMAT,
+        /**
+         * Ignore file name when calculating message hash
+         */
+        IGNORE_FILE,
+        /**
+         * Use line number when calculating message hash (not used by default)
+         */
+        USE_LINE_NUMBER,
+        /**
+         * Use the arguments part of the string message (not used by default)
+         */
+        USE_STRING_ARGS,
+    }
+
+    /**
+     * @gir-type Flags
+     */
     export namespace MapFlags {
         export const $gtype: GObject.GType<MapFlags>;
     }
@@ -5969,6 +6237,12 @@ export namespace Gst {
          * map for write access
          */
         WRITE,
+        /**
+         * Take another reference of the memory and store it in the GstMapInfo. This
+         * makes sure that the memory stays valid  while it is mapped and
+         * automatically unrefs it on unmap.
+         */
+        REF_MEMORY,
         /**
          * first flag that can be used for custom purposes
          */
@@ -6255,6 +6529,10 @@ export namespace Gst {
          *     be applied (which may be in the past when the answer arrives). (Since: 1.18)
          */
         INSTANT_RATE_REQUEST,
+        /**
+         * Message indicating the {@link Gst.DeviceMonitor} has completed async startup.
+         */
+        DEVICE_MONITOR_STARTED,
         /**
          * mask for all of the above messages.
          */
@@ -7151,6 +7429,10 @@ export namespace Gst {
          * The stream contains subtitle / subpicture data.
          */
         TEXT,
+        /**
+         * The stream contains metadata.
+         */
+        METADATA,
     }
 
     /**
@@ -7998,7 +8280,7 @@ export namespace Gst {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -8038,7 +8320,7 @@ export namespace Gst {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8118,7 +8400,7 @@ export namespace Gst {
         ref(...args: never[]): any;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9638,6 +9920,12 @@ export namespace Gst {
          */
         is_synced(): boolean;
         /**
+         * Checks that `clock` is the default system clock, as returned by
+         * `gst_system_clock_obtain()`, and is of type {@link Gst.ClockType.MONOTONIC}.
+         * @returns `true` if `clock` is the default system monotonic clock,   `false` otherwise.
+         */
+        is_system_monotonic(): boolean;
+        /**
          * Gets an ID from `clock` to trigger a periodic notification.
          * The periodic notifications will start at time `start_time` and
          * will then be fired with the given `interval`.
@@ -10419,9 +10707,18 @@ export namespace Gst {
          */
         set_show_all_devices(show_all: boolean): void;
         /**
-         * Starts monitoring the devices, one this has succeeded, the
+         * Starts monitoring the devices, once this has succeeded, the
          * {@link Gst.MessageType.DEVICE_ADDED} and {@link Gst.MessageType.DEVICE_REMOVED} messages
          * will be emitted on the bus when the list of devices changes.
+         *
+         * Since 1.28, device providers are started asynchronously and
+         * {@link Gst.MessageType.DEVICE_MONITOR_STARTED} will be emitted once the initial list
+         * of devices has been populated, signalling that monitor startup has
+         * completed.
+         *
+         * The monitor will hold a strong reference to itself while it is populating
+         * devices asynchronously, so you must call `gst_device_monitor_stop()` before
+         * unreffing if you want monitoring to stop immediately.
          * @returns `true` if the device monitoring could be started, i.e. at least a     single device provider was started successfully.
          */
         start(): boolean;
@@ -10616,8 +10913,8 @@ export namespace Gst {
          * Gets a list of devices that this provider understands. This may actually
          * probe the hardware if the provider is not currently started.
          *
-         * If the provider has been started, this will returned the same {@link Gst.Device}
-         * objedcts that have been returned by the #GST_MESSAGE_DEVICE_ADDED messages.
+         * If the provider has been started, this will return the same {@link Gst.Device}
+         * objects that have been returned by the #GST_MESSAGE_DEVICE_ADDED messages.
          * @returns a {@link GLib.List} of   {@link Gst.Device}
          */
         get_devices(): Device[];
@@ -11004,7 +11301,7 @@ export namespace Gst {
      * Each element has a state (see {@link Gst.State}).  You can get and set the state
      * of an element with `gst_element_get_state()` and `gst_element_set_state()`.
      * Setting a state triggers a {@link Gst.StateChange}. To get a string representation
-     * of a {@link Gst.State}, use `gst_element_state_get_name()`.
+     * of a {@link Gst.State}, use `gst_state_get_name()`.
      *
      * You can get and set a {@link Gst.Clock} on an element using `gst_element_get_clock()`
      * and `gst_element_set_clock()`.
@@ -11398,6 +11695,11 @@ export namespace Gst {
          * @param func Function to call asynchronously from another thread
          */
         call_async(func: ElementCallAsyncFunc): void;
+        /**
+         * @param args
+         */
+        // Conflicted with Gst.Object.call_async
+        call_async(...args: never[]): any;
         /**
          * Perform `transition` on `element`.
          *
@@ -12698,6 +13000,96 @@ export namespace Gst {
         emit(signal: string, ...args: any[]): void;
     }
 
+    namespace MetaFactory {
+        // Signal signatures
+        interface SignalSignatures extends PluginFeature.SignalSignatures {
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends PluginFeature.ConstructorProps {}
+    }
+
+    /**
+     * Register a {@link Gst.MetaInfo} that can be automatically loaded the first time it is
+     * used.
+     *
+     * In general, applications and plugins don't need to use the factory
+     * beyond registering the meta in a plugin init function. Once that is
+     * done, the meta is stored in the registry, and ready as soon as the
+     * registry is loaded.
+     *
+     * ## Registering a meta for dynamic loading
+     *
+     *
+     * ```c
+     *
+     * static gboolean
+     * plugin_init (GstPlugin * plugin)
+     * {
+     *   return gst_meta_factory_register (plugin, `my_meta_get_info()`);
+     * }
+     * ```
+     *
+     * @gir-type Class
+     * @since 1.28
+     */
+    class MetaFactory extends PluginFeature {
+        static $gtype: GObject.GType<MetaFactory>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: MetaFactory.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<MetaFactory.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof MetaFactory.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MetaFactory.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof MetaFactory.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MetaFactory.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof MetaFactory.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<MetaFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Loads a previously registered {@link Gst.MetaInfo} from the registry.
+         * @param factoryname The name of the {@link Gst.MetaInfo} to load
+         */
+        static load(factoryname: string): MetaInfo;
+        /**
+         * Registers a new {@link Gst.MetaInfo} in the registry
+         * @param plugin The {@link Gst.Plugin} to register `meta_info` for
+         * @param meta_info The {@link Gst.MetaInfo} to register
+         */
+        static register(plugin: Plugin, meta_info: MetaInfo): boolean;
+    }
+
     namespace Object {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
@@ -12915,6 +13307,12 @@ export namespace Gst {
          */
         add_control_binding(binding: ControlBinding): boolean;
         /**
+         * Equivalent to `gst_element_call_async()` but this API allows `func` to be called
+         * with {@link Gst.Object}. See also `gst_element_call_async()`
+         * @param func function to call asynchronously from another thread
+         */
+        call_async(func: ObjectCallAsyncFunc): void;
+        /**
          * A default error function that uses `g_printerr()` to display the error message
          * and the optional debug string..
          *
@@ -12987,6 +13385,12 @@ export namespace Gst {
          * @returns a string describing the path of `object`. You must          `g_free()` the string after usage. MT safe. Grabs and releases the {@link Gst.Object}'s LOCK for all objects          in the hierarchy.
          */
         get_path_string(): string;
+        /**
+         * Returns the toplevel parent of `object`. This function increases the refcount
+         * of the toplevel object so you should `gst_object_unref()` it after usage.
+         * @returns toplevel of `object`, or `object` itself if it has no   parent. unref after usage. MT safe. Grabs and releases `object`'s LOCK.
+         */
+        get_toplevel(): Object;
         /**
          * Gets the value for the given controlled property at the requested time.
          * @param property_name the name of the property to get
@@ -14783,7 +15187,7 @@ export namespace Gst {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -14823,7 +15227,7 @@ export namespace Gst {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -14903,7 +15307,7 @@ export namespace Gst {
         ref(...args: never[]): any;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -17391,6 +17795,86 @@ export namespace Gst {
         static prepend_value(value: GObject.Value | any, prepend_value: GObject.Value | any): void;
     }
 
+    namespace ValueUniqueList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
+    /**
+     * A fundamental type that describes a set of {@link GObject.Value}
+     * @gir-type Class
+     * @since 1.28
+     */
+    class ValueUniqueList {
+        static $gtype: GObject.GType<ValueUniqueList>;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof ValueUniqueList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueUniqueList.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof ValueUniqueList.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ValueUniqueList.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof ValueUniqueList.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<ValueUniqueList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Appends `append_value` to the GstValueUniqueList in `value`.
+         * @param value a {@link GObject.Value} of type #GST_TYPE_UNIQUE_LIST
+         * @param append_value the value to append
+         */
+        static append_and_take_value(value: GObject.Value | any, append_value: GObject.Value | any): void;
+        /**
+         * Appends `append_value` to the GstValueUniqueList in `value`.
+         * @param value a {@link GObject.Value} of type #GST_TYPE_UNIQUE_LIST
+         * @param append_value the value to append
+         */
+        static append_value(value: GObject.Value | any, append_value: GObject.Value | any): void;
+        /**
+         * Concatenates copies of `value1` and `value2` into a set.  Values that are not
+         * of type #GST_TYPE_UNIQUE_LIST are treated as if they were sets of length 1.
+         * `dest` will be initialized to the type #GST_TYPE_UNIQUE_LIST.
+         * @param value1 a {@link GObject.Value}
+         * @param value2 a {@link GObject.Value}
+         */
+        static concat(value1: GObject.Value | any, value2: GObject.Value | any): unknown;
+        /**
+         * Gets the number of values contained in `value`.
+         * @param value a {@link GObject.Value} of type #GST_TYPE_UNIQUE_LIST
+         */
+        static get_size(value: GObject.Value | any): number;
+        /**
+         * Gets the value that is a member of the set contained in `value` and
+         * has the index `index`.
+         * @param value a {@link GObject.Value} of type #GST_TYPE_UNIQUE_LIST
+         * @param index index of value to get from the set
+         */
+        static get_value(value: GObject.Value | any, index: number): unknown;
+        /**
+         * Prepends `prepend_value` to the GstValueUniqueList in `value`.
+         * @param value a {@link GObject.Value} of type #GST_TYPE_UNIQUE_LIST
+         * @param prepend_value the value to prepend
+         */
+        static prepend_value(value: GObject.Value | any, prepend_value: GObject.Value | any): void;
+    }
+
     /**
      * Parameters to control the allocation of memory
      * @gir-type Struct
@@ -18181,10 +18665,30 @@ export namespace Gst {
          */
         insert(idx: number, buffer: Buffer): void;
         /**
+         * Tests if you can safely modify `list`. It is only safe to modify buffer list when
+         * there is only one owner of the buffer list - ie, the object is writable.
+         */
+        is_writable(): boolean;
+        /**
          * Returns the number of buffers in `list`.
          * @returns the number of buffers in the buffer list
          */
         length(): number;
+        /**
+         * Returns a writable copy of `list`.
+         *
+         * If there is only one reference count on `list`, the caller must be the owner,
+         * and so this function will return the buffer list object unchanged. If on the other
+         * hand there is more than one reference on the object, a new buffer list object will
+         * be returned. The caller's reference on `list` will be removed, and instead the
+         * caller will own a reference to the returned object.
+         *
+         * In short, this function unrefs the buffer_list in the argument and refs the buffer list
+         * that it returns. Don't access the argument after calling this function. See
+         * also: `gst_buffer_list_ref()`.
+         * @returns a writable buffer list which may or may not be the     same as `buffer` list
+         */
+        make_writable(): BufferList;
         /**
          * Removes `length` buffers starting from `idx` in `list`. The following buffers
          * are moved to close the gap.
@@ -18540,6 +19044,26 @@ export namespace Gst {
          */
         is_subset_structure_full(structure: Structure, features?: CapsFeatures | null): boolean;
         /**
+         * Tests if you can safely modify `caps`. It is only safe to modify caps when
+         * there is only one owner of the caps - ie, the object is writable.
+         */
+        is_writable(): boolean;
+        /**
+         * Returns a writable copy of `caps`.
+         *
+         * If there is only one reference count on `caps`, the caller must be the owner,
+         * and so this function will return the caps object unchanged. If on the other
+         * hand there is more than one reference on the object, a new caps object will
+         * be returned. The caller's reference on `caps` will be removed, and instead the
+         * caller will own a reference to the returned object.
+         *
+         * In short, this function unrefs the caps in the argument and refs the caps
+         * that it returns. Don't access the argument after calling this function. See
+         * also: `gst_caps_ref()`.
+         * @returns a writable caps which may or may not be the     same as `caps`
+         */
+        make_writable(): Caps;
+        /**
          * Calls the provided function once for each structure and caps feature in the
          * {@link Gst.Caps}. In contrast to `gst_caps_foreach()`, the function may modify but not
          * delete the structures and features. The caps must be mutable.
@@ -18840,15 +19364,6 @@ export namespace Gst {
          */
         remove_id_str(feature: IdStr): void;
         /**
-         * Sets the parent_refcount field of {@link Gst.CapsFeatures}. This field is used to
-         * determine whether a caps features is mutable or not. This function should only be
-         * called by code implementing parent objects of {@link Gst.CapsFeatures}, as described in
-         * [the MT refcounting design document](additional/design/MT-refcounting.md).
-         * @param refcount a pointer to the parent's refcount
-         * @returns `true` if the parent refcount could be set.
-         */
-        set_parent_refcount(refcount: number): boolean;
-        /**
          * Converts `features` to a human-readable string representation.
          *
          * For debugging purposes its easier to do something like this:
@@ -18967,6 +19482,11 @@ export namespace Gst {
          */
         get_structure(): Structure;
         /**
+         * Gets the task pool from `context`.
+         * @returns `true` if a task pool was set on `context`
+         */
+        get_task_pool(): [boolean, TaskPool | null];
+        /**
          * Checks if `context` has `context_type`.
          * @param context_type Context type to check.
          * @returns `true` if `context` has `context_type`.
@@ -18978,10 +19498,37 @@ export namespace Gst {
          */
         is_persistent(): boolean;
         /**
+         * Tests if you can safely modify `context`. It is only safe to modify context when
+         * there is only one owner of the context - ie, the object is writable.
+         */
+        is_writable(): boolean;
+        /**
+         * Returns a writable copy of `context`.
+         *
+         * If there is only one reference count on `context`, the caller must be the owner,
+         * and so this function will return the context object unchanged. If on the other
+         * hand there is more than one reference on the object, a new context object will
+         * be returned. The caller's reference on `context` will be removed, and instead the
+         * caller will own a reference to the returned object.
+         *
+         * In short, this function unrefs the context in the argument and refs the context
+         * that it returns. Don't access the argument after calling this function. See
+         * also: `gst_context_ref()`.
+         * @returns a writable context which may or may not be the     same as `context`
+         */
+        make_writable(): Context;
+        /**
          * Convenience macro to increase the reference count of the context.
          * @returns `context` (for convenience when doing assignments)
          */
         ref(): Context;
+        /**
+         * Sets `pool` on `context` as the task pool to be shared between elements.
+         * If `pool` is `null`, any previously set task pool will be removed from
+         * the context.
+         * @param pool a {@link Gst.TaskPool} or `null` to unset
+         */
+        set_task_pool(pool?: TaskPool | null): void;
         /**
          * Convenience macro to decrease the reference count of the context, possibly
          * freeing it.
@@ -19508,6 +20055,26 @@ export namespace Gst {
          */
         has_name_id(name: GLib.Quark): boolean;
         /**
+         * Tests if you can safely modify `event`. It is only safe to modify event when
+         * there is only one owner of the event - ie, the object is writable.
+         */
+        is_writable(): boolean;
+        /**
+         * Returns a writable copy of `event`.
+         *
+         * If there is only one reference count on `event`, the caller must be the owner,
+         * and so this function will return the event object unchanged. If on the other
+         * hand there is more than one reference on the object, a new event object will
+         * be returned. The caller's reference on `event` will be removed, and instead the
+         * caller will own a reference to the returned object.
+         *
+         * In short, this function unrefs the event in the argument and refs the event
+         * that it returns. Don't access the argument after calling this function. See
+         * also: `gst_event_ref()`.
+         * @returns a writable event which may or may not be the     same as `event`
+         */
+        make_writable(): Event;
+        /**
          * Get the format, minsize, maxsize and async-flag in the buffersize event.
          */
         parse_buffer_size(): [Format | null, number, number, boolean];
@@ -19889,7 +20456,7 @@ export namespace Gst {
             size: number,
             type: GObject.GType,
             lock: GLib.Mutex,
-            master_cookie: number,
+            master_cookie: any | null,
             copy: IteratorCopyFunction,
             next: IteratorNextFunction,
             item: IteratorItemFunction,
@@ -20016,6 +20583,82 @@ export namespace Gst {
     }
 
     /**
+     * A context for controlling logging behavior, for example to handle
+     * logging once or periodic logging, avoiding to
+     * spam the terminal with the same log message multiple times.
+     *
+     * ## Simple log context using static macros
+     *
+     * ``` c
+     * // At global/file scope:
+     * GST_LOG_CONTEXT_STATIC_DEFINE(my_context, GST_LOG_CONTEXT_FLAG_THROTTLE, );
+     * #define MY_CONTEXT GST_LOG_CONTEXT_LAZY_INIT(my_context)
+     *
+     * // Then in code:
+     * GST_CTX_INFO(MY_CONTEXT, "This will only appear once per file/line");
+     * ```
+     *
+     * ## Periodic logging
+     *
+     * For messages that should be logged periodically (e.g., maximum once per minute):
+     *
+     * ``` c
+     * // At global/file scope:
+     * GST_LOG_CONTEXT_STATIC_DEFINE(my_periodic_context, GST_LOG_CONTEXT_FLAG_THROTTLE,
+     *   GST_LOG_CONTEXT_BUILDER_SET_INTERVAL(60 * GST_SECOND);
+     * );
+     * #define MY_PERIODIC_CONTEXT GST_LOG_CONTEXT_LAZY_INIT(my_periodic_context)
+     *
+     * // Then in code:
+     * GST_CTX_INFO(MY_PERIODIC_CONTEXT, "This appears once per minute");
+     * ```
+     *
+     * ## Customizing Message hash with custom flags and category
+     *
+     * By default, a message's hash is determined by the file name, object pointer,
+     * and format string. You can customize this with builder operations:
+     *
+     * ``` c
+     * // Ignore the object pointer when determining message hash (with throttling)
+     * GST_LOG_CONTEXT_STATIC_DEFINE(obj_independent_ctx, GST_LOG_CONTEXT_FLAG_THROTTLE,
+     *   GST_LOG_CONTEXT_BUILDER_SET_HASH_FLAGS(GST_LOG_CONTEXT_IGNORE_OBJECT);
+     * );
+     *
+     * // Use a custom category (without throttling)
+     * GST_LOG_CONTEXT_STATIC_DEFINE(custom_cat_ctx, GST_LOG_CONTEXT_FLAG_NONE,
+     *   GST_LOG_CONTEXT_BUILDER_SET_CATEGORY(my_category);
+     * );
+     * ```
+     * @gir-type Struct
+     * @since 1.28
+     */
+    abstract class LogContext {
+        static $gtype: GObject.GType<LogContext>;
+
+        // Methods
+
+        /**
+         * Free the logging context, clearing all tracked messages.
+         */
+        free(): void;
+        /**
+         * Resets the logging context, clearing all tracked messages.
+         */
+        reset(): void;
+    }
+
+    /**
+     * A builder for creating a {@link Gst.LogContext}. This provides a flexible way to
+     * configure a log context with various options while maintaining immutability
+     * of the resulting context.
+     * @gir-type Struct
+     * @since 1.28
+     */
+    abstract class LogContextBuilder {
+        static $gtype: GObject.GType<LogContextBuilder>;
+    }
+
+    /**
      * A structure containing the result of a map operation such as
      * `gst_memory_map()`. It contains the data and size.
      *
@@ -20034,6 +20677,21 @@ export namespace Gst {
         size: number;
         maxsize: number;
         user_data: any[];
+
+        // Methods
+
+        /**
+         * Release the memory obtained with `gst_memory_map()`
+         */
+        clear(): void;
+        /**
+         * @returns Data of `info`.
+         */
+        get_data(): Uint8Array | null;
+        /**
+         * Initializes `info`.
+         */
+        init(): void;
     }
 
     /**
@@ -20138,6 +20796,11 @@ export namespace Gst {
          */
         is_type(mem_type: string): boolean;
         /**
+         * Tests if you can safely modify `memory`. It is only safe to modify memory when
+         * there is only one owner of the memory - ie, the object is writable.
+         */
+        is_writable(): boolean;
+        /**
          * Create a {@link Gst.Memory} object that is mapped with `flags`. If `mem` is mappable
          * with `flags`, this function returns the mapped `mem` directly. Otherwise a
          * mapped copy of `mem` is returned.
@@ -20148,6 +20811,21 @@ export namespace Gst {
          * @returns a {@link Gst.Memory} object mapped with `flags` or `null` when a mapping is not possible.
          */
         make_mapped(flags: MapFlags | null): [Memory | null, MapInfo];
+        /**
+         * Returns a writable copy of `memory`.
+         *
+         * If there is only one reference count on `memory`, the caller must be the owner,
+         * and so this function will return the memory object unchanged. If on the other
+         * hand there is more than one reference on the object, a new memory object will
+         * be returned. The caller's reference on `memory` will be removed, and instead the
+         * caller will own a reference to the returned object.
+         *
+         * In short, this function unrefs the memory in the argument and refs the memory
+         * that it returns. Don't access the argument after calling this function. See
+         * also: `gst_memory_ref()`.
+         * @returns a writable memory which may or may not be the     same as `memory`
+         */
+        make_writable(): Memory;
         /**
          * Fill `info` with the pointer and sizes of the memory in `mem` that can be
          * accessed according to `flags`.
@@ -20244,6 +20922,8 @@ export namespace Gst {
 
         static new_device_changed(src: Object | null, device: Device, changed_device: Device): Message;
 
+        static new_device_monitor_started(src: Object | null, success: boolean): Message;
+
         static new_device_removed(src: Object | null, device: Device): Message;
 
         static new_duration_changed(src?: Object | null): Message;
@@ -20252,23 +20932,23 @@ export namespace Gst {
 
         static new_eos(src?: Object | null): Message;
 
-        static new_error(src: Object | null, error: GLib.Error, debug: string): Message;
+        static new_error(src: Object | null, error: GLib.Error, debug?: string | null): Message;
 
         static new_error_with_details(
             src: Object | null,
             error: GLib.Error,
-            debug: string,
+            debug?: string | null,
             details?: Structure | null,
         ): Message;
 
         static new_have_context(src: Object | null, context: Context): Message;
 
-        static new_info(src: Object | null, error: GLib.Error, debug: string): Message;
+        static new_info(src: Object | null, error: GLib.Error, debug?: string | null): Message;
 
         static new_info_with_details(
             src: Object | null,
             error: GLib.Error,
-            debug: string,
+            debug?: string | null,
             details?: Structure | null,
         ): Message;
 
@@ -20352,12 +21032,12 @@ export namespace Gst {
 
         static new_toc(src: Object | null, toc: Toc, updated: boolean): Message;
 
-        static new_warning(src: Object | null, error: GLib.Error, debug: string): Message;
+        static new_warning(src: Object | null, error: GLib.Error, debug?: string | null): Message;
 
         static new_warning_with_details(
             src: Object | null,
             error: GLib.Error,
-            debug: string,
+            debug?: string | null,
             details?: Structure | null,
         ): Message;
 
@@ -20429,6 +21109,26 @@ export namespace Gst {
          */
         has_name(name: string): boolean;
         /**
+         * Tests if you can safely modify `message`. It is only safe to modify message when
+         * there is only one owner of the message - ie, the object is writable.
+         */
+        is_writable(): boolean;
+        /**
+         * Returns a writable copy of `message`.
+         *
+         * If there is only one reference count on `message`, the caller must be the owner,
+         * and so this function will return the message object unchanged. If on the other
+         * hand there is more than one reference on the object, a new message object will
+         * be returned. The caller's reference on `message` will be removed, and instead the
+         * caller will own a reference to the returned object.
+         *
+         * In short, this function unrefs the message in the argument and refs the message
+         * that it returns. Don't access the argument after calling this function. See
+         * also: `gst_message_ref()`.
+         * @returns a writable message which may or may not be the     same as `message`
+         */
+        make_writable(): Message;
+        /**
          * Extract the running_time from the async_done message.
          *
          * MT safe.
@@ -20477,6 +21177,12 @@ export namespace Gst {
          * changed and `device` represents the new modified version of `changed_device`.
          */
         parse_device_changed(): [Device | null, Device | null];
+        /**
+         * Parses a device-monitor-started message. The device-monitor-started message
+         * is produced by a {@link Gst.DeviceMonitor} once at least one {@link Gst.DeviceProvider}
+         * successfully starts probing.
+         */
+        parse_device_monitor_started(): boolean;
         /**
          * Parses a device-removed message. The device-removed message is produced by
          * {@link Gst.DeviceProvider} or a {@link Gst.DeviceMonitor}. It announces the
@@ -20643,8 +21349,8 @@ export namespace Gst {
          *       gst_message_parse_state_changed (msg, &old_state, &new_state, NULL);
          *       g_print ("Element %s changed state from %s to %s.\n",
          *           GST_OBJECT_NAME (msg->src),
-         *           gst_element_state_get_name (old_state),
-         *           gst_element_state_get_name (new_state));
+         *           gst_state_get_name (old_state),
+         *           gst_state_get_name (new_state));
          *       break;
          *     }
          *     ...
@@ -20912,6 +21618,11 @@ export namespace Gst {
          */
         static api_type_set_params_aggregator(api: GObject.GType, aggregator: AllocationMetaParamsAggregator): void;
         /**
+         * @param api an API
+         * @param valid_tags a list of valid tags
+         */
+        static api_type_tags_contain_only(api: GObject.GType, valid_tags: string[]): boolean;
+        /**
          * Recreate a {@link Gst.Meta} from serialized data returned by
          * `gst_meta_serialize()` and add it to `buffer`.
          *
@@ -20923,9 +21634,8 @@ export namespace Gst {
          * not allow to determine that size, `consumed` is set to 0.
          * @param buffer a {@link Gst.Buffer}
          * @param data serialization data obtained from `gst_meta_serialize()`
-         * @param size size of `data`
          */
-        static deserialize(buffer: Buffer, data: number, size: number): [Meta | null, number];
+        static deserialize(buffer: Buffer, data: Uint8Array | string): [Meta | null, number];
         /**
          * Lookup a previously registered meta info structure by its implementation name
          * `impl`.
@@ -21001,6 +21711,10 @@ export namespace Gst {
         serialize_simple(data: Uint8Array | string): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
+    type MetaFactoryClass = typeof MetaFactory;
     /**
      * The {@link Gst.MetaInfo} provides information about a specific metadata
      * structure.
@@ -21251,9 +21965,49 @@ export namespace Gst {
          */
         get_event(): Event | null;
         /**
+         * @returns The {@link Gst.FlowReturn} from the probe
+         */
+        get_flow_return(): FlowReturn;
+        /**
+         * @returns The probe ID from the probe
+         */
+        get_id(): number;
+        /**
+         * @returns The offset from the probe
+         */
+        get_offset(): number;
+        /**
          * @returns The {@link Gst.Query} from the probe
          */
         get_query(): Query | null;
+        /**
+         * @returns The size from the probe
+         */
+        get_size(): number;
+        /**
+         * @returns The {@link Gst.PadProbeType} from the probe
+         */
+        get_type(): PadProbeType;
+        /**
+         * Updates `info` with `buffer` or `null`.
+         * @param buffer a {@link Gst.Buffer}
+         */
+        set_buffer(buffer?: Buffer | null): void;
+        /**
+         * Updates `info` with `list` or `null`.
+         * @param list a {@link Gst.BufferList}
+         */
+        set_buffer_list(list?: BufferList | null): void;
+        /**
+         * Updates `info` with `event` or `null`.
+         * @param event a {@link Gst.Event}
+         */
+        set_event(event?: Event | null): void;
+        /**
+         * Updates `info` with `flow_ret`.
+         * @param flow_ret A {@link Gst.FlowReturn}
+         */
+        set_flow_return(flow_ret: FlowReturn | null): void;
     }
 
     /**
@@ -21963,6 +22717,26 @@ export namespace Gst {
          */
         has_scheduling_mode_with_flags(mode: PadMode | null, flags: SchedulingFlags | null): boolean;
         /**
+         * Tests if you can safely modify `query`. It is only safe to modify query when
+         * there is only one owner of the query - ie, the object is writable.
+         */
+        is_writable(): boolean;
+        /**
+         * Returns a writable copy of `query`.
+         *
+         * If there is only one reference count on `query`, the caller must be the owner,
+         * and so this function will return the query object unchanged. If on the other
+         * hand there is more than one reference on the object, a new query object will
+         * be returned. The caller's reference on `query` will be removed, and instead the
+         * caller will own a reference to the returned object.
+         *
+         * In short, this function unrefs the query in the argument and refs the query
+         * that it returns. Don't access the argument after calling this function. See
+         * also: `gst_query_ref()`.
+         * @returns a writable query which may or may not be the     same as `query`
+         */
+        make_writable(): Query;
+        /**
          * Get the caps from `query`. The caps remains valid as long as `query` remains
          * valid.
          */
@@ -22330,6 +23104,13 @@ export namespace Gst {
      *
      * Since 1.24 it can be serialized using `gst_meta_serialize()` and
      * `gst_meta_deserialize()`.
+     *
+     * Since 1.28 additional information about the timestamp can be provided via the
+     * optional `info` structure. This should only be used for information about the
+     * timestamp and not for information about the clock source. The latter should
+     * be stored in the `reference` instead.
+     *
+     * Interpretation of the fields of `info` depends on the `reference`.
      * @gir-type Struct
      * @since 1.14
      */
@@ -22406,6 +23187,30 @@ export namespace Gst {
          * @returns the segment of `sample`.  The segment remains valid as long as `sample` is valid.
          */
         get_segment(): Segment;
+        /**
+         * Tests if you can safely set the buffer and / or buffer list of `sample`.
+         */
+        is_writable(): boolean;
+        /**
+         * Returns a writable copy of `sample`. If the source sample is
+         * already writable, this will simply return the same sample.
+         *
+         * Use this function to ensure that a sample can be safely modified before
+         * making changes to it, for example before calling `gst_sample_set_buffer()`
+         *
+         * If the reference count of the source sample `sample` is exactly one, the caller
+         * is the sole owner and this function will return the sample object unchanged.
+         *
+         * If there is more than one reference on the object, a copy will be made using
+         * `gst_sample_copy()`. The passed-in `sample` will be unreffed in that case, and the
+         * caller will now own a reference to the new returned sample object.
+         *
+         * In short, this function unrefs the sample in the argument and refs the sample
+         * that it returns. Don't access the argument after calling this function unless
+         * you have an additional reference to it.
+         * @returns a writable sample which may or may not be the     same as `sample`
+         */
+        make_writable(): Sample;
         /**
          * Set the buffer associated with `sample`. `sample` must be writable.
          * @param buffer A {@link Gst.Buffer}
@@ -23143,6 +23948,14 @@ export namespace Gst {
          */
         get_boolean(fieldname: string): [boolean, boolean];
         /**
+         * Set pointer pointed by `caps` to the address of the value of type caps
+         * correspondind to field with fieldname `fieldname`. Caller is responsible
+         * for making sure the field exists and has the correct type.
+         * @param fieldname the name of the field
+         * @returns `true` if could be set correctly. If there was no field with `fieldname` or the existing field did not contain a caps, this function return `false`.
+         */
+        get_caps(fieldname: string): [boolean, Caps];
+        /**
          * Sets the clock time pointed to by `value` corresponding to the clock time
          * of the given field.  Caller is responsible for making sure the field exists
          * and has the correct type.
@@ -23537,15 +24350,6 @@ export namespace Gst {
          * @param name the new name of the structure
          */
         set_name_static_str(name: string): void;
-        /**
-         * Sets the parent_refcount field of {@link Gst.Structure}. This field is used to
-         * determine whether a structure is mutable or not. This function should only be
-         * called by code implementing parent objects of {@link Gst.Structure}, as described in
-         * the MT Refcounting section of the design documents.
-         * @param refcount a pointer to the parent's refcount
-         * @returns `true` if the parent refcount could be set.
-         */
-        set_parent_refcount(refcount: number): boolean;
         /**
          * Sets the field with the given name `field` to `value`.  If the field
          * does not exist, it is created.  If the field exists, the previous
@@ -23951,6 +24755,26 @@ export namespace Gst {
          */
         is_equal(list2: TagList): boolean;
         /**
+         * Tests if you can safely modify `taglist`. It is only safe to modify taglist when
+         * there is only one owner of the taglist - ie, the object is writable.
+         */
+        is_writable(): boolean;
+        /**
+         * Returns a writable copy of `taglist`.
+         *
+         * If there is only one reference count on `taglist`, the caller must be the owner,
+         * and so this function will return the taglist object unchanged. If on the other
+         * hand there is more than one reference on the object, a new taglist object will
+         * be returned. The caller's reference on `taglist` will be removed, and instead the
+         * caller will own a reference to the returned object.
+         *
+         * In short, this function unrefs the taglist in the argument and refs the taglist
+         * that it returns. Don't access the argument after calling this function. See
+         * also: `gst_tag_list_ref()`.
+         * @returns a writable taglist which may or may not be the     same as `taglist`
+         */
+        make_writable(): TagList;
+        /**
          * Merges the two given lists into a new list. If one of the lists is `null`, a
          * copy of the other is returned. If both lists are `null`, `null` is returned.
          *
@@ -24314,10 +25138,9 @@ export namespace Gst {
          * the stream. The returned memory is valid until the typefinding function
          * returns and must not be freed.
          * @param offset The offset
-         * @param size The number of bytes to return
          * @returns the     requested data, or `null` if that data is not available.
          */
-        peek(offset: number, size: number): number | null;
+        peek(offset: number): Uint8Array | null;
         /**
          * If a {@link Gst.TypeFindFunction} calls this function it suggests the caps with the
          * given probability. A {@link Gst.TypeFindFunction} may supply different suggestions
@@ -24795,6 +25618,7 @@ export namespace Gst {
         serialize: ValueSerializeFunc;
         deserialize: ValueDeserializeFunc;
         deserialize_with_pspec: ValueDeserializeWithPSpecFunc;
+        hash: ValueHashFunc;
     }
 
     namespace ChildProxy {

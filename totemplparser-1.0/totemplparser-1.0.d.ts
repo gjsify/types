@@ -199,15 +199,9 @@ export namespace TotemPlParser {
      */
     const PARSER_FIELD_FILESIZE: string;
     /**
-     * Metadata field for an entry's primary genre. This is a string of
-     * the form 'Genre1' or 'Genre1/SubGenre1".
+     * Metadata field for an entry's genre.
      */
     const PARSER_FIELD_GENRE: string;
-    /**
-     * Metadata field for an entry's full genre. This is a concatenated
-     * string of the form 'Genre1/SubGenre1,Genre2/SubGenre2" etc.
-     */
-    const PARSER_FIELD_GENRES: string;
     /**
      * Metadata field for an entry's identifier. Its use is dependent on the format
      * of the playlist parsed, and its origin.
@@ -442,17 +436,23 @@ export namespace TotemPlParser {
         // Virtual methods
 
         /**
+         * the generic signal handler for the {@link TotemPlParser.Parser.SignalSignatures.entry_parsed | TotemPlParser.Parser::entry-parsed} signal,
+         * which can be overridden by inheriting classes
          * @param uri
          * @param metadata
          * @virtual
          */
         vfunc_entry_parsed(uri: string, metadata: { [key: string]: any } | GLib.HashTable<any, any>): void;
         /**
+         * the generic signal handler for the {@link TotemPlParser.Parser.SignalSignatures.playlist_ended | TotemPlParser.Parser::playlist-ended} signal,
+         * which can be overridden by inheriting classes
          * @param uri
          * @virtual
          */
         vfunc_playlist_ended(uri: string): void;
         /**
+         * the generic signal handler for the {@link TotemPlParser.Parser.SignalSignatures.playlist_started | TotemPlParser.Parser::playlist-started} signal,
+         * which can be overridden by inheriting classes
          * @param uri
          * @param metadata
          * @virtual

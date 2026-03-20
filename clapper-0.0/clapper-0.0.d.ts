@@ -1349,7 +1349,7 @@ export namespace Clapper {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1404,7 +1404,7 @@ export namespace Clapper {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1484,7 +1484,7 @@ export namespace Clapper {
         ref(...args: never[]): any;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4598,7 +4598,7 @@ export namespace Clapper {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4653,7 +4653,7 @@ export namespace Clapper {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4733,7 +4733,7 @@ export namespace Clapper {
         ref(...args: never[]): any;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4955,6 +4955,197 @@ export namespace Clapper {
          * @param detailedName Name of the signal to stop emission of
          */
         stop_emission_by_name(detailedName: string): void;
+    }
+
+    namespace Server {
+        // Signal signatures
+        interface SignalSignatures extends Feature.SignalSignatures {
+            /**
+             * Error signal when server could not start.
+             * This will be emitted from application main thread.
+             * @signal
+             * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
+             * @run-last
+             */
+            error: (arg0: GLib.Error) => void;
+            'notify::current-port': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::port': (pspec: GObject.ParamSpec) => void;
+            'notify::queue-controllable': (pspec: GObject.ParamSpec) => void;
+            'notify::running': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Feature.ConstructorProps {
+            current_port: number;
+            currentPort: number;
+            enabled: boolean;
+            port: number;
+            queue_controllable: boolean;
+            queueControllable: boolean;
+            running: boolean;
+        }
+    }
+
+    /**
+     * An optional Server feature to add to the player.
+     *
+     * {@link Clapper.Server} is a feature that hosts a local server
+     * providing an ability to both monitor and control playback
+     * through WebSocket messages and HTTP requests.
+     *
+     * Use {@link Clapper.HAVE_SERVER} macro to check if Clapper API
+     * was compiled with this feature.
+     * @gir-type Class
+     * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
+     */
+    class Server extends Feature {
+        static $gtype: GObject.GType<Server>;
+
+        // Properties
+
+        /**
+         * Port on which server is currently listening on or 0 if not listening.
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
+         * @read-only
+         */
+        get current_port(): number;
+        /**
+         * Port on which server is currently listening on or 0 if not listening.
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
+         * @read-only
+         */
+        get currentPort(): number;
+        /**
+         * Whether server is enabled.
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
+         */
+        get enabled(): boolean;
+        set enabled(val: boolean);
+        /**
+         * Port to listen on or 0 for using random unused port.
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
+         */
+        get port(): number;
+        set port(val: number);
+        /**
+         * Whether remote server clients can control {@link Clapper.Queue}.
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
+         */
+        get queue_controllable(): boolean;
+        set queue_controllable(val: boolean);
+        /**
+         * Whether remote server clients can control {@link Clapper.Queue}.
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
+         */
+        get queueControllable(): boolean;
+        set queueControllable(val: boolean);
+        /**
+         * Whether server is currently running.
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
+         * @read-only
+         */
+        get running(): boolean;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: Server.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<Server.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): Server;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<Server.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Get port on which server is currently listening on.
+         * @returns Current listening port or 0 if server is not listening.
+         */
+        get_current_port(): number;
+        /**
+         * Get whether {@link Clapper.Server} is set to be running.
+         * @returns `true` if enabled, `false` otherwise.
+         */
+        get_enabled(): boolean;
+        /**
+         * Get requested server listening port.
+         *
+         * If you want to know the port server is currently listening on,
+         * use {@link Clapper.Server.get_current_port} instead.
+         * @returns Requested listening port or 0 when using random port.
+         */
+        get_port(): number;
+        /**
+         * Get whether remote `server` clients can control {@link Clapper.Queue}.
+         * @returns `true` if control over {@link Clapper.Queue} is allowed, `false` otherwise.
+         */
+        get_queue_controllable(): boolean;
+        /**
+         * Get whether {@link Clapper.Server} is currently running.
+         * @returns `true` if running, `false` otherwise.
+         */
+        get_running(): boolean;
+        /**
+         * Set whether {@link Clapper.Server} should be running.
+         *
+         * Note that server feature will run only after being added to the player.
+         * It can be however set to enabled earlier. If server was already added,
+         * changing this property allows to start/stop server at any time.
+         *
+         * To be notified when server is actually running/stopped after being enabled/disabled,
+         * you can listen for changes to {@link Clapper.Server.running} property.
+         * @param enabled if {@link Clapper.Server} should run
+         */
+        set_enabled(enabled: boolean): void;
+        /**
+         * Set server listening port.
+         * @param port a port number or 0 for random free port
+         */
+        set_port(port: number): void;
+        /**
+         * Set whether remote `server` clients can control {@link Clapper.Queue}.
+         *
+         * This includes ability to add/remove items from the queue and selecting
+         * current item for playback remotely using WebSocket messages.
+         *
+         * You probably want to keep this disabled if your application
+         * is supposed to manage what is played now and not WebSocket client.
+         * @param controllable if {@link Clapper.Queue} should be controllable
+         */
+        set_queue_controllable(controllable: boolean): void;
     }
 
     namespace Stream {
@@ -5398,7 +5589,7 @@ export namespace Clapper {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5453,7 +5644,7 @@ export namespace Clapper {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5533,7 +5724,7 @@ export namespace Clapper {
         ref(...args: never[]): any;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6241,7 +6432,7 @@ export namespace Clapper {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6296,7 +6487,7 @@ export namespace Clapper {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6376,7 +6567,7 @@ export namespace Clapper {
         ref(...args: never[]): any;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6799,6 +6990,10 @@ export namespace Clapper {
      * @gir-type Alias
      */
     type ReactableInterface = typeof Reactable;
+    /**
+     * @gir-type Alias
+     */
+    type ServerClass = typeof Server;
     /**
      * @gir-type Alias
      */

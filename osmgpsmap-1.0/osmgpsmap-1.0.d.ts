@@ -109,6 +109,7 @@ export namespace OsmGpsMap {
             'notify::tile-cache-base': (pspec: GObject.ParamSpec) => void;
             'notify::tile-zoom-offset': (pspec: GObject.ParamSpec) => void;
             'notify::tiles-queued': (pspec: GObject.ParamSpec) => void;
+            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
             'notify::zoom': (pspec: GObject.ParamSpec) => void;
             'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
             'notify::can-default': (pspec: GObject.ParamSpec) => void;
@@ -204,6 +205,8 @@ export namespace OsmGpsMap {
             tileZoomOffset: number;
             tiles_queued: number;
             tilesQueued: number;
+            user_agent: string;
+            userAgent: string;
             zoom: number;
         }
     }
@@ -563,6 +566,22 @@ export namespace OsmGpsMap {
          */
         get tilesQueued(): number;
         /**
+         * The default user-agent for downloading tiles from the {@link OsmGpsMap.Map.map_source}
+         * is "libosmgpsmap/VERSION". The value of {@link OsmGpsMap.Map.user_agent} will be
+         * appended to it.
+         * @since 1.2.0
+         */
+        get user_agent(): string;
+        set user_agent(val: string);
+        /**
+         * The default user-agent for downloading tiles from the {@link OsmGpsMap.Map.map_source}
+         * is "libosmgpsmap/VERSION". The value of {@link OsmGpsMap.Map.user_agent} will be
+         * appended to it.
+         * @since 1.2.0
+         */
+        get userAgent(): string;
+        set userAgent(val: string);
+        /**
          * The map zoom level. Connect to ::notify::zoom if you want to be informed
          * when this changes.
          * @construct-only
@@ -609,29 +628,46 @@ export namespace OsmGpsMap {
 
         // Static methods
 
+        /**
+         * Returns (transfer full): the default cache directory for the library, that is the base
+         * directory to which the full cache path is appended. If
+         * {@link OsmGpsMap.Map.tile_cache_base} is omitted from the constructor then this value
+         * is used.
+         */
         static get_default_cache_directory(): string;
         /**
-         * @param source
+         * Get copyright information for the source
+         * @param source a #OsmGpsMapSource_t source id
+         */
+        static source_get_copyright(source: MapSource_t): string;
+        /**
+         * Get friendly name for source
+         * @param source a #OsmGpsMapSource_t source id
          */
         static source_get_friendly_name(source: MapSource_t): string;
         /**
-         * @param source
+         * Get tile image format for the source
+         * @param source a #OsmGpsMapSource_t source id
          */
         static source_get_image_format(source: MapSource_t): string;
         /**
-         * @param source
+         * Get maximum zoom level for the source
+         * @param source a #OsmGpsMapSource_t source id
          */
         static source_get_max_zoom(source: MapSource_t): number;
         /**
-         * @param source
+         * Get minimum zoom level for the source
+         * @param source a #OsmGpsMapSource_t source id
          */
         static source_get_min_zoom(source: MapSource_t): number;
         /**
-         * @param source
+         * Get repository URI address for the source
+         * @param source a #OsmGpsMapSource_t source id
          */
         static source_get_repo_uri(source: MapSource_t): string;
         /**
-         * @param source
+         * Check whether source is considered valid
+         * @param source a #OsmGpsMapSource_t source id
          */
         static source_is_valid(source: MapSource_t): boolean;
 
@@ -666,10 +702,10 @@ export namespace OsmGpsMap {
         /**
          * Downloads all tiles over the supplied zoom range in the rectangular
          * region specified by pt1 (north west corner) to pt2 (south east corner)
-         * @param pt1
-         * @param pt2
-         * @param zoom_start
-         * @param zoom_end
+         * @param pt1 nort west corner
+         * @param pt2 south east corner
+         * @param zoom_start start of zoom range
+         * @param zoom_end end of zoom range
          */
         download_maps(pt1: MapPoint, pt2: MapPoint, zoom_start: number, zoom_end: number): void;
         /**
@@ -680,38 +716,49 @@ export namespace OsmGpsMap {
         /**
          * A convenience function for getting the geographic location of events,
          * such as mouse clicks, on the map
+         *
+         * Free returned point with g_free
          * @param event A `GtkEventButton` that occured on the map
          * @returns The point on the globe corresponding to the click
          */
         get_event_location(event: Gdk.EventButton): MapPoint;
         /**
+         * Get the scale of the map at the center, in meters/pixel.
          * @returns the scale of the map at the center, in meters/pixel.
          */
         get_scale(): number;
         /**
-         * @param latitude degrees
-         * @param longitude degrees
-         * @param heading degrees or #OSM_GPS_MAP_INVALID to disable showing heading
+         * Set current GPS point to given lat/lon point with given heading.
+         * If record-trip-history is set, add point to trip history
+         * @param latitude latitude in degrees
+         * @param longitude longitude in degrees
+         * @param heading GPS degrees or #OSM_GPS_MAP_INVALID to disable showing heading
          */
         gps_add(latitude: number, longitude: number, heading: number): void;
+        /**
+         * Clear GPS track history
+         */
         gps_clear(): void;
         /**
+         * Get internal GPS track history
          * @returns The {@link OsmGpsMap.MapTrack} of the internal GPS track, i.e. that which is modified when calling `osm_gps_map_gps_add()`. You must not free this.
          */
         gps_get_track(): MapTrack;
         /**
-         * @param latitude
-         * @param longitude
-         * @param image
+         * Creates `OsmGpsMapImage` with given params and adds it to map images
+         * @param latitude latitude in degrees
+         * @param longitude longitude in degrees
+         * @param image Image pixbuf
          * @returns A {@link OsmGpsMap.MapImage} representing the added pixbuf
          */
         image_add(latitude: number, longitude: number, image: GdkPixbuf.Pixbuf): MapImage;
         /**
-         * @param latitude
-         * @param longitude
-         * @param image
-         * @param xalign
-         * @param yalign
+         * Creates `OsmGpsMapImage` with given params and adds it to map images
+         * @param latitude latitude in degrees
+         * @param longitude longitude in degrees
+         * @param image Image pixbuf
+         * @param xalign x-align of image
+         * @param yalign y-align of image
          * @returns A {@link OsmGpsMap.MapImage} representing the added pixbuf
          */
         image_add_with_alignment(
@@ -722,12 +769,13 @@ export namespace OsmGpsMap {
             yalign: number,
         ): MapImage;
         /**
-         * @param latitude
-         * @param longitude
-         * @param image
-         * @param xalign
-         * @param yalign
-         * @param zorder
+         * Creates `OsmGpsMapImage` with given params and adds it to map images
+         * @param latitude latitude in degrees
+         * @param longitude longitude in degrees
+         * @param image Image pixbuf
+         * @param xalign x-align of image
+         * @param yalign y-align of image
+         * @param zorder z-order of image
          * @returns A {@link OsmGpsMap.MapImage} representing the added pixbuf
          */
         image_add_with_alignment_z(
@@ -739,26 +787,38 @@ export namespace OsmGpsMap {
             zorder: number,
         ): MapImage;
         /**
-         * @param latitude
-         * @param longitude
-         * @param image
-         * @param zorder
+         * Creates `OsmGpsMapImage` with given params and adds it to map images
+         * @param latitude latitude in degrees
+         * @param longitude longitude in degrees
+         * @param image Image pixbuf
+         * @param zorder z-order of image
          * @returns A {@link OsmGpsMap.MapImage} representing the added pixbuf
          */
         image_add_z(latitude: number, longitude: number, image: GdkPixbuf.Pixbuf, zorder: number): MapImage;
         /**
-         * @param image
+         * Remove image from list of images
+         * @param image a `OsmGpsMapImage` to remove
+         * @returns true if image was on list of images
          */
         image_remove(image: MapImage): boolean;
+        /**
+         * Remove all images from map
+         */
         image_remove_all(): void;
         /**
+         * Add layer to map
          * @param layer a {@link OsmGpsMap.MapLayer} object
          */
         layer_add(layer: MapLayer): void;
         /**
+         * Remove layer from map
          * @param layer a {@link OsmGpsMap.MapLayer} object
+         * @returns whether layer was found and removed
          */
         layer_remove(layer: MapLayer): boolean;
+        /**
+         * Remove all layers from map
+         */
         layer_remove_all(): void;
         map_redraw(): boolean;
         map_redraw_idle(): void;
@@ -773,19 +833,21 @@ export namespace OsmGpsMap {
         polygon_remove_all(): void;
         /**
          * Scrolls the map by `dx`, `dy` pixels (positive north, east)
-         * @param dx
-         * @param dy
+         * @param dx pixels to scroll in NS (positive: scroll nort, negative: scroll south)
+         * @param dy pixels to scroll in EW (positive: scroll east, negative: scroll west)
          */
         scroll(dx: number, dy: number): void;
         /**
-         * @param latitude
-         * @param longitude
+         * Set map center, does not change zoom level
+         * @param latitude latitude in degrees
+         * @param longitude longitude in degrees
          */
         set_center(latitude: number, longitude: number): void;
         /**
-         * @param latitude
-         * @param longitude
-         * @param zoom
+         * Set map center and desired zoom level
+         * @param latitude latitude in degrees
+         * @param longitude longitude in degrees
+         * @param zoom desired zoom level
          */
         set_center_and_zoom(latitude: number, longitude: number, zoom: number): void;
         /**
@@ -794,35 +856,51 @@ export namespace OsmGpsMap {
          * will be triggered when the corresponding `keyval` is pressed. By default
          * no keyboard shortcuts are associated.
          * @param key a #OsmGpsMapKey_t
-         * @param keyval
+         * @param keyval a keyval to bind
          */
         set_keyboard_shortcut(key: MapKey_t | null, keyval: number): void;
         /**
-         * @param zoom
+         * Set map zoom to the desired zoom level
+         * @param zoom Desired zoom level
+         * @returns zoom level
          */
         set_zoom(zoom: number): number;
         /**
-         * @param zoom_offset
+         * Set tile zoom offset
+         * @param zoom_offset tile zoom offset
          */
         set_zoom_offset(zoom_offset: number): void;
         /**
-         * @param track
+         * Add a track to map
+         * @param track a `OsmGpsMapTrack` object
          */
         track_add(track: MapTrack): void;
         /**
-         * @param track
+         * Remove given track from map
+         * @param track a {@link OsmGpsMap.MapTrack} object
          */
         track_remove(track: MapTrack): boolean;
+        /**
+         * Remove all tracks
+         */
         track_remove_all(): void;
         /**
          * Zoom and center the map so that both points fit inside the window.
-         * @param latitude1
-         * @param latitude2
-         * @param longitude1
-         * @param longitude2
+         * @param latitude1 latitude of 1st point in degrees
+         * @param latitude2 latitude of 2nd point in degrees
+         * @param longitude1 longtitude of 1st point in degrees
+         * @param longitude2 longtitude of 2nd point in degrees
          */
         zoom_fit_bbox(latitude1: number, latitude2: number, longitude1: number, longitude2: number): void;
+        /**
+         * Zoom in by 1 step
+         * @returns zoom level
+         */
         zoom_in(): number;
+        /**
+         * Zoom out by 1 step
+         * @returns zoom level
+         */
         zoom_out(): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -921,7 +999,7 @@ export namespace OsmGpsMap {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -976,7 +1054,7 @@ export namespace OsmGpsMap {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1051,7 +1129,7 @@ export namespace OsmGpsMap {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1369,15 +1447,29 @@ export namespace OsmGpsMap {
         // Methods
 
         /**
-         * @param cr
-         * @param rect
+         * Draw image to given cairo context
+         * @param cr cairo context
+         * @param rect bounding rectangle
          */
-        draw(cr: cairo.Context, rect: Gdk.Rectangle): void;
+        draw(cr: cairo.Context, rect: Gdk.Rectangle): Gdk.Rectangle;
+        /**
+         * Get image location point
+         * @returns location point
+         */
         get_point(): MapPoint;
+        /**
+         * Get image rotation
+         * @returns rotation
+         */
         get_rotation(): number;
+        /**
+         * Get image z-order
+         * @returns z-order
+         */
         get_zorder(): number;
         /**
-         * @param rot
+         * Set image rotation
+         * @param rot image rotation in degrees
          */
         set_rotation(rot: number): void;
     }
@@ -1389,6 +1481,7 @@ export namespace OsmGpsMap {
             'notify::osd-x': (pspec: GObject.ParamSpec) => void;
             'notify::osd-y': (pspec: GObject.ParamSpec) => void;
             'notify::show-coordinates': (pspec: GObject.ParamSpec) => void;
+            'notify::show-copyright': (pspec: GObject.ParamSpec) => void;
             'notify::show-crosshair': (pspec: GObject.ParamSpec) => void;
             'notify::show-dpad': (pspec: GObject.ParamSpec) => void;
             'notify::show-gps-in-dpad': (pspec: GObject.ParamSpec) => void;
@@ -1408,6 +1501,8 @@ export namespace OsmGpsMap {
             osdY: number;
             show_coordinates: boolean;
             showCoordinates: boolean;
+            show_copyright: boolean;
+            showCopyright: boolean;
             show_crosshair: boolean;
             showCrosshair: boolean;
             show_dpad: boolean;
@@ -1471,6 +1566,18 @@ export namespace OsmGpsMap {
          */
         get showCoordinates(): boolean;
         set showCoordinates(val: boolean);
+        /**
+         * The show copyright property.
+         * @since 1.2.0
+         */
+        get show_copyright(): boolean;
+        set show_copyright(val: boolean);
+        /**
+         * The show copyright property.
+         * @since 1.2.0
+         */
+        get showCopyright(): boolean;
+        set showCopyright(val: boolean);
         /**
          * The show crosshair at map centre property.
          */
@@ -1569,39 +1676,51 @@ export namespace OsmGpsMap {
             ...args: GObject.GjsParameters<MapOsd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
+        /**
+         * Check whether layer is busy (eg drawing an animation)
+         * @returns layer busy state
+         */
         busy(): boolean;
         /**
-         * @param map
-         * @param event
+         * Handle button event
+         * @param map a {@link OsmGpsMap.Map} widget
+         * @param event a {@link Gdk.EventButton} event
+         * @returns whether even had been handled
          */
         button_press(map: Map, event: Gdk.EventButton): boolean;
         /**
-         * @param map
-         * @param cr
+         * Draw layer on map
+         * @param map a {@link OsmGpsMap.Map} widget
+         * @param cr a cairo context to draw to
          */
         draw(map: Map, cr: cairo.Context): void;
         /**
-         * @param map
+         * Render layer on map
+         * @param map a {@link OsmGpsMap.Map} widget
          */
         render(map: Map): void;
         /**
+         * Check whether layer is busy (eg drawing an animation)
          * @virtual
          */
         vfunc_busy(): boolean;
         /**
-         * @param map
-         * @param event
+         * Handle button event
+         * @param map a {@link OsmGpsMap.Map} widget
+         * @param event a {@link Gdk.EventButton} event
          * @virtual
          */
         vfunc_button_press(map: Map, event: Gdk.EventButton): boolean;
         /**
-         * @param map
-         * @param cr
+         * Draw layer on map
+         * @param map a {@link OsmGpsMap.Map} widget
+         * @param cr a cairo context to draw to
          * @virtual
          */
         vfunc_draw(map: Map, cr: cairo.Context): void;
         /**
-         * @param map
+         * Render layer on map
+         * @param map a {@link OsmGpsMap.Map} widget
          * @virtual
          */
         vfunc_render(map: Map): void;
@@ -1702,7 +1821,7 @@ export namespace OsmGpsMap {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1757,7 +1876,7 @@ export namespace OsmGpsMap {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1832,7 +1951,7 @@ export namespace OsmGpsMap {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2059,7 +2178,9 @@ export namespace OsmGpsMap {
     namespace MapPolygon {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::breakable': (pspec: GObject.ParamSpec) => void;
             'notify::editable': (pspec: GObject.ParamSpec) => void;
+            'notify::shade-alpha': (pspec: GObject.ParamSpec) => void;
             'notify::shaded': (pspec: GObject.ParamSpec) => void;
             'notify::track': (pspec: GObject.ParamSpec) => void;
             'notify::visible': (pspec: GObject.ParamSpec) => void;
@@ -2068,7 +2189,10 @@ export namespace OsmGpsMap {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            breakable: boolean;
             editable: boolean;
+            shade_alpha: number;
+            shadeAlpha: number;
             shaded: boolean;
             track: any;
             visible: boolean;
@@ -2083,8 +2207,14 @@ export namespace OsmGpsMap {
 
         // Properties
 
+        get breakable(): boolean;
+        set breakable(val: boolean);
         get editable(): boolean;
         set editable(val: boolean);
+        get shade_alpha(): number;
+        set shade_alpha(val: number);
+        get shadeAlpha(): number;
+        set shadeAlpha(val: number);
         get shaded(): boolean;
         set shaded(val: boolean);
         get track(): any;
@@ -2129,13 +2259,22 @@ export namespace OsmGpsMap {
             ...args: GObject.GjsParameters<MapPolygon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Get track from the polygon
+         * @returns The {@link OsmGpsMap.MapTrack} of the polygon
+         */
+        get_track(): MapTrack;
     }
 
     namespace MapTrack {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
-             * The point-added signal.
+             * The {@link OsmGpsMap.MapTrack.SignalSignatures.point_added | OsmGpsMap.MapTrack::point-added} signal is emitted whenever a {@link OsmGpsMap.MapPoint}
+             * is added to the {@link OsmGpsMap.MapTrack}.
              * @signal
              * @run-first
              */
@@ -2239,45 +2378,56 @@ export namespace OsmGpsMap {
         ): void;
         emit(signal: string, ...args: any[]): void;
 
+        // Static methods
+
+        /**
+         * Add a point to track
+         * @param track a {@link OsmGpsMap.MapTrack}
+         * @param point a {@link OsmGpsMap.MapPoint} point to add
+         */
+        static add_point(track: MapTrack, point: MapPoint): MapTrack;
+
         // Methods
 
         /**
-         * track (in,out): a {@link OsmGpsMap.MapTrack}
-         * `point` (in): point to add
-         * @param point
+         * Get track color
          */
-        add_point(point: MapPoint): void;
+        get_color(): Gdk.RGBA;
         /**
-         * @param color
-         */
-        get_color(color: Gdk.RGBA): void;
-        /**
-         * `track` (in): a {@link OsmGpsMap.MapTrack}
+         * Get track length in meters
          * @returns the length of the track in meters.
          */
         get_length(): number;
         /**
-         * @param pos
+         * Get a {@link OsmGpsMap.MapPoint} point at `pos` of given track
+         * @param pos Position of the point to get
+         * @returns a {@link OsmGpsMap.MapPoint}
          */
         get_point(pos: number): MapPoint;
         /**
-         * `track` (in): a {@link OsmGpsMap.MapTrack}
+         * Get list of points in the track
          * @returns list of {@link OsmGpsMap.MapPoint}
          */
         get_points(): MapPoint[];
         /**
-         * @param np
-         * @param pos
+         * Instert point `np` at given postition `pos`
+         * @param np a {@link OsmGpsMap.MapPoint}
+         * @param pos Position for the point
          */
         insert_point(np: MapPoint, pos: number): void;
+        /**
+         * Get number of points in the track
+         * @returns the number of points in the track.
+         */
         n_points(): number;
         /**
-         * `track` (in): a {@link OsmGpsMap.MapTrack}
+         * Remove track point at `pos` position in point list
          * @param pos Position of the point to remove
          */
         remove_point(pos: number): void;
         /**
-         * @param color
+         * Set track color
+         * @param color new track color
          */
         set_color(color: Gdk.RGBA): void;
     }
@@ -2322,6 +2472,7 @@ export namespace OsmGpsMap {
 
         rlat: number;
         rlon: number;
+        user_data: any;
 
         // Constructors
 
@@ -2329,37 +2480,59 @@ export namespace OsmGpsMap {
             properties?: Partial<{
                 rlat: number;
                 rlon: number;
+                user_data: any;
             }>,
         );
 
         static new_degrees(lat: number, lon: number): MapPoint;
 
+        static new_degrees_with_user_data(lat: number, lon: number, user_data?: any | null): MapPoint;
+
         static new_radians(rlat: number, rlon: number): MapPoint;
+
+        static new_radians_with_user_data(rlat: number, rlon: number, user_data?: any | null): MapPoint;
 
         // Methods
 
+        /**
+         * Create a copy of a point
+         * @returns Copied point
+         */
         copy(): MapPoint;
+        /**
+         * Free point object
+         */
         free(): void;
         /**
          * Returns the lagitude and longitude in degrees.
-         * of the current window, i.e the top left and bottom right corners.
          */
         get_degrees(): [number, number];
         /**
-         * @param rlat
-         * @param rlon
+         * Returns the lagitude and longitude in radians.
          */
-        get_radians(rlat: number, rlon: number): void;
+        get_radians(): [number, number];
         /**
-         * @param lat
-         * @param lon
+         * Get user data stored in point
+         * @returns The {@link OsmGpsMap.MapPoint} user data
+         */
+        get_user_data(): any | null;
+        /**
+         * Sets the lagitude and longitude in degrees.
+         * @param lat latitude in degrees
+         * @param lon longitude in degrees
          */
         set_degrees(lat: number, lon: number): void;
         /**
-         * @param rlat
-         * @param rlon
+         * Sets the lagitude and longitude in radians.
+         * @param rlat latitude in radians
+         * @param rlon longitude in radians
          */
         set_radians(rlat: number, rlon: number): void;
+        /**
+         * Store user data in point
+         * @param user_data user data
+         */
+        set_user_data(user_data?: any | null): void;
     }
 
     /**
@@ -2400,23 +2573,27 @@ export namespace OsmGpsMap {
             // Virtual methods
 
             /**
+             * Check whether layer is busy (eg drawing an animation)
              * @virtual
              */
             vfunc_busy(): boolean;
             /**
-             * @param map
-             * @param event
+             * Handle button event
+             * @param map a {@link OsmGpsMap.Map} widget
+             * @param event a {@link Gdk.EventButton} event
              * @virtual
              */
             vfunc_button_press(map: Map, event: Gdk.EventButton): boolean;
             /**
-             * @param map
-             * @param cr
+             * Draw layer on map
+             * @param map a {@link OsmGpsMap.Map} widget
+             * @param cr a cairo context to draw to
              * @virtual
              */
             vfunc_draw(map: Map, cr: cairo.Context): void;
             /**
-             * @param map
+             * Render layer on map
+             * @param map a {@link OsmGpsMap.Map} widget
              * @virtual
              */
             vfunc_render(map: Map): void;
@@ -2437,19 +2614,27 @@ export namespace OsmGpsMap {
     interface MapLayer extends GObject.Object, MapLayer.Interface {
         // Methods
 
+        /**
+         * Check whether layer is busy (eg drawing an animation)
+         * @returns layer busy state
+         */
         busy(): boolean;
         /**
-         * @param map
-         * @param event
+         * Handle button event
+         * @param map a {@link OsmGpsMap.Map} widget
+         * @param event a {@link Gdk.EventButton} event
+         * @returns whether even had been handled
          */
         button_press(map: Map, event: Gdk.EventButton): boolean;
         /**
-         * @param map
-         * @param cr
+         * Draw layer on map
+         * @param map a {@link OsmGpsMap.Map} widget
+         * @param cr a cairo context to draw to
          */
         draw(map: Map, cr: cairo.Context): void;
         /**
-         * @param map
+         * Render layer on map
+         * @param map a {@link OsmGpsMap.Map} widget
          */
         render(map: Map): void;
     }

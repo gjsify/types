@@ -1,6 +1,6 @@
 {
     "name": "@girs/nautilus-4.1",
-    "version": "4.1.0-4.0.0-beta.40",
+    "version": "4.1.0-4.0.0-beta.41",
     "description": "GJS TypeScript type definitions for Nautilus-4.1, generated from library version 4.1.0",
     "type": "module",
     "module": "nautilus-4.1.js",

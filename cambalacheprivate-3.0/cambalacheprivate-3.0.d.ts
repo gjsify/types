@@ -29,7 +29,6 @@ export namespace CambalachePrivate {
      * CambalachePrivate-3.0
      */
 
-    function builder_init(): void;
     /**
      * @param container
      * @param child
@@ -52,6 +51,11 @@ export namespace CambalachePrivate {
         property_name: string,
         value?: string | null,
     ): void;
+    /**
+     * @param widget
+     * @param app_id
+     */
+    function widget_set_application_id(widget: Gtk.Widget, app_id: string): void;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

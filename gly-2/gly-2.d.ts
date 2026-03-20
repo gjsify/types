@@ -31,12 +31,19 @@ export namespace Gly {
 
         /**
          * Generic type for all other errors.
+         * @since 2.0
          */
         static FAILED: number;
         /**
          * Unknown image format.
+         * @since 2.0
          */
         static UNKNOWN_IMAGE_FORMAT: number;
+        /**
+         * Reached last frame in an animation with {@link FrameRequest.set_loop_animation} to `FALSE`.
+         * @since 2.0.1
+         */
+        static NO_MORE_FRAMES: number;
 
         // Constructors
 
@@ -239,7 +246,7 @@ export namespace Gly {
      */
     enum MemoryFormatSelection {
         /**
-         * 8-bit RGRA premultiplied
+         * 8-bit BGRA premultiplied
          */
         B8G8R8A8_PREMULTIPLIED,
         /**
@@ -251,11 +258,11 @@ export namespace Gly {
          */
         R8G8B8A8_PREMULTIPLIED,
         /**
-         * 8-bit RGBA
+         * 8-bit BGRA
          */
         B8G8R8A8,
         /**
-         * 8-bit AGBR
+         * 8-bit ARGB
          */
         A8R8G8B8,
         /**
@@ -364,7 +371,7 @@ export namespace Gly {
      * guint8 data[] = {255, 0, 0};
      * gsize length = sizeof(data);
      * GBytes *texture = g_bytes_new(data, length);
-     * GlyNewFrame *new_frame = gly_creator_add_frame(creator, 1, 1, GLY_MEMORY_R8G8B8, texture);
+     * GlyNewFrame *new_frame = gly_creator_add_frame(creator, 1, 1, GLY_MEMORY_R8G8B8, texture, NULL);
      *
      * // Create JPEG
      * GlyEncodedImage *encoded_image = gly_creator_create(creator, NULL);
@@ -710,6 +717,7 @@ export namespace Gly {
     namespace FrameRequest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::loop-animation': (pspec: GObject.ParamSpec) => void;
             'notify::scale-height': (pspec: GObject.ParamSpec) => void;
             'notify::scale-width': (pspec: GObject.ParamSpec) => void;
         }
@@ -717,6 +725,8 @@ export namespace Gly {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            loop_animation: boolean;
+            loopAnimation: boolean;
             scale_height: number;
             scaleHeight: number;
             scale_width: number;
@@ -739,6 +749,10 @@ export namespace Gly {
 
         // Properties
 
+        get loop_animation(): boolean;
+        set loop_animation(val: boolean);
+        get loopAnimation(): boolean;
+        set loopAnimation(val: boolean);
         /**
          * @read-only
          */
@@ -797,6 +811,14 @@ export namespace Gly {
         // Methods
 
         /**
+         * Controls if first frame is returned after last frame
+         *
+         * By default, this option is set to `TRUE`, returning the first frame, if
+         * the previously requested frame was the last frame.
+         * @param loop_animation
+         */
+        set_loop_animation(loop_animation: boolean): void;
+        /**
          * Set maximum dimensions for the frame. The texture will be scaled
          * to be within the maximum dimensions while keeping its aspect ratio.
          * This option is especially useful to SVGs which will be rendered at
@@ -804,7 +826,7 @@ export namespace Gly {
          *
          * ::: warning
          *     Most loaders will ignore this option. Currently, only the SVG
-         *     loader is known to obay it.
+         *     loader is known to obey it.
          * @param width Maximum width
          * @param height Maximum height
          */
@@ -941,7 +963,7 @@ export namespace Gly {
          * guaranteed to only return values from 1 to 8.
          *
          * If {@link Loader.set_apply_transformations} is set to `FALSE`,
-         * the orientation has to be corrected manually to dispaly the image
+         * the orientation has to be corrected manually to display the image
          * correctly.
          */
         get_transformation_orientation(): number;
@@ -1032,14 +1054,15 @@ export namespace Gly {
      * loader = gly_loader_new (file);
      * image = gly_loader_load (loader, NULL);
      * if (image)
-     * {
-     *   frame = gly_image_next_frame (image, NULL);
-     *   if (frame) {
-     *     texture = gly_gtk_frame_get_texture (frame);
-     *     printf ("Image height: %d\n", gdk_texture_get_height (texture));
-     *     image_widget = gtk_image_new_from_paintable (GDK_PAINTABLE (texture));
+     *   {
+     *     frame = gly_image_next_frame (image, NULL);
+     *     if (frame)
+     *       {
+     *         texture = gly_gtk_frame_get_texture (frame);
+     *         g_print ("Image height: %d\n", gdk_texture_get_height (texture));
+     *         image_widget = gtk_image_new_from_paintable (GDK_PAINTABLE (texture));
+     *       }
      *   }
-     * }
      * ```
      * @gir-type Class
      * @since 2.0

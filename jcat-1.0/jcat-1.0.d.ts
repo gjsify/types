@@ -70,6 +70,10 @@ export namespace Jcat {
          * SHA-512 checksum
          */
         SHA512,
+        /**
+         * Binary transparency log index
+         */
+        BT_LOGINDEX,
     }
 
     /**
@@ -170,6 +174,10 @@ export namespace Jcat {
          * Add a certificate
          */
         ADD_CERT,
+        /**
+         * Use post-quantum algorithm
+         */
+        USE_PQ,
     }
 
     /**
@@ -193,6 +201,10 @@ export namespace Jcat {
          * Require the item contains at least one signature
          */
         REQUIRE_SIGNATURE,
+        /**
+         * Only consider post-quantum signatures
+         */
+        ONLY_PQ,
     }
 
     namespace Blob {

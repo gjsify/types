@@ -9,7 +9,5 @@
 
 import './metatest-17-ambient.d.ts';
 
-import './metatest-17-import.d.ts';
-
 import MetaTest from './metatest-17.js';
 export default MetaTest;

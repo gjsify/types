@@ -416,7 +416,7 @@ export namespace Babl {
      * @param babl a {@link Babl.Object}
      * @returns pointer to ICC profile data.
      */
-    function space_get_icc(babl: Object): [string, number];
+    function space_get_icc(babl: Object): Uint8Array;
     /**
      * Retrieve the relevant RGB luminance constants for a babl space.
      *

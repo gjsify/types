@@ -411,6 +411,10 @@ export namespace Gsf {
      */
     const META_NAME_SPREADSHEET_COUNT: string;
     /**
+     * (String) Current status of the content. Can be related to signature or user set in the document.
+     */
+    const META_NAME_STATUS: string;
+    /**
      * (String) The topic of the content of the resource,
      * <emphasis>typically</emphasis> including keywords.
      */
@@ -481,7 +485,7 @@ export namespace Gsf {
     /**
      * Encodes data from `data` back into `data` using base64 encoding.
      * @param data data stream
-     * @param len max length of data to encode
+     * @param len length of data to encode
      * @returns the number of bytes encoded
      */
     function base64_encode_simple(data: Uint8Array | string, len: number): number;
@@ -1313,10 +1317,9 @@ export namespace Gsf {
         /**
          * Retrieves the 16 byte indentifier (often a GUID in MS Windows apps)
          * stored within the directory associated with `ole` and stores it in `res`.
-         * @param res 16 byte identifier (often a GUID in MS Windows apps)
          * @returns TRUE on success
          */
-        get_class_id(res: number): boolean;
+        get_class_id(): [boolean, Uint8Array];
     }
 
     namespace InfileMSVBA {
@@ -1754,7 +1757,7 @@ export namespace Gsf {
          * Duplicates `input` leaving the new one at the same offset.
          * @virtual
          */
-        vfunc_Dup(): Input | null;
+        vfunc_Dup(): Input;
         /**
          * UNIMPLEMENTED BY ANY BACKEND
          * 	and it is probably unnecessary.   gsf_input_get_container provides
@@ -1781,7 +1784,7 @@ export namespace Gsf {
          * current positions. So if you want to be sure to copy *everything*,
          * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
          * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
-         * @param output a non-null {@link Gsf.Output}
+         * @param output {@link Gsf.Output}
          * @returns `true` on success
          */
         copy(output: Output): boolean;
@@ -1794,7 +1797,7 @@ export namespace Gsf {
          * Duplicates `input` leaving the new one at the same offset.
          * @returns the duplicate
          */
-        dup(): Input | null;
+        dup(): Input;
         /**
          * A utility routine that attempts to find the VBA file withint a stream.
          * @returns a GsfInfile
@@ -1803,7 +1806,7 @@ export namespace Gsf {
         /**
          * @returns A {@link GLib.DateTime} representing when the input was last modified, or `null` if not known.
          */
-        get_modtime(): GLib.DateTime;
+        get_modtime(): GLib.DateTime | null;
         /**
          * Read `num_bytes`.  Does not change the current position if there
          * is an error.  Will only read if the entire amount can be read.

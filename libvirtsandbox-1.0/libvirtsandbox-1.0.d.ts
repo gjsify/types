@@ -2475,13 +2475,6 @@ export namespace LibvirtSandbox {
         // Virtual methods
 
         /**
-         * @param localStdin
-         * @param localStdout
-         * @param localStderr
-         * @virtual
-         */
-        vfunc_attach(localStdin: never, localStdout: never, localStderr: never): boolean;
-        /**
          * @param err
          * @virtual
          */
@@ -2493,12 +2486,6 @@ export namespace LibvirtSandbox {
 
         // Methods
 
-        /**
-         * @param localStdin
-         * @param localStdout
-         * @param localStderr
-         */
-        attach(localStdin: never, localStdout: never, localStderr: never): boolean;
         attach_stderr(): boolean;
         attach_stdio(): boolean;
         detach(): boolean;

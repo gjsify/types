@@ -43,6 +43,9 @@
       "@girs/gmodule-2.0": [
             "../gmodule-2.0/index.d.ts"
       ],
+      "@girs/giounix-2.0": [
+            "../giounix-2.0/index.d.ts"
+      ],
       "@girs/gegl-0.4": [
             "../gegl-0.4/index.d.ts"
       ],
@@ -51,6 +54,9 @@
       ],
       "@girs/gdkpixbuf-2.0": [
             "../gdkpixbuf-2.0/index.d.ts"
+      ],
+      "@girs/gexiv2-0.10": [
+            "../gexiv2-0.10/index.d.ts"
       ],
       "@girs/gjs": [
             "../gjs/index.d.ts"

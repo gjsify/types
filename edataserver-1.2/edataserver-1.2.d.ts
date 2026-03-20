@@ -697,6 +697,8 @@ export namespace EDataServer {
         RESOURCE,
         SUBSCRIBED_ICALENDAR,
         WEBDAV_NOTES,
+        SCHEDULE_INBOX,
+        SCHEDULE_OUTBOX,
     }
 
     /**
@@ -895,6 +897,12 @@ export namespace EDataServer {
      * @since 3.6
      */
     const SOURCE_EXTENSION_COLLECTION: string;
+    /**
+     * Pass this extension name to `e_source_get_extension()` to access
+     * {@link EDataServer.SourceConflictSearch}.  This is also used as a group name in key files.
+     * @since 3.60
+     */
+    const SOURCE_EXTENSION_CONFLICT_SEARCH: string;
     /**
      * Pass this extension name to `e_source_get_extension()` to access
      * {@link EDataServer.SourceContacts}.  This is also used as a group name in key files.
@@ -2101,6 +2109,22 @@ export namespace EDataServer {
      */
     function util_change_uri_port(inout_uri: GLib.Uri, port: number): GLib.Uri;
     /**
+     * Constructs a "data:" URI (of form "data:[mime type][;charset=charset][;base64][,]encoded_data").
+     * The `mime_type` neither the `charset` cannot contain ',' nor ';',
+     * @param mime_type optional MIME type to use, or `null`
+     * @param charset optional charset to use, or `null`
+     * @param is_base64 `true`, when the `data` is base64 encoded
+     * @param data actual data
+     * @returns a newly allocated "data:" URI constructed    from the provided arguments. Free it with `g_free()`, when no longer    needed.
+     * @since 3.60
+     */
+    function util_construct_data_uri(
+        mime_type: string | null,
+        charset: string | null,
+        is_base64: boolean,
+        data: string,
+    ): string;
+    /**
      * Copies {@link GLib.SList} of {@link GObject.Object}<!-- -->s at the end of `copy_to`.
      * @param copy_to Where to copy; can be `null`
      * @param objects {@link GLib.SList} of {@link GObject.Object}<!-- -->s to be copied
@@ -2154,6 +2178,17 @@ export namespace EDataServer {
      * @since 3.0
      */
     function util_ensure_gdbus_string(str: string | null, gdbus_str: string): string;
+    /**
+     * Checks whether the `filename` is stored under `path`.
+     * It use canonicalized form of the paths before comparing them.
+     * Both the `filename` and `path` are expected to be absolute paths,
+     * is not, `false` is returned.
+     * @param filename a filename
+     * @param path an expected path
+     * @returns whether the `filename` is stored under `path`
+     * @since 3.60
+     */
+    function util_filename_is_in_path(filename: string, path: string): boolean;
     /**
      * Calls `g_object_unref()` on each member of `objects` if non-`null` and then frees
      * also `objects` itself.
@@ -2238,6 +2273,28 @@ export namespace EDataServer {
      */
     function util_gthread_id(thread: GLib.Thread): number;
     /**
+     * Guesses whether the `source` is read only. This is done on some heuristic
+     * like the source backend, where some are known to be read only. That this
+     * function returns `false` does not necessarily mean the source is writable,
+     * it only means the source is not well-known read-only source. To know
+     * for sure open the corresponding {@link EDataServer.Client}, if the `source` references such,
+     * and use `e_client_is_readonly()`.
+     * @param source an {@link EDataServer.Source}
+     * @returns `true`, when the `source` is well-known read-only source, or `false` otherwise
+     * @since 3.50
+     */
+    function util_guess_source_is_readonly(source?: any | null): boolean;
+    /**
+     * Check whether the hostname `host` is equal to or a subdomain of `domain`.
+     * Both `host` and `domain` are UTF-8 strings and can be IDNs (which will be
+     * punycode-encoded for comparison).
+     * @param host The hostname to check.
+     * @param domain The domain name.
+     * @returns `true` if `host` is a subdomain of `domain` (or the same domain).          `false` if not, or if either argument is null or in some way          invalid as a domain/hostname.
+     * @since 3.54
+     */
+    function util_host_is_in_domain(host?: string | null, domain?: string | null): boolean;
+    /**
      * Checks whether the `identity_source` can be used for sending, which means
      * whether it has configures send mail source.
      * @param registry an {@link EDataServer.SourceRegistry}
@@ -2271,6 +2328,14 @@ export namespace EDataServer {
      * @since 3.40
      */
     function util_source_compare_for_sort(source_a?: any | null, source_b?: any | null): number;
+    /**
+     * Splits a "data:" URI (of form data:[mime type][;charset=charset][;base64][,]encoded-data) into
+     * respective components. The `out_data_start` points to the first byte inside the `uri`.
+     * @param uri a "data:" URI
+     * @returns whether could split the `uri`
+     * @since 3.60
+     */
+    function util_split_data_uri(uri: string): [boolean, string, string, boolean, string];
     /**
      * Compares `str1` and `str2` like `g_strcmp0()`, except it handles `null` and
      * empty strings as equal.
@@ -3754,6 +3819,7 @@ export namespace EDataServer {
         // Properties
 
         /**
+         * The object being extended
          * @construct-only
          */
         get extensible(): Extensible;
@@ -3808,6 +3874,7 @@ export namespace EDataServer {
         interface SignalSignatures extends SoupSession.SignalSignatures {
             'notify::credentials': (pspec: GObject.ParamSpec) => void;
             'notify::force-http1': (pspec: GObject.ParamSpec) => void;
+            'notify::handle-backoff-responses': (pspec: GObject.ParamSpec) => void;
             'notify::source': (pspec: GObject.ParamSpec) => void;
             'notify::accept-language': (pspec: GObject.ParamSpec) => void;
             'notify::accept-language-auto': (pspec: GObject.ParamSpec) => void;
@@ -3910,10 +3977,15 @@ export namespace EDataServer {
         /**
          * Lists all configured task lists for the user, calling the `cb` for each of them.
          * @param query an {@link EDataServer.GDataQuery} to limit returned task lists, or `null`
+         * @param cb an {@link EDataServer.GDataObjectCallback} to call for each found task list
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        tasklists_list_sync(query?: GDataQuery | null, cancellable?: Gio.Cancellable | null): boolean;
+        tasklists_list_sync(
+            query: GDataQuery | null,
+            cb: GDataObjectCallback,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
         /**
          * Changes properties of a task list `tasklist_id`.
          *
@@ -3996,10 +4068,16 @@ export namespace EDataServer {
          * Lists all tasks in the task list `tasklist_id`, calling the `cb` for each of them.
          * @param tasklist_id id of a task list
          * @param query an {@link EDataServer.GDataQuery} to limit returned tasks, or `null`
+         * @param cb an {@link EDataServer.GDataObjectCallback} to call for each found task
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        tasks_list_sync(tasklist_id: string, query?: GDataQuery | null, cancellable?: Gio.Cancellable | null): boolean;
+        tasks_list_sync(
+            tasklist_id: string,
+            query: GDataQuery | null,
+            cb: GDataObjectCallback,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
         /**
          * Moves the specified task `task_id` to another position in the task
          * list `tasklist_id`. This can include putting it as a child task under
@@ -4294,7 +4372,7 @@ export namespace EDataServer {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4349,7 +4427,7 @@ export namespace EDataServer {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4424,7 +4502,7 @@ export namespace EDataServer {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4646,6 +4724,99 @@ export namespace EDataServer {
          * @param detailedName Name of the signal to stop emission of
          */
         stop_emission_by_name(detailedName: string): void;
+    }
+
+    namespace MsOapxbc {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class MsOapxbc extends GObject.Object {
+        static $gtype: GObject.GType<MsOapxbc>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: MsOapxbc.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<MsOapxbc.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static new_sync(client_id: string, authority: string, cancellable?: Gio.Cancellable | null): MsOapxbc;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof MsOapxbc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MsOapxbc.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof MsOapxbc.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MsOapxbc.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof MsOapxbc.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<MsOapxbc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Synchronously calls acquirePrtSsoCookie() D-Bus method on the Microsoft
+         * OAuth2 broker service and converts the result into a new {@link Soup.Cookie}.
+         * The account object needs to be taken from the accounts list that is returned by
+         * `e_ms_oapxbc_get_accounts_sync()`. The SSO URL is the OAuth2 authentication endpoint.
+         * The scopes are the requested scopes for the OAuth2 service (usually only
+         * https://graph.microsoft.com/.default). The redirect URI is the OAuth2 service
+         * redirect URI.
+         * @param account an account returned from `e_ms_oapxbc_get_accounts_sync()`
+         * @param sso_url an SSO URL to acquire the PRT SSO cookie for.
+         * @param scopes array of scopes
+         * @param redirect_uri redirect URI
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns an acquired cookie, or `null` on error
+         */
+        acquire_prt_sso_cookie_sync(
+            account: Json.Object,
+            sso_url: string,
+            scopes: Json.Array,
+            redirect_uri: string,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie | null;
+        /**
+         * Synchronously calls getAccounts() D-Bus method on the Microsoft
+         * OAuth2 broker service and returns the result as a {@link Json.Object}.
+         *
+         * The {@link Json.Object} contains the accounts that are currently registered at the broker,
+         * whereby the "accounts" node provides a {@link Json.Array} of account entries. Note, that
+         * the availability of the types and entries needs to be checked by the caller before
+         * accessing them. The accounts entries can be inspected e.g. for the "username" and
+         * "homeAccountId" fields. Then, one entry needs to be selected and passed as-is to
+         * `e_ms_oapxbc_acquire_prt_sso_cookie_sync()`.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns the accounts, or `null` on error
+         */
+        get_accounts_sync(cancellable?: Gio.Cancellable | null): Json.Object | null;
     }
 
     namespace NetworkMonitor {
@@ -5230,7 +5401,7 @@ export namespace EDataServer {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5285,7 +5456,7 @@ export namespace EDataServer {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5360,7 +5531,7 @@ export namespace EDataServer {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5714,6 +5885,17 @@ export namespace EDataServer {
          */
         delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
         /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated {@link EDataServer.Source}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a {@link GLib.SList} of {@link Soup.Cookie}-s to use, or `null`
+         */
+        dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
+        /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.
          * The default implementation uses `e_oauth2_service_util_extract_from_uri()` to get
@@ -5975,6 +6157,17 @@ export namespace EDataServer {
          * @virtual
          */
         vfunc_can_process(source: Source): boolean;
+        /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated {@link EDataServer.Source}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @virtual
+         */
+        vfunc_dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.
@@ -6278,7 +6471,7 @@ export namespace EDataServer {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6333,7 +6526,7 @@ export namespace EDataServer {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6408,7 +6601,7 @@ export namespace EDataServer {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6708,6 +6901,17 @@ export namespace EDataServer {
          */
         delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
         /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated {@link EDataServer.Source}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a {@link GLib.SList} of {@link Soup.Cookie}-s to use, or `null`
+         */
+        dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
+        /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.
          * The default implementation uses `e_oauth2_service_util_extract_from_uri()` to get
@@ -6969,6 +7173,17 @@ export namespace EDataServer {
          * @virtual
          */
         vfunc_can_process(source: Source): boolean;
+        /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated {@link EDataServer.Source}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @virtual
+         */
+        vfunc_dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.
@@ -7272,7 +7487,7 @@ export namespace EDataServer {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7327,7 +7542,7 @@ export namespace EDataServer {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7402,7 +7617,7 @@ export namespace EDataServer {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7700,6 +7915,17 @@ export namespace EDataServer {
          */
         delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
         /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated {@link EDataServer.Source}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a {@link GLib.SList} of {@link Soup.Cookie}-s to use, or `null`
+         */
+        dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
+        /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.
          * The default implementation uses `e_oauth2_service_util_extract_from_uri()` to get
@@ -7961,6 +8187,17 @@ export namespace EDataServer {
          * @virtual
          */
         vfunc_can_process(source: Source): boolean;
+        /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated {@link EDataServer.Source}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @virtual
+         */
+        vfunc_dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.
@@ -8264,7 +8501,7 @@ export namespace EDataServer {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -8319,7 +8556,7 @@ export namespace EDataServer {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8394,7 +8631,7 @@ export namespace EDataServer {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8857,7 +9094,7 @@ export namespace EDataServer {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -8912,7 +9149,7 @@ export namespace EDataServer {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8987,7 +9224,7 @@ export namespace EDataServer {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9296,6 +9533,7 @@ export namespace EDataServer {
         interface SignalSignatures extends Soup.Session.SignalSignatures {
             'notify::credentials': (pspec: GObject.ParamSpec) => void;
             'notify::force-http1': (pspec: GObject.ParamSpec) => void;
+            'notify::handle-backoff-responses': (pspec: GObject.ParamSpec) => void;
             'notify::source': (pspec: GObject.ParamSpec) => void;
             'notify::accept-language': (pspec: GObject.ParamSpec) => void;
             'notify::accept-language-auto': (pspec: GObject.ParamSpec) => void;
@@ -9317,6 +9555,8 @@ export namespace EDataServer {
             credentials: NamedParameters;
             force_http1: boolean;
             forceHttp1: boolean;
+            handle_backoff_responses: boolean;
+            handleBackoffResponses: boolean;
             source: Source;
         }
     }
@@ -9358,6 +9598,26 @@ export namespace EDataServer {
          */
         get forceHttp1(): boolean;
         set forceHttp1(val: boolean);
+        /**
+         * Set to `true`, which is the default, to automatically handle backoff responses
+         * from the server, that is, when the server requests the client to retry later.
+         *
+         * Note: This handles only the synchronous functions to send the messages. Clients
+         * using the asynchronous API need to handle the backoff responses on their own.
+         * @since 3.54
+         */
+        get handle_backoff_responses(): boolean;
+        set handle_backoff_responses(val: boolean);
+        /**
+         * Set to `true`, which is the default, to automatically handle backoff responses
+         * from the server, that is, when the server requests the client to retry later.
+         *
+         * Note: This handles only the synchronous functions to send the messages. Clients
+         * using the asynchronous API need to handle the backoff responses on their own.
+         * @since 3.54
+         */
+        get handleBackoffResponses(): boolean;
+        set handleBackoffResponses(val: boolean);
         /**
          * The {@link EDataServer.Source} being used for this soup session.
          * @since 3.26
@@ -9514,6 +9774,13 @@ export namespace EDataServer {
          * @returns whether it's forced to use HTTP/1
          */
         get_force_http1(): boolean;
+        /**
+         * Returns whether the `session` can handle backoff responses from the server.
+         * See `e_soup_session_set_handle_backoff_responses()` for more information about
+         * the limitations.
+         * @returns whether the `session` handles backoff responses
+         */
+        get_handle_backoff_responses(): boolean;
         /**
          * @returns Current log level, as {@link Soup.LoggerLogLevel}
          */
@@ -9703,6 +9970,15 @@ export namespace EDataServer {
          */
         set_force_http1(force_http1: boolean): void;
         /**
+         * Sets whether to automatically handle backoff responses from the server,
+         * that is, when the server requests the client to retry later.
+         *
+         * Note: This handles only the synchronous functions to send the messages. Clients
+         * using the asynchronous API need to handle the backoff responses on their own.
+         * @param handle_backoff_responses the value to set
+         */
+        set_handle_backoff_responses(handle_backoff_responses: boolean): void;
+        /**
          * Setups logging for the `session`. The `logging_level` can be one of:
          * "all" - log whole raw communication;
          * "body" - the same as "all";
@@ -9796,54 +10072,77 @@ export namespace EDataServer {
         // Properties
 
         /**
+         * Connection status of the source
          * @read-only
          */
         get connection_status(): SourceConnectionStatus;
         /**
+         * Connection status of the source
          * @read-only
          */
         get connectionStatus(): SourceConnectionStatus;
+        /**
+         * The human-readable name of the data source
+         */
         get display_name(): string;
         set display_name(val: string);
+        /**
+         * The human-readable name of the data source
+         */
         get displayName(): string;
         set displayName(val: string);
+        /**
+         * Whether the data source is enabled
+         */
         get enabled(): boolean;
         set enabled(val: boolean);
         /**
+         * The main loop context on which to attach event sources
          * @construct-only
          */
         get main_context(): GLib.MainContext;
         /**
+         * The main loop context on which to attach event sources
          * @construct-only
          */
         get mainContext(): GLib.MainContext;
+        /**
+         * The unique identity of the parent data source
+         */
         get parent(): string;
         set parent(val: string);
         /**
+         * Whether the data source can create remote resources
          * @read-only
          */
         get remote_creatable(): boolean;
         /**
+         * Whether the data source can create remote resources
          * @read-only
          */
         get remoteCreatable(): boolean;
         /**
+         * Whether the data source can delete remote resources
          * @read-only
          */
         get remote_deletable(): boolean;
         /**
+         * Whether the data source can delete remote resources
          * @read-only
          */
         get remoteDeletable(): boolean;
         /**
+         * Whether the data source is removable
          * @read-only
          */
         get removable(): boolean;
         /**
+         * The unique identity of the data source
          * @construct-only
          */
         get uid(): string;
         /**
+         * Whether the data source is writable
          * @read-only
          */
         get writable(): boolean;
@@ -11825,7 +12124,7 @@ export namespace EDataServer {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -11880,7 +12179,7 @@ export namespace EDataServer {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -11955,7 +12254,7 @@ export namespace EDataServer {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -12205,6 +12504,9 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * A sorting order of the source
+         */
         get order(): number;
         set order(val: number);
 
@@ -12260,6 +12562,7 @@ export namespace EDataServer {
     namespace SourceAlarms {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::for-every-event': (pspec: GObject.ParamSpec) => void;
             'notify::include-me': (pspec: GObject.ParamSpec) => void;
             'notify::last-notified': (pspec: GObject.ParamSpec) => void;
             'notify::source': (pspec: GObject.ParamSpec) => void;
@@ -12268,6 +12571,8 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
+            for_every_event: boolean;
+            forEveryEvent: boolean;
             include_me: boolean;
             includeMe: boolean;
             last_notified: string;
@@ -12286,12 +12591,34 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Show a notification before every event in this source
+         */
+        get for_every_event(): boolean;
+        set for_every_event(val: boolean);
+        /**
+         * Show a notification before every event in this source
+         */
+        get forEveryEvent(): boolean;
+        set forEveryEvent(val: boolean);
+        /**
+         * Include this source in alarm notifications
+         */
         get include_me(): boolean;
         set include_me(val: boolean);
+        /**
+         * Include this source in alarm notifications
+         */
         get includeMe(): boolean;
         set includeMe(val: boolean);
+        /**
+         * Last alarm notification (in ISO 8601 format)
+         */
         get last_notified(): string;
         set last_notified(val: string);
+        /**
+         * Last alarm notification (in ISO 8601 format)
+         */
         get lastNotified(): string;
         set lastNotified(val: string);
 
@@ -12342,6 +12669,15 @@ export namespace EDataServer {
          */
         dup_last_notified(): string | null;
         /**
+         * Returns whether the user should be alerted about all upcoming appointments
+         * in the calendar described by the {@link EDataServer.Source} to which `extension` belongs.
+         *
+         * This is used in addition to the GSettings key defall-reminder-enabled
+         * in org.gnome.evolution-data-server.calendar.
+         * @returns whether to show alarms for every event
+         */
+        get_for_every_event(): boolean;
+        /**
          * Returns whether the user should be alerted about upcoming appointments
          * in the calendar described by the {@link EDataServer.Source} to which `extension` belongs.
          *
@@ -12358,6 +12694,15 @@ export namespace EDataServer {
          * @returns an ISO 8601 timestamp, or `null`
          */
         get_last_notified(): string | null;
+        /**
+         * Sets whether the user should be alerted about every event in
+         * the calendar described by the {@link EDataServer.Source} to which `extension` belongs.
+         *
+         * This is used in addition to the GSettings key defall-reminder-enabled
+         * in org.gnome.evolution-data-server.calendar.
+         * @param for_every_event whether to show alarms for every event
+         */
+        set_for_every_event(for_every_event: boolean): void;
         /**
          * Sets whether the user should be alerted about upcoming appointments in
          * the calendar described by the {@link EDataServer.Source} to which `extension` belongs.
@@ -12429,31 +12774,76 @@ export namespace EDataServer {
         // Properties
 
         /**
+         * A {@link Gio.SocketConnectable} constructed from the host and port properties
          * @read-only
          */
         get connectable(): Gio.SocketConnectable;
+        /**
+         * What name to use for the authentication method in credentials for authentication.
+         *
+         * An empty string or `null` means to use E_SOURCE_CREDENTIAL_PASSWORD to pass the stored
+         * "password" into the backend with `e_source_invoke_authenticate()`/_sync()
+         */
         get credential_name(): string;
         set credential_name(val: string);
+        /**
+         * What name to use for the authentication method in credentials for authentication.
+         *
+         * An empty string or `null` means to use E_SOURCE_CREDENTIAL_PASSWORD to pass the stored
+         * "password" into the backend with `e_source_invoke_authenticate()`/_sync()
+         */
         get credentialName(): string;
         set credentialName(val: string);
+        /**
+         * Host name for the remote account
+         */
         get host(): string;
         set host(val: string);
+        /**
+         * Whether the authentication is done by another authentication manager (like any
+         * Single Sign On daemon)
+         */
         get is_external(): boolean;
         set is_external(val: boolean);
+        /**
+         * Whether the authentication is done by another authentication manager (like any
+         * Single Sign On daemon)
+         */
         get isExternal(): boolean;
         set isExternal(val: boolean);
+        /**
+         * Authentication method
+         */
         get method(): string;
         set method(val: string);
+        /**
+         * Port number for the remote account
+         */
         get port(): number;
         set port(val: number);
+        /**
+         * ESource UID of a proxy profile
+         */
         get proxy_uid(): string;
         set proxy_uid(val: string);
+        /**
+         * ESource UID of a proxy profile
+         */
         get proxyUid(): string;
         set proxyUid(val: string);
+        /**
+         * Whether to offer to remember the password by default when prompted
+         */
         get remember_password(): boolean;
         set remember_password(val: boolean);
+        /**
+         * Whether to offer to remember the password by default when prompted
+         */
         get rememberPassword(): boolean;
         set rememberPassword(val: boolean);
+        /**
+         * User name for the remote account
+         */
         get user(): string;
         set user(val: string);
 
@@ -12697,8 +13087,14 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Include this source when autocompleting
+         */
         get include_me(): boolean;
         set include_me(val: boolean);
+        /**
+         * Include this source when autocompleting
+         */
         get includeMe(): boolean;
         set includeMe(val: boolean);
 
@@ -12781,6 +13177,9 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Identifier to map a particular version of a system-wide source to a user-specific source
+         */
         get revision(): string;
         set revision(val: string);
 
@@ -12885,8 +13284,14 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * The name of the backend handling the data source
+         */
         get backend_name(): string;
         set backend_name(val: string);
+        /**
+         * The name of the backend handling the data source
+         */
         get backendName(): string;
         set backendName(val: string);
 
@@ -13039,6 +13444,11 @@ export namespace EDataServer {
         // Properties
 
         /**
+         * The {@link Camel.Settings} instance being proxied
+         *
+         * Note: This kind of stomps on CamelSettings' namespace, but it's
+         *     unlikely a CamelSettings subclass would define a property
+         *     named "settings".
          * @read-only
          */
         get settings(): Camel.Settings;
@@ -13183,30 +13593,69 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Set to TRUE when the collection source allows user rename the child sources
+         */
         get allow_sources_rename(): boolean;
         set allow_sources_rename(val: boolean);
+        /**
+         * Set to TRUE when the collection source allows user rename the child sources
+         */
         get allowSourcesRename(): boolean;
         set allowSourcesRename(val: boolean);
+        /**
+         * Whether calendar resources are enabled
+         */
         get calendar_enabled(): boolean;
         set calendar_enabled(val: boolean);
+        /**
+         * Whether calendar resources are enabled
+         */
         get calendarEnabled(): boolean;
         set calendarEnabled(val: boolean);
+        /**
+         * Calendar top URL
+         */
         get calendar_url(): string;
         set calendar_url(val: string);
+        /**
+         * Calendar top URL
+         */
         get calendarUrl(): string;
         set calendarUrl(val: string);
+        /**
+         * Whether contact resources are enabled
+         */
         get contacts_enabled(): boolean;
         set contacts_enabled(val: boolean);
+        /**
+         * Whether contact resources are enabled
+         */
         get contactsEnabled(): boolean;
         set contactsEnabled(val: boolean);
+        /**
+         * Contacts top URL
+         */
         get contacts_url(): string;
         set contacts_url(val: string);
+        /**
+         * Contacts top URL
+         */
         get contactsUrl(): string;
         set contactsUrl(val: string);
+        /**
+         * Uniquely identifies the account at the service provider
+         */
         get identity(): string;
         set identity(val: string);
+        /**
+         * Whether mail resources are enabled
+         */
         get mail_enabled(): boolean;
         set mail_enabled(val: boolean);
+        /**
+         * Whether mail resources are enabled
+         */
         get mailEnabled(): boolean;
         set mailEnabled(val: boolean);
 
@@ -13398,6 +13847,93 @@ export namespace EDataServer {
         set_mail_enabled(mail_enabled: boolean): void;
     }
 
+    namespace SourceConflictSearch {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::include-me': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends SourceExtension.ConstructorProps {
+            include_me: boolean;
+            includeMe: boolean;
+        }
+    }
+
+    /**
+     * Contains only private data that should be read and manipulated using the
+     * functions below.
+     * @gir-type Class
+     * @since 3.60
+     */
+    class SourceConflictSearch extends SourceExtension {
+        static $gtype: GObject.GType<SourceConflictSearch>;
+
+        // Properties
+
+        get include_me(): boolean;
+        set include_me(val: boolean);
+        get includeMe(): boolean;
+        set includeMe(val: boolean);
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: SourceConflictSearch.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<SourceConflictSearch.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof SourceConflictSearch.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SourceConflictSearch.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof SourceConflictSearch.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SourceConflictSearch.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof SourceConflictSearch.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<SourceConflictSearch.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Returns whether the calendar described by the {@link EDataServer.Source} to which
+         * `extension` belongs should be queried for scheduling conflicts when
+         * negotiating a meeting invitation.
+         * @returns whether to search for scheduling conflicts
+         */
+        get_include_me(): boolean;
+        /**
+         * Sets whether the calendar described by the {@link EDataServer.Source} to which `extension`
+         * belongs should be queried for scheduling conflicts when negotiating a
+         * meeting invitation.
+         * @param include_me whether to search for scheduling conflicts
+         */
+        set_include_me(include_me: boolean): void;
+    }
+
     namespace SourceContacts {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
@@ -13421,8 +13957,14 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Include this address book in the contacts calendar
+         */
         get include_me(): boolean;
         set include_me(val: boolean);
+        /**
+         * Include this address book in the contacts calendar
+         */
         get includeMe(): boolean;
         set includeMe(val: boolean);
 
@@ -13923,7 +14465,7 @@ export namespace EDataServer {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -13978,7 +14520,7 @@ export namespace EDataServer {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -14053,7 +14595,7 @@ export namespace EDataServer {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -14613,6 +15155,7 @@ export namespace EDataServer {
         // Properties
 
         /**
+         * The {@link EDataServer.Source} being extended
          * @construct-only
          */
         get source(): Source;
@@ -14719,20 +15262,44 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * GNOME Online Account ID
+         */
         get account_id(): string;
         set account_id(val: string);
+        /**
+         * GNOME Online Account ID
+         */
         get accountId(): string;
         set accountId(val: string);
+        /**
+         * GNOME Online Account's original Address
+         */
         get address(): string;
         set address(val: string);
+        /**
+         * GNOME Online Calendar URL
+         */
         get calendar_url(): string;
         set calendar_url(val: string);
+        /**
+         * GNOME Online Calendar URL
+         */
         get calendarUrl(): string;
         set calendarUrl(val: string);
+        /**
+         * GNOME Online Contacts URL
+         */
         get contacts_url(): string;
         set contacts_url(val: string);
+        /**
+         * GNOME Online Contacts URL
+         */
         get contactsUrl(): string;
         set contactsUrl(val: string);
+        /**
+         * GNOME Online Account's original Name
+         */
         get name(): string;
         set name(val: string);
 
@@ -14936,22 +15503,49 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * LDAP authentication method
+         */
         get authentication(): SourceLDAPAuthentication;
         set authentication(val: SourceLDAPAuthentication);
+        /**
+         * Allow browsing contacts
+         */
         get can_browse(): boolean;
         set can_browse(val: boolean);
+        /**
+         * Allow browsing contacts
+         */
         get canBrowse(): boolean;
         set canBrowse(val: boolean);
+        /**
+         * LDAP search filter
+         */
         get filter(): string;
         set filter(val: string);
+        /**
+         * Download limit
+         */
         get limit(): number;
         set limit(val: number);
+        /**
+         * LDAP search base
+         */
         get root_dn(): string;
         set root_dn(val: string);
+        /**
+         * LDAP search base
+         */
         get rootDn(): string;
         set rootDn(val: string);
+        /**
+         * LDAP search scope
+         */
         get scope(): SourceLDAPScope;
         set scope(val: SourceLDAPScope);
+        /**
+         * LDAP security method
+         */
         get security(): SourceLDAPSecurity;
         set security(val: SourceLDAPSecurity);
 
@@ -15060,14 +15654,29 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Custom iCalendar file
+         */
         get custom_file(): Gio.File;
         set custom_file(val: Gio.File);
+        /**
+         * Custom iCalendar file
+         */
         get customFile(): Gio.File;
         set customFile(val: Gio.File);
+        /**
+         * Email address associated with the calendar
+         */
         get email_address(): string;
         set email_address(val: string);
+        /**
+         * Email address associated with the calendar
+         */
         get emailAddress(): string;
         set emailAddress(val: string);
+        /**
+         * Whether the file can be opened in writable mode
+         */
         get writable(): boolean;
         set writable(val: boolean);
 
@@ -15193,8 +15802,14 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Policy for responding to MDN requests
+         */
         get response_policy(): MdnResponsePolicy;
         set response_policy(val: MdnResponsePolicy);
+        /**
+         * Policy for responding to MDN requests
+         */
         get responsePolicy(): MdnResponsePolicy;
         set responsePolicy(val: MdnResponsePolicy);
 
@@ -15291,26 +15906,59 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Folder to Archive messages in
+         */
         get archive_folder(): string;
         set archive_folder(val: string);
+        /**
+         * Folder to Archive messages in
+         */
         get archiveFolder(): string;
         set archiveFolder(val: string);
+        /**
+         * Whether the account is builtin
+         */
         get builtin(): boolean;
         set builtin(val: boolean);
+        /**
+         * ESource UID of a Mail Identity
+         */
         get identity_uid(): string;
         set identity_uid(val: string);
+        /**
+         * ESource UID of a Mail Identity
+         */
         get identityUid(): string;
         set identityUid(val: string);
+        /**
+         * Three-state option for Mark messages as read after N seconds
+         */
         get mark_seen(): ThreeState;
         set mark_seen(val: ThreeState);
+        /**
+         * Three-state option for Mark messages as read after N seconds
+         */
         get markSeen(): ThreeState;
         set markSeen(val: ThreeState);
+        /**
+         * Timeout in milliseconds for Mark messages as read after N seconds
+         */
         get mark_seen_timeout(): number;
         set mark_seen_timeout(val: number);
+        /**
+         * Timeout in milliseconds for Mark messages as read after N seconds
+         */
         get markSeenTimeout(): number;
         set markSeenTimeout(val: number);
+        /**
+         * Whether the account needs to do an initial setup
+         */
         get needs_initial_setup(): boolean;
         set needs_initial_setup(val: boolean);
+        /**
+         * Whether the account needs to do an initial setup
+         */
         get needsInitialSetup(): boolean;
         set needsInitialSetup(val: boolean);
 
@@ -15489,34 +16137,79 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Recipients to blind carbon-copy
+         */
         get bcc(): string[];
         set bcc(val: string[]);
+        /**
+         * Recipients to carbon-copy
+         */
         get cc(): string[];
         set cc(val: string[]);
+        /**
+         * Preferred folder for draft messages
+         */
         get drafts_folder(): string;
         set drafts_folder(val: string);
+        /**
+         * Preferred folder for draft messages
+         */
         get draftsFolder(): string;
         set draftsFolder(val: string);
+        /**
+         * Preferred language
+         */
         get language(): string;
         set language(val: string);
+        /**
+         * What reply style to prefer
+         */
         get reply_style(): SourceMailCompositionReplyStyle;
         set reply_style(val: SourceMailCompositionReplyStyle);
+        /**
+         * What reply style to prefer
+         */
         get replyStyle(): SourceMailCompositionReplyStyle;
         set replyStyle(val: SourceMailCompositionReplyStyle);
+        /**
+         * Include iMIP messages when signing
+         */
         get sign_imip(): boolean;
         set sign_imip(val: boolean);
+        /**
+         * Include iMIP messages when signing
+         */
         get signImip(): boolean;
         set signImip(val: boolean);
+        /**
+         * Whether start at bottom on reply or forward
+         */
         get start_bottom(): ThreeState;
         set start_bottom(val: ThreeState);
+        /**
+         * Whether start at bottom on reply or forward
+         */
         get startBottom(): ThreeState;
         set startBottom(val: ThreeState);
+        /**
+         * Preferred folder for message templates
+         */
         get templates_folder(): string;
         set templates_folder(val: string);
+        /**
+         * Preferred folder for message templates
+         */
         get templatesFolder(): string;
         set templatesFolder(val: string);
+        /**
+         * Whether place signature at the top on reply or forward
+         */
         get top_signature(): ThreeState;
         set top_signature(val: ThreeState);
+        /**
+         * Whether place signature at the top on reply or forward
+         */
         get topSignature(): ThreeState;
         set topSignature(val: ThreeState);
 
@@ -15774,20 +16467,44 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Sender's email address
+         */
         get address(): string;
         set address(val: string);
+        /**
+         * Sender's email address aliases
+         */
         get aliases(): string;
         set aliases(val: string);
+        /**
+         * Sender's name
+         */
         get name(): string;
         set name(val: string);
+        /**
+         * Sender's organization
+         */
         get organization(): string;
         set organization(val: string);
+        /**
+         * Sender's reply-to address
+         */
         get reply_to(): string;
         set reply_to(val: string);
+        /**
+         * Sender's reply-to address
+         */
         get replyTo(): string;
         set replyTo(val: string);
+        /**
+         * ESource UID of the sender's signature
+         */
         get signature_uid(): string;
         set signature_uid(val: string);
+        /**
+         * ESource UID of the sender's signature
+         */
         get signatureUid(): string;
         set signatureUid(val: string);
 
@@ -16016,11 +16733,18 @@ export namespace EDataServer {
         // Properties
 
         /**
+         * File containing signature content
          * @read-only
          */
         get file(): Gio.File;
+        /**
+         * MIME type of the signature content
+         */
         get mime_type(): string;
         set mime_type(val: string);
+        /**
+         * MIME type of the signature content
+         */
         get mimeType(): string;
         set mimeType(val: string);
 
@@ -16140,20 +16864,46 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Whether to save replies to folder of the message being replied to, instead of
+         * the Sent folder
+         */
         get replies_to_origin_folder(): boolean;
         set replies_to_origin_folder(val: boolean);
+        /**
+         * Whether to save replies to folder of the message being replied to, instead of
+         * the Sent folder
+         */
         get repliesToOriginFolder(): boolean;
         set repliesToOriginFolder(val: boolean);
+        /**
+         * Preferred folder for sent messages
+         */
         get sent_folder(): string;
         set sent_folder(val: string);
+        /**
+         * Preferred folder for sent messages
+         */
         get sentFolder(): string;
         set sentFolder(val: string);
+        /**
+         * ESource UID of a Mail Transport
+         */
         get transport_uid(): string;
         set transport_uid(val: string);
+        /**
+         * ESource UID of a Mail Transport
+         */
         get transportUid(): string;
         set transportUid(val: string);
+        /**
+         * Whether to save sent messages to sent-folder
+         */
         get use_sent_folder(): boolean;
         set use_sent_folder(val: boolean);
+        /**
+         * Whether to save sent messages to sent-folder
+         */
         get useSentFolder(): boolean;
         set useSentFolder(val: boolean);
 
@@ -16411,8 +17161,14 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Keep remote content synchronized locally
+         */
         get stay_synchronized(): boolean;
         set stay_synchronized(val: boolean);
+        /**
+         * Keep remote content synchronized locally
+         */
         get staySynchronized(): boolean;
         set staySynchronized(val: boolean);
 
@@ -16474,6 +17230,7 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             'notify::always-trust': (pspec: GObject.ParamSpec) => void;
+            'notify::ask-send-public-key': (pspec: GObject.ParamSpec) => void;
             'notify::encrypt-by-default': (pspec: GObject.ParamSpec) => void;
             'notify::encrypt-to-self': (pspec: GObject.ParamSpec) => void;
             'notify::key-id': (pspec: GObject.ParamSpec) => void;
@@ -16491,6 +17248,8 @@ export namespace EDataServer {
         interface ConstructorProps extends SourceExtension.ConstructorProps {
             always_trust: boolean;
             alwaysTrust: boolean;
+            ask_send_public_key: boolean;
+            askSendPublicKey: boolean;
             encrypt_by_default: boolean;
             encryptByDefault: boolean;
             encrypt_to_self: boolean;
@@ -16523,44 +17282,114 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Always trust keys in my keyring
+         */
         get always_trust(): boolean;
         set always_trust(val: boolean);
+        /**
+         * Always trust keys in my keyring
+         */
         get alwaysTrust(): boolean;
         set alwaysTrust(val: boolean);
+        /**
+         * Ask before sending public key in messages
+         */
+        get ask_send_public_key(): boolean;
+        set ask_send_public_key(val: boolean);
+        /**
+         * Ask before sending public key in messages
+         */
+        get askSendPublicKey(): boolean;
+        set askSendPublicKey(val: boolean);
+        /**
+         * Encrypt outgoing messages by default
+         */
         get encrypt_by_default(): boolean;
         set encrypt_by_default(val: boolean);
+        /**
+         * Encrypt outgoing messages by default
+         */
         get encryptByDefault(): boolean;
         set encryptByDefault(val: boolean);
+        /**
+         * Always encrypt to myself
+         */
         get encrypt_to_self(): boolean;
         set encrypt_to_self(val: boolean);
+        /**
+         * Always encrypt to myself
+         */
         get encryptToSelf(): boolean;
         set encryptToSelf(val: boolean);
+        /**
+         * PGP/GPG Key ID
+         */
         get key_id(): string;
         set key_id(val: string);
+        /**
+         * PGP/GPG Key ID
+         */
         get keyId(): string;
         set keyId(val: string);
+        /**
+         * Locate keys in WKD for encryption
+         */
         get locate_keys(): boolean;
         set locate_keys(val: boolean);
+        /**
+         * Locate keys in WKD for encryption
+         */
         get locateKeys(): boolean;
         set locateKeys(val: boolean);
+        /**
+         * Prefer inline sign/encrypt
+         */
         get prefer_inline(): boolean;
         set prefer_inline(val: boolean);
+        /**
+         * Prefer inline sign/encrypt
+         */
         get preferInline(): boolean;
         set preferInline(val: boolean);
+        /**
+         * Send whether prefers encryption together with the public key in messages
+         */
         get send_prefer_encrypt(): boolean;
         set send_prefer_encrypt(val: boolean);
+        /**
+         * Send whether prefers encryption together with the public key in messages
+         */
         get sendPreferEncrypt(): boolean;
         set sendPreferEncrypt(val: boolean);
+        /**
+         * Send public key in messages
+         */
         get send_public_key(): boolean;
         set send_public_key(val: boolean);
+        /**
+         * Send public key in messages
+         */
         get sendPublicKey(): boolean;
         set sendPublicKey(val: boolean);
+        /**
+         * Sign outgoing messages by default
+         */
         get sign_by_default(): boolean;
         set sign_by_default(val: boolean);
+        /**
+         * Sign outgoing messages by default
+         */
         get signByDefault(): boolean;
         set signByDefault(val: boolean);
+        /**
+         * Hash algorithm used to sign messages
+         */
         get signing_algorithm(): string;
         set signing_algorithm(val: string);
+        /**
+         * Hash algorithm used to sign messages
+         */
         get signingAlgorithm(): string;
         set signingAlgorithm(val: string);
 
@@ -16625,6 +17454,11 @@ export namespace EDataServer {
          */
         get_always_trust(): boolean;
         /**
+         * Returns, whether should ask before sending PGP public key in messages. The default is `true`.
+         * @returns whether should ask before sending PGP public key in messages
+         */
+        get_ask_send_public_key(): boolean;
+        /**
          * Returns whether to digitally encrypt outgoing messages by default using
          * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
          * @returns whether to encrypt outgoing messages by default
@@ -16658,8 +17492,8 @@ export namespace EDataServer {
          */
         get_send_prefer_encrypt(): boolean;
         /**
-         * Returns, whether should send GPG public key in messages. The default is `true`.
-         * @returns whether should send GPG public key in messages
+         * Returns, whether should send PGP public key in messages. The default is `true`.
+         * @returns whether should send PGP public key in messages
          */
         get_send_public_key(): boolean;
         /**
@@ -16680,6 +17514,12 @@ export namespace EDataServer {
          * @param always_trust whether used keys are always fully trusted
          */
         set_always_trust(always_trust: boolean): void;
+        /**
+         * Sets the `ask_send_public_key` on the `extension`, which tells the client to
+         * ask before user sends public key in the messages in an Autocrypt header.
+         * @param ask_send_public_key value to set
+         */
+        set_ask_send_public_key(ask_send_public_key: boolean): void;
         /**
          * Sets whether to digitally encrypt outgoing messages by default using
          * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
@@ -16807,58 +17647,139 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Proxy autoconfiguration URL
+         */
         get autoconfig_url(): string;
         set autoconfig_url(val: string);
+        /**
+         * Proxy autoconfiguration URL
+         */
         get autoconfigUrl(): string;
         set autoconfigUrl(val: string);
+        /**
+         * FTP proxy host name
+         */
         get ftp_host(): string;
         set ftp_host(val: string);
+        /**
+         * FTP proxy host name
+         */
         get ftpHost(): string;
         set ftpHost(val: string);
+        /**
+         * FTP proxy port
+         */
         get ftp_port(): number;
         set ftp_port(val: number);
+        /**
+         * FTP proxy port
+         */
         get ftpPort(): number;
         set ftpPort(val: number);
+        /**
+         * HTTP proxy password
+         */
         get http_auth_password(): string;
         set http_auth_password(val: string);
+        /**
+         * HTTP proxy password
+         */
         get httpAuthPassword(): string;
         set httpAuthPassword(val: string);
+        /**
+         * HTTP proxy username
+         */
         get http_auth_user(): string;
         set http_auth_user(val: string);
+        /**
+         * HTTP proxy username
+         */
         get httpAuthUser(): string;
         set httpAuthUser(val: string);
+        /**
+         * HTTP proxy host name
+         */
         get http_host(): string;
         set http_host(val: string);
+        /**
+         * HTTP proxy host name
+         */
         get httpHost(): string;
         set httpHost(val: string);
+        /**
+         * HTTP proxy port
+         */
         get http_port(): number;
         set http_port(val: number);
+        /**
+         * HTTP proxy port
+         */
         get httpPort(): number;
         set httpPort(val: number);
+        /**
+         * Whether HTTP proxy server connections require authentication
+         */
         get http_use_auth(): boolean;
         set http_use_auth(val: boolean);
+        /**
+         * Whether HTTP proxy server connections require authentication
+         */
         get httpUseAuth(): boolean;
         set httpUseAuth(val: boolean);
+        /**
+         * Secure HTTP proxy host name
+         */
         get https_host(): string;
         set https_host(val: string);
+        /**
+         * Secure HTTP proxy host name
+         */
         get httpsHost(): string;
         set httpsHost(val: string);
+        /**
+         * Secure HTTP proxy port
+         */
         get https_port(): number;
         set https_port(val: number);
+        /**
+         * Secure HTTP proxy port
+         */
         get httpsPort(): number;
         set httpsPort(val: number);
+        /**
+         * Hosts to connect directly
+         */
         get ignore_hosts(): string[];
         set ignore_hosts(val: string[]);
+        /**
+         * Hosts to connect directly
+         */
         get ignoreHosts(): string[];
         set ignoreHosts(val: string[]);
+        /**
+         * Proxy configuration method
+         */
         get method(): ProxyMethod;
         set method(val: ProxyMethod);
+        /**
+         * SOCKS proxy host name
+         */
         get socks_host(): string;
         set socks_host(val: string);
+        /**
+         * SOCKS proxy host name
+         */
         get socksHost(): string;
         set socksHost(val: string);
+        /**
+         * SOCKS proxy port
+         */
         get socks_port(): number;
         set socks_port(val: number);
+        /**
+         * SOCKS proxy port
+         */
         get socksPort(): number;
         set socksPort(val: number);
 
@@ -17188,14 +18109,29 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Whether to periodically refresh
+         */
         get enabled(): boolean;
         set enabled(val: boolean);
+        /**
+         * Whether to enable refresh on metered network
+         */
         get enabled_on_metered_network(): boolean;
         set enabled_on_metered_network(val: boolean);
+        /**
+         * Whether to enable refresh on metered network
+         */
         get enabledOnMeteredNetwork(): boolean;
         set enabledOnMeteredNetwork(val: boolean);
+        /**
+         * Refresh interval in minutes
+         */
         get interval_minutes(): number;
         set interval_minutes(val: number);
+        /**
+         * Refresh interval in minutes
+         */
         get intervalMinutes(): number;
         set intervalMinutes(val: number);
 
@@ -18488,7 +19424,7 @@ export namespace EDataServer {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -18543,7 +19479,7 @@ export namespace EDataServer {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -18618,7 +19554,7 @@ export namespace EDataServer {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -19022,6 +19958,9 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Resource identity
+         */
         get identity(): string;
         set identity(val: string);
 
@@ -19114,6 +20053,9 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Whether to enable or disable the revision guards
+         */
         get enabled(): boolean;
         set enabled(val: boolean);
 
@@ -19212,28 +20154,64 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Encrypt outgoing messages by default
+         */
         get encrypt_by_default(): boolean;
         set encrypt_by_default(val: boolean);
+        /**
+         * Encrypt outgoing messages by default
+         */
         get encryptByDefault(): boolean;
         set encryptByDefault(val: boolean);
+        /**
+         * Always encrypt to myself
+         */
         get encrypt_to_self(): boolean;
         set encrypt_to_self(val: boolean);
+        /**
+         * Always encrypt to myself
+         */
         get encryptToSelf(): boolean;
         set encryptToSelf(val: boolean);
+        /**
+         * S/MIME certificate for encrypting messages
+         */
         get encryption_certificate(): string;
         set encryption_certificate(val: string);
+        /**
+         * S/MIME certificate for encrypting messages
+         */
         get encryptionCertificate(): string;
         set encryptionCertificate(val: string);
+        /**
+         * Sign outgoing messages by default
+         */
         get sign_by_default(): boolean;
         set sign_by_default(val: boolean);
+        /**
+         * Sign outgoing messages by default
+         */
         get signByDefault(): boolean;
         set signByDefault(val: boolean);
+        /**
+         * Hash algorithm used to sign messages
+         */
         get signing_algorithm(): string;
         set signing_algorithm(val: string);
+        /**
+         * Hash algorithm used to sign messages
+         */
         get signingAlgorithm(): string;
         set signingAlgorithm(val: string);
+        /**
+         * S/MIME certificate for signing messages
+         */
         get signing_certificate(): string;
         set signing_certificate(val: string);
+        /**
+         * S/MIME certificate for signing messages
+         */
         get signingCertificate(): string;
         set signingCertificate(val: string);
 
@@ -19402,8 +20380,14 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Security method
+         */
         get method(): string;
         set method(val: string);
+        /**
+         * Secure the network connection
+         */
         get secure(): boolean;
         set secure(val: boolean);
 
@@ -19521,10 +20505,19 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Textual specification of a color
+         */
         get color(): string;
         set color(val: string);
+        /**
+         * Preferred sorting order
+         */
         get order(): number;
         set order(val: number);
+        /**
+         * Whether the data source is selected
+         */
         get selected(): boolean;
         set selected(val: boolean);
 
@@ -19706,8 +20699,14 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Ubuntu Online Account ID
+         */
         get account_id(): number;
         set account_id(val: number);
+        /**
+         * Ubuntu Online Account ID
+         */
         get accountId(): number;
         set accountId(val: number);
 
@@ -19787,8 +20786,14 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Weather location code
+         */
         get location(): string;
         set location(val: string);
+        /**
+         * Fahrenheit, Centigrade or Kelvin units
+         */
         get units(): SourceWeatherUnits;
         set units(val: SourceWeatherUnits);
 
@@ -19869,8 +20874,14 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Default file extension for new notes
+         */
         get default_ext(): string;
         set default_ext(val: string);
+        /**
+         * Default file extension for new notes
+         */
         get defaultExt(): string;
         set defaultExt(val: string);
 
@@ -19944,10 +20955,12 @@ export namespace EDataServer {
             'notify::color': (pspec: GObject.ParamSpec) => void;
             'notify::display-name': (pspec: GObject.ParamSpec) => void;
             'notify::email-address': (pspec: GObject.ParamSpec) => void;
+            'notify::limit-download-days': (pspec: GObject.ParamSpec) => void;
             'notify::order': (pspec: GObject.ParamSpec) => void;
             'notify::resource-path': (pspec: GObject.ParamSpec) => void;
             'notify::resource-query': (pspec: GObject.ParamSpec) => void;
             'notify::ssl-trust': (pspec: GObject.ParamSpec) => void;
+            'notify::timeout': (pspec: GObject.ParamSpec) => void;
             'notify::uri': (pspec: GObject.ParamSpec) => void;
             'notify::source': (pspec: GObject.ParamSpec) => void;
         }
@@ -19964,6 +20977,8 @@ export namespace EDataServer {
             displayName: string;
             email_address: string;
             emailAddress: string;
+            limit_download_days: number;
+            limitDownloadDays: number;
             order: number;
             resource_path: string;
             resourcePath: string;
@@ -19971,6 +20986,7 @@ export namespace EDataServer {
             resourceQuery: string;
             ssl_trust: string;
             sslTrust: string;
+            timeout: number;
             uri: GLib.Uri;
         }
     }
@@ -19986,38 +21002,106 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * Work around a bug in old Apache servers
+         */
         get avoid_ifmatch(): boolean;
         set avoid_ifmatch(val: boolean);
+        /**
+         * Work around a bug in old Apache servers
+         */
         get avoidIfmatch(): boolean;
         set avoidIfmatch(val: boolean);
+        /**
+         * Whether the server handles meeting invitations (CalDAV-only)
+         */
         get calendar_auto_schedule(): boolean;
         set calendar_auto_schedule(val: boolean);
+        /**
+         * Whether the server handles meeting invitations (CalDAV-only)
+         */
         get calendarAutoSchedule(): boolean;
         set calendarAutoSchedule(val: boolean);
+        /**
+         * Color of the WebDAV resource
+         */
         get color(): string;
         set color(val: string);
+        /**
+         * Display name of the WebDAV resource
+         */
         get display_name(): string;
         set display_name(val: string);
+        /**
+         * Display name of the WebDAV resource
+         */
         get displayName(): string;
         set displayName(val: string);
+        /**
+         * The user's email address
+         */
         get email_address(): string;
         set email_address(val: string);
+        /**
+         * The user's email address
+         */
         get emailAddress(): string;
         set emailAddress(val: string);
+        /**
+         * Limit how many past days can be downloaded. Zero means unlimited.
+         * @since 3.60
+         */
+        get limit_download_days(): number;
+        set limit_download_days(val: number);
+        /**
+         * Limit how many past days can be downloaded. Zero means unlimited.
+         * @since 3.60
+         */
+        get limitDownloadDays(): number;
+        set limitDownloadDays(val: number);
+        /**
+         * A sorting order of the resource
+         */
         get order(): number;
         set order(val: number);
+        /**
+         * Absolute path to a WebDAV resource
+         */
         get resource_path(): string;
         set resource_path(val: string);
+        /**
+         * Absolute path to a WebDAV resource
+         */
         get resourcePath(): string;
         set resourcePath(val: string);
+        /**
+         * Query to access a WebDAV resource
+         */
         get resource_query(): string;
         set resource_query(val: string);
+        /**
+         * Query to access a WebDAV resource
+         */
         get resourceQuery(): string;
         set resourceQuery(val: string);
+        /**
+         * SSL/TLS certificate trust setting, for invalid server certificates
+         */
         get ssl_trust(): string;
         set ssl_trust(val: string);
+        /**
+         * SSL/TLS certificate trust setting, for invalid server certificates
+         */
         get sslTrust(): string;
         set sslTrust(val: string);
+        /**
+         * Connection timeout, in seconds
+         */
+        get timeout(): number;
+        set timeout(val: number);
+        /**
+         * WebDAV service as a GUri
+         */
         get uri(): GLib.Uri;
         set uri(val: GLib.Uri);
 
@@ -20153,6 +21237,10 @@ export namespace EDataServer {
          */
         get_email_address(): string | null;
         /**
+         * @returns limit how many past days can be downloaded. Zero means unlimited.    The default is 0 days.
+         */
+        get_limit_download_days(): number;
+        /**
          * @returns the sorting order of the resource, if known. The default    is (guint) -1, which means unknown/unset.
          */
         get_order(): number;
@@ -20187,6 +21275,10 @@ export namespace EDataServer {
          * @returns the last SSL trust response, as {@link EDataServer.TrustPromptResponse}, if none    is set, then returns {@link EDataServer.TrustPromptResponse.UNKNOWN}
          */
         get_ssl_trust_response(): TrustPromptResponse;
+        /**
+         * @returns the connection timeout, in seconds. The default    is 30 seconds.
+         */
+        get_timeout(): number;
         /**
          * This setting works around a
          * <ulink url="https://issues.apache.org/bugzilla/show_bug.cgi?id=38034">
@@ -20238,6 +21330,11 @@ export namespace EDataServer {
          */
         set_email_address(email_address?: string | null): void;
         /**
+         * Limit how many past days can be downloaded. Zero means unlimited.
+         * @param value a value, in days
+         */
+        set_limit_download_days(value: number): void;
+        /**
          * Set the sorting order of the resource.
          * @param order a sorting order
          */
@@ -20280,6 +21377,11 @@ export namespace EDataServer {
          */
         set_ssl_trust_response(response: TrustPromptResponse | null): void;
         /**
+         * Set the connection timeout, in seconds.
+         * @param timeout a timeout, in seconds
+         */
+        set_timeout(timeout: number): void;
+        /**
          * This is a convenience function which propagates the components of
          * `uri` to the {@link EDataServer.SourceAuthentication} extension, the {@link EDataServer.SourceSecurity}
          * extension, and `extension` itself.  (The "fragment" component of
@@ -20320,6 +21422,7 @@ export namespace EDataServer {
         interface SignalSignatures extends SoupSession.SignalSignatures {
             'notify::credentials': (pspec: GObject.ParamSpec) => void;
             'notify::force-http1': (pspec: GObject.ParamSpec) => void;
+            'notify::handle-backoff-responses': (pspec: GObject.ParamSpec) => void;
             'notify::source': (pspec: GObject.ParamSpec) => void;
             'notify::accept-language': (pspec: GObject.ParamSpec) => void;
             'notify::accept-language-auto': (pspec: GObject.ParamSpec) => void;
@@ -20929,13 +22032,15 @@ export namespace EDataServer {
          * @param uri URI to issue the request for, or `null` to read from {@link EDataServer.Source}
          * @param depth requested depth, can be one of `E_WEBDAV_DEPTH_THIS`, `E_WEBDAV_DEPTH_THIS_AND_CHILDREN` or `E_WEBDAV_DEPTH_INFINITY`
          * @param xml the request itself, as an {@link EDataServer.XmlDocument}, the root element should be DAV:propfind, or `null`
+         * @param func an {@link EDataServer.WebDAVPropstatTraverseFunc} function to call for each DAV:propstat in the multistatus response
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
         propfind_sync(
             uri: string | null,
             depth: string,
-            xml?: XmlDocument | null,
+            xml: XmlDocument | null,
+            func: WebDAVPropstatTraverseFunc,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -21102,6 +22207,7 @@ export namespace EDataServer {
          * @param uri URI to issue the request for, or `null` to read from {@link EDataServer.Source}
          * @param depth requested depth, can be `null`, then no Depth header is sent
          * @param xml the request itself, as an {@link EDataServer.XmlDocument}
+         * @param func an {@link EDataServer.WebDAVPropstatTraverseFunc} function to call for each DAV:propstat in the multistatus response, or `null`
          * @param out_content_type return location for response Content-Type, or `null`
          * @param out_content return location for response content, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
@@ -21111,6 +22217,7 @@ export namespace EDataServer {
             uri: string | null,
             depth: string | null,
             xml: XmlDocument,
+            func?: WebDAVPropstatTraverseFunc | null,
             out_content_type?: string | null,
             out_content?: Uint8Array | null,
             cancellable?: Gio.Cancellable | null,
@@ -21152,9 +22259,14 @@ export namespace EDataServer {
          * It's used to get the request URI as well.
          * @param message an optional {@link Soup.Message} corresponding to the response, or `null`
          * @param xml_data a {@link GLib.ByteArray} containing CALDAV:mkcalendar-response response
+         * @param func an {@link EDataServer.WebDAVPropstatTraverseFunc} function to call for each DAV:propstat in the response
          * @returns Whether succeeded.
          */
-        traverse_mkcalendar_response(message: Soup.Message | null, xml_data: Uint8Array | string): boolean;
+        traverse_mkcalendar_response(
+            message: Soup.Message | null,
+            xml_data: Uint8Array | string,
+            func: WebDAVPropstatTraverseFunc,
+        ): boolean;
         /**
          * Traverses a DAV:mkcol-response response and calls `func` for each returned DAV:propstat.
          *
@@ -21162,9 +22274,14 @@ export namespace EDataServer {
          * It's used to get the request URI as well.
          * @param message an optional {@link Soup.Message} corresponding to the response, or `null`
          * @param xml_data a {@link GLib.ByteArray} containing DAV:mkcol-response response
+         * @param func an {@link EDataServer.WebDAVPropstatTraverseFunc} function to call for each DAV:propstat in the response
          * @returns Whether succeeded.
          */
-        traverse_mkcol_response(message: Soup.Message | null, xml_data: Uint8Array | string): boolean;
+        traverse_mkcol_response(
+            message: Soup.Message | null,
+            xml_data: Uint8Array | string,
+            func: WebDAVPropstatTraverseFunc,
+        ): boolean;
         /**
          * Traverses a DAV:multistatus response and calls `func` for each returned DAV:propstat.
          *
@@ -21172,9 +22289,14 @@ export namespace EDataServer {
          * and that the Content-Type is properly set. It's used to get a request URI as well.
          * @param message an optional {@link Soup.Message} corresponding to the response, or `null`
          * @param xml_data a {@link GLib.ByteArray} containing DAV:multistatus response
+         * @param func an {@link EDataServer.WebDAVPropstatTraverseFunc} function to call for each DAV:propstat in the multistatus response
          * @returns Whether succeeded.
          */
-        traverse_multistatus_response(message: Soup.Message | null, xml_data: Uint8Array | string): boolean;
+        traverse_multistatus_response(
+            message: Soup.Message | null,
+            xml_data: Uint8Array | string,
+            func: WebDAVPropstatTraverseFunc,
+        ): boolean;
         /**
          * Releases (unlocks) existing lock `lock_token` for a resource identified by `uri`,
          * or, in case it's `null`, on the URI defined in associated {@link EDataServer.Source}.
@@ -21777,6 +22899,10 @@ export namespace EDataServer {
     }
 
     /**
+     * @gir-type Alias
+     */
+    type MsOapxbcClass = typeof MsOapxbc;
+    /**
      * @gir-type Struct
      * @since 3.8
      */
@@ -22080,6 +23206,17 @@ export namespace EDataServer {
      */
     abstract class SourceCollectionPrivate {
         static $gtype: GObject.GType<SourceCollectionPrivate>;
+    }
+
+    /**
+     * @gir-type Alias
+     */
+    type SourceConflictSearchClass = typeof SourceConflictSearch;
+    /**
+     * @gir-type Struct
+     */
+    abstract class SourceConflictSearchPrivate {
+        static $gtype: GObject.GType<SourceConflictSearchPrivate>;
     }
 
     /**
@@ -22808,6 +23945,17 @@ export namespace EDataServer {
              */
             vfunc_can_process(source: Source): boolean;
             /**
+             * Additional cookies to be used in the prompt dialog when asking for the user
+             * credentials. The default implementation does not provide any cookies.
+             * @param source an associated {@link EDataServer.Source}
+             * @param cancellable a {@link Gio.Cancellable}
+             * @virtual
+             */
+            vfunc_dup_credentials_prompter_cookies_sync(
+                source: Source,
+                cancellable?: Gio.Cancellable | null,
+            ): Soup.Cookie[] | null;
+            /**
              * Tries to extract an authorization code from a web page provided by the server.
              * The function can be called multiple times, whenever the page load is finished.
              * The default implementation uses `e_oauth2_service_util_extract_from_uri()` to get
@@ -23109,6 +24257,17 @@ export namespace EDataServer {
          * @returns whether succeeded
          */
         delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated {@link EDataServer.Source}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a {@link GLib.SList} of {@link Soup.Cookie}-s to use, or `null`
+         */
+        dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.

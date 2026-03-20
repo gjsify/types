@@ -46,7 +46,24 @@ export namespace CinnamonDesktop {
         STANDBY,
         SUSPEND,
         OFF,
-        DISABLED,
+        UNKNOWN,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace RRDpmsModeType {
+        export const $gtype: GObject.GType<RRDpmsModeType>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum RRDpmsModeType {
+        ON,
+        STANDBY,
+        SUSPEND,
+        OFF,
         UNKNOWN,
     }
 
@@ -150,17 +167,88 @@ export namespace CinnamonDesktop {
         dest_height: number,
     ): GdkPixbuf.Pixbuf;
     /**
-     * Uses packagekit to check if provided package names are installed.
-     * @param packages a null-terminated array of package names
-     * @param callback the callback to run for the result
+     * Gets all locales.
+     * @returns a newly allocated `null`-terminated string array containing the   all locales. Free with `g_strfreev()`.
+     * @since 3.8
      */
-    function installer_check_for_packages(packages: string[], callback: InstallerClientCallback): void;
+    function get_all_locales(): string[];
     /**
-     * Uses packagekit to install the provided list of packages.
-     * @param packages a null-terminated array of package names
-     * @param callback the callback to run for the result
+     * Gets the country name for `code`. If `translation` is provided the
+     * returned string is translated accordingly.
+     * @param code an ISO 3166 code string
+     * @param translation a locale string
+     * @returns the country name. Caller takes ownership.
+     * @since 3.8
      */
-    function installer_install_packages(packages: string[], callback: InstallerClientCallback): void;
+    function get_country_from_code(code: string, translation?: string | null): string;
+    /**
+     * Gets the country description for `locale`. If `translation` is
+     * provided the returned string is translated accordingly.
+     * @param locale a locale string
+     * @param translation a locale string
+     * @returns the country description. Caller takes ownership.
+     * @since 3.8
+     */
+    function get_country_from_locale(locale: string, translation?: string | null): string;
+    /**
+     * Gets the default input source's type and identifier for a given
+     * locale.
+     * @param locale a locale string
+     * @returns `true` if a input source exists or `false` otherwise.
+     * @since 3.8
+     */
+    function get_input_source_from_locale(locale: string): [boolean, string, string];
+    /**
+     * Gets the language name for `code`. If `translation` is provided the
+     * returned string is translated accordingly.
+     * @param code an ISO 639 code string
+     * @param translation a locale string
+     * @returns the language name. Caller takes ownership.
+     * @since 3.8
+     */
+    function get_language_from_code(code: string, translation?: string | null): string;
+    /**
+     * Gets the language description for `locale`. If `translation` is
+     * provided the returned string is translated accordingly.
+     * @param locale a locale string
+     * @param translation a locale string
+     * @returns the language description. Caller takes ownership.
+     * @since 3.8
+     */
+    function get_language_from_locale(locale: string, translation?: string | null): string;
+    /**
+     * Gets a translation of the raw `modifier` string. If `translation`
+     * is provided the returned string is translated accordingly.
+     * @param modifier the modifier part of a locale name
+     * @param translation a locale string
+     * @returns the translated modifier string. Caller takes ownership.
+     * @since 3.34
+     */
+    function get_translated_modifier(modifier: string, translation?: string | null): string;
+    /**
+     * Returns `true` if there are translations for language `code`.
+     * @param code an ISO 639 code string
+     * @returns `true` if there are translations for language `code`.
+     * @since 3.8
+     */
+    function language_has_translations(code: string): boolean;
+    /**
+     * Gets the normalized locale string in the form
+     * [language[_country][.codeset][`modifier`]] for `name`.
+     * @param locale a locale string
+     * @returns normalized locale string. Caller takes ownership.
+     * @since 3.8
+     */
+    function normalize_locale(locale: string): string;
+    /**
+     * Extracts the various components of a locale string in XPG format.
+     * ([language[_country][.codeset][`modifier`]]). See
+     * http://en.wikipedia.org/wiki/Locale.
+     * @param locale a locale string
+     * @returns `true` if parsing was successful.
+     * @since 3.8
+     */
+    function parse_locale(locale: string): [boolean, string, string, string, string];
     /**
      * Returns the {@link GLib.Quark} that will be used for {@link GLib.Error} values returned by the
      * GnomeRR API.
@@ -282,12 +370,6 @@ export namespace CinnamonDesktop {
      */
     interface IdleMonitorWatchFunc {
         (monitor: IdleMonitor, id: number): void;
-    }
-    /**
-     * @gir-type Callback
-     */
-    interface InstallerClientCallback {
-        (success: boolean): void;
     }
     /**
      * @gir-type Flags
@@ -1032,7 +1114,7 @@ export namespace CinnamonDesktop {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1087,7 +1169,7 @@ export namespace CinnamonDesktop {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1162,7 +1244,7 @@ export namespace CinnamonDesktop {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1492,8 +1574,6 @@ export namespace CinnamonDesktop {
 
         static new_current(screen: RRScreen): RRConfig;
 
-        static new_stored(screen: RRScreen): RRConfig;
-
         // Signals
 
         /** @signal */
@@ -1515,18 +1595,6 @@ export namespace CinnamonDesktop {
         ): void;
         emit(signal: string, ...args: any[]): void;
 
-        // Static methods
-
-        /**
-         * @param screen
-         * @param filename
-         * @param timestamp
-         */
-        static apply_from_filename_with_time(screen: RRScreen, filename: string, timestamp: number): boolean;
-        static get_backup_filename(): string;
-        static get_intended_filename(): string;
-        static get_legacy_filename(): string;
-
         // Methods
 
         /**
@@ -1535,16 +1603,17 @@ export namespace CinnamonDesktop {
         applicable(screen: RRScreen): boolean;
         /**
          * @param screen
-         * @param timestamp
          */
-        apply_with_time(screen: RRScreen, timestamp: number): boolean;
+        apply(screen: RRScreen): boolean;
+        /**
+         * @param screen
+         */
+        apply_persistent(screen: RRScreen): boolean;
         ensure_primary(): boolean;
         /**
          * @param config2
          */
         equal(config2: RRConfig): boolean;
-        get_auto_scale(): boolean;
-        get_base_scale(): number;
         /**
          * @returns whether at least two outputs are at (0, 0) offset and they have the same width/height.  Those outputs are of course connected and on (i.e. they have a CRTC assigned).
          */
@@ -1555,23 +1624,10 @@ export namespace CinnamonDesktop {
         get_outputs(): RROutputInfo[];
         load_current(): boolean;
         /**
-         * @param filename
-         */
-        load_filename(filename: string): boolean;
-        /**
          * @param config2
          */
         match(config2: RRConfig): boolean;
         sanitize(): void;
-        save(): boolean;
-        /**
-         * @param auto_scale
-         */
-        set_auto_scale(auto_scale: boolean): void;
-        /**
-         * @param base_scale
-         */
-        set_base_scale(base_scale: number): void;
         /**
          * @param clone
          */
@@ -1718,11 +1774,9 @@ export namespace CinnamonDesktop {
          */
         get_display_name(): string;
         /**
-         * @param doublescan
-         * @param interlaced
-         * @param vsync
+         * Get the geometry for the monitor connected to the specified output.
+         * If the monitor is a tiled monitor, it returns the geometry for the complete monitor.
          */
-        get_flags(doublescan: boolean, interlaced: boolean, vsync: boolean): void;
         get_geometry(): [number, number, number, number];
         /**
          * @returns the output name
@@ -1731,13 +1785,12 @@ export namespace CinnamonDesktop {
         get_preferred_height(): number;
         get_preferred_width(): number;
         get_primary(): boolean;
-        get_product(): number;
+        get_product(): string;
         get_refresh_rate(): number;
-        get_refresh_rate_f(): number;
         get_rotation(): RRRotation;
-        get_scale(): number;
-        get_serial(): number;
-        get_vendor(): string[];
+        get_serial(): string;
+        get_underscanning(): boolean;
+        get_vendor(): string;
         /**
          * @returns whether there is a CRTC assigned to this output (i.e. a signal is being sent to it)
          */
@@ -1747,20 +1800,20 @@ export namespace CinnamonDesktop {
          */
         is_connected(): boolean;
         /**
+         * @returns `true` if the specified output is connected to the primary tile of a monitor or to an untiled monitor, `false` if the output is connected to a secondary tile.
+         */
+        is_primary_tile(): boolean;
+        /**
          * @param active
          */
         set_active(active: boolean): void;
         /**
-         * @param doublescan
-         * @param interlaced
-         * @param vsync
-         */
-        set_flags(doublescan: boolean, interlaced: boolean, vsync: boolean): void;
-        /**
-         * @param x
-         * @param y
-         * @param width
-         * @param height
+         * Set the geometry for the monitor connected to the specified output.
+         * If the monitor is a tiled monitor, it sets the geometry for the complete monitor.
+         * @param x x offset for monitor
+         * @param y y offset for monitor
+         * @param width monitor width
+         * @param height monitor height
          */
         set_geometry(x: number, y: number, width: number, height: number): void;
         /**
@@ -1772,17 +1825,17 @@ export namespace CinnamonDesktop {
          */
         set_refresh_rate(rate: number): void;
         /**
-         * @param rate
-         */
-        set_refresh_rate_f(rate: number): void;
-        /**
          * @param rotation
          */
         set_rotation(rotation: RRRotation | null): void;
         /**
-         * @param scale
+         * @param underscanning
          */
-        set_scale(scale: number): void;
+        set_underscanning(underscanning: boolean): void;
+        /**
+         * @param rotation
+         */
+        supports_rotation(rotation: RRRotation | null): boolean;
     }
 
     namespace RRScreen {
@@ -1828,12 +1881,16 @@ export namespace CinnamonDesktop {
              * @run-first
              */
             'output-disconnected': (arg0: any | null) => void;
+            'notify::dpms-mode': (pspec: GObject.ParamSpec) => void;
             'notify::gdk-screen': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
+        interface ConstructorProps
+            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
+            dpms_mode: RRDpmsModeType;
+            dpmsMode: RRDpmsModeType;
             gdk_screen: Gdk.Screen;
             gdkScreen: Gdk.Screen;
         }
@@ -1842,11 +1899,15 @@ export namespace CinnamonDesktop {
     /**
      * @gir-type Class
      */
-    class RRScreen extends GObject.Object implements Gio.Initable {
+    class RRScreen extends GObject.Object implements Gio.AsyncInitable<RRScreen>, Gio.Initable {
         static $gtype: GObject.GType<RRScreen>;
 
         // Properties
 
+        get dpms_mode(): RRDpmsModeType;
+        set dpms_mode(val: RRDpmsModeType);
+        get dpmsMode(): RRDpmsModeType;
+        set dpmsMode(val: RRDpmsModeType);
         /**
          * @construct-only
          */
@@ -1873,6 +1934,11 @@ export namespace CinnamonDesktop {
 
         static ['new'](screen: Gdk.Screen): RRScreen;
 
+        static new_finish(result: Gio.AsyncResult): RRScreen;
+        // Conflicted with Gio.AsyncInitable.new_finish
+
+        static new_finish(...args: never[]): any;
+
         // Signals
 
         /** @signal */
@@ -1894,30 +1960,39 @@ export namespace CinnamonDesktop {
         ): void;
         emit(signal: string, ...args: any[]): void;
 
-        // Methods
+        // Static methods
 
         /**
-         * @param index
+         * @param screen
+         * @param callback
          */
-        calculate_best_global_scale(index: number): number;
+        static new_async(screen: Gdk.Screen, callback?: Gio.AsyncReadyCallback<RRScreen> | null): void;
+
+        // Virtual methods
+
         /**
-         * @param width
-         * @param height
-         * @param n_supported_scales
+         * @virtual
          */
-        calculate_supported_scales(width: number, height: number, n_supported_scales: number): number;
-        create_clone_modes(): RRMode;
+        vfunc_changed(): void;
+        /**
+         * @param output
+         * @virtual
+         */
+        vfunc_output_connected(output: RROutput): void;
+        /**
+         * @param output
+         * @virtual
+         */
+        vfunc_output_disconnected(output: RROutput): void;
+
+        // Methods
+
         /**
          * @param id
          * @returns the CRTC identified by `id`
          */
         get_crtc_by_id(id: number): RRCrtc;
-        /**
-         * @param mode
-         */
-        get_dpms_mode(mode: RRDpmsMode | null): boolean;
-        get_global_scale(): number;
-        get_global_scale_setting(): number;
+        get_dpms_mode(): [boolean, RRDpmsMode];
         /**
          * @param id
          * @returns the output identified by `id`
@@ -1932,15 +2007,6 @@ export namespace CinnamonDesktop {
          * Get the ranges of the screen
          */
         get_ranges(): [number, number, number, number];
-        /**
-         * Queries the two timestamps that the X RANDR extension maintains.  The X
-         * server will prevent change requests for stale configurations, those whose
-         * timestamp is not equal to that of the latest request for configuration.  The
-         * X server will also prevent change requests that have an older timestamp to
-         * the latest change request.
-         */
-        get_timestamps(): [number, number];
-        get_use_upscaling(): boolean;
         /**
          * List available XRandR clone modes
          */
@@ -1969,20 +2035,206 @@ export namespace CinnamonDesktop {
          */
         set_dpms_mode(mode: RRDpmsMode | null): boolean;
         /**
-         * @param scale_factor
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         *
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         *
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        set_global_scale_setting(scale_factor: number): void;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
-         * @param output
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         *
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         *
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        set_primary_output(output: RROutput): void;
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
-         * @param width
-         * @param height
-         * @param mm_width
-         * @param mm_height
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         *
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         *
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        set_size(width: number, height: number, mm_width: number, mm_height: number): void;
+        init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<boolean> | void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         */
+        init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Finishes the async construction for the various g_async_initable_new
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         */
+        new_finish(res: Gio.AsyncResult): RRScreen;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         *
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         *
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
+         */
+        vfunc_init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
+         */
+        vfunc_init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -2166,7 +2418,7 @@ export namespace CinnamonDesktop {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2221,7 +2473,7 @@ export namespace CinnamonDesktop {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2296,7 +2548,7 @@ export namespace CinnamonDesktop {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2694,6 +2946,8 @@ export namespace CinnamonDesktop {
 
         static ['new'](): XkbInfo;
 
+        static new_with_extras(): XkbInfo;
+
         // Signals
 
         /** @signal */
@@ -2718,6 +2972,11 @@ export namespace CinnamonDesktop {
         // Methods
 
         /**
+         * @param group_id identifier for group
+         * @returns the translated description for the group `group_id`.
+         */
+        description_for_group(group_id: string): string;
+        /**
          * @param group_id identifier for group containing the option
          * @param id option identifier
          * @returns the translated description for the option `id`.
@@ -2734,6 +2993,13 @@ export namespace CinnamonDesktop {
          */
         get_all_option_groups(): string[];
         /**
+         * Returns a list of all languages supported by a layout, given by
+         * `layout_id`.
+         * @param layout_id a layout identifier
+         * @returns the list of ISO 639 code strings. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
+         */
+        get_languages_for_layout(layout_id: string): string[];
+        /**
          * Retrieves information about a layout. Both `display_name` and
          * `short_name` are suitable to show in UIs and might be localized if
          * translations are available.
@@ -2749,15 +3015,25 @@ export namespace CinnamonDesktop {
          */
         get_layout_info(id: string): [boolean, string, string, string, string];
         /**
-         * Retrieves the layout that better fits `language`. It also fetches
-         * information about that layout like `gnome_xkb_info_get_layout_info()`.
-         *
-         * If a layout can't be found the return value is `false` and all the
-         * (out) parameters are set to `null`.
-         * @param language an ISO 639 code
-         * @returns `true` if a layout exists or `false` otherwise.
+         * Returns a list of all layout identifiers we know about for
+         * `country_code`.
+         * @param country_code an ISO 3166 code string
+         * @returns the list of layout ids. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
          */
-        get_layout_info_for_language(language: string): [boolean, string, string, string, string, string];
+        get_layouts_for_country(country_code: string): string[];
+        /**
+         * Returns a list of all layout identifiers we know about for
+         * `language_code`.
+         * @param language_code an ISO 639 code string
+         * @returns the list of layout ids. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
+         */
+        get_layouts_for_language(language_code: string): string[];
+        /**
+         * Gets whether multiple options can be selected for a given group.
+         * @param group_id identifier for group
+         * @returns `true` if multiple selection is allowed, `false` otherwise.
+         */
+        get_option_group_allows_multiple_selection(group_id: string): boolean;
         /**
          * Returns a list of all option identifiers we know about for group
          * `group_id`.
@@ -2838,52 +3114,26 @@ export namespace CinnamonDesktop {
          * @param output
          */
         can_drive_output(output: RROutput): boolean;
+        /**
+         * @returns the current mode of this crtc
+         */
         get_current_mode(): RRMode;
         get_current_rotation(): RRRotation;
         /**
          * @param size
-         * @param red
-         * @param green
-         * @param blue
+         * @returns `true` for success
          */
-        get_gamma(size: number, red: number, green: number, blue: number): boolean;
+        get_gamma(size: number): [boolean, number, number, number];
         get_id(): number;
-        /**
-         * @param x
-         * @param y
-         */
-        get_position(x: number, y: number): void;
+        get_position(): [number, number];
         get_rotations(): RRRotation;
-        get_scale(): number;
-        /**
-         * @param timestamp
-         * @param x
-         * @param y
-         * @param mode
-         * @param rotation
-         * @param outputs
-         * @param n_outputs
-         * @param scale
-         * @param global_scale
-         */
-        set_config_with_time(
-            timestamp: number,
-            x: number,
-            y: number,
-            mode: RRMode,
-            rotation: RRRotation | null,
-            outputs: RROutput,
-            n_outputs: number,
-            scale: number,
-            global_scale: number,
-        ): boolean;
         /**
          * @param size
          * @param red
          * @param green
          * @param blue
          */
-        set_gamma(size: number, red: number, green: number, blue: number): void;
+        set_gamma(size: number, red: number, green: number, blue: number): boolean;
         /**
          * @param rotation
          */
@@ -2909,16 +3159,16 @@ export namespace CinnamonDesktop {
 
         // Methods
 
-        /**
-         * @param doublescan
-         * @param interlaced
-         * @param vsync
-         */
-        get_flags(doublescan: boolean, interlaced: boolean, vsync: boolean): void;
         get_freq(): number;
         get_freq_f(): number;
         get_height(): number;
         get_id(): number;
+        get_is_interlaced(): boolean;
+        /**
+         * Returns TRUE if this mode is a tiled
+         * mode created for span a tiled monitor.
+         */
+        get_is_tiled(): boolean;
         get_width(): number;
     }
 
@@ -2938,45 +3188,37 @@ export namespace CinnamonDesktop {
          * @returns The currently set backlight brightness
          */
         get_backlight(): number;
-        /**
-         * @returns The maximum backlight value, or -1 if not supported
-         */
-        get_backlight_max(): number;
-        /**
-         * @returns The minimum backlight value, or -1 if not supported
-         */
-        get_backlight_min(): number;
-        get_connector_type(): string;
         get_crtc(): RRCrtc;
+        /**
+         * @returns the current mode of this output
+         */
         get_current_mode(): RRMode;
+        get_display_name(): string;
         /**
          * @param size
          */
         get_edid_data(size: number): number;
-        get_height_mm(): number;
         get_id(): number;
-        /**
-         * @param vendor
-         * @param product
-         * @param serial
-         */
-        get_ids_from_edid(vendor: string, product: number, serial: number): boolean;
+        get_ids_from_edid(): [string, string, string];
         get_is_primary(): boolean;
-        get_name(): string;
+        get_is_underscanning(): boolean;
         /**
-         * @param x
-         * @param y
+         * @returns The minimum backlight step available in percent
          */
-        get_position(x: number, y: number): void;
-        get_possible_crtcs(): RRCrtc;
+        get_min_backlight_step(): number;
+        get_name(): string;
+        get_physical_size(): [number, number];
+        get_position(): [number, number];
+        get_possible_crtcs(): RRCrtc[];
         get_preferred_mode(): RRMode;
-        get_size_inches(): number;
-        get_width_mm(): number;
-        is_connected(): boolean;
-        is_laptop(): boolean;
-        list_modes(): RRMode;
+        is_builtin_display(): boolean;
         /**
-         * @param value the absolute value which is min >= this <= max
+         * @returns If the output is connected
+         */
+        is_connected(): boolean;
+        list_modes(): RRMode[];
+        /**
+         * @param value the absolute value which is 0 >= this <= 100
          * @returns `true` for success
          */
         set_backlight(value: number): boolean;
@@ -2984,6 +3226,7 @@ export namespace CinnamonDesktop {
          * @param mode
          */
         supports_mode(mode: RRMode): boolean;
+        supports_underscanning(): boolean;
     }
 
     /**

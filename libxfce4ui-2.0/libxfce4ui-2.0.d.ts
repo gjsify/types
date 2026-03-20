@@ -90,13 +90,6 @@ export namespace Libxfce4ui {
     }
 
     /**
-     * @gir-type Enum
-     */
-    export namespace SMClientRestartStyle {
-        export const $gtype: GObject.GType<SMClientRestartStyle>;
-    }
-
-    /**
      * An enumeration describing how the session manager should restart
      * the application.
      * @gir-type Enum
@@ -113,13 +106,6 @@ export namespace Libxfce4ui {
          *                                      if it ever quits.
          */
         IMMEDIATELY,
-    }
-
-    /**
-     * @gir-type Enum
-     */
-    export namespace SMClientShutdownHint {
-        export const $gtype: GObject.GType<SMClientShutdownHint>;
     }
 
     /**
@@ -144,13 +130,6 @@ export namespace Libxfce4ui {
          * Restart the computer.
          */
         REBOOT,
-    }
-
-    /**
-     * @gir-type Enum
-     */
-    export namespace SmCLientErrorEnum {
-        export const $gtype: GObject.GType<SmCLientErrorEnum>;
     }
 
     /**
@@ -484,6 +463,7 @@ export namespace Libxfce4ui {
      * Convenience method do add separators, used to prevent code duplication
      * @param menu {@link Gtk.MenuShell} on which the separator should be appended
      * @since 4.16
+     * @deprecated since 4.19.1: Use `xfce_gtk_menu_append_separator()` instead.
      */
     function gtk_menu_append_seperator(menu: Gtk.MenuShell): void;
     /**
@@ -811,6 +791,60 @@ export namespace Libxfce4ui {
      * @since 4.14
      */
     function widget_reparent(widget: Gtk.Widget, new_parent: Gtk.Widget): boolean;
+    namespace ClipboardManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class ClipboardManager extends GObject.Object {
+        static $gtype: GObject.GType<ClipboardManager>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: ClipboardManager.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<ClipboardManager.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](replace: boolean): ClipboardManager;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof ClipboardManager.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClipboardManager.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof ClipboardManager.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClipboardManager.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof ClipboardManager.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<ClipboardManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
     namespace FilenameInput {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
@@ -1124,7 +1158,7 @@ export namespace Libxfce4ui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1179,7 +1213,7 @@ export namespace Libxfce4ui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1254,7 +1288,7 @@ export namespace Libxfce4ui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1550,7 +1584,6 @@ export namespace Libxfce4ui {
             'notify::desktop-file': (pspec: GObject.ParamSpec) => void;
             'notify::priority': (pspec: GObject.ParamSpec) => void;
             'notify::restart-command': (pspec: GObject.ParamSpec) => void;
-            'notify::restart-style': (pspec: GObject.ParamSpec) => void;
             'notify::resumed': (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1568,8 +1601,6 @@ export namespace Libxfce4ui {
             priority: number;
             restart_command: string[];
             restartCommand: string[];
-            restart_style: SMClientRestartStyle;
-            restartStyle: SMClientRestartStyle;
             resumed: boolean;
         }
     }
@@ -1613,10 +1644,6 @@ export namespace Libxfce4ui {
         set restart_command(val: string[]);
         get restartCommand(): string[];
         set restartCommand(val: string[]);
-        get restart_style(): SMClientRestartStyle;
-        set restart_style(val: SMClientRestartStyle);
-        get restartStyle(): SMClientRestartStyle;
-        set restartStyle(val: SMClientRestartStyle);
         /**
          * @read-only
          */
@@ -2107,8 +2134,7 @@ export namespace Libxfce4ui {
         // Methods
 
         /**
-         * This function is a replacement for `gtk_dialog_add_action_widget` and assumes that
-         * you have called `xfce_titled_dialog_create_action_area` before.
+         * This function is a replacement for `gtk_dialog_add_action_widget`.
          *
          * Children with #GTK_RESPONSE_HELP will be added to the secondary group of children
          * (see `gtk_button_box_set_child_secondary` for reference).
@@ -2117,8 +2143,7 @@ export namespace Libxfce4ui {
          */
         add_action_widget(child: Gtk.Widget, response_id: number): void;
         /**
-         * This function is a replacement for `gtk_dialog_add_button` and assumes that
-         * you have called `xfce_titled_dialog_create_action_area` before.
+         * This function is a replacement for `gtk_dialog_add_button`.
          *
          * Buttons with #GTK_RESPONSE_HELP will be added to the secondary group of children
          * (see `gtk_button_box_set_child_secondary` for reference).
@@ -2128,12 +2153,7 @@ export namespace Libxfce4ui {
          */
         add_button(button_text: string, response_id: number): Gtk.Widget;
         /**
-         * This function creates a custom action area (of type {@link Gtk.ButtonBox}) and has to
-         * be used in combination with `xfce_titled_dialog_add_action_widget`.
-         *
-         * When using the XfceTitledDialogClass directly to create dialogs this function is
-         * useful to keep action widgets out of the {@link Gtk.HeaderBar} in which they would
-         * normally end up by calling `gtk_dialog_add_action_widget`.
+         * This function is a no-op since 4.19.3.
          */
         create_action_area(): void;
         /**
@@ -2259,7 +2279,7 @@ export namespace Libxfce4ui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2314,7 +2334,7 @@ export namespace Libxfce4ui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2389,7 +2409,7 @@ export namespace Libxfce4ui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2613,6 +2633,10 @@ export namespace Libxfce4ui {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
+    type ClipboardManagerClass = typeof ClipboardManager;
     /**
      * @gir-type Alias
      */

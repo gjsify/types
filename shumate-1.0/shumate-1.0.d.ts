@@ -174,7 +174,7 @@ export namespace Shumate {
          */
         static INVALID_EXPRESSION: number;
         /**
-         * Libshumate was compiled without vector tile support.
+         * Libshumate was compiled without vector tile support. As of 1.6, vector tile support is always enabled and this error never occurs.
          */
         static SUPPORT_OMITTED: number;
         /**
@@ -257,6 +257,57 @@ export namespace Shumate {
          * Imperial units (miles)
          */
         IMPERIAL,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace VectorValueType {
+        export const $gtype: GObject.GType<VectorValueType>;
+    }
+
+    /**
+     * Type of a {@link VectorValue}.
+     * @gir-type Enum
+     * @since 1.6
+     */
+    enum VectorValueType {
+        /**
+         * Null value
+         */
+        NULL,
+        /**
+         * Number value
+         */
+        NUMBER,
+        /**
+         * Boolean value
+         */
+        BOOLEAN,
+        /**
+         * String value
+         */
+        STRING,
+        /**
+         * Color value
+         */
+        COLOR,
+        /**
+         * Array value
+         */
+        ARRAY,
+        /**
+         * Resolved image value
+         */
+        RESOLVED_IMAGE,
+        /**
+         * Formatted string value
+         */
+        FORMATTED_STRING,
+        /**
+         * Collator value
+         */
+        COLLATOR,
     }
 
     /**
@@ -518,6 +569,17 @@ export namespace Shumate {
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
@@ -642,6 +704,17 @@ export namespace Shumate {
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -882,7 +955,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -937,7 +1010,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1012,7 +1085,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1446,7 +1519,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1501,7 +1574,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1576,7 +1649,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2699,6 +2772,17 @@ export namespace Shumate {
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
@@ -2823,6 +2907,17 @@ export namespace Shumate {
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -3063,7 +3158,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3118,7 +3213,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3193,7 +3288,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3607,6 +3702,17 @@ export namespace Shumate {
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
@@ -3731,6 +3837,17 @@ export namespace Shumate {
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -3971,7 +4088,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4026,7 +4143,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4101,7 +4218,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5076,6 +5193,17 @@ export namespace Shumate {
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
@@ -5200,6 +5328,17 @@ export namespace Shumate {
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -5440,7 +5579,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5495,7 +5634,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5570,7 +5709,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6029,7 +6168,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6084,7 +6223,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6159,7 +6298,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7009,7 +7148,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7064,7 +7203,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7139,7 +7278,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7633,6 +7772,17 @@ export namespace Shumate {
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
@@ -7757,6 +7907,17 @@ export namespace Shumate {
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -8040,7 +8201,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -8095,7 +8256,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8170,7 +8331,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8686,7 +8847,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -8741,7 +8902,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8816,7 +8977,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9452,7 +9613,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -9507,7 +9668,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -9582,7 +9743,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -10064,7 +10225,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -10119,7 +10280,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -10194,7 +10355,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -10726,6 +10887,17 @@ export namespace Shumate {
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
@@ -10850,6 +11022,17 @@ export namespace Shumate {
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -11090,7 +11273,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -11145,7 +11328,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -11220,7 +11403,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -11731,6 +11914,17 @@ export namespace Shumate {
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
@@ -11855,6 +12049,17 @@ export namespace Shumate {
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -12095,7 +12300,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -12150,7 +12355,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -12225,7 +12430,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -12770,7 +12975,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -12825,7 +13030,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -12900,7 +13105,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -13821,18 +14026,36 @@ export namespace Shumate {
         // Static methods
 
         /**
-         * Checks whether libshumate was compiled with vector tile support. If it was
-         * not, vector renderers cannot be created or used.
+         * Checks whether libshumate was compiled with vector tile support. Previous
+         * versions of libshumate had a build-time option to disable vector tiles,
+         * but as of 1.6 they are always enabled.
          */
         static is_supported(): boolean;
 
         // Methods
 
         /**
+         * Gets a global state value.
+         *
+         * If the value has not been set with {@link VectorRenderer.set_global_state}, the default
+         * defined in the style will be returned, or `null` if no default is defined. Note that an
+         * explicitly set null value will return a {@link VectorValue} of type null, while an
+         * undefined value will return `null`.
+         * @param key the state key
+         * @returns the state value, or `null` if none is set
+         */
+        get_global_state(key: string): VectorValue;
+        /**
          * Gets the sprite sheet used to render icons and textures.
          * @returns the {@link VectorSpriteSheet}
          */
         get_sprite_sheet(): VectorSpriteSheet;
+        /**
+         * Resets a global state value to the default defined in the style, or to null
+         * if no default is defined.
+         * @param key the state key
+         */
+        reset_global_state(key: string): void;
         /**
          * Adds a data source to the renderer.
          *
@@ -13846,6 +14069,17 @@ export namespace Shumate {
          * @param data_source a {@link DataSource}
          */
         set_data_source(name: string, data_source: DataSource): void;
+        /**
+         * Sets a global state value.
+         *
+         * Global state can be accessed in the stylesheet through the "global-state" expression operator.
+         * This allows styles to provide options that can be configured without changing the style JSON.
+         *
+         * Previously rendered tiles are not affected by changes to global state and must be re-rendered.
+         * @param key the state key
+         * @param value the state value
+         */
+        set_global_state(key: string, value: VectorValue): void;
         /**
          * Sets the sprite sheet used to render icons and textures.
          * @param sprites a {@link VectorSpriteSheet}
@@ -14044,7 +14278,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -14099,7 +14333,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -14174,7 +14408,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -14667,7 +14901,7 @@ export namespace Shumate {
          * This function will emit the `Gdk.Paintable::invalidate-contents`
          * signal.
          *
-         * If a `paintable` reports the {@link Gdk.PaintableFlags.CONTENTS} flag,
+         * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_CONTENTS} flag,
          * it must not call this function.
          */
         invalidate_contents(): void;
@@ -14680,7 +14914,7 @@ export namespace Shumate {
          * This function will emit the `Gdk.Paintable::invalidate-size`
          * signal.
          *
-         * If a `paintable` reports the {@link Gdk.PaintableFlags.SIZE} flag,
+         * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_SIZE} flag,
          * it must not call this function.
          */
         invalidate_size(): void;
@@ -14778,7 +15012,7 @@ export namespace Shumate {
         /**
          * Snapshots the paintable with the given colors.
          *
-         * If less than 4 colors are provided, GTK will pad the array with default
+         * If less than 5 colors are provided, GTK will pad the array with default
          * colors.
          * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
@@ -14787,9 +15021,27 @@ export namespace Shumate {
          */
         snapshot_symbolic(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[]): void;
         /**
+         * Snapshots the paintable with the given colors and weight.
+         *
+         * If less than 5 colors are provided, GTK will pad the array with default
+         * colors.
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
+         * @param width width to snapshot in
+         * @param height height to snapshot in
+         * @param colors a pointer to an array of colors
+         * @param weight The font weight to use (from 1 to 1000, with default 400)
+         */
+        snapshot_with_weight(
+            snapshot: Gdk.Snapshot,
+            width: number,
+            height: number,
+            colors: Gdk.RGBA[],
+            weight: number,
+        ): void;
+        /**
          * Snapshots the paintable with the given colors.
          *
-         * If less than 4 colors are provided, GTK will pad the array with default
+         * If less than 5 colors are provided, GTK will pad the array with default
          * colors.
          * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
@@ -14798,6 +15050,25 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_snapshot_symbolic(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[]): void;
+        /**
+         * Snapshots the paintable with the given colors and weight.
+         *
+         * If less than 5 colors are provided, GTK will pad the array with default
+         * colors.
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
+         * @param width width to snapshot in
+         * @param height height to snapshot in
+         * @param colors a pointer to an array of colors
+         * @param weight The font weight to use (from 1 to 1000, with default 400)
+         * @virtual
+         */
+        vfunc_snapshot_with_weight(
+            snapshot: Gdk.Snapshot,
+            width: number,
+            height: number,
+            colors: Gdk.RGBA[],
+            weight: number,
+        ): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -14895,7 +15166,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -14950,7 +15221,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -15025,7 +15296,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -15388,6 +15659,14 @@ export namespace Shumate {
     namespace Viewport {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the viewport position (location, zoom, rotation, etc.) changes. Changes to multiple properties at once
+             * may be combined into a single signal emission.
+             * @signal
+             * @since 1.6
+             * @run-last
+             */
+            changed: () => void;
             'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
             'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
             'notify::reference-map-source': (pspec: GObject.ParamSpec) => void;
@@ -15727,7 +16006,7 @@ export namespace Shumate {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -15782,7 +16061,7 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -15857,7 +16136,7 @@ export namespace Shumate {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -16189,6 +16468,119 @@ export namespace Shumate {
      * @gir-type Alias
      */
     type VectorSpriteSheetClass = typeof VectorSpriteSheet;
+    /**
+     * A mutable value used in the vector style specification.
+     * @gir-type Struct
+     * @since 1.6
+     */
+    class VectorValue {
+        static $gtype: GObject.GType<VectorValue>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+
+        static ['new'](): VectorValue;
+
+        static new_boolean(_boolean: boolean): VectorValue;
+
+        static new_color(color: Gdk.RGBA): VectorValue;
+
+        static new_from_value(value: GObject.Value | any): VectorValue;
+
+        static new_number(number: number): VectorValue;
+
+        static new_string(string: string): VectorValue;
+
+        // Methods
+
+        /**
+         * Appends `element` to the array value of `self`. The value of `element` is copied.
+         * @param element a {@link VectorValue} to append to the array
+         */
+        array_append(element: VectorValue): void;
+        /**
+         * Creates a duplicate of `self`.
+         * @returns a new {@link VectorValue} which is a duplicate of `self`
+         */
+        dup(): VectorValue;
+        /**
+         * Compares two {@link VectorValue}s for equality.
+         * @param b a {@link VectorValue}
+         * @returns `true` if `a` and `b` are equal, `false` otherwise
+         */
+        equal(b: VectorValue): boolean;
+        /**
+         * Frees a {@link VectorValue}.
+         */
+        free(): void;
+        /**
+         * Gets the boolean value of `self`.
+         * @returns `true` if `self` is a boolean value and `boolean` was set, `false` otherwise
+         */
+        get_boolean(): [boolean, boolean];
+        /**
+         * Gets the color value of `self`.
+         *
+         * If `self` is a string value, it will attempt to parse the string as a color.
+         * @returns `true` if `self` is a color value and `color` was set, `false` otherwise
+         */
+        get_color(): [boolean, Gdk.RGBA];
+        /**
+         * Gets the number value of `self`.
+         * @returns `true` if `self` is a number value and `number` was set, `false` otherwise
+         */
+        get_number(): [boolean, number];
+        /**
+         * Gets the string value of `self`.
+         * @returns `true` if `self` is a string value and `string` was set, `false` otherwise
+         */
+        get_string(): [boolean, string];
+        /**
+         * Gets the type of value stored in `self`.
+         * @returns the type of `self`
+         */
+        get_value_type(): VectorValueType;
+        /**
+         * Calculates a hash value for `self`.
+         * @returns a hash value for `self`
+         */
+        hash(): number;
+        /**
+         * Checks if `self` is a null value.
+         * @returns `true` if `self` is a null value, `false` otherwise
+         */
+        is_null(): boolean;
+        /**
+         * Sets `self` to a boolean value.
+         * @param _boolean a boolean value
+         */
+        set_boolean(_boolean: boolean): void;
+        /**
+         * Sets `self` to a color value.
+         * @param color a {@link Gdk.RGBA}
+         */
+        set_color(color: Gdk.RGBA): void;
+        /**
+         * Sets `self` to a number value.
+         * @param number a number value
+         */
+        set_number(number: number): void;
+        /**
+         * Sets `self` to a string value.
+         * @param string a string value
+         */
+        set_string(string: string): void;
+        /**
+         * Sets `self` to an empty array value.
+         */
+        start_array(): void;
+        /**
+         * Sets `self` to a null value.
+         */
+        unset(): void;
+    }
+
     /**
      * @gir-type Alias
      */

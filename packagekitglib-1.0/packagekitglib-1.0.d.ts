@@ -786,18 +786,36 @@ export namespace PackageKitGlib {
          * Package is available to be installed
          */
         AVAILABLE,
+        /**
+         * Package update has a low priority
+         */
         LOW,
+        /**
+         * Package update is an enhancement
+         */
         ENHANCEMENT,
+        /**
+         * Package update has normal priority
+         */
         NORMAL,
+        /**
+         * Package update fixes bugs
+         */
         BUGFIX,
+        /**
+         * Package update is important
+         */
         IMPORTANT,
+        /**
+         * Package update contains a security fix
+         */
         SECURITY,
         /**
          * Package is blocked
          */
         BLOCKED,
         /**
-         * Package is downloading
+         * Package is being downloaded
          */
         DOWNLOADING,
         /**
@@ -816,6 +834,9 @@ export namespace PackageKitGlib {
          * Package is running cleanup
          */
         CLEANUP,
+        /**
+         * Package is being obsoleted
+         */
         OBSOLETING,
         COLLECTION_INSTALLED,
         COLLECTION_AVAILABLE,
@@ -843,9 +864,25 @@ export namespace PackageKitGlib {
          */
         UNAVAILABLE,
         /**
-         * Update severity is critical; Since: 1.2.4
+         * Package update severity is critical. Since: 1.2.4
          */
         CRITICAL,
+        /**
+         * Package is intended for installation. Since 1.3.0
+         */
+        INSTALL,
+        /**
+         * Package is intended for removal. Since 1.3.0
+         */
+        REMOVE,
+        /**
+         * Package is obsoleted. Since 1.3.0
+         */
+        OBSOLETE,
+        /**
+         * Package is intended for downgrade. Since 1.3.0
+         */
+        DOWNGRADE,
         LAST,
     }
 
@@ -1570,23 +1607,23 @@ export namespace PackageKitGlib {
     }
 
     /**
-     * The DBUS interface used by the PackageKit service.
+     * The D-Bus interface used by the PackageKit service.
      */
     const DBUS_INTERFACE: string;
     /**
-     * The DBUS interface for PackageKit offline update functionality
+     * The D-Bus interface for PackageKit offline update functionality
      */
     const DBUS_INTERFACE_OFFLINE: string;
     /**
-     * The DBUS interface for PackageKit transactions.
+     * The D-Bus interface for PackageKit transactions.
      */
     const DBUS_INTERFACE_TRANSACTION: string;
     /**
-     * The DBUS path to the PackageKit service.
+     * The path to the main PackageKit service D-Bus object.
      */
     const DBUS_PATH: string;
     /**
-     * The DBUS name for the PackageKit system service.
+     * The well-known name for the PackageKit system D-Bus service.
      */
     const DBUS_SERVICE: string;
     /**
@@ -2347,27 +2384,27 @@ export namespace PackageKitGlib {
          * Gets the icon filename.
          * @returns the string value, or `null` for unset.
          */
-        get_icon(): string;
+        get_icon(): string | null;
         /**
          * Gets the id specific to this category.
          * @returns the string value, or `null` for unset.
          */
-        get_id(): string;
+        get_id(): string | null;
         /**
          * Gets the name.
          * @returns the string value, or `null` for unset.
          */
-        get_name(): string;
+        get_name(): string | null;
         /**
          * Gets the parent category id.
          * @returns the string value, or `null` for unset.
          */
-        get_parent_id(): string;
+        get_parent_id(): string | null;
         /**
          * Gets the summary.
          * @returns the string value, or `null` for unset.
          */
-        get_summary(): string;
+        get_summary(): string | null;
         /**
          * Sets the icon filename.
          * @param icon the new value
@@ -2458,6 +2495,7 @@ export namespace PackageKitGlib {
         get detailsWithDepsSize(): boolean;
         set detailsWithDepsSize(val: boolean);
         /**
+         * Whether there are transactions in progress on this client or not
          * @since 0.5.4
          * @read-only
          */
@@ -3795,6 +3833,14 @@ export namespace PackageKitGlib {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
+             * The ::installed-changed signal is emitted when the list of installed apps may have
+             * changed and the control program may have to update some UI.
+             * @signal
+             * @since 1.2.9
+             * @run-last
+             */
+            'installed-changed': () => void;
+            /**
              * The ::repo-list-changed signal is emitted when the repo list may have
              * changed and the control program may have to update some UI.
              * @signal
@@ -3805,7 +3851,7 @@ export namespace PackageKitGlib {
              * The ::restart_schedule signal is emitted when the packagekitd service
              * has been restarted because it has been upgraded.
              * Client programs should reload themselves when it is convenient to
-             * do so, as old client tools may not be compatable with the new daemon.
+             * do so, as old client tools may not be compatible with the new daemon.
              * @signal
              * @run-last
              */
@@ -4046,6 +4092,10 @@ export namespace PackageKitGlib {
          */
         vfunc_connection_changed(connected: boolean): void;
         /**
+         * @virtual
+         */
+        vfunc_installed_changed(): void;
+        /**
          * @param is_locked
          * @virtual
          */
@@ -4115,7 +4165,7 @@ export namespace PackageKitGlib {
          * Gets the debugging state from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_daemon_state_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        get_daemon_state_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string | null>;
         /**
          * Gets the debugging state from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
@@ -4133,13 +4183,13 @@ export namespace PackageKitGlib {
         get_daemon_state_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<string> | void;
+        ): globalThis.Promise<string | null> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns the ID, or `null` if unset, free with `g_free()`
          */
-        get_daemon_state_finish(res: Gio.AsyncResult): string;
+        get_daemon_state_finish(res: Gio.AsyncResult): string | null;
         /**
          * Gets the properties the daemon supports.
          * Warning: this function is synchronous, and may block. Do not use it in GUI
@@ -4178,7 +4228,7 @@ export namespace PackageKitGlib {
          * Gets a transacton ID from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_tid_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        get_tid_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string | null>;
         /**
          * Gets a transacton ID from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
@@ -4193,13 +4243,13 @@ export namespace PackageKitGlib {
         get_tid_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<string> | void;
+        ): globalThis.Promise<string | null> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns the ID, or `null` if unset, free with `g_free()`
          */
-        get_tid_finish(res: Gio.AsyncResult): string;
+        get_tid_finish(res: Gio.AsyncResult): string | null;
         /**
          * We may want to know how long it has been since we refreshed the cache or
          * retrieved the update list.
@@ -5493,15 +5543,19 @@ export namespace PackageKitGlib {
         get updateRestart(): RestartEnum;
         set updateRestart(val: RestartEnum);
         /**
-         * Can be one of {@link PackageKitGlib.InfoEnum.UNKNOWN}, {@link PackageKitGlib.InfoEnum.LOW}, {@link PackageKitGlib.InfoEnum.NORMAL},
-         * {@link PackageKitGlib.InfoEnum.IMPORTANT} or {@link PackageKitGlib.InfoEnum.CRITICAL}.
+         * Can be one of {@link PackageKitGlib.InfoEnum.UNKNOWN}, {@link PackageKitGlib.InfoEnum.LOW},
+         * {@link PackageKitGlib.InfoEnum.ENHANCEMENT}, {@link PackageKitGlib.InfoEnum.NORMAL},
+         * {@link PackageKitGlib.InfoEnum.BUGFIX}, {@link PackageKitGlib.InfoEnum.IMPORTANT},
+         * {@link PackageKitGlib.InfoEnum.SECURITY} or {@link PackageKitGlib.InfoEnum.CRITICAL}.
          * @since 1.2.4
          */
         get update_severity(): InfoEnum;
         set update_severity(val: InfoEnum);
         /**
-         * Can be one of {@link PackageKitGlib.InfoEnum.UNKNOWN}, {@link PackageKitGlib.InfoEnum.LOW}, {@link PackageKitGlib.InfoEnum.NORMAL},
-         * {@link PackageKitGlib.InfoEnum.IMPORTANT} or {@link PackageKitGlib.InfoEnum.CRITICAL}.
+         * Can be one of {@link PackageKitGlib.InfoEnum.UNKNOWN}, {@link PackageKitGlib.InfoEnum.LOW},
+         * {@link PackageKitGlib.InfoEnum.ENHANCEMENT}, {@link PackageKitGlib.InfoEnum.NORMAL},
+         * {@link PackageKitGlib.InfoEnum.BUGFIX}, {@link PackageKitGlib.InfoEnum.IMPORTANT},
+         * {@link PackageKitGlib.InfoEnum.SECURITY} or {@link PackageKitGlib.InfoEnum.CRITICAL}.
          * @since 1.2.4
          */
         get updateSeverity(): InfoEnum;
@@ -5705,14 +5759,14 @@ export namespace PackageKitGlib {
          * Gets the package arch.
          * @returns the arch, or `null` if unset
          */
-        get_arch(): string;
+        get_arch(): string | null;
         /**
          * Gets the package data, which is usually the repository ID that contains the
          * package. Special ID's include "installed" for installed packages, and "local"
          * for local packages that exist on disk but not in a repository.
          * @returns the data, or `null` if unset
          */
-        get_data(): string;
+        get_data(): string | null;
         /**
          * @param args
          */
@@ -5722,7 +5776,7 @@ export namespace PackageKitGlib {
          * Gets the package object ID
          * @returns the ID, or `null` if unset
          */
-        get_id(): string;
+        get_id(): string | null;
         /**
          * Gets the package object ID
          * @returns the {@link PackageKitGlib.InfoEnum}
@@ -5732,16 +5786,18 @@ export namespace PackageKitGlib {
          * Gets the package name.
          * @returns the name, or `null` if unset
          */
-        get_name(): string;
+        get_name(): string | null;
         /**
          * Gets the package object ID
          * @returns the summary, or `null` if unset
          */
-        get_summary(): string;
+        get_summary(): string | null;
         /**
-         * Returns the `package` update severity. Can be one of {@link PackageKitGlib.InfoEnum.UNKNOWN},
-         * {@link PackageKitGlib.InfoEnum.LOW}, {@link PackageKitGlib.InfoEnum.NORMAL}, {@link PackageKitGlib.InfoEnum.IMPORTANT} or
-         * {@link PackageKitGlib.InfoEnum.CRITICAL}.
+         * Returns the `package` update severity. Can be one of
+         * {@link PackageKitGlib.InfoEnum.UNKNOWN}, {@link PackageKitGlib.InfoEnum.LOW},
+         * {@link PackageKitGlib.InfoEnum.ENHANCEMENT}, {@link PackageKitGlib.InfoEnum.NORMAL},
+         * {@link PackageKitGlib.InfoEnum.BUGFIX}, {@link PackageKitGlib.InfoEnum.IMPORTANT},
+         * {@link PackageKitGlib.InfoEnum.SECURITY} or {@link PackageKitGlib.InfoEnum.CRITICAL}.
          * @returns the `package` update severity, if known.
          */
         get_update_severity(): InfoEnum;
@@ -5749,11 +5805,11 @@ export namespace PackageKitGlib {
          * Gets the package version.
          * @returns the version, or `null` if unset
          */
-        get_version(): string;
+        get_version(): string | null;
         /**
          * Parses the data to populate the {@link PackageKitGlib.Package}.
          * @param data the data describing the package
-         * @returns `true` if the data was parsed correcty
+         * @returns `true` if the data was parsed correctly
          */
         parse(data: string): boolean;
         /**
@@ -5777,9 +5833,11 @@ export namespace PackageKitGlib {
          */
         set_summary(summary: string): void;
         /**
-         * Set an update severity for the `package`. The `update_severity` can be
-         * one of {@link PackageKitGlib.InfoEnum.UNKNOWN}, {@link PackageKitGlib.InfoEnum.LOW}, {@link PackageKitGlib.InfoEnum.NORMAL},
-         * {@link PackageKitGlib.InfoEnum.IMPORTANT} or {@link PackageKitGlib.InfoEnum.CRITICAL}.
+         * Set an update severity for the `package`. The `update_severity` can
+         * be one of {@link PackageKitGlib.InfoEnum.UNKNOWN}, {@link PackageKitGlib.InfoEnum.LOW},
+         * {@link PackageKitGlib.InfoEnum.ENHANCEMENT}, {@link PackageKitGlib.InfoEnum.NORMAL},
+         * {@link PackageKitGlib.InfoEnum.BUGFIX}, {@link PackageKitGlib.InfoEnum.IMPORTANT},
+         * {@link PackageKitGlib.InfoEnum.SECURITY} or {@link PackageKitGlib.InfoEnum.CRITICAL}.
          * @param update_severity a {@link PackageKitGlib.InfoEnum}
          */
         set_update_severity(update_severity: InfoEnum | null): void;
@@ -6140,13 +6198,15 @@ export namespace PackageKitGlib {
         get package(): Package;
         set package(val: Package);
         /**
-         * Package ID this transaction is acting on.
+         * Full package ID this transaction is acting on.
+         * e.g. 'gnome-power-manager;0.1.2;i386;fedora'
          * @since 0.5.2
          */
         get package_id(): string;
         set package_id(val: string);
         /**
-         * Package ID this transaction is acting on.
+         * Full package ID this transaction is acting on.
+         * e.g. 'gnome-power-manager;0.1.2;i386;fedora'
          * @since 0.5.2
          */
         get packageId(): string;
@@ -7329,7 +7389,7 @@ export namespace PackageKitGlib {
         // Methods
 
         /**
-         * Get the list of dependant packages.
+         * Get the list of dependent packages.
          * @param filters a bitfield of filters that can be used to limit the results
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param recursive if we should recurse to packages that depend on other packages
@@ -7480,7 +7540,7 @@ export namespace PackageKitGlib {
          */
         get_only_download(): boolean;
         /**
-         * Gets if we allow only authenticated packages in the transactoin.
+         * Gets if we allow only authenticated packages in the transaction.
          * @returns `true` if we allow only authenticated packages
          */
         get_only_trusted(): boolean;
@@ -7683,7 +7743,7 @@ export namespace PackageKitGlib {
             progress_callback: ProgressCallback,
         ): Results;
         /**
-         * Remove a package (optionally with dependancies) from the system.
+         * Remove a package (optionally with dependencies) from the system.
          * If `allow_deps` is set to `false`, and other packages would have to be removed,
          * then the transaction would fail.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
@@ -8659,7 +8719,6 @@ export namespace PackageKitGlib {
      */
     type DesktopClass = typeof Desktop;
     /**
-     * Private {@link PackageKitGlib.Desktop} data
      * @gir-type Struct
      */
     abstract class DesktopPrivate {

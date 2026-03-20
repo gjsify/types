@@ -501,7 +501,7 @@ export namespace EBook {
          */
         contains_email_sync(email_address: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Receive {@link EBookContacts.Contact} from the `client` for the gived `uid`.
+         * Receive {@link EBookContacts.Contact} from the `client` for the given `uid`.
          * The call is finished by `e_book_client_get_contact_finish()`
          * from the `callback`.
          * @param uid a unique string ID specifying the contact
@@ -512,7 +512,7 @@ export namespace EBook {
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<EBookContacts.Contact | null>;
         /**
-         * Receive {@link EBookContacts.Contact} from the `client` for the gived `uid`.
+         * Receive {@link EBookContacts.Contact} from the `client` for the given `uid`.
          * The call is finished by `e_book_client_get_contact_finish()`
          * from the `callback`.
          * @param uid a unique string ID specifying the contact
@@ -525,7 +525,7 @@ export namespace EBook {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Receive {@link EBookContacts.Contact} from the `client` for the gived `uid`.
+         * Receive {@link EBookContacts.Contact} from the `client` for the given `uid`.
          * The call is finished by `e_book_client_get_contact_finish()`
          * from the `callback`.
          * @param uid a unique string ID specifying the contact
@@ -682,7 +682,7 @@ export namespace EBook {
         get_contacts_uids_sync(sexp: string, cancellable?: Gio.Cancellable | null): [boolean, string[]];
         /**
          * Create an {@link EBook.BookClientCursor}.
-         * The call is finished by `e_book_client_get_view_finish()`
+         * The call is finished by `e_book_client_get_cursor_finish()`
          * from the `callback`.
          *
          * Note: `sexp` can be obtained through {@link EBookContacts.BookQuery}, by converting it
@@ -702,7 +702,7 @@ export namespace EBook {
         ): globalThis.Promise<BookClientCursor>;
         /**
          * Create an {@link EBook.BookClientCursor}.
-         * The call is finished by `e_book_client_get_view_finish()`
+         * The call is finished by `e_book_client_get_cursor_finish()`
          * from the `callback`.
          *
          * Note: `sexp` can be obtained through {@link EBookContacts.BookQuery}, by converting it
@@ -724,7 +724,7 @@ export namespace EBook {
         ): void;
         /**
          * Create an {@link EBook.BookClientCursor}.
-         * The call is finished by `e_book_client_get_view_finish()`
+         * The call is finished by `e_book_client_get_cursor_finish()`
          * from the `callback`.
          *
          * Note: `sexp` can be obtained through {@link EBookContacts.BookQuery}, by converting it
@@ -786,6 +786,12 @@ export namespace EBook {
          * @returns The currently set locale for `client`
          */
         get_locale(): string;
+        /**
+         * Gets a preferred vCard version by the `client` backend. When not known,
+         * the latest supported vCard version is returned.
+         * @returns an {@link EBookContacts.VCardVersion} as the preferred vCard version
+         */
+        get_prefer_vcard_version(): EBookContacts.VCardVersion;
         /**
          * Query `client` with `sexp`, creating an {@link EBook.BookClientView}.
          * The call is finished by `e_book_client_get_view_finish()`
@@ -1557,7 +1563,7 @@ export namespace EBook {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1612,7 +1618,7 @@ export namespace EBook {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1687,7 +1693,7 @@ export namespace EBook {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2120,6 +2126,7 @@ export namespace EBook {
         // Virtual methods
 
         /**
+         * The class handler for the {@link EBook.BookClientCursor.SignalSignatures.refresh | EBook.BookClientCursor::refresh} signal
          * @virtual
          */
         vfunc_refresh(): void;
@@ -2637,7 +2644,7 @@ export namespace EBook {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2692,7 +2699,7 @@ export namespace EBook {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2767,7 +2774,7 @@ export namespace EBook {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3062,10 +3069,12 @@ export namespace EBook {
         // Properties
 
         /**
+         * The {@link EBook.BookClient} for the view
          * @construct-only
          */
         get client(): BookClient;
         /**
+         * The {@link Gio.DBusConnection} used to create the D-Bus proxy
          * @construct-only
          */
         get connection(): Gio.DBusConnection;
@@ -3097,10 +3106,12 @@ export namespace EBook {
          */
         get nTotal(): number;
         /**
+         * The object path used to create the D-Bus proxy
          * @construct-only
          */
         get object_path(): string;
         /**
+         * The object path used to create the D-Bus proxy
          * @construct-only
          */
         get objectPath(): string;
@@ -3144,11 +3155,13 @@ export namespace EBook {
         // Virtual methods
 
         /**
+         * Notification that loading a view has completed, after calling `e_book_client_view_start()`
          * @param error
          * @virtual
          */
         vfunc_complete(error: GLib.Error): void;
         /**
+         * Signal emitted intermittently while loading a view after calling `e_book_client_view_start()`
          * @param percent
          * @param message
          * @virtual
@@ -3170,7 +3183,51 @@ export namespace EBook {
          * @param range_length how many contacts to retrieve
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        dup_contacts(range_start: number, range_length: number, cancellable?: Gio.Cancellable | null): void;
+        dup_contacts(
+            range_start: number,
+            range_length: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<[number, EBookContacts.Contact[]]>;
+        /**
+         * Asynchronously reads `range_length` contacts from index `range_start`.
+         * When there are asked more than `e_book_client_view_get_n_total()`
+         * contacts only those up to the total number of contacts are read.
+         * Asking for out of range contacts results in an error.
+         *
+         * Finish the call by `e_book_client_view_dup_contacts_finish()` from the `cb`.
+         *
+         * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+         * @param range_start 0-based range start to retrieve the contacts for
+         * @param range_length how many contacts to retrieve
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param cb a callback to call when the contacts are received
+         */
+        dup_contacts(
+            range_start: number,
+            range_length: number,
+            cancellable: Gio.Cancellable | null,
+            cb: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously reads `range_length` contacts from index `range_start`.
+         * When there are asked more than `e_book_client_view_get_n_total()`
+         * contacts only those up to the total number of contacts are read.
+         * Asking for out of range contacts results in an error.
+         *
+         * Finish the call by `e_book_client_view_dup_contacts_finish()` from the `cb`.
+         *
+         * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
+         * @param range_start 0-based range start to retrieve the contacts for
+         * @param range_length how many contacts to retrieve
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param cb a callback to call when the contacts are received
+         */
+        dup_contacts(
+            range_start: number,
+            range_length: number,
+            cancellable?: Gio.Cancellable | null,
+            cb?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<[number, EBookContacts.Contact[]]> | void;
         /**
          * Finishes previous call of `e_book_client_view_dup_contacts()`;
          * see it for further information.
@@ -3464,7 +3521,7 @@ export namespace EBook {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3519,7 +3576,7 @@ export namespace EBook {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3594,7 +3651,7 @@ export namespace EBook {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

@@ -309,9 +309,9 @@ export namespace Gom {
         // Methods
 
         /**
-         * @param cursor
+         * @returns `true` if successful; otherwise `false` and `error` is set.
          */
-        execute(cursor: Cursor): boolean;
+        execute(): [boolean, Cursor | null];
         /**
          * @param param_name
          */

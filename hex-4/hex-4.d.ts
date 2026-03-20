@@ -669,8 +669,10 @@ export namespace Hex {
              * @run-first
              */
             'paste-clipboard': () => void;
+            'notify::display-control-characters': (pspec: GObject.ParamSpec) => void;
             'notify::document': (pspec: GObject.ParamSpec) => void;
             'notify::fade-zeroes': (pspec: GObject.ParamSpec) => void;
+            'notify::insert-mode': (pspec: GObject.ParamSpec) => void;
             'notify::can-focus': (pspec: GObject.ParamSpec) => void;
             'notify::can-target': (pspec: GObject.ParamSpec) => void;
             'notify::css-classes': (pspec: GObject.ParamSpec) => void;
@@ -717,9 +719,13 @@ export namespace Hex {
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
+            display_control_characters: boolean;
+            displayControlCharacters: boolean;
             document: Document;
             fade_zeroes: boolean;
             fadeZeroes: boolean;
+            insert_mode: boolean;
+            insertMode: boolean;
         }
     }
 
@@ -734,6 +740,22 @@ export namespace Hex {
 
         // Properties
 
+        /**
+         * Whether ASCII control characters (ASCII characters 0x0 through
+         * 0x1F) will be rendered as unicode symbols on the ASCII side of the
+         * {@link Hex.Widget}.
+         * @since 4.10
+         */
+        get display_control_characters(): boolean;
+        set display_control_characters(val: boolean);
+        /**
+         * Whether ASCII control characters (ASCII characters 0x0 through
+         * 0x1F) will be rendered as unicode symbols on the ASCII side of the
+         * {@link Hex.Widget}.
+         * @since 4.10
+         */
+        get displayControlCharacters(): boolean;
+        set displayControlCharacters(val: boolean);
         /**
          * {@link Hex.Document} affiliated with and owned by the {@link Hex.Widget}.
          * @since 4.2
@@ -752,6 +774,18 @@ export namespace Hex {
          */
         get fadeZeroes(): boolean;
         set fadeZeroes(val: boolean);
+        /**
+         * Whether insert-mode (versus overwrite) is currently engaged.
+         * @since 4.10
+         */
+        get insert_mode(): boolean;
+        set insert_mode(val: boolean);
+        /**
+         * Whether insert-mode (versus overwrite) is currently engaged.
+         * @since 4.10
+         */
+        get insertMode(): boolean;
+        set insertMode(val: boolean);
 
         /**
          * Compile-time signal type information.
@@ -768,7 +802,7 @@ export namespace Hex {
 
         _init(...args: any[]): void;
 
-        static ['new'](owner: Document): Widget;
+        static ['new'](document: Document): Widget;
 
         // Signals
 
@@ -854,6 +888,11 @@ export namespace Hex {
         // Conflicted with Gtk.Widget.get_cursor
         get_cursor(...args: never[]): any;
         /**
+         * Retrieve whether ASCII control characters are shown in the ASCII display.
+         * @returns `TRUE` if control characters are displayed; `FALSE` otherwise
+         */
+        get_display_control_characters(): boolean;
+        /**
          * Get the {@link Hex.Document} owned by the {@link Hex.Widget}.
          * @returns the {@link Hex.Document} owned by the {@link Hex.Widget}, or   `null`.
          */
@@ -875,7 +914,7 @@ export namespace Hex {
         get_insert_mode(): boolean;
         /**
          * Get the current widget selection (highlights).
-         * @returns `true` if the operation was successful; `false` otherwise.
+         * @returns `true` if there is an active selection (start and end are different), and `false` if there is no selection (start and end are the same).
          */
         get_selection(): [boolean, number, number];
         /**
@@ -927,6 +966,11 @@ export namespace Hex {
          * @param line_y line to which the cursor should be moved, by absolute value, within   the whole buffer (not just the currently visible part)
          */
         set_cursor_by_row_and_col(col_x: number, line_y: number): void;
+        /**
+         * Set whether ASCII control characters are shown in the ASCII display.
+         * @param display Whether ASCII control characters should be displayed
+         */
+        set_display_control_characters(display: boolean): void;
         /**
          * Set whether zeroes (`00`) are faded in the hex display.
          * @param fade Whether zeroes (`00` in the hex display) should be faded
@@ -1014,6 +1058,17 @@ export namespace Hex {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -1139,6 +1194,17 @@ export namespace Hex {
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -1379,7 +1445,7 @@ export namespace Hex {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1434,7 +1500,7 @@ export namespace Hex {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1509,7 +1575,7 @@ export namespace Hex {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1866,6 +1932,7 @@ export namespace Hex {
         type: ChangeType;
         v_string: string;
         v_byte: number;
+        external_file_change: boolean;
     }
 
     /**

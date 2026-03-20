@@ -1401,7 +1401,7 @@ export namespace WebKit2 {
     }
 
     /**
-     * Enum values used to denote errors happening when creating a {@link WebKit2.WebExtensionMatchPattern}
+     * Enum values used to denote errors happening when creating a `WebKitWebExtensionMatchPattern`
      * @gir-type Struct
      */
     class WebExtensionMatchPatternError extends GLib.Error {
@@ -1491,6 +1491,35 @@ export namespace WebKit2 {
          * the web process termination was requested by an API call. Since: 2.34
          */
         TERMINATED_BY_API,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace XRSessionMode {
+        export const $gtype: GObject.GType<XRSessionMode>;
+    }
+
+    /**
+     * Enum values representing the XR session mode.
+     *
+     * See <https://immersive-web.github.io/webxr/#xrsessionmode-enum>
+     * @gir-type Enum
+     * @since 2.52
+     */
+    enum XRSessionMode {
+        /**
+         * inline session mode.
+         */
+        INLINE,
+        /**
+         * immersive-vr session mode.
+         */
+        IMMERSIVE_VR,
+        /**
+         * immersive-ar session mode.
+         */
+        IMMERSIVE_AR,
     }
 
     /**
@@ -1718,17 +1747,9 @@ export namespace WebKit2 {
     /**
      * Gets the quark for the domain of Web Extension Match Pattern errors.
      * @returns web extension match pattern error domain.
-     */
-    function web_extension_match_pattern_error_quark(): GLib.Quark;
-    /**
-     * Registers a custom URL scheme that can be used in match patterns.
-     *
-     * This method should be used to register any custom URL schemes used by the app for the extension base URLs,
-     * other than `webkit-extension`, or if extensions should have access to other supported URL schemes when using `<all_urls>`.
-     * @param urlScheme The custom URL scheme to register
      * @since 2.48
      */
-    function web_extension_match_pattern_register_custom_URL_scheme(urlScheme: string): void;
+    function web_extension_match_pattern_error_quark(): GLib.Quark;
     /**
      * @gir-type Callback
      */
@@ -1929,37 +1950,6 @@ export namespace WebKit2 {
     /**
      * @gir-type Flags
      */
-    export namespace WebExtensionMatchPatternOptions {
-        export const $gtype: GObject.GType<WebExtensionMatchPatternOptions>;
-    }
-
-    /**
-     * Enum values representing matching options.
-     * @gir-type Flags
-     * @since 2.48
-     */
-    enum WebExtensionMatchPatternOptions {
-        /**
-         * No special matching options.
-         */
-        NONE,
-        /**
-         * The scheme components should be ignored while matching.
-         */
-        IGNORE_SCHEMES,
-        /**
-         * The host components should be ignored while matching.
-         */
-        IGNORE_PATHS,
-        /**
-         * Two patterns should be checked in either direction while matching (A matches B, or B matches A). Invalid for matching URLs.
-         */
-        MATCH_BIDIRECTIONALLY,
-    }
-
-    /**
-     * @gir-type Flags
-     */
     export namespace WebsiteDataTypes {
         export const $gtype: GObject.GType<WebsiteDataTypes>;
     }
@@ -2030,6 +2020,56 @@ export namespace WebKit2 {
          * All types.
          */
         ALL,
+    }
+
+    /**
+     * @gir-type Flags
+     */
+    export namespace XRSessionFeatures {
+        export const $gtype: GObject.GType<XRSessionFeatures>;
+    }
+
+    /**
+     * Enum values representing the XR session features.
+     *
+     * See <https://immersive-web.github.io/webxr/#xrreferencespace-interface>.
+     * And, see <https://immersive-web.github.io/webxr-hand-input/> for hand tracking.
+     * @gir-type Flags
+     * @since 2.52
+     */
+    enum XRSessionFeatures {
+        /**
+         * viewer feature.
+         */
+        VIEWER,
+        /**
+         * local feature.
+         */
+        LOCAL,
+        /**
+         * local-floor feature.
+         */
+        LOCAL_FLOOR,
+        /**
+         * bounded-floor feature.
+         */
+        BOUNDED_FLOOR,
+        /**
+         * unbounded feature.
+         */
+        UNBOUNDED,
+        /**
+         * hand tracking feature.
+         */
+        HAND_TRACKING,
+        /**
+         * hit test feature.
+         */
+        HIT_TEST,
+        /**
+         * WebXR Layers feature.
+         */
+        LAYERS,
     }
 
     namespace AuthenticationRequest {
@@ -2760,7 +2800,7 @@ export namespace WebKit2 {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2815,7 +2855,7 @@ export namespace WebKit2 {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2890,7 +2930,7 @@ export namespace WebKit2 {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3358,6 +3398,14 @@ export namespace WebKit2 {
          */
         get_n_items(): number;
         /**
+         * Gets the position in view coordinates where the context menu was triggered.
+         *
+         * This function only returns valid coordinates when called for a {@link WebKit2.ContextMenu}
+         * passed to {@link WebKit2.WebView.SignalSignatures.context_menu | WebKit2.WebView::context-menu} signal.
+         * @returns `true` if valid position coordinates are available, `false` otherwise
+         */
+        get_position(): [boolean, number, number];
+        /**
          * Gets the user data of `menu`.
          *
          * This function can be used from the UI Process to get user data previously set
@@ -3501,6 +3549,11 @@ export namespace WebKit2 {
          */
         get_gaction(): Gio.Action;
         /**
+         * Gets the target {@link GLib.Variant} associated with `item`.
+         * @returns the target {@link GLib.Variant} of the {@link WebKit2.ContextMenuItem},    or `null` if `item` was not created with `webkit_context_menu_item_new_from_gaction()`    or if no target was specified.
+         */
+        get_gaction_target(): GLib.Variant | null;
+        /**
          * Gets the {@link WebKit2.ContextMenuAction} of `item`.
          *
          * If the {@link WebKit2.ContextMenuItem} was not
@@ -3515,6 +3568,11 @@ export namespace WebKit2 {
          * @returns the {@link WebKit2.ContextMenu} representing the submenu of    `item` or `null` if `item` doesn't have a submenu.
          */
         get_submenu(): ContextMenu;
+        /**
+         * Gets the title of `item`.
+         * @returns the title of `item`, or `null` if `item` is a separator.
+         */
+        get_title(): string;
         /**
          * Checks whether `item` is a separator.
          * @returns `true` is `item` is a separator or `false` otherwise
@@ -4121,7 +4179,7 @@ export namespace WebKit2 {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4176,7 +4234,7 @@ export namespace WebKit2 {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4251,7 +4309,7 @@ export namespace WebKit2 {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5879,7 +5937,7 @@ export namespace WebKit2 {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5934,7 +5992,7 @@ export namespace WebKit2 {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6009,7 +6067,7 @@ export namespace WebKit2 {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6946,7 +7004,7 @@ export namespace WebKit2 {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7001,7 +7059,7 @@ export namespace WebKit2 {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7076,7 +7134,7 @@ export namespace WebKit2 {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7481,7 +7539,7 @@ export namespace WebKit2 {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7536,7 +7594,7 @@ export namespace WebKit2 {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7611,7 +7669,7 @@ export namespace WebKit2 {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8349,7 +8407,7 @@ export namespace WebKit2 {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -8404,7 +8462,7 @@ export namespace WebKit2 {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8479,7 +8537,7 @@ export namespace WebKit2 {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9085,7 +9143,7 @@ export namespace WebKit2 {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -9140,7 +9198,7 @@ export namespace WebKit2 {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -9215,7 +9273,7 @@ export namespace WebKit2 {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -10216,6 +10274,7 @@ export namespace WebKit2 {
             'notify::javascript-can-access-clipboard': (pspec: GObject.ParamSpec) => void;
             'notify::javascript-can-open-windows-automatically': (pspec: GObject.ParamSpec) => void;
             'notify::load-icons-ignoring-image-load-setting': (pspec: GObject.ParamSpec) => void;
+            'notify::math-font-family': (pspec: GObject.ParamSpec) => void;
             'notify::media-content-types-requiring-hardware-support': (pspec: GObject.ParamSpec) => void;
             'notify::media-playback-allows-inline': (pspec: GObject.ParamSpec) => void;
             'notify::media-playback-requires-user-gesture': (pspec: GObject.ParamSpec) => void;
@@ -10335,6 +10394,8 @@ export namespace WebKit2 {
             javascriptCanOpenWindowsAutomatically: boolean;
             load_icons_ignoring_image_load_setting: boolean;
             loadIconsIgnoringImageLoadSetting: boolean;
+            math_font_family: string;
+            mathFontFamily: string;
             media_content_types_requiring_hardware_support: string;
             mediaContentTypesRequiringHardwareSupport: string;
             media_playback_allows_inline: boolean;
@@ -11173,6 +11234,18 @@ export namespace WebKit2 {
         get loadIconsIgnoringImageLoadSetting(): boolean;
         set loadIconsIgnoringImageLoadSetting(val: boolean);
         /**
+         * The font family used as the default for content using a math font.
+         * @since 2.52
+         */
+        get math_font_family(): string;
+        set math_font_family(val: string);
+        /**
+         * The font family used as the default for content using a math font.
+         * @since 2.52
+         */
+        get mathFontFamily(): string;
+        set mathFontFamily(val: string);
+        /**
          * List of media content types requiring hardware support, split by semicolons (:).
          * For example: 'video/webm; codecs="vp*":video/mp4; codecs="avc*":video/&ast; codecs="av1*"'.
          * @since 2.30
@@ -11715,6 +11788,11 @@ export namespace WebKit2 {
          */
         get_load_icons_ignoring_image_load_setting(): boolean;
         /**
+         * Gets the {@link WebKit2.Settings.math_font_family} property.
+         * @returns The default font family used to display content marked with math font. Since 2.52
+         */
+        get_math_font_family(): string | null;
+        /**
          * Gets the {@link WebKit2.Settings.media_content_types_requiring_hardware_support} property.
          * @returns Media content types requiring hardware support, or `null`.
          */
@@ -12044,6 +12122,13 @@ export namespace WebKit2 {
          * @param enabled Value to be set
          */
         set_load_icons_ignoring_image_load_setting(enabled: boolean): void;
+        /**
+         * Set the {@link WebKit2.Settings.math_font_family} property.
+         *
+         * Since 2.52
+         * @param math_font_family the new default math font family
+         */
+        set_math_font_family(math_font_family?: string | null): void;
         /**
          * Set the {@link WebKit2.Settings.media_content_types_requiring_hardware_support} property.
          * @param content_types list of media content types requiring hardware support split by semicolons (:) or `null` to use the default value.
@@ -13475,7 +13560,7 @@ export namespace WebKit2 {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -13530,7 +13615,7 @@ export namespace WebKit2 {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -13605,7 +13690,7 @@ export namespace WebKit2 {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -15714,6 +15799,7 @@ export namespace WebKit2 {
             'notify::favicon': (pspec: GObject.ParamSpec) => void;
             'notify::is-controlled-by-automation': (pspec: GObject.ParamSpec) => void;
             'notify::is-ephemeral': (pspec: GObject.ParamSpec) => void;
+            'notify::is-immersive-mode-enabled': (pspec: GObject.ParamSpec) => void;
             'notify::is-loading': (pspec: GObject.ParamSpec) => void;
             'notify::is-muted': (pspec: GObject.ParamSpec) => void;
             'notify::is-playing-audio': (pspec: GObject.ParamSpec) => void;
@@ -15797,6 +15883,8 @@ export namespace WebKit2 {
             isControlledByAutomation: boolean;
             is_ephemeral: boolean;
             isEphemeral: boolean;
+            is_immersive_mode_enabled: boolean;
+            isImmersiveModeEnabled: boolean;
             is_loading: boolean;
             isLoading: boolean;
             is_muted: boolean;
@@ -16058,6 +16146,18 @@ export namespace WebKit2 {
          * @construct-only
          */
         get isEphemeral(): boolean;
+        /**
+         * Whether the {@link WebKit2.WebView} is in immersive mode.
+         * @since 2.52
+         * @read-only
+         */
+        get is_immersive_mode_enabled(): boolean;
+        /**
+         * Whether the {@link WebKit2.WebView} is in immersive mode.
+         * @since 2.52
+         * @read-only
+         */
+        get isImmersiveModeEnabled(): boolean;
         /**
          * Whether the {@link WebKit2.WebView} is currently loading a page. This property becomes
          * `true` as soon as a new load operation is requested and before the
@@ -17203,7 +17303,8 @@ export namespace WebKit2 {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<cairo.Surface> | void;
         /**
-         * Finishes an asynchronous operation started with `webkit_web_view_get_snapshot()`.
+         * Finishes an asynchronous operation started with `webkit_web_view_get_snapshot()`, producing
+         * an image of the snapshot using the BGRA8888 pixel format.
          * @param result a {@link Gio.AsyncResult}
          * @returns an image with the retrieved snapshot, or `null` in case of error.
          */
@@ -17376,6 +17477,17 @@ export namespace WebKit2 {
          * @returns `true` if the user is allowed to edit the HTML document, or `false` otherwise.
          */
         is_editable(): boolean;
+        /**
+         * Requests to leave the immersive mode this {@link WebKit2.WebView} is in.
+         *
+         * Users interact with web content to start XR sessions, and can typically
+         * end the sessions themselves, but applications might need to end a session on their
+         * own based on application or platform logic.
+         *
+         * Note that if WebXR is disabled, or if it is enabled but the `web_view` is not in
+         * immersive mode, this API does nothing. See also `webkit_web_view_is_immersive_mode_enabled()`.
+         */
+        leave_immersive_mode(): void;
         /**
          * Load the given `content` string for the URI `content_uri`.
          *
@@ -18178,7 +18290,7 @@ export namespace WebKit2 {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -18233,7 +18345,7 @@ export namespace WebKit2 {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -18308,7 +18420,7 @@ export namespace WebKit2 {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -18726,7 +18838,7 @@ export namespace WebKit2 {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -18781,7 +18893,7 @@ export namespace WebKit2 {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -18856,7 +18968,7 @@ export namespace WebKit2 {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -19271,7 +19383,7 @@ export namespace WebKit2 {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -19326,7 +19438,7 @@ export namespace WebKit2 {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -19401,7 +19513,7 @@ export namespace WebKit2 {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -20621,6 +20733,599 @@ export namespace WebKit2 {
          * @returns `true` if toolbar should be visible or `false` otherwise.
          */
         get_toolbar_visible(): boolean;
+    }
+
+    namespace XRPermissionRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
+    }
+
+    /**
+     * A permission request for accessing virtual reality (VR) and
+     * augmented reality (AR) devices, including sensors and head-mounted
+     * displays.
+     *
+     * WebKitXRPermissionRequest represents a request for permission to
+     * decide whether WebKit can initialize an XR session through the
+     * WebXR API.
+     *
+     * When a WebKitXRPermissionRequest is not handled by the user,
+     * it is denied by default.
+     * @gir-type Class
+     * @since 2.52
+     */
+    class XRPermissionRequest extends GObject.Object implements PermissionRequest {
+        static $gtype: GObject.GType<XRPermissionRequest>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: XRPermissionRequest.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<XRPermissionRequest.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof XRPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XRPermissionRequest.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof XRPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, XRPermissionRequest.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof XRPermissionRequest.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<XRPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Gets the optional features that need user consent.
+         *
+         * These features can be granted by calling
+         * `webkit_xr_permission_request_set_granted_optional_features()`
+         * before allowing the request with `webkit_permission_request_allow()`.
+         * @returns a {@link WebKit2.XRSessionFeatures} flag combination
+         */
+        get_consent_optional_features(): XRSessionFeatures;
+        /**
+         * Gets the required features that need user consent.
+         *
+         * These features are automatically granted if the request is allowed with
+         * `webkit_permission_request_allow()`.
+         * @returns a {@link WebKit2.XRSessionFeatures} flag combination
+         */
+        get_consent_required_features(): XRSessionFeatures;
+        /**
+         * Gets the features requested by the origin for the XR device, which
+         * are either granted by default or have been explicitly granted by
+         * the user.
+         * @returns a {@link WebKit2.XRSessionFeatures} flag combination
+         */
+        get_granted_features(): XRSessionFeatures;
+        /**
+         * Gets the full set of optional features requested by the web application.
+         *
+         * This includes both already granted features and those requiring consent.
+         * @returns a {@link WebKit2.XRSessionFeatures} flag combination
+         */
+        get_optional_features_requested(): XRSessionFeatures;
+        /**
+         * Gets the full set of required features requested by the web application.
+         *
+         * This includes both already granted features and those requiring consent.
+         * @returns a {@link WebKit2.XRSessionFeatures} flag combination
+         */
+        get_required_features_requested(): XRSessionFeatures;
+        /**
+         * Gets the security origin that initiated the permission request.
+         * @returns the {@link WebKit2.SecurityOrigin} that initiated the request
+         */
+        get_security_origin(): SecurityOrigin;
+        /**
+         * Gets the session mode for which permission is being requested.
+         * @returns a {@link WebKit2.XRSessionMode}
+         */
+        get_session_mode(): XRSessionMode;
+        /**
+         * Sets which optional features should be granted if the permission request is allowed.
+         *
+         * This function should be called with a subset of the features from
+         * `webkit_xr_permission_request_get_consent_optional_features()` before calling
+         * `webkit_permission_request_allow()`. If the request is denied, no features are
+         * granted, regardless of what is set here.
+         * @param granted granted features
+         */
+        set_granted_optional_features(granted: XRSessionFeatures | null): void;
+        /**
+         * Allow the action which triggered this request.
+         */
+        allow(): void;
+        /**
+         * Deny the action which triggered this request.
+         */
+        deny(): void;
+        /**
+         * Allow the action which triggered this request.
+         * @virtual
+         */
+        vfunc_allow(): void;
+        /**
+         * Deny the action which triggered this request.
+         * @virtual
+         */
+        vfunc_deny(): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
+         * instance.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
+         *
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use `g_binding_unbind()` instead to be on the safe side.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+        ): GObject.Binding;
+        /**
+         * Complete version of `g_object_bind_property()`.
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`, allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call `g_binding_unbind()`.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        /**
+         * @param args
+         */
+        // Conflicted with GObject.Object.bind_property_full
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
+         * @param key name of the key for that association
+         * @returns the data if found,          or `null` if no such data exists.
+         */
+        get_data(key: string): any | null;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: (GObject.Value | any)[]): void;
+        /**
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param property_name the name of a property installed on the class of `object`.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * `g_object_notify()`.
+         *
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
+         * instead, is to store the GParamSpec used with
+         * `g_object_class_install_property()` inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same `object`
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or `null`          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure {@link GObject.Closure} to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by `g_object_new()` as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         * @virtual
+         */
+        vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         * @virtual
+         */
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         * @virtual
+         */
+        vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         * @virtual
+         */
+        vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param pspec
+         * @virtual
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
+        disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
+        set(properties: { [key: string]: any }): void;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     /**
@@ -22328,107 +23033,6 @@ export namespace WebKit2 {
     }
 
     /**
-     * Represents a way to specify a group of URLs for use in WebExtensions.
-     *
-     * All match patterns are specified as strings. Apart from the special `<all_urls>` pattern, match patterns
-     * consist of three parts: scheme, host, and path.
-     *
-     * Generally, match patterns are returned from a `WebKitWebExtension`.
-     * @gir-type Struct
-     * @since 2.48
-     */
-    class WebExtensionMatchPattern {
-        static $gtype: GObject.GType<WebExtensionMatchPattern>;
-
-        // Constructors
-
-        constructor(properties?: Partial<{}>);
-
-        static new_all_hosts_and_schemes(): WebExtensionMatchPattern;
-
-        static new_all_urls(): WebExtensionMatchPattern;
-
-        static new_with_scheme(scheme: string, host: string, path: string): WebExtensionMatchPattern;
-
-        static new_with_string(string: string): WebExtensionMatchPattern;
-
-        // Static methods
-
-        /**
-         * Registers a custom URL scheme that can be used in match patterns.
-         *
-         * This method should be used to register any custom URL schemes used by the app for the extension base URLs,
-         * other than `webkit-extension`, or if extensions should have access to other supported URL schemes when using `<all_urls>`.
-         * @param urlScheme The custom URL scheme to register
-         */
-        static register_custom_URL_scheme(urlScheme: string): void;
-
-        // Methods
-
-        /**
-         * Gets the host part of the pattern string, unless `webkit_web_extension_match_pattern_get_matches_all_urls` is `true`.
-         * @returns The host string.
-         */
-        get_host(): string;
-        /**
-         * Gets whether the match pattern matches all host. This happens when
-         * the pattern is `<all_urls>`, or if `*` is set as the host string.
-         * @returns Whether this match pattern matches all hosts.
-         */
-        get_matches_all_hosts(): boolean;
-        /**
-         * Gets whether the match pattern matches all URLs, in other words, whether
-         * the pattern is `<all_urls>`.
-         * @returns Whether this match pattern matches all URLs.
-         */
-        get_matches_all_urls(): boolean;
-        /**
-         * Gets the path part of the pattern string, unless {@link WebExtensionMatchPattern.get_matches_all_urls} is `true`.
-         * @returns The path string.
-         */
-        get_path(): string;
-        /**
-         * Gets the scheme part of the pattern string, unless `webkit_web_extension_match_pattern_get_matches_all_urls` is `true`.
-         * @returns The scheme string.
-         */
-        get_scheme(): string;
-        /**
-         * Gets the original pattern string.
-         * @returns The original pattern string.
-         */
-        get_string(): string;
-        /**
-         * Matches the `matchPattern` against the specified `pattern` with options.
-         * @param pattern The {@link WebKit2.WebExtensionMatchPattern} to match with `matchPattern`.
-         * @param options The {@link WebKit2.WebExtensionMatchPatternOptions} use while matching.
-         * @returns Whether the pattern matches the specified `pattern`.
-         */
-        matches_pattern(pattern: WebExtensionMatchPattern, options: WebExtensionMatchPatternOptions | null): boolean;
-        /**
-         * Matches the `matchPattern` against the specified URL with options.
-         * @param url The URL to match against the pattern.
-         * @param options The {@link WebKit2.WebExtensionMatchPatternOptions} use while matching.
-         * @returns Whether the pattern matches the specified URL.
-         */
-        matches_url(url: string, options: WebExtensionMatchPatternOptions | null): boolean;
-        /**
-         * Atomically acquires a reference on the given `matchPattern`.
-         *
-         * This function is MT-safe and may be called from any thread.
-         * @returns The same `matchPattern` with an additional reference.
-         */
-        ref(): WebExtensionMatchPattern;
-        /**
-         * Atomically releases a reference on the given `matchPattern`.
-         *
-         * If the reference was the last, the resources associated to the
-         * `matchPattern` are freed. This function is MT-safe and may be called from
-         * any thread.
-         */
-        unref(): void;
-    }
-
-    /**
      * @gir-type Alias
      */
     type WebInspectorClass = typeof WebInspector;
@@ -22620,6 +23224,17 @@ export namespace WebKit2 {
      */
     abstract class WindowPropertiesPrivate {
         static $gtype: GObject.GType<WindowPropertiesPrivate>;
+    }
+
+    /**
+     * @gir-type Alias
+     */
+    type XRPermissionRequestClass = typeof XRPermissionRequest;
+    /**
+     * @gir-type Struct
+     */
+    abstract class XRPermissionRequestPrivate {
+        static $gtype: GObject.GType<XRPermissionRequestPrivate>;
     }
 
     namespace PermissionRequest {

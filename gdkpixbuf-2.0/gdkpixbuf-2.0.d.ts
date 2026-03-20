@@ -409,9 +409,6 @@ export namespace GdkPixbuf {
      * function will compute an optimal rowstride so that rendering can be
      * performed with an efficient algorithm.
      *
-     * As a special case, you can use the {@link GdkPixbuf.Pixbuf.new_from_xpm_data}
-     * function to create a pixbuf from inline XPM image data.
-     *
      * You can also copy an existing pixbuf with the {@link Pixbuf.copy}
      * function. This is not the same as just acquiring a reference to
      * the old pixbuf instance: the copy function will actually duplicate
@@ -1215,8 +1212,8 @@ export namespace GdkPixbuf {
          * If `error` is set, `FALSE` will be returned.
          *
          * See {@link GdkPixbuf.Pixbuf.save_to_callback} for more details.
-         * @param save_func a function that is called to save each block of data that   the save routine generates.
-         * @param type name of file format.
+         * @param save_func a function that is called to   save each block of data that the save routine generates
+         * @param type name of file format
          * @param option_keys name of options to set
          * @param option_values values for named options
          * @returns whether an error was set
@@ -1599,7 +1596,7 @@ export namespace GdkPixbuf {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](https://docs.gtk.org/gdk-pixbuf/floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1654,7 +1651,7 @@ export namespace GdkPixbuf {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](https://docs.gtk.org/gdk-pixbuf/floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1729,7 +1726,7 @@ export namespace GdkPixbuf {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](https://docs.gtk.org/gdk-pixbuf/floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1977,6 +1974,7 @@ export namespace GdkPixbuf {
      * representation, however; you just ask {@link GdkPixbuf.Pixbuf} what should
      * be displayed at a given point in time.
      * @gir-type Class
+     * @deprecated since 2.44: Use a different image loading library for animatable assets
      */
     class PixbufAnimation extends GObject.Object {
         static $gtype: GObject.GType<PixbufAnimation>;
@@ -2211,6 +2209,7 @@ export namespace GdkPixbuf {
      * An opaque object representing an iterator which points to a
      * certain position in an animation.
      * @gir-type Class
+     * @deprecated since 2.44: Use a different image loading library for animatable assets
      */
     class PixbufAnimationIter extends GObject.Object {
         static $gtype: GObject.GType<PixbufAnimationIter>;
@@ -2734,6 +2733,7 @@ export namespace GdkPixbuf {
         /**
          * Whether the animation should loop when it reaches the end.
          * @since 2.18
+         * @deprecated since 2.44: Use a different image loading library for animatable assets
          */
         get loop(): boolean;
         set loop(val: boolean);
