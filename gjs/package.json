@@ -36,6 +36,11 @@
             "import": "./console.js",
             "default": "./console.js"
         },
+        "./gi": {
+            "types": "./gi.d.ts",
+            "import": "./gi.js",
+            "default": "./gi.js"
+        },
         "./gjs": {
             "types": "./gjs.d.ts",
             "import": "./gjs.js",
