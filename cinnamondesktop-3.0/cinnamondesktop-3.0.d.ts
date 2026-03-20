@@ -307,10 +307,12 @@ export namespace CinnamonDesktop {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
              * @signal
+             * @run-last
              */
             transitioned: () => void;
         }
@@ -523,6 +525,7 @@ export namespace CinnamonDesktop {
              * of the end surface as its background, and this signal will
              * get emitted.
              * @signal
+             * @run-last
              */
             finished: (arg0: GObject.Object) => void;
             'notify::height': (pspec: GObject.ParamSpec) => void;
@@ -548,11 +551,13 @@ export namespace CinnamonDesktop {
         /**
          * When a crossfade is running, this is height of the fading
          * surface.
+         * @construct-only
          */
         get height(): number;
         /**
          * When a crossfade is running, this is width of the fading
          * surface.
+         * @construct-only
          */
         get width(): number;
 
@@ -1465,6 +1470,9 @@ export namespace CinnamonDesktop {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set screen(val: RRScreen);
 
         /**
@@ -1591,6 +1599,9 @@ export namespace CinnamonDesktop {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set config(val: RRConfig);
 
         /**
@@ -1779,6 +1790,7 @@ export namespace CinnamonDesktop {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             changed: () => void;
             /**
@@ -1796,6 +1808,7 @@ export namespace CinnamonDesktop {
              * handler, instead of keeping the `output` reference for an async or
              * idle function.
              * @signal
+             * @run-first
              */
             'output-connected': (arg0: any | null) => void;
             /**
@@ -1812,6 +1825,7 @@ export namespace CinnamonDesktop {
              * handler, instead of keeping the `output` reference for an async or
              * idle function.
              * @signal
+             * @run-first
              */
             'output-disconnected': (arg0: any | null) => void;
             'notify::gdk-screen': (pspec: GObject.ParamSpec) => void;
@@ -1833,7 +1847,13 @@ export namespace CinnamonDesktop {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get gdk_screen(): Gdk.Screen;
+        /**
+         * @construct-only
+         */
         get gdkScreen(): Gdk.Screen;
 
         /**
@@ -2526,6 +2546,7 @@ export namespace CinnamonDesktop {
 
         /**
          * A formatted string representing the current clock display.
+         * @read-only
          */
         get clock(): string;
         /**

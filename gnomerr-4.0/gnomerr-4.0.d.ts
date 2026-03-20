@@ -40,6 +40,9 @@ export namespace GnomeRR {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DpmsModeType {
         export const $gtype: GObject.GType<DpmsModeType>;
     }
@@ -116,6 +119,9 @@ export namespace GnomeRR {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set screen(val: Screen);
 
         /**
@@ -331,6 +337,7 @@ export namespace GnomeRR {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             changed: () => void;
             /**
@@ -348,6 +355,7 @@ export namespace GnomeRR {
              * handler, instead of keeping the `output` reference for an async or
              * idle function.
              * @signal
+             * @run-first
              */
             'output-connected': (arg0: Output) => void;
             /**
@@ -364,6 +372,7 @@ export namespace GnomeRR {
              * handler, instead of keeping the `output` reference for an async or
              * idle function.
              * @signal
+             * @run-first
              */
             'output-disconnected': (arg0: Output) => void;
             'notify::dpms-mode': (pspec: GObject.ParamSpec) => void;
@@ -393,7 +402,13 @@ export namespace GnomeRR {
         set dpms_mode(val: DpmsModeType);
         get dpmsMode(): DpmsModeType;
         set dpmsMode(val: DpmsModeType);
+        /**
+         * @construct-only
+         */
         get gdk_display(): Gdk.Display;
+        /**
+         * @construct-only
+         */
         get gdkDisplay(): Gdk.Display;
 
         /**

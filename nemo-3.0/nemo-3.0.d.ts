@@ -149,7 +149,13 @@ export namespace Nemo {
 
         get attribute(): string;
         set attribute(val: string);
+        /**
+         * @read-only
+         */
         get attribute_q(): number;
+        /**
+         * @read-only
+         */
         get attributeQ(): number;
         get description(): string;
         set description(val: string);
@@ -157,6 +163,9 @@ export namespace Nemo {
         set ellipsize(val: Pango.EllipsizeMode);
         get label(): string;
         set label(val: string);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get width_chars(): number;
         set width_chars(val: number);
@@ -841,6 +850,7 @@ export namespace Nemo {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             activate: () => void;
             'notify::icon': (pspec: GObject.ParamSpec) => void;
@@ -887,6 +897,9 @@ export namespace Nemo {
         set label(val: string);
         get menu(): Menu;
         set menu(val: Menu);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get priority(): boolean;
         set priority(val: boolean);
@@ -1004,6 +1017,9 @@ export namespace Nemo {
 
         get label(): Gtk.Widget;
         set label(val: Gtk.Widget);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get page(): Gtk.Widget;
         set page(val: Gtk.Widget);
@@ -1264,9 +1280,15 @@ export namespace Nemo {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -1580,6 +1602,7 @@ export namespace Nemo {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -1587,6 +1610,7 @@ export namespace Nemo {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -1708,6 +1732,7 @@ export namespace Nemo {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;

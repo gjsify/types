@@ -21,6 +21,9 @@ export namespace GstTag {
      * GstTag-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TagDemuxResult {
         export const $gtype: GObject.GType<TagDemuxResult>;
     }
@@ -44,6 +47,9 @@ export namespace GstTag {
         OK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TagImageType {
         export const $gtype: GObject.GType<TagImageType>;
     }
@@ -765,6 +771,9 @@ export namespace GstTag {
      * @param value a vorbiscomment value string (value in key=value), must be valid UTF-8
      */
     function vorbis_tag_add(list: Gst.TagList, tag: string, value: string): void;
+    /**
+     * @gir-type Flags
+     */
     export namespace TagLicenseFlags {
         export const $gtype: GObject.GType<TagLicenseFlags>;
     }

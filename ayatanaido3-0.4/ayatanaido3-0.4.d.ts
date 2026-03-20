@@ -69,14 +69,17 @@ export namespace AyatanaIdo3 {
         interface SignalSignatures extends Gtk.MenuItem.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'day-selected': () => void;
             /**
              * @signal
+             * @run-last
              */
             'day-selected-double-click': () => void;
             /**
              * @signal
+             * @run-last
              */
             'month-changed': () => void;
             'notify::accel-path': (pspec: GObject.ParamSpec) => void;
@@ -325,9 +328,15 @@ export namespace AyatanaIdo3 {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -641,6 +650,7 @@ export namespace AyatanaIdo3 {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -648,6 +658,7 @@ export namespace AyatanaIdo3 {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -769,6 +780,7 @@ export namespace AyatanaIdo3 {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -5229,9 +5241,15 @@ export namespace AyatanaIdo3 {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -5545,6 +5563,7 @@ export namespace AyatanaIdo3 {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -5552,6 +5571,7 @@ export namespace AyatanaIdo3 {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -5673,6 +5693,7 @@ export namespace AyatanaIdo3 {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -10493,27 +10514,32 @@ export namespace AyatanaIdo3 {
             /**
              * The ::primary-clicked signal is emitted when the pointer clicks the primary label.
              * @signal
+             * @run-first
              */
             'primary-clicked': () => void;
             /**
              * The ::secondary-clicked signal is emitted when the pointer clicks the secondary label.
              * @signal
+             * @run-first
              */
             'secondary-clicked': () => void;
             /**
              * The ::slider-grabbed signal is emitted when the pointer selects the slider.
              * @signal
+             * @run-first
              */
             'slider-grabbed': () => void;
             /**
              * The ::slider-released signal is emitted when the pointer releases the slider.
              * @signal
+             * @run-first
              */
             'slider-released': () => void;
             /**
              * Emitted whenever the value of the contained scale changes because
              * of user input.
              * @signal
+             * @run-last
              */
             'value-changed': (arg0: number) => void;
             'notify::adjustment': (pspec: GObject.ParamSpec) => void;
@@ -10848,9 +10874,15 @@ export namespace AyatanaIdo3 {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -11164,6 +11196,7 @@ export namespace AyatanaIdo3 {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -11171,6 +11204,7 @@ export namespace AyatanaIdo3 {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -11292,6 +11326,7 @@ export namespace AyatanaIdo3 {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -15684,9 +15719,15 @@ export namespace AyatanaIdo3 {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -16000,6 +16041,7 @@ export namespace AyatanaIdo3 {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -16007,6 +16049,7 @@ export namespace AyatanaIdo3 {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -16128,6 +16171,7 @@ export namespace AyatanaIdo3 {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -20188,21 +20232,25 @@ export namespace AyatanaIdo3 {
             /**
              * The ::paused signal is emitted when the timeline finishes.
              * @signal
+             * @run-last
              */
             finished: () => void;
             /**
              * The ::frame signal is emitted when a frame should be drawn.
              * @signal
+             * @run-last
              */
             frame: (arg0: number) => void;
             /**
              * The ::paused signal is emitted when the timeline pauses.
              * @signal
+             * @run-last
              */
             paused: () => void;
             /**
              * The ::started signal is emitted when the timeline starts.
              * @signal
+             * @run-last
              */
             started: () => void;
             'notify::duration': (pspec: GObject.ParamSpec) => void;

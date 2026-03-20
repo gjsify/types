@@ -116,8 +116,17 @@ export namespace Casilda {
 
         // Properties
 
+        /**
+         * @write-only
+         */
         set bg_color(val: Gdk.RGBA);
+        /**
+         * @write-only
+         */
         set bgColor(val: Gdk.RGBA);
+        /**
+         * @construct-only
+         */
         get socket(): string;
 
         /**

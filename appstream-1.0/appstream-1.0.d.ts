@@ -20,6 +20,9 @@ export namespace AppStream {
      * AppStream-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AgreementKind {
         export const $gtype: GObject.GType<AgreementKind>;
     }
@@ -47,6 +50,9 @@ export namespace AppStream {
         PRIVACY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ArtifactKind {
         export const $gtype: GObject.GType<ArtifactKind>;
     }
@@ -70,6 +76,9 @@ export namespace AppStream {
         BINARY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BundleKind {
         export const $gtype: GObject.GType<BundleKind>;
     }
@@ -121,6 +130,9 @@ export namespace AppStream {
         SYSUPDATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ChassisKind {
         export const $gtype: GObject.GType<ChassisKind>;
     }
@@ -156,6 +168,9 @@ export namespace AppStream {
         HANDSET,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CheckResult {
         export const $gtype: GObject.GType<CheckResult>;
     }
@@ -183,6 +198,9 @@ export namespace AppStream {
         TRUE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ChecksumKind {
         export const $gtype: GObject.GType<ChecksumKind>;
     }
@@ -218,6 +236,9 @@ export namespace AppStream {
         BLAKE3,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ColorKind {
         export const $gtype: GObject.GType<ColorKind>;
     }
@@ -237,6 +258,9 @@ export namespace AppStream {
         PRIMARY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ColorSchemeKind {
         export const $gtype: GObject.GType<ColorSchemeKind>;
     }
@@ -260,6 +284,9 @@ export namespace AppStream {
         DARK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ComponentKind {
         export const $gtype: GObject.GType<ComponentKind>;
     }
@@ -339,6 +366,9 @@ export namespace AppStream {
         ICON_THEME,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ComponentScope {
         export const $gtype: GObject.GType<ComponentScope>;
     }
@@ -362,6 +392,9 @@ export namespace AppStream {
         USER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ContentRatingSystem {
         export const $gtype: GObject.GType<ContentRatingSystem>;
     }
@@ -438,6 +471,9 @@ export namespace AppStream {
         IARC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ContentRatingValue {
         export const $gtype: GObject.GType<ContentRatingValue>;
     }
@@ -469,6 +505,9 @@ export namespace AppStream {
         INTENSE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ControlKind {
         export const $gtype: GObject.GType<ControlKind>;
     }
@@ -520,6 +559,9 @@ export namespace AppStream {
         TABLET,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DisplaySideKind {
         export const $gtype: GObject.GType<DisplaySideKind>;
     }
@@ -543,6 +585,9 @@ export namespace AppStream {
         LONGEST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormatKind {
         export const $gtype: GObject.GType<FormatKind>;
     }
@@ -570,6 +615,9 @@ export namespace AppStream {
         DESKTOP_ENTRY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormatStyle {
         export const $gtype: GObject.GType<FormatStyle>;
     }
@@ -596,6 +644,9 @@ export namespace AppStream {
         CATALOG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormatVersion {
         export const $gtype: GObject.GType<FormatVersion>;
     }
@@ -615,6 +666,9 @@ export namespace AppStream {
         V1_0,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IconKind {
         export const $gtype: GObject.GType<IconKind>;
     }
@@ -646,6 +700,9 @@ export namespace AppStream {
         REMOTE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ImageKind {
         export const $gtype: GObject.GType<ImageKind>;
     }
@@ -669,6 +726,9 @@ export namespace AppStream {
         THUMBNAIL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InternetKind {
         export const $gtype: GObject.GType<InternetKind>;
     }
@@ -698,6 +758,9 @@ export namespace AppStream {
         FIRST_RUN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IssueKind {
         export const $gtype: GObject.GType<IssueKind>;
     }
@@ -721,6 +784,9 @@ export namespace AppStream {
         CVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IssueSeverity {
         export const $gtype: GObject.GType<IssueSeverity>;
     }
@@ -752,6 +818,9 @@ export namespace AppStream {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LaunchableKind {
         export const $gtype: GObject.GType<LaunchableKind>;
     }
@@ -783,6 +852,9 @@ export namespace AppStream {
         URL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MarkupKind {
         export const $gtype: GObject.GType<MarkupKind>;
     }
@@ -810,6 +882,9 @@ export namespace AppStream {
         MARKDOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MergeKind {
         export const $gtype: GObject.GType<MergeKind>;
     }
@@ -877,6 +952,9 @@ export namespace AppStream {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MetadataLocation {
         export const $gtype: GObject.GType<MetadataLocation>;
     }
@@ -947,6 +1025,9 @@ export namespace AppStream {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ProvidedKind {
         export const $gtype: GObject.GType<ProvidedKind>;
     }
@@ -1006,6 +1087,9 @@ export namespace AppStream {
         ID,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ReferenceKind {
         export const $gtype: GObject.GType<ReferenceKind>;
     }
@@ -1033,6 +1117,9 @@ export namespace AppStream {
         REGISTRY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RelationCompare {
         export const $gtype: GObject.GType<RelationCompare>;
     }
@@ -1103,6 +1190,9 @@ export namespace AppStream {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RelationItemKind {
         export const $gtype: GObject.GType<RelationItemKind>;
     }
@@ -1154,6 +1244,9 @@ export namespace AppStream {
         INTERNET,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RelationKind {
         export const $gtype: GObject.GType<RelationKind>;
     }
@@ -1181,6 +1274,9 @@ export namespace AppStream {
         SUPPORTS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RelationStatus {
         export const $gtype: GObject.GType<RelationStatus>;
     }
@@ -1208,6 +1304,9 @@ export namespace AppStream {
         SATISFIED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ReleaseKind {
         export const $gtype: GObject.GType<ReleaseKind>;
     }
@@ -1236,6 +1335,9 @@ export namespace AppStream {
         SNAPSHOT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ReleaseListKind {
         export const $gtype: GObject.GType<ReleaseListKind>;
     }
@@ -1260,6 +1362,9 @@ export namespace AppStream {
         EXTERNAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ReleaseUrlKind {
         export const $gtype: GObject.GType<ReleaseUrlKind>;
     }
@@ -1278,6 +1383,9 @@ export namespace AppStream {
         DETAILS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScreenshotKind {
         export const $gtype: GObject.GType<ScreenshotKind>;
     }
@@ -1301,6 +1409,9 @@ export namespace AppStream {
         EXTRA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScreenshotMediaKind {
         export const $gtype: GObject.GType<ScreenshotMediaKind>;
     }
@@ -1324,6 +1435,9 @@ export namespace AppStream {
         VIDEO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SizeKind {
         export const $gtype: GObject.GType<SizeKind>;
     }
@@ -1348,6 +1462,9 @@ export namespace AppStream {
         INSTALLED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SuggestedKind {
         export const $gtype: GObject.GType<SuggestedKind>;
     }
@@ -1398,6 +1515,9 @@ export namespace AppStream {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TranslationKind {
         export const $gtype: GObject.GType<TranslationKind>;
     }
@@ -1421,6 +1541,9 @@ export namespace AppStream {
         QT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UrgencyKind {
         export const $gtype: GObject.GType<UrgencyKind>;
     }
@@ -1452,6 +1575,9 @@ export namespace AppStream {
         CRITICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UrlKind {
         export const $gtype: GObject.GType<UrlKind>;
     }
@@ -1557,6 +1683,9 @@ export namespace AppStream {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoCodecKind {
         export const $gtype: GObject.GType<VideoCodecKind>;
     }
@@ -1580,6 +1709,9 @@ export namespace AppStream {
         AV1,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoContainerKind {
         export const $gtype: GObject.GType<VideoContainerKind>;
     }
@@ -2544,6 +2676,9 @@ export namespace AppStream {
      * @returns string version of `kind`
      */
     function video_container_kind_to_string(kind: VideoContainerKind | null): string;
+    /**
+     * @gir-type Flags
+     */
     export namespace CacheFlags {
         export const $gtype: GObject.GType<CacheFlags>;
     }
@@ -2575,6 +2710,9 @@ export namespace AppStream {
         REFRESH_SYSTEM,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ComponentBoxFlags {
         export const $gtype: GObject.GType<ComponentBoxFlags>;
     }
@@ -2594,6 +2732,9 @@ export namespace AppStream {
         NO_CHECKS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DataIdMatchFlags {
         export const $gtype: GObject.GType<DataIdMatchFlags>;
     }
@@ -2629,6 +2770,9 @@ export namespace AppStream {
         BRANCH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ParseFlags {
         export const $gtype: GObject.GType<ParseFlags>;
     }
@@ -2648,6 +2792,9 @@ export namespace AppStream {
         IGNORE_MEDIABASEURL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PoolFlags {
         export const $gtype: GObject.GType<PoolFlags>;
     }
@@ -2695,6 +2842,9 @@ export namespace AppStream {
         MONITOR,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ReviewFlags {
         export const $gtype: GObject.GType<ReviewFlags>;
     }
@@ -2719,6 +2869,9 @@ export namespace AppStream {
         VOTED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ValueFlags {
         export const $gtype: GObject.GType<ValueFlags>;
     }
@@ -2743,6 +2896,9 @@ export namespace AppStream {
         NO_TRANSLATION_FALLBACK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VercmpFlags {
         export const $gtype: GObject.GType<VercmpFlags>;
     }
@@ -3276,6 +3432,9 @@ export namespace AppStream {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get children(): any;
         get icon(): string;
         set icon(val: string);
@@ -3283,6 +3442,9 @@ export namespace AppStream {
         set id(val: string);
         get name(): string;
         set name(val: string);
+        /**
+         * @read-only
+         */
         get summary(): string;
 
         /**
@@ -3536,6 +3698,7 @@ export namespace AppStream {
 
         /**
          * string array of categories
+         * @read-only
          */
         get categories(): any[];
         /**
@@ -3545,6 +3708,7 @@ export namespace AppStream {
         set description(val: string);
         /**
          * hash map of icon urls and sizes
+         * @read-only
          */
         get icons(): Icon[];
         /**
@@ -3594,6 +3758,7 @@ export namespace AppStream {
         set projectLicense(val: string);
         /**
          * An array of {@link AppStream.Screenshot} instances
+         * @read-only
          */
         get screenshots(): Screenshot[];
         /**
@@ -3603,6 +3768,7 @@ export namespace AppStream {
         set summary(val: string);
         /**
          * the urls associated with this component
+         * @read-only
          */
         get urls(): GLib.HashTable<UrlKind, string>;
 
@@ -4469,6 +4635,9 @@ export namespace AppStream {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get flags(): number;
 
         /**
@@ -5638,6 +5807,7 @@ export namespace AppStream {
              * or removed from the metadata pool.
              * @signal
              * @since 0.15.0
+             * @run-last
              */
             changed: () => void;
         }

@@ -36,6 +36,9 @@ export namespace Builder {
      * Builder-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ViewGridSplit {
         export const $gtype: GObject.GType<ViewGridSplit>;
     }
@@ -700,6 +703,7 @@ export namespace Builder {
         interface SignalSignatures extends View.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'request-documentation': (arg0: string) => void;
             'notify::can-split': (pspec: GObject.ParamSpec) => void;
@@ -1277,6 +1281,9 @@ export namespace Builder {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get menu(): Gio.Menu;
 
         /**
@@ -1337,10 +1344,13 @@ export namespace Builder {
         interface SignalSignatures extends Gtk.TreeView.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             action: (arg0: string, arg1: string, arg2: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'populate-popup': (arg0: Gtk.Widget) => void;
             'notify::root': (pspec: GObject.ParamSpec) => void;
@@ -2135,30 +2145,37 @@ export namespace Builder {
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             added: (arg0: Tree) => void;
             /**
              * @signal
+             * @run-last
              */
             'build-node': (arg0: TreeNode) => void;
             /**
              * @signal
+             * @run-last
              */
             'node-activated': (arg0: TreeNode) => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             'node-popup': (arg0: TreeNode, arg1: Gio.Menu) => void;
             /**
              * @signal
+             * @run-last
              */
             'node-selected': (arg0: TreeNode) => void;
             /**
              * @signal
+             * @run-last
              */
             'node-unselected': (arg0: TreeNode) => void;
             /**
              * @signal
+             * @run-last
              */
             removed: (arg0: Tree) => void;
             'notify::tree': (pspec: GObject.ParamSpec) => void;
@@ -2179,6 +2196,9 @@ export namespace Builder {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get tree(): Tree;
 
         /**
@@ -2347,6 +2367,7 @@ export namespace Builder {
         set item(val: GObject.Object);
         /**
          * The parent of the node.
+         * @read-only
          */
         get parent(): TreeNode;
         /**
@@ -2600,12 +2621,33 @@ export namespace Builder {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get can_split(): boolean;
+        /**
+         * @read-only
+         */
         get canSplit(): boolean;
+        /**
+         * @read-only
+         */
         get document(): Document;
+        /**
+         * @read-only
+         */
         get modified(): boolean;
+        /**
+         * @read-only
+         */
         get special_title(): string;
+        /**
+         * @read-only
+         */
         get specialTitle(): string;
+        /**
+         * @read-only
+         */
         get title(): string;
 
         /**
@@ -3812,6 +3854,7 @@ export namespace Builder {
         interface SignalSignatures extends Gtk.Bin.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             empty: () => void;
             /**
@@ -3819,6 +3862,7 @@ export namespace Builder {
              *
              * This should only be used by {@link Builder.ViewGrid}.
              * @signal
+             * @run-last
              */
             split: (arg0: View, arg1: number) => void;
             'notify::active-view': (pspec: GObject.ParamSpec) => void;
@@ -4424,6 +4468,7 @@ export namespace Builder {
         interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             unload: (arg0: Ide.Context) => void;
             'notify::active-view': (pspec: GObject.ParamSpec) => void;
@@ -4534,14 +4579,24 @@ export namespace Builder {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get active_view(): View;
+        /**
+         * @read-only
+         */
         get activeView(): View;
+        /**
+         * @read-only
+         */
         get building(): boolean;
         /**
          * The "context" property is the {@link Ide.Context} that shall be worked upon in
          * the {@link Builder.Workbench}. This must be set during workbench creation. Use
          * another window or dialog to choose the project information before
          * creating a workbench window.
+         * @construct-only
          */
         get context(): Ide.Context;
 
@@ -5833,9 +5888,21 @@ export namespace Builder {
     interface Document extends GObject.Object, Document.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get modified(): boolean;
+        /**
+         * @read-only
+         */
         get read_only(): boolean;
+        /**
+         * @read-only
+         */
         get readOnly(): boolean;
+        /**
+         * @read-only
+         */
         get title(): string;
 
         // Methods

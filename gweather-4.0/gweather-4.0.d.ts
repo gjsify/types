@@ -20,6 +20,9 @@ export namespace GWeather {
      * GWeather-4.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConditionPhenomenon {
         export const $gtype: GObject.GType<ConditionPhenomenon>;
     }
@@ -63,6 +66,9 @@ export namespace GWeather {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConditionQualifier {
         export const $gtype: GObject.GType<ConditionQualifier>;
     }
@@ -148,6 +154,9 @@ export namespace GWeather {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DistanceUnit {
         export const $gtype: GObject.GType<DistanceUnit>;
     }
@@ -180,6 +189,9 @@ export namespace GWeather {
         MILES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocationLevel {
         export const $gtype: GObject.GType<LocationLevel>;
     }
@@ -242,6 +254,9 @@ export namespace GWeather {
         NAMED_TIMEZONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PressureUnit {
         export const $gtype: GObject.GType<PressureUnit>;
     }
@@ -287,6 +302,9 @@ export namespace GWeather {
         ATM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Sky {
         export const $gtype: GObject.GType<Sky>;
     }
@@ -329,6 +347,9 @@ export namespace GWeather {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SpeedUnit {
         export const $gtype: GObject.GType<SpeedUnit>;
     }
@@ -369,6 +390,9 @@ export namespace GWeather {
         BFT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TemperatureUnit {
         export const $gtype: GObject.GType<TemperatureUnit>;
     }
@@ -401,6 +425,9 @@ export namespace GWeather {
         FAHRENHEIT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindDirection {
         export const $gtype: GObject.GType<WindDirection>;
     }
@@ -532,6 +559,9 @@ export namespace GWeather {
     interface FilterFunc {
         (location: Location): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace FormatOptions {
         export const $gtype: GObject.GType<FormatOptions>;
     }
@@ -558,6 +588,9 @@ export namespace GWeather {
         NO_CAPITALIZATION,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace Provider {
         export const $gtype: GObject.GType<Provider>;
     }
@@ -604,6 +637,7 @@ export namespace GWeather {
              * data from upstream services, and after every successful call
              * to {@link GWeather.Info.update}.
              * @signal
+             * @run-first
              */
             updated: () => void;
             'notify::application-id': (pspec: GObject.ParamSpec) => void;

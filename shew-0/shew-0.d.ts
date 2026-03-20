@@ -51,6 +51,9 @@ export namespace Shew {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get display(): Gdk.Display;
 
         /**
@@ -129,6 +132,9 @@ export namespace Shew {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get window(): Gtk.Window;
 
         /**

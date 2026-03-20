@@ -25,6 +25,9 @@ export namespace Lasem {
      * Lasem-0.4
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DebugLevel {
         export const $gtype: GObject.GType<DebugLevel>;
     }
@@ -40,6 +43,9 @@ export namespace Lasem {
         COUNT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomNodeType {
         export const $gtype: GObject.GType<DomNodeType>;
     }

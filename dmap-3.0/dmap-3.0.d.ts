@@ -21,6 +21,9 @@ export namespace DMAP {
      * DMAP-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionState {
         export const $gtype: GObject.GType<ConnectionState>;
     }
@@ -220,6 +223,9 @@ export namespace DMAP {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MdnsBrowserServiceType {
         export const $gtype: GObject.GType<MdnsBrowserServiceType>;
     }
@@ -236,6 +242,9 @@ export namespace DMAP {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MdnsBrowserTransportProtocol {
         export const $gtype: GObject.GType<MdnsBrowserTransportProtocol>;
     }
@@ -269,6 +278,9 @@ export namespace DMAP {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MediaKind {
         export const $gtype: GObject.GType<MediaKind>;
     }
@@ -283,6 +295,9 @@ export namespace DMAP {
         TV_SHOW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Type {
         export const $gtype: GObject.GType<Type>;
     }
@@ -408,6 +423,7 @@ export namespace DMAP {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             authenticate: (
                 arg0: string,
@@ -418,18 +434,22 @@ export namespace DMAP {
             ) => void;
             /**
              * @signal
+             * @run-last
              */
             connected: () => void;
             /**
              * @signal
+             * @run-last
              */
             connecting: (arg0: number, arg1: number) => void;
             /**
              * @signal
+             * @run-last
              */
             disconnected: () => void;
             /**
              * @signal
+             * @run-first
              */
             'operation-done': () => void;
             'notify::base-uri': (pspec: GObject.ParamSpec) => void;
@@ -485,15 +505,33 @@ export namespace DMAP {
         set database_id(val: number);
         get databaseId(): number;
         set databaseId(val: number);
+        /**
+         * @construct-only
+         */
         get db(): any;
         get dmap_version(): number;
         set dmap_version(val: number);
         get dmapVersion(): number;
         set dmapVersion(val: number);
+        /**
+         * @construct-only
+         */
         get factory(): any;
+        /**
+         * @construct-only
+         */
         get host(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @write-only
+         */
         set password(val: string);
+        /**
+         * @construct-only
+         */
         get port(): number;
         get revision_number(): number;
         set revision_number(val: number);
@@ -503,6 +541,9 @@ export namespace DMAP {
         set session_id(val: number);
         get sessionId(): number;
         set sessionId(val: number);
+        /**
+         * @construct-only
+         */
         get username(): string;
 
         /**
@@ -1217,10 +1258,12 @@ export namespace DMAP {
             /**
              * Emitted each time a service becomes available to `browser`
              * @signal
+             * @run-last
              */
             'service-added': (arg0: any) => void;
             /**
              * @signal
+             * @run-last
              */
             'service-removed': (arg0: string) => void;
         }
@@ -1311,10 +1354,12 @@ export namespace DMAP {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'name-collision': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             published: (arg0: string) => void;
         }
@@ -1462,8 +1507,17 @@ export namespace DMAP {
         set auth_method(val: number);
         get authMethod(): number;
         set authMethod(val: number);
+        /**
+         * @construct-only
+         */
         get container_db(): any;
+        /**
+         * @construct-only
+         */
         get containerDb(): any;
+        /**
+         * @construct-only
+         */
         get db(): any;
         get name(): string;
         set name(val: string);
@@ -1473,11 +1527,29 @@ export namespace DMAP {
         set revision_number(val: number);
         get revisionNumber(): number;
         set revisionNumber(val: number);
+        /**
+         * @read-only
+         */
         get server_ipv4(): Soup.Server;
+        /**
+         * @read-only
+         */
         get serverIpv4(): Soup.Server;
+        /**
+         * @read-only
+         */
         get server_ipv6(): Soup.Server;
+        /**
+         * @read-only
+         */
         get serverIpv6(): Soup.Server;
+        /**
+         * @construct-only
+         */
         get transcode_mimetype(): string;
+        /**
+         * @construct-only
+         */
         get transcodeMimetype(): string;
         get txt_records(): string[];
         set txt_records(val: string[]);

@@ -885,7 +885,13 @@ export namespace PangoXft {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set display(val: any);
+        /**
+         * @construct-only
+         */
         set screen(val: number);
 
         /**

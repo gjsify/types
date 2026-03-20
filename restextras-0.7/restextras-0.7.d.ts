@@ -72,9 +72,21 @@ export namespace RestExtras {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get api_key(): string;
+        /**
+         * @construct-only
+         */
         get apiKey(): string;
+        /**
+         * @construct-only
+         */
         get shared_secret(): string;
+        /**
+         * @construct-only
+         */
         get sharedSecret(): string;
         get token(): string;
         set token(val: string);
@@ -211,6 +223,7 @@ export namespace RestExtras {
         /**
          * Set if the call should be sent to the photo upload endpoint and not the
          * general-purpose endpoint.
+         * @construct-only
          */
         // This accessor conflicts with a field or function name in a parent class or interface.
         upload: boolean | any;
@@ -288,8 +301,17 @@ export namespace RestExtras {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get api_key(): string;
+        /**
+         * @construct-only
+         */
         get apiKey(): string;
+        /**
+         * @construct-only
+         */
         get secret(): string;
         get session_key(): string;
         set session_key(val: string);
@@ -469,7 +491,13 @@ export namespace RestExtras {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get developer_key(): string;
+        /**
+         * @construct-only
+         */
         get developerKey(): string;
         get user_auth(): string;
         set user_auth(val: string);

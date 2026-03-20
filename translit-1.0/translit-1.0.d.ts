@@ -59,6 +59,7 @@ export namespace Translit {
 
         /**
          * The transliteration which {@link Translit.Transliterator} supports
+         * @construct-only
          */
         get name(): string;
 

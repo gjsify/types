@@ -30,6 +30,9 @@ export namespace Mks {
      * Mks-1
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MouseButton {
         export const $gtype: GObject.GType<MouseButton>;
     }
@@ -69,6 +72,9 @@ export namespace Mks {
         EXTRA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScreenKind {
         export const $gtype: GObject.GType<ScreenKind>;
     }
@@ -88,6 +94,9 @@ export namespace Mks {
         GRAPHIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TouchEventKind {
         export const $gtype: GObject.GType<TouchEventKind>;
     }
@@ -150,6 +159,9 @@ export namespace Mks {
      * The function must be called before using any of the library functions.
      */
     function init(): void;
+    /**
+     * @gir-type Flags
+     */
     export namespace KeyboardModifier {
         export const $gtype: GObject.GType<KeyboardModifier>;
     }
@@ -201,6 +213,7 @@ export namespace Mks {
 
         /**
          * The device name.
+         * @read-only
          */
         get name(): string;
 
@@ -1179,6 +1192,7 @@ export namespace Mks {
 
         /**
          * Active keyboard modifiers.
+         * @read-only
          */
         get modifiers(): KeyboardModifier;
 
@@ -1343,10 +1357,12 @@ export namespace Mks {
 
         /**
          * Whether the mouse is using absolute movements.
+         * @read-only
          */
         get is_absolute(): boolean;
         /**
          * Whether the mouse is using absolute movements.
+         * @read-only
          */
         get isAbsolute(): boolean;
 
@@ -1605,13 +1621,37 @@ export namespace Mks {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get device_address(): string;
+        /**
+         * @read-only
+         */
         get deviceAddress(): string;
+        /**
+         * @read-only
+         */
         get height(): number;
+        /**
+         * @read-only
+         */
         get keyboard(): Keyboard;
+        /**
+         * @read-only
+         */
         get kind(): ScreenKind;
+        /**
+         * @read-only
+         */
         get mouse(): Mouse;
+        /**
+         * @read-only
+         */
         get number(): number;
+        /**
+         * @read-only
+         */
         get width(): number;
 
         /**
@@ -1840,19 +1880,23 @@ export namespace Mks {
 
         /**
          * The {@link Gio.DBusConnection} that is used to communicate with QEMU.
+         * @construct-only
          */
         get connection(): Gio.DBusConnection;
         /**
          * A {@link Gio.ListModel} of devices that have been
          * discovered on the {@link Gio.DBusConnection} to QEMU.
+         * @read-only
          */
         get devices(): Gio.ListModel;
         /**
          * The VM name as specified by the QEMU instance.
+         * @read-only
          */
         get name(): string;
         /**
          * The VM unique identifier specified by the QEMU instance.
+         * @read-only
          */
         get uuid(): string;
 
@@ -2712,10 +2756,12 @@ export namespace Mks {
 
         /**
          * The maximum number of slots.
+         * @read-only
          */
         get max_slots(): number;
         /**
          * The maximum number of slots.
+         * @read-only
          */
         get maxSlots(): number;
 

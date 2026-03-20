@@ -1946,6 +1946,7 @@ export namespace Mirage {
             /**
              * Emitted when a layout of {@link Mirage.Disc} changed in a way that causes a bottom-up change.
              * @signal
+             * @run-last
              */
             'layout-changed': () => void;
         }
@@ -4451,6 +4452,7 @@ export namespace Mirage {
             /**
              * Emitted when a layout of {@link Mirage.Fragment} changed in a way that causes a bottom-up change.
              * @signal
+             * @run-last
              */
             'layout-changed': () => void;
         }
@@ -6462,6 +6464,7 @@ export namespace Mirage {
             /**
              * Emitted when a new {@link Mirage.Context} is set to a {@link Mirage.Object}.
              * @signal
+             * @run-last
              */
             'context-changed': () => void;
         }
@@ -7738,6 +7741,9 @@ export namespace Mirage {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get filename(): string;
 
         /**
@@ -9038,6 +9044,7 @@ export namespace Mirage {
             /**
              * Emitted when a layout of {@link Mirage.Session} changed in a way that causes a bottom-up change.
              * @signal
+             * @run-last
              */
             'layout-changed': () => void;
         }
@@ -9963,6 +9970,7 @@ export namespace Mirage {
             /**
              * Emitted when a layout of {@link Mirage.Track} changed in a way that causes a bottom-up change.
              * @signal
+             * @run-last
              */
             'layout-changed': () => void;
         }
@@ -10921,6 +10929,7 @@ export namespace Mirage {
             /**
              * Emitted when the image conversion progress reaches a new progress mark.
              * @signal
+             * @run-last
              */
             'conversion-progress': (arg0: number) => void;
         }

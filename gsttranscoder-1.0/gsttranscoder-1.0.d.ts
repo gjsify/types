@@ -51,6 +51,9 @@ export namespace GstTranscoder {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TranscoderMessage {
         export const $gtype: GObject.GType<TranscoderMessage>;
     }
@@ -89,6 +92,9 @@ export namespace GstTranscoder {
         WARNING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TranscoderState {
         export const $gtype: GObject.GType<TranscoderState>;
     }
@@ -215,17 +221,41 @@ export namespace GstTranscoder {
          */
         get avoidReencoding(): boolean;
         set avoidReencoding(val: boolean);
+        /**
+         * @construct-only
+         */
         get dest_uri(): string;
+        /**
+         * @construct-only
+         */
         get destUri(): string;
+        /**
+         * @read-only
+         */
         get duration(): number;
+        /**
+         * @read-only
+         */
         get pipeline(): Gst.Element;
+        /**
+         * @read-only
+         */
         get position(): number;
         get position_update_interval(): number;
         set position_update_interval(val: number);
         get positionUpdateInterval(): number;
         set positionUpdateInterval(val: number);
+        /**
+         * @construct-only
+         */
         get profile(): GstPbutils.EncodingProfile;
+        /**
+         * @construct-only
+         */
         get src_uri(): string;
+        /**
+         * @construct-only
+         */
         get srcUri(): string;
 
         /**
@@ -377,26 +407,32 @@ export namespace GstTranscoder {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             done: () => void;
             /**
              * @signal
+             * @run-last
              */
             'duration-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             error: (arg0: GLib.Error, arg1: Gst.Structure) => void;
             /**
              * @signal
+             * @run-last
              */
             'position-updated': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'state-changed': (arg0: TranscoderState) => void;
             /**
              * @signal
+             * @run-last
              */
             warning: (arg0: GLib.Error, arg1: Gst.Structure) => void;
             'notify::transcoder': (pspec: GObject.ParamSpec) => void;
@@ -422,6 +458,7 @@ export namespace GstTranscoder {
         /**
          * The {@link GstTranscoder.Transcoder} tracked by the adapter.
          * @since 1.20
+         * @read-only
          */
         get transcoder(): Transcoder;
 

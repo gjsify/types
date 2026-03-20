@@ -56,7 +56,13 @@ export namespace GjsDBus {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set g_interface_info(val: Gio.DBusInterfaceInfo);
+        /**
+         * @construct-only
+         */
         set gInterfaceInfo(val: Gio.DBusInterfaceInfo);
 
         /**

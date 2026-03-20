@@ -20,6 +20,9 @@ export namespace GjsPrivate {
      * GjsPrivate-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocaleCategory {
         export const $gtype: GObject.GType<LocaleCategory>;
     }
@@ -212,14 +215,17 @@ export namespace GjsPrivate {
         interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
             /**
              * @signal
+             * @run-LAST
              */
             'handle-method-call': (arg0: string, arg1: GLib.Variant, arg2: Gio.DBusMethodInvocation) => void;
             /**
              * @signal
+             * @run-LAST
              */
             'handle-property-get': (arg0: string) => GLib.Variant;
             /**
              * @signal
+             * @run-LAST
              */
             'handle-property-set': (arg0: string, arg1: GLib.Variant) => void;
             'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
@@ -243,7 +249,13 @@ export namespace GjsPrivate {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set g_interface_info(val: Gio.DBusInterfaceInfo);
+        /**
+         * @construct-only
+         */
         set gInterfaceInfo(val: Gio.DBusInterfaceInfo);
 
         /**

@@ -32,6 +32,9 @@ export namespace ClutterX11 {
      * ClutterX11-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FilterReturn {
         export const $gtype: GObject.GType<FilterReturn>;
     }
@@ -269,6 +272,7 @@ export namespace ClutterX11 {
              * queue a redraw that blocks this default behaviour.
              * @signal
              * @since 1.2
+             * @run-first
              */
             'queue-damage-redraw': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
             /**
@@ -276,6 +280,7 @@ export namespace ClutterX11 {
              * content from its source pixmap.
              * @signal
              * @since 0.8
+             * @run-first
              */
             'update-area': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
             'notify::automatic-updates': (pspec: GObject.ParamSpec) => void;
@@ -437,28 +442,73 @@ export namespace ClutterX11 {
         set automatic_updates(val: boolean);
         get automaticUpdates(): boolean;
         set automaticUpdates(val: boolean);
+        /**
+         * @read-only
+         */
         get destroyed(): boolean;
         get pixmap(): number;
         set pixmap(val: number);
+        /**
+         * @read-only
+         */
         get pixmap_depth(): number;
+        /**
+         * @read-only
+         */
         get pixmapDepth(): number;
+        /**
+         * @read-only
+         */
         get pixmap_height(): number;
+        /**
+         * @read-only
+         */
         get pixmapHeight(): number;
+        /**
+         * @read-only
+         */
         get pixmap_width(): number;
+        /**
+         * @read-only
+         */
         get pixmapWidth(): number;
         get window(): number;
         set window(val: number);
+        /**
+         * @read-only
+         */
         get window_mapped(): boolean;
+        /**
+         * @read-only
+         */
         get windowMapped(): boolean;
+        /**
+         * @read-only
+         */
         get window_override_redirect(): boolean;
+        /**
+         * @read-only
+         */
         get windowOverrideRedirect(): boolean;
         get window_redirect_automatic(): boolean;
         set window_redirect_automatic(val: boolean);
         get windowRedirectAutomatic(): boolean;
         set windowRedirectAutomatic(val: boolean);
+        /**
+         * @read-only
+         */
         get window_x(): number;
+        /**
+         * @read-only
+         */
         get windowX(): number;
+        /**
+         * @read-only
+         */
         get window_y(): number;
+        /**
+         * @read-only
+         */
         get windowY(): number;
 
         /**

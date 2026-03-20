@@ -155,6 +155,7 @@ export namespace MalcontentUi {
          * `mct_restrict_applications_dialog_build_app_filter()` to build the new app
          * filter.
          * @since 0.5.0
+         * @construct-only
          */
         get app_filter(): Malcontent.AppFilter;
         /**
@@ -163,6 +164,7 @@ export namespace MalcontentUi {
          * `mct_restrict_applications_dialog_build_app_filter()` to build the new app
          * filter.
          * @since 0.5.0
+         * @construct-only
          */
         get appFilter(): Malcontent.AppFilter;
         /**
@@ -309,6 +311,7 @@ export namespace MalcontentUi {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -317,6 +320,7 @@ export namespace MalcontentUi {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -356,21 +360,25 @@ export namespace MalcontentUi {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -589,6 +597,7 @@ export namespace MalcontentUi {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -608,16 +617,19 @@ export namespace MalcontentUi {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -3279,6 +3291,7 @@ export namespace MalcontentUi {
              * Emitted whenever an application in the list is blocked or unblocked.
              * @signal
              * @since 0.5.0
+             * @run-last
              */
             changed: () => void;
             'notify::app-filter': (pspec: GObject.ParamSpec) => void;
@@ -4043,12 +4056,14 @@ export namespace MalcontentUi {
          * A connection to the system bus. This will be used for retrieving details
          * of user accounts, and must be provided at construction time.
          * @since 0.7.0
+         * @construct-only
          */
         get dbus_connection(): Gio.DBusConnection;
         /**
          * A connection to the system bus. This will be used for retrieving details
          * of user accounts, and must be provided at construction time.
          * @since 0.7.0
+         * @construct-only
          */
         get dbusConnection(): Gio.DBusConnection;
         /**

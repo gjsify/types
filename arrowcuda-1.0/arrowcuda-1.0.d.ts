@@ -1195,6 +1195,7 @@ export namespace ArrowCUDA {
 
         /**
          * @since 0.8.0
+         * @construct-only
          */
         set context(val: any);
 
@@ -1393,10 +1394,12 @@ export namespace ArrowCUDA {
 
         /**
          * @since 0.8.0
+         * @construct-only
          */
         set ipc_memory_handle(val: any);
         /**
          * @since 0.8.0
+         * @construct-only
          */
         set ipcMemoryHandle(val: any);
 

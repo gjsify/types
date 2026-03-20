@@ -58,6 +58,7 @@ export namespace GSSDP {
             /**
              * Internal signal.
              * @signal
+             * @run-last
              */
             'message-received': (arg0: string, arg1: number, arg2: number, arg3: Soup.MessageHeaders) => void;
             'notify::active': (pspec: GObject.ParamSpec) => void;
@@ -114,18 +115,21 @@ export namespace GSSDP {
         /**
          * The name of the network interface this client is associated with.
          * Set to NULL to autodetect.
+         * @construct-only
          */
         get interface(): string;
         /**
          * UDP port to use for sending multicast M-SEARCH requests on the
          * network. If not set (or set to 0) a random port will be used.
          * This property can be only set during object construction.
+         * @construct-only
          */
         get msearch_port(): number;
         /**
          * UDP port to use for sending multicast M-SEARCH requests on the
          * network. If not set (or set to 0) a random port will be used.
          * This property can be only set during object construction.
+         * @construct-only
          */
         get msearchPort(): number;
         /**
@@ -152,12 +156,14 @@ export namespace GSSDP {
          * Time-to-live value to use for all sockets created by this client.
          * If not set (or set to 0) the value recommended by UPnP will be used.
          * This property can only be set during object construction.
+         * @construct-only
          */
         get socket_ttl(): number;
         /**
          * Time-to-live value to use for all sockets created by this client.
          * If not set (or set to 0) the value recommended by UPnP will be used.
          * This property can only be set during object construction.
+         * @construct-only
          */
         get socketTtl(): number;
 
@@ -809,12 +815,14 @@ export namespace GSSDP {
              * The ::resource-available signal is emitted whenever a new resource
              * has become available.
              * @signal
+             * @run-last
              */
             'resource-available': (arg0: string, arg1: string[]) => void;
             /**
              * The ::resource-unavailable signal is emitted whenever a resource
              * is not available any more.
              * @signal
+             * @run-last
              */
             'resource-unavailable': (arg0: string) => void;
             'notify::active': (pspec: GObject.ParamSpec) => void;
@@ -848,6 +856,7 @@ export namespace GSSDP {
         set active(val: boolean);
         /**
          * The {@link GSSDP.Client} to use.
+         * @construct-only
          */
         get client(): Client;
         /**
@@ -985,6 +994,7 @@ export namespace GSSDP {
         set available(val: boolean);
         /**
          * The {@link GSSDP.Client} to use.
+         * @construct-only
          */
         get client(): Client;
         /**

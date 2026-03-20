@@ -22,6 +22,9 @@ export namespace GstCodecs {
      * GstCodecs-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace H264DecoderCompliance {
         export const $gtype: GObject.GType<H264DecoderCompliance>;
     }

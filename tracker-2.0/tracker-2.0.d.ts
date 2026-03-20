@@ -39,6 +39,9 @@ export namespace Tracker {
         UPDATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SparqlConnectionFlags {
         export const $gtype: GObject.GType<SparqlConnectionFlags>;
     }
@@ -51,6 +54,9 @@ export namespace Tracker {
         READONLY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SparqlValueType {
         export const $gtype: GObject.GType<SparqlValueType>;
     }
@@ -91,6 +97,9 @@ export namespace Tracker {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SparqlBuilderState {
         export const $gtype: GObject.GType<SparqlBuilderState>;
     }
@@ -313,6 +322,7 @@ export namespace Tracker {
 
         /**
          * RDF classes to listen notifications about.
+         * @construct-only
          */
         get classes(): string[];
 
@@ -1218,9 +1228,15 @@ export namespace Tracker {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get result(): string;
         get length(): number;
         set length(val: number);
+        /**
+         * @read-only
+         */
         get state(): SparqlBuilderState;
 
         /**
@@ -1872,7 +1888,13 @@ export namespace Tracker {
 
         get connection(): SparqlConnection;
         set connection(val: SparqlConnection);
+        /**
+         * @read-only
+         */
         get n_columns(): number;
+        /**
+         * @read-only
+         */
         get nColumns(): number;
 
         /**

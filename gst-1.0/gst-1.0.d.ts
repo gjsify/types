@@ -19,6 +19,9 @@ export namespace Gst {
      * Gst-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BufferingMode {
         export const $gtype: GObject.GType<BufferingMode>;
     }
@@ -46,6 +49,9 @@ export namespace Gst {
         LIVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BusSyncReply {
         export const $gtype: GObject.GType<BusSyncReply>;
     }
@@ -69,6 +75,9 @@ export namespace Gst {
         ASYNC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CapsIntersectMode {
         export const $gtype: GObject.GType<CapsIntersectMode>;
     }
@@ -108,6 +117,9 @@ export namespace Gst {
         FIRST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClockEntryType {
         export const $gtype: GObject.GType<ClockEntryType>;
     }
@@ -127,6 +139,9 @@ export namespace Gst {
         PERIODIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClockReturn {
         export const $gtype: GObject.GType<ClockReturn>;
     }
@@ -170,6 +185,9 @@ export namespace Gst {
         DONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClockType {
         export const $gtype: GObject.GType<ClockType>;
     }
@@ -282,6 +300,9 @@ export namespace Gst {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DebugColorMode {
         export const $gtype: GObject.GType<DebugColorMode>;
     }
@@ -305,6 +326,9 @@ export namespace Gst {
         UNIX,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DebugLevel {
         export const $gtype: GObject.GType<DebugLevel>;
     }
@@ -384,6 +408,9 @@ export namespace Gst {
         COUNT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EventType {
         export const $gtype: GObject.GType<EventType>;
     }
@@ -557,6 +584,9 @@ export namespace Gst {
         CUSTOM_BOTH_OOB,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FlowReturn {
         export const $gtype: GObject.GType<FlowReturn>;
     }
@@ -632,6 +662,9 @@ export namespace Gst {
         CUSTOM_ERROR_2,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Format {
         export const $gtype: GObject.GType<Format>;
     }
@@ -672,6 +705,9 @@ export namespace Gst {
         PERCENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IteratorItem {
         export const $gtype: GObject.GType<IteratorItem>;
     }
@@ -695,6 +731,9 @@ export namespace Gst {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IteratorResult {
         export const $gtype: GObject.GType<IteratorResult>;
     }
@@ -772,6 +811,9 @@ export namespace Gst {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PadDirection {
         export const $gtype: GObject.GType<PadDirection>;
     }
@@ -795,6 +837,9 @@ export namespace Gst {
         SINK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PadLinkReturn {
         export const $gtype: GObject.GType<PadLinkReturn>;
     }
@@ -834,6 +879,9 @@ export namespace Gst {
         REFUSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PadMode {
         export const $gtype: GObject.GType<PadMode>;
     }
@@ -859,6 +907,9 @@ export namespace Gst {
         PULL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PadPresence {
         export const $gtype: GObject.GType<PadPresence>;
     }
@@ -883,6 +934,9 @@ export namespace Gst {
         REQUEST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PadProbeReturn {
         export const $gtype: GObject.GType<PadProbeReturn>;
     }
@@ -1021,6 +1075,9 @@ export namespace Gst {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ProgressType {
         export const $gtype: GObject.GType<ProgressType>;
     }
@@ -1054,6 +1111,9 @@ export namespace Gst {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PromiseResult {
         export const $gtype: GObject.GType<PromiseResult>;
     }
@@ -1085,6 +1145,9 @@ export namespace Gst {
         EXPIRED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace QOSType {
         export const $gtype: GObject.GType<QOSType>;
     }
@@ -1115,6 +1178,9 @@ export namespace Gst {
         THROTTLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace QueryType {
         export const $gtype: GObject.GType<QueryType>;
     }
@@ -1211,6 +1277,9 @@ export namespace Gst {
         SELECTABLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Rank {
         export const $gtype: GObject.GType<Rank>;
     }
@@ -1334,6 +1403,9 @@ export namespace Gst {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SearchMode {
         export const $gtype: GObject.GType<SearchMode>;
     }
@@ -1357,6 +1429,9 @@ export namespace Gst {
         AFTER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SeekType {
         export const $gtype: GObject.GType<SeekType>;
     }
@@ -1381,6 +1456,9 @@ export namespace Gst {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace State {
         export const $gtype: GObject.GType<State>;
     }
@@ -1416,6 +1494,9 @@ export namespace Gst {
         PLAYING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StateChange {
         export const $gtype: GObject.GType<StateChange>;
     }
@@ -1521,6 +1602,9 @@ export namespace Gst {
         PLAYING_TO_PLAYING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StateChangeReturn {
         export const $gtype: GObject.GType<StateChangeReturn>;
     }
@@ -1637,6 +1721,9 @@ export namespace Gst {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StreamStatusType {
         export const $gtype: GObject.GType<StreamStatusType>;
     }
@@ -1677,6 +1764,9 @@ export namespace Gst {
         STOP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureChangeType {
         export const $gtype: GObject.GType<StructureChangeType>;
     }
@@ -1696,6 +1786,9 @@ export namespace Gst {
         UNLINK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TagFlag {
         export const $gtype: GObject.GType<TagFlag>;
     }
@@ -1727,6 +1820,9 @@ export namespace Gst {
         COUNT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TagMergeMode {
         export const $gtype: GObject.GType<TagMergeMode>;
     }
@@ -1785,6 +1881,9 @@ export namespace Gst {
         COUNT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TagScope {
         export const $gtype: GObject.GType<TagScope>;
     }
@@ -1805,6 +1904,9 @@ export namespace Gst {
         GLOBAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TaskState {
         export const $gtype: GObject.GType<TaskState>;
     }
@@ -1828,6 +1930,9 @@ export namespace Gst {
         PAUSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TocEntryType {
         export const $gtype: GObject.GType<TocEntryType>;
     }
@@ -1869,6 +1974,9 @@ export namespace Gst {
         CHAPTER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TocLoopType {
         export const $gtype: GObject.GType<TocLoopType>;
     }
@@ -1898,6 +2006,9 @@ export namespace Gst {
         PING_PONG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TocScope {
         export const $gtype: GObject.GType<TocScope>;
     }
@@ -1923,6 +2034,9 @@ export namespace Gst {
         CURRENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TracerValueScope {
         export const $gtype: GObject.GType<TracerValueScope>;
     }
@@ -1955,6 +2069,9 @@ export namespace Gst {
         PAD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TypeFindProbability {
         export const $gtype: GObject.GType<TypeFindProbability>;
     }
@@ -2028,6 +2145,9 @@ export namespace Gst {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace URIType {
         export const $gtype: GObject.GType<URIType>;
     }
@@ -5236,6 +5356,9 @@ export namespace Gst {
     interface ValueSerializeFunc {
         (value1: GObject.Value | any): string;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace AllocatorFlags {
         export const $gtype: GObject.GType<AllocatorFlags>;
     }
@@ -5265,6 +5388,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BinFlags {
         export const $gtype: GObject.GType<BinFlags>;
     }
@@ -5292,6 +5418,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BufferCopyFlags {
         export const $gtype: GObject.GType<BufferCopyFlags>;
     }
@@ -5338,6 +5467,9 @@ export namespace Gst {
         DEEP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BufferFlags {
         export const $gtype: GObject.GType<BufferFlags>;
     }
@@ -5429,6 +5561,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BufferPoolAcquireFlags {
         export const $gtype: GObject.GType<BufferPoolAcquireFlags>;
     }
@@ -5463,6 +5598,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BusFlags {
         export const $gtype: GObject.GType<BusFlags>;
     }
@@ -5482,6 +5620,9 @@ export namespace Gst {
         FLAG_LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace CapsFlags {
         export const $gtype: GObject.GType<CapsFlags>;
     }
@@ -5498,6 +5639,9 @@ export namespace Gst {
         ANY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ClockFlags {
         export const $gtype: GObject.GType<ClockFlags>;
     }
@@ -5541,6 +5685,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DebugColorFlags {
         export const $gtype: GObject.GType<DebugColorFlags>;
     }
@@ -5625,6 +5772,9 @@ export namespace Gst {
         UNDERLINE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DebugGraphDetails {
         export const $gtype: GObject.GType<DebugGraphDetails>;
     }
@@ -5668,6 +5818,9 @@ export namespace Gst {
         VERBOSE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ElementFlags {
         export const $gtype: GObject.GType<ElementFlags>;
     }
@@ -5707,6 +5860,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace EventTypeFlags {
         export const $gtype: GObject.GType<EventTypeFlags>;
     }
@@ -5742,6 +5898,9 @@ export namespace Gst {
         STICKY_MULTI,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GapFlags {
         export const $gtype: GObject.GType<GapFlags>;
     }
@@ -5760,6 +5919,9 @@ export namespace Gst {
         DATA,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace LockFlags {
         export const $gtype: GObject.GType<LockFlags>;
     }
@@ -5787,6 +5949,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MapFlags {
         export const $gtype: GObject.GType<MapFlags>;
     }
@@ -5810,6 +5975,9 @@ export namespace Gst {
         FLAG_LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MemoryFlags {
         export const $gtype: GObject.GType<MemoryFlags>;
     }
@@ -5856,6 +6024,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MessageType {
         export const $gtype: GObject.GType<MessageType>;
     }
@@ -6090,6 +6261,9 @@ export namespace Gst {
         ANY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MetaFlags {
         export const $gtype: GObject.GType<MetaFlags>;
     }
@@ -6121,6 +6295,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MiniObjectFlags {
         export const $gtype: GObject.GType<MiniObjectFlags>;
     }
@@ -6152,6 +6329,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ObjectFlags {
         export const $gtype: GObject.GType<ObjectFlags>;
     }
@@ -6182,6 +6362,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PadFlags {
         export const $gtype: GObject.GType<PadFlags>;
     }
@@ -6266,6 +6449,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PadLinkCheck {
         export const $gtype: GObject.GType<PadLinkCheck>;
     }
@@ -6315,6 +6501,9 @@ export namespace Gst {
         DEFAULT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PadProbeType {
         export const $gtype: GObject.GType<PadProbeType>;
     }
@@ -6419,6 +6608,9 @@ export namespace Gst {
         SCHEDULING,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PadTemplateFlags {
         export const $gtype: GObject.GType<PadTemplateFlags>;
     }
@@ -6434,6 +6626,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ParseFlags {
         export const $gtype: GObject.GType<ParseFlags>;
     }
@@ -6466,6 +6661,9 @@ export namespace Gst {
         PLACE_IN_BIN,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PipelineFlags {
         export const $gtype: GObject.GType<PipelineFlags>;
     }
@@ -6485,6 +6683,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PluginAPIFlags {
         export const $gtype: GObject.GType<PluginAPIFlags>;
     }
@@ -6502,6 +6703,9 @@ export namespace Gst {
         MEMBERS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PluginDependencyFlags {
         export const $gtype: GObject.GType<PluginDependencyFlags>;
     }
@@ -6544,6 +6748,9 @@ export namespace Gst {
         PATHS_ARE_RELATIVE_TO_EXE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PluginFlags {
         export const $gtype: GObject.GType<PluginFlags>;
     }
@@ -6563,6 +6770,9 @@ export namespace Gst {
         BLACKLISTED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace QueryTypeFlags {
         export const $gtype: GObject.GType<QueryTypeFlags>;
     }
@@ -6589,6 +6799,9 @@ export namespace Gst {
         SERIALIZED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SchedulingFlags {
         export const $gtype: GObject.GType<SchedulingFlags>;
     }
@@ -6612,6 +6825,9 @@ export namespace Gst {
         BANDWIDTH_LIMITED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SeekFlags {
         export const $gtype: GObject.GType<SeekFlags>;
     }
@@ -6753,6 +6969,9 @@ export namespace Gst {
         INSTANT_RATE_CHANGE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SegmentFlags {
         export const $gtype: GObject.GType<SegmentFlags>;
     }
@@ -6802,6 +7021,9 @@ export namespace Gst {
         TRICKMODE_NO_AUDIO,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SerializeFlags {
         export const $gtype: GObject.GType<SerializeFlags>;
     }
@@ -6827,6 +7049,9 @@ export namespace Gst {
         STRICT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StackTraceFlags {
         export const $gtype: GObject.GType<StackTraceFlags>;
     }
@@ -6850,6 +7075,9 @@ export namespace Gst {
         FULL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StreamFlags {
         export const $gtype: GObject.GType<StreamFlags>;
     }
@@ -6885,6 +7113,9 @@ export namespace Gst {
         UNSELECT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StreamType {
         export const $gtype: GObject.GType<StreamType>;
     }
@@ -6922,6 +7153,9 @@ export namespace Gst {
         TEXT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TracerValueFlags {
         export const $gtype: GObject.GType<TracerValueFlags>;
     }
@@ -7112,12 +7346,14 @@ export namespace Gst {
              * Will be emitted after the element was added to `sub_bin`.
              * @signal
              * @since 1.10
+             * @run-first
              */
             'deep-element-added': (arg0: Bin, arg1: Element) => void;
             /**
              * Will be emitted after the element was removed from `sub_bin`.
              * @signal
              * @since 1.10
+             * @run-first
              */
             'deep-element-removed': (arg0: Bin, arg1: Element) => void;
             /**
@@ -7133,16 +7369,19 @@ export namespace Gst {
              * sufficient, like when you need different latencies for different sinks in
              * the same pipeline.
              * @signal
+             * @run-last
              */
             'do-latency': () => boolean | void;
             /**
              * Will be emitted after the element was added to the bin.
              * @signal
+             * @run-first
              */
             'element-added': (arg0: Element) => void;
             /**
              * Will be emitted after the element was removed from the bin.
              * @signal
+             * @run-first
              */
             'element-removed': (arg0: Element) => void;
             'notify::async-handling': (pspec: GObject.ParamSpec) => void;
@@ -8534,6 +8773,8 @@ export namespace Gst {
              * {@link GLib.Source} added to the mainloop. this signal will only be emitted when
              * there is a {@link GLib.MainLoop} running.
              * @signal
+             * @detailed
+             * @run-last
              */
             message: (arg0: Message) => void;
             /**
@@ -8543,6 +8784,8 @@ export namespace Gst {
              * This signal will not be emitted by default, you have to call
              * `gst_bus_enable_sync_message_emission()` before.
              * @signal
+             * @detailed
+             * @run-last
              */
             'sync-message': (arg0: Message) => void;
             'notify::enable-async': (pspec: GObject.ParamSpec) => void;
@@ -8553,6 +8796,8 @@ export namespace Gst {
              * {@link GLib.Source} added to the mainloop. this signal will only be emitted when
              * there is a {@link GLib.MainLoop} running.
              * @signal
+             * @detailed
+             * @run-last
              */
             'message::enable-async': (arg0: Message) => void;
             /**
@@ -8560,6 +8805,8 @@ export namespace Gst {
              * {@link GLib.Source} added to the mainloop. this signal will only be emitted when
              * there is a {@link GLib.MainLoop} running.
              * @signal
+             * @detailed
+             * @run-last
              */
             'message::name': (arg0: Message) => void;
             /**
@@ -8567,6 +8814,8 @@ export namespace Gst {
              * {@link GLib.Source} added to the mainloop. this signal will only be emitted when
              * there is a {@link GLib.MainLoop} running.
              * @signal
+             * @detailed
+             * @run-last
              */
             'message::parent': (arg0: Message) => void;
             /**
@@ -8576,6 +8825,8 @@ export namespace Gst {
              * This signal will not be emitted by default, you have to call
              * `gst_bus_enable_sync_message_emission()` before.
              * @signal
+             * @detailed
+             * @run-last
              */
             'sync-message::enable-async': (arg0: Message) => void;
             /**
@@ -8585,6 +8836,8 @@ export namespace Gst {
              * This signal will not be emitted by default, you have to call
              * `gst_bus_enable_sync_message_emission()` before.
              * @signal
+             * @detailed
+             * @run-last
              */
             'sync-message::name': (arg0: Message) => void;
             /**
@@ -8594,6 +8847,8 @@ export namespace Gst {
              * This signal will not be emitted by default, you have to call
              * `gst_bus_enable_sync_message_emission()` before.
              * @signal
+             * @detailed
+             * @run-last
              */
             'sync-message::parent': (arg0: Message) => void;
         }
@@ -8660,6 +8915,7 @@ export namespace Gst {
          *
          * This property is used to create the child element buses
          * in {@link Gst.Bin}.
+         * @construct-only
          */
         set enable_async(val: boolean);
         /**
@@ -8669,6 +8925,7 @@ export namespace Gst {
          *
          * This property is used to create the child element buses
          * in {@link Gst.Bin}.
+         * @construct-only
          */
         set enableAsync(val: boolean);
 
@@ -8998,6 +9255,7 @@ export namespace Gst {
              * the application's main thread.
              * @signal
              * @since 1.6
+             * @run-last
              */
             synced: (arg0: boolean) => void;
             'notify::timeout': (pspec: GObject.ParamSpec) => void;
@@ -9555,7 +9813,13 @@ export namespace Gst {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         // This accessor conflicts with a property or field in a parent class or interface.
         object: Object | any;
 
@@ -9791,6 +10055,7 @@ export namespace Gst {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             removed: () => void;
             'notify::caps': (pspec: GObject.ParamSpec) => void;
@@ -9828,11 +10093,29 @@ export namespace Gst {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get caps(): Caps;
+        /**
+         * @construct-only
+         */
         get device_class(): string;
+        /**
+         * @construct-only
+         */
         get deviceClass(): string;
+        /**
+         * @construct-only
+         */
         get display_name(): string;
+        /**
+         * @construct-only
+         */
         get displayName(): string;
+        /**
+         * @construct-only
+         */
         get properties(): Structure;
 
         /**
@@ -10153,10 +10436,12 @@ export namespace Gst {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'provider-hidden': (arg0: string) => void;
             /**
              * @signal
+             * @run-first
              */
             'provider-unhidden': (arg0: string) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -10656,6 +10941,7 @@ export namespace Gst {
              * Note that this signal will usually be emitted from the context of
              * the streaming thread.
              * @signal
+             * @run-last
              */
             'no-more-pads': () => void;
             /**
@@ -10665,11 +10951,13 @@ export namespace Gst {
              * you will need to set them to the desired target state with
              * `gst_element_set_state()` or `gst_element_sync_state_with_parent()`.
              * @signal
+             * @run-last
              */
             'pad-added': (arg0: Pad) => void;
             /**
              * a {@link Gst.Pad} has been removed from the element
              * @signal
+             * @run-last
              */
             'pad-removed': (arg0: Pad) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -12418,6 +12706,8 @@ export namespace Gst {
              * typically attached to the toplevel bin to receive notifications from all
              * the elements contained in that bin.
              * @signal
+             * @detailed
+             * @run-first
              */
             'deep-notify': (arg0: Object, arg1: GObject.ParamSpec) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -12427,6 +12717,8 @@ export namespace Gst {
              * typically attached to the toplevel bin to receive notifications from all
              * the elements contained in that bin.
              * @signal
+             * @detailed
+             * @run-first
              */
             'deep-notify::name': (arg0: Object, arg1: GObject.ParamSpec) => void;
             /**
@@ -12434,6 +12726,8 @@ export namespace Gst {
              * typically attached to the toplevel bin to receive notifications from all
              * the elements contained in that bin.
              * @signal
+             * @detailed
+             * @run-first
              */
             'deep-notify::parent': (arg0: Object, arg1: GObject.ParamSpec) => void;
         }
@@ -12825,11 +13119,13 @@ export namespace Gst {
             /**
              * Signals that a pad has been linked to the peer pad.
              * @signal
+             * @run-last
              */
             linked: (arg0: Pad) => void;
             /**
              * Signals that a pad has been unlinked from the peer pad.
              * @signal
+             * @run-last
              */
             unlinked: (arg0: Pad) => void;
             'notify::caps': (pspec: GObject.ParamSpec) => void;
@@ -12917,7 +13213,13 @@ export namespace Gst {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get caps(): Caps;
+        /**
+         * @construct-only
+         */
         get direction(): PadDirection;
         /**
          * The offset that will be applied to the running time of the pad.
@@ -13796,6 +14098,7 @@ export namespace Gst {
             /**
              * This signal is fired when an element creates a pad from this template.
              * @signal
+             * @run-last
              */
             'pad-created': (arg0: Pad) => void;
             'notify::caps': (pspec: GObject.ParamSpec) => void;
@@ -13893,27 +14196,33 @@ export namespace Gst {
 
         /**
          * The capabilities of the pad described by the pad template.
+         * @construct-only
          */
         get caps(): Caps;
         /**
          * The direction of the pad described by the pad template.
+         * @construct-only
          */
         get direction(): PadDirection;
         /**
          * The type of the pad described by the pad template.
          * @since 1.14
+         * @construct-only
          */
         get gtype(): GObject.GType;
         /**
          * The name template of the pad template.
+         * @construct-only
          */
         get name_template(): string;
         /**
          * The name template of the pad template.
+         * @construct-only
          */
         get nameTemplate(): string;
         /**
          * When the pad described by the pad template will become available.
+         * @construct-only
          */
         get presence(): PadPresence;
 
@@ -15381,12 +15690,14 @@ export namespace Gst {
              * Signals that a feature has been added to the registry (possibly
              * replacing a previously-added one by the same name)
              * @signal
+             * @run-last
              */
             'feature-added': (arg0: PluginFeature) => void;
             /**
              * Signals that a plugin has been added to the registry (possibly
              * replacing a previously-added one by the same name)
              * @signal
+             * @run-last
              */
             'plugin-added': (arg0: Plugin) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -15787,11 +16098,13 @@ export namespace Gst {
         /**
          * The unique identifier of the {@link Gst.Stream}. Can only be set at construction
          * time.
+         * @construct-only
          */
         get stream_id(): string;
         /**
          * The unique identifier of the {@link Gst.Stream}. Can only be set at construction
          * time.
+         * @construct-only
          */
         get streamId(): string;
         /**
@@ -15904,6 +16217,8 @@ export namespace Gst {
              * The stream notify signal is used to be notified of property changes to
              * streams within the collection.
              * @signal
+             * @detailed
+             * @run-first
              */
             'stream-notify': (arg0: Stream, arg1: GObject.ParamSpec) => void;
             'notify::upstream-id': (pspec: GObject.ParamSpec) => void;
@@ -15913,18 +16228,24 @@ export namespace Gst {
              * The stream notify signal is used to be notified of property changes to
              * streams within the collection.
              * @signal
+             * @detailed
+             * @run-first
              */
             'stream-notify::upstream-id': (arg0: Stream, arg1: GObject.ParamSpec) => void;
             /**
              * The stream notify signal is used to be notified of property changes to
              * streams within the collection.
              * @signal
+             * @detailed
+             * @run-first
              */
             'stream-notify::name': (arg0: Stream, arg1: GObject.ParamSpec) => void;
             /**
              * The stream notify signal is used to be notified of property changes to
              * streams within the collection.
              * @signal
+             * @detailed
+             * @run-first
              */
             'stream-notify::parent': (arg0: Stream, arg1: GObject.ParamSpec) => void;
         }

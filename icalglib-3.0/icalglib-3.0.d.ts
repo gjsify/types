@@ -2223,15 +2223,18 @@ export namespace ICalGLib {
         /**
          * Whether the native libical structure is from a global shared memory.
          * If TRUE, then it is not freed on {@link ICalGLib.Object}'s finalize.
+         * @construct-only
          */
         get is_global_memory(): boolean;
         /**
          * Whether the native libical structure is from a global shared memory.
          * If TRUE, then it is not freed on {@link ICalGLib.Object}'s finalize.
+         * @construct-only
          */
         get isGlobalMemory(): boolean;
         /**
          * The native libical structure for this ICalObject.
+         * @construct-only
          */
         get native(): any;
         /**

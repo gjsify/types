@@ -20,6 +20,9 @@ export namespace Guestfs {
      * Guestfs-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SessionEvent {
         export const $gtype: GObject.GType<SessionEvent>;
     }
@@ -72,6 +75,9 @@ export namespace Guestfs {
         WARNING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Tristate {
         export const $gtype: GObject.GType<Tristate>;
     }
@@ -4998,54 +5004,64 @@ export namespace Guestfs {
              * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
              * more details about this event.
              * @signal
+             * @run-last
              */
             appliance: (arg0: SessionEventParams) => void;
             /**
              * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
              * more details about this event.
              * @signal
+             * @run-last
              */
             close: (arg0: SessionEventParams) => void;
             /**
              * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
              * more details about this event.
              * @signal
+             * @run-last
              */
             enter: (arg0: SessionEventParams) => void;
             /**
              * @signal
+             * @run-last
              */
             'launch-done': (arg0: SessionEventParams) => void;
             /**
              * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
              * more details about this event.
              * @signal
+             * @run-last
              */
             library: (arg0: SessionEventParams) => void;
             /**
              * @signal
+             * @run-last
              */
             'libvirt-auth': (arg0: SessionEventParams) => void;
             /**
              * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
              * more details about this event.
              * @signal
+             * @run-last
              */
             progress: (arg0: SessionEventParams) => void;
             /**
              * @signal
+             * @run-last
              */
             'subprocess-quit': (arg0: SessionEventParams) => void;
             /**
              * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
              * more details about this event.
              * @signal
+             * @run-last
              */
             trace: (arg0: SessionEventParams) => void;
             /**
              * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
              * more details about this event.
              * @signal
+             * @run-last
              */
             warning: (arg0: SessionEventParams) => void;
         }

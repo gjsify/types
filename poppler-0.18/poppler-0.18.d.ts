@@ -21,6 +21,9 @@ export namespace Poppler {
      * Poppler-0.18
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ActionLayerAction {
         export const $gtype: GObject.GType<ActionLayerAction>;
     }
@@ -45,6 +48,9 @@ export namespace Poppler {
         TOGGLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ActionMovieOperation {
         export const $gtype: GObject.GType<ActionMovieOperation>;
     }
@@ -73,6 +79,9 @@ export namespace Poppler {
         STOP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ActionType {
         export const $gtype: GObject.GType<ActionType>;
     }
@@ -132,6 +141,9 @@ export namespace Poppler {
         RESET_FORM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AdditionalActionType {
         export const $gtype: GObject.GType<AdditionalActionType>;
     }
@@ -162,6 +174,9 @@ export namespace Poppler {
         CALCULATE_FIELD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotExternalDataType {
         export const $gtype: GObject.GType<AnnotExternalDataType>;
     }
@@ -174,6 +189,9 @@ export namespace Poppler {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotFreeTextQuadding {
         export const $gtype: GObject.GType<AnnotFreeTextQuadding>;
     }
@@ -187,6 +205,9 @@ export namespace Poppler {
         RIGHT_JUSTIFIED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotMarkupReplyType {
         export const $gtype: GObject.GType<AnnotMarkupReplyType>;
     }
@@ -199,6 +220,9 @@ export namespace Poppler {
         GROUP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotStampIcon {
         export const $gtype: GObject.GType<AnnotStampIcon>;
     }
@@ -224,6 +248,9 @@ export namespace Poppler {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotTextState {
         export const $gtype: GObject.GType<AnnotTextState>;
     }
@@ -242,6 +269,9 @@ export namespace Poppler {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotType {
         export const $gtype: GObject.GType<AnnotType>;
     }
@@ -278,6 +308,9 @@ export namespace Poppler {
         '3D',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Backend {
         export const $gtype: GObject.GType<Backend>;
     }
@@ -301,6 +334,9 @@ export namespace Poppler {
         CAIRO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CertificateStatus {
         export const $gtype: GObject.GType<CertificateStatus>;
     }
@@ -341,6 +377,9 @@ export namespace Poppler {
         NOT_VERIFIED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DestType {
         export const $gtype: GObject.GType<DestType>;
     }
@@ -449,6 +488,9 @@ export namespace Poppler {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FontType {
         export const $gtype: GObject.GType<FontType>;
     }
@@ -508,6 +550,9 @@ export namespace Poppler {
         CID_TYPE2OT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormButtonType {
         export const $gtype: GObject.GType<FormButtonType>;
     }
@@ -521,6 +566,9 @@ export namespace Poppler {
         RADIO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormChoiceType {
         export const $gtype: GObject.GType<FormChoiceType>;
     }
@@ -533,6 +581,9 @@ export namespace Poppler {
         LIST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormFieldType {
         export const $gtype: GObject.GType<FormFieldType>;
     }
@@ -548,6 +599,9 @@ export namespace Poppler {
         SIGNATURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormTextType {
         export const $gtype: GObject.GType<FormTextType>;
     }
@@ -561,6 +615,9 @@ export namespace Poppler {
         FILE_SELECT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MoviePlayMode {
         export const $gtype: GObject.GType<MoviePlayMode>;
     }
@@ -590,6 +647,9 @@ export namespace Poppler {
         PALINDROME,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PDFConformance {
         export const $gtype: GObject.GType<PDFConformance>;
     }
@@ -689,6 +749,9 @@ export namespace Poppler {
         static NONE: number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PDFSubtype {
         export const $gtype: GObject.GType<PDFSubtype>;
     }
@@ -729,6 +792,9 @@ export namespace Poppler {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PageLayout {
         export const $gtype: GObject.GType<PageLayout>;
     }
@@ -768,6 +834,9 @@ export namespace Poppler {
         TWO_PAGE_RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PageMode {
         export const $gtype: GObject.GType<PageMode>;
     }
@@ -807,6 +876,9 @@ export namespace Poppler {
         USE_ATTACHMENTS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PageTransitionAlignment {
         export const $gtype: GObject.GType<PageTransitionAlignment>;
     }
@@ -827,6 +899,9 @@ export namespace Poppler {
         VERTICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PageTransitionDirection {
         export const $gtype: GObject.GType<PageTransitionDirection>;
     }
@@ -847,6 +922,9 @@ export namespace Poppler {
         OUTWARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PageTransitionType {
         export const $gtype: GObject.GType<PageTransitionType>;
     }
@@ -910,6 +988,9 @@ export namespace Poppler {
         FADE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PrintDuplex {
         export const $gtype: GObject.GType<PrintDuplex>;
     }
@@ -938,6 +1019,9 @@ export namespace Poppler {
         DUPLEX_FLIP_LONG_EDGE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PrintScaling {
         export const $gtype: GObject.GType<PrintScaling>;
     }
@@ -958,6 +1042,9 @@ export namespace Poppler {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SelectionStyle {
         export const $gtype: GObject.GType<SelectionStyle>;
     }
@@ -981,6 +1068,9 @@ export namespace Poppler {
         LINE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SignatureStatus {
         export const $gtype: GObject.GType<SignatureStatus>;
     }
@@ -1021,6 +1111,9 @@ export namespace Poppler {
         NOT_VERIFIED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Stretch {
         export const $gtype: GObject.GType<Stretch>;
     }
@@ -1040,6 +1133,9 @@ export namespace Poppler {
         ULTRA_EXPANDED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureBlockAlign {
         export const $gtype: GObject.GType<StructureBlockAlign>;
     }
@@ -1054,6 +1150,9 @@ export namespace Poppler {
         JUSTIFY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureBorderStyle {
         export const $gtype: GObject.GType<StructureBorderStyle>;
     }
@@ -1073,6 +1172,9 @@ export namespace Poppler {
         OUTSET,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureElementKind {
         export const $gtype: GObject.GType<StructureElementKind>;
     }
@@ -1134,6 +1236,9 @@ export namespace Poppler {
         FORM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureFormRole {
         export const $gtype: GObject.GType<StructureFormRole>;
     }
@@ -1149,6 +1254,9 @@ export namespace Poppler {
         CHECKBOX,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureFormState {
         export const $gtype: GObject.GType<StructureFormState>;
     }
@@ -1177,6 +1285,9 @@ export namespace Poppler {
         static '270': number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureInlineAlign {
         export const $gtype: GObject.GType<StructureInlineAlign>;
     }
@@ -1190,6 +1301,9 @@ export namespace Poppler {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureListNumbering {
         export const $gtype: GObject.GType<StructureListNumbering>;
     }
@@ -1209,6 +1323,9 @@ export namespace Poppler {
         LOWER_ALPHA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructurePlacement {
         export const $gtype: GObject.GType<StructurePlacement>;
     }
@@ -1224,6 +1341,9 @@ export namespace Poppler {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureRubyAlign {
         export const $gtype: GObject.GType<StructureRubyAlign>;
     }
@@ -1239,6 +1359,9 @@ export namespace Poppler {
         DISTRIBUTE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureRubyPosition {
         export const $gtype: GObject.GType<StructureRubyPosition>;
     }
@@ -1253,6 +1376,9 @@ export namespace Poppler {
         INLINE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureTableScope {
         export const $gtype: GObject.GType<StructureTableScope>;
     }
@@ -1266,6 +1392,9 @@ export namespace Poppler {
         BOTH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureTextAlign {
         export const $gtype: GObject.GType<StructureTextAlign>;
     }
@@ -1280,6 +1409,9 @@ export namespace Poppler {
         JUSTIFY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureTextDecoration {
         export const $gtype: GObject.GType<StructureTextDecoration>;
     }
@@ -1294,6 +1426,9 @@ export namespace Poppler {
         LINETHROUGH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureWritingMode {
         export const $gtype: GObject.GType<StructureWritingMode>;
     }
@@ -1307,6 +1442,9 @@ export namespace Poppler {
         TB_RL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Style {
         export const $gtype: GObject.GType<Style>;
     }
@@ -1320,6 +1458,9 @@ export namespace Poppler {
         ITALIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Weight {
         export const $gtype: GObject.GType<Weight>;
     }
@@ -1466,6 +1607,9 @@ export namespace Poppler {
     interface NssPasswordFunc {
         (text: string): string;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace AnnotFlag {
         export const $gtype: GObject.GType<AnnotFlag>;
     }
@@ -1487,6 +1631,9 @@ export namespace Poppler {
         LOCKED_CONTENTS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FindFlags {
         export const $gtype: GObject.GType<FindFlags>;
     }
@@ -1528,6 +1675,9 @@ export namespace Poppler {
         MULTILINE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace Permissions {
         export const $gtype: GObject.GType<Permissions>;
     }
@@ -1577,6 +1727,9 @@ export namespace Poppler {
         FULL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PrintFlags {
         export const $gtype: GObject.GType<PrintFlags>;
     }
@@ -1606,6 +1759,9 @@ export namespace Poppler {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RenderAnnotsFlags {
         export const $gtype: GObject.GType<RenderAnnotsFlags>;
     }
@@ -1648,6 +1804,9 @@ export namespace Poppler {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SignatureValidationFlags {
         export const $gtype: GObject.GType<SignatureValidationFlags>;
     }
@@ -1672,6 +1831,9 @@ export namespace Poppler {
         USE_AIA_CERTIFICATE_FETCH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StructureGetTextFlags {
         export const $gtype: GObject.GType<StructureGetTextFlags>;
     }
@@ -1692,6 +1854,9 @@ export namespace Poppler {
         RECURSIVE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ViewerPreferences {
         export const $gtype: GObject.GType<ViewerPreferences>;
     }
@@ -3090,22 +3255,27 @@ export namespace Poppler {
         set creator(val: string);
         /**
          * The PDF version as string. See also `poppler_document_get_pdf_version_string()`
+         * @read-only
          */
         get format(): string;
         /**
          * The PDF major version number. See also `poppler_document_get_pdf_version()`
+         * @read-only
          */
         get format_major(): number;
         /**
          * The PDF major version number. See also `poppler_document_get_pdf_version()`
+         * @read-only
          */
         get formatMajor(): number;
         /**
          * The PDF minor version number. See also `poppler_document_get_pdf_version()`
+         * @read-only
          */
         get format_minor(): number;
         /**
          * The PDF minor version number. See also `poppler_document_get_pdf_version()`
+         * @read-only
          */
         get formatMinor(): number;
         /**
@@ -3115,10 +3285,12 @@ export namespace Poppler {
         set keywords(val: string);
         /**
          * Whether document is linearized. See also `poppler_document_is_linearized()`
+         * @read-only
          */
         get linearized(): boolean;
         /**
          * Document metadata in XML format, or `null`
+         * @read-only
          */
         get metadata(): string;
         /**
@@ -3147,48 +3319,59 @@ export namespace Poppler {
         set modDatetime(val: GLib.DateTime);
         /**
          * The page layout that should be used when the document is opened
+         * @read-only
          */
         get page_layout(): PageLayout;
         /**
          * The page layout that should be used when the document is opened
+         * @read-only
          */
         get pageLayout(): PageLayout;
         /**
          * The mode that should be used when the document is opened
+         * @read-only
          */
         get page_mode(): PageMode;
         /**
          * The mode that should be used when the document is opened
+         * @read-only
          */
         get pageMode(): PageMode;
         /**
          * Flags specifying which operations are permitted when the document is opened
+         * @read-only
          */
         get permissions(): Permissions;
         /**
          * @since 0.80
+         * @read-only
          */
         get print_duplex(): PrintDuplex;
         /**
          * @since 0.80
+         * @read-only
          */
         get printDuplex(): PrintDuplex;
         /**
          * Suggested number of copies to be printed for this document
          * @since 0.80
+         * @read-only
          */
         get print_n_copies(): number;
         /**
          * Suggested number of copies to be printed for this document
          * @since 0.80
+         * @read-only
          */
         get printNCopies(): number;
         /**
          * @since 0.73
+         * @read-only
          */
         get print_scaling(): PrintScaling;
         /**
          * @since 0.73
+         * @read-only
          */
         get printScaling(): PrintScaling;
         /**
@@ -3203,30 +3386,37 @@ export namespace Poppler {
         set subject(val: string);
         /**
          * Document PDF subtype type
+         * @read-only
          */
         get subtype(): PDFSubtype;
         /**
          * Document PDF subtype conformance
+         * @read-only
          */
         get subtype_conformance(): PDFConformance;
         /**
          * Document PDF subtype conformance
+         * @read-only
          */
         get subtypeConformance(): PDFConformance;
         /**
          * Document PDF subtype part
+         * @read-only
          */
         get subtype_part(): PDFPart;
         /**
          * Document PDF subtype part
+         * @read-only
          */
         get subtypePart(): PDFPart;
         /**
          * Document PDF subtype. See also `poppler_document_get_pdf_subtype_string()`
+         * @read-only
          */
         get subtype_string(): string;
         /**
          * Document PDF subtype. See also `poppler_document_get_pdf_subtype_string()`
+         * @read-only
          */
         get subtypeString(): string;
         /**
@@ -3234,7 +3424,13 @@ export namespace Poppler {
          */
         get title(): string;
         set title(val: string);
+        /**
+         * @read-only
+         */
         get viewer_preferences(): ViewerPreferences;
+        /**
+         * @read-only
+         */
         get viewerPreferences(): ViewerPreferences;
 
         /**
@@ -4469,6 +4665,7 @@ export namespace Poppler {
 
         /**
          * The label of the page or `null`. See also `poppler_page_get_label()`
+         * @read-only
          */
         get label(): string;
 

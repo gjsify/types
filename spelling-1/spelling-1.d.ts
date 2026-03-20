@@ -74,6 +74,7 @@ export namespace Spelling {
          * Currently, only Enchant is supported, and requires using the
          * `SpellingEnchantProvider`. Setting this to `null` will get
          * the default provider.
+         * @construct-only
          */
         get provider(): Provider;
 
@@ -196,6 +197,7 @@ export namespace Spelling {
 
         /**
          * The language code, for example `en_US`.
+         * @construct-only
          */
         get code(): string;
 
@@ -301,14 +303,17 @@ export namespace Spelling {
 
         /**
          * The language code.
+         * @construct-only
          */
         get code(): string;
         /**
          * A group for sorting, usually the country name.
+         * @construct-only
          */
         get group(): string;
         /**
          * The name of the language.
+         * @construct-only
          */
         get name(): string;
 
@@ -392,10 +397,12 @@ export namespace Spelling {
 
         /**
          * The display name.
+         * @construct-only
          */
         get display_name(): string;
         /**
          * The display name.
+         * @construct-only
          */
         get displayName(): string;
 
@@ -506,6 +513,7 @@ export namespace Spelling {
 
         /**
          * The {@link GtkSource.Buffer}.
+         * @construct-only
          */
         get buffer(): GtkSource.Buffer;
         /**

@@ -128,14 +128,17 @@ export namespace Gkbd {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
              * @signal
+             * @run-last
              */
             'group-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'indicators-changed': () => void;
         }
@@ -277,6 +280,7 @@ export namespace Gkbd {
         interface SignalSignatures extends Gtk.Notebook.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'reinit-ui': () => void;
             'notify::enable-popup': (pspec: GObject.ParamSpec) => void;
@@ -867,6 +871,7 @@ export namespace Gkbd {
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'bad-keycode': (arg0: number) => void;
             'notify::app-paintable': (pspec: GObject.ParamSpec) => void;

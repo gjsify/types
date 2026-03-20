@@ -51,6 +51,9 @@ export namespace Cogl {
         FLOAT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BufferBindTarget {
         export const $gtype: GObject.GType<BufferBindTarget>;
     }
@@ -66,6 +69,9 @@ export namespace Cogl {
         COUNT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BufferUpdateHint {
         export const $gtype: GObject.GType<BufferUpdateHint>;
     }
@@ -485,6 +491,9 @@ export namespace Cogl {
         AUTOMATIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PixelFormat {
         export const $gtype: GObject.GType<PixelFormat>;
     }
@@ -1558,6 +1567,9 @@ export namespace Cogl {
         DISABLE_MIGRATION,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BufferAccess {
         export const $gtype: GObject.GType<BufferAccess>;
     }
@@ -1601,6 +1613,9 @@ export namespace Cogl {
         STENCIL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BufferMapHint {
         export const $gtype: GObject.GType<BufferMapHint>;
     }
@@ -2077,11 +2092,29 @@ export namespace Cogl {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set context(val: Context);
+        /**
+         * @construct-only
+         */
         set default_target(val: BufferBindTarget);
+        /**
+         * @construct-only
+         */
         set defaultTarget(val: BufferBindTarget);
+        /**
+         * @construct-only
+         */
         set size(val: number);
+        /**
+         * @write-only
+         */
         set update_hint(val: BufferUpdateHint);
+        /**
+         * @write-only
+         */
         set updateHint(val: BufferUpdateHint);
 
         /**
@@ -2607,6 +2640,7 @@ export namespace Cogl {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             destroy: () => void;
             'notify::context': (pspec: GObject.ParamSpec) => void;
@@ -2634,8 +2668,17 @@ export namespace Cogl {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get context(): Context;
+        /**
+         * @construct-only
+         */
         get driver_config(): any;
+        /**
+         * @construct-only
+         */
         get driverConfig(): any;
         get height(): number;
         set height(val: number);
@@ -5199,6 +5242,7 @@ export namespace Cogl {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'scanout-failed': (arg0: Onscreen) => void;
         }
@@ -5855,10 +5899,25 @@ export namespace Cogl {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set context(val: Context);
+        /**
+         * @construct-only
+         */
         set format(val: PixelFormat);
+        /**
+         * @construct-only
+         */
         set height(val: number);
+        /**
+         * @construct-only
+         */
         set loader(val: any);
+        /**
+         * @construct-only
+         */
         set width(val: number);
 
         /**

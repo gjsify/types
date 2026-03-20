@@ -20,6 +20,9 @@ export namespace IBus {
      * IBus-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AttrPreedit {
         export const $gtype: GObject.GType<AttrPreedit>;
     }
@@ -87,6 +90,9 @@ export namespace IBus {
         ERROR_COMPOSE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AttrType {
         export const $gtype: GObject.GType<AttrType>;
     }
@@ -110,6 +116,9 @@ export namespace IBus {
         BACKGROUND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AttrUnderline {
         export const $gtype: GObject.GType<AttrUnderline>;
     }
@@ -141,6 +150,9 @@ export namespace IBus {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BusGlobalBindingType {
         export const $gtype: GObject.GType<BusGlobalBindingType>;
     }
@@ -165,6 +177,9 @@ export namespace IBus {
         EMOJI_TYPING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BusRequestNameReply {
         export const $gtype: GObject.GType<BusRequestNameReply>;
     }
@@ -191,6 +206,9 @@ export namespace IBus {
         ALREADY_OWNER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BusStartServiceByNameReply {
         export const $gtype: GObject.GType<BusStartServiceByNameReply>;
     }
@@ -239,6 +257,9 @@ export namespace IBus {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputPurpose {
         export const $gtype: GObject.GType<InputPurpose>;
     }
@@ -315,6 +336,9 @@ export namespace IBus {
         TERMINAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Orientation {
         export const $gtype: GObject.GType<Orientation>;
     }
@@ -338,6 +362,9 @@ export namespace IBus {
         SYSTEM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PreeditFocusMode {
         export const $gtype: GObject.GType<PreeditFocusMode>;
     }
@@ -357,6 +384,9 @@ export namespace IBus {
         COMMIT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PropState {
         export const $gtype: GObject.GType<PropState>;
     }
@@ -394,6 +424,9 @@ export namespace IBus {
         INCONSISTENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PropType {
         export const $gtype: GObject.GType<PropType>;
     }
@@ -426,6 +459,9 @@ export namespace IBus {
         SEPARATOR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace XEventType {
         export const $gtype: GObject.GType<XEventType>;
     }
@@ -5170,6 +5206,9 @@ export namespace IBus {
     interface UnicodeDataLoadAsyncFinish {
         (data_list: UnicodeData[]): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace BusNameFlag {
         export const $gtype: GObject.GType<BusNameFlag>;
     }
@@ -5192,6 +5231,9 @@ export namespace IBus {
         DO_NOT_QUEUE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace Capabilite {
         export const $gtype: GObject.GType<Capabilite>;
     }
@@ -5239,6 +5281,9 @@ export namespace IBus {
         SYNC_PROCESS_KEY_V2,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace InputHints {
         export const $gtype: GObject.GType<InputHints>;
     }
@@ -5315,6 +5360,9 @@ export namespace IBus {
         PRIVATE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }
@@ -5411,6 +5459,9 @@ export namespace IBus {
         MODIFIER_MASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ObjectFlags {
         export const $gtype: GObject.GType<ObjectFlags>;
     }
@@ -5610,22 +5661,26 @@ export namespace IBus {
             /**
              * Emitted when {@link IBus.Bus} is connected to ibus-daemon.
              * @signal
+             * @run-last
              */
             connected: () => void;
             /**
              * Emitted when {@link IBus.Bus} is disconnected from ibus-daemon.
              * @signal
+             * @run-last
              */
             disconnected: () => void;
             /**
              * Emitted when global engine is changed.
              * @signal
+             * @run-last
              */
             'global-engine-changed': (arg0: string) => void;
             /**
              * Emitted when global shortcut key is responded.
              * Since 1.5.32
              * @signal
+             * @run-last
              */
             'global-shortcut-key-responded': (
                 arg0: number,
@@ -5637,6 +5692,7 @@ export namespace IBus {
             /**
              * Emitted when D-Bus name owner is changed.
              * @signal
+             * @run-last
              */
             'name-owner-changed': (arg0: string, arg1: string, arg2: string) => void;
             'notify::client-only': (pspec: GObject.ParamSpec) => void;
@@ -5664,18 +5720,22 @@ export namespace IBus {
 
         /**
          * Whether the {@link IBus.Bus} object is for client use only.
+         * @construct-only
          */
         get client_only(): boolean;
         /**
          * Whether the {@link IBus.Bus} object is for client use only.
+         * @construct-only
          */
         get clientOnly(): boolean;
         /**
          * Whether the {@link IBus.Bus} object should connect asynchronously to the bus.
+         * @construct-only
          */
         get connect_async(): boolean;
         /**
          * Whether the {@link IBus.Bus} object should connect asynchronously to the bus.
+         * @construct-only
          */
         get connectAsync(): boolean;
 
@@ -6832,38 +6892,47 @@ export namespace IBus {
 
         /**
          * The author of component
+         * @construct-only
          */
         get author(): string;
         /**
          * The exec path of component
+         * @construct-only
          */
         get command_line(): string;
         /**
          * The exec path of component
+         * @construct-only
          */
         get commandLine(): string;
         /**
          * The description of component
+         * @construct-only
          */
         get description(): string;
         /**
          * The homepage of component
+         * @construct-only
          */
         get homepage(): string;
         /**
          * The license of component
+         * @construct-only
          */
         get license(): string;
         /**
          * The name of component
+         * @construct-only
          */
         get name(): string;
         /**
          * The textdomain of component
+         * @construct-only
          */
         get textdomain(): string;
         /**
          * The version of component
+         * @construct-only
          */
         get version(): string;
 
@@ -7012,6 +7081,7 @@ export namespace IBus {
              * Emitted when configuration value is changed.
              * <note><para>Argument `user_data` is ignored in this function.</para></note>
              * @signal
+             * @run-last
              */
             'value-changed': (arg0: string, arg1: string, arg2: GLib.Variant) => void;
             'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
@@ -8217,6 +8287,7 @@ export namespace IBus {
         set annotations(val: any);
         /**
          * The emoji category
+         * @construct-only
          */
         get category(): string;
         /**
@@ -8226,6 +8297,7 @@ export namespace IBus {
         set description(val: string);
         /**
          * The emoji character
+         * @construct-only
          */
         get emoji(): string;
 
@@ -8323,6 +8395,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'cancel-hand-writing': (arg0: number) => void;
             /**
@@ -8333,6 +8406,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'candidate-clicked': (arg0: number, arg1: number, arg2: number) => void;
             /**
@@ -8343,6 +8417,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'cursor-down': () => void;
             /**
@@ -8353,6 +8428,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'cursor-up': () => void;
             /**
@@ -8364,6 +8440,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             disable: () => void;
             /**
@@ -8375,6 +8452,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             enable: () => void;
             /**
@@ -8386,6 +8464,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'focus-in': () => void;
             /**
@@ -8423,6 +8502,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'focus-in-id': (arg0: string, arg1: string) => void;
             /**
@@ -8434,6 +8514,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'focus-out': () => void;
             /**
@@ -8448,6 +8529,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'focus-out-id': (arg0: string) => void;
             /**
@@ -8458,6 +8540,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'page-down': () => void;
             /**
@@ -8468,6 +8551,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'page-up': () => void;
             /**
@@ -8478,6 +8562,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'process-hand-writing-event': (arg0: any | null, arg1: number) => void;
             /**
@@ -8488,6 +8573,7 @@ export namespace IBus {
              * See `ibus_input_context_process_key_event()` for further explanation of
              * key symbol, keycode and which to use.
              * @signal
+             * @run-last
              */
             'process-key-event': (arg0: number, arg1: number, arg2: number) => boolean | void;
             /**
@@ -8498,6 +8584,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'property-activate': (arg0: string, arg1: number) => void;
             /**
@@ -8508,6 +8595,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'property-hide': (arg0: string) => void;
             /**
@@ -8518,6 +8606,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'property-show': (arg0: string) => void;
             /**
@@ -8529,6 +8618,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             reset: () => void;
             /**
@@ -8540,6 +8630,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'set-capabilities': (arg0: number) => void;
             /**
@@ -8557,6 +8648,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this
              * function.</para></note>
              * @signal
+             * @run-last
              */
             'set-content-type': (arg0: number, arg1: number) => void;
             /**
@@ -8568,6 +8660,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'set-cursor-location': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
             /**
@@ -8580,6 +8673,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'set-surrounding-text': (arg0: GObject.Object, arg1: number, arg2: number) => void;
             'notify::active-surrounding-text': (pspec: GObject.ParamSpec) => void;
@@ -8618,6 +8712,7 @@ export namespace IBus {
          * signal will be called by ibus-daemon on every focus-in/out event, with
          * no need for the engine to call `ibus_engine_get_surrounding_text()`.
          * This property can only be set at construct time.
+         * @construct-only
          */
         get active_surrounding_text(): boolean;
         /**
@@ -8625,14 +8720,17 @@ export namespace IBus {
          * signal will be called by ibus-daemon on every focus-in/out event, with
          * no need for the engine to call `ibus_engine_get_surrounding_text()`.
          * This property can only be set at construct time.
+         * @construct-only
          */
         get activeSurroundingText(): boolean;
         /**
          * Name of this IBusEngine.
+         * @construct-only
          */
         get engine_name(): string;
         /**
          * Name of this IBusEngine.
+         * @construct-only
          */
         get engineName(): string;
         /**
@@ -8642,6 +8740,7 @@ export namespace IBus {
          * This property can only be set at construct time.
          *
          * See also: IBusEngine::focus-in-id
+         * @construct-only
          */
         get has_focus_id(): boolean;
         /**
@@ -8651,6 +8750,7 @@ export namespace IBus {
          * This property can only be set at construct time.
          *
          * See also: IBusEngine::focus-in-id
+         * @construct-only
          */
         get hasFocusId(): boolean;
 
@@ -9053,82 +9153,102 @@ export namespace IBus {
 
         /**
          * The author of engine description
+         * @construct-only
          */
         get author(): string;
         /**
          * The description of engine description
+         * @construct-only
          */
         get description(): string;
         /**
          * The hotkeys of engine description
+         * @construct-only
          */
         get hotkeys(): string;
         /**
          * The icon of engine description
+         * @construct-only
          */
         get icon(): string;
         /**
          * The key of IBusProperty to change panel icon dynamically.
+         * @construct-only
          */
         get icon_prop_key(): string;
         /**
          * The key of IBusProperty to change panel icon dynamically.
+         * @construct-only
          */
         get iconPropKey(): string;
         /**
          * The language of engine description
+         * @construct-only
          */
         get language(): string;
         /**
          * The layout of engine description
+         * @construct-only
          */
         get layout(): string;
         /**
          * The keyboard option of engine description
+         * @construct-only
          */
         get layout_option(): string;
         /**
          * The keyboard option of engine description
+         * @construct-only
          */
         get layoutOption(): string;
         /**
          * The keyboard variant of engine description
+         * @construct-only
          */
         get layout_variant(): string;
         /**
          * The keyboard variant of engine description
+         * @construct-only
          */
         get layoutVariant(): string;
         /**
          * The license of engine description
+         * @construct-only
          */
         get license(): string;
         /**
          * The longname of engine description
+         * @construct-only
          */
         get longname(): string;
         /**
          * The name of engine description
+         * @construct-only
          */
         get name(): string;
         /**
          * The rank of engine description
+         * @construct-only
          */
         get rank(): number;
         /**
          * The exec lists of the engine setup command
+         * @construct-only
          */
         get setup(): string;
         /**
          * The symbol chars of engine description instead of icon image
+         * @construct-only
          */
         get symbol(): string;
         /**
          * The textdomain of engine description
+         * @construct-only
          */
         get textdomain(): string;
         /**
          * The version number of engine description
+         * @construct-only
          */
         get version(): string;
 
@@ -9404,10 +9524,12 @@ export namespace IBus {
 
         /**
          * `true` if the extension is enabled in the {@link IBus.ExtensionEvent}.
+         * @construct-only
          */
         get is_enabled(): boolean;
         /**
          * `true` if the extension is enabled in the {@link IBus.ExtensionEvent}.
+         * @construct-only
          */
         get isEnabled(): boolean;
         /**
@@ -9416,6 +9538,7 @@ export namespace IBus {
          * panel.
          * If this value is `true`, the event is send to ibus-daemon, an active
          * engine. If it's `false`, the event is sned to ibus-daemon, panels.
+         * @construct-only
          */
         get is_extension(): boolean;
         /**
@@ -9424,18 +9547,22 @@ export namespace IBus {
          * panel.
          * If this value is `true`, the event is send to ibus-daemon, an active
          * engine. If it's `false`, the event is sned to ibus-daemon, panels.
+         * @construct-only
          */
         get isExtension(): boolean;
         /**
          * Name of the extension in the {@link IBus.ExtensionEvent}.
+         * @construct-only
          */
         get name(): string;
         /**
          * Parameters to enable the extension in the {@link IBus.ExtensionEvent}.
+         * @construct-only
          */
         get params(): string;
         /**
          * Version of the {@link IBus.ExtensionEvent}.
+         * @read-only
          */
         get version(): number;
 
@@ -9498,6 +9625,7 @@ export namespace IBus {
              * will be called until a callback returns a non-null object
              * of IBusEngine.
              * @signal
+             * @run-last
              */
             'create-engine': (arg0: string) => Engine | null;
             'notify::connection': (pspec: GObject.ParamSpec) => void;
@@ -9595,6 +9723,8 @@ export namespace IBus {
              *
              * <note><para>The last parameter, user_data is not actually a valid parameter. It is displayed because of GtkDoc bug.</para></note>
              * @signal
+             * @detailed
+             * @run-last
              */
             trigger: (arg0: number, arg1: any | null) => void;
         }
@@ -9723,61 +9853,73 @@ export namespace IBus {
              *  signal. If signal handler wants to keep the object, the handler should
              *  use `g_object_ref_sink()` to get the ownership of the object.)
              * @signal
+             * @run-last
              */
             'commit-text': (arg0: Text) => void;
             /**
              * Emitted to select next candidate of lookup table.
              * @signal
+             * @run-last
              */
             'cursor-down-lookup-table': () => void;
             /**
              * Emitted to select previous candidate of lookup table.
              * @signal
+             * @run-last
              */
             'cursor-up-lookup-table': () => void;
             /**
              * Emitted to delete surrounding text event from IME to client of IME.
              * @signal
+             * @run-last
              */
             'delete-surrounding-text': (arg0: number, arg1: number) => void;
             /**
              * Emitted when an IME is disabled.
              * @signal
+             * @run-last
              */
             disabled: () => void;
             /**
              * Emitted when an IME is enabled.
              * @signal
+             * @run-last
              */
             enabled: () => void;
             /**
              * Emitted to forward key event from IME to client of IME.
              * @signal
+             * @run-last
              */
             'forward-key-event': (arg0: number, arg1: number, arg2: number) => void;
             /**
              * Emitted to hide auxiliary text.
              * @signal
+             * @run-last
              */
             'hide-auxiliary-text': () => void;
             /**
              * Emitted to hide lookup table.
              * @signal
+             * @run-last
              */
             'hide-lookup-table': () => void;
             /**
              * Emitted to hide preedit text.
              * @signal
+             * @run-last
              */
             'hide-preedit-text': () => void;
             /**
              * Emitted to view the next page of lookup table.
              * @signal
+             * @run-last
              */
             'page-down-lookup-table': () => void;
             /**
              * Emitted to view the previous page of lookup table.
              * @signal
+             * @run-last
              */
             'page-up-lookup-table': () => void;
             /**
@@ -9787,26 +9929,31 @@ export namespace IBus {
              *  signal. If signal handler wants to keep the object, the handler should
              *  use `g_object_ref_sink()` to get the ownership of the object.)
              * @signal
+             * @run-last
              */
             'register-properties': (arg0: PropList) => void;
             /**
              * Emitted to receive the RequireSurroundingText signal from the daemon.
              * @signal
+             * @run-last
              */
             'require-surrounding-text': () => void;
             /**
              * Emitted to show auxiliary text.
              * @signal
+             * @run-last
              */
             'show-auxiliary-text': () => void;
             /**
              * Emitted to show lookup table.
              * @signal
+             * @run-last
              */
             'show-lookup-table': () => void;
             /**
              * Emitted to show preedit text.
              * @signal
+             * @run-last
              */
             'show-preedit-text': () => void;
             /**
@@ -9816,6 +9963,7 @@ export namespace IBus {
              *  signal. If signal handler wants to keep the object, the handler should
              *  use `g_object_ref_sink()` to get the ownership of the object.)
              * @signal
+             * @run-last
              */
             'update-auxiliary-text': (arg0: Text, arg1: boolean) => void;
             /**
@@ -9825,6 +9973,7 @@ export namespace IBus {
              *  signal. If signal handler wants to keep the object, the handler should
              *  use `g_object_ref_sink()` to get the ownership of the object.)
              * @signal
+             * @run-last
              */
             'update-lookup-table': (arg0: LookupTable, arg1: boolean) => void;
             /**
@@ -9834,6 +9983,7 @@ export namespace IBus {
              *  signal. If signal handler wants to keep the object, the handler should
              *  use `g_object_ref_sink()` to get the ownership of the object.)
              * @signal
+             * @run-last
              */
             'update-preedit-text': (arg0: Text, arg1: number, arg2: boolean) => void;
             /**
@@ -9843,6 +9993,7 @@ export namespace IBus {
              *  signal. If signal handler wants to keep the object, the handler should
              *  use `g_object_ref_sink()` to get the ownership of the object.)
              * @signal
+             * @run-last
              */
             'update-preedit-text-with-mode': (arg0: Text, arg1: number, arg2: boolean, arg3: number) => void;
             /**
@@ -9852,6 +10003,7 @@ export namespace IBus {
              *  signal. If signal handler wants to keep the object, the handler should
              *  use `g_object_ref_sink()` to get the ownership of the object.)
              * @signal
+             * @run-last
              */
             'update-property': (arg0: Property) => void;
             'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
@@ -11240,6 +11392,7 @@ export namespace IBus {
              *
              * <note><para>Argument `user_data` is ignored in this function.</para></note>
              * @signal
+             * @run-last
              */
             destroy: () => void;
         }
@@ -11421,6 +11574,7 @@ export namespace IBus {
         interface SignalSignatures extends Service.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'candidate-clicked-lookup-table': (arg0: number, arg1: number, arg2: number) => void;
             /**
@@ -11432,6 +11586,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'commit-text-received': (arg0: Text) => void;
             /**
@@ -11443,6 +11598,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'cursor-down-lookup-table': () => void;
             /**
@@ -11454,6 +11610,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'cursor-up-lookup-table': () => void;
             /**
@@ -11465,6 +11622,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'destroy-context': (arg0: string) => void;
             /**
@@ -11476,6 +11634,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'focus-in': (arg0: string) => void;
             /**
@@ -11487,6 +11646,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'focus-out': (arg0: string) => void;
             /**
@@ -11498,6 +11658,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'hide-auxiliary-text': () => void;
             /**
@@ -11509,6 +11670,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'hide-language-bar': () => void;
             /**
@@ -11520,6 +11682,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'hide-lookup-table': () => void;
             /**
@@ -11531,6 +11694,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'hide-preedit-text': () => void;
             /**
@@ -11542,6 +11706,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'page-down-lookup-table': () => void;
             /**
@@ -11553,6 +11718,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'page-up-lookup-table': () => void;
             /**
@@ -11564,6 +11730,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'panel-extension-received': (arg0: ExtensionEvent) => void;
             /**
@@ -11574,6 +11741,7 @@ export namespace IBus {
              * See `ibus_input_context_process_key_event()` for further explanation of
              * key symbol, keycode and which to use.
              * @signal
+             * @run-last
              */
             'process-key-event': (arg0: number, arg1: number, arg2: number) => boolean | void;
             /**
@@ -11585,6 +11753,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'register-properties': (arg0: PropList) => void;
             /**
@@ -11596,6 +11765,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             reset: () => void;
             /**
@@ -11607,6 +11777,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'set-content-type': (arg0: number, arg1: number) => void;
             /**
@@ -11618,6 +11789,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'set-cursor-location': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
             /**
@@ -11628,6 +11800,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'set-cursor-location-relative': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
             /**
@@ -11639,6 +11812,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'show-auxiliary-text': () => void;
             /**
@@ -11650,6 +11824,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'show-language-bar': () => void;
             /**
@@ -11661,6 +11836,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'show-lookup-table': () => void;
             /**
@@ -11672,6 +11848,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'show-preedit-text': () => void;
             /**
@@ -11683,6 +11860,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'start-setup': () => void;
             /**
@@ -11694,6 +11872,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'state-changed': () => void;
             /**
@@ -11705,6 +11884,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'update-auxiliary-text': (arg0: Text, arg1: boolean) => void;
             /**
@@ -11716,6 +11896,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'update-lookup-table': (arg0: LookupTable, arg1: boolean) => void;
             /**
@@ -11727,6 +11908,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'update-preedit-text': (arg0: Text, arg1: number, arg2: boolean) => void;
             /**
@@ -11738,6 +11920,7 @@ export namespace IBus {
              * <note><para>Argument `user_data` is ignored in this function.</para>
              * </note>
              * @signal
+             * @run-last
              */
             'update-property': (arg0: Property) => void;
             'notify::connection': (pspec: GObject.ParamSpec) => void;
@@ -12192,10 +12375,19 @@ export namespace IBus {
 
         get icon(): string;
         set icon(val: string);
+        /**
+         * @construct-only
+         */
         get key(): string;
         get label(): Text;
         set label(val: Text);
+        /**
+         * @construct-only
+         */
         get prop_type(): PropType;
+        /**
+         * @construct-only
+         */
         get propType(): PropType;
         get sensitive(): boolean;
         set sensitive(val: boolean);
@@ -12371,6 +12563,7 @@ export namespace IBus {
              *
              * <note><para>Argument `user_data` is ignored in this function.</para></note>
              * @signal
+             * @run-last
              */
             destroy: () => void;
             'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
@@ -13266,6 +13459,7 @@ export namespace IBus {
              *
              * See also: `ibus_registry_start_monitor_changes()`.
              * @signal
+             * @run-last
              */
             changed: () => void;
         }
@@ -13558,10 +13752,12 @@ export namespace IBus {
         set connection(val: Gio.DBusConnection);
         /**
          * The path of service object.
+         * @construct-only
          */
         get object_path(): string;
         /**
          * The path of service object.
+         * @construct-only
          */
         get objectPath(): string;
 
@@ -13843,6 +14039,7 @@ export namespace IBus {
 
         /**
          * The Uniode end code point
+         * @construct-only
          */
         get end(): number;
         /**
@@ -13852,6 +14049,7 @@ export namespace IBus {
         set name(val: string);
         /**
          * The Uniode start code point
+         * @construct-only
          */
         get start(): number;
 
@@ -13970,6 +14168,7 @@ export namespace IBus {
         set blockName(val: string);
         /**
          * The Uniode code point
+         * @construct-only
          */
         get code(): number;
         /**
@@ -14143,114 +14342,142 @@ export namespace IBus {
 
         /**
          * IBusXEventType of this IBusXEvent.
+         * @construct-only
          */
         get event_type(): number;
         /**
          * IBusXEventType of this IBusXEvent.
+         * @construct-only
          */
         get eventType(): number;
         /**
          * group of this IBusXEvent.
+         * @construct-only
          */
         get group(): number;
         /**
          * hardware keycode of this IBusXEvent.
+         * @construct-only
          */
         get hardware_keycode(): number;
         /**
          * hardware keycode of this IBusXEvent.
+         * @construct-only
          */
         get hardwareKeycode(): number;
         /**
          * is_modifier of this IBusXEvent.
+         * @construct-only
          */
         get is_modifier(): boolean;
         /**
          * is_modifier of this IBusXEvent.
+         * @construct-only
          */
         get isModifier(): boolean;
         /**
          * keyval of this IBusXEvent.
+         * @construct-only
          */
         get keyval(): number;
         /**
          * keyval of this IBusXEvent.
+         * @construct-only
          */
         get length(): number;
         /**
          * purpose of this IBusXEvent.
+         * @construct-only
          */
         get purpose(): string;
         /**
          * root window of this IBusXEvent.
+         * @construct-only
          */
         get root(): number;
         /**
          * same_screen of this IBusXEvent.
+         * @construct-only
          */
         get same_screen(): boolean;
         /**
          * same_screen of this IBusXEvent.
+         * @construct-only
          */
         get sameScreen(): boolean;
         /**
          * send_event of this IBusXEvent.
+         * @construct-only
          */
         get send_event(): number;
         /**
          * send_event of this IBusXEvent.
+         * @construct-only
          */
         get sendEvent(): number;
         /**
          * serial of this IBusXEvent.
+         * @construct-only
          */
         get serial(): number;
         /**
          * state of this IBusXEvent.
+         * @construct-only
          */
         get state(): number;
         /**
          * string of this IBusXEvent.
+         * @construct-only
          */
         get string(): string;
         /**
          * subwindow of this IBusXEvent.
+         * @construct-only
          */
         get subwindow(): number;
         /**
          * time of this IBusXEvent.
+         * @construct-only
          */
         get time(): number;
         /**
          * Version of this IBusXEvent.
+         * @read-only
          */
         get version(): number;
         /**
          * window of this IBusXEvent.
+         * @construct-only
          */
         get window(): number;
         /**
          * x of this IBusXEvent.
+         * @construct-only
          */
         get x(): number;
         /**
          * root-x of this IBusXEvent.
+         * @construct-only
          */
         get x_root(): number;
         /**
          * root-x of this IBusXEvent.
+         * @construct-only
          */
         get xRoot(): number;
         /**
          * x of this IBusXEvent.
+         * @construct-only
          */
         get y(): number;
         /**
          * root-y of this IBusXEvent.
+         * @construct-only
          */
         get y_root(): number;
         /**
          * root-y of this IBusXEvent.
+         * @construct-only
          */
         get yRoot(): number;
 

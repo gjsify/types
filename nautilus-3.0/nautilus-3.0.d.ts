@@ -29,6 +29,9 @@ export namespace Nautilus {
      * Nautilus-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OperationResult {
         export const $gtype: GObject.GType<OperationResult>;
     }
@@ -134,7 +137,13 @@ export namespace Nautilus {
 
         get attribute(): string;
         set attribute(val: string);
+        /**
+         * @read-only
+         */
         get attribute_q(): number;
+        /**
+         * @read-only
+         */
         get attributeQ(): number;
         get default_sort_order(): Gtk.SortType;
         set default_sort_order(val: Gtk.SortType);
@@ -144,6 +153,9 @@ export namespace Nautilus {
         set description(val: string);
         get label(): string;
         set label(val: string);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get xalign(): number;
         set xalign(val: number);
@@ -258,6 +270,7 @@ export namespace Nautilus {
             /**
              * Signals that the user has activated this menu item.
              * @signal
+             * @run-last
              */
             activate: () => void;
             'notify::icon': (pspec: GObject.ParamSpec) => void;
@@ -296,6 +309,9 @@ export namespace Nautilus {
         set label(val: string);
         get menu(): Menu;
         set menu(val: Menu);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get priority(): boolean;
         set priority(val: boolean);
@@ -397,6 +413,9 @@ export namespace Nautilus {
 
         get label(): Gtk.Widget;
         set label(val: Gtk.Widget);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get page(): Gtk.Widget;
         set page(val: Gtk.Widget);

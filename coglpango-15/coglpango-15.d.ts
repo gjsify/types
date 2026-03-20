@@ -95,6 +95,9 @@ export namespace CoglPango {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set context(val: Cogl.Context);
 
         /**

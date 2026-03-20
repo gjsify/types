@@ -41,6 +41,9 @@ export namespace Rest {
         COPY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OAuthSignatureMethod {
         export const $gtype: GObject.GType<OAuthSignatureMethod>;
     }
@@ -335,9 +338,21 @@ export namespace Rest {
         set access_token(val: string);
         get accessToken(): string;
         set accessToken(val: string);
+        /**
+         * @construct-only
+         */
         get auth_endpoint(): string;
+        /**
+         * @construct-only
+         */
         get authEndpoint(): string;
+        /**
+         * @construct-only
+         */
         get client_id(): string;
+        /**
+         * @construct-only
+         */
         get clientId(): string;
 
         /**
@@ -546,9 +561,21 @@ export namespace Rest {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get consumer_key(): string;
+        /**
+         * @construct-only
+         */
         get consumerKey(): string;
+        /**
+         * @construct-only
+         */
         get consumer_secret(): string;
+        /**
+         * @construct-only
+         */
         get consumerSecret(): string;
         get signature_host(): string;
         set signature_host(val: string);
@@ -842,6 +869,7 @@ export namespace Rest {
              * `rest_proxy_auth_unpause()` when everything is ready for it
              * to continue.
              * @signal
+             * @run-last
              */
             authenticate: (arg0: ProxyAuth, arg1: boolean) => boolean | void;
             'notify::binding-required': (pspec: GObject.ParamSpec) => void;
@@ -887,7 +915,13 @@ export namespace Rest {
         set binding_required(val: boolean);
         get bindingRequired(): boolean;
         set bindingRequired(val: boolean);
+        /**
+         * @construct-only
+         */
         get disable_cookies(): boolean;
+        /**
+         * @construct-only
+         */
         get disableCookies(): boolean;
         get password(): string;
         set password(val: string);
@@ -1099,6 +1133,9 @@ export namespace Rest {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get proxy(): Proxy;
 
         /**

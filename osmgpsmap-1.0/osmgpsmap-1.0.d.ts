@@ -82,6 +82,7 @@ export namespace OsmGpsMap {
              * </para>
              * </note>
              * @signal
+             * @run-first
              */
             changed: () => void;
             'notify::auto-center': (pspec: GObject.ParamSpec) => void;
@@ -227,7 +228,13 @@ export namespace OsmGpsMap {
         set auto_download(val: boolean);
         get autoDownload(): boolean;
         set autoDownload(val: boolean);
+        /**
+         * @construct-only
+         */
         get drag_limit(): number;
+        /**
+         * @construct-only
+         */
         get dragLimit(): number;
         get gps_track_highlight_radius(): number;
         set gps_track_highlight_radius(val: number);
@@ -241,9 +248,21 @@ export namespace OsmGpsMap {
         set gps_track_width(val: number);
         get gpsTrackWidth(): number;
         set gpsTrackWidth(val: number);
+        /**
+         * @construct-only
+         */
         get image_format(): string;
+        /**
+         * @construct-only
+         */
         get imageFormat(): string;
+        /**
+         * @read-only
+         */
         get latitude(): number;
+        /**
+         * @read-only
+         */
         get longitude(): number;
         /**
          * A #OsmGpsMapSource_t representing the tile repository to use
@@ -271,15 +290,45 @@ export namespace OsmGpsMap {
          */
         get mapSource(): number;
         set mapSource(val: number);
+        /**
+         * @construct-only
+         */
         get map_x(): number;
+        /**
+         * @construct-only
+         */
         get mapX(): number;
+        /**
+         * @construct-only
+         */
         get map_y(): number;
+        /**
+         * @construct-only
+         */
         get mapY(): number;
+        /**
+         * @construct-only
+         */
         get max_zoom(): number;
+        /**
+         * @construct-only
+         */
         get maxZoom(): number;
+        /**
+         * @construct-only
+         */
         get min_zoom(): number;
+        /**
+         * @construct-only
+         */
         get minZoom(): number;
+        /**
+         * @construct-only
+         */
         get proxy_uri(): string;
+        /**
+         * @construct-only
+         */
         get proxyUri(): string;
         get record_trip_history(): boolean;
         set record_trip_history(val: boolean);
@@ -346,6 +395,7 @@ export namespace OsmGpsMap {
          * explicitly support.
          * </para>
          * </note>
+         * @construct-only
          */
         get repo_uri(): string;
         /**
@@ -409,6 +459,7 @@ export namespace OsmGpsMap {
          * explicitly support.
          * </para>
          * </note>
+         * @construct-only
          */
         get repoUri(): string;
         /**
@@ -473,6 +524,7 @@ export namespace OsmGpsMap {
          * <citetitle>XDG Base Directory Specification</citetitle></ulink>). To get the
          * base directory where map tiles will be cached call
          * `osm_gps_map_get_default_cache_directory()`
+         * @construct-only
          */
         get tile_cache_base(): string;
         /**
@@ -487,23 +539,33 @@ export namespace OsmGpsMap {
          * <citetitle>XDG Base Directory Specification</citetitle></ulink>). To get the
          * base directory where map tiles will be cached call
          * `osm_gps_map_get_default_cache_directory()`
+         * @construct-only
          */
         get tileCacheBase(): string;
+        /**
+         * @construct-only
+         */
         get tile_zoom_offset(): number;
+        /**
+         * @construct-only
+         */
         get tileZoomOffset(): number;
         /**
          * The number of tiles currently waiting to download. Connect to
          * ::notify::tiles-queued if you want to be informed when this changes
+         * @read-only
          */
         get tiles_queued(): number;
         /**
          * The number of tiles currently waiting to download. Connect to
          * ::notify::tiles-queued if you want to be informed when this changes
+         * @read-only
          */
         get tilesQueued(): number;
         /**
          * The map zoom level. Connect to ::notify::zoom if you want to be informed
          * when this changes.
+         * @construct-only
          */
         get zoom(): number;
 
@@ -2075,18 +2137,22 @@ export namespace OsmGpsMap {
             /**
              * The point-added signal.
              * @signal
+             * @run-first
              */
             'point-added': (arg0: MapPoint) => void;
             /**
              * @signal
+             * @run-first
              */
             'point-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'point-inserted': (arg0: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'point-removed': (arg0: number) => void;
             'notify::alpha': (pspec: GObject.ParamSpec) => void;
@@ -2128,6 +2194,9 @@ export namespace OsmGpsMap {
         set line_width(val: number);
         get lineWidth(): number;
         set lineWidth(val: number);
+        /**
+         * @construct-only
+         */
         get track(): any;
         get visible(): boolean;
         set visible(val: boolean);

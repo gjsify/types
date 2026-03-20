@@ -135,17 +135,20 @@ export namespace Accounts {
             /**
              * Emitted when the account has been deleted.
              * @signal
+             * @run-last
              */
             deleted: () => void;
             /**
              * Emitted when the account display name has changed.
              * @signal
+             * @run-last
              */
             'display-name-changed': () => void;
             /**
              * Emitted when the account "enabled" status was changed for one of its
              * services, or for the account globally.
              * @signal
+             * @run-last
              */
             enabled: (arg0: string, arg1: boolean) => void;
             'notify::display-name': (pspec: GObject.ParamSpec) => void;
@@ -181,31 +184,40 @@ export namespace Accounts {
         /**
          * The display name of the account.
          * @since 1.4
+         * @read-only
          */
         get display_name(): string;
         /**
          * The display name of the account.
          * @since 1.4
+         * @read-only
          */
         get displayName(): string;
         /**
          * Whether the account is currently enabled.
          * @since 1.4
+         * @read-only
          */
         get enabled(): boolean;
+        /**
+         * @construct-only
+         */
         set foreign(val: boolean);
         /**
          * The AgAccountId for the account.
+         * @construct-only
          */
         get id(): number;
         /**
          * The {@link Accounts.Manager} from which the account was instantiated.
          * @since 1.4
+         * @construct-only
          */
         get manager(): Manager;
         /**
          * The ID of the provider for the account.
          * @since 1.4
+         * @construct-only
          */
         get provider(): string;
 
@@ -995,11 +1007,13 @@ export namespace Accounts {
              * use the `ag_account_service_get_changed_fields()` method to retrieve the
              * list of the settings which have changed.
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
              * Emitted when the service enabled state changes.
              * @signal
+             * @run-last
              */
             enabled: (arg0: boolean) => void;
             'notify::account': (pspec: GObject.ParamSpec) => void;
@@ -1028,6 +1042,7 @@ export namespace Accounts {
         /**
          * The {@link Accounts.Account} used by the account service.
          * @since 1.4
+         * @construct-only
          */
         get account(): Account;
         /**
@@ -1037,11 +1052,13 @@ export namespace Accounts {
          * property is `false`, applications should not try to use this
          * object.
          * @since 1.4
+         * @read-only
          */
         get enabled(): boolean;
         /**
          * The {@link Accounts.Service} used by the account service.
          * @since 1.4
+         * @construct-only
          */
         get service(): Service;
 
@@ -1184,6 +1201,7 @@ export namespace Accounts {
              * have been stored in the database: the signal is not emitted just in
              * response to `ag_manager_create_account()`.
              * @signal
+             * @run-last
              */
             'account-created': (arg0: number) => void;
             /**
@@ -1191,6 +1209,7 @@ export namespace Accounts {
              * This signal is redundant with {@link Accounts.Account.SignalSignatures.deleted | Accounts.Account::deleted}, but it is convenient
              * to provide full change notification with {@link Accounts.Manager}.
              * @signal
+             * @run-last
              */
             'account-deleted': (arg0: number) => void;
             /**
@@ -1198,6 +1217,7 @@ export namespace Accounts {
              * This signal is redundant with {@link Accounts.Account.SignalSignatures.deleted | Accounts.Account::deleted}, but it is convenient
              * to provide full change notification with {@link Accounts.Manager}.
              * @signal
+             * @run-last
              */
             'account-updated': (arg0: number) => void;
             /**
@@ -1211,6 +1231,7 @@ export namespace Accounts {
              * needed; applications must call `ag_account_list_enabled_services()` or
              * `ag_manager_list_enabled()` to get the current state.
              * @signal
+             * @run-last
              */
             'enabled-event': (arg0: number) => void;
             'notify::abort-on-db-timeout': (pspec: GObject.ParamSpec) => void;
@@ -1266,12 +1287,14 @@ export namespace Accounts {
          * If the service type is set, certain operations on the {@link Accounts.Manager}, such
          * as `ag_manager_list()` and `ag_manager_list_services()`, will be restricted
          * to only affect accounts or services with that service type.
+         * @construct-only
          */
         get service_type(): string;
         /**
          * If the service type is set, certain operations on the {@link Accounts.Manager}, such
          * as `ag_manager_list()` and `ag_manager_list_services()`, will be restricted
          * to only affect accounts or services with that service type.
+         * @construct-only
          */
         get serviceType(): string;
         /**
@@ -1280,6 +1303,7 @@ export namespace Accounts {
          * notification signals, and also not react to changes made by other
          * processes. Disabling D-Bus is only meant to be used for specific cases,
          * such as maintenance programs.
+         * @construct-only
          */
         get use_dbus(): boolean;
         /**
@@ -1288,6 +1312,7 @@ export namespace Accounts {
          * notification signals, and also not react to changes made by other
          * processes. Disabling D-Bus is only meant to be used for specific cases,
          * such as maintenance programs.
+         * @construct-only
          */
         get useDbus(): boolean;
 

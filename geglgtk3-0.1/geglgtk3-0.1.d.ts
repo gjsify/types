@@ -31,6 +31,9 @@ export namespace GeglGtk3 {
      * GeglGtk3-0.1
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ViewAutoscale {
         export const $gtype: GObject.GType<ViewAutoscale>;
     }

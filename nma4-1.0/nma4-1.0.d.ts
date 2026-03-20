@@ -174,7 +174,13 @@ export namespace NMA4 {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @write-only
+         */
         set text(val: string);
 
         /**
@@ -815,6 +821,7 @@ export namespace NMA4 {
              * to fail.
              * @signal
              * @since 1.8.0
+             * @run-last
              */
             'cert-password-validate': () => GLib.Error;
             /**
@@ -824,6 +831,7 @@ export namespace NMA4 {
              * to fail.
              * @signal
              * @since 1.8.0
+             * @run-last
              */
             'cert-validate': () => GLib.Error;
             /**
@@ -831,6 +839,7 @@ export namespace NMA4 {
              * a key or associated passwords.
              * @signal
              * @since 1.8.0
+             * @run-last
              */
             changed: () => void;
             /**
@@ -840,6 +849,7 @@ export namespace NMA4 {
              * to fail.
              * @signal
              * @since 1.8.0
+             * @run-last
              */
             'key-password-validate': () => GLib.Error;
             /**
@@ -849,6 +859,7 @@ export namespace NMA4 {
              * to fail.
              * @signal
              * @since 1.8.0
+             * @run-last
              */
             'key-validate': () => GLib.Error;
             'notify::flags': (pspec: GObject.ParamSpec) => void;
@@ -918,7 +929,13 @@ export namespace NMA4 {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set flags(val: number);
+        /**
+         * @construct-only
+         */
         set title(val: string);
 
         /**
@@ -1610,9 +1627,21 @@ export namespace NMA4 {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get country_codes(): string;
+        /**
+         * @construct-only
+         */
         get countryCodes(): string;
+        /**
+         * @construct-only
+         */
         get service_providers(): string;
+        /**
+         * @construct-only
+         */
         get serviceProviders(): string;
 
         /**
@@ -2720,6 +2749,7 @@ export namespace NMA4 {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -2728,6 +2758,7 @@ export namespace NMA4 {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -2767,21 +2798,25 @@ export namespace NMA4 {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -3000,6 +3035,7 @@ export namespace NMA4 {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -3019,16 +3055,19 @@ export namespace NMA4 {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -5890,6 +5929,7 @@ export namespace NMA4 {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -5898,6 +5938,7 @@ export namespace NMA4 {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -5937,21 +5978,25 @@ export namespace NMA4 {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -6170,6 +6215,7 @@ export namespace NMA4 {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -6189,16 +6235,19 @@ export namespace NMA4 {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;

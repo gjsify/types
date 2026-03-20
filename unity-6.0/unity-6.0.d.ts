@@ -22,6 +22,9 @@ export namespace Unity {
      * Unity-6.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CategoryType {
         export const $gtype: GObject.GType<CategoryType>;
     }
@@ -59,6 +62,9 @@ export namespace Unity {
         N_CATEGORIES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IconSizeHint {
         export const $gtype: GObject.GType<IconSizeHint>;
     }
@@ -72,6 +78,9 @@ export namespace Unity {
         LARGE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace HandledType {
         export const $gtype: GObject.GType<HandledType>;
     }
@@ -87,6 +96,9 @@ export namespace Unity {
         SHOW_PREVIEW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CategoryRenderer {
         export const $gtype: GObject.GType<CategoryRenderer>;
     }
@@ -101,6 +113,9 @@ export namespace Unity {
         FLOW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FilterRenderer {
         export const $gtype: GObject.GType<FilterRenderer>;
     }
@@ -116,6 +131,9 @@ export namespace Unity {
         CHECK_OPTIONS_COMPACT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LayoutHint {
         export const $gtype: GObject.GType<LayoutHint>;
     }
@@ -131,6 +149,9 @@ export namespace Unity {
         BOTTOM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SearchType {
         export const $gtype: GObject.GType<SearchType>;
     }
@@ -144,6 +165,9 @@ export namespace Unity {
         N_TYPES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlaybackState {
         export const $gtype: GObject.GType<PlaybackState>;
     }
@@ -156,6 +180,9 @@ export namespace Unity {
         PAUSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OptionsFilterSortType {
         export const $gtype: GObject.GType<OptionsFilterSortType>;
     }
@@ -169,6 +196,9 @@ export namespace Unity {
         ID,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PreferencesManagerRemoteContent {
         export const $gtype: GObject.GType<PreferencesManagerRemoteContent>;
     }
@@ -181,6 +211,9 @@ export namespace Unity {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MusicPreviewTrackState {
         export const $gtype: GObject.GType<MusicPreviewTrackState>;
     }
@@ -537,18 +570,22 @@ export namespace Unity {
 
         /**
          * <para>Boolean property determining whether Unity is running or not. You can use this property to determine whether Unity is running or not.</para>
+         * @read-only
          */
         get unity_running(): boolean;
         /**
          * <para>Boolean property determining whether Unity is running or not. You can use this property to determine whether Unity is running or not.</para>
+         * @read-only
          */
         get unityRunning(): boolean;
         /**
          * <para>Property holding the unique DBus name of the Unity process if Unity is running, or null otherwise.</para>
+         * @read-only
          */
         get unity_bus_name(): string;
         /**
          * <para>Property holding the unique DBus name of the Unity process if Unity is running, or null otherwise.</para>
+         * @read-only
          */
         get unityBusName(): string;
 
@@ -1291,6 +1328,9 @@ export namespace Unity {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handled(): HandledType;
         get goto_uri(): string;
         set goto_uri(val: string);
@@ -1365,10 +1405,25 @@ export namespace Unity {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get icon_hint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get iconHint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get default_renderer(): CategoryRenderer;
+        /**
+         * @construct-only
+         */
         get defaultRenderer(): CategoryRenderer;
 
         /**
@@ -1449,16 +1504,31 @@ export namespace Unity {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
         get display_name(): string;
         set display_name(val: string);
         get displayName(): string;
         set displayName(val: string);
+        /**
+         * @construct-only
+         */
         get icon_hint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get iconHint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get renderer(): FilterRenderer;
         get visible(): boolean;
         set visible(val: boolean);
+        /**
+         * @construct-only
+         */
         get collapsed(): boolean;
         get filtering(): boolean;
         set filtering(val: boolean);
@@ -1529,10 +1599,25 @@ export namespace Unity {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get display_name(): string;
+        /**
+         * @construct-only
+         */
         get displayName(): string;
+        /**
+         * @construct-only
+         */
         get icon_hint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get iconHint(): Gio.Icon;
         get active(): boolean;
         set active(val: boolean);
@@ -2125,10 +2210,25 @@ export namespace Unity {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get search_string(): string;
+        /**
+         * @construct-only
+         */
         get searchString(): string;
+        /**
+         * @construct-only
+         */
         get hints(): GLib.HashTable<string, GLib.Variant>;
+        /**
+         * @construct-only
+         */
         get results_model(): Dee.SerializableModel;
+        /**
+         * @construct-only
+         */
         get resultsModel(): Dee.SerializableModel;
 
         /**
@@ -2257,8 +2357,17 @@ export namespace Unity {
         set home_lens_default_name(val: string);
         get homeLensDefaultName(): string;
         set homeLensDefaultName(val: string);
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get dbus_path(): string;
+        /**
+         * @construct-only
+         */
         get dbusPath(): string;
         get search_hint(): string;
         set search_hint(val: string);
@@ -2942,17 +3051,41 @@ export namespace Unity {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get display_name(): string;
+        /**
+         * @construct-only
+         */
         get displayName(): string;
         get extra_text(): string;
         set extra_text(val: string);
         get extraText(): string;
         set extraText(val: string);
+        /**
+         * @construct-only
+         */
         get icon_hint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get iconHint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get layout_hint(): LayoutHint;
+        /**
+         * @construct-only
+         */
         get layoutHint(): LayoutHint;
+        /**
+         * @read-only
+         */
         get hints(): GLib.HashTable<string, GLib.Variant>;
 
         /**
@@ -3507,11 +3640,29 @@ export namespace Unity {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get display_name(): string;
+        /**
+         * @construct-only
+         */
         get displayName(): string;
+        /**
+         * @construct-only
+         */
         get icon_hint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get iconHint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get data(): GLib.Variant;
 
         /**
@@ -4001,9 +4152,21 @@ export namespace Unity {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get text(): string;
+        /**
+         * @construct-only
+         */
         get time(): string;
 
         /**
@@ -4206,14 +4369,35 @@ export namespace Unity {
         set provides_personal_content(val: boolean);
         get providesPersonalContent(): boolean;
         set providesPersonalContent(val: boolean);
+        /**
+         * @construct-only
+         */
         get dbus_path(): string;
+        /**
+         * @construct-only
+         */
         get dbusPath(): string;
         get sources(): OptionsFilter;
         set sources(val: OptionsFilter);
+        /**
+         * @read-only
+         */
         get filters(): Filter[];
+        /**
+         * @read-only
+         */
         get results_model(): Dee.SerializableModel;
+        /**
+         * @read-only
+         */
         get resultsModel(): Dee.SerializableModel;
+        /**
+         * @read-only
+         */
         get global_results_model(): Dee.SerializableModel;
+        /**
+         * @read-only
+         */
         get globalResultsModel(): Dee.SerializableModel;
 
         /**
@@ -4421,6 +4605,9 @@ export namespace Unity {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
         get name(): string;
         set name(val: string);
@@ -4555,9 +4742,21 @@ export namespace Unity {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get app_info(): Gio.AppInfo;
+        /**
+         * @construct-only
+         */
         get appInfo(): Gio.AppInfo;
+        /**
+         * @construct-only
+         */
         get desktop_file_name(): string;
+        /**
+         * @construct-only
+         */
         get desktopFileName(): string;
         get is_blacklisted(): boolean;
         set is_blacklisted(val: boolean);

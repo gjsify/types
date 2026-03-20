@@ -382,6 +382,7 @@ export namespace GioUnix {
 
         /**
          * The origin filename of this {@link GioUnix.DesktopAppInfo}
+         * @construct-only
          */
         get filename(): string;
 
@@ -1618,11 +1619,13 @@ export namespace GioUnix {
         /**
          * The {@link Gio.UnixFDList} object to send with the message.
          * @since 2.22
+         * @construct-only
          */
         get fd_list(): Gio.UnixFDList;
         /**
          * The {@link Gio.UnixFDList} object to send with the message.
          * @since 2.22
+         * @construct-only
          */
         get fdList(): Gio.UnixFDList;
 
@@ -1767,6 +1770,7 @@ export namespace GioUnix {
         /**
          * The file descriptor that the stream reads from.
          * @since 2.20
+         * @construct-only
          */
         get fd(): number;
 
@@ -3190,11 +3194,13 @@ export namespace GioUnix {
             /**
              * Emitted when the unix mount points have changed.
              * @signal
+             * @run-last
              */
             'mountpoints-changed': () => void;
             /**
              * Emitted when the unix mounts have changed.
              * @signal
+             * @run-last
              */
             'mounts-changed': () => void;
         }
@@ -3329,6 +3335,7 @@ export namespace GioUnix {
         /**
          * The file descriptor that the stream writes to.
          * @since 2.20
+         * @construct-only
          */
         get fd(): number;
 

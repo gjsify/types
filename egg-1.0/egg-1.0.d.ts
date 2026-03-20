@@ -29,6 +29,9 @@ export namespace Egg {
      * Egg-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnimationMode {
         export const $gtype: GObject.GType<AnimationMode>;
     }
@@ -46,6 +49,9 @@ export namespace Egg {
         EASE_IN_OUT_CUBIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SliderPosition {
         export const $gtype: GObject.GType<SliderPosition>;
     }
@@ -61,6 +67,9 @@ export namespace Egg {
         LEFT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ThreeGridColumn {
         export const $gtype: GObject.GType<ThreeGridColumn>;
     }
@@ -111,6 +120,7 @@ export namespace Egg {
             /**
              * The "tick" signal is emitted on each frame in the animation.
              * @signal
+             * @run-first
              */
             tick: () => void;
             'notify::duration': (pspec: GObject.ParamSpec) => void;
@@ -141,19 +151,28 @@ export namespace Egg {
         /**
          * The "duration" property is the total number of milliseconds that the
          * animation should run before being completed.
+         * @construct-only
          */
         set duration(val: number);
+        /**
+         * @construct-only
+         */
         set frame_clock(val: Gdk.FrameClock);
+        /**
+         * @construct-only
+         */
         set frameClock(val: Gdk.FrameClock);
         /**
          * The "mode" property is the Alpha function that should be used to
          * determine the offset within the animation based on the current
          * offset in the animations duration.
+         * @construct-only
          */
         set mode(val: AnimationMode);
         /**
          * The "target" property is the {@link GObject.Object} that should have its properties
          * animated.
+         * @construct-only
          */
         set target(val: GObject.Object);
 
@@ -2777,6 +2796,9 @@ export namespace Egg {
         set pixel_size(val: number);
         get pixelSize(): number;
         set pixelSize(val: number);
+        /**
+         * @write-only
+         */
         set resource(val: string);
         get subtitle(): string;
         set subtitle(val: string);
@@ -4566,11 +4588,29 @@ export namespace Egg {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get property_name(): string;
+        /**
+         * @construct-only
+         */
         get propertyName(): string;
+        /**
+         * @construct-only
+         */
         get row_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get rowType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         set row_type_name(val: string);
+        /**
+         * @construct-only
+         */
         set rowTypeName(val: string);
 
         /**
@@ -6546,9 +6586,15 @@ export namespace Egg {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -6862,6 +6908,7 @@ export namespace Egg {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -6869,6 +6916,7 @@ export namespace Egg {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -6990,6 +7038,7 @@ export namespace Egg {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -11236,6 +11285,7 @@ export namespace Egg {
         interface SignalSignatures extends Gtk.Bin.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
             'notify::active-id': (pspec: GObject.ParamSpec) => void;
@@ -11310,7 +11360,13 @@ export namespace Egg {
         set active_id(val: string);
         get activeId(): string;
         set activeId(val: string);
+        /**
+         * @read-only
+         */
         get has_more(): boolean;
+        /**
+         * @read-only
+         */
         get hasMore(): boolean;
         get show_more(): boolean;
         set show_more(val: boolean);
@@ -12386,10 +12442,14 @@ export namespace Egg {
         interface SignalSignatures extends Gtk.Bin.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             activate: () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             reveal: () => void;
             'notify::search-mode-enabled': (pspec: GObject.ParamSpec) => void;
@@ -13004,9 +13064,21 @@ export namespace Egg {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get flag_nick(): string;
+        /**
+         * @construct-only
+         */
         get flagNick(): string;
+        /**
+         * @construct-only
+         */
         get schema_id(): string;
+        /**
+         * @construct-only
+         */
         get schemaId(): string;
         get schema_key(): string;
         set schema_key(val: string);
@@ -13065,6 +13137,7 @@ export namespace Egg {
          * If the action is disabled then calls to {@link Gio.Action.activate} and
          * {@link Gio.Action.change_state} have no effect.
          * @since 2.28
+         * @read-only
          * @category Inherited from Gio.Action
          */
         get enabled(): boolean;
@@ -13072,6 +13145,7 @@ export namespace Egg {
          * The name of the action.  This is mostly meaningful for identifying
          * the action once it has been added to a {@link Gio.ActionGroup}. It is immutable.
          * @since 2.28
+         * @read-only
          * @category Inherited from Gio.Action
          */
         get name(): string;
@@ -13080,6 +13154,7 @@ export namespace Egg {
          * action. This is immutable, and may be `NULL` if no parameter is needed when
          * activating the action.
          * @since 2.28
+         * @read-only
          * @category Inherited from Gio.Action
          */
         get parameter_type(): GLib.VariantType;
@@ -13088,12 +13163,14 @@ export namespace Egg {
          * action. This is immutable, and may be `NULL` if no parameter is needed when
          * activating the action.
          * @since 2.28
+         * @read-only
          * @category Inherited from Gio.Action
          */
         get parameterType(): GLib.VariantType;
         /**
          * The state of the action, or `NULL` if the action is stateless.
          * @since 2.28
+         * @read-only
          * @category Inherited from Gio.Action
          */
         get state(): GLib.Variant;
@@ -13101,6 +13178,7 @@ export namespace Egg {
          * The {@link GLib.VariantType} of the state that the action has, or `NULL` if the
          * action is stateless. This is immutable.
          * @since 2.28
+         * @read-only
          * @category Inherited from Gio.Action
          */
         get state_type(): GLib.VariantType;
@@ -13108,6 +13186,7 @@ export namespace Egg {
          * The {@link GLib.VariantType} of the state that the action has, or `NULL` if the
          * action is stateless. This is immutable.
          * @since 2.28
+         * @read-only
          * @category Inherited from Gio.Action
          */
         get stateType(): GLib.VariantType;
@@ -13790,8 +13869,17 @@ export namespace Egg {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get path(): string;
+        /**
+         * @construct-only
+         */
         get schema_id(): string;
+        /**
+         * @construct-only
+         */
         get schemaId(): string;
 
         /**
@@ -13940,6 +14028,7 @@ export namespace Egg {
              *
              * This signal will only be emitted if the target of `self` is non-`null`.
              * @signal
+             * @run-last
              */
             bind: (arg0: GObject.Object) => void;
             /**
@@ -13949,6 +14038,7 @@ export namespace Egg {
              * This signal will only be emitted if the previous target
              * of `self` is non-`null`.
              * @signal
+             * @run-last
              */
             unbind: () => void;
             'notify::target': (pspec: GObject.ParamSpec) => void;
@@ -13997,10 +14087,12 @@ export namespace Egg {
         set target(val: GObject.Object);
         /**
          * The GType of the target property.
+         * @construct-only
          */
         get target_type(): GObject.GType;
         /**
          * The GType of the target property.
+         * @construct-only
          */
         get targetType(): GObject.GType;
 
@@ -14882,11 +14974,13 @@ export namespace Egg {
              * This signal is emitted when the popover's forward button is activated.
              * Connect to this signal to perform your forward progress.
              * @signal
+             * @run-last
              */
             activate: (arg0: string) => void;
             /**
              * This signal is emitted when the entry text changes.
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
@@ -14894,6 +14988,7 @@ export namespace Egg {
              * into the text buffer. Return GDK_EVENT_STOP to prevent the text from
              * being inserted.
              * @signal
+             * @run-last
              */
             'insert-text': (arg0: number, arg1: string, arg2: number) => boolean | void;
             'notify::button-text': (pspec: GObject.ParamSpec) => void;
@@ -16855,10 +16950,12 @@ export namespace Egg {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'replace-typed-text': (arg0: string) => string;
             /**
              * @signal
+             * @run-last
              */
             'suggest-suffix': (arg0: string) => string;
             'notify::icon-name': (pspec: GObject.ParamSpec) => void;
@@ -17007,24 +17104,33 @@ export namespace Egg {
         interface SignalSignatures extends Gtk.Entry.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'activate-suggestion': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'hide-suggestions': () => void;
             /**
              * This moves the selected suggestion in the popover by the value
              * provided. -1 moves up one row, 1, moves down a row.
              * @signal
+             * @action
+             * @run-last
              */
             'move-suggestion': (arg0: number) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'show-suggestions': () => void;
             /**
              * @signal
+             * @run-last
              */
             'suggestion-activated': (arg0: Suggestion) => void;
             'notify::model': (pspec: GObject.ParamSpec) => void;
@@ -17150,7 +17256,13 @@ export namespace Egg {
 
         get model(): Gio.ListModel;
         set model(val: Gio.ListModel);
+        /**
+         * @read-only
+         */
         get typed_text(): string;
+        /**
+         * @read-only
+         */
         get typedText(): string;
 
         /**
@@ -17265,9 +17377,15 @@ export namespace Egg {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -17581,6 +17699,7 @@ export namespace Egg {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -17588,6 +17707,7 @@ export namespace Egg {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -17709,6 +17829,7 @@ export namespace Egg {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -22101,6 +22222,7 @@ export namespace Egg {
         interface SignalSignatures extends Gtk.Window.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'suggestion-activated': (arg0: Suggestion) => void;
             'notify::model': (pspec: GObject.ParamSpec) => void;
@@ -23356,25 +23478,68 @@ export namespace Egg {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set key_copy_func(val: any);
+        /**
+         * @construct-only
+         */
         set keyCopyFunc(val: any);
+        /**
+         * @construct-only
+         */
         set key_destroy_func(val: any);
+        /**
+         * @construct-only
+         */
         set keyDestroyFunc(val: any);
+        /**
+         * @construct-only
+         */
         set key_equal_func(val: any);
+        /**
+         * @construct-only
+         */
         set keyEqualFunc(val: any);
+        /**
+         * @construct-only
+         */
         set key_hash_func(val: any);
+        /**
+         * @construct-only
+         */
         set keyHashFunc(val: any);
+        /**
+         * @construct-only
+         */
         set populate_callback(val: any);
+        /**
+         * @construct-only
+         */
         set populateCallback(val: any);
+        /**
+         * @construct-only
+         */
         set populate_callback_data(val: any);
+        /**
+         * @construct-only
+         */
         set populateCallbackData(val: any);
+        /**
+         * @construct-only
+         */
         set populate_callback_data_destroy(val: any);
+        /**
+         * @construct-only
+         */
         set populateCallbackDataDestroy(val: any);
         /**
          * This is the number of milliseconds before an item should be evicted
          * from the cache.
          *
          * A value of zero indicates no eviction.
+         * @construct-only
          */
         set time_to_live(val: number);
         /**
@@ -23382,11 +23547,24 @@ export namespace Egg {
          * from the cache.
          *
          * A value of zero indicates no eviction.
+         * @construct-only
          */
         set timeToLive(val: number);
+        /**
+         * @construct-only
+         */
         set value_copy_func(val: any);
+        /**
+         * @construct-only
+         */
         set valueCopyFunc(val: any);
+        /**
+         * @construct-only
+         */
         set value_destroy_func(val: any);
+        /**
+         * @construct-only
+         */
         set valueDestroyFunc(val: any);
 
         /**
@@ -24078,6 +24256,9 @@ export namespace Egg {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get widget(): Gtk.Widget;
 
         /**

@@ -175,9 +175,21 @@ export namespace NMGtk {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get country_codes(): string;
+        /**
+         * @construct-only
+         */
         get countryCodes(): string;
+        /**
+         * @construct-only
+         */
         get service_providers(): string;
+        /**
+         * @construct-only
+         */
         get serviceProviders(): string;
 
         /**

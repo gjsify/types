@@ -59,6 +59,9 @@ export namespace LightDM {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MessageType {
         export const $gtype: GObject.GType<MessageType>;
     }
@@ -77,6 +80,9 @@ export namespace LightDM {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PromptType {
         export const $gtype: GObject.GType<PromptType>;
     }
@@ -232,12 +238,14 @@ export namespace LightDM {
              * Call `lightdm_greeter_get_is_authenticated()` to check if the authentication
              * was successful.
              * @signal
+             * @run-last
              */
             'authentication-complete': () => void;
             /**
              * The ::timed-login signal gets emitted when the automatic login timer has expired.
              * The application should then call `lightdm_greeter_authenticate_autologin()`.
              * @signal
+             * @run-last
              */
             'autologin-timer-expired': () => void;
             /**
@@ -247,6 +255,7 @@ export namespace LightDM {
              * This signal only matters if the greeter has marked itself as
              * resettable using `lightdm_greeter_set_resettable()`.
              * @signal
+             * @run-last
              */
             idle: () => void;
             /**
@@ -256,12 +265,14 @@ export namespace LightDM {
              * This signal only matters if the greeter has marked itself as
              * resettable using `lightdm_greeter_set_resettable()`.
              * @signal
+             * @run-last
              */
             reset: () => void;
             /**
              * The ::show-message signal gets emitted when the greeter
              * should show a message to the user.
              * @signal
+             * @run-last
              */
             'show-message': (arg0: string, arg1: MessageType) => void;
             /**
@@ -272,6 +283,7 @@ export namespace LightDM {
              * Call `lightdm_greeter_respond()` with the resultant input or
              * `lightdm_greeter_cancel_authentication()` to abort the authentication.
              * @signal
+             * @run-last
              */
             'show-prompt': (arg0: string, arg1: PromptType) => void;
             'notify::authentication-user': (pspec: GObject.ParamSpec) => void;
@@ -337,35 +349,125 @@ export namespace LightDM {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get authentication_user(): string;
+        /**
+         * @read-only
+         */
         get authenticationUser(): string;
+        /**
+         * @read-only
+         */
         get autologin_guest_hint(): boolean;
+        /**
+         * @read-only
+         */
         get autologinGuestHint(): boolean;
+        /**
+         * @read-only
+         */
         get autologin_session_hint(): string;
+        /**
+         * @read-only
+         */
         get autologinSessionHint(): string;
+        /**
+         * @read-only
+         */
         get autologin_timeout_hint(): number;
+        /**
+         * @read-only
+         */
         get autologinTimeoutHint(): number;
+        /**
+         * @read-only
+         */
         get autologin_user_hint(): string;
+        /**
+         * @read-only
+         */
         get autologinUserHint(): string;
+        /**
+         * @read-only
+         */
         get default_session_hint(): string;
+        /**
+         * @read-only
+         */
         get defaultSessionHint(): string;
+        /**
+         * @read-only
+         */
         get has_guest_account_hint(): boolean;
+        /**
+         * @read-only
+         */
         get hasGuestAccountHint(): boolean;
+        /**
+         * @read-only
+         */
         get hide_users_hint(): boolean;
+        /**
+         * @read-only
+         */
         get hideUsersHint(): boolean;
+        /**
+         * @read-only
+         */
         get in_authentication(): boolean;
+        /**
+         * @read-only
+         */
         get inAuthentication(): boolean;
+        /**
+         * @read-only
+         */
         get is_authenticated(): boolean;
+        /**
+         * @read-only
+         */
         get isAuthenticated(): boolean;
+        /**
+         * @read-only
+         */
         get lock_hint(): boolean;
+        /**
+         * @read-only
+         */
         get lockHint(): boolean;
+        /**
+         * @read-only
+         */
         get select_guest_hint(): boolean;
+        /**
+         * @read-only
+         */
         get selectGuestHint(): boolean;
+        /**
+         * @read-only
+         */
         get select_user_hint(): string;
+        /**
+         * @read-only
+         */
         get selectUserHint(): string;
+        /**
+         * @read-only
+         */
         get show_manual_login_hint(): boolean;
+        /**
+         * @read-only
+         */
         get showManualLoginHint(): boolean;
+        /**
+         * @read-only
+         */
         get show_remote_login_hint(): boolean;
+        /**
+         * @read-only
+         */
         get showRemoteLoginHint(): boolean;
 
         /**
@@ -785,8 +887,17 @@ export namespace LightDM {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get code(): string;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get territory(): string;
 
         /**
@@ -878,9 +989,21 @@ export namespace LightDM {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get description(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get short_description(): string;
+        /**
+         * @construct-only
+         */
         get shortDescription(): string;
 
         /**
@@ -965,8 +1088,17 @@ export namespace LightDM {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get comment(): string;
+        /**
+         * @read-only
+         */
         get key(): string;
+        /**
+         * @read-only
+         */
         get name(): string;
 
         /**
@@ -1035,6 +1167,7 @@ export namespace LightDM {
             /**
              * The ::changed signal gets emitted this user account is modified.
              * @signal
+             * @run-last
              */
             changed: () => void;
             'notify::background': (pspec: GObject.ParamSpec) => void;
@@ -1089,25 +1222,85 @@ export namespace LightDM {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get background(): string;
+        /**
+         * @read-only
+         */
         get display_name(): string;
+        /**
+         * @read-only
+         */
         get displayName(): string;
+        /**
+         * @read-only
+         */
         get has_messages(): boolean;
+        /**
+         * @read-only
+         */
         get hasMessages(): boolean;
+        /**
+         * @read-only
+         */
         get home_directory(): string;
+        /**
+         * @read-only
+         */
         get homeDirectory(): string;
+        /**
+         * @read-only
+         */
         get image(): string;
+        /**
+         * @read-only
+         */
         get is_locked(): boolean;
+        /**
+         * @read-only
+         */
         get isLocked(): boolean;
+        /**
+         * @read-only
+         */
         get language(): string;
+        /**
+         * @read-only
+         */
         get layout(): string;
+        /**
+         * @read-only
+         */
         get layouts(): string[];
+        /**
+         * @read-only
+         */
         get logged_in(): boolean;
+        /**
+         * @read-only
+         */
         get loggedIn(): boolean;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get real_name(): string;
+        /**
+         * @read-only
+         */
         get realName(): string;
+        /**
+         * @read-only
+         */
         get session(): string;
+        /**
+         * @read-only
+         */
         get uid(): number;
 
         /**
@@ -1233,16 +1426,19 @@ export namespace LightDM {
             /**
              * The ::user-added signal gets emitted when a user account is created.
              * @signal
+             * @run-last
              */
             'user-added': (arg0: User) => void;
             /**
              * The ::user-changed signal gets emitted when a user account is modified.
              * @signal
+             * @run-last
              */
             'user-changed': (arg0: User) => void;
             /**
              * The ::user-removed signal gets emitted when a user account is removed.
              * @signal
+             * @run-last
              */
             'user-removed': (arg0: User) => void;
             'notify::length': (pspec: GObject.ParamSpec) => void;
@@ -1268,8 +1464,17 @@ export namespace LightDM {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
+        /**
+         * @read-only
+         */
         get num_users(): number;
+        /**
+         * @read-only
+         */
         get numUsers(): number;
 
         /**

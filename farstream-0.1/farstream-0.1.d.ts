@@ -21,6 +21,9 @@ export namespace Farstream {
      * Farstream-0.1
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CandidateType {
         export const $gtype: GObject.GType<CandidateType>;
     }
@@ -37,6 +40,9 @@ export namespace Farstream {
         MULTICAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ComponentType {
         export const $gtype: GObject.GType<ComponentType>;
     }
@@ -81,6 +87,9 @@ export namespace Farstream {
         static D: number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DTMFMethod {
         export const $gtype: GObject.GType<DTMFMethod>;
     }
@@ -126,6 +135,9 @@ export namespace Farstream {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MediaType {
         export const $gtype: GObject.GType<MediaType>;
     }
@@ -140,6 +152,9 @@ export namespace Farstream {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NetworkProtocol {
         export const $gtype: GObject.GType<NetworkProtocol>;
     }
@@ -153,6 +168,9 @@ export namespace Farstream {
         TCP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StreamState {
         export const $gtype: GObject.GType<StreamState>;
     }
@@ -331,6 +349,9 @@ export namespace Farstream {
      * @gir-type Alias
      */
     type RtpHeaderExtensionGList = object | null;
+    /**
+     * @gir-type Flags
+     */
     export namespace StreamDirection {
         export const $gtype: GObject.GType<StreamDirection>;
     }
@@ -509,6 +530,7 @@ export namespace Farstream {
              * main thread, it will be emitted in the thread that added the element.
              * The bin may be `null` if this is the top-level bin.
              * @signal
+             * @run-last
              */
             'element-added': (arg0: Gst.Bin, arg1: Gst.Element) => void;
         }
@@ -1219,6 +1241,7 @@ export namespace Farstream {
              * This signal is emitted in any error condition, it can be emitted on any
              * thread. Applications should listen to the GstBus for errors.
              * @signal
+             * @run-last
              */
             error: (arg0: GObject.Object, arg1: Error, arg2: string) => void;
             'notify::codec-preferences': (pspec: GObject.ParamSpec) => void;
@@ -1273,6 +1296,7 @@ export namespace Farstream {
          * or `FS_CODEC_ID_ANY`. If the encoding name is "reserve-pt", then the
          * payload type of the codec will be "reserved" and not be used by any
          * dynamically assigned payload type.
+         * @read-only
          */
         get codec_preferences(): Codec[];
         /**
@@ -1286,6 +1310,7 @@ export namespace Farstream {
          * or `FS_CODEC_ID_ANY`. If the encoding name is "reserve-pt", then the
          * payload type of the codec will be "reserved" and not be used by any
          * dynamically assigned payload type.
+         * @read-only
          */
         get codecPreferences(): Codec[];
         /**
@@ -1306,6 +1331,7 @@ export namespace Farstream {
          *
          * It is a {@link GLib.List} of {@link Farstream.Codec}. User must free this codec list using
          * `fs_codec_list_destroy()` when done.
+         * @read-only
          */
         get codecs(): Codec[];
         /**
@@ -1325,6 +1351,7 @@ export namespace Farstream {
          *
          * It is a {@link GLib.List} of {@link Farstream.Codec}. User must free this codec list using
          * `fs_codec_list_destroy()` when done.
+         * @read-only
          */
         get codecs_without_config(): Codec[];
         /**
@@ -1344,11 +1371,13 @@ export namespace Farstream {
          *
          * It is a {@link GLib.List} of {@link Farstream.Codec}. User must free this codec list using
          * `fs_codec_list_destroy()` when done.
+         * @read-only
          */
         get codecsWithoutConfig(): Codec[];
         /**
          * The {@link Farstream.Conference} parent of this session. This property is a
          * construct param and is read-only.
+         * @construct-only
          */
         get conference(): Conference;
         /**
@@ -1358,6 +1387,7 @@ export namespace Farstream {
          * {@link Farstream.Codec}. User must free the codec using `fs_codec_destroy()` when done.
          * The "farstream-send-codec-changed" message is emitted on the bus when
          * the value of this property changes.
+         * @read-only
          */
         get current_send_codec(): Codec;
         /**
@@ -1367,31 +1397,37 @@ export namespace Farstream {
          * {@link Farstream.Codec}. User must free the codec using `fs_codec_destroy()` when done.
          * The "farstream-send-codec-changed" message is emitted on the bus when
          * the value of this property changes.
+         * @read-only
          */
         get currentSendCodec(): Codec;
         /**
          * The ID of the session, the first number of the pads linked to this session
          * will be this id
+         * @construct-only
          */
         get id(): number;
         /**
          * The media-type of the session. This is either Audio, Video or both.
          * This is a constructor parameter that cannot be changed.
+         * @construct-only
          */
         get media_type(): MediaType;
         /**
          * The media-type of the session. This is either Audio, Video or both.
          * This is a constructor parameter that cannot be changed.
+         * @construct-only
          */
         get mediaType(): MediaType;
         /**
          * The Gstreamer sink pad that must be used to send media data on this
          * session. User must unref this GstPad when done with it.
+         * @read-only
          */
         get sink_pad(): Gst.Pad;
         /**
          * The Gstreamer sink pad that must be used to send media data on this
          * session. User must unref this GstPad when done with it.
+         * @read-only
          */
         get sinkPad(): Gst.Pad;
         /**
@@ -1656,6 +1692,7 @@ export namespace Farstream {
             /**
              * This signal is emitted in any error condition
              * @signal
+             * @run-last
              */
             error: (arg0: Error, arg1: string) => void;
             /**
@@ -1668,6 +1705,7 @@ export namespace Farstream {
              * This signal is not emitted on the main thread, but on GStreamer's streaming
              * thread!
              * @signal
+             * @run-last
              */
             'src-pad-added': (arg0: Gst.Pad, arg1: Codec) => void;
             'notify::current-recv-codecs': (pspec: GObject.ParamSpec) => void;
@@ -1712,6 +1750,7 @@ export namespace Farstream {
          * only if that codec was not previously received in this stream, but it can
          * also be emitted if the pad already exists, but the source material that
          * will come to it is different.
+         * @read-only
          */
         get current_recv_codecs(): Codec[];
         /**
@@ -1723,6 +1762,7 @@ export namespace Farstream {
          * only if that codec was not previously received in this stream, but it can
          * also be emitted if the pad already exists, but the source material that
          * will come to it is different.
+         * @read-only
          */
         get currentRecvCodecs(): Codec[];
         /**
@@ -1738,6 +1778,7 @@ export namespace Farstream {
          * has been replaced with the data from the remote codecs for this stream.
          * This is the list of {@link Farstream.Codec} used to receive data from this stream.
          * It is a {@link GLib.List} of {@link Farstream.Codec}.
+         * @read-only
          */
         get negotiated_codecs(): Codec[];
         /**
@@ -1746,28 +1787,33 @@ export namespace Farstream {
          * has been replaced with the data from the remote codecs for this stream.
          * This is the list of {@link Farstream.Codec} used to receive data from this stream.
          * It is a {@link GLib.List} of {@link Farstream.Codec}.
+         * @read-only
          */
         get negotiatedCodecs(): Codec[];
         /**
          * The {@link Farstream.Participant} for this stream. This property is a construct param and
          * is read-only construction.
+         * @construct-only
          */
         get participant(): Participant;
         /**
          * This is the list of remote codecs for this stream. They must be set by the
          * user as soon as they are known using `fs_stream_set_remote_codecs()`
          * (generally through external signaling). It is a {@link GLib.List} of {@link Farstream.Codec}.
+         * @read-only
          */
         get remote_codecs(): Codec[];
         /**
          * This is the list of remote codecs for this stream. They must be set by the
          * user as soon as they are known using `fs_stream_set_remote_codecs()`
          * (generally through external signaling). It is a {@link GLib.List} of {@link Farstream.Codec}.
+         * @read-only
          */
         get remoteCodecs(): Codec[];
         /**
          * The {@link Farstream.Session} for this stream. This property is a construct param and
          * is read-only construction.
+         * @construct-only
          */
         get session(): Session;
 
@@ -1999,18 +2045,21 @@ export namespace Farstream {
             /**
              * This signal is emitted in any error condition
              * @signal
+             * @run-last
              */
             error: (arg0: Error, arg1: string) => void;
             /**
              * This signal is emitted when a buffer coming from a confirmed known source
              * is received.
              * @signal
+             * @run-last
              */
             'known-source-packet-received': (arg0: number, arg1: any) => void;
             /**
              * This signal is emitted when all local candidates have been
              * prepared, an ICE implementation would send its SDP offer or answer.
              * @signal
+             * @run-last
              */
             'local-candidates-prepared': () => void;
             /**
@@ -2020,17 +2069,20 @@ export namespace Farstream {
              * must not modify the candidates and must copy them if he wants to use them
              * outside the callback scope.
              * @signal
+             * @run-last
              */
             'new-active-candidate-pair': (arg0: Candidate, arg1: Candidate) => void;
             /**
              * This signal is emitted when a new local candidate is discovered.
              * @signal
+             * @run-last
              */
             'new-local-candidate': (arg0: Candidate) => void;
             /**
              * This signal is emitted when the ICE state (or equivalent) of the component
              * changes
              * @signal
+             * @run-last
              */
             'state-changed': (arg0: number, arg1: StreamState) => void;
             'notify::associate-on-source': (pspec: GObject.ParamSpec) => void;
@@ -2062,14 +2114,22 @@ export namespace Farstream {
         /**
          * This tells the stream transmitter to associate incoming data with this
          * based on the source without looking at the content if possible.
+         * @construct-only
          */
         get associate_on_source(): boolean;
         /**
          * This tells the stream transmitter to associate incoming data with this
          * based on the source without looking at the content if possible.
+         * @construct-only
          */
         get associateOnSource(): boolean;
+        /**
+         * @construct-only
+         */
         get preferred_local_candidates(): CandidateList;
+        /**
+         * @construct-only
+         */
         get preferredLocalCandidates(): CandidateList;
         /**
          * A network source {@link Gst.Element} to be used by the {@link Farstream.Session}
@@ -2186,6 +2246,7 @@ export namespace Farstream {
             /**
              * This signal is emitted in any error condition
              * @signal
+             * @run-last
              */
             error: (arg0: Error, arg1: string) => void;
             /**
@@ -2196,6 +2257,7 @@ export namespace Farstream {
              * This element should have a "sending" property that can be changed with the
              * sending state of the stream. It should default to `true`.
              * @signal
+             * @run-last
              */
             'get-recvonly-filter': (arg0: number) => Gst.Element;
             'notify::components': (pspec: GObject.ParamSpec) => void;
@@ -2228,6 +2290,7 @@ export namespace Farstream {
 
         /**
          * The number of components to create
+         * @construct-only
          */
         get components(): number;
         /**
@@ -2237,6 +2300,7 @@ export namespace Farstream {
          * These pads number must start at 1 (the \%d corresponds to the component
          * number).
          * These pads MUST be static pads.
+         * @read-only
          */
         get gst_sink(): Gst.Element;
         /**
@@ -2246,6 +2310,7 @@ export namespace Farstream {
          * These pads number must start at 1 (the \%d corresponds to the component
          * number).
          * These pads MUST be static pads.
+         * @read-only
          */
         get gstSink(): Gst.Element;
         /**
@@ -2254,6 +2319,7 @@ export namespace Farstream {
          * These pads number must start at 1 (the %d corresponds to the component
          * number).
          * These pads MUST be static pads.
+         * @read-only
          */
         get gst_src(): Gst.Element;
         /**
@@ -2262,6 +2328,7 @@ export namespace Farstream {
          * These pads number must start at 1 (the %d corresponds to the component
          * number).
          * These pads MUST be static pads.
+         * @read-only
          */
         get gstSrc(): Gst.Element;
         /**

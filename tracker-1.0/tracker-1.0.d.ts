@@ -20,6 +20,9 @@ export namespace Tracker {
      * Tracker-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SparqlValueType {
         export const $gtype: GObject.GType<SparqlValueType>;
     }
@@ -38,6 +41,9 @@ export namespace Tracker {
         BOOLEAN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SparqlBuilderState {
         export const $gtype: GObject.GType<SparqlBuilderState>;
     }
@@ -101,9 +107,15 @@ export namespace Tracker {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get result(): string;
         get length(): number;
         set length(val: number);
+        /**
+         * @read-only
+         */
         get state(): SparqlBuilderState;
 
         /**
@@ -689,7 +701,13 @@ export namespace Tracker {
 
         get connection(): SparqlConnection;
         set connection(val: SparqlConnection);
+        /**
+         * @read-only
+         */
         get n_columns(): number;
+        /**
+         * @read-only
+         */
         get nColumns(): number;
 
         /**

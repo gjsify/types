@@ -64,6 +64,9 @@ export namespace GeocodeGlib {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocationCRS {
         export const $gtype: GObject.GType<LocationCRS>;
     }
@@ -79,6 +82,9 @@ export namespace GeocodeGlib {
         WGS84,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocationURIScheme {
         export const $gtype: GObject.GType<LocationURIScheme>;
     }
@@ -94,6 +100,9 @@ export namespace GeocodeGlib {
         GEO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlaceOsmType {
         export const $gtype: GObject.GType<PlaceOsmType>;
     }
@@ -121,6 +130,9 @@ export namespace GeocodeGlib {
         WAY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlaceType {
         export const $gtype: GObject.GType<PlaceType>;
     }
@@ -332,18 +344,22 @@ export namespace GeocodeGlib {
 
         /**
          * Bottom coordinate.
+         * @construct-only
          */
         get bottom(): number;
         /**
          * Left coordinate.
+         * @construct-only
          */
         get left(): number;
         /**
          * Right coordinate.
+         * @construct-only
          */
         get right(): number;
         /**
          * Top coordinate.
+         * @construct-only
          */
         get top(): number;
 
@@ -658,6 +674,7 @@ export namespace GeocodeGlib {
         /**
          * The Coordinate Reference System Identification of this location.
          * Only the value 'wgs84' is currently valid.
+         * @construct-only
          */
         get crs(): LocationCRS;
         /**
@@ -681,6 +698,7 @@ export namespace GeocodeGlib {
          * giving when the location was resolved from an address.
          *
          * A value of 0 (zero) will be interpreted as the current time.
+         * @construct-only
          */
         get timestamp(): number;
 
@@ -1718,12 +1736,14 @@ export namespace GeocodeGlib {
          * The base URL of the Nominatim service, for example
          * `https://nominatim.example.org`.
          * @since 3.23.1
+         * @construct-only
          */
         get base_url(): string;
         /**
          * The base URL of the Nominatim service, for example
          * `https://nominatim.example.org`.
          * @since 3.23.1
+         * @construct-only
          */
         get baseUrl(): string;
         /**
@@ -1732,6 +1752,7 @@ export namespace GeocodeGlib {
          * them in the event of a problem with their usage. See
          * [the Nominatim API](http://wiki.openstreetmap.org/wiki/Nominatim).
          * @since 3.23.1
+         * @construct-only
          */
         get maintainer_email_address(): string;
         /**
@@ -1740,6 +1761,7 @@ export namespace GeocodeGlib {
          * them in the event of a problem with their usage. See
          * [the Nominatim API](http://wiki.openstreetmap.org/wiki/Nominatim).
          * @since 3.23.1
+         * @construct-only
          */
         get maintainerEmailAddress(): string;
         /**
@@ -2706,6 +2728,7 @@ export namespace GeocodeGlib {
         set county(val: string);
         /**
          * {@link Gio.Icon} representing the `GeocodePlace`.
+         * @read-only
          */
         get icon(): Gio.Icon;
         /**
@@ -2740,10 +2763,12 @@ export namespace GeocodeGlib {
         set osmType(val: PlaceOsmType);
         /**
          * The type of the place.
+         * @construct-only
          */
         get place_type(): PlaceType;
         /**
          * The type of the place.
+         * @construct-only
          */
         get placeType(): PlaceType;
         /**

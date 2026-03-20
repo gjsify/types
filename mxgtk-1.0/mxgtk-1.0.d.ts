@@ -573,6 +573,7 @@ export namespace MxGtk {
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'switch-flipped': (arg0: boolean) => void;
             'notify::active': (pspec: GObject.ParamSpec) => void;

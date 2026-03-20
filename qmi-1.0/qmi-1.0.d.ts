@@ -121,6 +121,9 @@ export namespace Qmi {
         RAW_IP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DataEndpointType {
         export const $gtype: GObject.GType<DataEndpointType>;
     }
@@ -161,6 +164,9 @@ export namespace Qmi {
         UNDEFINED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceExpectedDataFormat {
         export const $gtype: GObject.GType<DeviceExpectedDataFormat>;
     }
@@ -193,6 +199,9 @@ export namespace Qmi {
         QMAP_PASS_THROUGH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsActivationState {
         export const $gtype: GObject.GType<DmsActivationState>;
     }
@@ -249,6 +258,9 @@ export namespace Qmi {
         OTASP_COMMITED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsBootImageDownloadMode {
         export const $gtype: GObject.GType<DmsBootImageDownloadMode>;
     }
@@ -269,6 +281,9 @@ export namespace Qmi {
         BOOT_AND_RECOVERY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsDataServiceCapability {
         export const $gtype: GObject.GType<DmsDataServiceCapability>;
     }
@@ -301,6 +316,9 @@ export namespace Qmi {
         NON_SIMULTANEOUS_CS_PS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsFirmwareImageType {
         export const $gtype: GObject.GType<DmsFirmwareImageType>;
     }
@@ -321,6 +339,9 @@ export namespace Qmi {
         PRI,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsFoxconnDeviceMode {
         export const $gtype: GObject.GType<DmsFoxconnDeviceMode>;
     }
@@ -345,6 +366,9 @@ export namespace Qmi {
         FASTBOOT_OTA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsFoxconnFirmwareVersionType {
         export const $gtype: GObject.GType<DmsFoxconnFirmwareVersionType>;
     }
@@ -369,6 +393,9 @@ export namespace Qmi {
         APPS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsHpDeviceMode {
         export const $gtype: GObject.GType<DmsHpDeviceMode>;
     }
@@ -385,6 +412,9 @@ export namespace Qmi {
         FASTBOOT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsMacType {
         export const $gtype: GObject.GType<DmsMacType>;
     }
@@ -405,6 +435,9 @@ export namespace Qmi {
         BT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsOperatingMode {
         export const $gtype: GObject.GType<DmsOperatingMode>;
     }
@@ -453,6 +486,9 @@ export namespace Qmi {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsRadioInterface {
         export const $gtype: GObject.GType<DmsRadioInterface>;
     }
@@ -493,6 +529,9 @@ export namespace Qmi {
         '5GNR',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsSimCapability {
         export const $gtype: GObject.GType<DmsSimCapability>;
     }
@@ -620,6 +659,9 @@ export namespace Qmi {
         static '22': number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsTimeReferenceType {
         export const $gtype: GObject.GType<DmsTimeReferenceType>;
     }
@@ -636,6 +678,9 @@ export namespace Qmi {
         USER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsTimeSource {
         export const $gtype: GObject.GType<DmsTimeSource>;
     }
@@ -660,6 +705,9 @@ export namespace Qmi {
         HDR_NETWORK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsUimFacility {
         export const $gtype: GObject.GType<DmsUimFacility>;
     }
@@ -692,6 +740,9 @@ export namespace Qmi {
         PF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsUimFacilityState {
         export const $gtype: GObject.GType<DmsUimFacilityState>;
     }
@@ -716,6 +767,9 @@ export namespace Qmi {
         BLOCKED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsUimPinId {
         export const $gtype: GObject.GType<DmsUimPinId>;
     }
@@ -736,6 +790,9 @@ export namespace Qmi {
         PIN2,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsUimPinStatus {
         export const $gtype: GObject.GType<DmsUimPinStatus>;
     }
@@ -780,6 +837,9 @@ export namespace Qmi {
         CHANGED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DmsUimState {
         export const $gtype: GObject.GType<DmsUimState>;
     }
@@ -812,6 +872,9 @@ export namespace Qmi {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DsdApnType {
         export const $gtype: GObject.GType<DsdApnType>;
     }
@@ -864,6 +927,9 @@ export namespace Qmi {
         EMERGENCY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DsdDataSystemNetworkType {
         export const $gtype: GObject.GType<DsdDataSystemNetworkType>;
     }
@@ -888,6 +954,9 @@ export namespace Qmi {
         WLAN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DsdRadioAccessTechnology {
         export const $gtype: GObject.GType<DsdRadioAccessTechnology>;
     }
@@ -944,6 +1013,9 @@ export namespace Qmi {
         '3GPP2_WLAN',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Endian {
         export const $gtype: GObject.GType<Endian>;
     }
@@ -964,6 +1036,9 @@ export namespace Qmi {
         BIG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FoxFirmwareVersionType {
         export const $gtype: GObject.GType<FoxFirmwareVersionType>;
     }
@@ -988,6 +1063,9 @@ export namespace Qmi {
         APPS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GasFirmwareListingMode {
         export const $gtype: GObject.GType<GasFirmwareListingMode>;
     }
@@ -1012,6 +1090,9 @@ export namespace Qmi {
         SPECIFIC_FIRMWARE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GasUsbCompositionEndpointType {
         export const $gtype: GObject.GType<GasUsbCompositionEndpointType>;
     }
@@ -1032,6 +1113,9 @@ export namespace Qmi {
         HSIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocEngineState {
         export const $gtype: GObject.GType<LocEngineState>;
     }
@@ -1053,6 +1137,9 @@ export namespace Qmi {
         OFF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocFixRecurrenceType {
         export const $gtype: GObject.GType<LocFixRecurrenceType>;
     }
@@ -1074,6 +1161,9 @@ export namespace Qmi {
         SINGLE_FIX,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocHealthStatus {
         export const $gtype: GObject.GType<LocHealthStatus>;
     }
@@ -1095,6 +1185,9 @@ export namespace Qmi {
         HEALTHY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocIndicationStatus {
         export const $gtype: GObject.GType<LocIndicationStatus>;
     }
@@ -1136,6 +1229,9 @@ export namespace Qmi {
         TIMEOUT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocIntermediateReportState {
         export const $gtype: GObject.GType<LocIntermediateReportState>;
     }
@@ -1160,6 +1256,9 @@ export namespace Qmi {
         DISABLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocLockType {
         export const $gtype: GObject.GType<LocLockType>;
     }
@@ -1188,6 +1287,9 @@ export namespace Qmi {
         ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocNavigationData {
         export const $gtype: GObject.GType<LocNavigationData>;
     }
@@ -1209,6 +1311,9 @@ export namespace Qmi {
         ALMANAC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocOperationMode {
         export const $gtype: GObject.GType<LocOperationMode>;
     }
@@ -1246,6 +1351,9 @@ export namespace Qmi {
         WWAN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocPredictedOrbitsDataFormat {
         export const $gtype: GObject.GType<LocPredictedOrbitsDataFormat>;
     }
@@ -1262,6 +1370,9 @@ export namespace Qmi {
         XTRA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocReliability {
         export const $gtype: GObject.GType<LocReliability>;
     }
@@ -1295,6 +1406,9 @@ export namespace Qmi {
         HIGH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocSatelliteStatus {
         export const $gtype: GObject.GType<LocSatelliteStatus>;
     }
@@ -1320,6 +1434,9 @@ export namespace Qmi {
         TRACKING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocServerType {
         export const $gtype: GObject.GType<LocServerType>;
     }
@@ -1352,6 +1469,9 @@ export namespace Qmi {
         CUSTOM_PDE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocSessionStatus {
         export const $gtype: GObject.GType<LocSessionStatus>;
     }
@@ -1397,6 +1517,9 @@ export namespace Qmi {
         ENGINE_LOCKED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocSystem {
         export const $gtype: GObject.GType<LocSystem>;
     }
@@ -1430,6 +1553,9 @@ export namespace Qmi {
         GLONASS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocTimeSource {
         export const $gtype: GObject.GType<LocTimeSource>;
     }
@@ -1511,6 +1637,9 @@ export namespace Qmi {
         BDS_TOW_DECODE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasActiveBand {
         export const $gtype: GObject.GType<NasActiveBand>;
     }
@@ -2091,6 +2220,9 @@ export namespace Qmi {
         NR5G_53,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasAttachState {
         export const $gtype: GObject.GType<NasAttachState>;
     }
@@ -2115,6 +2247,9 @@ export namespace Qmi {
         DETACHED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasBoolean {
         export const $gtype: GObject.GType<NasBoolean>;
     }
@@ -2139,6 +2274,9 @@ export namespace Qmi {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasCallBarringStatus {
         export const $gtype: GObject.GType<NasCallBarringStatus>;
     }
@@ -2171,6 +2309,9 @@ export namespace Qmi {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasCdmaPilotType {
         export const $gtype: GObject.GType<NasCdmaPilotType>;
     }
@@ -2191,6 +2332,9 @@ export namespace Qmi {
         NEIGHBOR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasCdmaPrlPreference {
         export const $gtype: GObject.GType<NasCdmaPrlPreference>;
     }
@@ -2215,6 +2359,9 @@ export namespace Qmi {
         ANY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasCellBroadcastCapability {
         export const $gtype: GObject.GType<NasCellBroadcastCapability>;
     }
@@ -2239,6 +2386,9 @@ export namespace Qmi {
         ON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasChangeDuration {
         export const $gtype: GObject.GType<NasChangeDuration>;
     }
@@ -2302,6 +2452,9 @@ export namespace Qmi {
         static UNKNOWN: number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasDataCapability {
         export const $gtype: GObject.GType<NasDataCapability>;
     }
@@ -2370,6 +2523,9 @@ export namespace Qmi {
         DC_HSDPA_PLUS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasDayOfWeek {
         export const $gtype: GObject.GType<NasDayOfWeek>;
     }
@@ -2410,6 +2566,9 @@ export namespace Qmi {
         SUNDAY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasDaylightSavingsAdjustment {
         export const $gtype: GObject.GType<NasDaylightSavingsAdjustment>;
     }
@@ -2434,6 +2593,9 @@ export namespace Qmi {
         TWO_HOURS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasDrx {
         export const $gtype: GObject.GType<NasDrx>;
     }
@@ -2513,6 +2675,9 @@ export namespace Qmi {
         static '8': number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasGsmWcdmaAcquisitionOrderPreference {
         export const $gtype: GObject.GType<NasGsmWcdmaAcquisitionOrderPreference>;
     }
@@ -2537,6 +2702,9 @@ export namespace Qmi {
         WCDMA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasHdrPersonality {
         export const $gtype: GObject.GType<NasHdrPersonality>;
     }
@@ -2561,6 +2729,9 @@ export namespace Qmi {
         EHRPD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasHdrProtocolRevision {
         export const $gtype: GObject.GType<NasHdrProtocolRevision>;
     }
@@ -2589,6 +2760,9 @@ export namespace Qmi {
         REL_B,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasLteCellAccessStatus {
         export const $gtype: GObject.GType<NasLteCellAccessStatus>;
     }
@@ -2621,6 +2795,9 @@ export namespace Qmi {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasLteRegistrationDomain {
         export const $gtype: GObject.GType<NasLteRegistrationDomain>;
     }
@@ -2653,6 +2830,9 @@ export namespace Qmi {
         LIMITED_SERVICE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasLteVoiceDomain {
         export const $gtype: GObject.GType<NasLteVoiceDomain>;
     }
@@ -2681,6 +2861,9 @@ export namespace Qmi {
         '3GPP',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasNetworkDescriptionDisplay {
         export const $gtype: GObject.GType<NasNetworkDescriptionDisplay>;
     }
@@ -2705,6 +2888,9 @@ export namespace Qmi {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasNetworkDescriptionEncoding {
         export const $gtype: GObject.GType<NasNetworkDescriptionEncoding>;
     }
@@ -2733,6 +2919,9 @@ export namespace Qmi {
         GSM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasNetworkNameSource {
         export const $gtype: GObject.GType<NasNetworkNameSource>;
     }
@@ -2773,6 +2962,9 @@ export namespace Qmi {
         SERVICE_PROVIDER_NAME,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasNetworkRegisterType {
         export const $gtype: GObject.GType<NasNetworkRegisterType>;
     }
@@ -2793,6 +2985,9 @@ export namespace Qmi {
         MANUAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasNetworkScanResult {
         export const $gtype: GObject.GType<NasNetworkScanResult>;
     }
@@ -2817,6 +3012,9 @@ export namespace Qmi {
         RADIO_LINK_FAILURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasNetworkSelectionPreference {
         export const $gtype: GObject.GType<NasNetworkSelectionPreference>;
     }
@@ -2837,6 +3035,9 @@ export namespace Qmi {
         MANUAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasNetworkSelectionRegistrationRestriction {
         export const $gtype: GObject.GType<NasNetworkSelectionRegistrationRestriction>;
     }
@@ -2861,6 +3062,9 @@ export namespace Qmi {
         LIMITED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasNetworkServiceDomain {
         export const $gtype: GObject.GType<NasNetworkServiceDomain>;
     }
@@ -2893,6 +3097,9 @@ export namespace Qmi {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasNetworkType {
         export const $gtype: GObject.GType<NasNetworkType>;
     }
@@ -2917,6 +3124,9 @@ export namespace Qmi {
         '3GPP',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasPlmnEncodingScheme {
         export const $gtype: GObject.GType<NasPlmnEncodingScheme>;
     }
@@ -2938,6 +3148,9 @@ export namespace Qmi {
         UCS2LE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasPlmnLanguageId {
         export const $gtype: GObject.GType<NasPlmnLanguageId>;
     }
@@ -2962,6 +3175,9 @@ export namespace Qmi {
         ZH_SIMP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasPlmnNameCountryInitials {
         export const $gtype: GObject.GType<NasPlmnNameCountryInitials>;
     }
@@ -2987,6 +3203,9 @@ export namespace Qmi {
         INIITALS_UNSPECIFIED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasPlmnNameSpareBits {
         export const $gtype: GObject.GType<NasPlmnNameSpareBits>;
     }
@@ -3032,6 +3251,9 @@ export namespace Qmi {
         BITS_28,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasPreferenceDuration {
         export const $gtype: GObject.GType<NasPreferenceDuration>;
     }
@@ -3072,6 +3294,9 @@ export namespace Qmi {
         INTERNAL_ONE_CALL_3,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasPsAttachAction {
         export const $gtype: GObject.GType<NasPsAttachAction>;
     }
@@ -3092,6 +3317,9 @@ export namespace Qmi {
         DETACH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasRadioInterface {
         export const $gtype: GObject.GType<NasRadioInterface>;
     }
@@ -3144,6 +3372,9 @@ export namespace Qmi {
         '5GNR',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasRegistrationState {
         export const $gtype: GObject.GType<NasRegistrationState>;
     }
@@ -3176,6 +3407,9 @@ export namespace Qmi {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasRejectCause {
         export const $gtype: GObject.GType<NasRejectCause>;
     }
@@ -3431,6 +3665,9 @@ export namespace Qmi {
         UNSPECIFIED_PROTOCOL_ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasRoamingIndicatorStatus {
         export const $gtype: GObject.GType<NasRoamingIndicatorStatus>;
     }
@@ -3451,6 +3688,9 @@ export namespace Qmi {
         OFF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasRoamingPreference {
         export const $gtype: GObject.GType<NasRoamingPreference>;
     }
@@ -3479,6 +3719,9 @@ export namespace Qmi {
         ANY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasRoamingStatus {
         export const $gtype: GObject.GType<NasRoamingStatus>;
     }
@@ -3543,6 +3786,9 @@ export namespace Qmi {
         BANNER_OFF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasScellState {
         export const $gtype: GObject.GType<NasScellState>;
     }
@@ -3567,6 +3813,9 @@ export namespace Qmi {
         ACTIVATED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasServiceDomainPreference {
         export const $gtype: GObject.GType<NasServiceDomainPreference>;
     }
@@ -3599,6 +3848,9 @@ export namespace Qmi {
         PS_DETACH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasServiceStatus {
         export const $gtype: GObject.GType<NasServiceStatus>;
     }
@@ -3631,6 +3883,9 @@ export namespace Qmi {
         POWER_SAVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasSimRejectState {
         export const $gtype: GObject.GType<NasSimRejectState>;
     }
@@ -3663,6 +3918,9 @@ export namespace Qmi {
         CS_PS_INVALID,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasSwiEmmConnectionState {
         export const $gtype: GObject.GType<NasSwiEmmConnectionState>;
     }
@@ -3695,6 +3953,9 @@ export namespace Qmi {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasSwiEmmState {
         export const $gtype: GObject.GType<NasSwiEmmState>;
     }
@@ -3739,6 +4000,9 @@ export namespace Qmi {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasSwiImsRegState {
         export const $gtype: GObject.GType<NasSwiImsRegState>;
     }
@@ -3775,6 +4039,9 @@ export namespace Qmi {
         _UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasSwiModemMode {
         export const $gtype: GObject.GType<NasSwiModemMode>;
     }
@@ -3839,6 +4106,9 @@ export namespace Qmi {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasSwiPsState {
         export const $gtype: GObject.GType<NasSwiPsState>;
     }
@@ -3863,6 +4133,9 @@ export namespace Qmi {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasSwiSystemMode {
         export const $gtype: GObject.GType<NasSwiSystemMode>;
     }
@@ -3915,6 +4188,9 @@ export namespace Qmi {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasUsagePreference {
         export const $gtype: GObject.GType<NasUsagePreference>;
     }
@@ -3939,6 +4215,9 @@ export namespace Qmi {
         DATA_CENTRIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasVoiceDomainPreference {
         export const $gtype: GObject.GType<NasVoiceDomainPreference>;
     }
@@ -3967,6 +4246,9 @@ export namespace Qmi {
         PS_PREFERRED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasWcdmaHsService {
         export const $gtype: GObject.GType<NasWcdmaHsService>;
     }
@@ -4011,6 +4293,9 @@ export namespace Qmi {
         DC_HSDPA_PLUS_HSUPA_SUPPORTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NasWcdmaRrcState {
         export const $gtype: GObject.GType<NasWcdmaRrcState>;
     }
@@ -4043,6 +4328,9 @@ export namespace Qmi {
         CELL_DCH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OmaHfaFeatureDoneState {
         export const $gtype: GObject.GType<OmaHfaFeatureDoneState>;
     }
@@ -4067,6 +4355,9 @@ export namespace Qmi {
         FAILED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OmaSessionFailedReason {
         export const $gtype: GObject.GType<OmaSessionFailedReason>;
     }
@@ -4103,6 +4394,9 @@ export namespace Qmi {
         SESSION_CANCELLED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OmaSessionState {
         export const $gtype: GObject.GType<OmaSessionState>;
     }
@@ -4159,6 +4453,9 @@ export namespace Qmi {
         MIP_PROFILE_DOWNLOADED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OmaSessionType {
         export const $gtype: GObject.GType<OmaSessionType>;
     }
@@ -4199,6 +4496,9 @@ export namespace Qmi {
         DEVICE_INITIATED_PRL_UPDATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PbmSessionType {
         export const $gtype: GObject.GType<PbmSessionType>;
     }
@@ -4243,6 +4543,9 @@ export namespace Qmi {
         GLOBAL_PHONEBOOK_SLOT_2,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PdcConfigurationType {
         export const $gtype: GObject.GType<PdcConfigurationType>;
     }
@@ -4263,6 +4566,9 @@ export namespace Qmi {
         SOFTWARE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PdcRefreshEventType {
         export const $gtype: GObject.GType<PdcRefreshEventType>;
     }
@@ -4287,6 +4593,9 @@ export namespace Qmi {
         CLIENT_REFRESH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PdsNetworkMode {
         export const $gtype: GObject.GType<PdsNetworkMode>;
     }
@@ -4307,6 +4616,9 @@ export namespace Qmi {
         CDMA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PdsOperatingMode {
         export const $gtype: GObject.GType<PdsOperatingMode>;
     }
@@ -4331,6 +4643,9 @@ export namespace Qmi {
         MS_ASSISTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PdsOperationMode {
         export const $gtype: GObject.GType<PdsOperationMode>;
     }
@@ -4359,6 +4674,9 @@ export namespace Qmi {
         MS_ASSISTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PdsPositionSessionStatus {
         export const $gtype: GObject.GType<PdsPositionSessionStatus>;
     }
@@ -4407,6 +4725,9 @@ export namespace Qmi {
         E911_SESSION_IN_PROGRESS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PdsTrackingSessionState {
         export const $gtype: GObject.GType<PdsTrackingSessionState>;
     }
@@ -4955,6 +5276,9 @@ export namespace Qmi {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace QosEvent {
         export const $gtype: GObject.GType<QosEvent>;
     }
@@ -4995,6 +5319,9 @@ export namespace Qmi {
         INFO_CODE_UPDATED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace QosStatus {
         export const $gtype: GObject.GType<QosStatus>;
     }
@@ -5118,6 +5445,9 @@ export namespace Qmi {
         static '20': number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Service {
         export const $gtype: GObject.GType<Service>;
     }
@@ -5338,6 +5668,9 @@ export namespace Qmi {
         ATR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SioPort {
         export const $gtype: GObject.GType<SioPort>;
     }
@@ -5388,6 +5721,9 @@ export namespace Qmi {
         A2_MUX_RMNET7,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimCardApplicationPersonalizationFeature {
         export const $gtype: GObject.GType<UimCardApplicationPersonalizationFeature>;
     }
@@ -5468,6 +5804,9 @@ export namespace Qmi {
         GW_CARRIER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimCardApplicationPersonalizationFeatureStatus {
         export const $gtype: GObject.GType<UimCardApplicationPersonalizationFeatureStatus>;
     }
@@ -5552,6 +5891,9 @@ export namespace Qmi {
         GW_CARRIER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimCardApplicationPersonalizationState {
         export const $gtype: GObject.GType<UimCardApplicationPersonalizationState>;
     }
@@ -5588,6 +5930,9 @@ export namespace Qmi {
         PERMANENTLY_BLOCKED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimCardApplicationState {
         export const $gtype: GObject.GType<UimCardApplicationState>;
     }
@@ -5632,6 +5977,9 @@ export namespace Qmi {
         READY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimCardApplicationType {
         export const $gtype: GObject.GType<UimCardApplicationType>;
     }
@@ -5668,6 +6016,9 @@ export namespace Qmi {
         ISIM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimCardError {
         export const $gtype: GObject.GType<UimCardError>;
     }
@@ -5712,6 +6063,9 @@ export namespace Qmi {
         TECHNICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimCardProtocol {
         export const $gtype: GObject.GType<UimCardProtocol>;
     }
@@ -5736,6 +6090,9 @@ export namespace Qmi {
         UICC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimCardState {
         export const $gtype: GObject.GType<UimCardState>;
     }
@@ -5760,6 +6117,9 @@ export namespace Qmi {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimDepersonalizationOperation {
         export const $gtype: GObject.GType<UimDepersonalizationOperation>;
     }
@@ -5780,6 +6140,9 @@ export namespace Qmi {
         UNBLOCK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimFileType {
         export const $gtype: GObject.GType<UimFileType>;
     }
@@ -5812,6 +6175,9 @@ export namespace Qmi {
         MASTER_FILE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimPhysicalCardState {
         export const $gtype: GObject.GType<UimPhysicalCardState>;
     }
@@ -5836,6 +6202,9 @@ export namespace Qmi {
         PRESENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimPinId {
         export const $gtype: GObject.GType<UimPinId>;
     }
@@ -5868,6 +6237,9 @@ export namespace Qmi {
         HIDDEN_KEY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimPinState {
         export const $gtype: GObject.GType<UimPinState>;
     }
@@ -5904,6 +6276,9 @@ export namespace Qmi {
         PERMANENTLY_BLOCKED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimRefreshMode {
         export const $gtype: GObject.GType<UimRefreshMode>;
     }
@@ -5944,6 +6319,9 @@ export namespace Qmi {
         '3G_RESET',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimRefreshStage {
         export const $gtype: GObject.GType<UimRefreshStage>;
     }
@@ -5972,6 +6350,9 @@ export namespace Qmi {
         END_WITH_FAILURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimSecurityAttributeLogic {
         export const $gtype: GObject.GType<UimSecurityAttributeLogic>;
     }
@@ -6004,6 +6385,9 @@ export namespace Qmi {
         SINGLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimSessionType {
         export const $gtype: GObject.GType<UimSessionType>;
     }
@@ -6116,6 +6500,9 @@ export namespace Qmi {
         LOGICAL_CHANNEL_SLOT_5,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UimSlotState {
         export const $gtype: GObject.GType<UimSlotState>;
     }
@@ -6136,6 +6523,9 @@ export namespace Qmi {
         ACTIVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceAlphaDataCodingScheme {
         export const $gtype: GObject.GType<VoiceAlphaDataCodingScheme>;
     }
@@ -6175,6 +6565,9 @@ export namespace Qmi {
         static '2': number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceCallControlResultType {
         export const $gtype: GObject.GType<VoiceCallControlResultType>;
     }
@@ -6199,6 +6592,9 @@ export namespace Qmi {
         USSD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceCallControlSupplementaryServiceType {
         export const $gtype: GObject.GType<VoiceCallControlSupplementaryServiceType>;
     }
@@ -6239,6 +6635,9 @@ export namespace Qmi {
         USSD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceCallDirection {
         export const $gtype: GObject.GType<VoiceCallDirection>;
     }
@@ -6263,6 +6662,9 @@ export namespace Qmi {
         MT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceCallEndReason {
         export const $gtype: GObject.GType<VoiceCallEndReason>;
     }
@@ -7064,6 +7466,9 @@ export namespace Qmi {
         '1XCSFB_HARD_FAILURE',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceCallMode {
         export const $gtype: GObject.GType<VoiceCallMode>;
     }
@@ -7096,6 +7501,9 @@ export namespace Qmi {
         LTE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceCallState {
         export const $gtype: GObject.GType<VoiceCallState>;
     }
@@ -7152,6 +7560,9 @@ export namespace Qmi {
         SETUP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceCallType {
         export const $gtype: GObject.GType<VoiceCallType>;
     }
@@ -7188,6 +7599,9 @@ export namespace Qmi {
         SUPS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceDomain {
         export const $gtype: GObject.GType<VoiceDomain>;
     }
@@ -7216,6 +7630,9 @@ export namespace Qmi {
         PS_PREFERRED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoicePresentation {
         export const $gtype: GObject.GType<VoicePresentation>;
     }
@@ -7244,6 +7661,9 @@ export namespace Qmi {
         PAYPHONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoicePrivacy {
         export const $gtype: GObject.GType<VoicePrivacy>;
     }
@@ -7264,6 +7684,9 @@ export namespace Qmi {
         ENHANCED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceServiceOption {
         export const $gtype: GObject.GType<VoiceServiceOption>;
     }
@@ -7316,6 +7739,9 @@ export namespace Qmi {
         WVRC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceSupplementaryServiceAction {
         export const $gtype: GObject.GType<VoiceSupplementaryServiceAction>;
     }
@@ -7344,6 +7770,9 @@ export namespace Qmi {
         ERASE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceSupplementaryServiceNotificationType {
         export const $gtype: GObject.GType<VoiceSupplementaryServiceNotificationType>;
     }
@@ -7424,6 +7853,9 @@ export namespace Qmi {
         INCOMING_CALL_IS_ECT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceSupplementaryServiceReason {
         export const $gtype: GObject.GType<VoiceSupplementaryServiceReason>;
     }
@@ -7496,6 +7928,9 @@ export namespace Qmi {
         CALL_WAITING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceSupplementaryServiceType {
         export const $gtype: GObject.GType<VoiceSupplementaryServiceType>;
     }
@@ -7552,6 +7987,9 @@ export namespace Qmi {
         LOCAL_UNHOLD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceTtyMode {
         export const $gtype: GObject.GType<VoiceTtyMode>;
     }
@@ -7580,6 +8018,9 @@ export namespace Qmi {
         OFF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceUserAction {
         export const $gtype: GObject.GType<VoiceUserAction>;
     }
@@ -7604,6 +8045,9 @@ export namespace Qmi {
         REQUIRED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceUssDataCodingScheme {
         export const $gtype: GObject.GType<VoiceUssDataCodingScheme>;
     }
@@ -7632,6 +8076,9 @@ export namespace Qmi {
         UCS2,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdaDataAggregationProtocol {
         export const $gtype: GObject.GType<WdaDataAggregationProtocol>;
     }
@@ -7684,6 +8131,9 @@ export namespace Qmi {
         QMAPV5,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdaLinkLayerProtocol {
         export const $gtype: GObject.GType<WdaLinkLayerProtocol>;
     }
@@ -7708,6 +8158,9 @@ export namespace Qmi {
         RAW_IP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsAttachPdnListAction {
         export const $gtype: GObject.GType<WdsAttachPdnListAction>;
     }
@@ -7728,6 +8181,9 @@ export namespace Qmi {
         DETACH_OR_PDN_DISCONNECT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsAutoconnectSetting {
         export const $gtype: GObject.GType<WdsAutoconnectSetting>;
     }
@@ -7752,6 +8208,9 @@ export namespace Qmi {
         PAUSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsAutoconnectSettingRoaming {
         export const $gtype: GObject.GType<WdsAutoconnectSettingRoaming>;
     }
@@ -7772,6 +8231,9 @@ export namespace Qmi {
         HOME_ONLY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsCallEndReason {
         export const $gtype: GObject.GType<WdsCallEndReason>;
     }
@@ -8072,6 +8534,9 @@ export namespace Qmi {
         EVDO_HDR_RELEASED_BY_CM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsCallType {
         export const $gtype: GObject.GType<WdsCallType>;
     }
@@ -8092,6 +8557,9 @@ export namespace Qmi {
         EMBEDDED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsClientType {
         export const $gtype: GObject.GType<WdsClientType>;
     }
@@ -8112,6 +8580,9 @@ export namespace Qmi {
         UNDEFINED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsConnectionStatus {
         export const $gtype: GObject.GType<WdsConnectionStatus>;
     }
@@ -8144,6 +8615,9 @@ export namespace Qmi {
         AUTHENTICATING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsDataBearerTechnology {
         export const $gtype: GObject.GType<WdsDataBearerTechnology>;
     }
@@ -8240,6 +8714,9 @@ export namespace Qmi {
         TDSCDMA_HSUPA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsDataCallStatus {
         export const $gtype: GObject.GType<WdsDataCallStatus>;
     }
@@ -8264,6 +8741,9 @@ export namespace Qmi {
         TERMINATED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsDataCallType {
         export const $gtype: GObject.GType<WdsDataCallType>;
     }
@@ -8292,6 +8772,9 @@ export namespace Qmi {
         MODEM_EMBEDDED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsDataSystem {
         export const $gtype: GObject.GType<WdsDataSystem>;
     }
@@ -8332,6 +8815,9 @@ export namespace Qmi {
         TDSCDMA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsDataSystemNetworkType {
         export const $gtype: GObject.GType<WdsDataSystemNetworkType>;
     }
@@ -8352,6 +8838,9 @@ export namespace Qmi {
         '3GPP2',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsDeliveryOrder {
         export const $gtype: GObject.GType<WdsDeliveryOrder>;
     }
@@ -8376,6 +8865,9 @@ export namespace Qmi {
         OFF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsDormancyStatus {
         export const $gtype: GObject.GType<WdsDormancyStatus>;
     }
@@ -8400,6 +8892,9 @@ export namespace Qmi {
         TRAFFIC_CHANNEL_ACTIVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsDsProfileError {
         export const $gtype: GObject.GType<WdsDsProfileError>;
     }
@@ -8492,6 +8987,9 @@ export namespace Qmi {
         '3GPP2_INVALID_PROFILE_ID',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsExtendedTechnologyPreference {
         export const $gtype: GObject.GType<WdsExtendedTechnologyPreference>;
     }
@@ -8524,6 +9022,9 @@ export namespace Qmi {
         MODEM_LINK_LOCAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsIpFamily {
         export const $gtype: GObject.GType<WdsIpFamily>;
     }
@@ -8552,6 +9053,9 @@ export namespace Qmi {
         UNSPECIFIED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsIpSupportType {
         export const $gtype: GObject.GType<WdsIpSupportType>;
     }
@@ -8576,6 +9080,9 @@ export namespace Qmi {
         IPV4V6,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsNetworkType {
         export const $gtype: GObject.GType<WdsNetworkType>;
     }
@@ -8600,6 +9107,9 @@ export namespace Qmi {
         '3GPP',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsPdpDataCompressionType {
         export const $gtype: GObject.GType<WdsPdpDataCompressionType>;
     }
@@ -8628,6 +9138,9 @@ export namespace Qmi {
         V44,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsPdpHeaderCompressionType {
         export const $gtype: GObject.GType<WdsPdpHeaderCompressionType>;
     }
@@ -8660,6 +9173,9 @@ export namespace Qmi {
         RFC3095,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsPdpType {
         export const $gtype: GObject.GType<WdsPdpType>;
     }
@@ -8688,6 +9204,9 @@ export namespace Qmi {
         IPV4_OR_IPV6,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsProfileChangeEvent {
         export const $gtype: GObject.GType<WdsProfileChangeEvent>;
     }
@@ -8716,6 +9235,9 @@ export namespace Qmi {
         SUBSCRIPTION_CHANGE_EVENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsProfileFamily {
         export const $gtype: GObject.GType<WdsProfileFamily>;
     }
@@ -8736,6 +9258,9 @@ export namespace Qmi {
         TETHERED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsProfileType {
         export const $gtype: GObject.GType<WdsProfileType>;
     }
@@ -8764,6 +9289,9 @@ export namespace Qmi {
         ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsQosClassIdentifier {
         export const $gtype: GObject.GType<WdsQosClassIdentifier>;
     }
@@ -8812,6 +9340,9 @@ export namespace Qmi {
         NON_GUARANTEED_BITRATE8,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsRadioAccessTechnology {
         export const $gtype: GObject.GType<WdsRadioAccessTechnology>;
     }
@@ -8872,6 +9403,9 @@ export namespace Qmi {
         '3GPP2_MAXIMUM',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsSduErroneousDelivery {
         export const $gtype: GObject.GType<WdsSduErroneousDelivery>;
     }
@@ -8900,6 +9434,9 @@ export namespace Qmi {
         DISABLED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsSduErrorRatio {
         export const $gtype: GObject.GType<WdsSduErrorRatio>;
     }
@@ -8944,6 +9481,9 @@ export namespace Qmi {
         '1E1',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsSduResidualBitErrorRatio {
         export const $gtype: GObject.GType<WdsSduResidualBitErrorRatio>;
     }
@@ -8996,6 +9536,9 @@ export namespace Qmi {
         '6E8',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsTetheredCallType {
         export const $gtype: GObject.GType<WdsTetheredCallType>;
     }
@@ -9020,6 +9563,9 @@ export namespace Qmi {
         DUN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsTrafficClass {
         export const $gtype: GObject.GType<WdsTrafficClass>;
     }
@@ -9052,6 +9598,9 @@ export namespace Qmi {
         BACKGROUND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsVerboseCallEndReason3gpp {
         export const $gtype: GObject.GType<WdsVerboseCallEndReason3gpp>;
     }
@@ -9224,6 +9773,9 @@ export namespace Qmi {
         INVALID_PROXY_CALL_SESSION_CONTROL_FUNCTION_ADDRESS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsVerboseCallEndReasonCm {
         export const $gtype: GObject.GType<WdsVerboseCallEndReasonCm>;
     }
@@ -9740,6 +10292,9 @@ export namespace Qmi {
         CALL_CONTROL_REJECTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsVerboseCallEndReasonEhrpd {
         export const $gtype: GObject.GType<WdsVerboseCallEndReasonEhrpd>;
     }
@@ -9816,6 +10371,9 @@ export namespace Qmi {
         VSNCP_3GPP2_PDN_EXISTS_FOR_THIS_APN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsVerboseCallEndReasonInternal {
         export const $gtype: GObject.GType<WdsVerboseCallEndReasonInternal>;
     }
@@ -10024,6 +10582,9 @@ export namespace Qmi {
         VALIDATION_FAILURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsVerboseCallEndReasonIpv6 {
         export const $gtype: GObject.GType<WdsVerboseCallEndReasonIpv6>;
     }
@@ -10048,6 +10609,9 @@ export namespace Qmi {
         DISABLED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsVerboseCallEndReasonMip {
         export const $gtype: GObject.GType<WdsVerboseCallEndReasonMip>;
     }
@@ -10184,6 +10748,9 @@ export namespace Qmi {
         HA_ERROR_ENCAPSULATION_UNAVAILABLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsVerboseCallEndReasonPpp {
         export const $gtype: GObject.GType<WdsVerboseCallEndReasonPpp>;
     }
@@ -10224,6 +10791,9 @@ export namespace Qmi {
         CLOSE_IN_PROGRESS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WdsVerboseCallEndReasonType {
         export const $gtype: GObject.GType<WdsVerboseCallEndReasonType>;
     }
@@ -10264,6 +10834,9 @@ export namespace Qmi {
         IPV6,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsAckFailureCause {
         export const $gtype: GObject.GType<WmsAckFailureCause>;
     }
@@ -10288,6 +10861,9 @@ export namespace Qmi {
         NOT_SENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsAckIndicator {
         export const $gtype: GObject.GType<WmsAckIndicator>;
     }
@@ -10308,6 +10884,9 @@ export namespace Qmi {
         DO_NOT_SEND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsCdmaCauseCode {
         export const $gtype: GObject.GType<WmsCdmaCauseCode>;
     }
@@ -10432,6 +11011,9 @@ export namespace Qmi {
         GENERAL_OTHER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsCdmaErrorClass {
         export const $gtype: GObject.GType<WmsCdmaErrorClass>;
     }
@@ -10484,6 +11066,9 @@ export namespace Qmi {
         static '14': number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsGsmUmtsRpCause {
         export const $gtype: GObject.GType<WmsGsmUmtsRpCause>;
     }
@@ -10592,6 +11177,9 @@ export namespace Qmi {
         INTERWORKING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsGsmUmtsTpCause {
         export const $gtype: GObject.GType<WmsGsmUmtsTpCause>;
     }
@@ -10743,6 +11331,9 @@ export namespace Qmi {
         static CDMA: number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsMessageDeliveryFailureType {
         export const $gtype: GObject.GType<WmsMessageDeliveryFailureType>;
     }
@@ -10763,6 +11354,9 @@ export namespace Qmi {
         PERMANENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsMessageFormat {
         export const $gtype: GObject.GType<WmsMessageFormat>;
     }
@@ -10791,6 +11385,9 @@ export namespace Qmi {
         MWI,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsMessageMode {
         export const $gtype: GObject.GType<WmsMessageMode>;
     }
@@ -10811,6 +11408,9 @@ export namespace Qmi {
         GSM_WCDMA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsMessageProtocol {
         export const $gtype: GObject.GType<WmsMessageProtocol>;
     }
@@ -10831,6 +11431,9 @@ export namespace Qmi {
         WCDMA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsMessageTagType {
         export const $gtype: GObject.GType<WmsMessageTagType>;
     }
@@ -10859,6 +11462,9 @@ export namespace Qmi {
         MO_NOT_SENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsMessageType {
         export const $gtype: GObject.GType<WmsMessageType>;
     }
@@ -10875,6 +11481,9 @@ export namespace Qmi {
         POINT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsNotificationType {
         export const $gtype: GObject.GType<WmsNotificationType>;
     }
@@ -10899,6 +11508,9 @@ export namespace Qmi {
         SECONDARY_UMTS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsReceiptAction {
         export const $gtype: GObject.GType<WmsReceiptAction>;
     }
@@ -10931,6 +11543,9 @@ export namespace Qmi {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsStorageType {
         export const $gtype: GObject.GType<WmsStorageType>;
     }
@@ -10955,6 +11570,9 @@ export namespace Qmi {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WmsTransferIndication {
         export const $gtype: GObject.GType<WmsTransferIndication>;
     }
@@ -16278,6 +16896,9 @@ export namespace Qmi {
         INDICATION,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DeviceAddLinkFlags {
         export const $gtype: GObject.GType<DeviceAddLinkFlags>;
     }
@@ -16310,6 +16931,9 @@ export namespace Qmi {
         EGRESS_MAP_CKSUMV5,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DeviceOpenFlags {
         export const $gtype: GObject.GType<DeviceOpenFlags>;
     }
@@ -16366,6 +16990,9 @@ export namespace Qmi {
         EXPECT_INDICATIONS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DeviceReleaseClientFlags {
         export const $gtype: GObject.GType<DeviceReleaseClientFlags>;
     }
@@ -16723,6 +17350,9 @@ export namespace Qmi {
         static '43': number;
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DmsOfflineReason {
         export const $gtype: GObject.GType<DmsOfflineReason>;
     }
@@ -16751,6 +17381,9 @@ export namespace Qmi {
         DEVICE_MEMORY_FULL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DmsPowerState {
         export const $gtype: GObject.GType<DmsPowerState>;
     }
@@ -17002,6 +17635,9 @@ export namespace Qmi {
         '3GPP_SO_MASK_5G_SA',
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace LocDeleteCellDatabase {
         export const $gtype: GObject.GType<LocDeleteCellDatabase>;
     }
@@ -17054,6 +17690,9 @@ export namespace Qmi {
         NEIGHBOR_INFO,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace LocDeleteClockInfo {
         export const $gtype: GObject.GType<LocDeleteClockInfo>;
     }
@@ -17195,6 +17834,9 @@ export namespace Qmi {
         FREQ_BIAS_EST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace LocDeleteSvInfo {
         export const $gtype: GObject.GType<LocDeleteSvInfo>;
     }
@@ -17300,6 +17942,9 @@ export namespace Qmi {
         MOTION_DATA_CONTROL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace LocNmeaType {
         export const $gtype: GObject.GType<LocNmeaType>;
     }
@@ -17344,6 +17989,9 @@ export namespace Qmi {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace LocSatelliteValidInformation {
         export const $gtype: GObject.GType<LocSatelliteValidInformation>;
     }
@@ -17422,6 +18070,9 @@ export namespace Qmi {
         AIDED_VELOCITY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace LocServerAddressType {
         export const $gtype: GObject.GType<LocServerAddressType>;
     }
@@ -17450,6 +18101,9 @@ export namespace Qmi {
         URL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace LocTechnologyUsed {
         export const $gtype: GObject.GType<LocTechnologyUsed>;
     }
@@ -17832,6 +18486,9 @@ export namespace Qmi {
         static '43': number;
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace NasNetworkNameDisplayCondition {
         export const $gtype: GObject.GType<NasNetworkNameDisplayCondition>;
     }
@@ -17859,6 +18516,9 @@ export namespace Qmi {
         SPN_NOT_REQUIRED_IF_UNKNOWN_NETWORK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace NasNetworkScanType {
         export const $gtype: GObject.GType<NasNetworkScanType>;
     }
@@ -17887,6 +18547,9 @@ export namespace Qmi {
         TD_SCDMA,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace NasNetworkStatus {
         export const $gtype: GObject.GType<NasNetworkStatus>;
     }
@@ -17931,6 +18594,9 @@ export namespace Qmi {
         NOT_PREFERRED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace NasPlmnAccessTechnologyIdentifier {
         export const $gtype: GObject.GType<NasPlmnAccessTechnologyIdentifier>;
     }
@@ -17972,6 +18638,9 @@ export namespace Qmi {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace NasRadioTechnologyPreference {
         export const $gtype: GObject.GType<NasRadioTechnologyPreference>;
     }
@@ -18012,6 +18681,9 @@ export namespace Qmi {
         LTE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace NasRatModePreference {
         export const $gtype: GObject.GType<NasRatModePreference>;
     }
@@ -18052,6 +18724,9 @@ export namespace Qmi {
         '5GNR',
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace NasSignalStrengthRequest {
         export const $gtype: GObject.GType<NasSignalStrengthRequest>;
     }
@@ -18100,6 +18775,9 @@ export namespace Qmi {
         LTE_RSRP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace NasTdScdmaBandPreference {
         export const $gtype: GObject.GType<NasTdScdmaBandPreference>;
     }
@@ -18136,6 +18814,9 @@ export namespace Qmi {
         F,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PbmEventRegistrationFlag {
         export const $gtype: GObject.GType<PbmEventRegistrationFlag>;
     }
@@ -18172,6 +18853,9 @@ export namespace Qmi {
         GAS_UPDATE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PbmPhonebookType {
         export const $gtype: GObject.GType<PbmPhonebookType>;
     }
@@ -18216,6 +18900,9 @@ export namespace Qmi {
         MBN,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PdsDataValid {
         export const $gtype: GObject.GType<PdsDataValid>;
     }
@@ -18343,6 +19030,9 @@ export namespace Qmi {
         INDICATION,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace UimConfiguration {
         export const $gtype: GObject.GType<UimConfiguration>;
     }
@@ -18368,6 +19058,9 @@ export namespace Qmi {
         HALT_SUBSCRIPTION,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace UimEventRegistrationFlag {
         export const $gtype: GObject.GType<UimEventRegistrationFlag>;
     }
@@ -18396,6 +19089,9 @@ export namespace Qmi {
         PHYSICAL_SLOT_STATUS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace UimSecurityAttribute {
         export const $gtype: GObject.GType<UimSecurityAttribute>;
     }
@@ -18424,6 +19120,9 @@ export namespace Qmi {
         ADM,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VoiceWcdmaAmrStatus {
         export const $gtype: GObject.GType<VoiceWcdmaAmrStatus>;
     }
@@ -18488,6 +19187,9 @@ export namespace Qmi {
         EMERGENCY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WdsAuthentication {
         export const $gtype: GObject.GType<WdsAuthentication>;
     }
@@ -18512,6 +19214,9 @@ export namespace Qmi {
         CHAP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WdsExtendedDataBearerTechnology3gpp {
         export const $gtype: GObject.GType<WdsExtendedDataBearerTechnology3gpp>;
     }
@@ -18584,6 +19289,9 @@ export namespace Qmi {
         LTE_TDD,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WdsExtendedDataBearerTechnology3gpp2 {
         export const $gtype: GObject.GType<WdsExtendedDataBearerTechnology3gpp2>;
     }
@@ -18652,6 +19360,9 @@ export namespace Qmi {
         HDR_EVDO_FMC,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WdsPacketStatisticsMaskFlag {
         export const $gtype: GObject.GType<WdsPacketStatisticsMaskFlag>;
     }
@@ -18704,6 +19415,9 @@ export namespace Qmi {
         RX_PACKETS_DROPPED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WdsRat3gpp {
         export const $gtype: GObject.GType<WdsRat3gpp>;
     }
@@ -18765,6 +19479,9 @@ export namespace Qmi {
         NULL_BEARER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WdsRat3gpp2 {
         export const $gtype: GObject.GType<WdsRat3gpp2>;
     }
@@ -18810,6 +19527,9 @@ export namespace Qmi {
         NULL_BEARER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WdsRequestedSettings {
         export const $gtype: GObject.GType<WdsRequestedSettings>;
     }
@@ -18902,6 +19622,9 @@ export namespace Qmi {
         OPERATOR_RESERVED_PCO,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WdsSetEventReportTransferStatistics {
         export const $gtype: GObject.GType<WdsSetEventReportTransferStatistics>;
     }
@@ -18955,6 +19678,9 @@ export namespace Qmi {
         RX_PACKETS_DROPPED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WdsSoCdma1x {
         export const $gtype: GObject.GType<WdsSoCdma1x>;
     }
@@ -18985,6 +19711,9 @@ export namespace Qmi {
         IS2000_REL_A,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WdsSoEvdoRev0 {
         export const $gtype: GObject.GType<WdsSoEvdoRev0>;
     }
@@ -19007,6 +19736,9 @@ export namespace Qmi {
         DPA,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WdsSoEvdoRevA {
         export const $gtype: GObject.GType<WdsSoEvdoRevA>;
     }
@@ -19041,6 +19773,9 @@ export namespace Qmi {
         EMPA_EHRPD,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WdsSoEvdoRevB {
         export const $gtype: GObject.GType<WdsSoEvdoRevB>;
     }
@@ -19083,6 +19818,9 @@ export namespace Qmi {
         MMPA_EHRPD,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WdsTechnologyPreference {
         export const $gtype: GObject.GType<WdsTechnologyPreference>;
     }
@@ -19175,10 +19913,12 @@ export namespace Qmi {
         set clientService(val: Service);
         /**
          * @since 1.20
+         * @read-only
          */
         get client_valid(): boolean;
         /**
          * @since 1.20
+         * @read-only
          */
         get clientValid(): boolean;
         /**
@@ -19311,6 +20051,7 @@ export namespace Qmi {
              * The ::received signal gets emitted when a '<link linkend="libqmi-glib-ATR-Received-indication.top_of_page">Received</link>' indication is received.
              * @signal
              * @since 1.34
+             * @run-last
              */
             received: (arg0: IndicationAtrReceivedOutput) => void;
             'notify::client-cid': (pspec: GObject.ParamSpec) => void;
@@ -19437,6 +20178,7 @@ export namespace Qmi {
              * The ::event-report signal gets emitted when a '<link linkend="libqmi-glib-DMS-Event-Report-indication.top_of_page">Event Report</link>' indication is received.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'event-report': (arg0: IndicationDmsEventReportOutput) => void;
             'notify::client-cid': (pspec: GObject.ParamSpec) => void;
@@ -23093,6 +23835,7 @@ export namespace Qmi {
              * The ::system-status signal gets emitted when a '<link linkend="libqmi-glib-DSD-System-Status-indication.top_of_page">System Status</link>' indication is received.
              * @signal
              * @since 1.32
+             * @run-last
              */
             'system-status': (arg0: IndicationDsdSystemStatusOutput) => void;
             'notify::client-cid': (pspec: GObject.ParamSpec) => void;
@@ -23964,102 +24707,119 @@ export namespace Qmi {
              * The ::delete-assistance-data signal gets emitted when a '<link linkend="libqmi-glib-LOC-Delete-Assistance-Data-indication.top_of_page">Delete Assistance Data</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'delete-assistance-data': (arg0: IndicationLocDeleteAssistanceDataOutput) => void;
             /**
              * The ::engine-state signal gets emitted when a '<link linkend="libqmi-glib-LOC-Engine-State-indication.top_of_page">Engine State</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'engine-state': (arg0: IndicationLocEngineStateOutput) => void;
             /**
              * The ::fix-recurrence-type signal gets emitted when a '<link linkend="libqmi-glib-LOC-Fix-Recurrence-Type-indication.top_of_page">Fix Recurrence Type</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'fix-recurrence-type': (arg0: IndicationLocFixRecurrenceTypeOutput) => void;
             /**
              * The ::get-engine-lock signal gets emitted when a '<link linkend="libqmi-glib-LOC-Get-Engine-Lock-indication.top_of_page">Get Engine Lock</link>' indication is received.
              * @signal
              * @since 1.28
+             * @run-last
              */
             'get-engine-lock': (arg0: IndicationLocGetEngineLockOutput) => void;
             /**
              * The ::get-nmea-types signal gets emitted when a '<link linkend="libqmi-glib-LOC-Get-NMEA-Types-indication.top_of_page">Get NMEA Types</link>' indication is received.
              * @signal
              * @since 1.26
+             * @run-last
              */
             'get-nmea-types': (arg0: IndicationLocGetNmeaTypesOutput) => void;
             /**
              * The ::get-operation-mode signal gets emitted when a '<link linkend="libqmi-glib-LOC-Get-Operation-Mode-indication.top_of_page">Get Operation Mode</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'get-operation-mode': (arg0: IndicationLocGetOperationModeOutput) => void;
             /**
              * The ::get-predicted-orbits-data-source signal gets emitted when a '<link linkend="libqmi-glib-LOC-Get-Predicted-Orbits-Data-Source-indication.top_of_page">Get Predicted Orbits Data Source</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'get-predicted-orbits-data-source': (arg0: IndicationLocGetPredictedOrbitsDataSourceOutput) => void;
             /**
              * The ::get-server signal gets emitted when a '<link linkend="libqmi-glib-LOC-Get-Server-indication.top_of_page">Get Server</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'get-server': (arg0: IndicationLocGetServerOutput) => void;
             /**
              * The ::gnss-sv-info signal gets emitted when a '<link linkend="libqmi-glib-LOC-GNSS-Sv-Info-indication.top_of_page">GNSS Sv Info</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'gnss-sv-info': (arg0: IndicationLocGnssSvInfoOutput) => void;
             /**
              * The ::inject-predicted-orbits-data signal gets emitted when a '<link linkend="libqmi-glib-LOC-Inject-Predicted-Orbits-Data-indication.top_of_page">Inject Predicted Orbits Data</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'inject-predicted-orbits-data': (arg0: IndicationLocInjectPredictedOrbitsDataOutput) => void;
             /**
              * The ::inject-xtra-data signal gets emitted when a '<link linkend="libqmi-glib-LOC-Inject-Xtra-Data-indication.top_of_page">Inject Xtra Data</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'inject-xtra-data': (arg0: IndicationLocInjectXtraDataOutput) => void;
             /**
              * The ::nmea signal gets emitted when a '<link linkend="libqmi-glib-LOC-NMEA-indication.top_of_page">NMEA</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             nmea: (arg0: IndicationLocNmeaOutput) => void;
             /**
              * The ::position-report signal gets emitted when a '<link linkend="libqmi-glib-LOC-Position-Report-indication.top_of_page">Position Report</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'position-report': (arg0: IndicationLocPositionReportOutput) => void;
             /**
              * The ::set-engine-lock signal gets emitted when a '<link linkend="libqmi-glib-LOC-Set-Engine-Lock-indication.top_of_page">Set Engine Lock</link>' indication is received.
              * @signal
              * @since 1.28
+             * @run-last
              */
             'set-engine-lock': (arg0: IndicationLocSetEngineLockOutput) => void;
             /**
              * The ::set-nmea-types signal gets emitted when a '<link linkend="libqmi-glib-LOC-Set-NMEA-Types-indication.top_of_page">Set NMEA Types</link>' indication is received.
              * @signal
              * @since 1.26
+             * @run-last
              */
             'set-nmea-types': (arg0: IndicationLocSetNmeaTypesOutput) => void;
             /**
              * The ::set-operation-mode signal gets emitted when a '<link linkend="libqmi-glib-LOC-Set-Operation-Mode-indication.top_of_page">Set Operation Mode</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'set-operation-mode': (arg0: IndicationLocSetOperationModeOutput) => void;
             /**
              * The ::set-server signal gets emitted when a '<link linkend="libqmi-glib-LOC-Set-Server-indication.top_of_page">Set Server</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'set-server': (arg0: IndicationLocSetServerOutput) => void;
             'notify::client-cid': (pspec: GObject.ParamSpec) => void;
@@ -24956,42 +25716,49 @@ export namespace Qmi {
              * The ::event-report signal gets emitted when a '<link linkend="libqmi-glib-NAS-Event-Report-indication.top_of_page">Event Report</link>' indication is received.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'event-report': (arg0: IndicationNasEventReportOutput) => void;
             /**
              * The ::network-reject signal gets emitted when a '<link linkend="libqmi-glib-NAS-Network-Reject-indication.top_of_page">Network Reject</link>' indication is received.
              * @signal
              * @since 1.30
+             * @run-last
              */
             'network-reject': (arg0: IndicationNasNetworkRejectOutput) => void;
             /**
              * The ::network-time signal gets emitted when a '<link linkend="libqmi-glib-NAS-Network-Time-indication.top_of_page">Network Time</link>' indication is received.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'network-time': (arg0: IndicationNasNetworkTimeOutput) => void;
             /**
              * The ::operator-name signal gets emitted when a '<link linkend="libqmi-glib-NAS-Operator-Name-indication.top_of_page">Operator Name</link>' indication is received.
              * @signal
              * @since 1.18
+             * @run-last
              */
             'operator-name': (arg0: IndicationNasOperatorNameOutput) => void;
             /**
              * The ::serving-system signal gets emitted when a '<link linkend="libqmi-glib-NAS-Serving-System-indication.top_of_page">Serving System</link>' indication is received.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'serving-system': (arg0: IndicationNasServingSystemOutput) => void;
             /**
              * The ::signal-info signal gets emitted when a '<link linkend="libqmi-glib-NAS-Signal-Info-indication.top_of_page">Signal Info</link>' indication is received.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'signal-info': (arg0: IndicationNasSignalInfoOutput) => void;
             /**
              * The ::system-info signal gets emitted when a '<link linkend="libqmi-glib-NAS-System-Info-indication.top_of_page">System Info</link>' indication is received.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'system-info': (arg0: IndicationNasSystemInfoOutput) => void;
             'notify::client-cid': (pspec: GObject.ParamSpec) => void;
@@ -26734,6 +27501,7 @@ export namespace Qmi {
              * The ::event-report signal gets emitted when a '<link linkend="libqmi-glib-OMA-Event-Report-indication.top_of_page">Event Report</link>' indication is received.
              * @signal
              * @since 1.6
+             * @run-last
              */
             'event-report': (arg0: IndicationOmaEventReportOutput) => void;
             'notify::client-cid': (pspec: GObject.ParamSpec) => void;
@@ -27475,48 +28243,56 @@ export namespace Qmi {
              * The ::activate-config signal gets emitted when a '<link linkend="libqmi-glib-PDC-Activate-Config-indication.top_of_page">Activate Config</link>' indication is received.
              * @signal
              * @since 1.18
+             * @run-last
              */
             'activate-config': (arg0: IndicationPdcActivateConfigOutput) => void;
             /**
              * The ::deactivate-config signal gets emitted when a '<link linkend="libqmi-glib-PDC-Deactivate-Config-indication.top_of_page">Deactivate Config</link>' indication is received.
              * @signal
              * @since 1.18
+             * @run-last
              */
             'deactivate-config': (arg0: IndicationPdcDeactivateConfigOutput) => void;
             /**
              * The ::get-config-info signal gets emitted when a '<link linkend="libqmi-glib-PDC-Get-Config-Info-indication.top_of_page">Get Config Info</link>' indication is received.
              * @signal
              * @since 1.18
+             * @run-last
              */
             'get-config-info': (arg0: IndicationPdcGetConfigInfoOutput) => void;
             /**
              * The ::get-selected-config signal gets emitted when a '<link linkend="libqmi-glib-PDC-Get-Selected-Config-indication.top_of_page">Get Selected Config</link>' indication is received.
              * @signal
              * @since 1.18
+             * @run-last
              */
             'get-selected-config': (arg0: IndicationPdcGetSelectedConfigOutput) => void;
             /**
              * The ::list-configs signal gets emitted when a '<link linkend="libqmi-glib-PDC-List-Configs-indication.top_of_page">List Configs</link>' indication is received.
              * @signal
              * @since 1.18
+             * @run-last
              */
             'list-configs': (arg0: IndicationPdcListConfigsOutput) => void;
             /**
              * The ::load-config signal gets emitted when a '<link linkend="libqmi-glib-PDC-Load-Config-indication.top_of_page">Load Config</link>' indication is received.
              * @signal
              * @since 1.18
+             * @run-last
              */
             'load-config': (arg0: IndicationPdcLoadConfigOutput) => void;
             /**
              * The ::refresh signal gets emitted when a '<link linkend="libqmi-glib-PDC-Refresh-indication.top_of_page">Refresh</link>' indication is received.
              * @signal
              * @since 1.32
+             * @run-last
              */
             refresh: (arg0: IndicationPdcRefreshOutput) => void;
             /**
              * The ::set-selected-config signal gets emitted when a '<link linkend="libqmi-glib-PDC-Set-Selected-Config-indication.top_of_page">Set Selected Config</link>' indication is received.
              * @signal
              * @since 1.18
+             * @run-last
              */
             'set-selected-config': (arg0: IndicationPdcSetSelectedConfigOutput) => void;
             'notify::client-cid': (pspec: GObject.ParamSpec) => void;
@@ -28303,12 +29079,14 @@ export namespace Qmi {
              * The ::event-report signal gets emitted when a '<link linkend="libqmi-glib-PDS-Event-Report-indication.top_of_page">Event Report</link>' indication is received.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'event-report': (arg0: IndicationPdsEventReportOutput) => void;
             /**
              * The ::gps-ready signal gets emitted when a 'GPS Ready' indication is received.
              * @signal
              * @since 1.14
+             * @run-last
              */
             'gps-ready': () => void;
             'notify::client-cid': (pspec: GObject.ParamSpec) => void;
@@ -28930,12 +29708,14 @@ export namespace Qmi {
              * The ::flow-status signal gets emitted when a '<link linkend="libqmi-glib-QOS-Flow-Status-indication.top_of_page">Flow Status</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'flow-status': (arg0: IndicationQosFlowStatusOutput) => void;
             /**
              * The ::network-status signal gets emitted when a '<link linkend="libqmi-glib-QOS-Network-Status-indication.top_of_page">Network Status</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'network-status': (arg0: IndicationQosNetworkStatusOutput) => void;
             'notify::client-cid': (pspec: GObject.ParamSpec) => void;
@@ -29402,18 +30182,21 @@ export namespace Qmi {
              * The ::card-status signal gets emitted when a '<link linkend="libqmi-glib-UIM-Card-Status-indication.top_of_page">Card Status</link>' indication is received.
              * @signal
              * @since 1.22
+             * @run-last
              */
             'card-status': (arg0: IndicationUimCardStatusOutput) => void;
             /**
              * The ::refresh signal gets emitted when a '<link linkend="libqmi-glib-UIM-Refresh-indication.top_of_page">Refresh</link>' indication is received.
              * @signal
              * @since 1.28
+             * @run-last
              */
             refresh: (arg0: IndicationUimRefreshOutput) => void;
             /**
              * The ::slot-status signal gets emitted when a '<link linkend="libqmi-glib-UIM-Slot-Status-indication.top_of_page">Slot Status</link>' indication is received.
              * @signal
              * @since 1.26
+             * @run-last
              */
             'slot-status': (arg0: IndicationUimSlotStatusOutput) => void;
             'notify::client-cid': (pspec: GObject.ParamSpec) => void;
@@ -30695,30 +31478,35 @@ export namespace Qmi {
              * The ::all-call-status signal gets emitted when a '<link linkend="libqmi-glib-VOICE-All-Call-Status-indication.top_of_page">All Call Status</link>' indication is received.
              * @signal
              * @since 1.14
+             * @run-last
              */
             'all-call-status': (arg0: IndicationVoiceAllCallStatusOutput) => void;
             /**
              * The ::originate-ussd-no-wait signal gets emitted when a '<link linkend="libqmi-glib-VOICE-Originate-USSD-No-Wait-indication.top_of_page">Originate USSD No Wait</link>' indication is received.
              * @signal
              * @since 1.26
+             * @run-last
              */
             'originate-ussd-no-wait': (arg0: IndicationVoiceOriginateUssdNoWaitOutput) => void;
             /**
              * The ::release-ussd signal gets emitted when a 'Release USSD' indication is received.
              * @signal
              * @since 1.26
+             * @run-last
              */
             'release-ussd': () => void;
             /**
              * The ::supplementary-service signal gets emitted when a '<link linkend="libqmi-glib-VOICE-Supplementary-Service-indication.top_of_page">Supplementary Service</link>' indication is received.
              * @signal
              * @since 1.30
+             * @run-last
              */
             'supplementary-service': (arg0: IndicationVoiceSupplementaryServiceOutput) => void;
             /**
              * The ::ussd signal gets emitted when a '<link linkend="libqmi-glib-VOICE-USSD-indication.top_of_page">USSD</link>' indication is received.
              * @signal
              * @since 1.26
+             * @run-last
              */
             ussd: (arg0: IndicationVoiceUssdOutput) => void;
             'notify::client-cid': (pspec: GObject.ParamSpec) => void;
@@ -31955,30 +32743,35 @@ export namespace Qmi {
              * The ::event-report signal gets emitted when a '<link linkend="libqmi-glib-WDS-Event-Report-indication.top_of_page">Event Report</link>' indication is received.
              * @signal
              * @since 1.18
+             * @run-last
              */
             'event-report': (arg0: IndicationWdsEventReportOutput) => void;
             /**
              * The ::extended-ip-config signal gets emitted when a '<link linkend="libqmi-glib-WDS-Extended-Ip-Config-indication.top_of_page">Extended Ip Config</link>' indication is received.
              * @signal
              * @since 1.32
+             * @run-last
              */
             'extended-ip-config': (arg0: IndicationWdsExtendedIpConfigOutput) => void;
             /**
              * The ::packet-service-status signal gets emitted when a '<link linkend="libqmi-glib-WDS-Packet-Service-Status-indication.top_of_page">Packet Service Status</link>' indication is received.
              * @signal
              * @since 1.14
+             * @run-last
              */
             'packet-service-status': (arg0: IndicationWdsPacketServiceStatusOutput) => void;
             /**
              * The ::profile-changed signal gets emitted when a '<link linkend="libqmi-glib-WDS-Profile-Changed-indication.top_of_page">Profile Changed</link>' indication is received.
              * @signal
              * @since 1.34
+             * @run-last
              */
             'profile-changed': (arg0: IndicationWdsProfileChangedOutput) => void;
             /**
              * The ::set-lte-attach-pdn-list signal gets emitted when a '<link linkend="libqmi-glib-WDS-Set-LTE-Attach-PDN-List-indication.top_of_page">Set LTE Attach PDN List</link>' indication is received.
              * @signal
              * @since 1.28
+             * @run-last
              */
             'set-lte-attach-pdn-list': (arg0: IndicationWdsSetLteAttachPdnListOutput) => void;
             'notify::client-cid': (pspec: GObject.ParamSpec) => void;
@@ -33996,12 +34789,14 @@ export namespace Qmi {
              * The ::event-report signal gets emitted when a '<link linkend="libqmi-glib-WMS-Event-Report-indication.top_of_page">Event Report</link>' indication is received.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'event-report': (arg0: IndicationWmsEventReportOutput) => void;
             /**
              * The ::smsc-address signal gets emitted when a '<link linkend="libqmi-glib-WMS-SMSC-Address-indication.top_of_page">SMSC Address</link>' indication is received.
              * @signal
              * @since 1.14
+             * @run-last
              */
             'smsc-address': (arg0: IndicationWmsSmscAddressOutput) => void;
             'notify::client-cid': (pspec: GObject.ParamSpec) => void;
@@ -34843,12 +35638,14 @@ export namespace Qmi {
              * The ::device-removed signal is emitted when an unexpected port hang-up is received.
              * @signal
              * @since 1.20
+             * @run-last
              */
             'device-removed': () => void;
             /**
              * The ::indication signal gets emitted when a QMI indication is received.
              * @signal
              * @since 1.8
+             * @run-last
              */
             indication: (arg0: Uint8Array) => void;
             'notify::device-consecutive-timeouts': (pspec: GObject.ParamSpec) => void;
@@ -34890,50 +35687,62 @@ export namespace Qmi {
 
         /**
          * @since 1.32
+         * @read-only
          */
         get device_consecutive_timeouts(): number;
         /**
          * @since 1.32
+         * @read-only
          */
         get deviceConsecutiveTimeouts(): number;
         /**
          * @since 1.0
+         * @construct-only
          */
         get device_file(): Gio.File;
         /**
          * @since 1.0
+         * @construct-only
          */
         get deviceFile(): Gio.File;
         /**
          * @since 1.12
+         * @construct-only
          */
         set device_no_file_check(val: boolean);
         /**
          * @since 1.12
+         * @construct-only
          */
         set deviceNoFileCheck(val: boolean);
         /**
          * @since 1.24
+         * @construct-only
          */
         get device_node(): Qrtr.Node;
         /**
          * @since 1.24
+         * @construct-only
          */
         get deviceNode(): Qrtr.Node;
         /**
          * @since 1.12
+         * @construct-only
          */
         set device_proxy_path(val: string);
         /**
          * @since 1.12
+         * @construct-only
          */
         set deviceProxyPath(val: string);
         /**
          * @since 1.14
+         * @read-only
          */
         get device_wwan_iface(): string;
         /**
          * @since 1.14
+         * @read-only
          */
         get deviceWwanIface(): string;
 
@@ -36668,10 +37477,12 @@ export namespace Qmi {
 
         /**
          * @since 1.8
+         * @read-only
          */
         get qmi_proxy_n_clients(): number;
         /**
          * @since 1.8
+         * @read-only
          */
         get qmiProxyNClients(): number;
 

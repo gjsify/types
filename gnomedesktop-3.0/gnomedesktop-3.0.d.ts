@@ -51,6 +51,9 @@ export namespace GnomeDesktop {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RRDpmsModeType {
         export const $gtype: GObject.GType<RRDpmsModeType>;
     }
@@ -344,10 +347,12 @@ export namespace GnomeDesktop {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
              * @signal
+             * @run-last
              */
             transitioned: () => void;
         }
@@ -507,6 +512,7 @@ export namespace GnomeDesktop {
              * of the end surface as its background, and this signal will
              * get emitted.
              * @signal
+             * @run-last
              */
             finished: (arg0: GObject.Object) => void;
             'notify::height': (pspec: GObject.ParamSpec) => void;
@@ -532,11 +538,13 @@ export namespace GnomeDesktop {
         /**
          * When a crossfade is running, this is height of the fading
          * surface.
+         * @construct-only
          */
         get height(): number;
         /**
          * When a crossfade is running, this is width of the fading
          * surface.
+         * @construct-only
          */
         get width(): number;
 
@@ -662,12 +670,33 @@ export namespace GnomeDesktop {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
+        /**
+         * @read-only
+         */
         get has_multiple_sizes(): boolean;
+        /**
+         * @read-only
+         */
         get hasMultipleSizes(): boolean;
+        /**
+         * @read-only
+         */
         get start_time(): number;
+        /**
+         * @read-only
+         */
         get startTime(): number;
+        /**
+         * @read-only
+         */
         get total_duration(): number;
+        /**
+         * @read-only
+         */
         get totalDuration(): number;
 
         /**
@@ -1741,6 +1770,9 @@ export namespace GnomeDesktop {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set screen(val: RRScreen);
 
         /**
@@ -1948,6 +1980,7 @@ export namespace GnomeDesktop {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             changed: () => void;
             /**
@@ -1965,6 +1998,7 @@ export namespace GnomeDesktop {
              * handler, instead of keeping the `output` reference for an async or
              * idle function.
              * @signal
+             * @run-first
              */
             'output-connected': (arg0: any | null) => void;
             /**
@@ -1981,6 +2015,7 @@ export namespace GnomeDesktop {
              * handler, instead of keeping the `output` reference for an async or
              * idle function.
              * @signal
+             * @run-first
              */
             'output-disconnected': (arg0: any | null) => void;
             'notify::dpms-mode': (pspec: GObject.ParamSpec) => void;
@@ -2010,7 +2045,13 @@ export namespace GnomeDesktop {
         set dpms_mode(val: RRDpmsModeType);
         get dpmsMode(): RRDpmsModeType;
         set dpmsMode(val: RRDpmsModeType);
+        /**
+         * @construct-only
+         */
         get gdk_screen(): Gdk.Screen;
+        /**
+         * @construct-only
+         */
         get gdkScreen(): Gdk.Screen;
 
         /**
@@ -2899,6 +2940,7 @@ export namespace GnomeDesktop {
 
         /**
          * A formatted string representing the current clock display.
+         * @read-only
          */
         get clock(): string;
         /**
@@ -2929,6 +2971,7 @@ export namespace GnomeDesktop {
         set timeOnly(val: boolean);
         /**
          * The timezone used for this clock
+         * @read-only
          */
         get timezone(): GLib.TimeZone;
 
@@ -3009,6 +3052,7 @@ export namespace GnomeDesktop {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'layouts-changed': () => void;
         }

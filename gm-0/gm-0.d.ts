@@ -143,16 +143,19 @@ export namespace Gm {
         /**
          * Rectangular bounds of the cutout
          * @since 0.0.2
+         * @read-only
          */
         get bounds(): Rect;
         /**
          * A name identifying the cutout.
          * @since 0.0.2
+         * @construct-only
          */
         get name(): string;
         /**
          * The SVG path that describes the display cutout or notch.
          * @since 0.0.2
+         * @construct-only
          */
         get path(): string;
 
@@ -245,6 +248,7 @@ export namespace Gm {
         /**
          * The compatibles to look up device information for.
          * @since 0.0.1
+         * @construct-only
          */
         get compatibles(): string[];
 

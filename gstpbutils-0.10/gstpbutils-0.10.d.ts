@@ -21,6 +21,9 @@ export namespace GstPbutils {
      * GstPbutils-0.10
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GstInstallPluginsReturn {
         export const $gtype: GObject.GType<GstInstallPluginsReturn>;
     }

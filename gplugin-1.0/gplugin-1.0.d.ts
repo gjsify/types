@@ -18,6 +18,9 @@ export namespace GPlugin {
      * GPlugin-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PluginState {
         export const $gtype: GObject.GType<PluginState>;
     }
@@ -168,6 +171,9 @@ export namespace GPlugin {
     interface ManagerForeachFunc {
         (id: string, plugins: Plugin[], data?: any | null): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace CoreFlags {
         export const $gtype: GObject.GType<CoreFlags>;
     }
@@ -219,6 +225,7 @@ export namespace GPlugin {
         /**
          * The {@link GPlugin.Manager} that this source is working for.
          * @since 0.39
+         * @construct-only
          */
         get manager(): Manager;
 
@@ -762,6 +769,7 @@ export namespace GPlugin {
         /**
          * The identifier of the loader.
          * @since 0.34
+         * @construct-only
          */
         get id(): string;
 
@@ -864,12 +872,14 @@ export namespace GPlugin {
              * Emitted after a plugin fails to load.
              * @signal
              * @since 0.33
+             * @run-last
              */
             'load-plugin-failed': (arg0: GObject.Object, arg1: GLib.Error) => void;
             /**
              * Emitted after a plugin is loaded.
              * @signal
              * @since 0.33
+             * @run-last
              */
             'loaded-plugin': (arg0: GObject.Object) => void;
             /**
@@ -877,6 +887,7 @@ export namespace GPlugin {
              * {@link GPlugin.Manager.register_loader}.
              * @signal
              * @since 0.39
+             * @run-last
              */
             'loader-registered': (arg0: Loader) => void;
             /**
@@ -884,12 +895,14 @@ export namespace GPlugin {
              * {@link GPlugin.Manager.unregister_loader}.
              * @signal
              * @since 0.39
+             * @run-last
              */
             'loader-unregistered': (arg0: Loader) => void;
             /**
              * Emitted before `plugin` is loaded.
              * @signal
              * @since 0.33
+             * @run-last
              */
             'loading-plugin': (arg0: GObject.Object, arg1: any | null) => boolean | void;
             /**
@@ -897,18 +910,21 @@ export namespace GPlugin {
              * `false` when its unload function was called.
              * @signal
              * @since 0.33
+             * @run-last
              */
             'unload-plugin-failed': (arg0: GObject.Object, arg1: GLib.Error) => void;
             /**
              * emitted after a plugin is successfully unloaded.
              * @signal
              * @since 0.33
+             * @run-last
              */
             'unloaded-plugin': (arg0: GObject.Object) => void;
             /**
              * Emitted before a plugin is unloaded.
              * @signal
              * @since 0.33
+             * @run-last
              */
             'unloading-plugin': (arg0: GObject.Object, arg1: any | null) => boolean | void;
         }
@@ -1226,6 +1242,7 @@ export namespace GPlugin {
          *
          * The application here uses the third and fourth bytes, but could use
          * the second as well.
+         * @construct-only
          */
         get abi_version(): number;
         /**
@@ -1246,6 +1263,7 @@ export namespace GPlugin {
          *
          * The application here uses the third and fourth bytes, but could use
          * the second as well.
+         * @construct-only
          */
         get abiVersion(): number;
         /**
@@ -1253,6 +1271,7 @@ export namespace GPlugin {
          *
          * It is recommended to use the RFC 822, 2822 format of:
          * `"First Last <user@domain.com>"`.
+         * @construct-only
          */
         get authors(): string[];
         /**
@@ -1263,6 +1282,7 @@ export namespace GPlugin {
          *
          * Defaults to `false`.
          * @since 0.39
+         * @construct-only
          */
         get auto_load(): boolean;
         /**
@@ -1273,18 +1293,21 @@ export namespace GPlugin {
          *
          * Defaults to `false`.
          * @since 0.39
+         * @construct-only
          */
         get autoLoad(): boolean;
         /**
          * Determines whether the plugin should be have its symbols bound globally.
          *
          * Note: This should only be used by the native plugin loader.
+         * @construct-only
          */
         get bind_global(): boolean;
         /**
          * Determines whether the plugin should be have its symbols bound globally.
          *
          * Note: This should only be used by the native plugin loader.
+         * @construct-only
          */
         get bindGlobal(): boolean;
         /**
@@ -1294,15 +1317,18 @@ export namespace GPlugin {
          * interface.  It is recommended that an application has a well defined
          * set of categories that plugin authors should use, and put all plugins
          * that don't match this category into an "Other" category.
+         * @construct-only
          */
         get category(): string;
         /**
          * A comma separated list of plugin id's that this plugin depends on.
+         * @construct-only
          */
         get dependencies(): string[];
         /**
          * The full description of the plugin that will be used in a "more
          * information" section in a user interface.
+         * @construct-only
          */
         get description(): string;
         /**
@@ -1310,16 +1336,19 @@ export namespace GPlugin {
          *
          * This is an opaque token and may change in the future.
          * @since 0.44
+         * @read-only
          */
         get discriminator(): string;
         /**
          * A XDG icon name for the plugin.  The actual use of this is determined by
          * the application/library using GPlugin.
+         * @construct-only
          */
         get icon_name(): string;
         /**
          * A XDG icon name for the plugin.  The actual use of this is determined by
          * the application/library using GPlugin.
+         * @construct-only
          */
         get iconName(): string;
         /**
@@ -1330,12 +1359,14 @@ export namespace GPlugin {
          *
          * For example, the Python3 loader in GPlugin has an id of
          * "gplugin/python3-loader".
+         * @construct-only
          */
         get id(): string;
         /**
          * Whether or not the plugin is considered an "internal" plugin.
          *
          * Defaults to `false`.
+         * @construct-only
          */
         get internal(): boolean;
         /**
@@ -1348,6 +1379,7 @@ export namespace GPlugin {
          * If a plugin has multiple license, they should be separated by a pipe
          * (|). In the odd case that you have multiple licenses that are used at
          * the same time, they should be separated by an ampersand (&).
+         * @construct-only
          */
         get license_id(): string;
         /**
@@ -1360,26 +1392,31 @@ export namespace GPlugin {
          * If a plugin has multiple license, they should be separated by a pipe
          * (|). In the odd case that you have multiple licenses that are used at
          * the same time, they should be separated by an ampersand (&).
+         * @construct-only
          */
         get licenseId(): string;
         /**
          * The text of the license for this plugin.  This should only be used when
          * the plugin is licensed under a license that is not listed at spdx.org.
+         * @construct-only
          */
         get license_text(): string;
         /**
          * The text of the license for this plugin.  This should only be used when
          * the plugin is licensed under a license that is not listed at spdx.org.
+         * @construct-only
          */
         get licenseText(): string;
         /**
          * The url to the text of the license.  This should primarily only be used
          * for licenses not listed at spdx.org.
+         * @construct-only
          */
         get license_url(): string;
         /**
          * The url to the text of the license.  This should primarily only be used
          * for licenses not listed at spdx.org.
+         * @construct-only
          */
         get licenseUrl(): string;
         /**
@@ -1390,6 +1427,7 @@ export namespace GPlugin {
          *
          * Defaults to `false`.
          * @deprecated since 0.39.0: Use {@link GPlugin.PluginInfo.auto_load} instead.
+         * @construct-only
          */
         get load_on_query(): boolean;
         /**
@@ -1400,10 +1438,12 @@ export namespace GPlugin {
          *
          * Defaults to `false`.
          * @deprecated since 0.39.0: Use {@link GPlugin.PluginInfo.auto_load} instead.
+         * @construct-only
          */
         get loadOnQuery(): boolean;
         /**
          * The display name of the plugin.  This should be a translated string.
+         * @construct-only
          */
         get name(): string;
         /**
@@ -1412,6 +1452,7 @@ export namespace GPlugin {
          * take precedence over lower values.  If two plugins have the same id and
          * priority, the first one found will be used.
          * @since 0.32
+         * @construct-only
          */
         get priority(): number;
         /**
@@ -1424,35 +1465,42 @@ export namespace GPlugin {
          * optional version is used to help resolve dependencies that are based
          * on a specific version.
          * @since 0.32
+         * @construct-only
          */
         get provides(): string[];
         /**
          * The ID of the {@link Gio.Settings} schema for the plugin.
          * @since 0.39
+         * @construct-only
          */
         get settings_schema(): string;
         /**
          * The ID of the {@link Gio.Settings} schema for the plugin.
          * @since 0.39
+         * @construct-only
          */
         get settingsSchema(): string;
         /**
          * A short description of the plugin that can be listed with the name in a
          * user interface.
+         * @construct-only
          */
         get summary(): string;
         /**
          * Sets whether or not a plugin is unloadable. See
          * {@link GPlugin.PluginInfo.get_unloadable} for more information.
          * @since 0.35
+         * @construct-only
          */
         get unloadable(): boolean;
         /**
          * The version of the plugin.  Preferably a semantic version.
+         * @construct-only
          */
         get version(): string;
         /**
          * The url of the plugin that can be represented in a user interface.
+         * @construct-only
          */
         get website(): string;
 
@@ -1725,14 +1773,17 @@ export namespace GPlugin {
         set error(val: GLib.Error);
         /**
          * The absolute path to the plugin on disk.
+         * @construct-only
          */
         get filename(): string;
         /**
          * The plugin info from this plugin.
+         * @construct-only
          */
         get info(): PluginInfo;
         /**
          * The loader that loaded this plugin.
+         * @construct-only
          */
         get loader(): Loader;
         /**

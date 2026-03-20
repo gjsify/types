@@ -30,6 +30,9 @@ export namespace Gtef {
      * Gtef-2
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CompressionType {
         export const $gtype: GObject.GType<CompressionType>;
     }
@@ -106,6 +109,9 @@ export namespace Gtef {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NewlineType {
         export const $gtype: GObject.GType<NewlineType>;
     }
@@ -130,6 +136,9 @@ export namespace Gtef {
         CR_LF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SelectionType {
         export const $gtype: GObject.GType<SelectionType>;
     }
@@ -270,6 +279,9 @@ export namespace Gtef {
      * @since 2.0
      */
     function utils_recent_chooser_menu_get_item_uri(menu: Gtk.RecentChooserMenu, item: Gtk.MenuItem): string;
+    /**
+     * @gir-type Flags
+     */
     export namespace FileSaverFlags {
         export const $gtype: GObject.GType<FileSaverFlags>;
     }
@@ -298,6 +310,9 @@ export namespace Gtef {
         CREATE_BACKUP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GutterRendererFoldsState {
         export const $gtype: GObject.GType<GutterRendererFoldsState>;
     }
@@ -427,6 +442,7 @@ export namespace Gtef {
          * The associated {@link Gtk.Application}. {@link Gtef.ActionInfoStore} has a weak
          * reference to the {@link Gtk.Application}.
          * @since 2.0
+         * @construct-only
          */
         get application(): Gtk.Application;
 
@@ -552,6 +568,7 @@ export namespace Gtef {
         /**
          * The {@link Gtk.Application}.
          * @since 2.0
+         * @construct-only
          */
         get application(): Gtk.Application;
 
@@ -654,11 +671,13 @@ export namespace Gtef {
         /**
          * The {@link Gtk.ApplicationWindow}.
          * @since 2.0
+         * @construct-only
          */
         get application_window(): Gtk.ApplicationWindow;
         /**
          * The {@link Gtk.ApplicationWindow}.
          * @since 2.0
+         * @construct-only
          */
         get applicationWindow(): Gtk.ApplicationWindow;
         /**
@@ -783,6 +802,7 @@ export namespace Gtef {
              * in a statusbar.
              * @signal
              * @since 2.0
+             * @run-first
              */
             'gtef-cursor-moved': () => void;
             'notify::gtef-style-scheme-id': (pspec: GObject.ParamSpec) => void;
@@ -845,11 +865,13 @@ export namespace Gtef {
         /**
          * The buffer title. See `gtef_buffer_get_title()`.
          * @since 2.0
+         * @read-only
          */
         get gtef_title(): string;
         /**
          * The buffer title. See `gtef_buffer_get_title()`.
          * @since 2.0
+         * @read-only
          */
         get gtefTitle(): string;
 
@@ -984,17 +1006,20 @@ export namespace Gtef {
         /**
          * The compression type.
          * @since 1.0
+         * @read-only
          */
         get compression_type(): CompressionType;
         /**
          * The compression type.
          * @since 1.0
+         * @read-only
          */
         get compressionType(): CompressionType;
         /**
          * The character encoding, initially `null`. After a successful file
          * loading or saving operation, the encoding is non-`null`.
          * @since 1.0
+         * @read-only
          */
         get encoding(): Encoding;
         /**
@@ -1006,33 +1031,39 @@ export namespace Gtef {
         /**
          * The line ending type.
          * @since 1.0
+         * @read-only
          */
         get newline_type(): NewlineType;
         /**
          * The line ending type.
          * @since 1.0
+         * @read-only
          */
         get newlineType(): NewlineType;
         /**
          * Whether the file is read-only or not. The value of this property is
          * not updated automatically (there is no file monitors).
          * @since 1.0
+         * @read-only
          */
         get read_only(): boolean;
         /**
          * Whether the file is read-only or not. The value of this property is
          * not updated automatically (there is no file monitors).
          * @since 1.0
+         * @read-only
          */
         get readOnly(): boolean;
         /**
          * The file short name. See `gtef_file_get_short_name()`.
          * @since 1.0
+         * @read-only
          */
         get short_name(): string;
         /**
          * The file short name. See `gtef_file_get_short_name()`.
          * @since 1.0
+         * @read-only
          */
         get shortName(): string;
 
@@ -1194,6 +1225,7 @@ export namespace Gtef {
          * The {@link Gtef.Buffer} to load the content into. The {@link Gtef.FileLoader} object
          * has a weak reference to the buffer.
          * @since 1.0
+         * @construct-only
          */
         get buffer(): Buffer;
         /**
@@ -1222,12 +1254,14 @@ export namespace Gtef {
          * The {@link Gtef.File}. The {@link Gtef.FileLoader} object has a weak
          * reference to the file.
          * @since 1.0
+         * @construct-only
          */
         get file(): File;
         /**
          * The {@link Gio.File} to load. By default the location is taken from the
          * {@link Gtef.File} at construction time.
          * @since 1.0
+         * @construct-only
          */
         get location(): Gio.File;
         /**
@@ -1408,6 +1442,7 @@ export namespace Gtef {
         /**
          * The {@link Gtef.File} that the metadata belong to.
          * @since 1.0
+         * @construct-only
          */
         get file(): File;
 
@@ -1644,6 +1679,7 @@ export namespace Gtef {
          * The {@link Gtef.Buffer} to save. The {@link Gtef.FileSaver} object has a weak
          * reference to the buffer.
          * @since 1.0
+         * @construct-only
          */
         get buffer(): GtkSource.Buffer;
         /**
@@ -1668,6 +1704,7 @@ export namespace Gtef {
          * The {@link Gtef.File}. The {@link Gtef.FileSaver} object has a weak
          * reference to the file.
          * @since 1.0
+         * @construct-only
          */
         get file(): File;
         /**
@@ -1680,6 +1717,7 @@ export namespace Gtef {
          * The {@link Gio.File} where to save the buffer. By default the location is taken
          * from the {@link Gtef.File} at construction time.
          * @since 1.0
+         * @construct-only
          */
         get location(): Gio.File;
         /**
@@ -1879,6 +1917,7 @@ export namespace Gtef {
          * The {@link Gtk.TextBuffer} where the fold region is applied. The
          * {@link Gtef.FoldRegion} object has a weak reference to the buffer.
          * @since 1.0
+         * @construct-only
          */
         get buffer(): Gtk.TextBuffer;
         /**
@@ -2648,6 +2687,7 @@ export namespace Gtef {
              * (directly or indirectly through submenus) to `gtef_menu_shell`.
              * @signal
              * @since 2.0
+             * @run-first
              */
             'menu-item-deselected': (arg0: Gtk.MenuItem) => void;
             /**
@@ -2656,6 +2696,7 @@ export namespace Gtef {
              * (directly or indirectly through submenus) to `gtef_menu_shell`.
              * @signal
              * @since 2.0
+             * @run-first
              */
             'menu-item-selected': (arg0: Gtk.MenuItem) => void;
             'notify::menu-shell': (pspec: GObject.ParamSpec) => void;
@@ -2680,11 +2721,13 @@ export namespace Gtef {
         /**
          * The {@link Gtk.MenuShell}.
          * @since 2.0
+         * @construct-only
          */
         get menu_shell(): Gtk.MenuShell;
         /**
          * The {@link Gtk.MenuShell}.
          * @since 2.0
+         * @construct-only
          */
         get menuShell(): Gtk.MenuShell;
 

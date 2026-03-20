@@ -35,6 +35,7 @@ export namespace CoglGst {
              * `cogl_gst_video_sink_attach_frame()` to attach the textures.
              * @signal
              * @since 1.16
+             * @run-last
              */
             'new-frame': () => void;
             /**
@@ -52,6 +53,7 @@ export namespace CoglGst {
              * could also create its pipeline in the handler for that.
              * @signal
              * @since 1.16
+             * @run-last
              */
             'pipeline-ready': () => void;
             'notify::update-priority': (pspec: GObject.ParamSpec) => void;

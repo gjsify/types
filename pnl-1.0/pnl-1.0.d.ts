@@ -29,6 +29,9 @@ export namespace Pnl {
      * Pnl-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnimationMode {
         export const $gtype: GObject.GType<AnimationMode>;
     }
@@ -46,6 +49,9 @@ export namespace Pnl {
         EASE_IN_OUT_CUBIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DockRevealerTransitionType {
         export const $gtype: GObject.GType<DockRevealerTransitionType>;
     }
@@ -109,6 +115,7 @@ export namespace Pnl {
             /**
              * The "tick" signal is emitted on each frame in the animation.
              * @signal
+             * @run-first
              */
             tick: () => void;
             'notify::duration': (pspec: GObject.ParamSpec) => void;
@@ -139,19 +146,28 @@ export namespace Pnl {
         /**
          * The "duration" property is the total number of milliseconds that the
          * animation should run before being completed.
+         * @construct-only
          */
         set duration(val: number);
+        /**
+         * @construct-only
+         */
         set frame_clock(val: Gdk.FrameClock);
+        /**
+         * @construct-only
+         */
         set frameClock(val: Gdk.FrameClock);
         /**
          * The "mode" property is the Alpha function that should be used to
          * determine the offset within the animation based on the current
          * offset in the animations duration.
+         * @construct-only
          */
         set mode(val: AnimationMode);
         /**
          * The "target" property is the {@link GObject.Object} that should have its properties
          * animated.
+         * @construct-only
          */
         set target(val: GObject.Object);
 
@@ -362,7 +378,10 @@ export namespace Pnl {
         /** @category Inherited from Gtk.Container */
         get borderWidth(): number;
         set borderWidth(val: number);
-        /** @category Inherited from Gtk.Container */
+        /**
+         * @write-only
+         * @category Inherited from Gtk.Container
+         */
         set child(val: Gtk.Widget);
         /** @category Inherited from Gtk.Container */
         get resize_mode(): Gtk.ResizeMode;
@@ -388,9 +407,15 @@ export namespace Pnl {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -704,6 +729,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -711,6 +737,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -832,6 +859,7 @@ export namespace Pnl {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -5291,6 +5319,8 @@ export namespace Pnl {
         interface SignalSignatures extends DockRevealer.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'move-to-bin-child': () => void;
             'notify::edge': (pspec: GObject.ParamSpec) => void;
@@ -5435,9 +5465,15 @@ export namespace Pnl {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -5751,6 +5787,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -5758,6 +5795,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -5879,6 +5917,7 @@ export namespace Pnl {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -9977,10 +10016,12 @@ export namespace Pnl {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'register-dock': (arg0: Dock) => void;
             /**
              * @signal
+             * @run-last
              */
             'unregister-dock': (arg0: Dock) => void;
         }
@@ -10064,6 +10105,8 @@ export namespace Pnl {
         interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'hide-edges': () => void;
             'notify::above-child': (pspec: GObject.ParamSpec) => void;
@@ -10196,7 +10239,10 @@ export namespace Pnl {
         /** @category Inherited from Gtk.Container */
         get borderWidth(): number;
         set borderWidth(val: number);
-        /** @category Inherited from Gtk.Container */
+        /**
+         * @write-only
+         * @category Inherited from Gtk.Container
+         */
         set child(val: Gtk.Widget);
         /** @category Inherited from Gtk.Container */
         get resize_mode(): Gtk.ResizeMode;
@@ -10222,9 +10268,15 @@ export namespace Pnl {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -10538,6 +10590,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -10545,6 +10598,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -10666,6 +10720,7 @@ export namespace Pnl {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -15261,9 +15316,15 @@ export namespace Pnl {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -15577,6 +15638,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -15584,6 +15646,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -15705,6 +15768,7 @@ export namespace Pnl {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -19932,9 +19996,15 @@ export namespace Pnl {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -20248,6 +20318,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -20255,6 +20326,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -20376,6 +20448,7 @@ export namespace Pnl {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -24565,7 +24638,13 @@ export namespace Pnl {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get child_revealed(): boolean;
+        /**
+         * @read-only
+         */
         get childRevealed(): boolean;
         get position(): number;
         set position(val: number);
@@ -25254,9 +25333,15 @@ export namespace Pnl {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -25570,6 +25655,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -25577,6 +25663,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -25698,6 +25785,7 @@ export namespace Pnl {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -30588,9 +30676,15 @@ export namespace Pnl {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -30904,6 +30998,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -30911,6 +31006,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -31032,6 +31128,7 @@ export namespace Pnl {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -35269,7 +35366,10 @@ export namespace Pnl {
         /** @category Inherited from Gtk.Container */
         get borderWidth(): number;
         set borderWidth(val: number);
-        /** @category Inherited from Gtk.Container */
+        /**
+         * @write-only
+         * @category Inherited from Gtk.Container
+         */
         set child(val: Gtk.Widget);
         /** @category Inherited from Gtk.Container */
         get resize_mode(): Gtk.ResizeMode;
@@ -35295,9 +35395,15 @@ export namespace Pnl {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -35611,6 +35717,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -35618,6 +35725,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -35739,6 +35847,7 @@ export namespace Pnl {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -40203,10 +40312,12 @@ export namespace Pnl {
         interface SignalSignatures extends Gtk.Container.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'resize-drag-begin': (arg0: Gtk.Widget) => void;
             /**
              * @signal
+             * @run-last
              */
             'resize-drag-end': (arg0: Gtk.Widget) => void;
             'notify::orientation': (pspec: GObject.ParamSpec) => void;
@@ -40961,9 +41072,15 @@ export namespace Pnl {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -41277,6 +41394,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -41284,6 +41402,7 @@ export namespace Pnl {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -41405,6 +41524,7 @@ export namespace Pnl {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;

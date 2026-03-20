@@ -20,6 +20,9 @@ export namespace GExiv2 {
      * GExiv2-0.10
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ByteOrder {
         export const $gtype: GObject.GType<ByteOrder>;
     }
@@ -39,6 +42,9 @@ export namespace GExiv2 {
         BIG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LogLevel {
         export const $gtype: GObject.GType<LogLevel>;
     }
@@ -70,6 +76,9 @@ export namespace GExiv2 {
         MUTE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Orientation {
         export const $gtype: GObject.GType<Orientation>;
     }
@@ -122,6 +131,9 @@ export namespace GExiv2 {
         ROT_270,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureType {
         export const $gtype: GObject.GType<StructureType>;
     }
@@ -192,6 +204,9 @@ export namespace GExiv2 {
     interface LogHandler {
         (level: LogLevel, msg: string): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace XmpFormatFlags {
         export const $gtype: GObject.GType<XmpFormatFlags>;
     }

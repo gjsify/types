@@ -19,6 +19,9 @@ export namespace Cogl {
      * Cogl-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AttributeType {
         export const $gtype: GObject.GType<AttributeType>;
     }
@@ -53,6 +56,9 @@ export namespace Cogl {
         FLOAT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BitmapError {
         export const $gtype: GObject.GType<BitmapError>;
     }
@@ -82,6 +88,9 @@ export namespace Cogl {
         CORRUPT_IMAGE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BlendStringError {
         export const $gtype: GObject.GType<BlendStringError>;
     }
@@ -146,6 +155,9 @@ export namespace Cogl {
         STREAM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DepthTestFunction {
         export const $gtype: GObject.GType<DepthTestFunction>;
     }
@@ -374,6 +386,9 @@ export namespace Cogl {
         OGL_FEATURE_ID_BUFFER_AGE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FilterReturn {
         export const $gtype: GObject.GType<FilterReturn>;
     }
@@ -394,6 +409,9 @@ export namespace Cogl {
         REMOVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FogMode {
         export const $gtype: GObject.GType<FogMode>;
     }
@@ -506,6 +524,9 @@ export namespace Cogl {
         DRIVER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IndicesType {
         export const $gtype: GObject.GType<IndicesType>;
     }
@@ -537,6 +558,9 @@ export namespace Cogl {
         INT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MaterialAlphaFunc {
         export const $gtype: GObject.GType<MaterialAlphaFunc>;
     }
@@ -555,6 +579,9 @@ export namespace Cogl {
         ALWAYS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MaterialFilter {
         export const $gtype: GObject.GType<MaterialFilter>;
     }
@@ -571,6 +598,9 @@ export namespace Cogl {
         LINEAR_MIPMAP_LINEAR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MaterialLayerType {
         export const $gtype: GObject.GType<MaterialLayerType>;
     }
@@ -582,6 +612,9 @@ export namespace Cogl {
         TEXTURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MaterialWrapMode {
         export const $gtype: GObject.GType<MaterialWrapMode>;
     }
@@ -754,6 +787,9 @@ export namespace Cogl {
         AUTOMATIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PixelFormat {
         export const $gtype: GObject.GType<PixelFormat>;
     }
@@ -936,6 +972,9 @@ export namespace Cogl {
         NVAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RendererError {
         export const $gtype: GObject.GType<RendererError>;
     }
@@ -948,6 +987,9 @@ export namespace Cogl {
         BAD_CONSTRAINT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ShaderType {
         export const $gtype: GObject.GType<ShaderType>;
     }
@@ -1292,6 +1334,9 @@ export namespace Cogl {
         TEXTURE_LOOKUP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StereoMode {
         export const $gtype: GObject.GType<StereoMode>;
     }
@@ -1365,6 +1410,9 @@ export namespace Cogl {
         VERTICAL_BGR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SystemError {
         export const $gtype: GObject.GType<SystemError>;
     }
@@ -1405,6 +1453,9 @@ export namespace Cogl {
         COGL_SYSTEM_ERROR_NO_MEMORY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextureComponents {
         export const $gtype: GObject.GType<TextureComponents>;
     }
@@ -1439,6 +1490,9 @@ export namespace Cogl {
         DEPTH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextureError {
         export const $gtype: GObject.GType<TextureError>;
     }
@@ -1488,6 +1542,9 @@ export namespace Cogl {
         NON_EMPTY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextureType {
         export const $gtype: GObject.GType<TextureType>;
     }
@@ -1513,6 +1570,9 @@ export namespace Cogl {
         RECTANGLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VerticesMode {
         export const $gtype: GObject.GType<VerticesMode>;
     }
@@ -1558,6 +1618,9 @@ export namespace Cogl {
         TRIANGLE_FAN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Winding {
         export const $gtype: GObject.GType<Winding>;
     }
@@ -1579,6 +1642,9 @@ export namespace Cogl {
         COUNTER_CLOCKWISE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WinsysFeature {
         export const $gtype: GObject.GType<WinsysFeature>;
     }
@@ -2832,6 +2898,9 @@ export namespace Cogl {
         READ_WRITE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BufferBit {
         export const $gtype: GObject.GType<BufferBit>;
     }
@@ -2879,6 +2948,9 @@ export namespace Cogl {
         _RANGE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BufferTarget {
         export const $gtype: GObject.GType<BufferTarget>;
     }
@@ -2899,6 +2971,9 @@ export namespace Cogl {
         OFFSCREEN_BUFFER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ColorMask {
         export const $gtype: GObject.GType<ColorMask>;
     }
@@ -2937,6 +3012,9 @@ export namespace Cogl {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FeatureFlags {
         export const $gtype: GObject.GType<FeatureFlags>;
     }
@@ -3059,6 +3137,9 @@ export namespace Cogl {
         DEPTH_TEXTURE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ReadPixelsFlags {
         export const $gtype: GObject.GType<ReadPixelsFlags>;
     }
@@ -3113,6 +3194,9 @@ export namespace Cogl {
         SUPPORTS_COGL_GLES2,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TextureFlags {
         export const $gtype: GObject.GType<TextureFlags>;
     }

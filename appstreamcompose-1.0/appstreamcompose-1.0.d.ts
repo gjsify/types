@@ -80,6 +80,9 @@ export namespace AppStreamCompose {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IconState {
         export const $gtype: GObject.GType<IconState>;
     }
@@ -134,6 +137,9 @@ export namespace AppStreamCompose {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ImageFormat {
         export const $gtype: GObject.GType<ImageFormat>;
     }
@@ -345,6 +351,9 @@ export namespace AppStreamCompose {
     interface CheckMetadataEarlyFn {
         (cres: Result, unit: Unit): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace ComposeFlags {
         export const $gtype: GObject.GType<ComposeFlags>;
     }
@@ -369,6 +378,9 @@ export namespace AppStreamCompose {
         NO_PARTIAL_URLS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ImageLoadFlags {
         export const $gtype: GObject.GType<ImageLoadFlags>;
     }
@@ -396,6 +408,9 @@ export namespace AppStreamCompose {
         ALWAYS_RESIZE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ImageSaveFlags {
         export const $gtype: GObject.GType<ImageSaveFlags>;
     }

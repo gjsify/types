@@ -36,6 +36,9 @@ export namespace Gee {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConcurrentSetRangeType {
         export const $gtype: GObject.GType<ConcurrentSetRangeType>;
     }
@@ -50,6 +53,9 @@ export namespace Gee {
         EMPTY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace HazardPointerPolicy {
         export const $gtype: GObject.GType<HazardPointerPolicy>;
     }
@@ -66,6 +72,9 @@ export namespace Gee {
         RELEASE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace HazardPointerReleasePolicy {
         export const $gtype: GObject.GType<HazardPointerReleasePolicy>;
     }
@@ -78,6 +87,9 @@ export namespace Gee {
         MAIN_LOOP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TraversableStream {
         export const $gtype: GObject.GType<TraversableStream>;
     }
@@ -281,13 +293,37 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get read_only_view(): BidirList;
+        /**
+         * @read-only
+         */
         get readOnlyView(): BidirList;
 
         /**
@@ -526,13 +562,37 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get read_only_view(): BidirSortedSet;
+        /**
+         * @read-only
+         */
         get readOnlyView(): BidirSortedSet;
 
         /**
@@ -771,20 +831,62 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get k_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get kType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get k_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get kDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get k_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get kDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get v_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get vType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get v_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get vDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get v_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get vDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         // This accessor conflicts with another accessor's type in a parent class or interface.
         get read_only_view(): BidirSortedMap | any;
+        /**
+         * @read-only
+         */
         // This accessor conflicts with another accessor's type in a parent class or interface.
         get readOnlyView(): BidirSortedMap | any;
 
@@ -891,13 +993,25 @@ export namespace Gee {
         reserved8(): void;
         reserved9(): void;
         get_read_only_view(): BidirSortedMap;
-        /** @category Inherited from Gee.SortedMap */
+        /**
+         * @read-only
+         * @category Inherited from Gee.SortedMap
+         */
         get ascending_keys(): SortedSet;
-        /** @category Inherited from Gee.SortedMap */
+        /**
+         * @read-only
+         * @category Inherited from Gee.SortedMap
+         */
         get ascendingKeys(): SortedSet;
-        /** @category Inherited from Gee.SortedMap */
+        /**
+         * @read-only
+         * @category Inherited from Gee.SortedMap
+         */
         get ascending_entries(): SortedSet;
-        /** @category Inherited from Gee.SortedMap */
+        /**
+         * @read-only
+         * @category Inherited from Gee.SortedMap
+         */
         get ascendingEntries(): SortedSet;
         /**
          * @param before
@@ -981,16 +1095,49 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get read_only(): boolean;
+        /**
+         * @read-only
+         */
         get readOnly(): boolean;
+        /**
+         * @read-only
+         */
         get read_only_view(): Collection;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Collection;
 
         /**
@@ -1886,13 +2033,37 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get read_only_view(): List;
+        /**
+         * @read-only
+         */
         get readOnlyView(): List;
 
         /**
@@ -2061,11 +2232,20 @@ export namespace Gee {
         reserved8(): void;
         reserved9(): void;
         get_read_only_view(): List;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get size(): number;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get read_only(): boolean;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get readOnly(): boolean;
         first(): any;
         last(): any;
@@ -2302,25 +2482,85 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get k_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get kType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get k_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get kDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get k_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get kDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get v_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get vType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get v_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get vDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get v_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get vDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get read_only(): boolean;
+        /**
+         * @read-only
+         */
         get readOnly(): boolean;
+        /**
+         * @read-only
+         */
         get keys(): Set;
+        /**
+         * @read-only
+         */
         get values(): Collection;
+        /**
+         * @read-only
+         */
         get entries(): Set;
+        /**
+         * @read-only
+         */
         get read_only_view(): Map;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Map;
 
         /**
@@ -3214,17 +3454,53 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get k_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get kType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get k_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get kDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get k_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get kDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get v_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get vType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get v_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get vDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get v_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get vDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -3333,11 +3609,20 @@ export namespace Gee {
         reserved7(): void;
         reserved8(): void;
         get_read_only_view(): MultiMap;
-        /** @category Inherited from Gee.MultiMap */
+        /**
+         * @read-only
+         * @category Inherited from Gee.MultiMap
+         */
         get size(): number;
-        /** @category Inherited from Gee.MultiMap */
+        /**
+         * @read-only
+         * @category Inherited from Gee.MultiMap
+         */
         get read_only(): boolean;
-        /** @category Inherited from Gee.MultiMap */
+        /**
+         * @read-only
+         * @category Inherited from Gee.MultiMap
+         */
         get readOnly(): boolean;
         get_keys(): Set;
         get_all_keys(): MultiSet;
@@ -3907,11 +4192,29 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -4005,15 +4308,30 @@ export namespace Gee {
         reserved7(): void;
         reserved8(): void;
         get_read_only_view(): MultiSet;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get size(): number;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get read_only(): boolean;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get readOnly(): boolean;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get read_only_view(): Collection;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get readOnlyView(): Collection;
         /**
          * @param item
@@ -4212,16 +4530,49 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get capacity(): number;
+        /**
+         * @read-only
+         */
         get remaining_capacity(): number;
+        /**
+         * @read-only
+         */
         get remainingCapacity(): number;
+        /**
+         * @read-only
+         */
         get is_full(): boolean;
+        /**
+         * @read-only
+         */
         get isFull(): boolean;
 
         /**
@@ -4340,15 +4691,30 @@ export namespace Gee {
         get_capacity(): number;
         get_remaining_capacity(): number;
         get_is_full(): boolean;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get size(): number;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get read_only(): boolean;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get readOnly(): boolean;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get read_only_view(): Collection;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get readOnlyView(): Collection;
         /**
          * @param element
@@ -4557,13 +4923,37 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get read_only_view(): Set;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Set;
 
         /**
@@ -4662,11 +5052,20 @@ export namespace Gee {
         reserved8(): void;
         reserved9(): void;
         get_read_only_view(): Set;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get size(): number;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get read_only(): boolean;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get readOnly(): boolean;
         /**
          * @param item
@@ -4868,23 +5267,77 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get k_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get kType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get k_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get kDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get k_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get kDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get v_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get vType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get v_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get vDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get v_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get vDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get ascending_keys(): SortedSet;
+        /**
+         * @read-only
+         */
         get ascendingKeys(): SortedSet;
+        /**
+         * @read-only
+         */
         get ascending_entries(): SortedSet;
+        /**
+         * @read-only
+         */
         get ascendingEntries(): SortedSet;
+        /**
+         * @read-only
+         */
         get readOnlyView(): AbstractSortedMap;
+        /**
+         * @read-only
+         */
         get read_only_view(): AbstractSortedMap;
 
         /**
@@ -5017,17 +5470,35 @@ export namespace Gee {
         reserved9(): void;
         get_ascending_keys(): SortedSet;
         get_ascending_entries(): SortedSet;
-        /** @category Inherited from Gee.Map */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Map
+         */
         get size(): number;
-        /** @category Inherited from Gee.Map */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Map
+         */
         get read_only(): boolean;
-        /** @category Inherited from Gee.Map */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Map
+         */
         get readOnly(): boolean;
-        /** @category Inherited from Gee.Map */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Map
+         */
         get keys(): Set;
-        /** @category Inherited from Gee.Map */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Map
+         */
         get values(): Collection;
-        /** @category Inherited from Gee.Map */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Map
+         */
         get entries(): Set;
         get_read_only_view(): SortedMap;
         /**
@@ -5208,13 +5679,37 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get read_only_view(): SortedSet;
+        /**
+         * @read-only
+         */
         get readOnlyView(): SortedSet;
 
         /**
@@ -5430,11 +5925,29 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -5532,13 +6045,37 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get is_empty(): boolean;
+        /**
+         * @read-only
+         */
         get isEmpty(): boolean;
 
         /**
@@ -5587,15 +6124,30 @@ export namespace Gee {
 
         get_equal_func(): [EqualDataFunc, any];
         get_is_empty(): boolean;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get capacity(): number;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get remaining_capacity(): number;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get remainingCapacity(): number;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get is_full(): boolean;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get isFull(): boolean;
         /**
          * @param element
@@ -5738,13 +6290,37 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get is_empty(): boolean;
+        /**
+         * @read-only
+         */
         get isEmpty(): boolean;
 
         /**
@@ -5826,11 +6402,29 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -5919,17 +6513,53 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get k_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get kType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get k_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get kDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get k_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get kDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get v_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get vType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get v_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get vDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get v_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get vDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -6022,17 +6652,53 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get k_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get kType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get k_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get kDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get k_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get kDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get v_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get vType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get v_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get vDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get v_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get vDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -6121,11 +6787,29 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -6215,11 +6899,29 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -6360,13 +7062,37 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get readOnlyView(): LinkedList;
+        /**
+         * @read-only
+         */
         get read_only_view(): LinkedList;
 
         /**
@@ -6416,15 +7142,30 @@ export namespace Gee {
         first(): any;
         last(): any;
         get_equal_func(): [EqualDataFunc, any];
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get capacity(): number;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get remaining_capacity(): number;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get remainingCapacity(): number;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get is_full(): boolean;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get isFull(): boolean;
         /**
          * @param element
@@ -6567,11 +7308,29 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -6730,17 +7489,53 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get k_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get kType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get k_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get kDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get k_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get kDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get v_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get vType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get v_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get vDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get v_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get vDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -6831,17 +7626,53 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get k_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get kType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get k_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get kDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get k_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get kDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get v_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get vType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get v_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get vDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get v_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get vDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -6926,11 +7757,29 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -7011,11 +7860,29 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -7102,13 +7969,37 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get readOnlyView(): UnrolledLinkedList;
+        /**
+         * @read-only
+         */
         get read_only_view(): UnrolledLinkedList;
 
         /**
@@ -7156,15 +8047,30 @@ export namespace Gee {
         // Methods
 
         get_equal_func(): [EqualDataFunc, any];
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get capacity(): number;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get remaining_capacity(): number;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get remainingCapacity(): number;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get is_full(): boolean;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get isFull(): boolean;
         /**
          * @param element
@@ -7317,22 +8223,67 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get k_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get kType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get k_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get kDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get k_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get kDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get v_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get vType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get v_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get vDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get v_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get vDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get key(): any;
         get value(): any;
         set value(val: any);
+        /**
+         * @read-only
+         */
         get read_only(): boolean;
+        /**
+         * @read-only
+         */
         get readOnly(): boolean;
 
         /**
@@ -8063,7 +9014,13 @@ export namespace Gee {
     interface BidirList extends List {
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only_view(): BidirList;
+        /**
+         * @read-only
+         */
         get readOnlyView(): BidirList;
 
         // Methods
@@ -8232,7 +9189,13 @@ export namespace Gee {
     interface BidirSortedSet extends SortedSet {
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only_view(): BidirSortedSet;
+        /**
+         * @read-only
+         */
         get readOnlyView(): BidirSortedSet;
 
         // Methods
@@ -8322,7 +9285,13 @@ export namespace Gee {
     interface BidirSortedMap extends SortedMap {
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only_view(): BidirSortedMap;
+        /**
+         * @read-only
+         */
         get readOnlyView(): BidirSortedMap;
 
         // Methods
@@ -8484,10 +9453,25 @@ export namespace Gee {
     interface Collection extends Iterable, Collection.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get read_only(): boolean;
+        /**
+         * @read-only
+         */
         get readOnly(): boolean;
+        /**
+         * @read-only
+         */
         get read_only_view(): Collection;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Collection;
 
         // Methods
@@ -8839,7 +9823,13 @@ export namespace Gee {
     interface Future extends GObject.Object, Future.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get ready(): boolean;
+        /**
+         * @read-only
+         */
         get exception(): GLib.Error;
 
         // Methods
@@ -9064,8 +10054,17 @@ export namespace Gee {
     interface Iterator extends GObject.Object, Iterator.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get valid(): boolean;
+        /**
+         * @read-only
+         */
         get read_only(): boolean;
+        /**
+         * @read-only
+         */
         get readOnly(): boolean;
 
         // Methods
@@ -9176,7 +10175,13 @@ export namespace Gee {
     interface List extends Collection {
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only_view(): List;
+        /**
+         * @read-only
+         */
         get readOnlyView(): List;
 
         // Methods
@@ -9496,13 +10501,37 @@ export namespace Gee {
     interface Map extends GObject.Object, Map.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get read_only(): boolean;
+        /**
+         * @read-only
+         */
         get readOnly(): boolean;
+        /**
+         * @read-only
+         */
         get keys(): Set;
+        /**
+         * @read-only
+         */
         get values(): Collection;
+        /**
+         * @read-only
+         */
         get entries(): Set;
+        /**
+         * @read-only
+         */
         get read_only_view(): Map;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Map;
 
         // Methods
@@ -9659,9 +10688,21 @@ export namespace Gee {
     interface MapIterator extends GObject.Object, MapIterator.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get valid(): boolean;
+        /**
+         * @read-only
+         */
         get mutable(): boolean;
+        /**
+         * @read-only
+         */
         get read_only(): boolean;
+        /**
+         * @read-only
+         */
         get readOnly(): boolean;
 
         // Methods
@@ -9783,8 +10824,17 @@ export namespace Gee {
     interface MultiMap extends GObject.Object, MultiMap.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get read_only(): boolean;
+        /**
+         * @read-only
+         */
         get readOnly(): boolean;
 
         // Methods
@@ -9964,10 +11014,25 @@ export namespace Gee {
     interface Queue extends Collection, Queue.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get capacity(): number;
+        /**
+         * @read-only
+         */
         get remaining_capacity(): number;
+        /**
+         * @read-only
+         */
         get remainingCapacity(): number;
+        /**
+         * @read-only
+         */
         get is_full(): boolean;
+        /**
+         * @read-only
+         */
         get isFull(): boolean;
 
         // Methods
@@ -10030,7 +11095,13 @@ export namespace Gee {
     interface Set extends Collection {
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only_view(): Set;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Set;
 
         // Methods
@@ -10128,11 +11199,29 @@ export namespace Gee {
     interface SortedMap extends Map {
         // Properties
 
+        /**
+         * @read-only
+         */
         get ascending_keys(): SortedSet;
+        /**
+         * @read-only
+         */
         get ascendingKeys(): SortedSet;
+        /**
+         * @read-only
+         */
         get ascending_entries(): SortedSet;
+        /**
+         * @read-only
+         */
         get ascendingEntries(): SortedSet;
+        /**
+         * @read-only
+         */
         get read_only_view(): SortedMap;
+        /**
+         * @read-only
+         */
         get readOnlyView(): SortedMap;
 
         // Methods
@@ -10288,7 +11377,13 @@ export namespace Gee {
     interface SortedSet extends Set {
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only_view(): SortedSet;
+        /**
+         * @read-only
+         */
         get readOnlyView(): SortedSet;
 
         // Methods

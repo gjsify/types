@@ -53,6 +53,9 @@ export namespace NMClient {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClientPermission {
         export const $gtype: GObject.GType<ClientPermission>;
     }
@@ -147,6 +150,9 @@ export namespace NMClient {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClientPermissionResult {
         export const $gtype: GObject.GType<ClientPermissionResult>;
     }
@@ -867,6 +873,9 @@ export namespace NMClient {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WimaxNspNetworkType {
         export const $gtype: GObject.GType<WimaxNspNetworkType>;
     }
@@ -1254,6 +1263,9 @@ export namespace NMClient {
      * @gir-type Alias
      */
     type UintArray = object | null;
+    /**
+     * @gir-type Flags
+     */
     export namespace SecretAgentCapabilities {
         export const $gtype: GObject.GType<SecretAgentCapabilities>;
     }
@@ -1280,6 +1292,9 @@ export namespace NMClient {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SecretAgentGetSecretsFlags {
         export const $gtype: GObject.GType<SecretAgentGetSecretsFlags>;
     }
@@ -1367,22 +1382,27 @@ export namespace NMClient {
 
         /**
          * The BSSID of the access point.
+         * @read-only
          */
         get bssid(): string;
         /**
          * The flags of the access point.
+         * @read-only
          */
         get flags(): number;
         /**
          * The frequency of the access point.
+         * @read-only
          */
         get frequency(): number;
         /**
          * The hardware address of the access point.
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The hardware address of the access point.
+         * @read-only
          */
         get hwAddress(): string;
         /**
@@ -1390,6 +1410,7 @@ export namespace NMClient {
          * access point was found in scan results.  A value of -1 means the
          * access point has not been found in a scan.
          * @since 1.2
+         * @read-only
          */
         get last_seen(): number;
         /**
@@ -1397,44 +1418,54 @@ export namespace NMClient {
          * access point was found in scan results.  A value of -1 means the
          * access point has not been found in a scan.
          * @since 1.2
+         * @read-only
          */
         get lastSeen(): number;
         /**
          * The maximum bit rate of the access point in kbit/s.
+         * @read-only
          */
         get max_bitrate(): number;
         /**
          * The maximum bit rate of the access point in kbit/s.
+         * @read-only
          */
         get maxBitrate(): number;
         /**
          * The mode of the access point; either "infrastructure" (a central
          * coordinator of the wireless network allowing clients to connect) or
          * "ad-hoc" (a network with no central controller).
+         * @read-only
          */
         get mode(): number;
         /**
          * The RSN flags of the access point.
+         * @read-only
          */
         get rsn_flags(): number;
         /**
          * The RSN flags of the access point.
+         * @read-only
          */
         get rsnFlags(): number;
         /**
          * The SSID of the access point.
+         * @read-only
          */
         get ssid(): Ssid;
         /**
          * The current signal strength of the access point.
+         * @read-only
          */
         get strength(): number;
         /**
          * The WPA flags of the access point.
+         * @read-only
          */
         get wpa_flags(): number;
         /**
          * The WPA flags of the access point.
+         * @read-only
          */
         get wpaFlags(): number;
 
@@ -2355,90 +2386,112 @@ export namespace NMClient {
 
         /**
          * The connection's path of the active connection.
+         * @read-only
          */
         get connection(): string;
         /**
          * Whether the active connection is the default IPv4 one.
+         * @read-only
          */
         get default(): boolean;
         /**
          * Whether the active connection is the default IPv6 one.
+         * @read-only
          */
         get default6(): boolean;
+        /**
+         * @read-only
+         */
         get devices(): ObjectArray;
         /**
          * The {@link NMClient.DHCP4Config} of the connection.
          * @since 0.9.10
+         * @read-only
          */
         get dhcp4_config(): DHCP4Config;
         /**
          * The {@link NMClient.DHCP4Config} of the connection.
          * @since 0.9.10
+         * @read-only
          */
         get dhcp4Config(): DHCP4Config;
         /**
          * The {@link NMClient.DHCP6Config} of the connection.
          * @since 0.9.10
+         * @read-only
          */
         get dhcp6_config(): DHCP6Config;
         /**
          * The {@link NMClient.DHCP6Config} of the connection.
          * @since 0.9.10
+         * @read-only
          */
         get dhcp6Config(): DHCP6Config;
         /**
          * The active connection's ID
          * @since 0.9.10
+         * @read-only
          */
         get id(): string;
         /**
          * The {@link NMClient.IP4Config} of the connection.
          * @since 0.9.10
+         * @read-only
          */
         get ip4_config(): IP4Config;
         /**
          * The {@link NMClient.IP4Config} of the connection.
          * @since 0.9.10
+         * @read-only
          */
         get ip4Config(): IP4Config;
         /**
          * The {@link NMClient.IP6Config} of the connection.
          * @since 0.9.10
+         * @read-only
          */
         get ip6_config(): IP6Config;
         /**
          * The {@link NMClient.IP6Config} of the connection.
          * @since 0.9.10
+         * @read-only
          */
         get ip6Config(): IP6Config;
         /**
          * The path of the master device if one exists.
+         * @read-only
          */
         get master(): string;
         /**
          * The specific object's path of the active connection.
+         * @read-only
          */
         get specific_object(): string;
         /**
          * The specific object's path of the active connection.
+         * @read-only
          */
         get specificObject(): string;
         /**
          * The state of the active connection.
+         * @read-only
          */
         get state(): number;
         /**
          * The active connection's type
          * @since 0.9.10
+         * @read-only
          */
         get type(): string;
         /**
          * The active connection's UUID
+         * @read-only
          */
         get uuid(): string;
         /**
          * Whether the active connection is a VPN connection.
          * @since 0.9.10
+         * @read-only
          */
         get vpn(): boolean;
 
@@ -3313,29 +3366,34 @@ export namespace NMClient {
              * Notifies that a {@link NMClient.Device} is added.  This signal is emitted for both
              * regular devices and placeholder devices.
              * @signal
+             * @run-first
              */
             'any-device-added': (arg0: Device) => void;
             /**
              * Notifies that a {@link NMClient.Device} is removed.  This signal is emitted for both
              * regular devices and placeholder devices.
              * @signal
+             * @run-first
              */
             'any-device-removed': (arg0: Device) => void;
             /**
              * Notifies that a {@link NMClient.Device} is added.  This signal is not emitted for
              * placeholder devices.
              * @signal
+             * @run-first
              */
             'device-added': (arg0: Device) => void;
             /**
              * Notifies that a {@link NMClient.Device} is removed.  This signal is not emitted for
              * placeholder devices.
              * @signal
+             * @run-first
              */
             'device-removed': (arg0: Device) => void;
             /**
              * Notifies that a permission has changed
              * @signal
+             * @run-first
              */
             'permission-changed': (arg0: number, arg1: number) => void;
             'notify::activating-connection': (pspec: GObject.ParamSpec) => void;
@@ -3406,48 +3464,58 @@ export namespace NMClient {
          * The {@link NMClient.ActiveConnection} of the activating connection that is
          * likely to become the new {@link NMClient.Client.primary_connection}.
          * @since 0.9.8.6
+         * @read-only
          */
         get activating_connection(): ActiveConnection;
         /**
          * The {@link NMClient.ActiveConnection} of the activating connection that is
          * likely to become the new {@link NMClient.Client.primary_connection}.
          * @since 0.9.8.6
+         * @read-only
          */
         get activatingConnection(): ActiveConnection;
         /**
          * The active connections.
+         * @read-only
          */
         get active_connections(): any[];
         /**
          * The active connections.
+         * @read-only
          */
         get activeConnections(): any[];
         /**
          * List of both real devices and device placeholders.
          * @since 1.2
+         * @read-only
          */
         get all_devices(): ObjectArray;
         /**
          * List of both real devices and device placeholders.
          * @since 1.2
+         * @read-only
          */
         get allDevices(): ObjectArray;
         /**
          * The network connectivity state.
          * @since 0.9.8.6
+         * @read-only
          */
         get connectivity(): number;
         /**
          * List of real network devices.  Does not include placeholder devices.
          * @since 0.9.10
+         * @read-only
          */
         get devices(): ObjectArray;
         /**
          * Whether the daemon is running.
+         * @read-only
          */
         get manager_running(): boolean;
         /**
          * Whether the daemon is running.
+         * @read-only
          */
         get managerRunning(): boolean;
         /**
@@ -3464,25 +3532,30 @@ export namespace NMClient {
          * The {@link NMClient.ActiveConnection} of the device with the default route;
          * see `nm_client_get_primary_connection()` for more details.
          * @since 0.9.8.6
+         * @read-only
          */
         get primary_connection(): ActiveConnection;
         /**
          * The {@link NMClient.ActiveConnection} of the device with the default route;
          * see `nm_client_get_primary_connection()` for more details.
          * @since 0.9.8.6
+         * @read-only
          */
         get primaryConnection(): ActiveConnection;
         /**
          * Whether the daemon is still starting up.
          * @since 0.9.10
+         * @read-only
          */
         get startup(): boolean;
         /**
          * The current daemon state.
+         * @read-only
          */
         get state(): number;
         /**
          * The NetworkManager version.
+         * @read-only
          */
         get version(): string;
         /**
@@ -3497,10 +3570,12 @@ export namespace NMClient {
         set wimaxEnabled(val: boolean);
         /**
          * Whether the WiMAX hardware is enabled.
+         * @read-only
          */
         get wimax_hardware_enabled(): boolean;
         /**
          * Whether the WiMAX hardware is enabled.
+         * @read-only
          */
         get wimaxHardwareEnabled(): boolean;
         /**
@@ -3515,10 +3590,12 @@ export namespace NMClient {
         set wirelessEnabled(val: boolean);
         /**
          * Whether the wireless hardware is enabled.
+         * @read-only
          */
         get wireless_hardware_enabled(): boolean;
         /**
          * Whether the wireless hardware is enabled.
+         * @read-only
          */
         get wirelessHardwareEnabled(): boolean;
         /**
@@ -3533,10 +3610,12 @@ export namespace NMClient {
         set wwanEnabled(val: boolean);
         /**
          * Whether the WWAN hardware is enabled.
+         * @read-only
          */
         get wwan_hardware_enabled(): boolean;
         /**
          * Whether the WWAN hardware is enabled.
+         * @read-only
          */
         get wwanHardwareEnabled(): boolean;
 
@@ -4660,6 +4739,7 @@ export namespace NMClient {
 
         /**
          * The {@link GLib.HashTable} containing options of the configuration.
+         * @read-only
          */
         get options(): GLib.HashTable<string, GObject.Value>;
 
@@ -5477,6 +5557,7 @@ export namespace NMClient {
 
         /**
          * The {@link GLib.HashTable} containing options of the configuration.
+         * @read-only
          */
         get options(): GLib.HashTable<string, GObject.Value>;
 
@@ -6275,6 +6356,7 @@ export namespace NMClient {
             /**
              * Notifies the state change of a {@link NMClient.Device}.
              * @signal
+             * @run-first
              */
             'state-changed': (arg0: number, arg1: number, arg2: number) => void;
             'notify::active-connection': (pspec: GObject.ParamSpec) => void;
@@ -6355,10 +6437,12 @@ export namespace NMClient {
 
         /**
          * The {@link NMClient.ActiveConnection} object that "owns" this device during activation.
+         * @read-only
          */
         get active_connection(): ActiveConnection;
         /**
          * The {@link NMClient.ActiveConnection} object that "owns" this device during activation.
+         * @read-only
          */
         get activeConnection(): ActiveConnection;
         /**
@@ -6369,124 +6453,152 @@ export namespace NMClient {
         /**
          * The available connections ({@link NMClient.RemoteConnection}) of the device
          * @since 0.9.8
+         * @read-only
          */
         get available_connections(): ObjectArray;
         /**
          * The available connections ({@link NMClient.RemoteConnection}) of the device
          * @since 0.9.8
+         * @read-only
          */
         get availableConnections(): ObjectArray;
         /**
          * The capabilities of the device.
+         * @read-only
          */
         get capabilities(): number;
         /**
          * The numeric type of the device.
+         * @read-only
          */
         get device_type(): number;
         /**
          * The numeric type of the device.
+         * @read-only
          */
         get deviceType(): number;
         /**
          * The {@link NMClient.DHCP4Config} of the device.
+         * @read-only
          */
         get dhcp4_config(): DHCP4Config;
         /**
          * The {@link NMClient.DHCP4Config} of the device.
+         * @read-only
          */
         get dhcp4Config(): DHCP4Config;
         /**
          * The {@link NMClient.DHCP6Config} of the device.
+         * @read-only
          */
         get dhcp6_config(): DHCP6Config;
         /**
          * The {@link NMClient.DHCP6Config} of the device.
+         * @read-only
          */
         get dhcp6Config(): DHCP6Config;
         /**
          * The driver of the device.
+         * @read-only
          */
         get driver(): string;
         /**
          * The version of the device driver.
+         * @read-only
          */
         get driver_version(): string;
         /**
          * The version of the device driver.
+         * @read-only
          */
         get driverVersion(): string;
         /**
          * When `true` indicates the device is likely missing firmware required
          * for its operation.
+         * @read-only
          */
         get firmware_missing(): boolean;
         /**
          * When `true` indicates the device is likely missing firmware required
          * for its operation.
+         * @read-only
          */
         get firmwareMissing(): boolean;
         /**
          * The firmware version of the device.
+         * @read-only
          */
         get firmware_version(): string;
         /**
          * The firmware version of the device.
+         * @read-only
          */
         get firmwareVersion(): string;
         /**
          * The interface of the device.
+         * @read-only
          */
         get interface(): string;
         /**
          * The IP interface of the device which should be used for all IP-related
          * operations like addressing and routing.
+         * @read-only
          */
         get ip_interface(): string;
         /**
          * The IP interface of the device which should be used for all IP-related
          * operations like addressing and routing.
+         * @read-only
          */
         get ipInterface(): string;
         /**
          * The {@link NMClient.IP4Config} of the device.
+         * @read-only
          */
         get ip4_config(): IP4Config;
         /**
          * The {@link NMClient.IP4Config} of the device.
+         * @read-only
          */
         get ip4Config(): IP4Config;
         /**
          * The {@link NMClient.IP6Config} of the device.
+         * @read-only
          */
         get ip6_config(): IP6Config;
         /**
          * The {@link NMClient.IP6Config} of the device.
+         * @read-only
          */
         get ip6Config(): IP6Config;
         /**
          * Whether the device is managed by NetworkManager.
+         * @read-only
          */
         get managed(): boolean;
         /**
          * The MTU of the device.
          * @since 0.9.10
+         * @read-only
          */
         get mtu(): number;
         /**
          * The physical port ID of the device. (See
          * `nm_device_get_physical_port_id()`.)
          * @since 0.9.10
+         * @read-only
          */
         get physical_port_id(): string;
         /**
          * The physical port ID of the device. (See
          * `nm_device_get_physical_port_id()`.)
          * @since 0.9.10
+         * @read-only
          */
         get physicalPortId(): string;
         /**
          * The product string of the device.
+         * @read-only
          */
         get product(): string;
         /**
@@ -6494,10 +6606,12 @@ export namespace NMClient {
          * be created automatically by NetworkManager if one of its
          * {@link NMClient.Device.available_connections} was activated.
          * @since 1.2
+         * @read-only
          */
         get real(): boolean;
         /**
          * The state of the device.
+         * @read-only
          */
         get state(): number;
         /**
@@ -6507,10 +6621,12 @@ export namespace NMClient {
          * contains an identifier provided by the underlying hardware service daemon
          * such as Bluez or ModemManager, and clients can use this property to
          * request more information about the device from those services.
+         * @read-only
          */
         get udi(): string;
         /**
          * The vendor string of the device.
+         * @read-only
          */
         get vendor(): string;
 
@@ -7628,6 +7744,7 @@ export namespace NMClient {
 
         /**
          * Whether the device has carrier.
+         * @read-only
          */
         get carrier(): boolean;
 
@@ -8386,19 +8503,23 @@ export namespace NMClient {
 
         /**
          * Whether the device has carrier.
+         * @read-only
          */
         get carrier(): boolean;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get hwAddress(): string;
         /**
          * The devices ({@link NMClient.Device}) enslaved to the bond device.
          * @since 0.9.8
+         * @read-only
          */
         get slaves(): ObjectArray;
 
@@ -9168,21 +9289,25 @@ export namespace NMClient {
         /**
          * Whether the device has carrier.
          * @since 0.9.8
+         * @read-only
          */
         get carrier(): boolean;
         /**
          * The hardware (MAC) address of the device.
          * @since 0.9.8
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The hardware (MAC) address of the device.
          * @since 0.9.8
+         * @read-only
          */
         get hwAddress(): string;
         /**
          * The devices ({@link NMClient.Device}) enslaved to the bridge device.
          * @since 0.9.8
+         * @read-only
          */
         get slaves(): ObjectArray;
 
@@ -9952,22 +10077,27 @@ export namespace NMClient {
 
         /**
          * The device's bluetooth capabilities, a combination of {@link NetworkManager.BluetoothCapabilities}.
+         * @read-only
          */
         get bt_capabilities(): number;
         /**
          * The device's bluetooth capabilities, a combination of {@link NetworkManager.BluetoothCapabilities}.
+         * @read-only
          */
         get btCapabilities(): number;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get hwAddress(): string;
         /**
          * The name of the bluetooth device.
+         * @read-only
          */
         get name(): string;
 
@@ -10744,26 +10874,32 @@ export namespace NMClient {
 
         /**
          * Whether the device has carrier.
+         * @read-only
          */
         get carrier(): boolean;
         /**
          * The active hardware (MAC) address of the device.
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The active hardware (MAC) address of the device.
+         * @read-only
          */
         get hwAddress(): string;
         /**
          * The permanent hardware (MAC) address of the device.
+         * @read-only
          */
         get perm_hw_address(): string;
         /**
          * The permanent hardware (MAC) address of the device.
+         * @read-only
          */
         get permHwAddress(): string;
         /**
          * The speed of the device.
+         * @read-only
          */
         get speed(): number;
 
@@ -11536,20 +11672,24 @@ export namespace NMClient {
 
         /**
          * The hardware address of the device.
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The hardware address of the device.
+         * @read-only
          */
         get hwAddress(): string;
         /**
          * A description of the specific type of device this is, or `null`
          * if not known.
+         * @read-only
          */
         get type_description(): string;
         /**
          * A description of the specific type of device this is, or `null`
          * if not known.
+         * @read-only
          */
         get typeDescription(): string;
 
@@ -12306,14 +12446,17 @@ export namespace NMClient {
 
         /**
          * Whether the device has carrier.
+         * @read-only
          */
         get carrier(): boolean;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get hwAddress(): string;
 
@@ -13077,11 +13220,13 @@ export namespace NMClient {
         /**
          * The generic family of access technologies the modem currently supports
          * without a firmware reload or reinitialization.
+         * @read-only
          */
         get current_capabilities(): number;
         /**
          * The generic family of access technologies the modem currently supports
          * without a firmware reload or reinitialization.
+         * @read-only
          */
         get currentCapabilities(): number;
         /**
@@ -13089,6 +13234,7 @@ export namespace NMClient {
          * capabilities are available at the same time however; some modems require
          * a firmware reload or other reinitialization to switch between eg
          * CDMA/EVDO and GSM/UMTS.
+         * @read-only
          */
         get modem_capabilities(): number;
         /**
@@ -13096,6 +13242,7 @@ export namespace NMClient {
          * capabilities are available at the same time however; some modems require
          * a firmware reload or other reinitialization to switch between eg
          * CDMA/EVDO and GSM/UMTS.
+         * @read-only
          */
         get modemCapabilities(): number;
 
@@ -13862,22 +14009,27 @@ export namespace NMClient {
 
         /**
          * The device's active channel.
+         * @read-only
          */
         get active_channel(): number;
         /**
          * The device's active channel.
+         * @read-only
          */
         get activeChannel(): number;
         /**
          * The companion device.
+         * @read-only
          */
         get companion(): DeviceWifi;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get hwAddress(): string;
 
@@ -14646,18 +14798,22 @@ export namespace NMClient {
 
         /**
          * Whether the device has carrier.
+         * @read-only
          */
         get carrier(): boolean;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get hwAddress(): string;
         /**
          * The devices ({@link NMClient.Device}) enslaved to the team device.
+         * @read-only
          */
         get slaves(): ObjectArray;
 
@@ -15429,27 +15585,33 @@ export namespace NMClient {
 
         /**
          * Whether the device has carrier.
+         * @read-only
          */
         get carrier(): boolean;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get hwAddress(): string;
         /**
          * The devices's parent device.
          * @since 1.0
+         * @read-only
          */
         get parent(): Device;
         /**
          * The device's VLAN ID.
+         * @read-only
          */
         get vlan_id(): number;
         /**
          * The device's VLAN ID.
+         * @read-only
          */
         get vlanId(): number;
 
@@ -16174,11 +16336,13 @@ export namespace NMClient {
             /**
              * Notifies that a {@link NMClient.AccessPoint} is added to the Wi-Fi device.
              * @signal
+             * @run-first
              */
             'access-point-added': (arg0: GObject.Object) => void;
             /**
              * Notifies that a {@link NMClient.AccessPoint} is removed from the Wi-Fi device.
              * @signal
+             * @run-first
              */
             'access-point-removed': (arg0: GObject.Object) => void;
             'notify::access-points': (pspec: GObject.ParamSpec) => void;
@@ -16244,51 +16408,63 @@ export namespace NMClient {
         /**
          * List of all Wi-Fi access points the device can see.
          * @since 0.9.10
+         * @read-only
          */
         get access_points(): ObjectArray;
         /**
          * List of all Wi-Fi access points the device can see.
          * @since 0.9.10
+         * @read-only
          */
         get accessPoints(): ObjectArray;
         /**
          * The active {@link NMClient.AccessPoint} of the device.
+         * @read-only
          */
         get active_access_point(): AccessPoint;
         /**
          * The active {@link NMClient.AccessPoint} of the device.
+         * @read-only
          */
         get activeAccessPoint(): AccessPoint;
         /**
          * The bit rate of the device in kbit/s.
+         * @read-only
          */
         get bitrate(): number;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get hwAddress(): string;
         /**
          * The mode of the device.
+         * @read-only
          */
         get mode(): number;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get perm_hw_address(): string;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get permHwAddress(): string;
         /**
          * The wireless capabilities of the device.
+         * @read-only
          */
         get wireless_capabilities(): number;
         /**
          * The wireless capabilities of the device.
+         * @read-only
          */
         get wirelessCapabilities(): number;
 
@@ -17062,12 +17238,14 @@ export namespace NMClient {
              * Notifies that a {@link NMClient.WimaxNsp} is added to the wimax device.
              * @signal
              * @deprecated since 1.2: WiMAX is no longer supported.
+             * @run-first
              */
             'nsp-added': (arg0: GObject.Object) => void;
             /**
              * Notifies that a {@link NMClient.WimaxNsp} is removed from the wimax device.
              * @signal
              * @deprecated since 1.2: WiMAX is no longer supported.
+             * @run-first
              */
             'nsp-removed': (arg0: GObject.Object) => void;
             'notify::active-nsp': (pspec: GObject.ParamSpec) => void;
@@ -17134,17 +17312,20 @@ export namespace NMClient {
         /**
          * The active {@link NMClient.WimaxNsp} of the device.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get active_nsp(): WimaxNsp;
         /**
          * The active {@link NMClient.WimaxNsp} of the device.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get activeNsp(): WimaxNsp;
         /**
          * The ID of the serving base station as received from the network.  Has
          * no meaning when the device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get bsid(): string;
         /**
@@ -17152,6 +17333,7 @@ export namespace NMClient {
          * communicate with the network when connected.  Has no meaning when the
          * device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get center_frequency(): number;
         /**
@@ -17159,6 +17341,7 @@ export namespace NMClient {
          * communicate with the network when connected.  Has no meaning when the
          * device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get centerFrequency(): number;
         /**
@@ -17166,22 +17349,26 @@ export namespace NMClient {
          * in dB.  CINR is a more accurate measure of radio link quality.  Has no
          * meaning when the device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get cinr(): number;
         /**
          * The hardware (MAC) address of the device.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The hardware (MAC) address of the device.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get hwAddress(): string;
         /**
          * List of all WiMAX Network Service Providers the device can see.
          * @since 0.9.10
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get nsps(): ObjectArray;
         /**
@@ -17190,6 +17377,7 @@ export namespace NMClient {
          * indicate the overall quality of the radio link.  Has no meaning when the
          * device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get rssi(): number;
         /**
@@ -17197,6 +17385,7 @@ export namespace NMClient {
          * 0.5 dBm.  i.e. a TxPower of -11 represents an actual device TX power of
          * -5.5 dBm.  Has no meaning when the device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get tx_power(): number;
         /**
@@ -17204,6 +17393,7 @@ export namespace NMClient {
          * 0.5 dBm.  i.e. a TxPower of -11 represents an actual device TX power of
          * -5.5 dBm.  Has no meaning when the device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get txPower(): number;
 
@@ -18010,36 +18200,44 @@ export namespace NMClient {
 
         /**
          * The {@link GLib.PtrArray} containing {@link NetworkManager.IP4Address}<!-- -->es of the configuration.
+         * @read-only
          */
         get addresses(): any;
         /**
          * The {@link GLib.PtrArray} containing domain strings of the configuration.
+         * @read-only
          */
         get domains(): StringArray;
         /**
          * The IP4 gateway address of the configuration as string.
          * @since 0.9.10
+         * @read-only
          */
         get gateway(): string;
         /**
          * The {@link GLib.Array} containing name servers (#guint32s) of the configuration.
+         * @read-only
          */
         get nameservers(): UintArray;
         /**
          * The {@link GLib.PtrArray} containing `NMSettingIP4Route`<!-- -->s of the configuration.
+         * @read-only
          */
         get routes(): any;
         /**
          * The {@link GLib.PtrArray} containing dns search strings of the configuration.
          * @since 0.9.10
+         * @read-only
          */
         get searches(): StringArray;
         /**
          * The {@link GLib.Array} containing WINS servers (#guint32s) of the configuration.
+         * @read-only
          */
         get wins_servers(): UintArray;
         /**
          * The {@link GLib.Array} containing WINS servers (#guint32s) of the configuration.
+         * @read-only
          */
         get winsServers(): UintArray;
 
@@ -18893,31 +19091,37 @@ export namespace NMClient {
          * The {@link GLib.PtrArray} containing the IPv6 addresses;  use
          * `nm_utils_ip6_addresses_from_gvalue()` to return a {@link GLib.SList} of
          * `NMSettingIP6Address` objects that is more usable than the raw data.
+         * @read-only
          */
         get addresses(): IP6AddressObjectArray;
         /**
          * The {@link GLib.PtrArray} containing domain strings of the configuration.
+         * @read-only
          */
         get domains(): StringArray;
         /**
          * The IPv6 gateway as string
          * @since 0.9.10
+         * @read-only
          */
         get gateway(): string;
         /**
          * The {@link GLib.PtrArray} containing elements of type 'struct ip6_addr' which
          * contain the addresses of nameservers of the configuration.
+         * @read-only
          */
         get nameservers(): IP6AddressArray;
         /**
          * The {@link GLib.PtrArray} containing the IPv6 routes;  use
          * `nm_utils_ip6_routes_from_gvalue()` to return a {@link GLib.SList} of
          * `NMSettingIP6Address` objects that is more usable than the raw data.
+         * @read-only
          */
         get routes(): IP6RouteObjectArray;
         /**
          * The {@link GLib.PtrArray} containing dns search strings of the configuration.
          * @since 0.9.10
+         * @read-only
          */
         get searches(): StringArray;
 
@@ -19745,6 +19949,7 @@ export namespace NMClient {
              * Note: Be aware that the signal is private for libnm-glib's internal
              *       use.
              * @signal
+             * @run-first
              */
             'object-creation-failed': (arg0: any | null, arg1: any | null) => void;
             'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
@@ -19767,7 +19972,13 @@ export namespace NMClient {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get dbus_path(): string;
+        /**
+         * @construct-only
+         */
         get dbusPath(): string;
 
         /**
@@ -20572,16 +20783,19 @@ export namespace NMClient {
              * This signal is emitted when a connection is either deleted or becomes
              * invisible to the current user.
              * @signal
+             * @run-first
              */
             removed: () => void;
             /**
              * This signal is emitted when a connection changes, and it is
              * still visible to the user.
              * @signal
+             * @run-first
              */
             updated: () => void;
             /**
              * @signal
+             * @run-first
              */
             visible: (arg0: boolean) => void;
             'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
@@ -20613,12 +20827,19 @@ export namespace NMClient {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set dbus_path(val: string);
+        /**
+         * @construct-only
+         */
         set dbusPath(val: string);
         /**
          * `true` if the remote connection contains changes that have not been saved
          * to disk, `false` if the connection is the same as its on-disk representation.
          * @since 0.9.10
+         * @read-only
          */
         get unsaved(): boolean;
 
@@ -21455,10 +21676,12 @@ export namespace NMClient {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'connections-read': () => void;
             /**
              * @signal
+             * @run-first
              */
             'new-connection': (arg0: GObject.Object) => void;
             'notify::can-modify': (pspec: GObject.ParamSpec) => void;
@@ -21488,23 +21711,28 @@ export namespace NMClient {
 
         /**
          * If `true`, adding and modifying connections is supported.
+         * @read-only
          */
         get can_modify(): boolean;
         /**
          * If `true`, adding and modifying connections is supported.
+         * @read-only
          */
         get canModify(): boolean;
         /**
          * The machine hostname stored in persistent configuration. This can be
          * modified by calling `nm_remote_settings_save_hostname()`.
+         * @read-only
          */
         get hostname(): string;
         /**
          * Whether the settings service is running.
+         * @read-only
          */
         get service_running(): boolean;
         /**
          * Whether the settings service is running.
+         * @read-only
          */
         get serviceRunning(): boolean;
 
@@ -22408,6 +22636,7 @@ export namespace NMClient {
              * Indicates the result of a registration request; if `error` is NULL the
              * request was successful.
              * @signal
+             * @run-first
              */
             'registration-result': (arg0: any | null) => void;
             'notify::auto-register': (pspec: GObject.ParamSpec) => void;
@@ -22470,10 +22699,12 @@ export namespace NMClient {
          * identifier is limited in length to 255 characters with a minimum
          * of 3 characters.  An example valid identifier is 'org.gnome.nm-applet'
          * (without quotes).
+         * @construct-only
          */
         get identifier(): string;
         /**
          * `true` if the agent is registered with NetworkManager, `false` if not.
+         * @read-only
          */
         get registered(): boolean;
 
@@ -22637,6 +22868,7 @@ export namespace NMClient {
         interface SignalSignatures extends ActiveConnection.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'vpn-state-changed': (arg0: number, arg1: number) => void;
             'notify::banner': (pspec: GObject.ParamSpec) => void;
@@ -22682,14 +22914,17 @@ export namespace NMClient {
 
         /**
          * The VPN login banner of the active VPN connection.
+         * @read-only
          */
         get banner(): string;
         /**
          * The VPN state of the active VPN connection.
+         * @read-only
          */
         get vpn_state(): number;
         /**
          * The VPN state of the active VPN connection.
+         * @read-only
          */
         get vpnState(): number;
 
@@ -23438,22 +23673,27 @@ export namespace NMClient {
 
         /**
          * The name of the WiMAX NSP.
+         * @read-only
          */
         get name(): string;
         /**
          * The network type of the WiMAX NSP.
+         * @read-only
          */
         get network_type(): number;
         /**
          * The network type of the WiMAX NSP.
+         * @read-only
          */
         get networkType(): number;
         /**
          * The signal quality of the WiMAX NSP.
+         * @read-only
          */
         get signal_quality(): number;
         /**
          * The signal quality of the WiMAX NSP.
+         * @read-only
          */
         get signalQuality(): number;
 

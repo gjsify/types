@@ -29,6 +29,9 @@ export namespace Retro {
      * Retro-1
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnalogId {
         export const $gtype: GObject.GType<AnalogId>;
     }
@@ -48,6 +51,9 @@ export namespace Retro {
         Y,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnalogIndex {
         export const $gtype: GObject.GType<AnalogIndex>;
     }
@@ -67,6 +73,9 @@ export namespace Retro {
         RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ControllerType {
         export const $gtype: GObject.GType<ControllerType>;
     }
@@ -110,6 +119,9 @@ export namespace Retro {
         TYPE_MASK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace JoypadId {
         export const $gtype: GObject.GType<JoypadId>;
     }
@@ -190,6 +202,9 @@ export namespace Retro {
         R3,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LightgunId {
         export const $gtype: GObject.GType<LightgunId>;
     }
@@ -252,6 +267,9 @@ export namespace Retro {
         VIDEO_RAM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MouseId {
         export const $gtype: GObject.GType<MouseId>;
     }
@@ -307,6 +325,9 @@ export namespace Retro {
         BUTTON_5,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PointerId {
         export const $gtype: GObject.GType<PointerId>;
     }
@@ -330,6 +351,9 @@ export namespace Retro {
         PRESSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RumbleEffect {
         export const $gtype: GObject.GType<RumbleEffect>;
     }
@@ -349,6 +373,9 @@ export namespace Retro {
         WEAK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoFilter {
         export const $gtype: GObject.GType<VideoFilter>;
     }
@@ -493,17 +520,20 @@ export namespace Retro {
             /**
              * The ::crash signal is emitted when the core crashes.
              * @signal
+             * @run-last
              */
             crashed: (arg0: string) => void;
             /**
              * The ::log signal is emitted each time the core emits a message to log.
              * @signal
+             * @run-last
              */
             log: (arg0: string, arg1: GLib.LogLevelFlags, arg2: string) => void;
             /**
              * The ::message signal is emitted each time the core emits a message to
              * display during a given amount of frames.
              * @signal
+             * @run-last
              */
             message: (arg0: string, arg1: number) => void;
             /**
@@ -511,6 +541,7 @@ export namespace Retro {
              *
              * The core must be released or re-started in order to function anew.
              * @signal
+             * @run-last
              */
             shutdown: () => void;
             /**
@@ -520,6 +551,7 @@ export namespace Retro {
              * `pixdata` will be invalid after the signal emission, copy it in some way if
              * you want to keep it.
              * @signal
+             * @run-last
              */
             'video-output': (arg0: Pixdata) => void;
             'notify::api-version': (pspec: GObject.ParamSpec) => void;
@@ -574,10 +606,12 @@ export namespace Retro {
 
         /**
          * The Libretro API version implement by the core.
+         * @read-only
          */
         get api_version(): number;
         /**
          * The Libretro API version implement by the core.
+         * @read-only
          */
         get apiVersion(): number;
         get content_directory(): string;
@@ -586,30 +620,37 @@ export namespace Retro {
         set contentDirectory(val: string);
         /**
          * The filename of the core.
+         * @construct-only
          */
         get filename(): string;
         /**
          * The FPS rate for the core's video output.
+         * @read-only
          */
         get frames_per_second(): number;
         /**
          * The FPS rate for the core's video output.
+         * @read-only
          */
         get framesPerSecond(): number;
         /**
          * Whether a game has been loaded.
+         * @read-only
          */
         get game_loaded(): boolean;
         /**
          * Whether a game has been loaded.
+         * @read-only
          */
         get gameLoaded(): boolean;
         /**
          * Whether the core has been initiated.
+         * @read-only
          */
         get is_initiated(): boolean;
         /**
          * Whether the core has been initiated.
+         * @read-only
          */
         get isInitiated(): boolean;
         /**
@@ -650,10 +691,12 @@ export namespace Retro {
         set speedRate(val: number);
         /**
          * Whether the core supports running with no game.
+         * @read-only
          */
         get support_no_game(): boolean;
         /**
          * Whether the core supports running with no game.
+         * @read-only
          */
         get supportNoGame(): boolean;
         /**
@@ -1115,6 +1158,7 @@ export namespace Retro {
              *
              * Applications should not connect to it.
              * @signal
+             * @run-last
              */
             'controller-state-changed': () => void;
             'notify::can-grab-pointer': (pspec: GObject.ParamSpec) => void;
@@ -1985,6 +2029,7 @@ export namespace Retro {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'value-changed': () => void;
         }

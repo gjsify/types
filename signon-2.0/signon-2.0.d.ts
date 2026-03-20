@@ -190,6 +190,9 @@ export namespace Signon {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SessionDataUiPolicy {
         export const $gtype: GObject.GType<SessionDataUiPolicy>;
     }
@@ -255,6 +258,9 @@ export namespace Signon {
      */
     const SESSION_DATA_WINDOW_ID: string;
     function error_quark(): GLib.Quark;
+    /**
+     * @gir-type Flags
+     */
     export namespace IdentityType {
         export const $gtype: GObject.GType<IdentityType>;
     }
@@ -421,6 +427,8 @@ export namespace Signon {
             /**
              * Emitted when the state of the {@link Signon.AuthSession} changes.
              * @signal
+             * @action
+             * @run-last
              */
             'state-changed': (arg0: number, arg1: string) => void;
         }
@@ -552,6 +560,7 @@ export namespace Signon {
             /**
              * Emitted when the identity was signed out.
              * @signal
+             * @run-last
              */
             'signed-out': () => void;
             'notify::id': (pspec: GObject.ParamSpec) => void;
@@ -573,6 +582,9 @@ export namespace Signon {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): number;
 
         /**

@@ -35,6 +35,9 @@ export namespace GnomeMaps {
      * GnomeMaps-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ContactStoreState {
         export const $gtype: GObject.GType<ContactStoreState>;
     }
@@ -107,10 +110,12 @@ export namespace GnomeMaps {
 
         /**
          * The bounding box for the contact.
+         * @read-only
          */
         get bounding_box(): Champlain.BoundingBox;
         /**
          * The bounding box for the contact.
+         * @read-only
          */
         get boundingBox(): Champlain.BoundingBox;
         /**
@@ -206,6 +211,7 @@ export namespace GnomeMaps {
 
         /**
          * The type of the contact.
+         * @read-only
          */
         get state(): ContactStoreState;
 
@@ -308,18 +314,22 @@ export namespace GnomeMaps {
 
         /**
          * The maximum zoom level of the tile source.
+         * @read-only
          */
         get max_zoom(): number;
         /**
          * The maximum zoom level of the tile source.
+         * @read-only
          */
         get maxZoom(): number;
         /**
          * The minimum zoom level of the tile source.
+         * @read-only
          */
         get min_zoom(): number;
         /**
          * The minimum zoom level of the tile source.
+         * @read-only
          */
         get minZoom(): number;
         /**
@@ -331,6 +341,7 @@ export namespace GnomeMaps {
          * Set a bounding box to limit the world to. No tiles will be loaded
          * outside of this bounding box. It will not be possible to scroll outside
          * of this bounding box.
+         * @read-only
          */
         get world(): Champlain.BoundingBox;
 

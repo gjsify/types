@@ -30,6 +30,9 @@ export namespace Gedit {
      * Gedit-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TabState {
         export const $gtype: GObject.GType<TabState>;
     }
@@ -278,6 +281,9 @@ export namespace Gedit {
     interface MessageCallback {
         (bus: MessageBus, message: Message): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace DebugSection {
         export const $gtype: GObject.GType<DebugSection>;
     }
@@ -306,6 +312,9 @@ export namespace Gedit {
         DEBUG_UTILS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WindowState {
         export const $gtype: GObject.GType<WindowState>;
     }
@@ -921,6 +930,7 @@ export namespace Gedit {
              * file loading (the location, encoding, etc). Plugins should not need
              * those parameters.
              * @signal
+             * @run-last
              */
             load: () => void;
             /**
@@ -931,6 +941,7 @@ export namespace Gedit {
              * signal was also emitted if an error occurred. Plugins should not need
              * the error parameter.
              * @signal
+             * @run-first
              */
             loaded: () => void;
             /**
@@ -940,6 +951,7 @@ export namespace Gedit {
              * file saving (the location, encoding, etc). Plugins should not need
              * those parameters.
              * @signal
+             * @run-last
              */
             save: () => void;
             /**
@@ -951,6 +963,7 @@ export namespace Gedit {
              * get the result of the operation with
              * `gedit_commands_save_document_finish()`.
              * @signal
+             * @run-first
              */
             saved: () => void;
             'notify::content-type': (pspec: GObject.ParamSpec) => void;
@@ -1008,6 +1021,7 @@ export namespace Gedit {
          * The property is used internally by gedit. It must not be used in a
          * gedit plugin. The property can be modified or removed at any time.
          * </warning>
+         * @read-only
          */
         get empty_search(): boolean;
         /**
@@ -1015,14 +1029,17 @@ export namespace Gedit {
          * The property is used internally by gedit. It must not be used in a
          * gedit plugin. The property can be modified or removed at any time.
          * </warning>
+         * @read-only
          */
         get emptySearch(): boolean;
         /**
          * The document's MIME type.
+         * @read-only
          */
         get mime_type(): string;
         /**
          * The document's MIME type.
+         * @read-only
          */
         get mimeType(): string;
 
@@ -1336,9 +1353,15 @@ export namespace Gedit {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -1652,6 +1675,7 @@ export namespace Gedit {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -1659,6 +1683,7 @@ export namespace Gedit {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -1780,6 +1805,7 @@ export namespace Gedit {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -6051,6 +6077,9 @@ export namespace Gedit {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get menu(): Gio.Menu;
 
         /**
@@ -6228,18 +6257,21 @@ export namespace Gedit {
              * Primary use of this signal is to customize the dispatch of a message
              * (for instance to automatically dispatch all messages over DBus).
              * @signal
+             * @run-last
              */
             dispatch: (arg0: Message) => void;
             /**
              * The "registered" signal is emitted when a message has been registered
              * on the bus.
              * @signal
+             * @run-last
              */
             registered: (arg0: string, arg1: string) => void;
             /**
              * The "unregistered" signal is emitted when a message has been
              * unregistered from the bus.
              * @signal
+             * @run-last
              */
             unregistered: (arg0: string, arg1: string) => void;
         }
@@ -7022,6 +7054,8 @@ export namespace Gedit {
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'drop-uris': (arg0: string[]) => void;
             'notify::autosave': (pspec: GObject.ParamSpec) => void;
@@ -7108,9 +7142,21 @@ export namespace Gedit {
         set autosave_interval(val: number);
         get autosaveInterval(): number;
         set autosaveInterval(val: number);
+        /**
+         * @read-only
+         */
         get can_close(): boolean;
+        /**
+         * @read-only
+         */
         get canClose(): boolean;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get state(): TabState;
 
         /**
@@ -7688,6 +7734,8 @@ export namespace Gedit {
              * should NOT use this signal because this will not prevent gedit from
              * loading the URI.
              * @signal
+             * @action
+             * @run-last
              */
             'drop-uris': (arg0: string[]) => void;
             'notify::auto-indent': (pspec: GObject.ParamSpec) => void;
@@ -8290,22 +8338,27 @@ export namespace Gedit {
         interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'active-tab-changed': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'active-tab-state-changed': () => void;
             /**
              * @signal
+             * @run-first
              */
             'tab-added': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'tab-removed': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'tabs-reordered': () => void;
             'notify::state': (pspec: GObject.ParamSpec) => void;
@@ -8411,6 +8464,9 @@ export namespace Gedit {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get state(): WindowState;
 
         /**
@@ -9724,6 +9780,7 @@ export namespace Gedit {
         /**
          * The app property contains the gedit app for this
          * {@link Gedit.AppActivatable} instance.
+         * @construct-only
          */
         get app(): App;
 
@@ -9791,6 +9848,7 @@ export namespace Gedit {
         /**
          * The window property contains the gedit window for this
          * {@link Gedit.ViewActivatable} instance.
+         * @construct-only
          */
         get view(): View;
 
@@ -9856,6 +9914,7 @@ export namespace Gedit {
         /**
          * The window property contains the gedit window for this
          * {@link Gedit.WindowActivatable} instance.
+         * @construct-only
          */
         get window(): Window;
 

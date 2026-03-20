@@ -36,6 +36,7 @@ export namespace BudgieRaven {
         interface SignalSignatures extends Gtk.Bin.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'raven-expanded': (arg0: boolean) => void;
             'notify::border-width': (pspec: GObject.ParamSpec) => void;

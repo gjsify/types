@@ -31,6 +31,9 @@ export namespace Clutter {
      * Clutter-12
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ActorAlign {
         export const $gtype: GObject.GType<ActorAlign>;
     }
@@ -67,6 +70,9 @@ export namespace Clutter {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AlignAxis {
         export const $gtype: GObject.GType<AlignAxis>;
     }
@@ -91,6 +97,9 @@ export namespace Clutter {
         BOTH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnimationMode {
         export const $gtype: GObject.GType<AnimationMode>;
     }
@@ -306,6 +315,9 @@ export namespace Clutter {
         ANIMATION_LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BinAlignment {
         export const $gtype: GObject.GType<BinAlignment>;
     }
@@ -343,6 +355,9 @@ export namespace Clutter {
         CENTER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BindCoordinate {
         export const $gtype: GObject.GType<BindCoordinate>;
     }
@@ -385,6 +400,9 @@ export namespace Clutter {
         ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BoxAlignment {
         export const $gtype: GObject.GType<BoxAlignment>;
     }
@@ -410,6 +428,9 @@ export namespace Clutter {
         CENTER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ButtonState {
         export const $gtype: GObject.GType<ButtonState>;
     }
@@ -422,6 +443,9 @@ export namespace Clutter {
         PRESSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Colorspace {
         export const $gtype: GObject.GType<Colorspace>;
     }
@@ -445,6 +469,9 @@ export namespace Clutter {
         BT2020,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ContentGravity {
         export const $gtype: GObject.GType<ContentGravity>;
     }
@@ -501,6 +528,9 @@ export namespace Clutter {
         RESIZE_ASPECT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DragAxis {
         export const $gtype: GObject.GType<DragAxis>;
     }
@@ -525,6 +555,9 @@ export namespace Clutter {
         Y_AXIS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EventPhase {
         export const $gtype: GObject.GType<EventPhase>;
     }
@@ -537,6 +570,9 @@ export namespace Clutter {
         BUBBLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EventType {
         export const $gtype: GObject.GType<EventType>;
     }
@@ -646,6 +682,9 @@ export namespace Clutter {
         EVENT_LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FlowOrientation {
         export const $gtype: GObject.GType<FlowOrientation>;
     }
@@ -668,6 +707,9 @@ export namespace Clutter {
         VERTICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FrameResult {
         export const $gtype: GObject.GType<FrameResult>;
     }
@@ -680,6 +722,9 @@ export namespace Clutter {
         IDLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GestureTriggerEdge {
         export const $gtype: GObject.GType<GestureTriggerEdge>;
     }
@@ -710,6 +755,9 @@ export namespace Clutter {
         BEFORE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Gravity {
         export const $gtype: GObject.GType<Gravity>;
     }
@@ -766,6 +814,9 @@ export namespace Clutter {
         CENTER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GridPosition {
         export const $gtype: GObject.GType<GridPosition>;
     }
@@ -793,6 +844,9 @@ export namespace Clutter {
         BOTTOM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputAxis {
         export const $gtype: GObject.GType<InputAxis>;
     }
@@ -849,6 +903,9 @@ export namespace Clutter {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputContentPurpose {
         export const $gtype: GObject.GType<InputContentPurpose>;
     }
@@ -872,6 +929,9 @@ export namespace Clutter {
         TERMINAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputDevicePadFeature {
         export const $gtype: GObject.GType<InputDevicePadFeature>;
     }
@@ -885,6 +945,9 @@ export namespace Clutter {
         STRIP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputDevicePadSource {
         export const $gtype: GObject.GType<InputDevicePadSource>;
     }
@@ -897,6 +960,9 @@ export namespace Clutter {
         FINGER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputDeviceToolType {
         export const $gtype: GObject.GType<InputDeviceToolType>;
     }
@@ -940,6 +1006,9 @@ export namespace Clutter {
         LENS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputDeviceType {
         export const $gtype: GObject.GType<InputDeviceType>;
     }
@@ -1002,6 +1071,9 @@ export namespace Clutter {
         N_DEVICE_TYPES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputMode {
         export const $gtype: GObject.GType<InputMode>;
     }
@@ -1027,6 +1099,9 @@ export namespace Clutter {
         FLOATING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputPanelState {
         export const $gtype: GObject.GType<InputPanelState>;
     }
@@ -1040,6 +1115,9 @@ export namespace Clutter {
         TOGGLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Interpolation {
         export const $gtype: GObject.GType<Interpolation>;
     }
@@ -1060,6 +1138,9 @@ export namespace Clutter {
         CUBIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace KeyState {
         export const $gtype: GObject.GType<KeyState>;
     }
@@ -1072,6 +1153,9 @@ export namespace Clutter {
         PRESSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LongPressState {
         export const $gtype: GObject.GType<LongPressState>;
     }
@@ -1096,6 +1180,9 @@ export namespace Clutter {
         CANCEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Orientation {
         export const $gtype: GObject.GType<Orientation>;
     }
@@ -1115,6 +1202,9 @@ export namespace Clutter {
         VERTICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PanAxis {
         export const $gtype: GObject.GType<PanAxis>;
     }
@@ -1144,6 +1234,9 @@ export namespace Clutter {
         AXIS_AUTO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PathNodeType {
         export const $gtype: GObject.GType<PathNodeType>;
     }
@@ -1189,6 +1282,9 @@ export namespace Clutter {
         REL_CURVE_TO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PickMode {
         export const $gtype: GObject.GType<PickMode>;
     }
@@ -1212,6 +1308,9 @@ export namespace Clutter {
         ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PointerA11yDwellClickType {
         export const $gtype: GObject.GType<PointerA11yDwellClickType>;
     }
@@ -1232,6 +1331,9 @@ export namespace Clutter {
         DRAG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PointerA11yDwellDirection {
         export const $gtype: GObject.GType<PointerA11yDwellDirection>;
     }
@@ -1248,6 +1350,9 @@ export namespace Clutter {
         DOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PointerA11yDwellMode {
         export const $gtype: GObject.GType<PointerA11yDwellMode>;
     }
@@ -1261,6 +1366,9 @@ export namespace Clutter {
         GESTURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PointerA11yTimeoutType {
         export const $gtype: GObject.GType<PointerA11yTimeoutType>;
     }
@@ -1275,6 +1383,9 @@ export namespace Clutter {
         GESTURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PreeditResetMode {
         export const $gtype: GObject.GType<PreeditResetMode>;
     }
@@ -1287,6 +1398,9 @@ export namespace Clutter {
         COMMIT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RequestMode {
         export const $gtype: GObject.GType<RequestMode>;
     }
@@ -1311,6 +1425,9 @@ export namespace Clutter {
         CONTENT_SIZE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RotateAxis {
         export const $gtype: GObject.GType<RotateAxis>;
     }
@@ -1334,6 +1451,9 @@ export namespace Clutter {
         Z_AXIS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RotateDirection {
         export const $gtype: GObject.GType<RotateDirection>;
     }
@@ -1354,6 +1474,9 @@ export namespace Clutter {
         CCW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScalingFilter {
         export const $gtype: GObject.GType<ScalingFilter>;
     }
@@ -1412,6 +1535,9 @@ export namespace Clutter {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScrollDirection {
         export const $gtype: GObject.GType<ScrollDirection>;
     }
@@ -1446,6 +1572,9 @@ export namespace Clutter {
         SMOOTH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScrollSource {
         export const $gtype: GObject.GType<ScrollSource>;
     }
@@ -1478,6 +1607,9 @@ export namespace Clutter {
         CONTINUOUS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ShaderType {
         export const $gtype: GObject.GType<ShaderType>;
     }
@@ -1497,6 +1629,9 @@ export namespace Clutter {
         FRAGMENT_SHADER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SnapEdge {
         export const $gtype: GObject.GType<SnapEdge>;
     }
@@ -1524,6 +1659,9 @@ export namespace Clutter {
         LEFT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StaticColor {
         export const $gtype: GObject.GType<StaticColor>;
     }
@@ -1715,6 +1853,9 @@ export namespace Clutter {
         TRANSPARENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StepMode {
         export const $gtype: GObject.GType<StepMode>;
     }
@@ -1740,6 +1881,9 @@ export namespace Clutter {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextDirection {
         export const $gtype: GObject.GType<TextDirection>;
     }
@@ -1764,6 +1908,9 @@ export namespace Clutter {
         RTL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextureQuality {
         export const $gtype: GObject.GType<TextureQuality>;
     }
@@ -1791,6 +1938,9 @@ export namespace Clutter {
         HIGH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TimelineDirection {
         export const $gtype: GObject.GType<TimelineDirection>;
     }
@@ -1810,6 +1960,9 @@ export namespace Clutter {
         BACKWARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TouchpadGesturePhase {
         export const $gtype: GObject.GType<TouchpadGesturePhase>;
     }
@@ -1858,6 +2011,9 @@ export namespace Clutter {
         CANCEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UnitType {
         export const $gtype: GObject.GType<UnitType>;
     }
@@ -4835,6 +4991,9 @@ export namespace Clutter {
     interface TimelineProgressFunc {
         (timeline: Timeline, elapsed: number, total: number): number;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace ActorFlags {
         export const $gtype: GObject.GType<ActorFlags>;
     }
@@ -4871,6 +5030,9 @@ export namespace Clutter {
         NO_LAYOUT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ContentRepeat {
         export const $gtype: GObject.GType<ContentRepeat>;
     }
@@ -4898,6 +5060,9 @@ export namespace Clutter {
         BOTH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DebugFlag {
         export const $gtype: GObject.GType<DebugFlag>;
     }
@@ -4929,6 +5094,9 @@ export namespace Clutter {
         FRAME_CLOCK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DrawDebugFlag {
         export const $gtype: GObject.GType<DrawDebugFlag>;
     }
@@ -4950,6 +5118,9 @@ export namespace Clutter {
         PAINT_MAX_RENDER_TIME,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace EffectPaintFlags {
         export const $gtype: GObject.GType<EffectPaintFlags>;
     }
@@ -4973,6 +5144,9 @@ export namespace Clutter {
         BYPASS_EFFECT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace EventFlags {
         export const $gtype: GObject.GType<EventFlags>;
     }
@@ -4999,6 +5173,9 @@ export namespace Clutter {
         FLAG_GRAB_NOTIFY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FrameInfoFlag {
         export const $gtype: GObject.GType<FrameInfoFlag>;
     }
@@ -5013,6 +5190,9 @@ export namespace Clutter {
         VSYNC,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GrabState {
         export const $gtype: GObject.GType<GrabState>;
     }
@@ -5027,6 +5207,9 @@ export namespace Clutter {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace InputAxisFlags {
         export const $gtype: GObject.GType<InputAxisFlags>;
     }
@@ -5047,6 +5230,9 @@ export namespace Clutter {
         SLIDER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace InputCapabilities {
         export const $gtype: GObject.GType<InputCapabilities>;
     }
@@ -5066,6 +5252,9 @@ export namespace Clutter {
         TRACKPOINT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace InputContentHintFlags {
         export const $gtype: GObject.GType<InputContentHintFlags>;
     }
@@ -5086,6 +5275,9 @@ export namespace Clutter {
         MULTILINE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }
@@ -5188,6 +5380,9 @@ export namespace Clutter {
         MODIFIER_MASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace OffscreenRedirect {
         export const $gtype: GObject.GType<OffscreenRedirect>;
     }
@@ -5217,6 +5412,9 @@ export namespace Clutter {
         ON_IDLE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PaintFlag {
         export const $gtype: GObject.GType<PaintFlag>;
     }
@@ -5231,6 +5429,9 @@ export namespace Clutter {
         CLEAR,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PickDebugFlag {
         export const $gtype: GObject.GType<PickDebugFlag>;
     }
@@ -5242,6 +5443,9 @@ export namespace Clutter {
         PICKING,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PointerA11yFlags {
         export const $gtype: GObject.GType<PointerA11yFlags>;
     }
@@ -5255,6 +5459,9 @@ export namespace Clutter {
         DWELL_ENABLED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RepaintFlags {
         export const $gtype: GObject.GType<RepaintFlags>;
     }
@@ -5276,6 +5483,9 @@ export namespace Clutter {
         POST_PAINT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ScrollFinishFlags {
         export const $gtype: GObject.GType<ScrollFinishFlags>;
     }
@@ -5301,6 +5511,9 @@ export namespace Clutter {
         VERTICAL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ScrollMode {
         export const $gtype: GObject.GType<ScrollMode>;
     }
@@ -5328,6 +5541,9 @@ export namespace Clutter {
         BOTH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SwipeDirection {
         export const $gtype: GObject.GType<SwipeDirection>;
     }
@@ -5355,6 +5571,9 @@ export namespace Clutter {
         RIGHT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TextureFlags {
         export const $gtype: GObject.GType<TextureFlags>;
     }
@@ -5383,6 +5602,9 @@ export namespace Clutter {
         YUV_FLAG_YUV2,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VirtualDeviceType {
         export const $gtype: GObject.GType<VirtualDeviceType>;
     }
@@ -5489,12 +5711,14 @@ export namespace Clutter {
              * The signal is emitted each time a mouse button
              * is pressed on `actor`.
              * @signal
+             * @run-last
              */
             'button-press-event': (arg0: ButtonEvent) => boolean | void;
             /**
              * The signal is emitted each time a mouse button
              * is released on `actor`.
              * @signal
+             * @run-last
              */
             'button-release-event': (arg0: ButtonEvent) => boolean | void;
             /**
@@ -5506,6 +5730,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event': (arg0: Event) => boolean | void;
             /**
@@ -5524,11 +5750,13 @@ export namespace Clutter {
              * their children. When overriding the default class handler, it is
              * required to chain up to the parent's implementation.
              * @signal
+             * @run-cleanup
              */
             destroy: () => void;
             /**
              * The signal is emitted when the pointer enters the `actor`
              * @signal
+             * @run-last
              */
             'enter-event': (arg0: CrossingEvent) => boolean | void;
             /**
@@ -5537,28 +5765,34 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             event: (arg0: Event) => boolean | void;
             /**
              * The signal is emitted when an actor is no longer rendered
              * on the stage.
              * @signal
+             * @run-first
              */
             hide: () => void;
             /**
              * The signal is emitted when `actor` receives key focus.
              * @signal
+             * @run-last
              */
             'key-focus-in': () => void;
             /**
              * The signal is emitted when `actor` loses key focus.
              * @signal
+             * @run-last
              */
             'key-focus-out': () => void;
             /**
              * The signal is emitted each time a keyboard button
              * is pressed while `actor` has key focus (see `clutter_stage_set_key_focus()`).
              * @signal
+             * @run-last
              */
             'key-press-event': (arg0: KeyEvent) => boolean | void;
             /**
@@ -5566,22 +5800,26 @@ export namespace Clutter {
              * is released while `actor` has key focus (see
              * `clutter_stage_set_key_focus()`).
              * @signal
+             * @run-last
              */
             'key-release-event': (arg0: KeyEvent) => boolean | void;
             /**
              * The signal is emitted when the pointer leaves the `actor`.
              * @signal
+             * @run-last
              */
             'leave-event': (arg0: CrossingEvent) => boolean | void;
             /**
              * The signal is emitted each time the mouse pointer is
              * moved over `actor`.
              * @signal
+             * @run-last
              */
             'motion-event': (arg0: MotionEvent) => boolean | void;
             /**
              * This signal is emitted when the parent of the actor changes.
              * @signal
+             * @run-last
              */
             'parent-set': (arg0: Actor | null) => void;
             /**
@@ -5596,6 +5834,7 @@ export namespace Clutter {
              * to set up some custom aspect of a paint in pick mode.
              * @signal
              * @deprecated since 1.12: Override the {@link Clutter.ActorClass}.pick virtual function   instead.
+             * @run-last
              */
             pick: (arg0: PickContext) => void;
             /**
@@ -5610,6 +5849,7 @@ export namespace Clutter {
              * properly in the procense of {@link Clutter.Clone} actors. Applications will
              * not normally need to connect to this signal.
              * @signal
+             * @run-last
              */
             'queue-relayout': () => void;
             /**
@@ -5617,6 +5857,7 @@ export namespace Clutter {
              * realized.
              * @signal
              * @deprecated since 1.16: The signal should not be used in newly   written code
+             * @run-last
              */
             realize: () => void;
             /**
@@ -5626,18 +5867,21 @@ export namespace Clutter {
              * This signal can be used to get notified about the correct resource scale
              * when the scale had to be queried outside of the paint cycle.
              * @signal
+             * @run-last
              */
             'resource-scale-changed': () => void;
             /**
              * The signal is emitted each time the mouse is
              * scrolled on `actor`
              * @signal
+             * @run-last
              */
             'scroll-event': (arg0: ScrollEvent) => boolean | void;
             /**
              * The signal is emitted when an actor is visible and
              * rendered on the stage.
              * @signal
+             * @run-first
              */
             show: () => void;
             /**
@@ -5649,12 +5893,14 @@ export namespace Clutter {
              * or when the views of the stage have been invalidated and will be
              * replaced; it's not emitted when the actor gets hidden.
              * @signal
+             * @run-last
              */
             'stage-views-changed': () => void;
             /**
              * The signal is emitted each time a touch
              * begin/end/update/cancel event.
              * @signal
+             * @run-last
              */
             'touch-event': (arg0: Event) => boolean | void;
             /**
@@ -5664,12 +5910,15 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped': (arg0: string, arg1: boolean) => void;
             /**
              * The signal is emitted once all transitions
              * involving `actor` are complete.
              * @signal
+             * @run-last
              */
             'transitions-completed': () => void;
             /**
@@ -5677,6 +5926,7 @@ export namespace Clutter {
              * unrealized.
              * @signal
              * @deprecated since 1.16: The signal should not be used in newly   written code
+             * @run-last
              */
             unrealize: () => void;
             'notify::actions': (pspec: GObject.ParamSpec) => void;
@@ -5759,6 +6009,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::actions': (arg0: Event) => boolean | void;
             /**
@@ -5770,6 +6022,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::allocation': (arg0: Event) => boolean | void;
             /**
@@ -5781,6 +6035,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::background-color': (arg0: Event) => boolean | void;
             /**
@@ -5792,6 +6048,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::background-color-set': (arg0: Event) => boolean | void;
             /**
@@ -5803,6 +6061,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::child-transform': (arg0: Event) => boolean | void;
             /**
@@ -5814,6 +6074,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::child-transform-set': (arg0: Event) => boolean | void;
             /**
@@ -5825,6 +6087,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::clip-rect': (arg0: Event) => boolean | void;
             /**
@@ -5836,6 +6100,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::clip-to-allocation': (arg0: Event) => boolean | void;
             /**
@@ -5847,6 +6113,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::color-state': (arg0: Event) => boolean | void;
             /**
@@ -5858,6 +6126,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::constraints': (arg0: Event) => boolean | void;
             /**
@@ -5869,6 +6139,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::content': (arg0: Event) => boolean | void;
             /**
@@ -5880,6 +6152,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::content-box': (arg0: Event) => boolean | void;
             /**
@@ -5891,6 +6165,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::content-gravity': (arg0: Event) => boolean | void;
             /**
@@ -5902,6 +6178,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::content-repeat': (arg0: Event) => boolean | void;
             /**
@@ -5913,6 +6191,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::effect': (arg0: Event) => boolean | void;
             /**
@@ -5924,6 +6204,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::first-child': (arg0: Event) => boolean | void;
             /**
@@ -5935,6 +6217,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::fixed-position-set': (arg0: Event) => boolean | void;
             /**
@@ -5946,6 +6230,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::fixed-x': (arg0: Event) => boolean | void;
             /**
@@ -5957,6 +6243,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::fixed-y': (arg0: Event) => boolean | void;
             /**
@@ -5968,6 +6256,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::has-clip': (arg0: Event) => boolean | void;
             /**
@@ -5979,6 +6269,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::has-pointer': (arg0: Event) => boolean | void;
             /**
@@ -5990,6 +6282,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::height': (arg0: Event) => boolean | void;
             /**
@@ -6001,6 +6295,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::last-child': (arg0: Event) => boolean | void;
             /**
@@ -6012,6 +6308,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::layout-manager': (arg0: Event) => boolean | void;
             /**
@@ -6023,6 +6321,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::magnification-filter': (arg0: Event) => boolean | void;
             /**
@@ -6034,6 +6334,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::mapped': (arg0: Event) => boolean | void;
             /**
@@ -6045,6 +6347,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::margin-bottom': (arg0: Event) => boolean | void;
             /**
@@ -6056,6 +6360,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::margin-left': (arg0: Event) => boolean | void;
             /**
@@ -6067,6 +6373,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::margin-right': (arg0: Event) => boolean | void;
             /**
@@ -6078,6 +6386,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::margin-top': (arg0: Event) => boolean | void;
             /**
@@ -6089,6 +6399,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::min-height': (arg0: Event) => boolean | void;
             /**
@@ -6100,6 +6412,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::min-height-set': (arg0: Event) => boolean | void;
             /**
@@ -6111,6 +6425,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::min-width': (arg0: Event) => boolean | void;
             /**
@@ -6122,6 +6438,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::min-width-set': (arg0: Event) => boolean | void;
             /**
@@ -6133,6 +6451,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::minification-filter': (arg0: Event) => boolean | void;
             /**
@@ -6144,6 +6464,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::name': (arg0: Event) => boolean | void;
             /**
@@ -6155,6 +6477,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::natural-height': (arg0: Event) => boolean | void;
             /**
@@ -6166,6 +6490,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::natural-height-set': (arg0: Event) => boolean | void;
             /**
@@ -6177,6 +6503,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::natural-width': (arg0: Event) => boolean | void;
             /**
@@ -6188,6 +6516,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::natural-width-set': (arg0: Event) => boolean | void;
             /**
@@ -6199,6 +6529,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::offscreen-redirect': (arg0: Event) => boolean | void;
             /**
@@ -6210,6 +6542,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::opacity': (arg0: Event) => boolean | void;
             /**
@@ -6221,6 +6555,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::pivot-point': (arg0: Event) => boolean | void;
             /**
@@ -6232,6 +6568,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::pivot-point-z': (arg0: Event) => boolean | void;
             /**
@@ -6243,6 +6581,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::position': (arg0: Event) => boolean | void;
             /**
@@ -6254,6 +6594,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::reactive': (arg0: Event) => boolean | void;
             /**
@@ -6265,6 +6607,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::realized': (arg0: Event) => boolean | void;
             /**
@@ -6276,6 +6620,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::request-mode': (arg0: Event) => boolean | void;
             /**
@@ -6287,6 +6633,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::rotation-angle-x': (arg0: Event) => boolean | void;
             /**
@@ -6298,6 +6646,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::rotation-angle-y': (arg0: Event) => boolean | void;
             /**
@@ -6309,6 +6659,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::rotation-angle-z': (arg0: Event) => boolean | void;
             /**
@@ -6320,6 +6672,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::scale-x': (arg0: Event) => boolean | void;
             /**
@@ -6331,6 +6685,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::scale-y': (arg0: Event) => boolean | void;
             /**
@@ -6342,6 +6698,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::scale-z': (arg0: Event) => boolean | void;
             /**
@@ -6353,6 +6711,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::show-on-set-parent': (arg0: Event) => boolean | void;
             /**
@@ -6364,6 +6724,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::size': (arg0: Event) => boolean | void;
             /**
@@ -6375,6 +6737,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::text-direction': (arg0: Event) => boolean | void;
             /**
@@ -6386,6 +6750,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::transform': (arg0: Event) => boolean | void;
             /**
@@ -6397,6 +6763,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::transform-set': (arg0: Event) => boolean | void;
             /**
@@ -6408,6 +6776,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::translation-x': (arg0: Event) => boolean | void;
             /**
@@ -6419,6 +6789,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::translation-y': (arg0: Event) => boolean | void;
             /**
@@ -6430,6 +6802,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::translation-z': (arg0: Event) => boolean | void;
             /**
@@ -6441,6 +6815,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::visible': (arg0: Event) => boolean | void;
             /**
@@ -6452,6 +6828,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::width': (arg0: Event) => boolean | void;
             /**
@@ -6463,6 +6841,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::x': (arg0: Event) => boolean | void;
             /**
@@ -6474,6 +6854,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::x-align': (arg0: Event) => boolean | void;
             /**
@@ -6485,6 +6867,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::x-expand': (arg0: Event) => boolean | void;
             /**
@@ -6496,6 +6880,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::y': (arg0: Event) => boolean | void;
             /**
@@ -6507,6 +6893,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::y-align': (arg0: Event) => boolean | void;
             /**
@@ -6518,6 +6906,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::y-expand': (arg0: Event) => boolean | void;
             /**
@@ -6529,6 +6919,8 @@ export namespace Clutter {
              * ClutterActor::button-press-event or ::key-released-event) are
              * emitted.
              * @signal
+             * @detailed
+             * @run-last
              */
             'captured-event::z-position': (arg0: Event) => boolean | void;
             /**
@@ -6537,6 +6929,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::actions': (arg0: Event) => boolean | void;
             /**
@@ -6545,6 +6939,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::allocation': (arg0: Event) => boolean | void;
             /**
@@ -6553,6 +6949,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::background-color': (arg0: Event) => boolean | void;
             /**
@@ -6561,6 +6959,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::background-color-set': (arg0: Event) => boolean | void;
             /**
@@ -6569,6 +6969,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::child-transform': (arg0: Event) => boolean | void;
             /**
@@ -6577,6 +6979,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::child-transform-set': (arg0: Event) => boolean | void;
             /**
@@ -6585,6 +6989,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::clip-rect': (arg0: Event) => boolean | void;
             /**
@@ -6593,6 +6999,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::clip-to-allocation': (arg0: Event) => boolean | void;
             /**
@@ -6601,6 +7009,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::color-state': (arg0: Event) => boolean | void;
             /**
@@ -6609,6 +7019,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::constraints': (arg0: Event) => boolean | void;
             /**
@@ -6617,6 +7029,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::content': (arg0: Event) => boolean | void;
             /**
@@ -6625,6 +7039,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::content-box': (arg0: Event) => boolean | void;
             /**
@@ -6633,6 +7049,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::content-gravity': (arg0: Event) => boolean | void;
             /**
@@ -6641,6 +7059,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::content-repeat': (arg0: Event) => boolean | void;
             /**
@@ -6649,6 +7069,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::effect': (arg0: Event) => boolean | void;
             /**
@@ -6657,6 +7079,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::first-child': (arg0: Event) => boolean | void;
             /**
@@ -6665,6 +7089,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::fixed-position-set': (arg0: Event) => boolean | void;
             /**
@@ -6673,6 +7099,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::fixed-x': (arg0: Event) => boolean | void;
             /**
@@ -6681,6 +7109,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::fixed-y': (arg0: Event) => boolean | void;
             /**
@@ -6689,6 +7119,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::has-clip': (arg0: Event) => boolean | void;
             /**
@@ -6697,6 +7129,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::has-pointer': (arg0: Event) => boolean | void;
             /**
@@ -6705,6 +7139,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::height': (arg0: Event) => boolean | void;
             /**
@@ -6713,6 +7149,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::last-child': (arg0: Event) => boolean | void;
             /**
@@ -6721,6 +7159,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::layout-manager': (arg0: Event) => boolean | void;
             /**
@@ -6729,6 +7169,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::magnification-filter': (arg0: Event) => boolean | void;
             /**
@@ -6737,6 +7179,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::mapped': (arg0: Event) => boolean | void;
             /**
@@ -6745,6 +7189,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::margin-bottom': (arg0: Event) => boolean | void;
             /**
@@ -6753,6 +7199,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::margin-left': (arg0: Event) => boolean | void;
             /**
@@ -6761,6 +7209,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::margin-right': (arg0: Event) => boolean | void;
             /**
@@ -6769,6 +7219,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::margin-top': (arg0: Event) => boolean | void;
             /**
@@ -6777,6 +7229,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::min-height': (arg0: Event) => boolean | void;
             /**
@@ -6785,6 +7239,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::min-height-set': (arg0: Event) => boolean | void;
             /**
@@ -6793,6 +7249,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::min-width': (arg0: Event) => boolean | void;
             /**
@@ -6801,6 +7259,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::min-width-set': (arg0: Event) => boolean | void;
             /**
@@ -6809,6 +7269,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::minification-filter': (arg0: Event) => boolean | void;
             /**
@@ -6817,6 +7279,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::name': (arg0: Event) => boolean | void;
             /**
@@ -6825,6 +7289,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::natural-height': (arg0: Event) => boolean | void;
             /**
@@ -6833,6 +7299,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::natural-height-set': (arg0: Event) => boolean | void;
             /**
@@ -6841,6 +7309,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::natural-width': (arg0: Event) => boolean | void;
             /**
@@ -6849,6 +7319,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::natural-width-set': (arg0: Event) => boolean | void;
             /**
@@ -6857,6 +7329,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::offscreen-redirect': (arg0: Event) => boolean | void;
             /**
@@ -6865,6 +7339,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::opacity': (arg0: Event) => boolean | void;
             /**
@@ -6873,6 +7349,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::pivot-point': (arg0: Event) => boolean | void;
             /**
@@ -6881,6 +7359,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::pivot-point-z': (arg0: Event) => boolean | void;
             /**
@@ -6889,6 +7369,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::position': (arg0: Event) => boolean | void;
             /**
@@ -6897,6 +7379,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::reactive': (arg0: Event) => boolean | void;
             /**
@@ -6905,6 +7389,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::realized': (arg0: Event) => boolean | void;
             /**
@@ -6913,6 +7399,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::request-mode': (arg0: Event) => boolean | void;
             /**
@@ -6921,6 +7409,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::rotation-angle-x': (arg0: Event) => boolean | void;
             /**
@@ -6929,6 +7419,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::rotation-angle-y': (arg0: Event) => boolean | void;
             /**
@@ -6937,6 +7429,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::rotation-angle-z': (arg0: Event) => boolean | void;
             /**
@@ -6945,6 +7439,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::scale-x': (arg0: Event) => boolean | void;
             /**
@@ -6953,6 +7449,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::scale-y': (arg0: Event) => boolean | void;
             /**
@@ -6961,6 +7459,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::scale-z': (arg0: Event) => boolean | void;
             /**
@@ -6969,6 +7469,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::show-on-set-parent': (arg0: Event) => boolean | void;
             /**
@@ -6977,6 +7479,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::size': (arg0: Event) => boolean | void;
             /**
@@ -6985,6 +7489,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::text-direction': (arg0: Event) => boolean | void;
             /**
@@ -6993,6 +7499,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::transform': (arg0: Event) => boolean | void;
             /**
@@ -7001,6 +7509,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::transform-set': (arg0: Event) => boolean | void;
             /**
@@ -7009,6 +7519,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::translation-x': (arg0: Event) => boolean | void;
             /**
@@ -7017,6 +7529,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::translation-y': (arg0: Event) => boolean | void;
             /**
@@ -7025,6 +7539,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::translation-z': (arg0: Event) => boolean | void;
             /**
@@ -7033,6 +7549,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::visible': (arg0: Event) => boolean | void;
             /**
@@ -7041,6 +7559,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::width': (arg0: Event) => boolean | void;
             /**
@@ -7049,6 +7569,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::x': (arg0: Event) => boolean | void;
             /**
@@ -7057,6 +7579,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::x-align': (arg0: Event) => boolean | void;
             /**
@@ -7065,6 +7589,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::x-expand': (arg0: Event) => boolean | void;
             /**
@@ -7073,6 +7599,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::y': (arg0: Event) => boolean | void;
             /**
@@ -7081,6 +7609,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::y-align': (arg0: Event) => boolean | void;
             /**
@@ -7089,6 +7619,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::y-expand': (arg0: Event) => boolean | void;
             /**
@@ -7097,6 +7629,8 @@ export namespace Clutter {
              * following the hierarchy chain, until it reaches the top-level
              * container (the {@link Clutter.Stage}).
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::z-position': (arg0: Event) => boolean | void;
             /**
@@ -7106,6 +7640,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::actions': (arg0: string, arg1: boolean) => void;
             /**
@@ -7115,6 +7651,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::allocation': (arg0: string, arg1: boolean) => void;
             /**
@@ -7124,6 +7662,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::background-color': (arg0: string, arg1: boolean) => void;
             /**
@@ -7133,6 +7673,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::background-color-set': (arg0: string, arg1: boolean) => void;
             /**
@@ -7142,6 +7684,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::child-transform': (arg0: string, arg1: boolean) => void;
             /**
@@ -7151,6 +7695,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::child-transform-set': (arg0: string, arg1: boolean) => void;
             /**
@@ -7160,6 +7706,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::clip-rect': (arg0: string, arg1: boolean) => void;
             /**
@@ -7169,6 +7717,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::clip-to-allocation': (arg0: string, arg1: boolean) => void;
             /**
@@ -7178,6 +7728,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::color-state': (arg0: string, arg1: boolean) => void;
             /**
@@ -7187,6 +7739,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::constraints': (arg0: string, arg1: boolean) => void;
             /**
@@ -7196,6 +7750,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::content': (arg0: string, arg1: boolean) => void;
             /**
@@ -7205,6 +7761,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::content-box': (arg0: string, arg1: boolean) => void;
             /**
@@ -7214,6 +7772,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::content-gravity': (arg0: string, arg1: boolean) => void;
             /**
@@ -7223,6 +7783,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::content-repeat': (arg0: string, arg1: boolean) => void;
             /**
@@ -7232,6 +7794,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::effect': (arg0: string, arg1: boolean) => void;
             /**
@@ -7241,6 +7805,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::first-child': (arg0: string, arg1: boolean) => void;
             /**
@@ -7250,6 +7816,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::fixed-position-set': (arg0: string, arg1: boolean) => void;
             /**
@@ -7259,6 +7827,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::fixed-x': (arg0: string, arg1: boolean) => void;
             /**
@@ -7268,6 +7838,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::fixed-y': (arg0: string, arg1: boolean) => void;
             /**
@@ -7277,6 +7849,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::has-clip': (arg0: string, arg1: boolean) => void;
             /**
@@ -7286,6 +7860,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::has-pointer': (arg0: string, arg1: boolean) => void;
             /**
@@ -7295,6 +7871,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::height': (arg0: string, arg1: boolean) => void;
             /**
@@ -7304,6 +7882,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::last-child': (arg0: string, arg1: boolean) => void;
             /**
@@ -7313,6 +7893,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::layout-manager': (arg0: string, arg1: boolean) => void;
             /**
@@ -7322,6 +7904,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::magnification-filter': (arg0: string, arg1: boolean) => void;
             /**
@@ -7331,6 +7915,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::mapped': (arg0: string, arg1: boolean) => void;
             /**
@@ -7340,6 +7926,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::margin-bottom': (arg0: string, arg1: boolean) => void;
             /**
@@ -7349,6 +7937,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::margin-left': (arg0: string, arg1: boolean) => void;
             /**
@@ -7358,6 +7948,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::margin-right': (arg0: string, arg1: boolean) => void;
             /**
@@ -7367,6 +7959,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::margin-top': (arg0: string, arg1: boolean) => void;
             /**
@@ -7376,6 +7970,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::min-height': (arg0: string, arg1: boolean) => void;
             /**
@@ -7385,6 +7981,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::min-height-set': (arg0: string, arg1: boolean) => void;
             /**
@@ -7394,6 +7992,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::min-width': (arg0: string, arg1: boolean) => void;
             /**
@@ -7403,6 +8003,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::min-width-set': (arg0: string, arg1: boolean) => void;
             /**
@@ -7412,6 +8014,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::minification-filter': (arg0: string, arg1: boolean) => void;
             /**
@@ -7421,6 +8025,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::name': (arg0: string, arg1: boolean) => void;
             /**
@@ -7430,6 +8036,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::natural-height': (arg0: string, arg1: boolean) => void;
             /**
@@ -7439,6 +8047,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::natural-height-set': (arg0: string, arg1: boolean) => void;
             /**
@@ -7448,6 +8058,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::natural-width': (arg0: string, arg1: boolean) => void;
             /**
@@ -7457,6 +8069,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::natural-width-set': (arg0: string, arg1: boolean) => void;
             /**
@@ -7466,6 +8080,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::offscreen-redirect': (arg0: string, arg1: boolean) => void;
             /**
@@ -7475,6 +8091,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::opacity': (arg0: string, arg1: boolean) => void;
             /**
@@ -7484,6 +8102,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::pivot-point': (arg0: string, arg1: boolean) => void;
             /**
@@ -7493,6 +8113,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::pivot-point-z': (arg0: string, arg1: boolean) => void;
             /**
@@ -7502,6 +8124,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::position': (arg0: string, arg1: boolean) => void;
             /**
@@ -7511,6 +8135,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::reactive': (arg0: string, arg1: boolean) => void;
             /**
@@ -7520,6 +8146,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::realized': (arg0: string, arg1: boolean) => void;
             /**
@@ -7529,6 +8157,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::request-mode': (arg0: string, arg1: boolean) => void;
             /**
@@ -7538,6 +8168,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::rotation-angle-x': (arg0: string, arg1: boolean) => void;
             /**
@@ -7547,6 +8179,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::rotation-angle-y': (arg0: string, arg1: boolean) => void;
             /**
@@ -7556,6 +8190,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::rotation-angle-z': (arg0: string, arg1: boolean) => void;
             /**
@@ -7565,6 +8201,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::scale-x': (arg0: string, arg1: boolean) => void;
             /**
@@ -7574,6 +8212,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::scale-y': (arg0: string, arg1: boolean) => void;
             /**
@@ -7583,6 +8223,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::scale-z': (arg0: string, arg1: boolean) => void;
             /**
@@ -7592,6 +8234,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::show-on-set-parent': (arg0: string, arg1: boolean) => void;
             /**
@@ -7601,6 +8245,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::size': (arg0: string, arg1: boolean) => void;
             /**
@@ -7610,6 +8256,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::text-direction': (arg0: string, arg1: boolean) => void;
             /**
@@ -7619,6 +8267,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::transform': (arg0: string, arg1: boolean) => void;
             /**
@@ -7628,6 +8278,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::transform-set': (arg0: string, arg1: boolean) => void;
             /**
@@ -7637,6 +8289,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::translation-x': (arg0: string, arg1: boolean) => void;
             /**
@@ -7646,6 +8300,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::translation-y': (arg0: string, arg1: boolean) => void;
             /**
@@ -7655,6 +8311,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::translation-z': (arg0: string, arg1: boolean) => void;
             /**
@@ -7664,6 +8322,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::visible': (arg0: string, arg1: boolean) => void;
             /**
@@ -7673,6 +8333,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::width': (arg0: string, arg1: boolean) => void;
             /**
@@ -7682,6 +8344,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::x': (arg0: string, arg1: boolean) => void;
             /**
@@ -7691,6 +8355,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::x-align': (arg0: string, arg1: boolean) => void;
             /**
@@ -7700,6 +8366,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::x-expand': (arg0: string, arg1: boolean) => void;
             /**
@@ -7709,6 +8377,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::y': (arg0: string, arg1: boolean) => void;
             /**
@@ -7718,6 +8388,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::y-align': (arg0: string, arg1: boolean) => void;
             /**
@@ -7727,6 +8399,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::y-expand': (arg0: string, arg1: boolean) => void;
             /**
@@ -7736,6 +8410,8 @@ export namespace Clutter {
              * using `clutter_timeline_stop()`, or it has been removed from the
              * transitions applied on `actor`, using `clutter_actor_remove_transition()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'transition-stopped::z-position': (arg0: string, arg1: boolean) => void;
         }
@@ -8379,6 +9055,7 @@ export namespace Clutter {
 
         /**
          * Adds a {@link Clutter.Action} to the actor
+         * @write-only
          */
         set actions(val: Action);
         /**
@@ -8386,6 +9063,7 @@ export namespace Clutter {
          *
          * This is property is read-only, but you might monitor it to know when an
          * actor moves or resizes
+         * @read-only
          */
         get allocation(): ActorBox;
         /**
@@ -8406,10 +9084,12 @@ export namespace Clutter {
         set backgroundColor(val: Color);
         /**
          * Whether the {@link Clutter.Actor.background_color} property has been set.
+         * @read-only
          */
         get background_color_set(): boolean;
         /**
          * Whether the {@link Clutter.Actor.background_color} property has been set.
+         * @read-only
          */
         get backgroundColorSet(): boolean;
         /**
@@ -8438,10 +9118,12 @@ export namespace Clutter {
         set childTransform(val: Graphene.Matrix);
         /**
          * Whether the {@link Clutter.Actor.child_transform} property is set.
+         * @read-only
          */
         get child_transform_set(): boolean;
         /**
          * Whether the {@link Clutter.Actor.child_transform} property is set.
+         * @read-only
          */
         get childTransformSet(): boolean;
         /**
@@ -8498,6 +9180,7 @@ export namespace Clutter {
         set colorState(val: ColorState);
         /**
          * Adds a {@link Clutter.Constraint} to the actor
+         * @write-only
          */
         set constraints(val: Constraint);
         /**
@@ -8514,6 +9197,7 @@ export namespace Clutter {
          *
          * The bounding box for the content is guaranteed to never exceed the
          * allocation's of the actor.
+         * @read-only
          */
         get content_box(): ActorBox;
         /**
@@ -8524,6 +9208,7 @@ export namespace Clutter {
          *
          * The bounding box for the content is guaranteed to never exceed the
          * allocation's of the actor.
+         * @read-only
          */
         get contentBox(): ActorBox;
         /**
@@ -8572,14 +9257,17 @@ export namespace Clutter {
         set contentRepeat(val: ContentRepeat);
         /**
          * Adds {@link Clutter.Effect} to the list of effects be applied on a {@link Clutter.Actor}
+         * @write-only
          */
         set effect(val: Effect);
         /**
          * The actor's first child.
+         * @read-only
          */
         get first_child(): Actor;
         /**
          * The actor's first child.
+         * @read-only
          */
         get firstChild(): Actor;
         /**
@@ -8628,20 +9316,24 @@ export namespace Clutter {
         set fixedY(val: number);
         /**
          * Whether the actor has the {@link Clutter.Actor.clip} property set or not
+         * @read-only
          */
         get has_clip(): boolean;
         /**
          * Whether the actor has the {@link Clutter.Actor.clip} property set or not
+         * @read-only
          */
         get hasClip(): boolean;
         /**
          * Whether the actor contains the pointer of a {@link Clutter.InputDevice}
          * or not.
+         * @read-only
          */
         get has_pointer(): boolean;
         /**
          * Whether the actor contains the pointer of a {@link Clutter.InputDevice}
          * or not.
+         * @read-only
          */
         get hasPointer(): boolean;
         /**
@@ -8655,10 +9347,12 @@ export namespace Clutter {
         set height(val: number);
         /**
          * The actor's last child.
+         * @read-only
          */
         get last_child(): Actor;
         /**
          * The actor's last child.
+         * @read-only
          */
         get lastChild(): Actor;
         /**
@@ -8680,6 +9374,7 @@ export namespace Clutter {
         /**
          * Whether the actor is mapped (will be painted when the stage
          * to which it belongs is mapped)
+         * @read-only
          */
         get mapped(): boolean;
         /**
@@ -8981,6 +9676,7 @@ export namespace Clutter {
         set reactive(val: boolean);
         /**
          * Whether the actor has been realized
+         * @read-only
          */
         get realized(): boolean;
         /**
@@ -9238,10 +9934,12 @@ export namespace Clutter {
         set transform(val: Graphene.Matrix);
         /**
          * Whether the {@link Clutter.Actor.transform} property is set.
+         * @read-only
          */
         get transform_set(): boolean;
         /**
          * Whether the {@link Clutter.Actor.transform} property is set.
+         * @read-only
          */
         get transformSet(): boolean;
         /**
@@ -12777,6 +13475,7 @@ export namespace Clutter {
 
         /**
          * The {@link Clutter.Actor} attached to the {@link Clutter.ActorMeta} instance
+         * @read-only
          */
         get actor(): Actor;
         /**
@@ -13116,18 +13815,21 @@ export namespace Clutter {
              * The signal is emitted each time the font options
              * have been changed through {@link Clutter.Settings}.
              * @signal
+             * @run-first
              */
             'font-changed': () => void;
             /**
              * The signal is emitted each time the font
              * resolutions has been changed through {@link Clutter.Settings}.
              * @signal
+             * @run-first
              */
             'resolution-changed': () => void;
             /**
              * The signal is emitted each time the {@link Clutter.Settings}
              * properties have been changed.
              * @signal
+             * @run-first
              */
             'settings-changed': () => void;
         }
@@ -13623,6 +14325,7 @@ export namespace Clutter {
 
         /**
          * The unique name of the {@link Clutter.BindingPool}.
+         * @construct-only
          */
         get name(): string;
 
@@ -14293,6 +14996,7 @@ export namespace Clutter {
              * handler invocation will be automatically protected by `cairo_save()`
              * and `cairo_restore()` pairs.
              * @signal
+             * @run-last
              */
             draw: (arg0: cairo.Context, arg1: number, arg2: number) => boolean | void;
             'notify::height': (pspec: GObject.ParamSpec) => void;
@@ -15021,10 +15725,12 @@ export namespace Clutter {
 
         /**
          * The {@link Clutter.Actor} being wrapped by this {@link Clutter.ChildMeta}
+         * @construct-only
          */
         get actor(): Actor;
         /**
          * The {@link Clutter.Container} that created this {@link Clutter.ChildMeta}.
+         * @construct-only
          */
         get container(): Container;
 
@@ -15086,6 +15792,7 @@ export namespace Clutter {
              * a {@link Clutter.ClickAction} has been applied should respond to a
              * pointer button press and release events
              * @signal
+             * @run-last
              */
             clicked: (arg0: Actor) => void;
             /**
@@ -15105,6 +15812,7 @@ export namespace Clutter {
              * It is possible to forcibly cancel a long press detection using
              * {@link ClickAction.release}.
              * @signal
+             * @run-last
              */
             'long-press': (arg0: Actor, arg1: LongPressState) => boolean | void;
             'notify::held': (pspec: GObject.ParamSpec) => void;
@@ -15198,6 +15906,7 @@ export namespace Clutter {
 
         /**
          * Whether the clickable actor has the pointer grabbed
+         * @read-only
          */
         get held(): boolean;
         /**
@@ -15238,6 +15947,7 @@ export namespace Clutter {
         set longPressThreshold(val: number);
         /**
          * Whether the clickable actor should be in "pressed" state
+         * @read-only
          */
         get pressed(): boolean;
 
@@ -16382,6 +17092,7 @@ export namespace Clutter {
         /**
          * Colorspace information of the each color state,
          * defaults to sRGB colorspace
+         * @construct-only
          */
         get colorspace(): Colorspace;
 
@@ -17570,6 +18281,7 @@ export namespace Clutter {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             destroy: () => void;
         }
@@ -17652,6 +18364,7 @@ export namespace Clutter {
              * The signal is emitted when the {@link Actor} to which
              * a {@link Clutter.GestureAction} has been applied starts receiving a gesture.
              * @signal
+             * @run-last
              */
             'gesture-begin': (arg0: Actor) => boolean | void;
             /**
@@ -17661,6 +18374,7 @@ export namespace Clutter {
              * This signal is emitted if and only if the `Clutter.GestureAction::gesture-begin`
              * signal has been emitted first.
              * @signal
+             * @run-last
              */
             'gesture-cancel': (arg0: Actor) => void;
             /**
@@ -17670,12 +18384,14 @@ export namespace Clutter {
              * This signal is emitted if and only if the `Clutter.GestureAction::gesture-begin`
              * signal has been emitted first.
              * @signal
+             * @run-last
              */
             'gesture-end': (arg0: Actor) => void;
             /**
              * The signal is emitted for each motion event after
              * the `Clutter.GestureAction::gesture-begin` signal has been emitted.
              * @signal
+             * @run-last
              */
             'gesture-progress': (arg0: Actor) => boolean | void;
             'notify::n-touch-points': (pspec: GObject.ParamSpec) => void;
@@ -17777,6 +18493,7 @@ export namespace Clutter {
          * the `Clutter.GestureAction::gesture-cancel` signal.
          *
          * A negative value will be interpreted as the default drag threshold.
+         * @construct-only
          */
         get threshold_trigger_distance_x(): number;
         /**
@@ -17785,6 +18502,7 @@ export namespace Clutter {
          * the `Clutter.GestureAction::gesture-cancel` signal.
          *
          * A negative value will be interpreted as the default drag threshold.
+         * @construct-only
          */
         get thresholdTriggerDistanceX(): number;
         /**
@@ -17793,6 +18511,7 @@ export namespace Clutter {
          * the `Clutter.GestureAction::gesture-cancel` signal.
          *
          * A negative value will be interpreted as the default drag threshold.
+         * @construct-only
          */
         get threshold_trigger_distance_y(): number;
         /**
@@ -17801,18 +18520,21 @@ export namespace Clutter {
          * the `Clutter.GestureAction::gesture-cancel` signal.
          *
          * A negative value will be interpreted as the default drag threshold.
+         * @construct-only
          */
         get thresholdTriggerDistanceY(): number;
         /**
          * The trigger edge to be used by the action to either emit the
          * `Clutter.GestureAction::gesture-begin` signal or to emit the
          * `Clutter.GestureAction::gesture-cancel` signal.
+         * @construct-only
          */
         get threshold_trigger_edge(): GestureTriggerEdge;
         /**
          * The trigger edge to be used by the action to either emit the
          * `Clutter.GestureAction::gesture-begin` signal or to emit the
          * `Clutter.GestureAction::gesture-cancel` signal.
+         * @construct-only
          */
         get thresholdTriggerEdge(): GestureTriggerEdge;
 
@@ -18999,58 +19721,105 @@ export namespace Clutter {
 
         /**
          * The capabilities of the device
+         * @construct-only
          */
         get capabilities(): InputCapabilities;
+        /**
+         * @construct-only
+         */
         get device_mode(): InputMode;
+        /**
+         * @construct-only
+         */
         get deviceMode(): InputMode;
+        /**
+         * @construct-only
+         */
         get device_node(): string;
+        /**
+         * @construct-only
+         */
         get deviceNode(): string;
         /**
          * The type of the device
+         * @construct-only
          */
         get device_type(): InputDeviceType;
         /**
          * The type of the device
+         * @construct-only
          */
         get deviceType(): InputDeviceType;
         /**
          * Whether the device has an on screen cursor following its movement.
+         * @construct-only
          */
         get has_cursor(): boolean;
         /**
          * Whether the device has an on screen cursor following its movement.
+         * @construct-only
          */
         get hasCursor(): boolean;
+        /**
+         * @construct-only
+         */
         get n_buttons(): number;
+        /**
+         * @construct-only
+         */
         get nButtons(): number;
+        /**
+         * @construct-only
+         */
         get n_mode_groups(): number;
+        /**
+         * @construct-only
+         */
         get nModeGroups(): number;
+        /**
+         * @construct-only
+         */
         get n_rings(): number;
+        /**
+         * @construct-only
+         */
         get nRings(): number;
+        /**
+         * @construct-only
+         */
         get n_strips(): number;
+        /**
+         * @construct-only
+         */
         get nStrips(): number;
         /**
          * The name of the device
+         * @construct-only
          */
         get name(): string;
         /**
          * Product ID of this device.2
+         * @construct-only
          */
         get product_id(): string;
         /**
          * Product ID of this device.2
+         * @construct-only
          */
         get productId(): string;
         /**
          * The {@link Clutter.Seat} instance which owns the device
+         * @construct-only
          */
         get seat(): Seat;
         /**
          * Vendor ID of this device.2
+         * @construct-only
          */
         get vendor_id(): string;
         /**
          * Vendor ID of this device.2
+         * @construct-only
          */
         get vendorId(): string;
 
@@ -19222,9 +19991,21 @@ export namespace Clutter {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get axes(): InputAxisFlags;
+        /**
+         * @construct-only
+         */
         get id(): number;
+        /**
+         * @construct-only
+         */
         get serial(): number;
+        /**
+         * @construct-only
+         */
         get type(): InputDeviceToolType;
 
         /**
@@ -19411,22 +20192,27 @@ export namespace Clutter {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             commit: (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'cursor-location-changed': (arg0: Graphene.Rect) => void;
             /**
              * @signal
+             * @run-last
              */
             'delete-surrounding': (arg0: number, arg1: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'input-panel-state': (arg0: InputPanelState) => void;
             /**
              * @signal
+             * @run-last
              */
             'request-surrounding': () => void;
             'notify::can-show-preedit': (pspec: GObject.ParamSpec) => void;
@@ -19643,10 +20429,12 @@ export namespace Clutter {
         set initial(val: GObject.Value);
         /**
          * The type of the values in the interval.
+         * @construct-only
          */
         get value_type(): GObject.GType;
         /**
          * The type of the values in the interval.
+         * @construct-only
          */
         get valueType(): GObject.GType;
 
@@ -20927,6 +21715,7 @@ export namespace Clutter {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'state-changed': () => void;
             'notify::caps-lock-state': (pspec: GObject.ParamSpec) => void;
@@ -20951,9 +21740,21 @@ export namespace Clutter {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get caps_lock_state(): boolean;
+        /**
+         * @read-only
+         */
         get capsLockState(): boolean;
+        /**
+         * @read-only
+         */
         get num_lock_state(): boolean;
+        /**
+         * @read-only
+         */
         get numLockState(): boolean;
 
         /**
@@ -21081,6 +21882,7 @@ export namespace Clutter {
              * ::layout-changed signal whenever one of the parameters changes,
              * by using `clutter_layout_manager_layout_changed()`.
              * @signal
+             * @run-last
              */
             'layout-changed': () => void;
         }
@@ -21410,6 +22212,7 @@ export namespace Clutter {
 
         /**
          * The {@link LayoutManager} that created this {@link Clutter.LayoutMeta}.
+         * @construct-only
          */
         get manager(): LayoutManager;
 
@@ -21907,12 +22710,14 @@ export namespace Clutter {
              * interpolation phase of the pan, after the drag has ended and
              * the :interpolate property was set to `true`.
              * @signal
+             * @run-last
              */
             pan: (arg0: Actor, arg1: boolean) => boolean | void;
             /**
              * The signal is emitted at the end of the interpolation
              * phase of the pan action, only when :interpolate is set to `true`.
              * @signal
+             * @run-last
              */
             'pan-stopped': (arg0: Actor) => void;
             'notify::acceleration-factor': (pspec: GObject.ParamSpec) => void;
@@ -22202,6 +23007,9 @@ export namespace Clutter {
 
         get description(): string;
         set description(val: string);
+        /**
+         * @read-only
+         */
         get length(): number;
 
         /**
@@ -22433,6 +23241,7 @@ export namespace Clutter {
              * {@link Clutter.PathConstraint.offset} value results in the actor
              * passing a {@link Clutter.PathNode}
              * @signal
+             * @run-last
              */
             'node-reached': (arg0: Actor, arg1: number) => void;
             'notify::offset': (pspec: GObject.ParamSpec) => void;
@@ -23185,6 +23994,7 @@ export namespace Clutter {
              * recognized on the attached actor and when the gesture is
              * cancelled (in this case with an angle value of 0).
              * @signal
+             * @run-last
              */
             rotate: (arg0: Actor, arg1: number) => boolean | void;
             'notify::n-touch-points': (pspec: GObject.ParamSpec) => void;
@@ -23368,18 +24178,21 @@ export namespace Clutter {
         /**
          * The path of the currently parsed file. If {@link Script.filename_set}
          * is `false` then the value of this property is undefined.
+         * @read-only
          */
         get filename(): string;
         /**
          * Whether the {@link Script.filename} property is set. If this property
          * is `true` then the currently parsed data comes from a file, and the
          * file name is stored inside the {@link Script.filename} property.
+         * @read-only
          */
         get filename_set(): boolean;
         /**
          * Whether the {@link Script.filename} property is set. If this property
          * is `true` then the currently parsed data comes from a file, and the
          * file name is stored inside the {@link Script.filename} property.
+         * @read-only
          */
         get filenameSet(): boolean;
         /**
@@ -24532,10 +25345,12 @@ export namespace Clutter {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'device-added': (arg0: InputDevice) => void;
             /**
              * @signal
+             * @run-last
              */
             'device-removed': (arg0: InputDevice) => void;
             /**
@@ -24544,12 +25359,14 @@ export namespace Clutter {
              *
              * To get the current state of this property, use {@link Seat.is_unfocus_inhibited}.
              * @signal
+             * @run-last
              */
             'is-unfocus-inhibited-changed': () => void;
             /**
              * The signal is emitted each time the ClutterKeyboardA11yFlags
              * configuration is changed as the result of keyboard accessibility operations.
              * @signal
+             * @run-last
              */
             'kbd-a11y-flags-changed': (arg0: number, arg1: number) => void;
             /**
@@ -24557,18 +25374,21 @@ export namespace Clutter {
              * latched modifiers mask or locked modifiers mask are changed as the
              * result of keyboard accessibilty's sticky keys operations.
              * @signal
+             * @run-last
              */
             'kbd-a11y-mods-state-changed': (arg0: number, arg1: number) => void;
             /**
              * The signal is emitted each time the ClutterPointerA11yDwellClickType
              * mode is changed as the result of pointer accessibility operations.
              * @signal
+             * @run-last
              */
             'ptr-a11y-dwell-click-type-changed': (arg0: PointerA11yDwellClickType) => void;
             /**
              * The signal is emitted when a pointer accessibility timeout delay is started,
              * so that upper layers can notify the user with some visual feedback.
              * @signal
+             * @run-last
              */
             'ptr-a11y-timeout-started': (arg0: InputDevice, arg1: PointerA11yTimeoutType, arg2: number) => void;
             /**
@@ -24577,6 +25397,7 @@ export namespace Clutter {
              * the delay or cancelled, so that upper layers can notify the user
              * with some visual feedback.
              * @signal
+             * @run-last
              */
             'ptr-a11y-timeout-stopped': (arg0: InputDevice, arg1: PointerA11yTimeoutType, arg2: boolean) => void;
             'notify::touch-mode': (pspec: GObject.ParamSpec) => void;
@@ -24601,11 +25422,13 @@ export namespace Clutter {
         /**
          * The current touch-mode of the {@link Clutter.Seat}, it is set to `true` if the
          * requirements documented in {@link Seat.get_touch_mode} are fulfilled.
+         * @read-only
          */
         get touch_mode(): boolean;
         /**
          * The current touch-mode of the {@link Clutter.Seat}, it is set to `true` if the
          * requirements documented in {@link Seat.get_touch_mode} are fulfilled.
+         * @read-only
          */
         get touchMode(): boolean;
 
@@ -24877,6 +25700,7 @@ export namespace Clutter {
         /**
          * A back pointer to the {@link Backend}
          * @deprecated since 1.10
+         * @construct-only
          */
         set backend(val: Backend);
         /**
@@ -25015,7 +25839,13 @@ export namespace Clutter {
          */
         get fontSubpixelOrder(): string;
         set fontSubpixelOrder(val: string);
+        /**
+         * @write-only
+         */
         set fontconfig_timestamp(val: number);
+        /**
+         * @write-only
+         */
         set fontconfigTimestamp(val: number);
         /**
          * Sets the minimum duration for a press to be recognized as a long press
@@ -25037,7 +25867,13 @@ export namespace Clutter {
         set password_hint_time(val: number);
         get passwordHintTime(): number;
         set passwordHintTime(val: number);
+        /**
+         * @write-only
+         */
         set unscaled_font_dpi(val: number);
+        /**
+         * @write-only
+         */
         set unscaledFontDpi(val: number);
 
         /**
@@ -25196,12 +26032,14 @@ export namespace Clutter {
          * The type of shader that is used by the effect. This property
          * should be set by the constructor of {@link Clutter.ShaderEffect}
          * sub-classes.
+         * @construct-only
          */
         set shader_type(val: ShaderType);
         /**
          * The type of shader that is used by the effect. This property
          * should be set by the constructor of {@link Clutter.ShaderEffect}
          * sub-classes.
+         * @construct-only
          */
         set shaderType(val: ShaderType);
 
@@ -25555,31 +26393,37 @@ export namespace Clutter {
              * The signal is emitted when the stage receives key focus
              * from the underlying window system.
              * @signal
+             * @run-last
              */
             activate: () => void;
             /**
              * The signal is emitted after the stage is painted,
              * but before the results are displayed on the screen.0
              * @signal
+             * @run-last
              */
             'after-paint': (arg0: StageView, arg1: Frame) => void;
             /**
              * @signal
+             * @run-last
              */
             'after-update': (arg0: StageView, arg1: Frame) => void;
             /**
              * The signal is emitted before the stage is painted.
              * @signal
+             * @run-last
              */
             'before-paint': (arg0: StageView, arg1: Frame) => void;
             /**
              * @signal
+             * @run-last
              */
             'before-update': (arg0: StageView, arg1: Frame) => void;
             /**
              * The signal is emitted when the stage loses key focus
              * from the underlying window system.
              * @signal
+             * @run-last
              */
             deactivate: () => void;
             /**
@@ -25587,6 +26431,7 @@ export namespace Clutter {
              * so anything presently held in texture memory is now invalidated, and
              * likely corrupt. It needs redrawing.
              * @signal
+             * @run-last
              */
             'gl-video-memory-purged': () => void;
             /**
@@ -25597,17 +26442,20 @@ export namespace Clutter {
              * some action after the view is painted, like reading the contents of the
              * framebuffer, use {@link GObject.signal_connect_after} or pass {@link GObject.ConnectFlags.AFTER}.
              * @signal
+             * @run-last
              */
             'paint-view': (arg0: StageView, arg1: cairo.Region, arg2: Frame) => void;
             /**
              * The signal is emitted after the stage is updated,
              * before the stage is painted, even if it will not be painted.
              * @signal
+             * @run-last
              */
             'prepare-frame': (arg0: StageView, arg1: Frame) => void;
             /**
              * Signals that the {@link Clutter.Stage} was presented on the screen to the user.
              * @signal
+             * @run-last
              */
             presented: (arg0: StageView, arg1: any | null) => void;
             'notify::key-focus': (pspec: GObject.ParamSpec) => void;
@@ -25741,6 +26589,7 @@ export namespace Clutter {
         /**
          * The parameters used for the perspective projection from 3D
          * coordinates to 2D
+         * @read-only
          */
         get perspective(): Perspective;
         /**
@@ -26774,12 +27623,14 @@ export namespace Clutter {
              * The signal is emitted each time a new {@link Clutter.Stage}
              * has been added to the stage manager.
              * @signal
+             * @run-last
              */
             'stage-added': (arg0: Stage) => void;
             /**
              * The signal is emitted each time a {@link Clutter.Stage}
              * has been removed from the stage manager.
              * @signal
+             * @run-last
              */
             'stage-removed': (arg0: Stage) => void;
             'notify::default-stage': (pspec: GObject.ParamSpec) => void;
@@ -26812,10 +27663,12 @@ export namespace Clutter {
 
         /**
          * The default stage used by Clutter.
+         * @read-only
          */
         get default_stage(): Stage;
         /**
          * The default stage used by Clutter.
+         * @read-only
          */
         get defaultStage(): Stage;
 
@@ -26899,6 +27752,7 @@ export namespace Clutter {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             destroy: () => void;
             'notify::framebuffer': (pspec: GObject.ParamSpec) => void;
@@ -26942,7 +27796,13 @@ export namespace Clutter {
         set framebuffer(val: Cogl.Framebuffer);
         get layout(): cairo.RectangleInt;
         set layout(val: cairo.RectangleInt);
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get offscreen(): Cogl.Offscreen;
         get refresh_rate(): number;
         set refresh_rate(val: number);
@@ -26950,10 +27810,25 @@ export namespace Clutter {
         set refreshRate(val: number);
         get scale(): number;
         set scale(val: number);
+        /**
+         * @construct-only
+         */
         get stage(): Stage;
+        /**
+         * @construct-only
+         */
         get use_shadowfb(): boolean;
+        /**
+         * @construct-only
+         */
         get useShadowfb(): boolean;
+        /**
+         * @construct-only
+         */
         get vblank_duration_us(): number;
+        /**
+         * @construct-only
+         */
         get vblankDurationUs(): number;
 
         /**
@@ -27062,12 +27937,14 @@ export namespace Clutter {
              * attached actor.
              * @signal
              * @deprecated since 1.14: Use the `Clutter.SwipeAction::swipe` signal instead.
+             * @run-last
              */
             swept: (arg0: Actor, arg1: SwipeDirection) => void;
             /**
              * The signal is emitted when a swipe gesture is recognized on the
              * attached actor.
              * @signal
+             * @run-last
              */
             swipe: (arg0: Actor, arg1: SwipeDirection) => boolean | void;
             'notify::n-touch-points': (pspec: GObject.ParamSpec) => void;
@@ -27148,6 +28025,7 @@ export namespace Clutter {
             /**
              * The signal is emitted when the tap gesture is complete.
              * @signal
+             * @run-last
              */
             tap: (arg0: Actor) => void;
             'notify::n-touch-points': (pspec: GObject.ParamSpec) => void;
@@ -27240,12 +28118,14 @@ export namespace Clutter {
              * by the user, normally by pressing the 'Enter' key. The signal is
              * emitted only if {@link Text.activatable} is set to `true`.
              * @signal
+             * @run-last
              */
             activate: () => void;
             /**
              * The signal is emitted whenever the cursor
              * position or size changes.
              * @signal
+             * @run-last
              */
             'cursor-changed': () => void;
             /**
@@ -27255,23 +28135,29 @@ export namespace Clutter {
              * itself.
              * @signal
              * @deprecated since 1.16: Use the `Clutter.Text::cursor-changed` signal instead
+             * @run-last
              */
             'cursor-event': (arg0: Graphene.Rect) => void;
             /**
              * This signal is emitted when text is deleted from the actor by
              * the user. It is emitted before `self` text changes.
              * @signal
+             * @action
+             * @run-last
              */
             'delete-text': (arg0: number, arg1: number) => void;
             /**
              * This signal is emitted when text is inserted into the actor by
              * the user. It is emitted before `self` text changes.
              * @signal
+             * @action
+             * @run-last
              */
             'insert-text': (arg0: string, arg1: number, arg2: any | null) => void;
             /**
              * The signal is emitted after `actor`'s text changes
              * @signal
+             * @run-last
              */
             'text-changed': () => void;
             'notify::activatable': (pspec: GObject.ParamSpec) => void;
@@ -27497,10 +28383,12 @@ export namespace Clutter {
         set cursorColor(val: Color);
         /**
          * Will be set to `true` if {@link Text.cursor_color} has been set.
+         * @read-only
          */
         get cursor_color_set(): boolean;
         /**
          * Will be set to `true` if {@link Text.cursor_color} has been set.
+         * @read-only
          */
         get cursorColorSet(): boolean;
         /**
@@ -27688,10 +28576,12 @@ export namespace Clutter {
         set selectedTextColor(val: Color);
         /**
          * Will be set to `true` if {@link Text.selected_text_color} has been set.
+         * @read-only
          */
         get selected_text_color_set(): boolean;
         /**
          * Will be set to `true` if {@link Text.selected_text_color} has been set.
+         * @read-only
          */
         get selectedTextColorSet(): boolean;
         /**
@@ -27716,10 +28606,12 @@ export namespace Clutter {
         set selectionColor(val: Color);
         /**
          * Will be set to `true` if {@link Text.selection_color} has been set.
+         * @read-only
          */
         get selection_color_set(): boolean;
         /**
          * Will be set to `true` if {@link Text.selection_color} has been set.
+         * @read-only
          */
         get selectionColorSet(): boolean;
         /**
@@ -29152,11 +30044,13 @@ export namespace Clutter {
             /**
              * This signal is emitted after text is deleted from the buffer.
              * @signal
+             * @run-first
              */
             'deleted-text': (arg0: number, arg1: number) => void;
             /**
              * This signal is emitted after text is inserted into the buffer.
              * @signal
+             * @run-first
              */
             'inserted-text': (arg0: number, arg1: string, arg2: number) => void;
             'notify::length': (pspec: GObject.ParamSpec) => void;
@@ -29197,6 +30091,7 @@ export namespace Clutter {
 
         /**
          * The length (in characters) of the text in buffer.
+         * @read-only
          */
         get length(): number;
         /**
@@ -29211,6 +30106,7 @@ export namespace Clutter {
         set maxLength(val: number);
         /**
          * The contents of the buffer.
+         * @read-only
          */
         get text(): string;
 
@@ -30102,6 +30998,7 @@ export namespace Clutter {
              * been stopped or has finished its run, including its eventual repeats,
              * you should use the `Clutter.Timeline::stopped` signal instead.
              * @signal
+             * @run-last
              */
             completed: () => void;
             /**
@@ -30128,6 +31025,8 @@ export namespace Clutter {
              * the "foo" and "bar" marker, while the second and third callbacks
              * will be invoked for the "foo" or "bar" markers, respectively.
              * @signal
+             * @detailed
+             * @run-last
              */
             'marker-reached': (arg0: string, arg1: number) => void;
             /**
@@ -30135,11 +31034,13 @@ export namespace Clutter {
              * timeline before a new frame is drawn to give animations a chance
              * to update the scene.
              * @signal
+             * @run-last
              */
             'new-frame': (arg0: number) => void;
             /**
              * The signal is emitted when {@link Timeline.pause} is invoked.
              * @signal
+             * @run-last
              */
             paused: () => void;
             /**
@@ -30148,6 +31049,7 @@ export namespace Clutter {
              * after the delay set in the {@link Timeline.delay} property has
              * expired.
              * @signal
+             * @run-last
              */
             started: () => void;
             /**
@@ -30161,6 +31063,7 @@ export namespace Clutter {
              * If the {@link Clutter.Timeline} has is marked as infinitely repeating,
              * this signal will never be emitted.
              * @signal
+             * @run-last
              */
             stopped: (arg0: boolean) => void;
             'notify::actor': (pspec: GObject.ParamSpec) => void;
@@ -30195,6 +31098,8 @@ export namespace Clutter {
              * the "foo" and "bar" marker, while the second and third callbacks
              * will be invoked for the "foo" or "bar" markers, respectively.
              * @signal
+             * @detailed
+             * @run-last
              */
             'marker-reached::actor': (arg0: string, arg1: number) => void;
             /**
@@ -30221,6 +31126,8 @@ export namespace Clutter {
              * the "foo" and "bar" marker, while the second and third callbacks
              * will be invoked for the "foo" or "bar" markers, respectively.
              * @signal
+             * @detailed
+             * @run-last
              */
             'marker-reached::auto-reverse': (arg0: string, arg1: number) => void;
             /**
@@ -30247,6 +31154,8 @@ export namespace Clutter {
              * the "foo" and "bar" marker, while the second and third callbacks
              * will be invoked for the "foo" or "bar" markers, respectively.
              * @signal
+             * @detailed
+             * @run-last
              */
             'marker-reached::delay': (arg0: string, arg1: number) => void;
             /**
@@ -30273,6 +31182,8 @@ export namespace Clutter {
              * the "foo" and "bar" marker, while the second and third callbacks
              * will be invoked for the "foo" or "bar" markers, respectively.
              * @signal
+             * @detailed
+             * @run-last
              */
             'marker-reached::direction': (arg0: string, arg1: number) => void;
             /**
@@ -30299,6 +31210,8 @@ export namespace Clutter {
              * the "foo" and "bar" marker, while the second and third callbacks
              * will be invoked for the "foo" or "bar" markers, respectively.
              * @signal
+             * @detailed
+             * @run-last
              */
             'marker-reached::duration': (arg0: string, arg1: number) => void;
             /**
@@ -30325,6 +31238,8 @@ export namespace Clutter {
              * the "foo" and "bar" marker, while the second and third callbacks
              * will be invoked for the "foo" or "bar" markers, respectively.
              * @signal
+             * @detailed
+             * @run-last
              */
             'marker-reached::frame-clock': (arg0: string, arg1: number) => void;
             /**
@@ -30351,6 +31266,8 @@ export namespace Clutter {
              * the "foo" and "bar" marker, while the second and third callbacks
              * will be invoked for the "foo" or "bar" markers, respectively.
              * @signal
+             * @detailed
+             * @run-last
              */
             'marker-reached::progress-mode': (arg0: string, arg1: number) => void;
             /**
@@ -30377,6 +31294,8 @@ export namespace Clutter {
              * the "foo" and "bar" marker, while the second and third callbacks
              * will be invoked for the "foo" or "bar" markers, respectively.
              * @signal
+             * @detailed
+             * @run-last
              */
             'marker-reached::repeat-count': (arg0: string, arg1: number) => void;
         }
@@ -32792,8 +33711,17 @@ export namespace Clutter {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get device_type(): InputDeviceType;
+        /**
+         * @construct-only
+         */
         get deviceType(): InputDeviceType;
+        /**
+         * @construct-only
+         */
         get seat(): Seat;
 
         /**
@@ -33009,6 +33937,7 @@ export namespace Clutter {
              * override the default behaviour, connect to this signal and return
              * `false`.
              * @signal
+             * @run-last
              */
             zoom: (arg0: Actor, arg1: Graphene.Point, arg2: number) => boolean | void;
             'notify::n-touch-points': (pspec: GObject.ParamSpec) => void;

@@ -68,6 +68,7 @@ export namespace Peas {
              * plugin is loaded (the most common case), you should use
              * {@link GObject.signal_connect_after}.
              * @signal
+             * @run-last
              */
             'load-plugin': (arg0: PluginInfo) => void;
             /**
@@ -79,6 +80,7 @@ export namespace Peas {
              * some action after the plugin is unloaded (the most common case), you should
              * use {@link GObject.signal_connect_after}.
              * @signal
+             * @run-last
              */
             'unload-plugin': (arg0: PluginInfo) => void;
             'notify::loaded-plugins': (pspec: GObject.ParamSpec) => void;
@@ -158,12 +160,14 @@ export namespace Peas {
          * If non-global plugin loaders should be used.
          *
          * See {@link Engine.new_with_nonglobal_loaders} for more information.
+         * @construct-only
          */
         get nonglobal_loaders(): boolean;
         /**
          * If non-global plugin loaders should be used.
          *
          * See {@link Engine.new_with_nonglobal_loaders} for more information.
+         * @construct-only
          */
         get nonglobalLoaders(): boolean;
 
@@ -941,6 +945,7 @@ export namespace Peas {
          *
          * Note: This is the same path as that returned by
          * {@link PluginInfo.get_data_dir}.
+         * @read-only
          */
         get data_dir(): string;
         /**
@@ -949,14 +954,17 @@ export namespace Peas {
          *
          * Note: This is the same path as that returned by
          * {@link PluginInfo.get_data_dir}.
+         * @read-only
          */
         get dataDir(): string;
         /**
          * The {@link PluginInfo} related to the current plugin.
+         * @construct-only
          */
         get plugin_info(): PluginInfo;
         /**
          * The {@link PluginInfo} related to the current plugin.
+         * @construct-only
          */
         get pluginInfo(): PluginInfo;
 
@@ -1025,6 +1033,7 @@ export namespace Peas {
              * from plugins that were already loaded when the {@link Peas.ExtensionSet} instance
              * was created. You should set those up by yourself.
              * @signal
+             * @run-last
              */
             'extension-added': (arg0: PluginInfo, arg1: GObject.Object) => void;
             /**
@@ -1039,6 +1048,7 @@ export namespace Peas {
              * {@link GObject.Object} instances still available when the {@link Peas.ExtensionSet}
              * instance is destroyed. You should clean those up by yourself.
              * @signal
+             * @run-last
              */
             'extension-removed': (arg0: PluginInfo, arg1: GObject.Object) => void;
             'notify::construct-properties': (pspec: GObject.ParamSpec) => void;
@@ -1117,10 +1127,25 @@ export namespace Peas {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set construct_properties(val: any);
+        /**
+         * @construct-only
+         */
         set constructProperties(val: any);
+        /**
+         * @construct-only
+         */
         get engine(): Engine;
+        /**
+         * @construct-only
+         */
         get extension_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get extensionType(): GObject.GType;
 
         /**
@@ -1768,16 +1793,33 @@ export namespace Peas {
 
         /**
          * Whether the module is loaded with local linkage, i.e. #G_MODULE_BIND_LOCAL.
+         * @construct-only
          */
         get local_linkage(): boolean;
         /**
          * Whether the module is loaded with local linkage, i.e. #G_MODULE_BIND_LOCAL.
+         * @construct-only
          */
         get localLinkage(): boolean;
+        /**
+         * @construct-only
+         */
         get module_name(): string;
+        /**
+         * @construct-only
+         */
         get moduleName(): string;
+        /**
+         * @construct-only
+         */
         get path(): string;
+        /**
+         * @construct-only
+         */
         get resident(): boolean;
+        /**
+         * @construct-only
+         */
         get symbol(): string;
 
         /**
@@ -2397,23 +2439,77 @@ export namespace Peas {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get authors(): string[];
+        /**
+         * @read-only
+         */
         get builtin(): boolean;
+        /**
+         * @read-only
+         */
         get copyright(): string;
+        /**
+         * @read-only
+         */
         get dependencies(): string[];
+        /**
+         * @read-only
+         */
         get description(): string;
+        /**
+         * @read-only
+         */
         get help_uri(): string;
+        /**
+         * @read-only
+         */
         get helpUri(): string;
+        /**
+         * @read-only
+         */
         get hidden(): boolean;
+        /**
+         * @read-only
+         */
         get icon_name(): string;
+        /**
+         * @read-only
+         */
         get iconName(): string;
+        /**
+         * @read-only
+         */
         get loaded(): boolean;
+        /**
+         * @read-only
+         */
         get module_dir(): string;
+        /**
+         * @read-only
+         */
         get moduleDir(): string;
+        /**
+         * @read-only
+         */
         get module_name(): string;
+        /**
+         * @read-only
+         */
         get moduleName(): string;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get version(): string;
+        /**
+         * @read-only
+         */
         get website(): string;
 
         /**

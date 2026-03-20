@@ -31,6 +31,9 @@ export namespace Tepl {
      * Tepl-6
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InfoBarLocation {
         export const $gtype: GObject.GType<InfoBarLocation>;
     }
@@ -62,6 +65,9 @@ export namespace Tepl {
         BELOW_ICON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NewlineType {
         export const $gtype: GObject.GType<NewlineType>;
     }
@@ -86,6 +92,9 @@ export namespace Tepl {
         CR_LF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SelectionType {
         export const $gtype: GObject.GType<SelectionType>;
     }
@@ -495,6 +504,9 @@ export namespace Tepl {
      * @since 4.4
      */
     function utils_str_replace(string: string, search: string, replacement: string): string;
+    /**
+     * @gir-type Flags
+     */
     export namespace FileSaverFlags {
         export const $gtype: GObject.GType<FileSaverFlags>;
     }
@@ -515,6 +527,9 @@ export namespace Tepl {
         CREATE_BACKUP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GutterRendererFoldsState {
         export const $gtype: GObject.GType<GutterRendererFoldsState>;
     }
@@ -713,6 +728,7 @@ export namespace Tepl {
         /**
          * The {@link Gtk.Application}.
          * @since 2.0
+         * @construct-only
          */
         get application(): Gtk.Application;
 
@@ -862,11 +878,13 @@ export namespace Tepl {
         /**
          * The {@link Gtk.ApplicationWindow}.
          * @since 2.0
+         * @construct-only
          */
         get application_window(): Gtk.ApplicationWindow;
         /**
          * The {@link Gtk.ApplicationWindow}.
          * @since 2.0
+         * @construct-only
          */
         get applicationWindow(): Gtk.ApplicationWindow;
         /**
@@ -1006,12 +1024,14 @@ export namespace Tepl {
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
+         * @read-only
          * @category Inherited from Tepl.TabGroup
          */
         get active_buffer(): Buffer;
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
+         * @read-only
          * @category Inherited from Tepl.TabGroup
          */
         get activeBuffer(): Buffer;
@@ -1032,12 +1052,14 @@ export namespace Tepl {
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
+         * @read-only
          * @category Inherited from Tepl.TabGroup
          */
         get active_view(): View;
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
+         * @read-only
          * @category Inherited from Tepl.TabGroup
          */
         get activeView(): View;
@@ -1573,6 +1595,7 @@ export namespace Tepl {
              * in a statusbar.
              * @signal
              * @since 2.0
+             * @run-first
              */
             'tepl-cursor-moved': () => void;
             'notify::tepl-full-title': (pspec: GObject.ParamSpec) => void;
@@ -1618,21 +1641,25 @@ export namespace Tepl {
         /**
          * The full title. See `tepl_buffer_get_full_title()`.
          * @since 3.0
+         * @read-only
          */
         get tepl_full_title(): string;
         /**
          * The full title. See `tepl_buffer_get_full_title()`.
          * @since 3.0
+         * @read-only
          */
         get teplFullTitle(): string;
         /**
          * The short title. See `tepl_buffer_get_short_title()`.
          * @since 3.0
+         * @read-only
          */
         get tepl_short_title(): string;
         /**
          * The short title. See `tepl_buffer_get_short_title()`.
          * @since 3.0
+         * @read-only
          */
         get teplShortTitle(): string;
         /**
@@ -1809,11 +1836,13 @@ export namespace Tepl {
         /**
          * The line ending type.
          * @since 1.0
+         * @read-only
          */
         get newline_type(): NewlineType;
         /**
          * The line ending type.
          * @since 1.0
+         * @read-only
          */
         get newlineType(): NewlineType;
         /**
@@ -1836,6 +1865,7 @@ export namespace Tepl {
          * that does no blocking I/O (but it may return a different result
          * compared to the real display-name).
          * @since 1.0
+         * @read-only
          */
         get short_name(): string;
         /**
@@ -1858,6 +1888,7 @@ export namespace Tepl {
          * that does no blocking I/O (but it may return a different result
          * compared to the real display-name).
          * @since 1.0
+         * @read-only
          */
         get shortName(): string;
 
@@ -1977,18 +2008,21 @@ export namespace Tepl {
          * The {@link Tepl.Buffer} to load the content into. The {@link Tepl.FileLoader} object
          * has a weak reference to the buffer.
          * @since 1.0
+         * @construct-only
          */
         get buffer(): Buffer;
         /**
          * The {@link Tepl.File}. The {@link Tepl.FileLoader} object has a weak
          * reference to the file.
          * @since 1.0
+         * @construct-only
          */
         get file(): File;
         /**
          * The {@link Gio.File} to load. By default the location is taken from the
          * {@link Tepl.File} at construction time.
          * @since 1.0
+         * @construct-only
          */
         get location(): Gio.File;
 
@@ -2120,12 +2154,14 @@ export namespace Tepl {
          * The {@link Tepl.Buffer} to save. The {@link Tepl.FileSaver} object has a weak
          * reference to the buffer.
          * @since 1.0
+         * @construct-only
          */
         get buffer(): Buffer;
         /**
          * The {@link Tepl.File}. The {@link Tepl.FileSaver} object has a weak reference to the
          * file.
          * @since 1.0
+         * @construct-only
          */
         get file(): File;
         /**
@@ -2138,6 +2174,7 @@ export namespace Tepl {
          * The {@link Gio.File} where to save the buffer. By default the location is taken
          * from the {@link Tepl.File} at construction time.
          * @since 1.0
+         * @construct-only
          */
         get location(): Gio.File;
         /**
@@ -2301,6 +2338,7 @@ export namespace Tepl {
          * The {@link Gtk.TextBuffer} where the fold region is applied. The
          * {@link Tepl.FoldRegion} object has a weak reference to the buffer.
          * @since 1.0
+         * @construct-only
          */
         get buffer(): Gtk.TextBuffer;
         /**
@@ -5277,12 +5315,14 @@ export namespace Tepl {
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
+         * @read-only
          * @category Inherited from Tepl.TabGroup
          */
         get active_buffer(): Buffer;
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
+         * @read-only
          * @category Inherited from Tepl.TabGroup
          */
         get activeBuffer(): Buffer;
@@ -5303,12 +5343,14 @@ export namespace Tepl {
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
+         * @read-only
          * @category Inherited from Tepl.TabGroup
          */
         get active_view(): View;
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
+         * @read-only
          * @category Inherited from Tepl.TabGroup
          */
         get activeView(): View;
@@ -6533,12 +6575,14 @@ export namespace Tepl {
          * Whether to add a Cancel button in the action area of the {@link Gtk.InfoBar},
          * with the {@link Gtk.ResponseType.CANCEL} response.
          * @since 6.0
+         * @construct-only
          */
         get has_cancel_button(): boolean;
         /**
          * Whether to add a Cancel button in the action area of the {@link Gtk.InfoBar},
          * with the {@link Gtk.ResponseType.CANCEL} response.
          * @since 6.0
+         * @construct-only
          */
         get hasCancelButton(): boolean;
 
@@ -8883,6 +8927,7 @@ export namespace Tepl {
              * call `g_signal_stop_emission_by_name()`.
              * @signal
              * @since 3.0
+             * @run-last
              */
             'close-request': () => void;
             'notify::view': (pspec: GObject.ParamSpec) => void;
@@ -8964,6 +9009,7 @@ export namespace Tepl {
          * The {@link Tepl.View} contained in the tab. When this property is set, the
          * ::pack_view virtual function is called.
          * @since 3.0
+         * @construct-only
          */
         get view(): View;
 
@@ -9148,12 +9194,14 @@ export namespace Tepl {
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
+         * @read-only
          * @category Inherited from Tepl.TabGroup
          */
         get active_buffer(): Buffer;
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
+         * @read-only
          * @category Inherited from Tepl.TabGroup
          */
         get activeBuffer(): Buffer;
@@ -9174,12 +9222,14 @@ export namespace Tepl {
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
+         * @read-only
          * @category Inherited from Tepl.TabGroup
          */
         get active_view(): View;
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
+         * @read-only
          * @category Inherited from Tepl.TabGroup
          */
         get activeView(): View;
@@ -9792,6 +9842,7 @@ export namespace Tepl {
          * The associated {@link Tepl.Tab}. {@link Tepl.TabLabel} has a weak reference to the
          * {@link Tepl.Tab}.
          * @since 3.0
+         * @construct-only
          */
         get tab(): Tab;
 
@@ -11316,11 +11367,13 @@ export namespace Tepl {
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
+         * @read-only
          */
         get active_buffer(): Buffer;
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
+         * @read-only
          */
         get activeBuffer(): Buffer;
         /**
@@ -11338,11 +11391,13 @@ export namespace Tepl {
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
+         * @read-only
          */
         get active_view(): View;
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
+         * @read-only
          */
         get activeView(): View;
 

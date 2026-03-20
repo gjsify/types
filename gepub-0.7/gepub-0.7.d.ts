@@ -173,6 +173,9 @@ export namespace Gepub {
 
         get chapter(): number;
         set chapter(val: number);
+        /**
+         * @construct-only
+         */
         get path(): string;
 
         /**
@@ -1042,6 +1045,9 @@ export namespace Gepub {
         set chapterPos(val: number);
         get doc(): Doc;
         set doc(val: Doc);
+        /**
+         * @read-only
+         */
         get nchapters(): number;
         get paginate(): boolean;
         set paginate(val: boolean);

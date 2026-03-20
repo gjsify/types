@@ -21,6 +21,9 @@ export namespace Libosinfo {
      * Libosinfo-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceDriverSigningReq {
         export const $gtype: GObject.GType<DeviceDriverSigningReq>;
     }
@@ -80,6 +83,9 @@ export namespace Libosinfo {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InstallConfigParamPolicy {
         export const $gtype: GObject.GType<InstallConfigParamPolicy>;
     }
@@ -104,6 +110,9 @@ export namespace Libosinfo {
         OPTIONAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InstallScriptInstallationSource {
         export const $gtype: GObject.GType<InstallScriptInstallationSource>;
     }
@@ -170,6 +179,9 @@ export namespace Libosinfo {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PathFormat {
         export const $gtype: GObject.GType<PathFormat>;
     }
@@ -188,6 +200,9 @@ export namespace Libosinfo {
         DOS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ProductRelationship {
         export const $gtype: GObject.GType<ProductRelationship>;
     }
@@ -211,6 +226,9 @@ export namespace Libosinfo {
         CLONES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ReleaseStatus {
         export const $gtype: GObject.GType<ReleaseStatus>;
     }
@@ -426,6 +444,9 @@ export namespace Libosinfo {
      * @since 0.1.0
      */
     function tree_error_quark(): GLib.Quark;
+    /**
+     * @gir-type Flags
+     */
     export namespace InstallScriptInjectionMethod {
         export const $gtype: GObject.GType<InstallScriptInjectionMethod>;
     }
@@ -462,6 +483,9 @@ export namespace Libosinfo {
         WEB,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MediaDetectFlags {
         export const $gtype: GObject.GType<MediaDetectFlags>;
     }
@@ -507,22 +531,27 @@ export namespace Libosinfo {
 
         /**
          * Whether alpha channel is supported in the avatar.
+         * @read-only
          */
         get alpha(): boolean;
         /**
          * The required height (in pixels) of the avatar.
+         * @read-only
          */
         get height(): number;
         /**
          * The allowed mime-types for the avatar.
+         * @read-only
          */
         get mime_types(): string[];
         /**
          * The allowed mime-types for the avatar.
+         * @read-only
          */
         get mimeTypes(): string[];
         /**
          * The required width (in pixels) of the avatar.
+         * @read-only
          */
         get width(): number;
 
@@ -994,10 +1023,12 @@ export namespace Libosinfo {
 
         /**
          * The operating system to be deployed
+         * @construct-only
          */
         get os(): Os;
         /**
          * The platform to deploy on
+         * @construct-only
          */
         get platform(): Platform;
 
@@ -1416,6 +1447,7 @@ export namespace Libosinfo {
 
         /**
          * The target of the device link.
+         * @construct-only
          */
         get target(): Device;
 
@@ -1491,10 +1523,12 @@ export namespace Libosinfo {
 
         /**
          * The operating system to be deployed
+         * @construct-only
          */
         get target_filter(): Filter;
         /**
          * The operating system to be deployed
+         * @construct-only
          */
         get targetFilter(): Filter;
 
@@ -2736,10 +2770,12 @@ export namespace Libosinfo {
 
         /**
          * The name of the configuration parameter.
+         * @construct-only
          */
         get name(): string;
         /**
          * The policy of the configuration parameter.
+         * @read-only
          */
         get policy(): InstallConfigParamPolicy;
         /**
@@ -2925,22 +2961,61 @@ export namespace Libosinfo {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get avatar_format(): AvatarFormat;
+        /**
+         * @read-only
+         */
         get avatarFormat(): AvatarFormat;
+        /**
+         * @read-only
+         */
         get installation_source(): InstallScriptInstallationSource;
+        /**
+         * @read-only
+         */
         get installationSource(): InstallScriptInstallationSource;
+        /**
+         * @read-only
+         */
         get path_format(): PathFormat;
+        /**
+         * @read-only
+         */
         get pathFormat(): PathFormat;
         get preferred_injection_method(): InstallScriptInjectionMethod;
         set preferred_injection_method(val: InstallScriptInjectionMethod);
         get preferredInjectionMethod(): InstallScriptInjectionMethod;
         set preferredInjectionMethod(val: InstallScriptInjectionMethod);
+        /**
+         * @read-only
+         */
         get product_key_format(): string;
+        /**
+         * @read-only
+         */
         get productKeyFormat(): string;
+        /**
+         * @construct-only
+         */
         get profile(): string;
+        /**
+         * @construct-only
+         */
         get template_data(): string;
+        /**
+         * @construct-only
+         */
         get templateData(): string;
+        /**
+         * @construct-only
+         */
         get template_uri(): string;
+        /**
+         * @construct-only
+         */
         get templateUri(): string;
 
         /**
@@ -3696,12 +3771,14 @@ export namespace Libosinfo {
          * The specialization of the list. The list will be
          * restricted to storing {@link Libosinfo.Entity} objects of
          * the specified type.
+         * @construct-only
          */
         get element_type(): GObject.GType;
         /**
          * The specialization of the list. The list will be
          * restricted to storing {@link Libosinfo.Entity} objects of
          * the specified type.
+         * @construct-only
          */
         get elementType(): GObject.GType;
 
@@ -4107,6 +4184,7 @@ export namespace Libosinfo {
          * languages that the user interface can be displayed in.
          * Use `osinfo_media_get_installer`(or OsinfoMedia::installer) to know
          * if the media is an installer or not.
+         * @read-only
          */
         get languages(): string[];
         /**
@@ -4544,30 +4622,36 @@ export namespace Libosinfo {
 
         /**
          * The username to be passed to the cloud-init program.
+         * @read-only
          */
         get cloud_image_username(): string;
         /**
          * The username to be passed to the cloud-init program.
+         * @read-only
          */
         get cloudImageUsername(): string;
         /**
          * The generic distro this OS belongs to, for example fedora, windows,
          * solaris, freebsd etc.
+         * @read-only
          */
         get distro(): string;
         /**
          * The generic family this OS belongs to, based upon its kernel,
          * for example linux, winnt, solaris, freebsd etc.
+         * @read-only
          */
         get family(): string;
         /**
          * The argument to be passed to kernel command line when performing a
          * tree based installation of this OS.
+         * @read-only
          */
         get kernel_url_argument(): string;
         /**
          * The argument to be passed to kernel command line when performing a
          * tree based installation of this OS.
+         * @read-only
          */
         get kernelUrlArgument(): string;
 
@@ -5248,30 +5332,37 @@ export namespace Libosinfo {
 
         /**
          * The codename of this product.
+         * @read-only
          */
         get codename(): string;
         /**
          * The URI of the logo of the product.
+         * @read-only
          */
         get logo(): string;
         /**
          * The name of this product.
+         * @read-only
          */
         get name(): string;
         /**
          * The short ID of this product.
+         * @read-only
          */
         get short_id(): string;
         /**
          * The short ID of this product.
+         * @read-only
          */
         get shortId(): string;
         /**
          * The Vendor of this product.
+         * @read-only
          */
         get vendor(): string;
         /**
          * The version of the product.
+         * @read-only
          */
         get version(): string;
 
@@ -5564,6 +5655,7 @@ export namespace Libosinfo {
 
         /**
          * The target hardware architecture to which these resources applies.
+         * @construct-only
          */
         get architecture(): string;
         /**

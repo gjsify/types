@@ -20,6 +20,9 @@ export namespace PackageKitGlib {
      * PackageKitGlib-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AuthorizeEnum {
         export const $gtype: GObject.GType<AuthorizeEnum>;
     }
@@ -145,6 +148,9 @@ export namespace PackageKitGlib {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DistroUpgradeEnum {
         export const $gtype: GObject.GType<DistroUpgradeEnum>;
     }
@@ -169,6 +175,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ErrorEnum {
         export const $gtype: GObject.GType<ErrorEnum>;
     }
@@ -418,6 +427,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ExitEnum {
         export const $gtype: GObject.GType<ExitEnum>;
     }
@@ -472,6 +484,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FilterEnum {
         export const $gtype: GObject.GType<FilterEnum>;
     }
@@ -596,6 +611,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GroupEnum {
         export const $gtype: GObject.GType<GroupEnum>;
     }
@@ -743,6 +761,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InfoEnum {
         export const $gtype: GObject.GType<InfoEnum>;
     }
@@ -828,6 +849,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MediaTypeEnum {
         export const $gtype: GObject.GType<MediaTypeEnum>;
     }
@@ -856,6 +880,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NetworkEnum {
         export const $gtype: GObject.GType<NetworkEnum>;
     }
@@ -892,6 +919,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OfflineAction {
         export const $gtype: GObject.GType<OfflineAction>;
     }
@@ -953,6 +983,9 @@ export namespace PackageKitGlib {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PackageSackSortType {
         export const $gtype: GObject.GType<PackageSackSortType>;
     }
@@ -981,6 +1014,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ProgressType {
         export const $gtype: GObject.GType<ProgressType>;
     }
@@ -1057,6 +1093,9 @@ export namespace PackageKitGlib {
         SENDER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RestartEnum {
         export const $gtype: GObject.GType<RestartEnum>;
     }
@@ -1091,6 +1130,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RoleEnum {
         export const $gtype: GObject.GType<RoleEnum>;
     }
@@ -1236,6 +1278,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SigTypeEnum {
         export const $gtype: GObject.GType<SigTypeEnum>;
     }
@@ -1256,6 +1301,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StatusEnum {
         export const $gtype: GObject.GType<StatusEnum>;
     }
@@ -1419,6 +1467,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransactionFlagEnum {
         export const $gtype: GObject.GType<TransactionFlagEnum>;
     }
@@ -1459,6 +1510,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UpdateStateEnum {
         export const $gtype: GObject.GType<UpdateStateEnum>;
     }
@@ -1487,6 +1541,9 @@ export namespace PackageKitGlib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UpgradeKindEnum {
         export const $gtype: GObject.GType<UpgradeKindEnum>;
     }
@@ -2154,6 +2211,9 @@ export namespace PackageKitGlib {
     interface ProgressCallback {
         (progress: Progress, type: ProgressType): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace OfflineFlags {
         export const $gtype: GObject.GType<OfflineFlags>;
     }
@@ -2399,6 +2459,7 @@ export namespace PackageKitGlib {
         set detailsWithDepsSize(val: boolean);
         /**
          * @since 0.5.4
+         * @read-only
          */
         get idle(): boolean;
         /**
@@ -3737,6 +3798,7 @@ export namespace PackageKitGlib {
              * The ::repo-list-changed signal is emitted when the repo list may have
              * changed and the control program may have to update some UI.
              * @signal
+             * @run-last
              */
             'repo-list-changed': () => void;
             /**
@@ -3745,18 +3807,21 @@ export namespace PackageKitGlib {
              * Client programs should reload themselves when it is convenient to
              * do so, as old client tools may not be compatable with the new daemon.
              * @signal
+             * @run-last
              */
             'restart-schedule': () => void;
             /**
              * The ::transaction-list-changed signal is emitted when the list
              * of transactions handled by the daemon is changed.
              * @signal
+             * @run-last
              */
             'transaction-list-changed': (arg0: string[]) => void;
             /**
              * The ::updates-changed signal is emitted when the update list may have
              * changed and the control program may have to update some UI.
              * @signal
+             * @run-last
              */
             'updates-changed': () => void;
             'notify::backend-author': (pspec: GObject.ParamSpec) => void;
@@ -3906,26 +3971,32 @@ export namespace PackageKitGlib {
         set roles(val: number);
         /**
          * @since 0.5.2
+         * @read-only
          */
         get version_major(): number;
         /**
          * @since 0.5.2
+         * @read-only
          */
         get versionMajor(): number;
         /**
          * @since 0.5.2
+         * @read-only
          */
         get version_micro(): number;
         /**
          * @since 0.5.2
+         * @read-only
          */
         get versionMicro(): number;
         /**
          * @since 0.5.2
+         * @read-only
          */
         get version_minor(): number;
         /**
          * @since 0.5.2
+         * @read-only
          */
         get versionMinor(): number;
 
@@ -5247,6 +5318,7 @@ export namespace PackageKitGlib {
             /**
              * The ::changed signal is emitted when the package data may have changed.
              * @signal
+             * @run-last
              */
             changed: () => void;
             'notify::description': (pspec: GObject.ParamSpec) => void;
@@ -5342,10 +5414,12 @@ export namespace PackageKitGlib {
         set license(val: string);
         /**
          * @since 0.5.4
+         * @read-only
          */
         get package_id(): string;
         /**
          * @since 0.5.4
+         * @read-only
          */
         get packageId(): string;
         /**
@@ -8038,11 +8112,13 @@ export namespace PackageKitGlib {
             /**
              * The ::added signal is emitted when a tid has been added to the transaction list
              * @signal
+             * @run-last
              */
             added: (arg0: string) => void;
             /**
              * The ::removed signal is emitted when a tid has been removed from the transaction list
              * @signal
+             * @run-last
              */
             removed: (arg0: string) => void;
         }

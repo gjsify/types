@@ -20,6 +20,9 @@ export namespace Soup {
      * Soup-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CacheType {
         export const $gtype: GObject.GType<CacheType>;
     }
@@ -40,6 +43,9 @@ export namespace Soup {
         SHARED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CookieJarAcceptPolicy {
         export const $gtype: GObject.GType<CookieJarAcceptPolicy>;
     }
@@ -90,6 +96,9 @@ export namespace Soup {
         GRANDFATHERED_THIRD_PARTY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DateFormat {
         export const $gtype: GObject.GType<DateFormat>;
     }
@@ -116,6 +125,9 @@ export namespace Soup {
         COOKIE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Encoding {
         export const $gtype: GObject.GType<Encoding>;
     }
@@ -154,6 +166,9 @@ export namespace Soup {
         BYTERANGES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace HTTPVersion {
         export const $gtype: GObject.GType<HTTPVersion>;
     }
@@ -177,6 +192,9 @@ export namespace Soup {
         HTTP_2_0,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LoggerLogLevel {
         export const $gtype: GObject.GType<LoggerLogLevel>;
     }
@@ -205,6 +223,9 @@ export namespace Soup {
         BODY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MemoryUse {
         export const $gtype: GObject.GType<MemoryUse>;
     }
@@ -233,6 +254,9 @@ export namespace Soup {
         COPY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MessageHeadersType {
         export const $gtype: GObject.GType<MessageHeadersType>;
     }
@@ -257,6 +281,9 @@ export namespace Soup {
         MULTIPART,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MessagePriority {
         export const $gtype: GObject.GType<MessagePriority>;
     }
@@ -296,6 +323,9 @@ export namespace Soup {
         VERY_HIGH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SameSitePolicy {
         export const $gtype: GObject.GType<SameSitePolicy>;
     }
@@ -376,6 +406,9 @@ export namespace Soup {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Status {
         export const $gtype: GObject.GType<Status>;
     }
@@ -671,6 +704,9 @@ export namespace Soup {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace URIComponent {
         export const $gtype: GObject.GType<URIComponent>;
     }
@@ -723,6 +759,9 @@ export namespace Soup {
         FRAGMENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebsocketCloseCode {
         export const $gtype: GObject.GType<WebsocketCloseCode>;
     }
@@ -796,6 +835,9 @@ export namespace Soup {
         TLS_HANDSHAKE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebsocketConnectionType {
         export const $gtype: GObject.GType<WebsocketConnectionType>;
     }
@@ -819,6 +861,9 @@ export namespace Soup {
         SERVER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebsocketDataType {
         export const $gtype: GObject.GType<WebsocketDataType>;
     }
@@ -879,6 +924,9 @@ export namespace Soup {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebsocketState {
         export const $gtype: GObject.GType<WebsocketState>;
     }
@@ -1592,6 +1640,9 @@ export namespace Soup {
     interface ServerWebsocketCallback {
         (server: Server, msg: ServerMessage, path: string, connection: WebsocketConnection): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace Cacheability {
         export const $gtype: GObject.GType<Cacheability>;
     }
@@ -1619,6 +1670,9 @@ export namespace Soup {
         VALIDATES,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace Expectation {
         export const $gtype: GObject.GType<Expectation>;
     }
@@ -1638,6 +1692,9 @@ export namespace Soup {
         CONTINUE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MessageFlags {
         export const $gtype: GObject.GType<MessageFlags>;
     }
@@ -1683,6 +1740,9 @@ export namespace Soup {
         COLLECT_METRICS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ServerListenOptions {
         export const $gtype: GObject.GType<ServerListenOptions>;
     }
@@ -1763,18 +1823,22 @@ export namespace Soup {
         set authority(val: string);
         /**
          * Whether or not the auth has been authenticated.
+         * @read-only
          */
         get is_authenticated(): boolean;
         /**
          * Whether or not the auth has been authenticated.
+         * @read-only
          */
         get isAuthenticated(): boolean;
         /**
          * Whether or not the auth has been cancelled.
+         * @read-only
          */
         get is_cancelled(): boolean;
         /**
          * Whether or not the auth has been cancelled.
+         * @read-only
          */
         get isCancelled(): boolean;
         /**
@@ -1794,10 +1858,12 @@ export namespace Soup {
         set realm(val: string);
         /**
          * The authentication scheme name.
+         * @read-only
          */
         get scheme_name(): string;
         /**
          * The authentication scheme name.
+         * @read-only
          */
         get schemeName(): string;
 
@@ -2214,10 +2280,12 @@ export namespace Soup {
         set genericAuthData(val: any);
         /**
          * Whether or not this is a proxy auth domain.
+         * @construct-only
          */
         get proxy(): boolean;
         /**
          * The realm of this auth domain.
+         * @construct-only
          */
         get realm(): string;
 
@@ -3369,18 +3437,22 @@ export namespace Soup {
 
         /**
          * The directory to store the cache files.
+         * @construct-only
          */
         get cache_dir(): string;
         /**
          * The directory to store the cache files.
+         * @construct-only
          */
         get cacheDir(): string;
         /**
          * Whether the cache is private or shared.
+         * @construct-only
          */
         get cache_type(): CacheType;
         /**
          * Whether the cache is private or shared.
+         * @construct-only
          */
         get cacheType(): CacheType;
 
@@ -4990,6 +5062,7 @@ export namespace Soup {
              * `old_cookie` will contain its old value, and `new_cookie` its
              * new value.
              * @signal
+             * @run-first
              */
             changed: (arg0: Cookie | null, arg1: Cookie | null) => void;
             'notify::accept-policy': (pspec: GObject.ParamSpec) => void;
@@ -5035,10 +5108,12 @@ export namespace Soup {
         set acceptPolicy(val: CookieJarAcceptPolicy);
         /**
          * Whether or not the cookie jar is read-only.
+         * @construct-only
          */
         get read_only(): boolean;
         /**
          * Whether or not the cookie jar is read-only.
+         * @construct-only
          */
         get readOnly(): boolean;
 
@@ -5744,6 +5819,7 @@ export namespace Soup {
 
         /**
          * Cookie-storage filename.
+         * @construct-only
          */
         get filename(): string;
 
@@ -6267,6 +6343,7 @@ export namespace Soup {
 
         /**
          * Cookie-storage filename.
+         * @construct-only
          */
         get filename(): string;
 
@@ -6778,6 +6855,7 @@ export namespace Soup {
              * Note that you shouldn't modify the policies from a callback to
              * this signal.
              * @signal
+             * @run-first
              */
             changed: (arg0: HSTSPolicy, arg1: HSTSPolicy) => void;
         }
@@ -7398,6 +7476,7 @@ export namespace Soup {
 
         /**
          * The filename of the SQLite database where HSTS policies are stored.
+         * @construct-only
          */
         get filename(): string;
 
@@ -8531,6 +8610,7 @@ export namespace Soup {
              * You can return `true` to accept `tls_certificate` despite
              * `tls_errors`.
              * @signal
+             * @run-last
              */
             'accept-certificate': (arg0: Gio.TlsCertificate, arg1: Gio.TlsCertificateFlags) => boolean | void;
             /**
@@ -8549,6 +8629,7 @@ export namespace Soup {
              * complete once either {@link Auth.authenticate} or
              * {@link Auth.cancel} are called.
              * @signal
+             * @run-last
              */
             authenticate: (arg0: Auth, arg1: boolean) => boolean | void;
             /**
@@ -8560,6 +8641,7 @@ export namespace Soup {
              * immediately after `Soup.Message::got-headers`, and `type` is
              * `null`.
              * @signal
+             * @run-first
              */
             'content-sniffed': (arg0: string, arg1: GLib.HashTable<string, string>) => void;
             /**
@@ -8567,11 +8649,13 @@ export namespace Soup {
              *
              * (After `Soup.Message::got_body`).
              * @signal
+             * @run-first
              */
             finished: () => void;
             /**
              * Emitted after receiving the complete message response body.
              * @signal
+             * @run-first
              */
             'got-body': () => void;
             /**
@@ -8579,6 +8663,7 @@ export namespace Soup {
              * body from the network.
              * @signal
              * @since 3.4
+             * @run-first
              */
             'got-body-data': (arg0: number) => void;
             /**
@@ -8597,6 +8682,7 @@ export namespace Soup {
              * than a `Soup.Message::got_headers` handler, so that the
              * existing HTTP connection can be reused.)
              * @signal
+             * @run-first
              */
             'got-headers': () => void;
             /**
@@ -8611,6 +8697,7 @@ export namespace Soup {
              * then the current HTTP I/O will be stopped after this signal
              * emission finished, and `msg`'s connection will be closed.
              * @signal
+             * @run-first
              */
             'got-informational': () => void;
             /**
@@ -8618,6 +8705,7 @@ export namespace Soup {
              * for `msg` to HTTPS as a result of matching its domain with
              * a HSTS policy.
              * @signal
+             * @run-last
              */
             'hsts-enforced': () => void;
             /**
@@ -8634,6 +8722,7 @@ export namespace Soup {
              * the different values of `event` correspond to, and what
              * `connection` will be in each case.
              * @signal
+             * @run-first
              */
             'network-event': (arg0: Gio.SocketClientEvent, arg1: Gio.IOStream) => void;
             /**
@@ -8649,6 +8738,7 @@ export namespace Soup {
              * {@link Message.set_tls_client_certificate} was called before the
              * connection TLS handshake started.
              * @signal
+             * @run-last
              */
             'request-certificate': (arg0: Gio.TlsClientConnection) => boolean | void;
             /**
@@ -8665,6 +8755,7 @@ export namespace Soup {
              * later after setting the password on `password`. Note that this signal
              * is not emitted if {@link Session.tls_interaction} was set.
              * @signal
+             * @run-last
              */
             'request-certificate-password': (arg0: Gio.TlsPassword) => boolean | void;
             /**
@@ -8675,29 +8766,34 @@ export namespace Soup {
              * redirection response, or because we needed to use
              * authentication.
              * @signal
+             * @run-first
              */
             restarted: () => void;
             /**
              * Emitted just before a message is sent.
              * @signal
+             * @run-first
              */
             starting: () => void;
             /**
              * Emitted immediately after writing the complete body for a
              * message.
              * @signal
+             * @run-first
              */
             'wrote-body': () => void;
             /**
              * Emitted immediately after writing a portion of the message
              * body to the network.
              * @signal
+             * @run-first
              */
             'wrote-body-data': (arg0: number) => void;
             /**
              * Emitted immediately after writing the request headers for a
              * message.
              * @signal
+             * @run-first
              */
             'wrote-headers': () => void;
             'notify::first-party': (pspec: GObject.ParamSpec) => void;
@@ -8807,10 +8903,12 @@ export namespace Soup {
         set flags(val: MessageFlags);
         /**
          * The HTTP protocol version to use.
+         * @read-only
          */
         get http_version(): HTTPVersion;
         /**
          * The HTTP protocol version to use.
+         * @read-only
          */
         get httpVersion(): HTTPVersion;
         /**
@@ -8856,36 +8954,44 @@ export namespace Soup {
         set priority(val: MessagePriority);
         /**
          * The HTTP response reason phrase.
+         * @read-only
          */
         get reason_phrase(): string;
         /**
          * The HTTP response reason phrase.
+         * @read-only
          */
         get reasonPhrase(): string;
         /**
          * The remote {@link Gio.SocketAddress} of the connection associated
          * with the message.
+         * @read-only
          */
         get remote_address(): Gio.SocketAddress;
         /**
          * The remote {@link Gio.SocketAddress} of the connection associated
          * with the message.
+         * @read-only
          */
         get remoteAddress(): Gio.SocketAddress;
         /**
          * The HTTP request headers.
+         * @read-only
          */
         get request_headers(): MessageHeaders;
         /**
          * The HTTP request headers.
+         * @read-only
          */
         get requestHeaders(): MessageHeaders;
         /**
          * The HTTP response headers.
+         * @read-only
          */
         get response_headers(): MessageHeaders;
         /**
          * The HTTP response headers.
+         * @read-only
          */
         get responseHeaders(): MessageHeaders;
         /**
@@ -8900,42 +9006,52 @@ export namespace Soup {
         set siteForCookies(val: GLib.Uri);
         /**
          * The HTTP response status code.
+         * @read-only
          */
         get status_code(): number;
         /**
          * The HTTP response status code.
+         * @read-only
          */
         get statusCode(): number;
         /**
          * The Name of TLS ciphersuite negotiated for this message connection.
+         * @read-only
          */
         get tls_ciphersuite_name(): string;
         /**
          * The Name of TLS ciphersuite negotiated for this message connection.
+         * @read-only
          */
         get tlsCiphersuiteName(): string;
         /**
          * The peer's {@link Gio.TlsCertificate} associated with the message.
+         * @read-only
          */
         get tls_peer_certificate(): Gio.TlsCertificate;
         /**
          * The peer's {@link Gio.TlsCertificate} associated with the message.
+         * @read-only
          */
         get tlsPeerCertificate(): Gio.TlsCertificate;
         /**
          * The verification errors on {@link Message.tls_peer_certificate}.
+         * @read-only
          */
         get tls_peer_certificate_errors(): Gio.TlsCertificateFlags;
         /**
          * The verification errors on {@link Message.tls_peer_certificate}.
+         * @read-only
          */
         get tlsPeerCertificateErrors(): Gio.TlsCertificateFlags;
         /**
          * The TLS protocol version negotiated for the message connection.
+         * @read-only
          */
         get tls_protocol_version(): Gio.TlsProtocolVersion;
         /**
          * The TLS protocol version negotiated for the message connection.
+         * @read-only
          */
         get tlsProtocolVersion(): Gio.TlsProtocolVersion;
         /**
@@ -9333,6 +9449,7 @@ export namespace Soup {
 
         /**
          * The {@link Message}.
+         * @construct-only
          */
         get message(): Message;
 
@@ -10371,12 +10488,14 @@ export namespace Soup {
              * free any state that it may have allocated in
              * `Soup.Server::request-started`.
              * @signal
+             * @run-first
              */
             'request-aborted': (arg0: ServerMessage) => void;
             /**
              * Emitted when the server has finished writing a response to
              * a request.
              * @signal
+             * @run-first
              */
             'request-finished': (arg0: ServerMessage) => void;
             /**
@@ -10389,6 +10508,7 @@ export namespace Soup {
              * and if it sets the message's `status_code`, then normal
              * handler processing will be skipped.
              * @signal
+             * @run-first
              */
             'request-read': (arg0: ServerMessage) => void;
             /**
@@ -10405,6 +10525,7 @@ export namespace Soup {
              * occurs, the processing will instead end with
              * `Soup.Server::request-aborted`.
              * @signal
+             * @run-first
              */
             'request-started': (arg0: ServerMessage) => void;
             'notify::raw-paths': (pspec: GObject.ParamSpec) => void;
@@ -10527,11 +10648,13 @@ export namespace Soup {
         /**
          * If `true`, percent-encoding in the Request-URI path will not be
          * automatically decoded.
+         * @construct-only
          */
         get raw_paths(): boolean;
         /**
          * If `true`, percent-encoding in the Request-URI path will not be
          * automatically decoded.
+         * @construct-only
          */
         get rawPaths(): boolean;
         /**
@@ -11030,27 +11153,32 @@ export namespace Soup {
              * You can return `true` to accept `tls_certificate` despite
              * `tls_errors`.
              * @signal
+             * @run-last
              */
             'accept-certificate': (arg0: Gio.TlsCertificate, arg1: Gio.TlsCertificateFlags) => boolean | void;
             /**
              * Emitted when the `msg`'s socket is connected and the TLS handshake completed.
              * @signal
+             * @run-last
              */
             connected: () => void;
             /**
              * Emitted when the `msg`'s socket is disconnected.
              * @signal
+             * @run-last
              */
             disconnected: () => void;
             /**
              * Emitted when all HTTP processing is finished for a message.
              * (After `Soup.ServerMessage::wrote-body`).
              * @signal
+             * @run-last
              */
             finished: () => void;
             /**
              * Emitted after receiving the complete request body.
              * @signal
+             * @run-last
              */
             'got-body': () => void;
             /**
@@ -11059,23 +11187,27 @@ export namespace Soup {
              * Note that "chunk" in this context means any subpiece of the body, not
              * necessarily the specific HTTP 1.1 chunks sent by the other side.
              * @signal
+             * @run-first
              */
             'got-chunk': (arg0: GLib.Bytes) => void;
             /**
              * Emitted after receiving the Request-Line and request headers.
              * @signal
+             * @run-last
              */
             'got-headers': () => void;
             /**
              * Emitted immediately after writing the complete response body for a
              * message.
              * @signal
+             * @run-last
              */
             'wrote-body': () => void;
             /**
              * Emitted immediately after writing a portion of the message
              * body to the network.
              * @signal
+             * @run-last
              */
             'wrote-body-data': (arg0: number) => void;
             /**
@@ -11088,17 +11220,20 @@ export namespace Soup {
              * more useful continuous progress information, use
              * `Soup.ServerMessage::wrote-body-data`.
              * @signal
+             * @run-last
              */
             'wrote-chunk': () => void;
             /**
              * Emitted immediately after writing the response headers for a
              * message.
              * @signal
+             * @run-last
              */
             'wrote-headers': () => void;
             /**
              * Emitted immediately after writing a 1xx (Informational) response.
              * @signal
+             * @run-last
              */
             'wrote-informational': () => void;
             'notify::tls-peer-certificate': (pspec: GObject.ParamSpec) => void;
@@ -11138,21 +11273,25 @@ export namespace Soup {
         /**
          * The peer's {@link Gio.TlsCertificate} associated with the message
          * @since 3.2
+         * @read-only
          */
         get tls_peer_certificate(): Gio.TlsCertificate;
         /**
          * The peer's {@link Gio.TlsCertificate} associated with the message
          * @since 3.2
+         * @read-only
          */
         get tlsPeerCertificate(): Gio.TlsCertificate;
         /**
          * The verification errors on {@link ServerMessage.tls_peer_certificate}
          * @since 3.2
+         * @read-only
          */
         get tls_peer_certificate_errors(): Gio.TlsCertificateFlags;
         /**
          * The verification errors on {@link ServerMessage.tls_peer_certificate}
          * @since 3.2
+         * @read-only
          */
         get tlsPeerCertificateErrors(): Gio.TlsCertificateFlags;
 
@@ -11388,6 +11527,7 @@ export namespace Soup {
              * {@link Message} signals) may be invoked multiple times for a given
              * message.
              * @signal
+             * @run-last
              */
             'request-queued': (arg0: Message) => void;
             /**
@@ -11397,6 +11537,7 @@ export namespace Soup {
              * See `Soup.Session::request-queued` for a detailed description of
              * the message lifecycle within a session.
              * @signal
+             * @run-last
              */
             'request-unqueued': (arg0: Message) => void;
             'notify::accept-language': (pspec: GObject.ParamSpec) => void;
@@ -11550,6 +11691,7 @@ export namespace Soup {
          *
          * Use this property if you want for instance to bind the
          * local socket to a specific IP address.
+         * @construct-only
          */
         get local_address(): Gio.InetSocketAddress;
         /**
@@ -11558,24 +11700,29 @@ export namespace Soup {
          *
          * Use this property if you want for instance to bind the
          * local socket to a specific IP address.
+         * @construct-only
          */
         get localAddress(): Gio.InetSocketAddress;
         /**
          * The maximum number of connections that the session can open at once.
+         * @construct-only
          */
         get max_conns(): number;
         /**
          * The maximum number of connections that the session can open at once.
+         * @construct-only
          */
         get maxConns(): number;
         /**
          * The maximum number of connections that the session can open at once
          * to a given host.
+         * @construct-only
          */
         get max_conns_per_host(): number;
         /**
          * The maximum number of connections that the session can open at once
          * to a given host.
+         * @construct-only
          */
         get maxConnsPerHost(): number;
         /**
@@ -11608,6 +11755,7 @@ export namespace Soup {
          * to a HTTP service that is not using standard TCP/IP sockets. An example of
          * this is a local service that uses HTTP over UNIX-domain sockets, in that case
          * a {@link Gio.UnixSocketAddress} can be passed to this function.
+         * @construct-only
          */
         get remote_connectable(): Gio.SocketConnectable;
         /**
@@ -11618,6 +11766,7 @@ export namespace Soup {
          * to a HTTP service that is not using standard TCP/IP sockets. An example of
          * this is a local service that uses HTTP over UNIX-domain sockets, in that case
          * a {@link Gio.UnixSocketAddress} can be passed to this function.
+         * @construct-only
          */
         get remoteConnectable(): Gio.SocketConnectable;
         /**
@@ -12444,11 +12593,13 @@ export namespace Soup {
              *
              * This signal will be emitted once.
              * @signal
+             * @run-first
              */
             closed: () => void;
             /**
              * This signal will be emitted during an orderly close.
              * @signal
+             * @run-last
              */
             closing: () => void;
             /**
@@ -12457,6 +12608,7 @@ export namespace Soup {
              * This may be fired multiple times. Fatal errors will be followed by
              * the `Soup.WebsocketConnection::closed` signal being emitted.
              * @signal
+             * @run-first
              */
             error: (arg0: GLib.Error) => void;
             /**
@@ -12466,6 +12618,7 @@ export namespace Soup {
              * `null`-terminated, but the NUL byte will not be included in
              * the length count.
              * @signal
+             * @run-first
              */
             message: (arg0: number, arg1: GLib.Bytes) => void;
             /**
@@ -12476,6 +12629,7 @@ export namespace Soup {
              * `null`-terminated, but the NUL byte will not be included in
              * the length count.
              * @signal
+             * @run-first
              */
             pong: (arg0: GLib.Bytes) => void;
             'notify::connection-type': (pspec: GObject.ParamSpec) => void;
@@ -12542,14 +12696,17 @@ export namespace Soup {
 
         /**
          * The type of connection (client/server).
+         * @construct-only
          */
         get connection_type(): WebsocketConnectionType;
         /**
          * The type of connection (client/server).
+         * @construct-only
          */
         get connectionType(): WebsocketConnectionType;
         /**
          * List of {@link WebsocketExtension} objects that are active in the connection.
+         * @construct-only
          */
         get extensions(): any;
         /**
@@ -12557,6 +12714,7 @@ export namespace Soup {
          * over.
          *
          * The input and output streams must be pollable streams.
+         * @construct-only
          */
         get io_stream(): Gio.IOStream;
         /**
@@ -12564,6 +12722,7 @@ export namespace Soup {
          * over.
          *
          * The input and output streams must be pollable streams.
+         * @construct-only
          */
         get ioStream(): Gio.IOStream;
         /**
@@ -12620,15 +12779,18 @@ export namespace Soup {
         set maxIncomingPayloadSize(val: number);
         /**
          * The client's Origin.
+         * @construct-only
          */
         get origin(): string;
         /**
          * The chosen protocol, or `null` if a protocol was not agreed
          * upon.
+         * @construct-only
          */
         get protocol(): string;
         /**
          * The current state of the WebSocket.
+         * @read-only
          */
         get state(): WebsocketState;
         /**
@@ -12636,6 +12798,7 @@ export namespace Soup {
          *
          * For servers this represents the address of the WebSocket,
          * and for clients it is the address connected to.
+         * @construct-only
          */
         get uri(): GLib.Uri;
 

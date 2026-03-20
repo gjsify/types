@@ -662,10 +662,25 @@ export namespace Jcat {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get context(): Context;
+        /**
+         * @construct-only
+         */
         get kind(): number;
+        /**
+         * @construct-only
+         */
         get method(): number;
+        /**
+         * @read-only
+         */
         get verify_kind(): number;
+        /**
+         * @read-only
+         */
         get verifyKind(): number;
 
         /**
@@ -1118,6 +1133,9 @@ export namespace Jcat {
 
         get authority(): string;
         set authority(val: string);
+        /**
+         * @construct-only
+         */
         get engine(): Engine;
         get timestamp(): number;
         set timestamp(val: number);

@@ -67,14 +67,17 @@ export namespace MetaTest {
         interface SignalSignatures extends Meta.Context.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'after-tests': () => void;
             /**
              * @signal
+             * @run-last
              */
             'before-tests': () => void;
             /**
              * @signal
+             * @run-last
              */
             'run-tests': () => number;
             'notify::name': (pspec: GObject.ParamSpec) => void;

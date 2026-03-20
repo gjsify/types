@@ -30,6 +30,9 @@ export namespace GtkVnc {
      * GtkVnc-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DisplayCredential {
         export const $gtype: GObject.GType<DisplayCredential>;
     }
@@ -44,6 +47,9 @@ export namespace GtkVnc {
         CA_CERT_DATA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DisplayDepthColor {
         export const $gtype: GObject.GType<DisplayDepthColor>;
     }
@@ -59,6 +65,9 @@ export namespace GtkVnc {
         ULTRA_LOW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DisplayKeyEvent {
         export const $gtype: GObject.GType<DisplayKeyEvent>;
     }
@@ -100,6 +109,9 @@ export namespace GtkVnc {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get surface(): any;
 
         /**
@@ -811,70 +823,87 @@ export namespace GtkVnc {
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'vnc-auth-credential': (arg0: GObject.ValueArray) => void;
             /**
              * @signal
+             * @run-last
              */
             'vnc-auth-failure': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'vnc-auth-unsupported': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'vnc-bell': () => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-connected': () => void;
             /**
              * @signal
+             * @run-last
              */
             'vnc-desktop-rename': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'vnc-desktop-resize': (arg0: number, arg1: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-disconnected': () => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-error': (arg0: string) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-initialized': () => void;
             /**
              * @signal
+             * @run-last
              */
             'vnc-keyboard-grab': () => void;
             /**
              * @signal
+             * @run-last
              */
             'vnc-keyboard-ungrab': () => void;
             /**
              * @signal
+             * @run-last
              */
             'vnc-pointer-grab': () => void;
             /**
              * @signal
+             * @run-last
              */
             'vnc-pointer-ungrab': () => void;
             /**
              * @signal
+             * @run-last
              */
             'vnc-power-control-failed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'vnc-power-control-initialized': () => void;
             /**
              * @signal
+             * @run-last
              */
             'vnc-server-cut-text': (arg0: string) => void;
             'notify::allow-resize': (pspec: GObject.ParamSpec) => void;
@@ -988,6 +1017,9 @@ export namespace GtkVnc {
         set allow_resize(val: boolean);
         get allowResize(): boolean;
         set allowResize(val: boolean);
+        /**
+         * @read-only
+         */
         get connection(): GVnc.Connection;
         get depth(): DisplayDepthColor;
         set depth(val: DisplayDepthColor);
@@ -1007,6 +1039,9 @@ export namespace GtkVnc {
         set grab_pointer(val: boolean);
         get grabPointer(): boolean;
         set grabPointer(val: boolean);
+        /**
+         * @read-only
+         */
         get height(): number;
         get keep_aspect_ratio(): boolean;
         set keep_aspect_ratio(val: boolean);
@@ -1020,6 +1055,9 @@ export namespace GtkVnc {
         set lossy_encoding(val: boolean);
         get lossyEncoding(): boolean;
         set lossyEncoding(val: boolean);
+        /**
+         * @read-only
+         */
         get name(): string;
         get read_only(): boolean;
         set read_only(val: boolean);
@@ -1035,6 +1073,9 @@ export namespace GtkVnc {
         set sharedFlag(val: boolean);
         get smoothing(): boolean;
         set smoothing(val: boolean);
+        /**
+         * @read-only
+         */
         get width(): number;
         get zoom_level(): number;
         set zoom_level(val: number);

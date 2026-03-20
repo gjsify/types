@@ -306,17 +306,20 @@ export namespace GnomeAutoar {
              * This signal is emitted after archive creating job is cancelled by the
              * {@link Gio.Cancellable}.
              * @signal
+             * @run-last
              */
             cancelled: () => void;
             /**
              * This signal is emitted after the archive creating job is successfully
              * completed.
              * @signal
+             * @run-last
              */
             completed: () => void;
             /**
              * This signal is emitted when the location of the new archive is determined.
              * @signal
+             * @run-last
              */
             'decide-dest': (arg0: Gio.File) => void;
             /**
@@ -326,6 +329,7 @@ export namespace GnomeAutoar {
              * GIO, and libarchive, respectively. The {@link GLib.Error} is owned by {@link GnomeAutoar.Compressor}
              * and should not be freed.
              * @signal
+             * @run-last
              */
             error: (arg0: GLib.Error) => void;
             /**
@@ -334,6 +338,7 @@ export namespace GnomeAutoar {
              * {@link GnomeAutoar.Compressor.completed_size} and {@link GnomeAutoar.Compressor.completed_files} properties,
              * respectively.
              * @signal
+             * @run-last
              */
             progress: (arg0: number, arg1: number) => void;
             'notify::completed-files': (pspec: GObject.ParamSpec) => void;
@@ -377,27 +382,57 @@ export namespace GnomeAutoar {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get completed_files(): number;
+        /**
+         * @read-only
+         */
         get completedFiles(): number;
+        /**
+         * @read-only
+         */
         get completed_size(): number;
+        /**
+         * @read-only
+         */
         get completedSize(): number;
         get create_top_level_directory(): boolean;
         set create_top_level_directory(val: boolean);
         get createTopLevelDirectory(): boolean;
         set createTopLevelDirectory(val: boolean);
+        /**
+         * @read-only
+         */
         get files(): number;
         get notify_interval(): number;
         set notify_interval(val: number);
         get notifyInterval(): number;
         set notifyInterval(val: number);
+        /**
+         * @construct-only
+         */
         get output_file(): Gio.File;
+        /**
+         * @construct-only
+         */
         get outputFile(): Gio.File;
         get output_is_dest(): boolean;
         set output_is_dest(val: boolean);
         get outputIsDest(): boolean;
         set outputIsDest(val: boolean);
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @construct-only
+         */
         get source_files(): any;
+        /**
+         * @construct-only
+         */
         get sourceFiles(): any;
 
         /**
@@ -565,20 +600,24 @@ export namespace GnomeAutoar {
              * This signal is emitted after archive extracting job is cancelled by the
              * {@link Gio.Cancellable}.
              * @signal
+             * @run-last
              */
             cancelled: () => void;
             /**
              * This signal is emitted after the archive extracting job is successfully
              * completed.
              * @signal
+             * @run-last
              */
             completed: () => void;
             /**
              * @signal
+             * @run-last
              */
             conflict: (arg0: Gio.File, arg1: any | null) => number;
             /**
              * @signal
+             * @run-last
              */
             'decide-destination': (arg0: Gio.File, arg1: any | null) => GObject.Object;
             /**
@@ -588,23 +627,27 @@ export namespace GnomeAutoar {
              * GIO, and libarchive, respectively. The {@link GLib.Error} is owned by {@link GnomeAutoar.Extractor}
              * and should not be freed.
              * @signal
+             * @run-last
              */
             error: (arg0: GLib.Error) => void;
             /**
              * This signal is used to report progress of extraction.
              * @signal
+             * @run-last
              */
             progress: (arg0: number, arg1: number) => void;
             /**
              * This signal is emitted when the archive extracting job needs a
              * passphrase.
              * @signal
+             * @run-last
              */
             'request-passphrase': () => string;
             /**
              * This signal is emitted when {@link GnomeAutoar.Extractor} finish scanning filename entries
              * in the source archive.
              * @signal
+             * @run-last
              */
             scanned: (arg0: number) => void;
             'notify::completed-files': (pspec: GObject.ParamSpec) => void;
@@ -650,9 +693,21 @@ export namespace GnomeAutoar {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get completed_files(): number;
+        /**
+         * @read-only
+         */
         get completedFiles(): number;
+        /**
+         * @read-only
+         */
         get completed_size(): number;
+        /**
+         * @read-only
+         */
         get completedSize(): number;
         get delete_after_extraction(): boolean;
         set delete_after_extraction(val: boolean);
@@ -662,17 +717,41 @@ export namespace GnomeAutoar {
         set notify_interval(val: number);
         get notifyInterval(): number;
         set notifyInterval(val: number);
+        /**
+         * @construct-only
+         */
         get output_file(): Gio.File;
+        /**
+         * @construct-only
+         */
         get outputFile(): Gio.File;
         get output_is_dest(): boolean;
         set output_is_dest(val: boolean);
         get outputIsDest(): boolean;
         set outputIsDest(val: boolean);
+        /**
+         * @construct-only
+         */
         get source_file(): Gio.File;
+        /**
+         * @construct-only
+         */
         get sourceFile(): Gio.File;
+        /**
+         * @read-only
+         */
         get total_files(): number;
+        /**
+         * @read-only
+         */
         get totalFiles(): number;
+        /**
+         * @read-only
+         */
         get total_size(): number;
+        /**
+         * @read-only
+         */
         get totalSize(): number;
 
         /**

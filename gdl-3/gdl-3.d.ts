@@ -29,6 +29,9 @@ export namespace Gdl {
      * Gdl-3
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DockBarStyle {
         export const $gtype: GObject.GType<DockBarStyle>;
     }
@@ -71,6 +74,9 @@ export namespace Gdl {
         ICONIFY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DockPlacement {
         export const $gtype: GObject.GType<DockPlacement>;
     }
@@ -110,6 +116,9 @@ export namespace Gdl {
         FLOATING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SwitcherStyle {
         export const $gtype: GObject.GType<SwitcherStyle>;
     }
@@ -201,6 +210,9 @@ export namespace Gdl {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @gir-type Flags
+     */
     export namespace DockItemBehavior {
         export const $gtype: GObject.GType<DockItemBehavior>;
     }
@@ -264,6 +276,9 @@ export namespace Gdl {
         NO_GRIP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DockItemFlags {
         export const $gtype: GObject.GType<DockItemFlags>;
     }
@@ -292,6 +307,9 @@ export namespace Gdl {
         USER_ACTION,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DockObjectFlags {
         export const $gtype: GObject.GType<DockObjectFlags>;
     }
@@ -322,6 +340,9 @@ export namespace Gdl {
         IN_DETACH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DockParamFlags {
         export const $gtype: GObject.GType<DockParamFlags>;
     }
@@ -349,6 +370,7 @@ export namespace Gdl {
              * Signals that the layout has changed, one or more widgets have been moved,
              * added or removed.
              * @signal
+             * @run-last
              */
             'layout-changed': () => void;
             'notify::default-title': (pspec: GObject.ParamSpec) => void;
@@ -434,6 +456,9 @@ export namespace Gdl {
         set default_title(val: string);
         get defaultTitle(): string;
         set defaultTitle(val: string);
+        /**
+         * @construct-only
+         */
         get floating(): boolean;
         get floatx(): number;
         set floatx(val: number);
@@ -1659,21 +1684,25 @@ export namespace Gdl {
             /**
              * Signals that this dock has been deselected in a switcher.
              * @signal
+             * @run-first
              */
             deselected: () => void;
             /**
              * Signals that the dock item has begun to be dragged.
              * @signal
+             * @run-first
              */
             'dock-drag-begin': () => void;
             /**
              * Signals that the dock item dragging has ended.
              * @signal
+             * @run-first
              */
             'dock-drag-end': (arg0: boolean) => void;
             /**
              * Signals that a dock item dragging motion event has occured.
              * @signal
+             * @run-first
              */
             'dock-drag-motion': (arg0: Gdk.Device, arg1: number, arg2: number) => void;
             /**
@@ -1682,11 +1711,14 @@ export namespace Gdl {
              * specifies the direction in which focus is to be shifted.
              * @signal
              * @since 3.3.2
+             * @action
+             * @run-last
              */
             'move-focus-child': (arg0: Gtk.DirectionType) => void;
             /**
              * Signals that this dock has been selected from a switcher.
              * @signal
+             * @run-first
              */
             selected: () => void;
             'notify::behavior': (pspec: GObject.ParamSpec) => void;
@@ -3322,6 +3354,9 @@ export namespace Gdl {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set item(val: DockItem);
 
         /**
@@ -3864,6 +3899,9 @@ export namespace Gdl {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get dirty(): boolean;
         get master(): GObject.Object;
         set master(val: GObject.Object);
@@ -3991,6 +4029,7 @@ export namespace Gdl {
              * Signals that the layout has changed, one or more widgets have been moved,
              * added or removed.
              * @signal
+             * @run-last
              */
             'layout-changed': () => void;
             'notify::default-title': (pspec: GObject.ParamSpec) => void;
@@ -4713,11 +4752,13 @@ export namespace Gdl {
             /**
              * Signals that the {@link Gdl.DockObject} is detached.
              * @signal
+             * @run-last
              */
             detach: (arg0: boolean) => void;
             /**
              * Signals that the {@link Gdl.DockObject} has been docked.
              * @signal
+             * @run-first
              */
             dock: (arg0: DockObject, arg1: DockPlacement, arg2: GObject.Value | null) => void;
             'notify::long-name': (pspec: GObject.ParamSpec) => void;
@@ -4812,6 +4853,7 @@ export namespace Gdl {
         /**
          * The object name.  If the object is manual the name can be used
          * to recall the object from any other object in the ring
+         * @construct-only
          */
         get name(): string;
         /**
@@ -6297,8 +6339,17 @@ export namespace Gdl {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get floating(): boolean;
+        /**
+         * @construct-only
+         */
         get floatx(): number;
+        /**
+         * @construct-only
+         */
         get floaty(): number;
         get height(): number;
         set height(val: number);
@@ -6308,6 +6359,9 @@ export namespace Gdl {
         set next_placement(val: DockPlacement);
         get nextPlacement(): DockPlacement;
         set nextPlacement(val: DockPlacement);
+        /**
+         * @construct-only
+         */
         get sticky(): boolean;
         get width(): number;
         set width(val: number);
@@ -6818,6 +6872,7 @@ export namespace Gdl {
             /**
              * This signal is emitted when the user clicks on the label.
              * @signal
+             * @run-last
              */
             'button-pressed-handle': (arg0: Gdk.Event) => void;
             'notify::item': (pspec: GObject.ParamSpec) => void;

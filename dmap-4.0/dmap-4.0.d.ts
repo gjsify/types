@@ -22,6 +22,9 @@ export namespace Dmap {
      * Dmap-4.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionState {
         export const $gtype: GObject.GType<ConnectionState>;
     }
@@ -69,6 +72,9 @@ export namespace Dmap {
         DONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ContentCode {
         export const $gtype: GObject.GType<ContentCode>;
     }
@@ -244,6 +250,9 @@ export namespace Dmap {
         CC_CAVC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ControlPlayState {
         export const $gtype: GObject.GType<ControlPlayState>;
     }
@@ -257,6 +266,9 @@ export namespace Dmap {
         PLAYING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ControlRepeatState {
         export const $gtype: GObject.GType<ControlRepeatState>;
     }
@@ -270,6 +282,9 @@ export namespace Dmap {
         ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DbId {
         export const $gtype: GObject.GType<DbId>;
     }
@@ -357,6 +372,9 @@ export namespace Dmap {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MdnsServiceTransportProtocol {
         export const $gtype: GObject.GType<MdnsServiceTransportProtocol>;
     }
@@ -370,6 +388,9 @@ export namespace Dmap {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MdnsServiceType {
         export const $gtype: GObject.GType<MdnsServiceType>;
     }
@@ -405,6 +426,9 @@ export namespace Dmap {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MediaKind {
         export const $gtype: GObject.GType<MediaKind>;
     }
@@ -419,6 +443,9 @@ export namespace Dmap {
         TV_SHOW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ShareAuthMethod {
         export const $gtype: GObject.GType<ShareAuthMethod>;
     }
@@ -651,6 +678,7 @@ export namespace Dmap {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             authenticate: (
                 arg0: string,
@@ -661,22 +689,27 @@ export namespace Dmap {
             ) => void;
             /**
              * @signal
+             * @run-last
              */
             connected: () => void;
             /**
              * @signal
+             * @run-last
              */
             connecting: (arg0: number, arg1: number) => void;
             /**
              * @signal
+             * @run-last
              */
             disconnected: () => void;
             /**
              * @signal
+             * @run-first
              */
             error: (arg0: any | null) => void;
             /**
              * @signal
+             * @run-first
              */
             'operation-done': () => void;
             'notify::base-uri': (pspec: GObject.ParamSpec) => void;
@@ -732,15 +765,33 @@ export namespace Dmap {
         set database_id(val: number);
         get databaseId(): number;
         set databaseId(val: number);
+        /**
+         * @construct-only
+         */
         get db(): Db;
         get dmap_version(): number;
         set dmap_version(val: number);
         get dmapVersion(): number;
         set dmapVersion(val: number);
+        /**
+         * @construct-only
+         */
         get factory(): RecordFactory;
+        /**
+         * @construct-only
+         */
         get host(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @write-only
+         */
         set password(val: string);
+        /**
+         * @construct-only
+         */
         get port(): number;
         get revision_number(): number;
         set revision_number(val: number);
@@ -750,6 +801,9 @@ export namespace Dmap {
         set session_id(val: number);
         get sessionId(): number;
         set sessionId(val: number);
+        /**
+         * @construct-only
+         */
         get username(): string;
 
         /**
@@ -937,22 +991,27 @@ export namespace Dmap {
         interface SignalSignatures extends Share.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'add-guid': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'lookup-guid': (arg0: string) => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             'remote-found': (arg0: string, arg1: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'remote-lost': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'remote-paired': (arg0: string, arg1: boolean) => void;
             'notify::library-name': (pspec: GObject.ParamSpec) => void;
@@ -989,6 +1048,9 @@ export namespace Dmap {
         set library_name(val: string);
         get libraryName(): string;
         set libraryName(val: string);
+        /**
+         * @construct-only
+         */
         get player(): GObject.Object;
 
         /**
@@ -1239,10 +1301,12 @@ export namespace Dmap {
             /**
              * Emitted each time a service becomes available to `browser`
              * @signal
+             * @run-last
              */
             'service-added': (arg0: MdnsService) => void;
             /**
              * @signal
+             * @run-last
              */
             'service-removed': (arg0: string) => void;
         }
@@ -1337,10 +1401,12 @@ export namespace Dmap {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'name-collision': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             published: (arg0: string) => void;
         }
@@ -1541,6 +1607,7 @@ export namespace Dmap {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             error: (arg0: any | null) => void;
             'notify::auth-method': (pspec: GObject.ParamSpec) => void;
@@ -1586,8 +1653,17 @@ export namespace Dmap {
         set auth_method(val: number);
         get authMethod(): number;
         set authMethod(val: number);
+        /**
+         * @construct-only
+         */
         get container_db(): ContainerDb;
+        /**
+         * @construct-only
+         */
         get containerDb(): ContainerDb;
+        /**
+         * @construct-only
+         */
         get db(): Db;
         get name(): string;
         set name(val: string);
@@ -1597,8 +1673,17 @@ export namespace Dmap {
         set revision_number(val: number);
         get revisionNumber(): number;
         set revisionNumber(val: number);
+        /**
+         * @read-only
+         */
         get server(): Soup.Server;
+        /**
+         * @construct-only
+         */
         get transcode_mimetype(): string;
+        /**
+         * @construct-only
+         */
         get transcodeMimetype(): string;
         get txt_records(): string[];
         set txt_records(val: string[]);

@@ -25,6 +25,9 @@ export namespace Gdk {
      * Gdk-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AxisUse {
         export const $gtype: GObject.GType<AxisUse>;
     }
@@ -43,6 +46,9 @@ export namespace Gdk {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ByteOrder {
         export const $gtype: GObject.GType<ByteOrder>;
     }
@@ -55,6 +61,9 @@ export namespace Gdk {
         MSB_FIRST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CapStyle {
         export const $gtype: GObject.GType<CapStyle>;
     }
@@ -69,6 +78,9 @@ export namespace Gdk {
         PROJECTING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CrossingMode {
         export const $gtype: GObject.GType<CrossingMode>;
     }
@@ -85,6 +97,9 @@ export namespace Gdk {
         STATE_CHANGED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CursorType {
         export const $gtype: GObject.GType<CursorType>;
     }
@@ -175,6 +190,9 @@ export namespace Gdk {
         CURSOR_IS_PIXMAP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DragProtocol {
         export const $gtype: GObject.GType<DragProtocol>;
     }
@@ -192,6 +210,9 @@ export namespace Gdk {
         LOCAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EventType {
         export const $gtype: GObject.GType<EventType>;
     }
@@ -241,6 +262,9 @@ export namespace Gdk {
         EVENT_LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ExtensionMode {
         export const $gtype: GObject.GType<ExtensionMode>;
     }
@@ -254,6 +278,9 @@ export namespace Gdk {
         CURSOR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Fill {
         export const $gtype: GObject.GType<Fill>;
     }
@@ -268,6 +295,9 @@ export namespace Gdk {
         OPAQUE_STIPPLED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FillRule {
         export const $gtype: GObject.GType<FillRule>;
     }
@@ -280,6 +310,9 @@ export namespace Gdk {
         WINDING_RULE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FilterReturn {
         export const $gtype: GObject.GType<FilterReturn>;
     }
@@ -293,6 +326,9 @@ export namespace Gdk {
         REMOVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FontType {
         export const $gtype: GObject.GType<FontType>;
     }
@@ -305,6 +341,9 @@ export namespace Gdk {
         FONTSET,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Function {
         export const $gtype: GObject.GType<Function>;
     }
@@ -331,6 +370,9 @@ export namespace Gdk {
         SET,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GrabStatus {
         export const $gtype: GObject.GType<GrabStatus>;
     }
@@ -346,6 +388,9 @@ export namespace Gdk {
         FROZEN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Gravity {
         export const $gtype: GObject.GType<Gravity>;
     }
@@ -366,6 +411,9 @@ export namespace Gdk {
         STATIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ImageType {
         export const $gtype: GObject.GType<ImageType>;
     }
@@ -379,6 +427,9 @@ export namespace Gdk {
         FASTEST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputMode {
         export const $gtype: GObject.GType<InputMode>;
     }
@@ -392,6 +443,9 @@ export namespace Gdk {
         WINDOW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputSource {
         export const $gtype: GObject.GType<InputSource>;
     }
@@ -406,6 +460,9 @@ export namespace Gdk {
         CURSOR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace JoinStyle {
         export const $gtype: GObject.GType<JoinStyle>;
     }
@@ -419,6 +476,9 @@ export namespace Gdk {
         BEVEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LineStyle {
         export const $gtype: GObject.GType<LineStyle>;
     }
@@ -432,6 +492,9 @@ export namespace Gdk {
         DOUBLE_DASH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NotifyType {
         export const $gtype: GObject.GType<NotifyType>;
     }
@@ -448,6 +511,9 @@ export namespace Gdk {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OverlapType {
         export const $gtype: GObject.GType<OverlapType>;
     }
@@ -461,6 +527,9 @@ export namespace Gdk {
         PART,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OwnerChange {
         export const $gtype: GObject.GType<OwnerChange>;
     }
@@ -474,6 +543,9 @@ export namespace Gdk {
         CLOSE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PropMode {
         export const $gtype: GObject.GType<PropMode>;
     }
@@ -487,6 +559,9 @@ export namespace Gdk {
         APPEND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PropertyState {
         export const $gtype: GObject.GType<PropertyState>;
     }
@@ -499,6 +574,9 @@ export namespace Gdk {
         DELETE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RgbDither {
         export const $gtype: GObject.GType<RgbDither>;
     }
@@ -512,6 +590,9 @@ export namespace Gdk {
         MAX,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScrollDirection {
         export const $gtype: GObject.GType<ScrollDirection>;
     }
@@ -526,6 +607,9 @@ export namespace Gdk {
         RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingAction {
         export const $gtype: GObject.GType<SettingAction>;
     }
@@ -539,6 +623,9 @@ export namespace Gdk {
         DELETED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Status {
         export const $gtype: GObject.GType<Status>;
     }
@@ -554,6 +641,9 @@ export namespace Gdk {
         ERROR_MEM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SubwindowMode {
         export const $gtype: GObject.GType<SubwindowMode>;
     }
@@ -566,6 +656,9 @@ export namespace Gdk {
         INCLUDE_INFERIORS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VisibilityState {
         export const $gtype: GObject.GType<VisibilityState>;
     }
@@ -579,6 +672,9 @@ export namespace Gdk {
         FULLY_OBSCURED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VisualType {
         export const $gtype: GObject.GType<VisualType>;
     }
@@ -595,6 +691,9 @@ export namespace Gdk {
         DIRECT_COLOR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowClass {
         export const $gtype: GObject.GType<WindowClass>;
     }
@@ -607,6 +706,9 @@ export namespace Gdk {
         ONLY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowEdge {
         export const $gtype: GObject.GType<WindowEdge>;
     }
@@ -625,6 +727,9 @@ export namespace Gdk {
         SOUTH_EAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowType {
         export const $gtype: GObject.GType<WindowType>;
     }
@@ -642,6 +747,9 @@ export namespace Gdk {
         OFFSCREEN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowTypeHint {
         export const $gtype: GObject.GType<WindowTypeHint>;
     }
@@ -5200,6 +5308,9 @@ export namespace Gdk {
     interface SpanFunc {
         (span: Span, data?: any | null): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace DragAction {
         export const $gtype: GObject.GType<DragAction>;
     }
@@ -5216,6 +5327,9 @@ export namespace Gdk {
         ASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace EventMask {
         export const $gtype: GObject.GType<EventMask>;
     }
@@ -5248,6 +5362,9 @@ export namespace Gdk {
         ALL_EVENTS_MASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GCValuesMask {
         export const $gtype: GObject.GType<GCValuesMask>;
     }
@@ -5276,6 +5393,9 @@ export namespace Gdk {
         JOIN_STYLE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace InputCondition {
         export const $gtype: GObject.GType<InputCondition>;
     }
@@ -5289,6 +5409,9 @@ export namespace Gdk {
         EXCEPTION,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }
@@ -5317,6 +5440,9 @@ export namespace Gdk {
         MODIFIER_MASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WMDecoration {
         export const $gtype: GObject.GType<WMDecoration>;
     }
@@ -5334,6 +5460,9 @@ export namespace Gdk {
         MAXIMIZE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WMFunction {
         export const $gtype: GObject.GType<WMFunction>;
     }
@@ -5350,6 +5479,9 @@ export namespace Gdk {
         CLOSE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WindowAttributesType {
         export const $gtype: GObject.GType<WindowAttributesType>;
     }
@@ -5369,6 +5501,9 @@ export namespace Gdk {
         TYPE_HINT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WindowHints {
         export const $gtype: GObject.GType<WindowHints>;
     }
@@ -5388,6 +5523,9 @@ export namespace Gdk {
         USER_SIZE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WindowState {
         export const $gtype: GObject.GType<WindowState>;
     }
@@ -5825,6 +5963,7 @@ export namespace Gdk {
              * system for `display` is closed.
              * @signal
              * @since 2.2
+             * @run-last
              */
             closed: (arg0: boolean) => void;
         }
@@ -6120,6 +6259,7 @@ export namespace Gdk {
              * The ::display_opened signal is emitted when a display is opened.
              * @signal
              * @since 2.2
+             * @run-last
              */
             'display-opened': (arg0: Display) => void;
             'notify::default-display': (pspec: GObject.ParamSpec) => void;
@@ -7148,6 +7288,7 @@ export namespace Gdk {
              * the keymap changes.
              * @signal
              * @since 2.0
+             * @run-last
              */
             'direction-changed': () => void;
             /**
@@ -7155,6 +7296,7 @@ export namespace Gdk {
              * `keymap` changes.
              * @signal
              * @since 2.2
+             * @run-last
              */
             'keys-changed': () => void;
             /**
@@ -7163,6 +7305,7 @@ export namespace Gdk {
              * See `gdk_keymap_get_caps_lock_state()`.
              * @signal
              * @since 2.16
+             * @run-last
              */
             'state-changed': () => void;
         }
@@ -7438,6 +7581,9 @@ export namespace Gdk {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get screen(): Screen;
 
         /**
@@ -7646,6 +7792,7 @@ export namespace Gdk {
              * status of the screen changes
              * @signal
              * @since 2.10
+             * @run-last
              */
             'composited-changed': () => void;
             /**
@@ -7656,6 +7803,7 @@ export namespace Gdk {
              * may be a possibility.
              * @signal
              * @since 2.14
+             * @run-last
              */
             'monitors-changed': () => void;
             /**
@@ -7663,6 +7811,7 @@ export namespace Gdk {
              * height of a screen changes.
              * @signal
              * @since 2.2
+             * @run-last
              */
             'size-changed': () => void;
             'notify::font-options': (pspec: GObject.ParamSpec) => void;
@@ -8214,6 +8363,7 @@ export namespace Gdk {
              * See also `GtkWindow::to-embedder`.
              * @signal
              * @since 2.18
+             * @run-last
              */
             'from-embedder': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
             /**
@@ -8221,6 +8371,7 @@ export namespace Gdk {
              * child at the given position.
              * @signal
              * @since 2.18
+             * @run-last
              */
             'pick-embedded-child': (arg0: number, arg1: number) => Window;
             /**
@@ -8230,6 +8381,7 @@ export namespace Gdk {
              * See also `GtkWindow::from-embedder`.
              * @signal
              * @since 2.18
+             * @run-last
              */
             'to-embedder': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
             'notify::cursor': (pspec: GObject.ParamSpec) => void;

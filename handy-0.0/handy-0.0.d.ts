@@ -29,6 +29,9 @@ export namespace Handy {
      * Handy-0.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ArrowsDirection {
         export const $gtype: GObject.GType<ArrowsDirection>;
     }
@@ -55,6 +58,9 @@ export namespace Handy {
         RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CenteringPolicy {
         export const $gtype: GObject.GType<CenteringPolicy>;
     }
@@ -73,6 +79,9 @@ export namespace Handy {
         STRICT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Fold {
         export const $gtype: GObject.GType<Fold>;
     }
@@ -93,6 +102,9 @@ export namespace Handy {
         FOLDED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LeafletChildTransitionType {
         export const $gtype: GObject.GType<LeafletChildTransitionType>;
     }
@@ -126,6 +138,9 @@ export namespace Handy {
         UNDER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LeafletModeTransitionType {
         export const $gtype: GObject.GType<LeafletModeTransitionType>;
     }
@@ -147,6 +162,9 @@ export namespace Handy {
         SLIDE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LeafletTransitionType {
         export const $gtype: GObject.GType<LeafletTransitionType>;
     }
@@ -178,6 +196,9 @@ export namespace Handy {
         UNDER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PaginatorIndicatorStyle {
         export const $gtype: GObject.GType<PaginatorIndicatorStyle>;
     }
@@ -204,6 +225,9 @@ export namespace Handy {
         LINES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SqueezerTransitionType {
         export const $gtype: GObject.GType<SqueezerTransitionType>;
     }
@@ -224,6 +248,9 @@ export namespace Handy {
         CROSSFADE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ViewSwitcherPolicy {
         export const $gtype: GObject.GType<ViewSwitcherPolicy>;
     }
@@ -597,9 +624,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -913,6 +946,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -920,6 +954,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -1041,6 +1076,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -6533,9 +6569,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -6849,6 +6891,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -6856,6 +6899,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -6977,6 +7021,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -11033,6 +11078,7 @@ export namespace Handy {
              * This signal is emitted when the dialer's 'deleted' button is clicked
              * to delete the last symbol.
              * @signal
+             * @run-last
              */
             deleted: () => void;
             /**
@@ -11040,6 +11086,7 @@ export namespace Handy {
              * Connect to this signal to perform to get notified when the user
              * wants to submit the dialed number.
              * @signal
+             * @run-last
              */
             submitted: (arg0: string) => void;
             /**
@@ -11049,6 +11096,7 @@ export namespace Handy {
              * and "+" on it will always send "*".  Delete and Submit buttons will
              * not trigger this signal.
              * @signal
+             * @run-last
              */
             'symbol-clicked': (arg0: number) => void;
             'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
@@ -11768,6 +11816,9 @@ export namespace Handy {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get digit(): number;
         get symbols(): string;
         set symbols(val: string);
@@ -11913,9 +11964,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -12229,6 +12286,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -12236,6 +12294,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -12357,6 +12416,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -16607,6 +16667,7 @@ export namespace Handy {
              * called.
              * @signal
              * @deprecated since 0.0.12: This widget is considered a {@link Handy.Dialer} internal api
+             * @run-last
              */
             'cycle-end': () => void;
             /**
@@ -16614,6 +16675,7 @@ export namespace Handy {
              * the first button press).
              * @signal
              * @deprecated since 0.0.12: This widget is considered a {@link Handy.Dialer} internal api
+             * @run-last
              */
             'cycle-start': () => void;
             'notify::cycle-timeout': (pspec: GObject.ParamSpec) => void;
@@ -16797,9 +16859,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -17113,6 +17181,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -17120,6 +17189,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -17241,6 +17311,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -21386,6 +21457,7 @@ export namespace Handy {
         /**
          * `true` if the dialog is narrow.
          * @since 0.0.11
+         * @read-only
          */
         get narrow(): boolean;
 
@@ -22138,9 +22210,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -22454,6 +22532,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -22461,6 +22540,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -22582,6 +22662,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -26821,7 +26902,13 @@ export namespace Handy {
         set transition_duration(val: number);
         get transitionDuration(): number;
         set transitionDuration(val: number);
+        /**
+         * @read-only
+         */
         get transition_running(): boolean;
+        /**
+         * @read-only
+         */
         get transitionRunning(): boolean;
 
         /**
@@ -28297,13 +28384,25 @@ export namespace Handy {
 
         get entry(): Gtk.Widget;
         set entry(val: Gtk.Widget);
+        /**
+         * @write-only
+         */
         set left_action(val: Gtk.Widget);
+        /**
+         * @write-only
+         */
         set leftAction(val: Gtk.Widget);
         get only_digits(): boolean;
         set only_digits(val: boolean);
         get onlyDigits(): boolean;
         set onlyDigits(val: boolean);
+        /**
+         * @write-only
+         */
         set right_action(val: Gtk.Widget);
+        /**
+         * @write-only
+         */
         set rightAction(val: Gtk.Widget);
         get show_symbols(): boolean;
         set show_symbols(val: boolean);
@@ -28991,7 +29090,13 @@ export namespace Handy {
         set child_transition_duration(val: number);
         get childTransitionDuration(): number;
         set childTransitionDuration(val: number);
+        /**
+         * @read-only
+         */
         get child_transition_running(): boolean;
+        /**
+         * @read-only
+         */
         get childTransitionRunning(): boolean;
         /**
          * The type of animation used to transition between children
@@ -29012,6 +29117,7 @@ export namespace Handy {
          * sum of the natural size of its children, it will be unfolded otherwise.
          *
          * See also: {@link Handy.Leaflet.folded}.
+         * @read-only
          */
         get fold(): Fold;
         /**
@@ -29021,6 +29127,7 @@ export namespace Handy {
          * `gboolean` rather than a `GEnum`. This makes it convenient to bind the
          * {@link Handy.Leaflet.fold} of a leaflet to any other `gboolean` property of other
          * {@link GObject.Object}'s using `g_object_bind_property`().
+         * @read-only
          */
         get folded(): boolean;
         get hhomogeneous_folded(): boolean;
@@ -29315,9 +29422,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -29631,6 +29744,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -29638,6 +29752,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -29759,6 +29874,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -33845,6 +33961,7 @@ export namespace Handy {
              * the pages.
              * @signal
              * @since 0.0.12
+             * @run-last
              */
             'page-changed': (arg0: number) => void;
             'notify::allow-mouse-drag': (pspec: GObject.ParamSpec) => void;
@@ -34026,17 +34143,20 @@ export namespace Handy {
         /**
          * The number of pages in a {@link Handy.Paginator}
          * @since 0.0.11
+         * @read-only
          */
         get n_pages(): number;
         /**
          * The number of pages in a {@link Handy.Paginator}
          * @since 0.0.11
+         * @read-only
          */
         get nPages(): number;
         /**
          * Current scrolling position, unitless. 1 matches 1 page. Use
          * `hdy_paginator_scroll_to()` for changing it.
          * @since 0.0.11
+         * @read-only
          */
         get position(): number;
         /**
@@ -34237,9 +34357,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -34553,6 +34679,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -34560,6 +34687,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -34681,6 +34809,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -40175,9 +40304,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -40491,6 +40626,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -40498,6 +40634,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -40619,6 +40756,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -46121,13 +46259,25 @@ export namespace Handy {
         set transition_duration(val: number);
         get transitionDuration(): number;
         set transitionDuration(val: number);
+        /**
+         * @read-only
+         */
         get transition_running(): boolean;
+        /**
+         * @read-only
+         */
         get transitionRunning(): boolean;
         get transition_type(): SqueezerTransitionType;
         set transition_type(val: SqueezerTransitionType);
         get transitionType(): SqueezerTransitionType;
         set transitionType(val: SqueezerTransitionType);
+        /**
+         * @read-only
+         */
         get visible_child(): Gtk.Widget;
+        /**
+         * @read-only
+         */
         get visibleChild(): Gtk.Widget;
 
         /**
@@ -48028,6 +48178,9 @@ export namespace Handy {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get value(): GObject.Value;
 
         /**

@@ -20,6 +20,9 @@ export namespace GPaste {
      * GPaste-2
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ItemKind {
         export const $gtype: GObject.GType<ItemKind>;
     }
@@ -34,6 +37,9 @@ export namespace GPaste {
         PASSWORD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UpdateAction {
         export const $gtype: GObject.GType<UpdateAction>;
     }
@@ -46,6 +52,9 @@ export namespace GPaste {
         REMOVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UpdateTarget {
         export const $gtype: GObject.GType<UpdateTarget>;
     }
@@ -350,34 +359,40 @@ export namespace GPaste {
              * The "delete-history" signal is emitted when we delete
              * a history.
              * @signal
+             * @run-last
              */
             'delete-history': (arg0: string) => void;
             /**
              * The "empty-history" signal is emitted when we empty
              * a history.
              * @signal
+             * @run-last
              */
             'empty-history': (arg0: string) => void;
             /**
              * The "show-history" signal is emitted when we switch
              * from a history to another.
              * @signal
+             * @run-last
              */
             'show-history': () => void;
             /**
              * The "switch-history" signal is emitted when we switch
              * from a history to another.
              * @signal
+             * @run-last
              */
             'switch-history': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             tracking: (arg0: boolean) => void;
             /**
              * The "update" signal is emitted whenever anything changed
              * in the history (something was added, removed, selected, replaced...).
              * @signal
+             * @run-last
              */
             update: (arg0: UpdateAction, arg1: UpdateTarget, arg2: number) => void;
             'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
@@ -2246,6 +2261,7 @@ export namespace GPaste {
              * The "accelerator-activated" signal is emitted when gnome-shell notifies us
              * that an accelerator has been pressed.
              * @signal
+             * @run-last
              */
             'accelerator-activated': (arg0: number) => void;
             'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
@@ -3218,6 +3234,7 @@ export namespace GPaste {
             /**
              * The "active-changed" signal is emitted when the screensaver appears or vanishes
              * @signal
+             * @run-last
              */
             'active-changed': (arg0: boolean) => void;
             'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
@@ -4097,6 +4114,8 @@ export namespace GPaste {
              * detailed signal "changed::x" in order to only receive callbacks
              * when key "x" changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             changed: (arg0: string) => void;
             /**
@@ -4108,12 +4127,15 @@ export namespace GPaste {
              * detailed signal "rebind::x" in order to only receive callbacks
              * when key "x" changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             rebind: (arg0: string) => void;
             /**
              * The "track" signal is emitted when the daemon starts or stops tracking
              * clipboard changes
              * @signal
+             * @run-last
              */
             track: (arg0: boolean) => void;
         }

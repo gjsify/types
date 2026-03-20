@@ -829,14 +829,20 @@ export namespace Liferea {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'location-changed': (arg0: string) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'statusbar-changed': (arg0: string) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'title-changed': (arg0: string) => void;
             'notify::renderwidget': (pspec: GObject.ParamSpec) => void;
@@ -857,6 +863,9 @@ export namespace Liferea {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get renderwidget(): Gtk.Widget;
 
         /**
@@ -999,8 +1008,17 @@ export namespace Liferea {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get head_lines(): Gtk.Widget;
+        /**
+         * @read-only
+         */
         get headLines(): Gtk.Widget;
+        /**
+         * @read-only
+         */
         get notebook(): Gtk.Notebook;
 
         /**
@@ -1065,14 +1083,20 @@ export namespace Liferea {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'items-updated': (arg0: string) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'new-items': (arg0: any | null) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'node-updated': (arg0: string) => void;
         }
@@ -1241,6 +1265,8 @@ export namespace Liferea {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'item-updated': (arg0: string) => void;
         }
@@ -1420,9 +1446,21 @@ export namespace Liferea {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get html_view(): Browser;
+        /**
+         * @read-only
+         */
         get htmlView(): Browser;
+        /**
+         * @read-only
+         */
         get item_list_view(): ItemListView;
+        /**
+         * @read-only
+         */
         get itemListView(): ItemListView;
 
         /**
@@ -1530,10 +1568,14 @@ export namespace Liferea {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'online-status-changed': (arg0: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'proxy-changed': () => void;
         }
@@ -1635,14 +1677,41 @@ export namespace Liferea {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get browser_tabs(): BrowserTabs;
+        /**
+         * @read-only
+         */
         get browserTabs(): BrowserTabs;
+        /**
+         * @read-only
+         */
         get builder(): Gtk.Builder;
+        /**
+         * @read-only
+         */
         get feed_list(): FeedList;
+        /**
+         * @read-only
+         */
         get feedList(): FeedList;
+        /**
+         * @read-only
+         */
         get item_list(): ItemList;
+        /**
+         * @read-only
+         */
         get itemList(): ItemList;
+        /**
+         * @read-only
+         */
         get item_view(): ItemView;
+        /**
+         * @read-only
+         */
         get itemView(): ItemView;
 
         /**
@@ -2217,6 +2286,9 @@ export namespace Liferea {
     interface ShellActivatable extends GObject.Object, ShellActivatable.Interface {
         // Properties
 
+        /**
+         * @construct-only
+         */
         get shell(): Shell;
 
         // Methods

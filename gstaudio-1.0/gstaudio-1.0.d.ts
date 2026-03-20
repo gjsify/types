@@ -21,6 +21,9 @@ export namespace GstAudio {
      * GstAudio-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioBaseSinkDiscontReason {
         export const $gtype: GObject.GType<AudioBaseSinkDiscontReason>;
     }
@@ -58,6 +61,9 @@ export namespace GstAudio {
         DEVICE_FAILURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioBaseSinkSlaveMethod {
         export const $gtype: GObject.GType<AudioBaseSinkSlaveMethod>;
     }
@@ -87,6 +93,9 @@ export namespace GstAudio {
         CUSTOM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioBaseSrcSlaveMethod {
         export const $gtype: GObject.GType<AudioBaseSrcSlaveMethod>;
     }
@@ -117,6 +126,9 @@ export namespace GstAudio {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioCdSrcMode {
         export const $gtype: GObject.GType<AudioCdSrcMode>;
     }
@@ -137,6 +149,9 @@ export namespace GstAudio {
         CONTINUOUS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioChannelPosition {
         export const $gtype: GObject.GType<AudioChannelPosition>;
     }
@@ -298,6 +313,9 @@ export namespace GstAudio {
         SURROUND_RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioDitherMethod {
         export const $gtype: GObject.GType<AudioDitherMethod>;
     }
@@ -325,6 +343,9 @@ export namespace GstAudio {
         TPDF_HF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioFormat {
         export const $gtype: GObject.GType<AudioFormat>;
     }
@@ -520,6 +541,9 @@ export namespace GstAudio {
         F64,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioLayout {
         export const $gtype: GObject.GType<AudioLayout>;
     }
@@ -539,6 +563,9 @@ export namespace GstAudio {
         NON_INTERLEAVED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioNoiseShapingMethod {
         export const $gtype: GObject.GType<AudioNoiseShapingMethod>;
     }
@@ -570,6 +597,9 @@ export namespace GstAudio {
         HIGH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioResamplerFilterInterpolation {
         export const $gtype: GObject.GType<AudioResamplerFilterInterpolation>;
     }
@@ -596,6 +626,9 @@ export namespace GstAudio {
         CUBIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioResamplerFilterMode {
         export const $gtype: GObject.GType<AudioResamplerFilterMode>;
     }
@@ -624,6 +657,9 @@ export namespace GstAudio {
         AUTO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioResamplerMethod {
         export const $gtype: GObject.GType<AudioResamplerMethod>;
     }
@@ -658,6 +694,9 @@ export namespace GstAudio {
         KAISER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioRingBufferFormatType {
         export const $gtype: GObject.GType<AudioRingBufferFormatType>;
     }
@@ -729,6 +768,9 @@ export namespace GstAudio {
         FLAC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioRingBufferState {
         export const $gtype: GObject.GType<AudioRingBufferState>;
     }
@@ -1455,6 +1497,9 @@ export namespace GstAudio {
     interface AudioRingBufferCallback {
         (rbuf: AudioRingBuffer, data: Uint8Array | string): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace AudioChannelMixerFlags {
         export const $gtype: GObject.GType<AudioChannelMixerFlags>;
     }
@@ -1486,6 +1531,9 @@ export namespace GstAudio {
         UNPOSITIONED_OUT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace AudioConverterFlags {
         export const $gtype: GObject.GType<AudioConverterFlags>;
     }
@@ -1511,6 +1559,9 @@ export namespace GstAudio {
         VARIABLE_RATE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace AudioFlags {
         export const $gtype: GObject.GType<AudioFlags>;
     }
@@ -1531,6 +1582,9 @@ export namespace GstAudio {
         UNPOSITIONED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace AudioFormatFlags {
         export const $gtype: GObject.GType<AudioFormatFlags>;
     }
@@ -1563,6 +1617,9 @@ export namespace GstAudio {
         UNPACK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace AudioPackFlags {
         export const $gtype: GObject.GType<AudioPackFlags>;
     }
@@ -1586,6 +1643,9 @@ export namespace GstAudio {
         TRUNCATE_RANGE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace AudioQuantizeFlags {
         export const $gtype: GObject.GType<AudioQuantizeFlags>;
     }
@@ -1605,6 +1665,9 @@ export namespace GstAudio {
         NON_INTERLEAVED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace AudioResamplerFlags {
         export const $gtype: GObject.GType<AudioResamplerFlags>;
     }
@@ -1742,6 +1805,7 @@ export namespace GstAudio {
          * companion property: in the vast majority of cases where you plan to plug in
          * live sources with a non-zero latency, you should set it to a non-zero value.
          * @since 1.22
+         * @construct-only
          */
         get force_live(): boolean;
         /**
@@ -1750,6 +1814,7 @@ export namespace GstAudio {
          * companion property: in the vast majority of cases where you plan to plug in
          * live sources with a non-zero latency, you should set it to a non-zero value.
          * @since 1.22
+         * @construct-only
          */
         get forceLive(): boolean;
         /**
@@ -2341,18 +2406,22 @@ export namespace GstAudio {
 
         /**
          * Actual configured size of audio buffer in microseconds.
+         * @read-only
          */
         get actual_buffer_time(): number;
         /**
          * Actual configured size of audio buffer in microseconds.
+         * @read-only
          */
         get actualBufferTime(): number;
         /**
          * Actual configured audio latency in microseconds.
+         * @read-only
          */
         get actual_latency_time(): number;
         /**
          * Actual configured audio latency in microseconds.
+         * @read-only
          */
         get actualLatencyTime(): number;
         get buffer_time(): number;
@@ -3844,7 +3913,13 @@ export namespace GstAudio {
         set hard_resync(val: boolean);
         get hardResync(): boolean;
         set hardResync(val: boolean);
+        /**
+         * @read-only
+         */
         get mark_granule(): boolean;
+        /**
+         * @read-only
+         */
         get markGranule(): boolean;
         get perfect_timestamp(): boolean;
         set perfect_timestamp(val: boolean);

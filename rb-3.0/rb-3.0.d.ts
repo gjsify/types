@@ -48,6 +48,9 @@ export namespace RB {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DisplayPageGroupType {
         export const $gtype: GObject.GType<DisplayPageGroupType>;
     }
@@ -80,6 +83,9 @@ export namespace RB {
         TOOLS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DisplayPageModelColumn {
         export const $gtype: GObject.GType<DisplayPageModelColumn>;
     }
@@ -123,6 +129,9 @@ export namespace RB {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EntryViewColumn {
         export const $gtype: GObject.GType<EntryViewColumn>;
     }
@@ -209,6 +218,9 @@ export namespace RB {
         COMPOSER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EntryViewState {
         export const $gtype: GObject.GType<EntryViewState>;
     }
@@ -222,6 +234,9 @@ export namespace RB {
         PAUSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ExtDBSourceType {
         export const $gtype: GObject.GType<ExtDBSourceType>;
     }
@@ -445,6 +460,9 @@ export namespace RB {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MetadataFieldType {
         export const $gtype: GObject.GType<MetadataFieldType>;
     }
@@ -526,6 +544,9 @@ export namespace RB {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlayerPlayType {
         export const $gtype: GObject.GType<PlayerPlayType>;
     }
@@ -567,6 +588,9 @@ export namespace RB {
         PLAYLIST_NOT_FOUND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PodcastFeedUpdateStatus {
         export const $gtype: GObject.GType<PodcastFeedUpdateStatus>;
     }
@@ -612,6 +636,9 @@ export namespace RB {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RhythmDBEntryAvailability {
         export const $gtype: GObject.GType<RhythmDBEntryAvailability>;
     }
@@ -639,6 +666,9 @@ export namespace RB {
         NOT_FOUND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RhythmDBEntryCategory {
         export const $gtype: GObject.GType<RhythmDBEntryCategory>;
     }
@@ -674,6 +704,9 @@ export namespace RB {
         RHYTHMDB_ERROR_ACCESS_FAILED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RhythmDBPropType {
         export const $gtype: GObject.GType<RhythmDBPropType>;
     }
@@ -760,6 +793,9 @@ export namespace RB {
         COMPOSER_SORTNAME_FOLDED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RhythmDBPropertyModelColumn {
         export const $gtype: GObject.GType<RhythmDBPropertyModelColumn>;
     }
@@ -773,6 +809,9 @@ export namespace RB {
         TRACK_COUNT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RhythmDBQueryModelLimitType {
         export const $gtype: GObject.GType<RhythmDBQueryModelLimitType>;
     }
@@ -787,6 +826,9 @@ export namespace RB {
         LIMIT_DURATION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RhythmDBQueryType {
         export const $gtype: GObject.GType<RhythmDBQueryType>;
     }
@@ -814,6 +856,9 @@ export namespace RB {
         YEAR_LESS_THAN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ShellActivationType {
         export const $gtype: GObject.GType<ShellActivationType>;
     }
@@ -887,6 +932,9 @@ export namespace RB {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ShellPrefsUILocation {
         export const $gtype: GObject.GType<ShellPrefsUILocation>;
     }
@@ -906,6 +954,9 @@ export namespace RB {
         PLAYBACK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ShellUILocation {
         export const $gtype: GObject.GType<ShellUILocation>;
     }
@@ -920,6 +971,9 @@ export namespace RB {
         MAIN_BOTTOM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceEOFType {
         export const $gtype: GObject.GType<SourceEOFType>;
     }
@@ -934,6 +988,9 @@ export namespace RB {
         NEXT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceLoadStatus {
         export const $gtype: GObject.GType<SourceLoadStatus>;
     }
@@ -948,6 +1005,9 @@ export namespace RB {
         LOADED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TaskOutcome {
         export const $gtype: GObject.GType<TaskOutcome>;
     }
@@ -1937,6 +1997,9 @@ export namespace RB {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get shell(): Shell;
 
         /**
@@ -3843,7 +3906,13 @@ export namespace RB {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get model(): Gio.MenuModel;
+        /**
+         * @construct-only
+         */
         get target(): GObject.Object;
 
         /**
@@ -4374,6 +4443,7 @@ export namespace RB {
             /**
              * Emitted when the user clicks on the pixbuf cell.
              * @signal
+             * @run-first
              */
             'pixbuf-clicked': (arg0: string) => void;
             'notify::follow-state': (pspec: GObject.ParamSpec) => void;
@@ -4468,6 +4538,7 @@ export namespace RB {
             /**
              * Emitted when the user changes the rating.
              * @signal
+             * @run-last
              */
             rated: (arg0: string, arg1: number) => void;
             'notify::rating': (pspec: GObject.ParamSpec) => void;
@@ -4651,11 +4722,13 @@ export namespace RB {
             /**
              * Emitted when the page is being deleted.
              * @signal
+             * @run-last
              */
             deleted: () => void;
             /**
              * Emitted when the page's status changes.
              * @signal
+             * @run-last
              */
             'status-changed': () => void;
             'notify::icon': (pspec: GObject.ParamSpec) => void;
@@ -4749,6 +4822,7 @@ export namespace RB {
         set name(val: string);
         /**
          * The parent page in the tree (may be NULL)
+         * @construct-only
          */
         get parent(): DisplayPage;
         /**
@@ -4758,10 +4832,12 @@ export namespace RB {
         set plugin(val: GObject.Object);
         /**
          * TRUE when the page is selected in the page tree.
+         * @read-only
          */
         get selected(): boolean;
         /**
          * The rhythmbox shell object
+         * @construct-only
          */
         get shell(): Shell;
         /**
@@ -5490,12 +5566,17 @@ export namespace RB {
 
         /**
          * Page group category that the group falls into
+         * @construct-only
          */
         get category(): DisplayPageGroupType;
         /**
          * Internal (untranslated) name for the page group
+         * @construct-only
          */
         get id(): string;
+        /**
+         * @read-only
+         */
         get loaded(): boolean;
 
         /**
@@ -6015,6 +6096,7 @@ export namespace RB {
             /**
              * Emitted when a drag and drop operation to the display page tree completes.
              * @signal
+             * @run-last
              */
             'drop-received': (arg0: DisplayPage, arg1: number, arg2: any | null) => void;
             /**
@@ -6022,6 +6104,7 @@ export namespace RB {
              * Use this instead of GtkTreeModel::row-inserted as this
              * doesn't get complicated by visibility filtering.
              * @signal
+             * @run-last
              */
             'page-inserted': (arg0: DisplayPage, arg1: Gtk.TreeIter) => void;
             'notify::child-model': (pspec: GObject.ParamSpec) => void;
@@ -7073,11 +7156,13 @@ export namespace RB {
             /**
              * Emitted when a drag and drop to the tree completes.
              * @signal
+             * @run-last
              */
             'drop-received': (arg0: any | null, arg1: any | null) => void;
             /**
              * Emitted when a page is selected from the tree
              * @signal
+             * @run-last
              */
             selected: (arg0: GObject.Object) => void;
             'notify::model': (pspec: GObject.ParamSpec) => void;
@@ -7155,10 +7240,12 @@ export namespace RB {
 
         /**
          * The {@link Gtk.TreeModel} for the display page tree
+         * @read-only
          */
         get model(): Gtk.TreeModel;
         /**
          * The {@link RB.Shell} instance
+         * @construct-only
          */
         get shell(): Shell;
 
@@ -7714,6 +7801,7 @@ export namespace RB {
              * isn't enough.  Typically this happens when there's no way to pass device
              * information through the URI format.
              * @signal
+             * @run-last
              */
             'prepare-sink': (arg0: string, arg1: GObject.Object) => void;
             /**
@@ -7722,6 +7810,7 @@ export namespace RB {
              * isn't enough.  Typically this happens when there's no way to pass device
              * information through the URI format.
              * @signal
+             * @run-last
              */
             'prepare-source': (arg0: string, arg1: GObject.Object) => void;
         }
@@ -7806,33 +7895,39 @@ export namespace RB {
             /**
              * Emitted when the model backing the entry view is replaced.
              * @signal
+             * @run-last
              */
             'entries-replaced': () => void;
             /**
              * Emitted when an entry in the view is activated (by double clicking
              * or by various key presses)
              * @signal
+             * @run-last
              */
             'entry-activated': (arg0: RhythmDBEntry) => void;
             /**
              * Emitted when an entry is added to the view
              * @signal
+             * @run-last
              */
             'entry-added': (arg0: RhythmDBEntry) => void;
             /**
              * Emitted when an entry has been removed from the view
              * @signal
+             * @run-last
              */
             'entry-deleted': (arg0: RhythmDBEntry) => void;
             /**
              * Emitted when the user first selects a row, or when no rows are selected
              * any more.
              * @signal
+             * @run-last
              */
             'have-selection-changed': (arg0: boolean) => void;
             /**
              * Emitted when the set of selected entries changes
              * @signal
+             * @run-last
              */
             'selection-changed': () => void;
             /**
@@ -7842,6 +7937,7 @@ export namespace RB {
              * the last row in the view.  If the action was a key press, over_entry
              * is FALSE if no rows in the view are selected.
              * @signal
+             * @run-last
              */
             'show-popup': (arg0: boolean) => void;
             'notify::db': (pspec: GObject.ParamSpec) => void;
@@ -7935,22 +8031,27 @@ export namespace RB {
 
         /**
          * {@link RB.RhythmDB} instance
+         * @construct-only
          */
         get db(): RhythmDB;
         /**
          * If TRUE, the view acts as a destination for drag and drop operations.
+         * @construct-only
          */
         get is_drag_dest(): boolean;
         /**
          * If TRUE, the view acts as a destination for drag and drop operations.
+         * @construct-only
          */
         get isDragDest(): boolean;
         /**
          * If TRUE, the view acts as a data source for drag and drop operations.
+         * @construct-only
          */
         get is_drag_source(): boolean;
         /**
          * If TRUE, the view acts as a data source for drag and drop operations.
+         * @construct-only
          */
         get isDragSource(): boolean;
         /**
@@ -7972,10 +8073,12 @@ export namespace RB {
         set playingState(val: number);
         /**
          * {@link RB.ShellPlayer} instance
+         * @construct-only
          */
         get shell_player(): ShellPlayer;
         /**
          * {@link RB.ShellPlayer} instance
+         * @construct-only
          */
         get shellPlayer(): ShellPlayer;
         /**
@@ -8745,12 +8848,14 @@ export namespace RB {
              * request, for example to update album art stored on an attached
              * media player.
              * @signal
+             * @run-last
              */
             added: (arg0: ExtDBKey, arg1: string, arg2: GObject.Value) => void;
             /**
              * Emitted when loading a metadata item from a local file or from a
              * URI.
              * @signal
+             * @run-last
              */
             load: (arg0: GObject.Value) => any | null;
             /**
@@ -8758,6 +8863,7 @@ export namespace RB {
              * store.  Metadata providers initiate searches in response to this
              * signal.
              * @signal
+             * @run-last
              */
             request: (arg0: ExtDBKey, arg1: number) => boolean | void;
             /**
@@ -8765,6 +8871,7 @@ export namespace RB {
              * This only needs to be used for metadata that needs to be encoded
              * or compressed, such as images.
              * @signal
+             * @run-last
              */
             store: (arg0: GObject.Value) => any | null;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -8787,6 +8894,7 @@ export namespace RB {
 
         /**
          * Name of the metadata store.  Used to locate instances.
+         * @construct-only
          */
         get name(): string;
 
@@ -8911,11 +9019,13 @@ export namespace RB {
             /**
              * Emitted when an image is dragged and dropped on the image
              * @signal
+             * @run-last
              */
             'pixbuf-dropped': (arg0: GdkPixbuf.Pixbuf) => void;
             /**
              * Emitted when a URI is dragged and dropped on the image
              * @signal
+             * @run-last
              */
             'uri-dropped': (arg0: string) => void;
             'notify::fallback': (pspec: GObject.ParamSpec) => void;
@@ -8981,14 +9091,17 @@ export namespace RB {
 
         /**
          * Name of an icon to display when no image is available.
+         * @construct-only
          */
         get fallback(): string;
         /**
          * Whether to display a tooltip on the image
+         * @construct-only
          */
         get use_tooltip(): boolean;
         /**
          * Whether to display a tooltip on the image
+         * @construct-only
          */
         get useTooltip(): boolean;
 
@@ -9976,14 +10089,17 @@ export namespace RB {
         set browserViews(val: string);
         /**
          * {@link RB.RhythmDB} instance
+         * @construct-only
          */
         get db(): RhythmDB;
         /**
          * The type of entries to use in the browser.
+         * @construct-only
          */
         get entry_type(): RhythmDBEntryType;
         /**
          * The type of entries to use in the browser.
+         * @construct-only
          */
         get entryType(): RhythmDBEntryType;
         /**
@@ -9991,6 +10107,7 @@ export namespace RB {
          * the browser filters.  This property is not writeable.
          * To set a new input query model, use
          * `rb_library_browser_set_model`.
+         * @read-only
          */
         get input_model(): RhythmDBQueryModel;
         /**
@@ -9998,6 +10115,7 @@ export namespace RB {
          * the browser filters.  This property is not writeable.
          * To set a new input query model, use
          * `rb_library_browser_set_model`.
+         * @read-only
          */
         get inputModel(): RhythmDBQueryModel;
         /**
@@ -10009,6 +10127,7 @@ export namespace RB {
          * Sources using this widget should connect to the notify
          * signal for this property, updating their entry view when
          * it changes.
+         * @read-only
          */
         get output_model(): RhythmDBQueryModel;
         /**
@@ -10020,6 +10139,7 @@ export namespace RB {
          * Sources using this widget should connect to the notify
          * signal for this property, updating their entry view when
          * it changes.
+         * @read-only
          */
         get outputModel(): RhythmDBQueryModel;
 
@@ -10581,6 +10701,7 @@ export namespace RB {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'items-changed': (arg0: number, arg1: number, arg2: number) => void;
         }
@@ -10721,9 +10842,21 @@ export namespace RB {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get key_prefix(): string;
+        /**
+         * @construct-only
+         */
         get keyPrefix(): string;
+        /**
+         * @construct-only
+         */
         get uri_prefix(): string;
+        /**
+         * @construct-only
+         */
         get uriPrefix(): string;
 
         /**
@@ -10878,6 +11011,9 @@ export namespace RB {
          */
         get encodingTarget(): GstPbutils.EncodingTarget;
         set encodingTarget(val: GstPbutils.EncodingTarget);
+        /**
+         * @read-only
+         */
         get serial(): string;
 
         /**
@@ -11571,6 +11707,7 @@ export namespace RB {
              * Emitted as a hint to suggest that the sensitivity of next/previous
              * buttons may need to be updated.
              * @signal
+             * @run-last
              */
             'have-next-previous-changed': (arg0: boolean, arg1: boolean) => void;
             'notify::player': (pspec: GObject.ParamSpec) => void;
@@ -11596,6 +11733,7 @@ export namespace RB {
 
         /**
          * The {@link RB.ShellPlayer} instance
+         * @construct-only
          */
         get player(): ShellPlayer;
         /**
@@ -11829,23 +11967,27 @@ export namespace RB {
              * Emitted when the playlist manager finishes loading the user's
              * playlist file.
              * @signal
+             * @run-last
              */
             'load-finish': () => void;
             /**
              * Emitted when the playlist manager starts loading the user's
              * playlist file.
              * @signal
+             * @run-last
              */
             'load-start': () => void;
             /**
              * Emitted when a playlist is added, including when being loaded
              * from the user's playlist file.
              * @signal
+             * @run-last
              */
             'playlist-added': (arg0: GObject.Object) => void;
             /**
              * Emitted when a new playlist is created.
              * @signal
+             * @run-last
              */
             'playlist-created': (arg0: GObject.Object) => void;
             'notify::playlists-file': (pspec: GObject.ParamSpec) => void;
@@ -12140,21 +12282,25 @@ export namespace RB {
 
         /**
          * The {@link RB.RhythmDB} instance
+         * @read-only
          */
         get db(): RhythmDB;
         /**
          * Whether the playlist has been changed since it was last saved
          * to disk.
+         * @read-only
          */
         get dirty(): boolean;
         /**
          * Whether the playlist is attached to the local library.
          * Remote DAAP playlists, for example, are not local.
+         * @construct-only
          */
         get is_local(): boolean;
         /**
          * Whether the playlist is attached to the local library.
          * Remote DAAP playlists, for example, are not local.
+         * @construct-only
          */
         get isLocal(): boolean;
 
@@ -12737,14 +12883,17 @@ export namespace RB {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'feed-update-status': (arg0: string, arg1: PodcastFeedUpdateStatus, arg2: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'finish-download': (arg0: RhythmDBEntry, arg1: GLib.Error) => void;
             /**
              * @signal
+             * @run-last
              */
             'start-download': (arg0: RhythmDBEntry) => void;
             'notify::db': (pspec: GObject.ParamSpec) => void;
@@ -12769,6 +12918,9 @@ export namespace RB {
 
         get db(): RhythmDB;
         set db(val: RhythmDB);
+        /**
+         * @read-only
+         */
         get updating(): boolean;
 
         /**
@@ -12908,10 +13060,12 @@ export namespace RB {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             finished: (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             result: (arg0: any | null) => void;
         }
@@ -13056,11 +13210,13 @@ export namespace RB {
              * emitted for multiple selection property views.  For single-selection views,
              * use the property-selected signal.
              * @signal
+             * @run-last
              */
             'properties-selected': (arg0: any | null) => void;
             /**
              * Emitted when a row in a property view is activated by double clicking.
              * @signal
+             * @run-last
              */
             'property-activated': (arg0: string) => void;
             /**
@@ -13068,12 +13224,14 @@ export namespace RB {
              * emitted for single-selection property views.  For multiple-selection views,
              * use the properties-selected signal.
              * @signal
+             * @run-last
              */
             'property-selected': (arg0: string) => void;
             /**
              * Emitted when the selection is reset.  At this point, no property values
              * are selected.
              * @signal
+             * @run-last
              */
             'property-selection-reset': () => void;
             /**
@@ -13081,6 +13239,7 @@ export namespace RB {
              * The source containing the property view should connect a handler to
              * this signal that * displays an appropriate popup.
              * @signal
+             * @run-last
              */
             'show-popup': () => void;
             'notify::db': (pspec: GObject.ParamSpec) => void;
@@ -13173,14 +13332,17 @@ export namespace RB {
 
         /**
          * {@link RB.RhythmDB} instance
+         * @construct-only
          */
         get db(): RhythmDB;
         /**
          * Whether the property view acts as a data source for drag and drop operations.
+         * @construct-only
          */
         get draggable(): boolean;
         /**
          * The property that is displayed in this view
+         * @construct-only
          */
         get prop(): RhythmDBPropType;
         /**
@@ -13195,6 +13357,7 @@ export namespace RB {
         set propertyModel(val: RhythmDBPropertyModel);
         /**
          * The title displayed in the header of the property view
+         * @construct-only
          */
         get title(): string;
 
@@ -13775,16 +13938,21 @@ export namespace RB {
              * Action signal used to make a relative adjustment to the
              * rating.
              * @signal
+             * @action
+             * @run-last
              */
             'adjust-rating': (arg0: number) => void;
             /**
              * Emitted when the user changes the rating.
              * @signal
+             * @run-last
              */
             rated: (arg0: number) => void;
             /**
              * Action signal used to change the rating.
              * @signal
+             * @action
+             * @run-last
              */
             'set-rating': (arg0: number) => void;
             'notify::rating': (pspec: GObject.ParamSpec) => void;
@@ -14553,6 +14721,7 @@ export namespace RB {
              * source wins.  Plugins should only use this signal if there will be
              * no {@link Gio.Volume} or {@link Gio.Mount} created for the device.
              * @signal
+             * @run-last
              */
             'create-source-device': (arg0: GObject.Object) => Source;
             /**
@@ -14561,6 +14730,7 @@ export namespace RB {
              * a source wins.  If a source was created for the {@link Gio.Volume}
              * for a mount, then this signal will not be emitted.
              * @signal
+             * @run-last
              */
             'create-source-mount': (arg0: Gio.Mount, arg1: MPID.Device) => Source;
             /**
@@ -14570,11 +14740,13 @@ export namespace RB {
              * doesn't require the volume to be mounted.  If the volume must be
              * mounted to be useful, use the create-source-mount signal instead.
              * @signal
+             * @run-last
              */
             'create-source-volume': (arg0: Gio.Volume) => Source;
             /**
              * Emitted when a new source is added for a removable medium.
              * @signal
+             * @run-last
              */
             'medium-added': (arg0: GObject.Object) => void;
             'notify::scanned': (pspec: GObject.ParamSpec) => void;
@@ -14602,10 +14774,12 @@ export namespace RB {
          * all existing volumes and mounts.  When a plugin that handles removable
          * media is activated, it should request a new scan if this property is
          * already set to TRUE.
+         * @read-only
          */
         get scanned(): boolean;
         /**
          * The {@link RB.Shell} instance.
+         * @construct-only
          */
         get shell(): Shell;
 
@@ -14686,22 +14860,26 @@ export namespace RB {
             /**
              * Emitted to request creation of a {@link Gio.MountOperation} to use to mount a volume.
              * @signal
+             * @run-last
              */
             'create-mount-op': () => Gio.MountOperation;
             /**
              * Emitted when a new entry is added to the database.
              * @signal
+             * @run-last
              */
             'entry-added': (arg0: RhythmDBEntry) => void;
             /**
              * Emitted when a database entry is modified.  The `changes` list
              * contains a structure for each entry property that has been modified.
              * @signal
+             * @run-last
              */
             'entry-changed': (arg0: RhythmDBEntry, arg1: RhythmDBEntryChange[]) => void;
             /**
              * Emitted when an entry is deleted from the database.
              * @signal
+             * @run-last
              */
             'entry-deleted': (arg0: RhythmDBEntry) => void;
             /**
@@ -14712,12 +14890,15 @@ export namespace RB {
              * immediately available, the handler should not initiate an attempt to
              * retrieve them.
              * @signal
+             * @run-last
              */
             'entry-extra-metadata-gather': (arg0: RhythmDBEntry, arg1: StringValueMap) => void;
             /**
              * This signal is emitted when an extra metadata value is provided for a specific
              * entry independantly of an extra metadata request.
              * @signal
+             * @detailed
+             * @run-last
              */
             'entry-extra-metadata-notify': (arg0: RhythmDBEntry, arg1: string, arg2: GObject.Value) => void;
             /**
@@ -14728,37 +14909,45 @@ export namespace RB {
              * initiate an attempt to retrieve it.  If successful, it would call
              * `rhythmdb_emit_entry_extra_metadata_notify` when the metadata is available.
              * @signal
+             * @detailed
+             * @run-last
              */
             'entry-extra-metadata-request': (arg0: RhythmDBEntry) => GObject.Value;
             /**
              * Emitted when a keyword is added to an entry.
              * @signal
+             * @run-last
              */
             'entry-keyword-added': (arg0: RhythmDBEntry, arg1: RefString) => void;
             /**
              * Emitted when a keyword is removed from an entry.
              * @signal
+             * @run-last
              */
             'entry-keyword-removed': (arg0: RhythmDBEntry, arg1: RefString) => void;
             /**
              * Emitted when the database is fully loaded.
              * @signal
+             * @run-last
              */
             'load-complete': () => void;
             /**
              * Emitted when the database becomes temporarily read-only, or becomes
              * writeable after being read-only.
              * @signal
+             * @run-last
              */
             'read-only': (arg0: boolean) => void;
             /**
              * Emitted when the database has been saved.
              * @signal
+             * @run-last
              */
             'save-complete': () => void;
             /**
              * Emitted when an error occurs while saving the database.
              * @signal
+             * @run-last
              */
             'save-error': (arg0: string, arg1: any | null) => void;
             'notify::dry-run': (pspec: GObject.ParamSpec) => void;
@@ -14768,18 +14957,24 @@ export namespace RB {
              * This signal is emitted when an extra metadata value is provided for a specific
              * entry independantly of an extra metadata request.
              * @signal
+             * @detailed
+             * @run-last
              */
             'entry-extra-metadata-notify::dry-run': (arg0: RhythmDBEntry, arg1: string, arg2: GObject.Value) => void;
             /**
              * This signal is emitted when an extra metadata value is provided for a specific
              * entry independantly of an extra metadata request.
              * @signal
+             * @detailed
+             * @run-last
              */
             'entry-extra-metadata-notify::name': (arg0: RhythmDBEntry, arg1: string, arg2: GObject.Value) => void;
             /**
              * This signal is emitted when an extra metadata value is provided for a specific
              * entry independantly of an extra metadata request.
              * @signal
+             * @detailed
+             * @run-last
              */
             'entry-extra-metadata-notify::no-update': (arg0: RhythmDBEntry, arg1: string, arg2: GObject.Value) => void;
             /**
@@ -14790,6 +14985,8 @@ export namespace RB {
              * initiate an attempt to retrieve it.  If successful, it would call
              * `rhythmdb_emit_entry_extra_metadata_notify` when the metadata is available.
              * @signal
+             * @detailed
+             * @run-last
              */
             'entry-extra-metadata-request::dry-run': (arg0: RhythmDBEntry) => GObject.Value;
             /**
@@ -14800,6 +14997,8 @@ export namespace RB {
              * initiate an attempt to retrieve it.  If successful, it would call
              * `rhythmdb_emit_entry_extra_metadata_notify` when the metadata is available.
              * @signal
+             * @detailed
+             * @run-last
              */
             'entry-extra-metadata-request::name': (arg0: RhythmDBEntry) => GObject.Value;
             /**
@@ -14810,6 +15009,8 @@ export namespace RB {
              * initiate an attempt to retrieve it.  If successful, it would call
              * `rhythmdb_emit_entry_extra_metadata_notify` when the metadata is available.
              * @signal
+             * @detailed
+             * @run-last
              */
             'entry-extra-metadata-request::no-update': (arg0: RhythmDBEntry) => GObject.Value;
         }
@@ -15524,43 +15725,52 @@ export namespace RB {
         /**
          * Metadata cache name.  For entry types created by a plugin, should match the plugin name.
          * If this is set, the entry type must also implement the uri_to_cache_key method.
+         * @construct-only
          */
         get cache_name(): string;
         /**
          * Metadata cache name.  For entry types created by a plugin, should match the plugin name.
          * If this is set, the entry type must also implement the uri_to_cache_key method.
+         * @construct-only
          */
         get cacheName(): string;
         /**
          * The {@link RB.RhythmDBEntryCategory} that this entry type fits into.
+         * @construct-only
          */
         get category(): RhythmDBEntryCategory;
         /**
          * The {@link RB.RhythmDB} instance.
+         * @construct-only
          */
         get db(): RhythmDB;
         /**
          * Entry type name.  This must be unique.
+         * @construct-only
          */
         get name(): string;
         /**
          * If `true`, entries of this type should be written to the
          * on-disk database.
+         * @construct-only
          */
         get save_to_disk(): boolean;
         /**
          * If `true`, entries of this type should be written to the
          * on-disk database.
+         * @construct-only
          */
         get saveToDisk(): boolean;
         /**
          * The size of the type-specific data structure to allocate for each
          * entry of this type.
+         * @construct-only
          */
         get type_data_size(): number;
         /**
          * The size of the type-specific data structure to allocate for each
          * entry of this type.
+         * @construct-only
          */
         get typeDataSize(): number;
 
@@ -15668,12 +15878,14 @@ export namespace RB {
             /**
              * Emitted when the whole import job is complete.
              * @signal
+             * @run-last
              */
             complete: (arg0: number) => void;
             /**
              * Emitted when an entry has been added to the database by the
              * import job.
              * @signal
+             * @run-last
              */
             'entry-added': (arg0: RhythmDBEntry) => void;
             /**
@@ -15681,11 +15893,13 @@ export namespace RB {
              * the scan is complete, the total number of files to
              * be processed will not change.
              * @signal
+             * @run-last
              */
             'scan-complete': (arg0: number) => void;
             /**
              * Emitted when the status of the import job has changed.
              * @signal
+             * @run-last
              */
             'status-changed': (arg0: number, arg1: number) => void;
             'notify::db': (pspec: GObject.ParamSpec) => void;
@@ -15721,12 +15935,33 @@ export namespace RB {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get db(): RhythmDB;
+        /**
+         * @construct-only
+         */
         get entry_type(): RhythmDBEntryType;
+        /**
+         * @construct-only
+         */
         get entryType(): RhythmDBEntryType;
+        /**
+         * @construct-only
+         */
         get error_type(): RhythmDBEntryType;
+        /**
+         * @construct-only
+         */
         get errorType(): RhythmDBEntryType;
+        /**
+         * @construct-only
+         */
         get ignore_type(): RhythmDBEntryType;
+        /**
+         * @construct-only
+         */
         get ignoreType(): RhythmDBEntryType;
 
         /**
@@ -16347,6 +16582,7 @@ export namespace RB {
             /**
              * Emitted just before a row is deleted from the model.
              * @signal
+             * @run-last
              */
             'pre-row-deletion': () => void;
             'notify::db': (pspec: GObject.ParamSpec) => void;
@@ -16374,10 +16610,12 @@ export namespace RB {
 
         /**
          * The {@link RB.RhythmDB} object the model is associated with.
+         * @construct-only
          */
         get db(): RhythmDB;
         /**
          * The property that this property model indexes.
+         * @construct-only
          */
         get prop(): number;
         /**
@@ -17331,6 +17569,7 @@ export namespace RB {
             /**
              * Emitted when the database query populating the model is complete.
              * @signal
+             * @run-last
              */
             complete: () => void;
             /**
@@ -17340,6 +17579,7 @@ export namespace RB {
              * signal is emitted, all changes have already been applied to the
              * {@link RB.RhythmDBEntry}.
              * @signal
+             * @run-last
              */
             'entry-prop-changed': (arg0: RhythmDBEntry, arg1: number, arg2: any | null, arg3: any | null) => void;
             /**
@@ -17347,6 +17587,7 @@ export namespace RB {
              * difference between this and the {@link Gtk.TreeModel} row-removed signal
              * but I don't know what it is right now.
              * @signal
+             * @run-last
              */
             'entry-removed': (arg0: RhythmDBEntry) => void;
             /**
@@ -17355,17 +17596,20 @@ export namespace RB {
              * not be added to the model (based on entry type, for instance).
              * If the signal handler returns `false`, the entry will not be added.
              * @signal
+             * @run-last
              */
             'filter-entry-drop': (arg0: RhythmDBEntry) => boolean | void;
             /**
              * Emitted when a URI that does not match an existing {@link RB.RhythmDBEntry}
              * is dropped into the query model.
              * @signal
+             * @run-last
              */
             'non-entry-dropped': (arg0: string, arg1: number) => void;
             /**
              * Emitted after an entry has been removed from the model.
              * @signal
+             * @run-last
              */
             'post-entry-delete': (arg0: RhythmDBEntry) => void;
             'notify::base-model': (pspec: GObject.ParamSpec) => void;
@@ -17420,10 +17664,25 @@ export namespace RB {
         set base_model(val: RhythmDBQueryModel);
         get baseModel(): RhythmDBQueryModel;
         set baseModel(val: RhythmDBQueryModel);
+        /**
+         * @construct-only
+         */
         get db(): RhythmDB;
+        /**
+         * @construct-only
+         */
         get limit_type(): RhythmDBQueryModelLimitType;
+        /**
+         * @construct-only
+         */
         get limitType(): RhythmDBQueryModelLimitType;
+        /**
+         * @construct-only
+         */
         get limit_value(): GLib.Variant;
+        /**
+         * @construct-only
+         */
         get limitValue(): GLib.Variant;
         get query(): any;
         set query(val: any);
@@ -18657,6 +18916,7 @@ export namespace RB {
             /**
              * Emitted when the database query is complete.
              * @signal
+             * @run-last
              */
             complete: () => void;
         }
@@ -19213,6 +19473,7 @@ export namespace RB {
             /**
              * Emitted when the entry is activated.
              * @signal
+             * @run-last
              */
             activate: (arg0: string) => void;
             /**
@@ -19220,11 +19481,13 @@ export namespace RB {
              * handler must initiate a search on the current
              * source.
              * @signal
+             * @run-last
              */
             search: (arg0: string) => void;
             /**
              * Emitted when a popup menu should be shown
              * @signal
+             * @run-last
              */
             'show-popup': () => void;
             'notify::explicit-mode': (pspec: GObject.ParamSpec) => void;
@@ -19314,10 +19577,12 @@ export namespace RB {
         set explicitMode(val: boolean);
         /**
          * If TRUE, show a primary icon and emit the show-popup when clicked.
+         * @construct-only
          */
         get has_popup(): boolean;
         /**
          * If TRUE, show a primary icon and emit the show-popup when clicked.
+         * @construct-only
          */
         get hasPopup(): boolean;
 
@@ -20692,23 +20957,27 @@ export namespace RB {
              * add pages to the song info window notebook to display additional
              * information.
              * @signal
+             * @run-last
              */
             'create-song-info': (arg0: SongInfo, arg1: boolean) => void;
             /**
              * Emitted when a custom notification should be displayed to the user.
              * @signal
+             * @run-last
              */
             'notify-custom': (arg0: number, arg1: string, arg2: string, arg3: string, arg4: boolean) => void;
             /**
              * Emitted when a notification should be displayed showing the current
              * playing entry.
              * @signal
+             * @run-last
              */
             'notify-playing-entry': (arg0: boolean) => void;
             /**
              * Emitted after the visibility of the main Rhythmbox window has
              * changed.
              * @signal
+             * @run-last
              */
             'visibility-changed': (arg0: boolean) => void;
             /**
@@ -20716,6 +20985,7 @@ export namespace RB {
              * value overrides the visibility setting.  If multiple signal handlers
              * are attached, the last one wins.
              * @signal
+             * @run-last
              */
             'visibility-changing': (arg0: boolean, arg1: boolean) => boolean | void;
             'notify::accel-group': (pspec: GObject.ParamSpec) => void;
@@ -20793,135 +21063,171 @@ export namespace RB {
 
         /**
          * A {@link Gtk.AccelGroup} instance to use for additional accelerator keys
+         * @read-only
          */
         get accel_group(): Gtk.AccelGroup;
         /**
          * A {@link Gtk.AccelGroup} instance to use for additional accelerator keys
+         * @read-only
          */
         get accelGroup(): Gtk.AccelGroup;
+        /**
+         * @construct-only
+         */
         get application(): Application;
         /**
          * Whether Rhythmbox was automatically started by the session manager
+         * @construct-only
          */
         get autostarted(): boolean;
         /**
          * The {@link RB.RhythmDB} instance
+         * @read-only
          */
         get db(): RhythmDB;
         /**
          * If `true`, disable plugins
+         * @construct-only
          */
         get disable_plugins(): boolean;
         /**
          * If `true`, disable plugins
+         * @construct-only
          */
         get disablePlugins(): boolean;
         /**
          * The model underlying the display page tree
+         * @read-only
          */
         get display_page_model(): DisplayPageModel;
         /**
          * The model underlying the display page tree
+         * @read-only
          */
         get displayPageModel(): DisplayPageModel;
         /**
          * The {@link RB.DisplayPageTree} instance
+         * @read-only
          */
         get display_page_tree(): DisplayPageTree;
         /**
          * The {@link RB.DisplayPageTree} instance
+         * @read-only
          */
         get displayPageTree(): DisplayPageTree;
         /**
          * If TRUE, don't write back file metadata changes.
+         * @construct-only
          */
         get dry_run(): boolean;
         /**
          * If TRUE, don't write back file metadata changes.
+         * @construct-only
          */
         get dryRun(): boolean;
         /**
          * If `true`, disable single-instance features.
+         * @construct-only
          */
         get no_registration(): boolean;
         /**
          * If `true`, disable single-instance features.
+         * @construct-only
          */
         get noRegistration(): boolean;
         /**
          * If `true`, don't update the database.
+         * @construct-only
          */
         get no_update(): boolean;
         /**
          * If `true`, don't update the database.
+         * @construct-only
          */
         get noUpdate(): boolean;
         /**
          * The {@link RB.PlaylistManager} instance
+         * @read-only
          */
         get playlist_manager(): PlaylistManager;
         /**
          * The {@link RB.PlaylistManager} instance
+         * @read-only
          */
         get playlistManager(): PlaylistManager;
         /**
          * The path to the playlist file
+         * @construct-only
          */
         get playlists_file(): string;
         /**
          * The path to the playlist file
+         * @construct-only
          */
         get playlistsFile(): string;
         /**
          * The {@link RB.ShellPreferences} instance
+         * @read-only
          */
         get prefs(): ShellPreferences;
         /**
          * The {@link RB.RemovableMediaManager} instance
+         * @read-only
          */
         get removable_media_manager(): RemovableMediaManager;
         /**
          * The {@link RB.RemovableMediaManager} instance
+         * @read-only
          */
         get removableMediaManager(): RemovableMediaManager;
         /**
          * The path to the rhythmdb file
+         * @construct-only
          */
         get rhythmdb_file(): string;
         /**
          * The path to the rhythmdb file
+         * @construct-only
          */
         get rhythmdbFile(): string;
         /**
          * The currently selected display page
+         * @read-only
          */
         get selected_page(): DisplayPage;
         /**
          * The currently selected display page
+         * @read-only
          */
         get selectedPage(): DisplayPage;
         /**
          * The {@link RB.ShellPlayer} instance
+         * @read-only
          */
         get shell_player(): ShellPlayer;
         /**
          * The {@link RB.ShellPlayer} instance
+         * @read-only
          */
         get shellPlayer(): ShellPlayer;
         /**
          * The {@link RB.TaskList} instance
+         * @read-only
          */
         get task_list(): TaskList;
         /**
          * The {@link RB.TaskList} instance
+         * @read-only
          */
         get taskList(): TaskList;
         /**
          * The {@link RB.TrackTransferQueue} instance
+         * @read-only
          */
         get track_transfer_queue(): TrackTransferQueue;
         /**
          * The {@link RB.TrackTransferQueue} instance
+         * @read-only
          */
         get trackTransferQueue(): TrackTransferQueue;
         /**
@@ -20931,6 +21237,7 @@ export namespace RB {
         set visibility(val: boolean);
         /**
          * The main Rhythmbox window.
+         * @read-only
          */
         get window(): Gtk.Window;
 
@@ -21142,6 +21449,7 @@ export namespace RB {
             /**
              * Emitted when the playback position changes.
              * @signal
+             * @run-last
              */
             'elapsed-changed': (arg0: number) => void;
             /**
@@ -21149,21 +21457,25 @@ export namespace RB {
              * elapsed-changed) when you require subsecond precision.  This signal will be
              * emitted multiple times per second.
              * @signal
+             * @run-last
              */
             'elapsed-nano-changed': (arg0: number) => void;
             /**
              * Emitted when playback either stops or starts.
              * @signal
+             * @run-last
              */
             'playing-changed': (arg0: boolean) => void;
             /**
              * Emitted when the playing database entry changes
              * @signal
+             * @run-last
              */
             'playing-song-changed': (arg0: RhythmDBEntry) => void;
             /**
              * Emitted when a property of the playing database entry changes.
              * @signal
+             * @run-last
              */
             'playing-song-property-changed': (
                 arg0: string,
@@ -21174,17 +21486,20 @@ export namespace RB {
             /**
              * Emitted when a new {@link RB.Source} instance starts playing
              * @signal
+             * @run-last
              */
             'playing-source-changed': (arg0: Source) => void;
             /**
              * Emitted when the playing database entry changes, providing the
              * URI of the entry.
              * @signal
+             * @run-last
              */
             'playing-uri-changed': (arg0: string) => void;
             /**
              * Emitted when the main window title text should be changed
              * @signal
+             * @run-last
              */
             'window-title-changed': (arg0: string) => void;
             'notify::db': (pspec: GObject.ParamSpec) => void;
@@ -21235,22 +21550,27 @@ export namespace RB {
 
         /**
          * The {@link RB.RhythmDB}
+         * @construct-only
          */
         get db(): RhythmDB;
         /**
          * Whether there is a track to play after the current track.
+         * @read-only
          */
         get has_next(): boolean;
         /**
          * Whether there is a track to play after the current track.
+         * @read-only
          */
         get hasNext(): boolean;
         /**
          * Whether there was a previous track before the current track.
+         * @read-only
          */
         get has_prev(): boolean;
         /**
          * Whether there was a previous track before the current track.
+         * @read-only
          */
         get hasPrev(): boolean;
         /**
@@ -21260,26 +21580,32 @@ export namespace RB {
         set mute(val: boolean);
         /**
          * The current play order object.
+         * @read-only
          */
         get play_order(): string;
         /**
          * The current play order object.
+         * @read-only
          */
         get playOrder(): string;
         /**
          * The player backend object (an object implementing the {@link RB.Player} interface).
+         * @read-only
          */
         get player(): GObject.Object;
         /**
          * Whether Rhythmbox is currently playing something
+         * @read-only
          */
         get playing(): boolean;
         /**
          * If `true`, the current playing entry came from the play queue.
+         * @read-only
          */
         get playing_from_queue(): boolean;
         /**
          * If `true`, the current playing entry came from the play queue.
+         * @read-only
          */
         get playingFromQueue(): boolean;
         /**
@@ -22198,6 +22524,7 @@ export namespace RB {
              * Emitted just after changes have been applied to the database.
              * Probably useless.
              * @signal
+             * @run-last
              */
             'post-metadata-change': (arg0: RhythmDBEntry) => void;
             /**
@@ -22205,6 +22532,7 @@ export namespace RB {
              * are applied to the database.  This is only emitted in the single-entry
              * case.
              * @signal
+             * @run-last
              */
             'pre-metadata-change': (arg0: RhythmDBEntry) => void;
             'notify::current-entry': (pspec: GObject.ParamSpec) => void;
@@ -22314,39 +22642,46 @@ export namespace RB {
         /**
          * The {@link RB.RhythmDBEntry} that is currently being displayed.  Will be NULL for
          * multiple-entry song properties windows.
+         * @read-only
          */
         get current_entry(): RhythmDBEntry;
         /**
          * The {@link RB.RhythmDBEntry} that is currently being displayed.  Will be NULL for
          * multiple-entry song properties windows.
+         * @read-only
          */
         get currentEntry(): RhythmDBEntry;
         /**
          * The {@link RB.EntryView} for the source that created the song properties window.  Used
          * find the set of selected entries, and to change the selection when the 'back' and
          * 'forward' buttons are pressed.
+         * @construct-only
          */
         get entry_view(): EntryView;
         /**
          * The {@link RB.EntryView} for the source that created the song properties window.  Used
          * find the set of selected entries, and to change the selection when the 'back' and
          * 'forward' buttons are pressed.
+         * @construct-only
          */
         get entryView(): EntryView;
         /**
          * The set of {@link RB.RhythmDBEntry} objects currently being displayed.  Valid for both
          * single-entry and multiple-entry song properties windows.
+         * @read-only
          */
         get selected_entries(): any[];
         /**
          * The set of {@link RB.RhythmDBEntry} objects currently being displayed.  Valid for both
          * single-entry and multiple-entry song properties windows.
+         * @read-only
          */
         get selectedEntries(): any[];
         /**
          * The {@link RB.Source} that created the song properties window.  Used to update
          * for track list changes, and to find the sets of albums, artist, and genres
          * to use for tag edit completion.
+         * @construct-only
          */
         get source(): Source;
 
@@ -22873,16 +23208,20 @@ export namespace RB {
              * contents of the search box or by selecting a different browser
              * entry.
              * @signal
+             * @run-last
              */
             'filter-changed': () => void;
             /**
              * Emitted to indicate playback status (buffering etc.) has changed
              * @signal
+             * @run-last
              */
             'playback-status-changed': () => void;
             /**
              * Action signal used to reset the source's filters.
              * @signal
+             * @action
+             * @run-last
              */
             'reset-filters': () => void;
             'notify::base-query-model': (pspec: GObject.ParamSpec) => void;
@@ -22989,20 +23328,24 @@ export namespace RB {
          * The unfiltered query model for the source, containing all entries in the source.
          * Source classes should override this if they perform filtering based on the search
          * box or a browser.
+         * @read-only
          */
         get base_query_model(): RhythmDBQueryModel;
         /**
          * The unfiltered query model for the source, containing all entries in the source.
          * Source classes should override this if they perform filtering based on the search
          * box or a browser.
+         * @read-only
          */
         get baseQueryModel(): RhythmDBQueryModel;
         /**
          * Entry type for entries in this source.
+         * @construct-only
          */
         get entry_type(): RhythmDBEntryType;
         /**
          * Entry type for entries in this source.
+         * @construct-only
          */
         get entryType(): RhythmDBEntryType;
         /**
@@ -23031,10 +23374,12 @@ export namespace RB {
         set loadStatus(val: SourceLoadStatus);
         /**
          * If the source provides its own play order, it can override this property.
+         * @read-only
          */
         get play_order(): PlayOrder;
         /**
          * If the source provides its own play order, it can override this property.
+         * @read-only
          */
         get playOrder(): PlayOrder;
         /**
@@ -23086,6 +23431,7 @@ export namespace RB {
          * the top of the source.  The {@link RB.Source} class doesn't actually display
          * the toolbar anywhere.  Adding the toolbar to a container is the
          * responsibility of a subclass such as {@link RB.BrowserSource}.
+         * @construct-only
          */
         get toolbar_menu(): Gio.MenuModel;
         /**
@@ -23093,6 +23439,7 @@ export namespace RB {
          * the top of the source.  The {@link RB.Source} class doesn't actually display
          * the toolbar anywhere.  Adding the toolbar to a container is the
          * responsibility of a subclass such as {@link RB.BrowserSource}.
+         * @construct-only
          */
         get toolbarMenu(): Gio.MenuModel;
 
@@ -24135,7 +24482,13 @@ export namespace RB {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get description(): string;
+        /**
+         * @construct-only
+         */
         get prop(): number;
 
         /**
@@ -24294,14 +24647,17 @@ export namespace RB {
 
         /**
          * The {@link Gtk.AccelGroup} to add accelerators to
+         * @construct-only
          */
         get accel_group(): Gtk.AccelGroup;
         /**
          * The {@link Gtk.AccelGroup} to add accelerators to
+         * @construct-only
          */
         get accelGroup(): Gtk.AccelGroup;
         /**
          * The {@link RB.DisplayPage} the toolbar is associated with
+         * @construct-only
          */
         get page(): DisplayPage;
 
@@ -26178,6 +26534,9 @@ export namespace RB {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get model(): ListModel;
 
         /**
@@ -26240,6 +26599,7 @@ export namespace RB {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'cancel-task': () => void;
             'notify::task-cancellable': (pspec: GObject.ParamSpec) => void;
@@ -26803,12 +27163,14 @@ export namespace RB {
              *
              * hmm.  will 'complete' still be emitted in this case?
              * @signal
+             * @run-last
              */
             cancelled: () => void;
             /**
              * Emitted when the batch is complete.  This will be immediately
              * after the final entry transfer is complete.
              * @signal
+             * @run-last
              */
             complete: () => void;
             /**
@@ -26817,6 +27179,7 @@ export namespace RB {
              * output media type is decided, so the usual extension for the media
              * type can be taken into consideration.
              * @signal
+             * @run-last
              */
             'get-dest-uri': (arg0: RhythmDBEntry, arg1: string, arg2: string) => string;
             /**
@@ -26825,6 +27188,7 @@ export namespace RB {
              * _rb_track_transfer_batch_cancel when it has figured out what to
              * do.
              * @signal
+             * @run-last
              */
             'overwrite-prompt': (arg0: string) => void;
             /**
@@ -26832,6 +27196,7 @@ export namespace RB {
              * all previous batches have finished, which is not necessarily
              * when `rb_track_transfer_manager_start_batch` is called.
              * @signal
+             * @run-last
              */
             started: () => void;
             /**
@@ -26839,6 +27204,7 @@ export namespace RB {
              * the track was fully transferred, because an error occurred,
              * or because the batch was cancelled (maybe..).
              * @signal
+             * @run-last
              */
             'track-done': (arg0: RhythmDBEntry, arg1: string, arg2: number, arg3: string, arg4: any | null) => void;
             /**
@@ -26848,6 +27214,7 @@ export namespace RB {
              *
              * Use `g_task_return_error()` with the provided {@link Gio.Task} to report errors.
              * @signal
+             * @run-last
              */
             'track-postprocess': (
                 arg0: Gio.Task,
@@ -26863,12 +27230,14 @@ export namespace RB {
              *
              * Use `g_task_return_error()` with the provided {@link Gio.Task} to report errors.
              * @signal
+             * @run-last
              */
             'track-prepare': (arg0: Gio.Task, arg1: RhythmDBEntry, arg2: string) => void;
             /**
              * Emitted regularly throughout the transfer to allow progress bars
              * and other UI elements to be updated.
              * @signal
+             * @run-last
              */
             'track-progress': (arg0: RhythmDBEntry, arg1: string, arg2: number, arg3: number, arg4: number) => void;
             /**
@@ -26876,6 +27245,7 @@ export namespace RB {
              * This will be emitted for each entry in the batch, unless
              * the batch is cancelled.
              * @signal
+             * @run-last
              */
             'track-started': (arg0: RhythmDBEntry, arg1: string) => void;
             'notify::destination': (pspec: GObject.ParamSpec) => void;
@@ -26924,14 +27294,17 @@ export namespace RB {
 
         /**
          * The RBSource to which the tracks are being transferred.
+         * @construct-only
          */
         get destination(): Source;
         /**
          * Number of entries in the batch that have been transferred.
+         * @read-only
          */
         get done_entries(): number;
         /**
          * Number of entries in the batch that have been transferred.
+         * @read-only
          */
         get doneEntries(): number;
         /**
@@ -26948,34 +27321,42 @@ export namespace RB {
         set encodingTarget(val: GstPbutils.EncodingTarget);
         /**
          * A list of all entries in the batch.
+         * @read-only
          */
         get entry_list(): any;
         /**
          * A list of all entries in the batch.
+         * @read-only
          */
         get entryList(): any;
         /**
          * Fraction of the transfer batch that has been processed.
+         * @read-only
          */
         get progress(): number;
         /**
          * The {@link RB.TrackTransferQueue} instance
+         * @construct-only
          */
         get queue(): TrackTransferQueue;
         /**
          * GSettings instance holding profile preferences
+         * @construct-only
          */
         get settings(): Gio.Settings;
         /**
          * The RBSource from which the tracks are being transferred.
+         * @construct-only
          */
         get source(): Source;
         /**
          * Total number of entries in the transfer batch.
+         * @read-only
          */
         get total_entries(): number;
         /**
          * Total number of entries in the transfer batch.
+         * @read-only
          */
         get totalEntries(): number;
 
@@ -27621,6 +28002,7 @@ export namespace RB {
              * destination media format.  When the closure included in the signal args
              * is called, the transfer batch will be started.
              * @signal
+             * @run-last
              */
             'missing-plugins': (arg0: string[], arg1: string[], arg2: GObject.Closure) => boolean | void;
             /**
@@ -27628,6 +28010,7 @@ export namespace RB {
              * transfer batch, there will be one signal emission with `done` == `total` and
              * `fraction` == 1.0.
              * @signal
+             * @run-last
              */
             'transfer-progress': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
             'notify::batch': (pspec: GObject.ParamSpec) => void;
@@ -27652,10 +28035,12 @@ export namespace RB {
 
         /**
          * The current {@link RB.TrackTransferBatch} being processed
+         * @read-only
          */
         get batch(): TrackTransferBatch;
         /**
          * The {@link RB.Shell}
+         * @construct-only
          */
         get shell(): Shell;
 
@@ -27746,6 +28131,7 @@ export namespace RB {
             /**
              * Emitted when the user has entered a URI into the dialog.
              * @signal
+             * @run-last
              */
             'location-added': (arg0: string) => void;
             'notify::label': (pspec: GObject.ParamSpec) => void;
@@ -27845,6 +28231,7 @@ export namespace RB {
 
         /**
          * The label displayed in the dialog.
+         * @construct-only
          */
         get label(): string;
 

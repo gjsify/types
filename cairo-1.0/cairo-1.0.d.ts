@@ -18,6 +18,9 @@ export namespace cairo {
      * cairo-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Status {
         export const $gtype: GObject.GType<Status>;
     }
@@ -67,6 +70,9 @@ export namespace cairo {
         JBIG2_GLOBAL_MISSING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Content {
         export const $gtype: GObject.GType<Content>;
     }
@@ -80,6 +86,9 @@ export namespace cairo {
         COLOR_ALPHA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Operator {
         export const $gtype: GObject.GType<Operator>;
     }
@@ -119,6 +128,9 @@ export namespace cairo {
         HSL_LUMINOSITY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Antialias {
         export const $gtype: GObject.GType<Antialias>;
     }
@@ -136,6 +148,9 @@ export namespace cairo {
         BEST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FillRule {
         export const $gtype: GObject.GType<FillRule>;
     }
@@ -148,6 +163,9 @@ export namespace cairo {
         EVEN_ODD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LineCap {
         export const $gtype: GObject.GType<LineCap>;
     }
@@ -161,6 +179,9 @@ export namespace cairo {
         SQUARE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LineJoin {
         export const $gtype: GObject.GType<LineJoin>;
     }
@@ -174,6 +195,9 @@ export namespace cairo {
         BEVEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextClusterFlags {
         export const $gtype: GObject.GType<TextClusterFlags>;
     }
@@ -185,6 +209,9 @@ export namespace cairo {
         BACKWARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FontSlant {
         export const $gtype: GObject.GType<FontSlant>;
     }
@@ -198,6 +225,9 @@ export namespace cairo {
         OBLIQUE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FontWeight {
         export const $gtype: GObject.GType<FontWeight>;
     }
@@ -210,6 +240,9 @@ export namespace cairo {
         BOLD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SubpixelOrder {
         export const $gtype: GObject.GType<SubpixelOrder>;
     }
@@ -225,6 +258,9 @@ export namespace cairo {
         VBGR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace HintStyle {
         export const $gtype: GObject.GType<HintStyle>;
     }
@@ -240,6 +276,9 @@ export namespace cairo {
         FULL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace HintMetrics {
         export const $gtype: GObject.GType<HintMetrics>;
     }
@@ -253,6 +292,9 @@ export namespace cairo {
         ON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FontType {
         export const $gtype: GObject.GType<FontType>;
     }
@@ -268,6 +310,9 @@ export namespace cairo {
         USER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PathDataType {
         export const $gtype: GObject.GType<PathDataType>;
     }
@@ -282,6 +327,9 @@ export namespace cairo {
         CLOSE_PATH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceType {
         export const $gtype: GObject.GType<DeviceType>;
     }
@@ -301,6 +349,9 @@ export namespace cairo {
         INVALID,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SurfaceType {
         export const $gtype: GObject.GType<SurfaceType>;
     }
@@ -336,6 +387,9 @@ export namespace cairo {
         COGL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Format {
         export const $gtype: GObject.GType<Format>;
     }
@@ -353,6 +407,9 @@ export namespace cairo {
         RGB30,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PatternType {
         export const $gtype: GObject.GType<PatternType>;
     }
@@ -369,6 +426,9 @@ export namespace cairo {
         RASTER_SOURCE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Extend {
         export const $gtype: GObject.GType<Extend>;
     }
@@ -383,6 +443,9 @@ export namespace cairo {
         PAD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Filter {
         export const $gtype: GObject.GType<Filter>;
     }
@@ -399,6 +462,9 @@ export namespace cairo {
         GAUSSIAN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RegionOverlap {
         export const $gtype: GObject.GType<RegionOverlap>;
     }

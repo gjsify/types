@@ -174,11 +174,13 @@ export namespace BraseroMedia {
             /**
              * This signal gets emitted when a new medium was detected
              * @signal
+             * @run-last
              */
             'medium-added': (arg0: Medium) => void;
             /**
              * This signal gets emitted when a medium is not longer available
              * @signal
+             * @run-last
              */
             'medium-removed': (arg0: Medium) => void;
             'notify::device': (pspec: GObject.ParamSpec) => void;
@@ -204,9 +206,15 @@ export namespace BraseroMedia {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get device(): string;
         get gdrive(): Gio.Drive;
         set gdrive(val: Gio.Drive);
+        /**
+         * @construct-only
+         */
         get udi(): string;
 
         /**
@@ -392,6 +400,8 @@ export namespace BraseroMedia {
             /**
              * This signal gets emitted when the selected medium has changed
              * @signal
+             * @action
+             * @run-first
              */
             'drive-changed': (arg0: Drive) => void;
             'notify::drive': (pspec: GObject.ParamSpec) => void;
@@ -586,9 +596,15 @@ export namespace BraseroMedia {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -902,6 +918,7 @@ export namespace BraseroMedia {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -909,6 +926,7 @@ export namespace BraseroMedia {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -1030,6 +1048,7 @@ export namespace BraseroMedia {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -5287,6 +5306,7 @@ export namespace BraseroMedia {
              * This signal gets emitted when the medium inside the drive has been
              * fully probed. This is mostly for internal use.
              * @signal
+             * @run-last
              */
             probed: () => void;
             'notify::drive': (pspec: GObject.ParamSpec) => void;
@@ -5308,6 +5328,9 @@ export namespace BraseroMedia {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get drive(): Drive;
 
         /**
@@ -5503,21 +5526,25 @@ export namespace BraseroMedia {
             /**
              * This signal gets emitted when a new drive was detected
              * @signal
+             * @run-last
              */
             'drive-added': (arg0: Drive) => void;
             /**
              * This signal gets emitted when a drive is not longer available
              * @signal
+             * @run-last
              */
             'drive-removed': (arg0: Drive) => void;
             /**
              * This signal gets emitted when a new medium was detected
              * @signal
+             * @run-last
              */
             'medium-added': (arg0: Medium) => void;
             /**
              * This signal gets emitted when a medium is not longer available
              * @signal
+             * @run-last
              */
             'medium-removed': (arg0: Medium) => void;
         }
@@ -5619,6 +5646,8 @@ export namespace BraseroMedia {
             /**
              * This signal gets emitted when the selected medium has changed.
              * @signal
+             * @action
+             * @run-first
              */
             'medium-changed': (arg0: Medium) => void;
             'notify::media-type': (pspec: GObject.ParamSpec) => void;
@@ -5818,9 +5847,15 @@ export namespace BraseroMedia {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -6134,6 +6169,7 @@ export namespace BraseroMedia {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -6141,6 +6177,7 @@ export namespace BraseroMedia {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -6262,6 +6299,7 @@ export namespace BraseroMedia {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;

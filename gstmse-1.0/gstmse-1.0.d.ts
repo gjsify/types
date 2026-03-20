@@ -20,6 +20,9 @@ export namespace GstMse {
      * GstMse-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MediaSourceEOSError {
         export const $gtype: GObject.GType<MediaSourceEOSError>;
     }
@@ -76,6 +79,9 @@ export namespace GstMse {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MediaSourceReadyState {
         export const $gtype: GObject.GType<MediaSourceReadyState>;
     }
@@ -105,6 +111,9 @@ export namespace GstMse {
         ENDED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MseSrcReadyState {
         export const $gtype: GObject.GType<MseSrcReadyState>;
     }
@@ -148,6 +157,9 @@ export namespace GstMse {
         ENOUGH_DATA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceBufferAppendMode {
         export const $gtype: GObject.GType<SourceBufferAppendMode>;
     }
@@ -172,6 +184,7 @@ export namespace GstMse {
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'on-source-close': () => void;
             /**
@@ -181,6 +194,7 @@ export namespace GstMse {
              * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-onsourceended)
              * @signal
              * @since 1.24
+             * @run-last
              */
             'on-source-ended': () => void;
             /**
@@ -189,6 +203,7 @@ export namespace GstMse {
              * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-onsourceopen)
              * @signal
              * @since 1.24
+             * @run-last
              */
             'on-source-open': () => void;
             'notify::active-source-buffers': (pspec: GObject.ParamSpec) => void;
@@ -238,6 +253,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-activesourcebuffers)
          * @since 1.24
+         * @read-only
          */
         get active_source_buffers(): SourceBufferList;
         /**
@@ -246,6 +262,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-activesourcebuffers)
          * @since 1.24
+         * @read-only
          */
         get activeSourceBuffers(): SourceBufferList;
         /**
@@ -267,6 +284,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-readystate)
          * @since 1.24
+         * @read-only
          */
         get ready_state(): MediaSourceReadyState;
         /**
@@ -274,6 +292,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-readystate)
          * @since 1.24
+         * @read-only
          */
         get readyState(): MediaSourceReadyState;
         /**
@@ -281,6 +300,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-sourcebuffers)
          * @since 1.24
+         * @read-only
          */
         get source_buffers(): SourceBufferList;
         /**
@@ -288,6 +308,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-sourcebuffers)
          * @since 1.24
+         * @read-only
          */
         get sourceBuffers(): SourceBufferList;
 
@@ -522,31 +543,37 @@ export namespace GstMse {
         /**
          * The number of audio tracks in the Media Source
          * @since 1.24
+         * @read-only
          */
         get n_audio(): number;
         /**
          * The number of audio tracks in the Media Source
          * @since 1.24
+         * @read-only
          */
         get nAudio(): number;
         /**
          * The number of text tracks in the Media Source
          * @since 1.24
+         * @read-only
          */
         get n_text(): number;
         /**
          * The number of text tracks in the Media Source
          * @since 1.24
+         * @read-only
          */
         get nText(): number;
         /**
          * The number of video tracks in the Media Source
          * @since 1.24
+         * @read-only
          */
         get n_video(): number;
         /**
          * The number of video tracks in the Media Source
          * @since 1.24
+         * @read-only
          */
         get nVideo(): number;
         /**
@@ -554,6 +581,7 @@ export namespace GstMse {
          *
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#current-playback-position)
          * @since 1.24
+         * @read-only
          */
         get position(): number;
         /**
@@ -564,6 +592,7 @@ export namespace GstMse {
          *
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
          * @since 1.24
+         * @read-only
          */
         get ready_state(): MseSrcReadyState;
         /**
@@ -574,6 +603,7 @@ export namespace GstMse {
          *
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
          * @since 1.24
+         * @read-only
          */
         get readyState(): MseSrcReadyState;
 
@@ -1209,6 +1239,7 @@ export namespace GstMse {
              * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-onabort)
              * @signal
              * @since 1.24
+             * @run-last
              */
             'on-abort': () => void;
             /**
@@ -1218,6 +1249,7 @@ export namespace GstMse {
              * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-onerror)
              * @signal
              * @since 1.24
+             * @run-last
              */
             'on-error': () => void;
             /**
@@ -1227,6 +1259,7 @@ export namespace GstMse {
              * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-onupdate)
              * @signal
              * @since 1.24
+             * @run-last
              */
             'on-update': () => void;
             /**
@@ -1237,6 +1270,7 @@ export namespace GstMse {
              * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-onupdateend)
              * @signal
              * @since 1.24
+             * @run-last
              */
             'on-update-end': () => void;
             /**
@@ -1246,6 +1280,7 @@ export namespace GstMse {
              * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-onupdatestart)
              * @signal
              * @since 1.24
+             * @run-last
              */
             'on-update-start': () => void;
             'notify::append-mode': (pspec: GObject.ParamSpec) => void;
@@ -1344,6 +1379,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowend)
          * @since 1.24
+         * @read-only
          */
         get append_window_end(): number;
         /**
@@ -1352,6 +1388,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowend)
          * @since 1.24
+         * @read-only
          */
         get appendWindowEnd(): number;
         /**
@@ -1360,6 +1397,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowstart)
          * @since 1.24
+         * @read-only
          */
         get append_window_start(): number;
         /**
@@ -1368,6 +1406,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowstart)
          * @since 1.24
+         * @read-only
          */
         get appendWindowStart(): number;
         /**
@@ -1376,6 +1415,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-buffered)
          * @since 1.24
+         * @read-only
          */
         get buffered(): any[];
         /**
@@ -1414,6 +1454,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-updating)
          * @since 1.24
+         * @read-only
          */
         get updating(): boolean;
 
@@ -1585,6 +1626,7 @@ export namespace GstMse {
              * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebufferlist-onaddsourcebuffer)
              * @signal
              * @since 1.24
+             * @run-last
              */
             'on-sourcebuffer-added': () => void;
             /**
@@ -1593,6 +1635,7 @@ export namespace GstMse {
              * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebufferlist-onremovesourcebuffer)
              * @signal
              * @since 1.24
+             * @run-last
              */
             'on-sourcebuffer-removed': () => void;
             'notify::length': (pspec: GObject.ParamSpec) => void;
@@ -1630,6 +1673,7 @@ export namespace GstMse {
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebufferlist-length)
          * @since 1.24
+         * @read-only
          */
         get length(): number;
 

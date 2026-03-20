@@ -132,6 +132,9 @@ export namespace GCalc {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GParserTokenType {
         export const $gtype: GObject.GType<GParserTokenType>;
     }
@@ -183,6 +186,9 @@ export namespace GCalc {
         HASH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GroupLevel {
         export const $gtype: GObject.GType<GroupLevel>;
     }
@@ -1853,7 +1859,10 @@ export namespace GCalc {
         /** @category Inherited from GCalc.Expression */
         get parent(): Expression;
         set parent(val: Expression);
-        /** @category Inherited from GCalc.Expression */
+        /**
+         * @read-only
+         * @category Inherited from GCalc.Expression
+         */
         get expressions(): ExpressionContainer;
         get_parent(): Expression;
         /**
@@ -4475,9 +4484,15 @@ export namespace GCalc {
             ...args: GObject.GjsParameters<GErrorResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GCalc.Result */
+        /**
+         * @read-only
+         * @category Inherited from GCalc.Result
+         */
         get expression(): Expression;
-        /** @category Inherited from GCalc.ErrorResult */
+        /**
+         * @read-only
+         * @category Inherited from GCalc.ErrorResult
+         */
         get message(): string;
         to_string(): string;
         get_expression(): Expression;
@@ -5016,9 +5031,15 @@ export namespace GCalc {
         // Methods
 
         evaluate(): Expression;
-        /** @category Inherited from GCalc.Function */
+        /**
+         * @read-only
+         * @category Inherited from GCalc.Function
+         */
         get param_types(): ExpressionContainer;
-        /** @category Inherited from GCalc.Function */
+        /**
+         * @read-only
+         * @category Inherited from GCalc.Function
+         */
         get paramTypes(): ExpressionContainer;
         /** @category Inherited from GCalc.Function */
         get name(): string;
@@ -5594,7 +5615,10 @@ export namespace GCalc {
             ...args: GObject.GjsParameters<GMathEquation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GCalc.MathEquation */
+        /**
+         * @read-only
+         * @category Inherited from GCalc.MathEquation
+         */
         get variables(): ExpressionHashMap;
         get_variables(): ExpressionHashMap;
         /**
@@ -6109,9 +6133,15 @@ export namespace GCalc {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GCalc.MathEquationManager */
+        /**
+         * @read-only
+         * @category Inherited from GCalc.MathEquationManager
+         */
         get equations(): ExpressionContainer;
-        /** @category Inherited from GCalc.MathEquationManager */
+        /**
+         * @read-only
+         * @category Inherited from GCalc.MathEquationManager
+         */
         get functions(): ExpressionContainer;
         /**
          * @param name
@@ -9237,7 +9267,10 @@ export namespace GCalc {
             ...args: GObject.GjsParameters<GResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GCalc.Result */
+        /**
+         * @read-only
+         * @category Inherited from GCalc.Result
+         */
         get expression(): Expression;
         to_string(): string;
         get_expression(): Expression;
@@ -12567,6 +12600,9 @@ export namespace GCalc {
 
         get parent(): Expression;
         set parent(val: Expression);
+        /**
+         * @read-only
+         */
         get expressions(): ExpressionContainer;
 
         // Methods
@@ -12675,7 +12711,13 @@ export namespace GCalc {
     interface Function extends GObject.Object, Function.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get param_types(): ExpressionContainer;
+        /**
+         * @read-only
+         */
         get paramTypes(): ExpressionContainer;
         get name(): string;
         set name(val: string);
@@ -12743,6 +12785,9 @@ export namespace GCalc {
     interface ErrorResult extends GObject.Object, ErrorResult.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get message(): string;
 
         // Methods
@@ -12895,6 +12940,9 @@ export namespace GCalc {
     interface MathEquation extends GObject.Object, MathEquation.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get variables(): ExpressionHashMap;
 
         // Methods
@@ -12947,7 +12995,13 @@ export namespace GCalc {
     interface MathEquationManager extends GObject.Object, MathEquationManager.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get equations(): ExpressionContainer;
+        /**
+         * @read-only
+         */
         get functions(): ExpressionContainer;
 
         // Methods
@@ -13130,6 +13184,9 @@ export namespace GCalc {
     interface Result extends GObject.Object, Result.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get expression(): Expression;
 
         // Methods

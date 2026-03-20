@@ -78,7 +78,13 @@ export namespace FolksLibsocialweb {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get lsw_contact(): SocialWebClient.Contact;
+        /**
+         * @construct-only
+         */
         get lswContact(): SocialWebClient.Contact;
 
         /**
@@ -1021,6 +1027,9 @@ export namespace FolksLibsocialweb {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get service(): SocialWebClient.ClientService;
 
         /**

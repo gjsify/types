@@ -25,6 +25,9 @@ export namespace Gdk {
      * Gdk-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AxisUse {
         export const $gtype: GObject.GType<AxisUse>;
     }
@@ -86,6 +89,9 @@ export namespace Gdk {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ByteOrder {
         export const $gtype: GObject.GType<ByteOrder>;
     }
@@ -110,6 +116,9 @@ export namespace Gdk {
         MSB_FIRST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CrossingMode {
         export const $gtype: GObject.GType<CrossingMode>;
     }
@@ -162,6 +171,9 @@ export namespace Gdk {
         DEVICE_SWITCH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CursorType {
         export const $gtype: GObject.GType<CursorType>;
     }
@@ -499,6 +511,9 @@ export namespace Gdk {
         CURSOR_IS_PIXMAP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DevicePadFeature {
         export const $gtype: GObject.GType<DevicePadFeature>;
     }
@@ -522,6 +537,9 @@ export namespace Gdk {
         STRIP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceToolType {
         export const $gtype: GObject.GType<DeviceToolType>;
     }
@@ -567,6 +585,9 @@ export namespace Gdk {
         LENS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceType {
         export const $gtype: GObject.GType<DeviceType>;
     }
@@ -593,6 +614,9 @@ export namespace Gdk {
         FLOATING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DragCancelReason {
         export const $gtype: GObject.GType<DragCancelReason>;
     }
@@ -617,6 +641,9 @@ export namespace Gdk {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DragProtocol {
         export const $gtype: GObject.GType<DragProtocol>;
     }
@@ -662,6 +689,9 @@ export namespace Gdk {
         WAYLAND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EventType {
         export const $gtype: GObject.GType<EventType>;
     }
@@ -914,6 +944,9 @@ export namespace Gdk {
         EVENT_LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FilterReturn {
         export const $gtype: GObject.GType<FilterReturn>;
     }
@@ -938,6 +971,9 @@ export namespace Gdk {
         REMOVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FullscreenMode {
         export const $gtype: GObject.GType<FullscreenMode>;
     }
@@ -990,6 +1026,9 @@ export namespace Gdk {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GrabOwnership {
         export const $gtype: GObject.GType<GrabOwnership>;
     }
@@ -1013,6 +1052,9 @@ export namespace Gdk {
         APPLICATION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GrabStatus {
         export const $gtype: GObject.GType<GrabStatus>;
     }
@@ -1051,6 +1093,9 @@ export namespace Gdk {
         FAILED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Gravity {
         export const $gtype: GObject.GType<Gravity>;
     }
@@ -1107,6 +1152,9 @@ export namespace Gdk {
         STATIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputMode {
         export const $gtype: GObject.GType<InputMode>;
     }
@@ -1134,6 +1182,9 @@ export namespace Gdk {
         WINDOW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputSource {
         export const $gtype: GObject.GType<InputSource>;
     }
@@ -1188,6 +1239,9 @@ export namespace Gdk {
         TABLET_PAD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ModifierIntent {
         export const $gtype: GObject.GType<ModifierIntent>;
     }
@@ -1246,6 +1300,9 @@ export namespace Gdk {
         DEFAULT_MOD_MASK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NotifyType {
         export const $gtype: GObject.GType<NotifyType>;
     }
@@ -1291,6 +1348,9 @@ export namespace Gdk {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OwnerChange {
         export const $gtype: GObject.GType<OwnerChange>;
     }
@@ -1314,6 +1374,9 @@ export namespace Gdk {
         CLOSE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PropMode {
         export const $gtype: GObject.GType<PropMode>;
     }
@@ -1338,6 +1401,9 @@ export namespace Gdk {
         APPEND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PropertyState {
         export const $gtype: GObject.GType<PropertyState>;
     }
@@ -1357,6 +1423,9 @@ export namespace Gdk {
         DELETE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScrollDirection {
         export const $gtype: GObject.GType<ScrollDirection>;
     }
@@ -1389,6 +1458,9 @@ export namespace Gdk {
         SMOOTH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingAction {
         export const $gtype: GObject.GType<SettingAction>;
     }
@@ -1413,6 +1485,9 @@ export namespace Gdk {
         DELETED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Status {
         export const $gtype: GObject.GType<Status>;
     }
@@ -1428,6 +1503,9 @@ export namespace Gdk {
         ERROR_MEM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SubpixelLayout {
         export const $gtype: GObject.GType<SubpixelLayout>;
     }
@@ -1465,6 +1543,9 @@ export namespace Gdk {
         VERTICAL_BGR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TouchpadGesturePhase {
         export const $gtype: GObject.GType<TouchpadGesturePhase>;
     }
@@ -1511,6 +1592,9 @@ export namespace Gdk {
         CANCEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VisibilityState {
         export const $gtype: GObject.GType<VisibilityState>;
     }
@@ -1534,6 +1618,9 @@ export namespace Gdk {
         FULLY_OBSCURED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VisualType {
         export const $gtype: GObject.GType<VisualType>;
     }
@@ -1582,6 +1669,9 @@ export namespace Gdk {
         DIRECT_COLOR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowEdge {
         export const $gtype: GObject.GType<WindowEdge>;
     }
@@ -1625,6 +1715,9 @@ export namespace Gdk {
         SOUTH_EAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowType {
         export const $gtype: GObject.GType<WindowType>;
     }
@@ -1669,6 +1762,9 @@ export namespace Gdk {
         SUBSURFACE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowTypeHint {
         export const $gtype: GObject.GType<WindowTypeHint>;
     }
@@ -1747,6 +1843,9 @@ export namespace Gdk {
         DND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowWindowClass {
         export const $gtype: GObject.GType<WindowWindowClass>;
     }
@@ -5536,6 +5635,9 @@ export namespace Gdk {
     interface WindowInvalidateHandlerFunc {
         (window: Window, region: cairo.Region): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace AnchorHints {
         export const $gtype: GObject.GType<AnchorHints>;
     }
@@ -5598,6 +5700,9 @@ export namespace Gdk {
         RESIZE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace AxisFlags {
         export const $gtype: GObject.GType<AxisFlags>;
     }
@@ -5646,6 +5751,9 @@ export namespace Gdk {
         SLIDER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DragAction {
         export const $gtype: GObject.GType<DragAction>;
     }
@@ -5685,6 +5793,9 @@ export namespace Gdk {
         ASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace EventMask {
         export const $gtype: GObject.GType<EventMask>;
     }
@@ -5826,6 +5937,9 @@ export namespace Gdk {
         ALL_EVENTS_MASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FrameClockPhase {
         export const $gtype: GObject.GType<FrameClockPhase>;
     }
@@ -5872,6 +5986,9 @@ export namespace Gdk {
         AFTER_PAINT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }
@@ -6036,6 +6153,9 @@ export namespace Gdk {
         MODIFIER_MASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SeatCapabilities {
         export const $gtype: GObject.GType<SeatCapabilities>;
     }
@@ -6076,6 +6196,9 @@ export namespace Gdk {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WMDecoration {
         export const $gtype: GObject.GType<WMDecoration>;
     }
@@ -6117,6 +6240,9 @@ export namespace Gdk {
         MAXIMIZE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WMFunction {
         export const $gtype: GObject.GType<WMFunction>;
     }
@@ -6154,6 +6280,9 @@ export namespace Gdk {
         CLOSE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WindowAttributesType {
         export const $gtype: GObject.GType<WindowAttributesType>;
     }
@@ -6202,6 +6331,9 @@ export namespace Gdk {
         TYPE_HINT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WindowHints {
         export const $gtype: GObject.GType<WindowHints>;
     }
@@ -6258,6 +6390,9 @@ export namespace Gdk {
         USER_SIZE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WindowState {
         export const $gtype: GObject.GType<WindowState>;
     }
@@ -6382,6 +6517,9 @@ export namespace Gdk {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get display(): Display;
 
         /**
@@ -6516,8 +6654,17 @@ export namespace Gdk {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get cursor_type(): CursorType;
+        /**
+         * @construct-only
+         */
         get cursorType(): CursorType;
+        /**
+         * @construct-only
+         */
         get display(): Display;
 
         /**
@@ -6620,6 +6767,7 @@ export namespace Gdk {
              * master device will change to reflect the new slave device
              * axes and keys.
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
@@ -6627,6 +6775,7 @@ export namespace Gdk {
              * `GdkDevices` whenever tools enter or leave proximity.
              * @signal
              * @since 3.22
+             * @run-last
              */
             'tool-changed': (arg0: DeviceTool) => void;
             'notify::associated-device': (pspec: GObject.ParamSpec) => void;
@@ -6694,44 +6843,52 @@ export namespace Gdk {
          * Associated pointer or keyboard with this device, if any. Devices of type #GDK_DEVICE_TYPE_MASTER
          * always come in keyboard/pointer pairs. Other device types will have a `null` associated device.
          * @since 3.0
+         * @read-only
          */
         get associated_device(): Device;
         /**
          * Associated pointer or keyboard with this device, if any. Devices of type #GDK_DEVICE_TYPE_MASTER
          * always come in keyboard/pointer pairs. Other device types will have a `null` associated device.
          * @since 3.0
+         * @read-only
          */
         get associatedDevice(): Device;
         /**
          * The axes currently available for this device.
          * @since 3.22
+         * @read-only
          */
         get axes(): AxisFlags;
         /**
          * The {@link Gdk.DeviceManager} the {@link Gdk.Device} pertains to.
          * @since 3.0
+         * @construct-only
          */
         get device_manager(): DeviceManager;
         /**
          * The {@link Gdk.DeviceManager} the {@link Gdk.Device} pertains to.
          * @since 3.0
+         * @construct-only
          */
         get deviceManager(): DeviceManager;
         /**
          * The {@link Gdk.Display} the {@link Gdk.Device} pertains to.
          * @since 3.0
+         * @construct-only
          */
         get display(): Display;
         /**
          * Whether the device is represented by a cursor on the screen. Devices of type
          * {@link Gdk.DeviceType.MASTER} will have `true` here.
          * @since 3.0
+         * @construct-only
          */
         get has_cursor(): boolean;
         /**
          * Whether the device is represented by a cursor on the screen. Devices of type
          * {@link Gdk.DeviceType.MASTER} will have `true` here.
          * @since 3.0
+         * @construct-only
          */
         get hasCursor(): boolean;
         get input_mode(): InputMode;
@@ -6741,26 +6898,31 @@ export namespace Gdk {
         /**
          * Source type for the device.
          * @since 3.0
+         * @construct-only
          */
         get input_source(): InputSource;
         /**
          * Source type for the device.
          * @since 3.0
+         * @construct-only
          */
         get inputSource(): InputSource;
         /**
          * Number of axes in the device.
          * @since 3.0
+         * @read-only
          */
         get n_axes(): number;
         /**
          * Number of axes in the device.
          * @since 3.0
+         * @read-only
          */
         get nAxes(): number;
         /**
          * The device name.
          * @since 3.0
+         * @construct-only
          */
         get name(): string;
         /**
@@ -6768,6 +6930,7 @@ export namespace Gdk {
          * Will be 0 if the device is not a touch device or if the number
          * of touches is unknown.
          * @since 3.20
+         * @construct-only
          */
         get num_touches(): number;
         /**
@@ -6775,16 +6938,19 @@ export namespace Gdk {
          * Will be 0 if the device is not a touch device or if the number
          * of touches is unknown.
          * @since 3.20
+         * @construct-only
          */
         get numTouches(): number;
         /**
          * Product ID of this device, see `gdk_device_get_product_id()`.
          * @since 3.16
+         * @construct-only
          */
         get product_id(): string;
         /**
          * Product ID of this device, see `gdk_device_get_product_id()`.
          * @since 3.16
+         * @construct-only
          */
         get productId(): string;
         /**
@@ -6793,20 +6959,26 @@ export namespace Gdk {
          */
         get seat(): Seat;
         set seat(val: Seat);
+        /**
+         * @read-only
+         */
         get tool(): DeviceTool;
         /**
          * Device role in the device manager.
          * @since 3.0
+         * @construct-only
          */
         get type(): DeviceType;
         /**
          * Vendor ID of this device, see `gdk_device_get_vendor_id()`.
          * @since 3.16
+         * @construct-only
          */
         get vendor_id(): string;
         /**
          * Vendor ID of this device, see `gdk_device_get_vendor_id()`.
          * @since 3.16
+         * @construct-only
          */
         get vendorId(): string;
 
@@ -7126,6 +7298,7 @@ export namespace Gdk {
              * pointer is created, or when a slave (Hardware) input device
              * is plugged in.
              * @signal
+             * @run-last
              */
             'device-added': (arg0: Device) => void;
             /**
@@ -7140,6 +7313,7 @@ export namespace Gdk {
              * {@link Gdk.DeviceType} will change to {@link Gdk.DeviceType.FLOATING},
              * if it's attached, it will change to {@link Gdk.DeviceType.SLAVE}.
              * @signal
+             * @run-last
              */
             'device-changed': (arg0: Device) => void;
             /**
@@ -7147,6 +7321,7 @@ export namespace Gdk {
              * pointer is removed, or when a slave (Hardware) input device
              * is unplugged.
              * @signal
+             * @run-last
              */
             'device-removed': (arg0: Device) => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;
@@ -7283,6 +7458,9 @@ export namespace Gdk {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get display(): Display;
 
         /**
@@ -7376,11 +7554,29 @@ export namespace Gdk {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get axes(): AxisFlags;
+        /**
+         * @construct-only
+         */
         get hardware_id(): number;
+        /**
+         * @construct-only
+         */
         get hardwareId(): number;
+        /**
+         * @construct-only
+         */
         get serial(): number;
+        /**
+         * @construct-only
+         */
         get tool_type(): DeviceToolType;
+        /**
+         * @construct-only
+         */
         get toolType(): DeviceToolType;
 
         /**
@@ -7455,6 +7651,7 @@ export namespace Gdk {
              * system for `display` is closed.
              * @signal
              * @since 2.2
+             * @run-last
              */
             closed: (arg0: boolean) => void;
             /**
@@ -7462,6 +7659,7 @@ export namespace Gdk {
              * added.
              * @signal
              * @since 3.22
+             * @run-last
              */
             'monitor-added': (arg0: Monitor) => void;
             /**
@@ -7469,12 +7667,14 @@ export namespace Gdk {
              * removed.
              * @signal
              * @since 3.22
+             * @run-last
              */
             'monitor-removed': (arg0: Monitor) => void;
             /**
              * The ::opened signal is emitted when the connection to the windowing
              * system for `display` is opened.
              * @signal
+             * @run-last
              */
             opened: () => void;
             /**
@@ -7482,6 +7682,7 @@ export namespace Gdk {
              * known to the windowing system.
              * @signal
              * @since 3.20
+             * @run-last
              */
             'seat-added': (arg0: Seat) => void;
             /**
@@ -7489,6 +7690,7 @@ export namespace Gdk {
              * by the windowing system.
              * @signal
              * @since 3.20
+             * @run-last
              */
             'seat-removed': (arg0: Seat) => void;
         }
@@ -7904,6 +8106,7 @@ export namespace Gdk {
              * The ::display-opened signal is emitted when a display is opened.
              * @signal
              * @since 2.2
+             * @run-last
              */
             'display-opened': (arg0: Display) => void;
             'notify::default-display': (pspec: GObject.ParamSpec) => void;
@@ -8056,6 +8259,7 @@ export namespace Gdk {
              * for more information.
              * @signal
              * @since 3.20
+             * @run-last
              */
             'action-changed': (arg0: DragAction) => void;
             /**
@@ -8066,6 +8270,7 @@ export namespace Gdk {
              * for more information.
              * @signal
              * @since 3.20
+             * @run-last
              */
             cancel: (arg0: DragCancelReason) => void;
             /**
@@ -8078,6 +8283,7 @@ export namespace Gdk {
              * for more information.
              * @signal
              * @since 3.20
+             * @run-last
              */
             'dnd-finished': () => void;
             /**
@@ -8088,6 +8294,7 @@ export namespace Gdk {
              * for more information.
              * @signal
              * @since 3.20
+             * @run-last
              */
             'drop-performed': (arg0: number) => void;
         }
@@ -8266,11 +8473,13 @@ export namespace Gdk {
         /**
          * The clip region applied to the drawing context.
          * @since 3.22
+         * @construct-only
          */
         get clip(): cairo.Region;
         /**
          * The {@link Gdk.Window} that created the drawing context.
          * @since 3.22
+         * @construct-only
          */
         get window(): Window;
 
@@ -8346,12 +8555,14 @@ export namespace Gdk {
              * This signal ends processing of the frame. Applications
              * should generally not handle this signal.
              * @signal
+             * @run-last
              */
             'after-paint': () => void;
             /**
              * This signal begins processing of the frame. Applications
              * should generally not handle this signal.
              * @signal
+             * @run-last
              */
             'before-paint': () => void;
             /**
@@ -8359,6 +8570,7 @@ export namespace Gdk {
              * are being batched up and compressed together. Applications
              * should not handle this signal.
              * @signal
+             * @run-last
              */
             'flush-events': () => void;
             /**
@@ -8367,6 +8579,7 @@ export namespace Gdk {
              * sizes and positions of application elements should be
              * performed. GTK+ normally handles this internally.
              * @signal
+             * @run-last
              */
             layout: () => void;
             /**
@@ -8376,6 +8589,7 @@ export namespace Gdk {
              * produces expose events, which are turned into GTK+
              * `GtkWidget::draw` signals.
              * @signal
+             * @run-last
              */
             paint: () => void;
             /**
@@ -8383,6 +8597,7 @@ export namespace Gdk {
              * finished, and is handled internally by GTK+ to resume normal
              * event processing. Applications should not handle this signal.
              * @signal
+             * @run-last
              */
             'resume-events': () => void;
             /**
@@ -8393,6 +8608,7 @@ export namespace Gdk {
              * use `gtk_widget_add_tick_callback()` as a more convenient
              * interface.
              * @signal
+             * @run-last
              */
             update: () => void;
         }
@@ -8639,21 +8855,25 @@ export namespace Gdk {
         /**
          * The {@link Gdk.Display} used to create the {@link Gdk.GLContext}.
          * @since 3.16
+         * @construct-only
          */
         get display(): Display;
         /**
          * The {@link Gdk.GLContext} that this context is sharing data with, or `null`
          * @since 3.16
+         * @construct-only
          */
         get shared_context(): GLContext;
         /**
          * The {@link Gdk.GLContext} that this context is sharing data with, or `null`
          * @since 3.16
+         * @construct-only
          */
         get sharedContext(): GLContext;
         /**
          * The {@link Gdk.Window} the gl context is bound to.
          * @since 3.16
+         * @construct-only
          */
         get window(): Window;
 
@@ -8841,6 +9061,7 @@ export namespace Gdk {
              * the keymap changes.
              * @signal
              * @since 2.0
+             * @run-last
              */
             'direction-changed': () => void;
             /**
@@ -8848,6 +9069,7 @@ export namespace Gdk {
              * `keymap` changes.
              * @signal
              * @since 2.2
+             * @run-last
              */
             'keys-changed': () => void;
             /**
@@ -8856,6 +9078,7 @@ export namespace Gdk {
              * See `gdk_keymap_get_caps_lock_state()`.
              * @signal
              * @since 2.16
+             * @run-last
              */
             'state-changed': () => void;
         }
@@ -9103,6 +9326,7 @@ export namespace Gdk {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             invalidate: () => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;
@@ -9154,20 +9378,65 @@ export namespace Gdk {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get display(): Display;
+        /**
+         * @read-only
+         */
         get geometry(): Rectangle;
+        /**
+         * @read-only
+         */
         get height_mm(): number;
+        /**
+         * @read-only
+         */
         get heightMm(): number;
+        /**
+         * @read-only
+         */
         get manufacturer(): string;
+        /**
+         * @read-only
+         */
         get model(): string;
+        /**
+         * @read-only
+         */
         get refresh_rate(): number;
+        /**
+         * @read-only
+         */
         get refreshRate(): number;
+        /**
+         * @read-only
+         */
         get scale_factor(): number;
+        /**
+         * @read-only
+         */
         get scaleFactor(): number;
+        /**
+         * @read-only
+         */
         get subpixel_layout(): SubpixelLayout;
+        /**
+         * @read-only
+         */
         get subpixelLayout(): SubpixelLayout;
+        /**
+         * @read-only
+         */
         get width_mm(): number;
+        /**
+         * @read-only
+         */
         get widthMm(): number;
+        /**
+         * @read-only
+         */
         get workarea(): Rectangle;
 
         /**
@@ -9300,6 +9569,7 @@ export namespace Gdk {
              * status of the screen changes
              * @signal
              * @since 2.10
+             * @run-last
              */
             'composited-changed': () => void;
             /**
@@ -9310,6 +9580,7 @@ export namespace Gdk {
              * may be a possibility.
              * @signal
              * @since 2.14
+             * @run-last
              */
             'monitors-changed': () => void;
             /**
@@ -9317,6 +9588,7 @@ export namespace Gdk {
              * height of a screen changes.
              * @signal
              * @since 2.2
+             * @run-last
              */
             'size-changed': () => void;
             'notify::font-options': (pspec: GObject.ParamSpec) => void;
@@ -9716,6 +9988,7 @@ export namespace Gdk {
              * device is related to this seat.
              * @signal
              * @since 3.20
+             * @run-last
              */
             'device-added': (arg0: Device) => void;
             /**
@@ -9723,6 +9996,7 @@ export namespace Gdk {
              * input device is removed (e.g. unplugged).
              * @signal
              * @since 3.20
+             * @run-last
              */
             'device-removed': (arg0: Device) => void;
             /**
@@ -9734,6 +10008,7 @@ export namespace Gdk {
              * A same tool may be used by several devices.
              * @signal
              * @since 3.22
+             * @run-last
              */
             'tool-added': (arg0: DeviceTool) => void;
             /**
@@ -9741,6 +10016,7 @@ export namespace Gdk {
              * to this `seat`.
              * @signal
              * @since 3.22
+             * @run-last
              */
             'tool-removed': (arg0: DeviceTool) => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;
@@ -9766,6 +10042,7 @@ export namespace Gdk {
         /**
          * {@link Gdk.Display} of this seat.
          * @since 3.20
+         * @construct-only
          */
         get display(): Display;
 
@@ -10062,6 +10339,7 @@ export namespace Gdk {
              * `gdk_offscreen_window_get_surface()` will lead to a crash.
              * @signal
              * @since 3.0
+             * @run-last
              */
             'create-surface': (arg0: number, arg1: number) => cairo.Surface;
             /**
@@ -10071,6 +10349,7 @@ export namespace Gdk {
              * See also {@link Gdk.Window.SignalSignatures.to_embedder | Gdk.Window::to-embedder}.
              * @signal
              * @since 2.18
+             * @run-last
              */
             'from-embedder': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
             /**
@@ -10087,6 +10366,7 @@ export namespace Gdk {
              * keeping `window` on-screen.
              * @signal
              * @since 3.22
+             * @run-first
              */
             'moved-to-rect': (arg0: any | null, arg1: any | null, arg2: boolean, arg3: boolean) => void;
             /**
@@ -10094,6 +10374,7 @@ export namespace Gdk {
              * child at the given position.
              * @signal
              * @since 2.18
+             * @run-last
              */
             'pick-embedded-child': (arg0: number, arg1: number) => Window | null;
             /**
@@ -10103,6 +10384,7 @@ export namespace Gdk {
              * See also {@link Gdk.Window.SignalSignatures.from_embedder | Gdk.Window::from-embedder}.
              * @signal
              * @since 2.18
+             * @run-last
              */
             'to-embedder': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
             'notify::cursor': (pspec: GObject.ParamSpec) => void;

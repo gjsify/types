@@ -23,6 +23,9 @@ export namespace GstRtsp {
      * GstRtsp-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTSPAuthMethod {
         export const $gtype: GObject.GType<RTSPAuthMethod>;
     }
@@ -46,6 +49,9 @@ export namespace GstRtsp {
         DIGEST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTSPFamily {
         export const $gtype: GObject.GType<RTSPFamily>;
     }
@@ -69,6 +75,9 @@ export namespace GstRtsp {
         INET6,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTSPHeaderField {
         export const $gtype: GObject.GType<RTSPHeaderField>;
     }
@@ -170,6 +179,9 @@ export namespace GstRtsp {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTSPMsgType {
         export const $gtype: GObject.GType<RTSPMsgType>;
     }
@@ -205,6 +217,9 @@ export namespace GstRtsp {
         DATA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTSPRangeUnit {
         export const $gtype: GObject.GType<RTSPRangeUnit>;
     }
@@ -236,6 +251,9 @@ export namespace GstRtsp {
         CLOCK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTSPResult {
         export const $gtype: GObject.GType<RTSPResult>;
     }
@@ -319,6 +337,9 @@ export namespace GstRtsp {
         ELAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTSPState {
         export const $gtype: GObject.GType<RTSPState>;
     }
@@ -354,6 +375,9 @@ export namespace GstRtsp {
         RECORDING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTSPStatusCode {
         export const $gtype: GObject.GType<RTSPStatusCode>;
     }
@@ -411,6 +435,9 @@ export namespace GstRtsp {
         OPTION_NOT_SUPPORTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTSPTimeType {
         export const $gtype: GObject.GType<RTSPTimeType>;
     }
@@ -442,6 +469,9 @@ export namespace GstRtsp {
         UTC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTSPVersion {
         export const $gtype: GObject.GType<RTSPVersion>;
     }
@@ -754,6 +784,9 @@ export namespace GstRtsp {
     interface RTSPConnectionAcceptCertificateFunc {
         (conn: Gio.TlsConnection, peer_cert: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace RTSPEvent {
         export const $gtype: GObject.GType<RTSPEvent>;
     }
@@ -773,6 +806,9 @@ export namespace GstRtsp {
         WRITE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RTSPLowerTrans {
         export const $gtype: GObject.GType<RTSPLowerTrans>;
     }
@@ -808,6 +844,9 @@ export namespace GstRtsp {
         TLS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RTSPMethod {
         export const $gtype: GObject.GType<RTSPMethod>;
     }
@@ -875,6 +914,9 @@ export namespace GstRtsp {
         POST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RTSPProfile {
         export const $gtype: GObject.GType<RTSPProfile>;
     }
@@ -906,6 +948,9 @@ export namespace GstRtsp {
         SAVPF,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RTSPTransMode {
         export const $gtype: GObject.GType<RTSPTransMode>;
     }

@@ -21,6 +21,9 @@ export namespace GstVideo {
      * GstVideo-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ColorBalanceType {
         export const $gtype: GObject.GType<ColorBalanceType>;
     }
@@ -45,6 +48,9 @@ export namespace GstVideo {
         SOFTWARE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NavigationCommand {
         export const $gtype: GObject.GType<NavigationCommand>;
     }
@@ -141,6 +147,9 @@ export namespace GstVideo {
         NEXT_ANGLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NavigationEventType {
         export const $gtype: GObject.GType<NavigationEventType>;
     }
@@ -225,6 +234,9 @@ export namespace GstVideo {
         TOUCH_CANCEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NavigationMessageType {
         export const $gtype: GObject.GType<NavigationMessageType>;
     }
@@ -264,6 +276,9 @@ export namespace GstVideo {
         EVENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NavigationQueryType {
         export const $gtype: GObject.GType<NavigationQueryType>;
     }
@@ -287,6 +302,9 @@ export namespace GstVideo {
         ANGLES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoAFDSpec {
         export const $gtype: GObject.GType<VideoAFDSpec>;
     }
@@ -316,6 +334,9 @@ export namespace GstVideo {
         SMPTE_ST2016_1,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoAFDValue {
         export const $gtype: GObject.GType<VideoAFDValue>;
     }
@@ -420,6 +441,9 @@ export namespace GstVideo {
         '16_9_LETTER_4_3_CENTER',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoAlphaMode {
         export const $gtype: GObject.GType<VideoAlphaMode>;
     }
@@ -450,6 +474,9 @@ export namespace GstVideo {
         MULT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoAncillaryDID {
         export const $gtype: GObject.GType<VideoAncillaryDID>;
     }
@@ -473,6 +500,9 @@ export namespace GstVideo {
         HANC_SDTV_AUDIO_DATA_2_LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoAncillaryDID16 {
         export const $gtype: GObject.GType<VideoAncillaryDID16>;
     }
@@ -497,6 +527,9 @@ export namespace GstVideo {
         S2016_3_AFD_BAR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoCaptionType {
         export const $gtype: GObject.GType<VideoCaptionType>;
     }
@@ -546,6 +579,9 @@ export namespace GstVideo {
         CEA708_CDP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoChromaMethod {
         export const $gtype: GObject.GType<VideoChromaMethod>;
     }
@@ -567,6 +603,9 @@ export namespace GstVideo {
         LINEAR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoChromaMode {
         export const $gtype: GObject.GType<VideoChromaMode>;
     }
@@ -595,6 +634,9 @@ export namespace GstVideo {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoColorMatrix {
         export const $gtype: GObject.GType<VideoColorMatrix>;
     }
@@ -637,6 +679,9 @@ export namespace GstVideo {
         BT2020,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoColorPrimaries {
         export const $gtype: GObject.GType<VideoColorPrimaries>;
     }
@@ -710,6 +755,9 @@ export namespace GstVideo {
         EBU3213,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoColorRange {
         export const $gtype: GObject.GType<VideoColorRange>;
     }
@@ -735,6 +783,9 @@ export namespace GstVideo {
         '16_235',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoDitherMethod {
         export const $gtype: GObject.GType<VideoDitherMethod>;
     }
@@ -766,6 +817,9 @@ export namespace GstVideo {
         BAYER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoFieldOrder {
         export const $gtype: GObject.GType<VideoFieldOrder>;
     }
@@ -794,6 +848,9 @@ export namespace GstVideo {
         BOTTOM_FIELD_FIRST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoFormat {
         export const $gtype: GObject.GType<VideoFormat>;
     }
@@ -1277,6 +1334,9 @@ export namespace GstVideo {
         NV12_10LE40_4L4,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoGLTextureOrientation {
         export const $gtype: GObject.GType<VideoGLTextureOrientation>;
     }
@@ -1304,6 +1364,9 @@ export namespace GstVideo {
         FLIP_Y_FLIP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoGLTextureType {
         export const $gtype: GObject.GType<VideoGLTextureType>;
     }
@@ -1343,6 +1406,9 @@ export namespace GstVideo {
         RG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoGammaMode {
         export const $gtype: GObject.GType<VideoGammaMode>;
     }
@@ -1363,6 +1429,9 @@ export namespace GstVideo {
         REMAP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoInterlaceMode {
         export const $gtype: GObject.GType<VideoInterlaceMode>;
     }
@@ -1407,6 +1476,9 @@ export namespace GstVideo {
         ALTERNATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoMatrixMode {
         export const $gtype: GObject.GType<VideoMatrixMode>;
     }
@@ -1437,6 +1509,9 @@ export namespace GstVideo {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoMultiviewFramePacking {
         export const $gtype: GObject.GType<VideoMultiviewFramePacking>;
     }
@@ -1506,6 +1581,9 @@ export namespace GstVideo {
         CHECKERBOARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoMultiviewMode {
         export const $gtype: GObject.GType<VideoMultiviewMode>;
     }
@@ -1642,6 +1720,9 @@ export namespace GstVideo {
         static CUSTOM: number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoPrimariesMode {
         export const $gtype: GObject.GType<VideoPrimariesMode>;
     }
@@ -1667,6 +1748,9 @@ export namespace GstVideo {
         FAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoResamplerMethod {
         export const $gtype: GObject.GType<VideoResamplerMethod>;
     }
@@ -1701,6 +1785,9 @@ export namespace GstVideo {
         LANCZOS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoTileMode {
         export const $gtype: GObject.GType<VideoTileMode>;
     }
@@ -1727,6 +1814,9 @@ export namespace GstVideo {
         LINEAR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoTileType {
         export const $gtype: GObject.GType<VideoTileType>;
     }
@@ -1744,6 +1834,9 @@ export namespace GstVideo {
         INDEXED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoTransferFunction {
         export const $gtype: GObject.GType<VideoTransferFunction>;
     }
@@ -1839,6 +1932,9 @@ export namespace GstVideo {
         BT601,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoVBIParserResult {
         export const $gtype: GObject.GType<VideoVBIParserResult>;
     }
@@ -3772,6 +3868,9 @@ export namespace GstVideo {
     interface VideoGLTextureUpload {
         (meta: VideoGLTextureUploadMeta, texture_id: number): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace NavigationModifierType {
         export const $gtype: GObject.GType<NavigationModifierType>;
     }
@@ -3854,6 +3953,9 @@ export namespace GstVideo {
         MASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoBufferFlags {
         export const $gtype: GObject.GType<VideoBufferFlags>;
     }
@@ -3931,6 +4033,9 @@ export namespace GstVideo {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoChromaFlags {
         export const $gtype: GObject.GType<VideoChromaFlags>;
     }
@@ -3950,6 +4055,9 @@ export namespace GstVideo {
         INTERLACED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoChromaSite {
         export const $gtype: GObject.GType<VideoChromaSite>;
     }
@@ -3997,6 +4105,9 @@ export namespace GstVideo {
         DV,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoCodecFrameFlags {
         export const $gtype: GObject.GType<VideoCodecFrameFlags>;
     }
@@ -4028,6 +4139,9 @@ export namespace GstVideo {
         CORRUPTED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoDecoderRequestSyncPointFlags {
         export const $gtype: GObject.GType<VideoDecoderRequestSyncPointFlags>;
     }
@@ -4051,6 +4165,9 @@ export namespace GstVideo {
         CORRUPT_OUTPUT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoDitherFlags {
         export const $gtype: GObject.GType<VideoDitherFlags>;
     }
@@ -4074,6 +4191,9 @@ export namespace GstVideo {
         QUANTIZE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoFlags {
         export const $gtype: GObject.GType<VideoFlags>;
     }
@@ -4099,6 +4219,9 @@ export namespace GstVideo {
         PREMULTIPLIED_ALPHA,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoFormatFlags {
         export const $gtype: GObject.GType<VideoFormatFlags>;
     }
@@ -4159,6 +4282,9 @@ export namespace GstVideo {
         SUBTILES,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoFrameFlags {
         export const $gtype: GObject.GType<VideoFrameFlags>;
     }
@@ -4214,6 +4340,9 @@ export namespace GstVideo {
         BOTTOM_FIELD,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoFrameMapFlags {
         export const $gtype: GObject.GType<VideoFrameMapFlags>;
     }
@@ -4237,6 +4366,9 @@ export namespace GstVideo {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoMultiviewFlags {
         export const $gtype: GObject.GType<VideoMultiviewFlags>;
     }
@@ -4298,6 +4430,9 @@ export namespace GstVideo {
         MIXED_MONO,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoOverlayFormatFlags {
         export const $gtype: GObject.GType<VideoOverlayFormatFlags>;
     }
@@ -4321,6 +4456,9 @@ export namespace GstVideo {
         GLOBAL_ALPHA,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoPackFlags {
         export const $gtype: GObject.GType<VideoPackFlags>;
     }
@@ -4350,6 +4488,9 @@ export namespace GstVideo {
         INTERLACED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoResamplerFlags {
         export const $gtype: GObject.GType<VideoResamplerFlags>;
     }
@@ -4372,6 +4513,9 @@ export namespace GstVideo {
         HALF_TAPS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoScalerFlags {
         export const $gtype: GObject.GType<VideoScalerFlags>;
     }
@@ -4391,6 +4535,9 @@ export namespace GstVideo {
         INTERLACED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoTimeCodeFlags {
         export const $gtype: GObject.GType<VideoTimeCodeFlags>;
     }
@@ -4422,6 +4569,7 @@ export namespace GstVideo {
             /**
              * Fired when the value of the indicated channel has changed.
              * @signal
+             * @run-last
              */
             'value-changed': (arg0: number) => void;
         }
@@ -4538,6 +4686,7 @@ export namespace GstVideo {
          * companion property: in the vast majority of cases where you plan to plug in
          * live sources with a non-zero latency, you should set it to a non-zero value.
          * @since 1.22
+         * @construct-only
          */
         get force_live(): boolean;
         /**
@@ -4546,6 +4695,7 @@ export namespace GstVideo {
          * companion property: in the vast majority of cases where you plan to plug in
          * live sources with a non-zero latency, you should set it to a non-zero value.
          * @since 1.22
+         * @construct-only
          */
         get forceLive(): boolean;
 

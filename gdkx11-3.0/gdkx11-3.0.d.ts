@@ -486,8 +486,17 @@ export namespace GdkX11 {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get major(): number;
+        /**
+         * @construct-only
+         */
         get minor(): number;
+        /**
+         * @construct-only
+         */
         get opcode(): number;
 
         /**
@@ -566,7 +575,13 @@ export namespace GdkX11 {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get device_id(): number;
+        /**
+         * @construct-only
+         */
         get deviceId(): number;
 
         /**
@@ -1121,6 +1136,7 @@ export namespace GdkX11 {
         interface SignalSignatures extends Gdk.Screen.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'window-manager-changed': () => void;
             'notify::font-options': (pspec: GObject.ParamSpec) => void;

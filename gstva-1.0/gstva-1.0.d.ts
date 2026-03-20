@@ -22,6 +22,9 @@ export namespace GstVa {
      * GstVa-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VaFeature {
         export const $gtype: GObject.GType<VaFeature>;
     }
@@ -388,8 +391,17 @@ export namespace GstVa {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get description(): string;
+        /**
+         * @construct-only
+         */
         get va_display(): any;
+        /**
+         * @construct-only
+         */
         get vaDisplay(): any;
 
         /**
@@ -496,6 +508,9 @@ export namespace GstVa {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get path(): string;
 
         /**

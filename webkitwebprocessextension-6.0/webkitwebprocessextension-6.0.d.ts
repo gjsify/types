@@ -717,56 +717,67 @@ export namespace WebKitWebProcessExtension {
         /**
          * Bitmask of {@link WebKitWebProcessExtension.HitTestResultContext} flags representing
          * the context of the {@link WebKitWebProcessExtension.HitTestResult}.
+         * @construct-only
          */
         get context(): number;
         /**
          * The URI of the image if flag {@link WebKitWebProcessExtension.HitTestResultContext.IMAGE}
          * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get image_uri(): string;
         /**
          * The URI of the image if flag {@link WebKitWebProcessExtension.HitTestResultContext.IMAGE}
          * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get imageUri(): string;
         /**
          * The label of the link if flag {@link WebKitWebProcessExtension.HitTestResultContext.LINK}
          * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get link_label(): string;
         /**
          * The label of the link if flag {@link WebKitWebProcessExtension.HitTestResultContext.LINK}
          * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get linkLabel(): string;
         /**
          * The title of the link if flag {@link WebKitWebProcessExtension.HitTestResultContext.LINK}
          * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get link_title(): string;
         /**
          * The title of the link if flag {@link WebKitWebProcessExtension.HitTestResultContext.LINK}
          * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get linkTitle(): string;
         /**
          * The URI of the link if flag {@link WebKitWebProcessExtension.HitTestResultContext.LINK}
          * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get link_uri(): string;
         /**
          * The URI of the link if flag {@link WebKitWebProcessExtension.HitTestResultContext.LINK}
          * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get linkUri(): string;
         /**
          * The URI of the media if flag {@link WebKitWebProcessExtension.HitTestResultContext.MEDIA}
          * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get media_uri(): string;
         /**
          * The URI of the media if flag {@link WebKitWebProcessExtension.HitTestResultContext.MEDIA}
          * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get mediaUri(): string;
 
@@ -887,6 +898,7 @@ export namespace WebKitWebProcessExtension {
              * `webkit_frame_get_js_context_for_script_world()`.
              * @signal
              * @since 2.2
+             * @run-last
              */
             'window-object-cleared': (arg0: WebPage, arg1: Frame) => void;
         }
@@ -1098,48 +1110,59 @@ export namespace WebKitWebProcessExtension {
 
         /**
          * The expected content length of the response.
+         * @read-only
          */
         get content_length(): number;
         /**
          * The expected content length of the response.
+         * @read-only
          */
         get contentLength(): number;
         /**
          * The HTTP headers of the response, or `null` if the response is not an HTTP response.
          * @since 2.6
+         * @read-only
          */
         get http_headers(): Soup.MessageHeaders;
         /**
          * The HTTP headers of the response, or `null` if the response is not an HTTP response.
          * @since 2.6
+         * @read-only
          */
         get httpHeaders(): Soup.MessageHeaders;
         /**
          * The MIME type of the response.
+         * @read-only
          */
         get mime_type(): string;
         /**
          * The MIME type of the response.
+         * @read-only
          */
         get mimeType(): string;
         /**
          * The status code of the response as returned by the server.
+         * @read-only
          */
         get status_code(): number;
         /**
          * The status code of the response as returned by the server.
+         * @read-only
          */
         get statusCode(): number;
         /**
          * The suggested filename for the URI response.
+         * @read-only
          */
         get suggested_filename(): string;
         /**
          * The suggested filename for the URI response.
+         * @read-only
          */
         get suggestedFilename(): string;
         /**
          * The URI for which the response was made.
+         * @read-only
          */
         get uri(): string;
 
@@ -1262,16 +1285,19 @@ export namespace WebKitWebProcessExtension {
         /**
          * The UNIX file descriptors of the user message.
          * @since 2.28
+         * @construct-only
          */
         get fd_list(): Gio.UnixFDList;
         /**
          * The UNIX file descriptors of the user message.
          * @since 2.28
+         * @construct-only
          */
         get fdList(): Gio.UnixFDList;
         /**
          * The name of the user message.
          * @since 2.28
+         * @construct-only
          */
         get name(): string;
         /**
@@ -1279,6 +1305,7 @@ export namespace WebKitWebProcessExtension {
          * if the message doesn't include parameters. Note that only complete types are
          * allowed.
          * @since 2.28
+         * @construct-only
          */
         get parameters(): GLib.Variant;
 
@@ -1370,6 +1397,7 @@ export namespace WebKitWebProcessExtension {
              * selection.
              * @signal
              * @since 2.10
+             * @run-last
              */
             'selection-changed': () => void;
         }
@@ -1451,6 +1479,7 @@ export namespace WebKitWebProcessExtension {
              * keep them alive after the signal handler returns.
              * @signal
              * @since 2.40
+             * @run-last
              */
             'form-controls-associated': (arg0: Frame, arg1: JavaScriptCore.Value[]) => void;
             /**
@@ -1468,6 +1497,7 @@ export namespace WebKitWebProcessExtension {
              * misguided websites may use such techniques to attempt to thwart password managers.
              * @signal
              * @since 2.40
+             * @run-last
              */
             'will-send-submit-event': (arg0: JavaScriptCore.Value, arg1: Frame, arg2: Frame) => void;
             /**
@@ -1478,6 +1508,7 @@ export namespace WebKitWebProcessExtension {
              * signal is emitted.
              * @signal
              * @since 2.40
+             * @run-last
              */
             'will-submit-form': (arg0: JavaScriptCore.Value, arg1: Frame, arg2: Frame) => void;
         }
@@ -1711,6 +1742,7 @@ export namespace WebKitWebProcessExtension {
              * signal instead.
              * @signal
              * @since 2.8
+             * @run-last
              */
             'context-menu': (arg0: ContextMenu, arg1: WebHitTestResult) => boolean | void;
             /**
@@ -1719,6 +1751,7 @@ export namespace WebKitWebProcessExtension {
              *
              * You can wait for this signal to get the DOM document
              * @signal
+             * @run-last
              */
             'document-loaded': () => void;
             /**
@@ -1737,6 +1770,7 @@ export namespace WebKitWebProcessExtension {
              * {@link Soup.MessageHeaders} will be taken into account when the request
              * is sent over the network.
              * @signal
+             * @run-last
              */
             'send-request': (arg0: URIRequest, arg1: URIResponse) => boolean | void;
             /**
@@ -1750,6 +1784,7 @@ export namespace WebKitWebProcessExtension {
              * finish with error {@link WebKitWebProcessExtension.UserMessageError.USER_MESSAGE_UNHANDLED_MESSAGE}.
              * @signal
              * @since 2.28
+             * @run-last
              */
             'user-message-received': (arg0: UserMessage) => boolean | void;
             'notify::uri': (pspec: GObject.ParamSpec) => void;
@@ -1773,6 +1808,7 @@ export namespace WebKitWebProcessExtension {
 
         /**
          * The current active URI of the {@link WebKitWebProcessExtension.WebPage}.
+         * @read-only
          */
         get uri(): string;
 
@@ -1902,6 +1938,7 @@ export namespace WebKitWebProcessExtension {
              * the Web Process.
              * @signal
              * @since 2.40
+             * @run-last
              */
             'page-created': (arg0: WebPage) => void;
             /**
@@ -1911,6 +1948,7 @@ export namespace WebKitWebProcessExtension {
              * replied to. Calling `webkit_user_message_send_reply()` will do nothing.
              * @signal
              * @since 2.40
+             * @run-last
              */
             'user-message-received': (arg0: UserMessage) => void;
         }

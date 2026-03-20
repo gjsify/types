@@ -96,6 +96,9 @@ export namespace ArrowFlight {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set client(val: any);
 
         /**
@@ -357,6 +360,9 @@ export namespace ArrowFlight {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set stream(val: any);
 
         /**
@@ -417,6 +423,9 @@ export namespace ArrowFlight {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set descriptor(val: any);
 
         /**
@@ -492,6 +501,7 @@ export namespace ArrowFlight {
         /**
          * Opaque ticket identify; use with DoGet RPC.
          * @since 5.0.0
+         * @read-only
          */
         get ticket(): Ticket;
 
@@ -567,6 +577,9 @@ export namespace ArrowFlight {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set info(val: any);
 
         /**
@@ -797,6 +810,9 @@ export namespace ArrowFlight {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set reader(val: any);
 
         /**
@@ -872,6 +888,7 @@ export namespace ArrowFlight {
         /**
          * The reader that produces record batches.
          * @since 6.0.0
+         * @construct-only
          */
         get reader(): Arrow.RecordBatchReader;
 
@@ -1031,7 +1048,13 @@ export namespace ArrowFlight {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set call_context(val: any);
+        /**
+         * @construct-only
+         */
         set callContext(val: any);
 
         /**
@@ -1092,6 +1115,9 @@ export namespace ArrowFlight {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get location(): Location;
 
         /**
@@ -1154,6 +1180,9 @@ export namespace ArrowFlight {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set chunk(val: any);
 
         /**

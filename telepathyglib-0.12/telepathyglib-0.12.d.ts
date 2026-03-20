@@ -4468,12 +4468,14 @@ export namespace TelepathyGLib {
              * to get the new avatar data.
              * @signal
              * @since 0.23.0
+             * @run-last
              */
             'avatar-changed': () => void;
             /**
              * Emitted when the presence of the account changes.
              * @signal
              * @since 0.9.0
+             * @run-last
              */
             'presence-changed': (arg0: number, arg1: string, arg2: string) => void;
             /**
@@ -4484,6 +4486,7 @@ export namespace TelepathyGLib {
              * available with their current behaviour since version 0.11.7.
              * @signal
              * @since 0.9.0
+             * @run-last
              */
             'status-changed': (
                 arg0: number,
@@ -4646,6 +4649,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * {@link TelepathyGLib.ConnectionPresenceType.UNSET}.
          * @since 0.13.8
+         * @read-only
          */
         get automatic_presence_type(): number;
         /**
@@ -4666,6 +4670,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * {@link TelepathyGLib.ConnectionPresenceType.UNSET}.
          * @since 0.13.8
+         * @read-only
          */
         get automaticPresenceType(): number;
         /**
@@ -4682,6 +4687,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.13.8
+         * @read-only
          */
         get automatic_status(): string;
         /**
@@ -4698,6 +4704,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.13.8
+         * @read-only
          */
         get automaticStatus(): string;
         /**
@@ -4714,6 +4721,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.13.8
+         * @read-only
          */
         get automatic_status_message(): string;
         /**
@@ -4730,6 +4738,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.13.8
+         * @read-only
          */
         get automaticStatusMessage(): string;
         /**
@@ -4747,6 +4756,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `false`.
          * @since 0.11.6
+         * @read-only
          */
         get changing_presence(): boolean;
         /**
@@ -4764,16 +4774,19 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `false`.
          * @since 0.11.6
+         * @read-only
          */
         get changingPresence(): boolean;
         /**
          * The account's connection manager name.
          * @since 0.19.3
+         * @read-only
          */
         get cm_name(): string;
         /**
          * The account's connection manager name.
          * @since 0.19.3
+         * @read-only
          */
         get cmName(): string;
         /**
@@ -4788,6 +4801,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `false`.
          * @since 0.9.0
+         * @read-only
          */
         get connect_automatically(): boolean;
         /**
@@ -4802,6 +4816,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `false`.
          * @since 0.9.0
+         * @read-only
          */
         get connectAutomatically(): boolean;
         /**
@@ -4819,6 +4834,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get connection(): Connection;
         /**
@@ -4835,6 +4851,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.11.7
+         * @read-only
          */
         get connection_error(): string;
         /**
@@ -4851,6 +4868,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.11.7
+         * @read-only
          */
         get connectionError(): string;
         /**
@@ -4873,6 +4891,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * an empty map.
          * @since 0.11.7
+         * @read-only
          */
         get connection_error_details(): GLib.HashTable<any, any>;
         /**
@@ -4895,18 +4914,21 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * an empty map.
          * @since 0.11.7
+         * @read-only
          */
         get connectionErrorDetails(): GLib.HashTable<any, any>;
         /**
          * The account's connection manager name.
          * @since 0.9.0
          * @deprecated Use {@link TelepathyGLib.Account.cm_name} instead.
+         * @read-only
          */
         get connection_manager(): string;
         /**
          * The account's connection manager name.
          * @since 0.9.0
          * @deprecated Use {@link TelepathyGLib.Account.cm_name} instead.
+         * @read-only
          */
         get connectionManager(): string;
         /**
@@ -4921,6 +4943,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * {@link TelepathyGLib.ConnectionStatus.DISCONNECTED}.
          * @since 0.9.0
+         * @read-only
          */
         get connection_status(): number;
         /**
@@ -4935,6 +4958,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * {@link TelepathyGLib.ConnectionStatus.DISCONNECTED}.
          * @since 0.9.0
+         * @read-only
          */
         get connectionStatus(): number;
         /**
@@ -4949,6 +4973,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * {@link TelepathyGLib.ConnectionStatusReason.NONE_SPECIFIED}.
          * @since 0.9.0
+         * @read-only
          */
         get connection_status_reason(): number;
         /**
@@ -4963,6 +4988,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * {@link TelepathyGLib.ConnectionStatusReason.NONE_SPECIFIED}.
          * @since 0.9.0
+         * @read-only
          */
         get connectionStatusReason(): number;
         /**
@@ -4979,6 +5005,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * {@link TelepathyGLib.ConnectionPresenceType.UNSET}.
          * @since 0.9.0
+         * @read-only
          */
         get current_presence_type(): number;
         /**
@@ -4995,6 +5022,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * {@link TelepathyGLib.ConnectionPresenceType.UNSET}.
          * @since 0.9.0
+         * @read-only
          */
         get currentPresenceType(): number;
         /**
@@ -5010,6 +5038,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get current_status(): string;
         /**
@@ -5025,6 +5054,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get currentStatus(): string;
         /**
@@ -5040,6 +5070,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get current_status_message(): string;
         /**
@@ -5055,6 +5086,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get currentStatusMessage(): string;
         /**
@@ -5068,6 +5100,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get display_name(): string;
         /**
@@ -5081,6 +5114,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get displayName(): string;
         /**
@@ -5093,6 +5127,7 @@ export namespace TelepathyGLib {
          * This is not guaranteed to have been retrieved until
          * `tp_proxy_prepare_async()` has finished; until then, the value is FALSE.
          * @since 0.9.0
+         * @read-only
          */
         get enabled(): boolean;
         /**
@@ -5106,6 +5141,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `false`.
          * @since 0.9.0
+         * @read-only
          */
         get has_been_online(): boolean;
         /**
@@ -5119,6 +5155,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `false`.
          * @since 0.9.0
+         * @read-only
          */
         get hasBeenOnline(): boolean;
         /**
@@ -5133,6 +5170,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get icon_name(): string;
         /**
@@ -5147,6 +5185,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get iconName(): string;
         /**
@@ -5160,6 +5199,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get nickname(): string;
         /**
@@ -5175,6 +5215,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.13.8
+         * @read-only
          */
         get normalized_name(): string;
         /**
@@ -5190,6 +5231,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.13.8
+         * @read-only
          */
         get normalizedName(): string;
         /**
@@ -5198,6 +5240,7 @@ export namespace TelepathyGLib {
          * Telepathy D-Bus Interface Specification.
          * @since 0.9.0
          * @deprecated Use {@link TelepathyGLib.Account.protocol_name} instead.
+         * @read-only
          */
         get protocol(): string;
         /**
@@ -5205,6 +5248,7 @@ export namespace TelepathyGLib {
          * "local-xmpp". Recommended names for most protocols can be found in the
          * Telepathy D-Bus Interface Specification.
          * @since 0.19.3
+         * @read-only
          */
         get protocol_name(): string;
         /**
@@ -5212,6 +5256,7 @@ export namespace TelepathyGLib {
          * "local-xmpp". Recommended names for most protocols can be found in the
          * Telepathy D-Bus Interface Specification.
          * @since 0.19.3
+         * @read-only
          */
         get protocolName(): string;
         /**
@@ -5228,6 +5273,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get requested_presence_type(): number;
         /**
@@ -5244,6 +5290,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get requestedPresenceType(): number;
         /**
@@ -5260,6 +5307,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get requested_status(): string;
         /**
@@ -5276,6 +5324,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get requestedStatus(): string;
         /**
@@ -5292,6 +5341,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get requested_status_message(): string;
         /**
@@ -5308,6 +5358,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `null`.
          * @since 0.9.0
+         * @read-only
          */
         get requestedStatusMessage(): string;
         /**
@@ -5327,6 +5378,7 @@ export namespace TelepathyGLib {
          * To change this property, use
          * `tp_account_set_service_async()`.
          * @since 0.11.9
+         * @read-only
          */
         get service(): string;
         /**
@@ -5342,6 +5394,7 @@ export namespace TelepathyGLib {
          * `TP_ACCOUNT_FEATURE_STORAGE` feature has been prepared; until then,
          * the value is `null`.
          * @since 0.13.2
+         * @read-only
          */
         get storage_identifier(): GObject.Value;
         /**
@@ -5357,6 +5410,7 @@ export namespace TelepathyGLib {
          * `TP_ACCOUNT_FEATURE_STORAGE` feature has been prepared; until then,
          * the value is `null`.
          * @since 0.13.2
+         * @read-only
          */
         get storageIdentifier(): GObject.Value;
         /**
@@ -5374,6 +5428,7 @@ export namespace TelepathyGLib {
          * `TP_ACCOUNT_FEATURE_STORAGE` feature has been prepared; until then,
          * the value is `null`.
          * @since 0.13.2
+         * @read-only
          */
         get storage_identifier_variant(): GLib.Variant;
         /**
@@ -5391,6 +5446,7 @@ export namespace TelepathyGLib {
          * `TP_ACCOUNT_FEATURE_STORAGE` feature has been prepared; until then,
          * the value is `null`.
          * @since 0.13.2
+         * @read-only
          */
         get storageIdentifierVariant(): GLib.Variant;
         /**
@@ -5405,6 +5461,7 @@ export namespace TelepathyGLib {
          * `TP_ACCOUNT_FEATURE_STORAGE` feature has been prepared; until then,
          * the value is `null`.
          * @since 0.13.2
+         * @read-only
          */
         get storage_provider(): string;
         /**
@@ -5419,6 +5476,7 @@ export namespace TelepathyGLib {
          * `TP_ACCOUNT_FEATURE_STORAGE` feature has been prepared; until then,
          * the value is `null`.
          * @since 0.13.2
+         * @read-only
          */
         get storageProvider(): string;
         /**
@@ -5434,6 +5492,7 @@ export namespace TelepathyGLib {
          * `TP_ACCOUNT_FEATURE_STORAGE` feature has been prepared; until then,
          * the value is 0.
          * @since 0.13.2
+         * @read-only
          */
         get storage_restrictions(): number;
         /**
@@ -5449,6 +5508,7 @@ export namespace TelepathyGLib {
          * `TP_ACCOUNT_FEATURE_STORAGE` feature has been prepared; until then,
          * the value is 0.
          * @since 0.13.2
+         * @read-only
          */
         get storageRestrictions(): number;
         /**
@@ -5460,6 +5520,7 @@ export namespace TelepathyGLib {
          * `TP_ACCOUNT_FEATURE_CORE` feature has been prepared; until then,
          * the value is NULL.
          * @since 0.17.5
+         * @read-only
          */
         get supersedes(): string[];
         /**
@@ -5477,6 +5538,7 @@ export namespace TelepathyGLib {
          * The notify::uri-schemes signal cannot be relied on if the Account Manager
          * is Mission Control version 5.14.0 or older.
          * @since 0.21.0
+         * @read-only
          */
         get uri_schemes(): string[];
         /**
@@ -5494,6 +5556,7 @@ export namespace TelepathyGLib {
          * The notify::uri-schemes signal cannot be relied on if the Account Manager
          * is Mission Control version 5.14.0 or older.
          * @since 0.21.0
+         * @read-only
          */
         get uriSchemes(): string[];
         /**
@@ -5507,6 +5570,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` has finished; until then, the value is
          * `false`.
          * @since 0.9.0
+         * @read-only
          */
         get valid(): boolean;
 
@@ -6531,6 +6595,8 @@ export namespace TelepathyGLib {
              * `tp_handle_channels_context_delay()` or `tp_handle_channels_context_fail()`.
              * @signal
              * @since 0.11.12
+             * @detailed
+             * @run-last
              */
             're-handled': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
             'notify::account': (pspec: GObject.ParamSpec) => void;
@@ -6556,6 +6622,8 @@ export namespace TelepathyGLib {
              * `tp_handle_channels_context_delay()` or `tp_handle_channels_context_fail()`.
              * @signal
              * @since 0.11.12
+             * @detailed
+             * @run-last
              */
             're-handled::account': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
             /**
@@ -6577,6 +6645,8 @@ export namespace TelepathyGLib {
              * `tp_handle_channels_context_delay()` or `tp_handle_channels_context_fail()`.
              * @signal
              * @since 0.11.12
+             * @detailed
+             * @run-last
              */
             're-handled::channel-request': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
             /**
@@ -6598,6 +6668,8 @@ export namespace TelepathyGLib {
              * `tp_handle_channels_context_delay()` or `tp_handle_channels_context_fail()`.
              * @signal
              * @since 0.11.12
+             * @detailed
+             * @run-last
              */
             're-handled::request-vardict': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
             /**
@@ -6619,6 +6691,8 @@ export namespace TelepathyGLib {
              * `tp_handle_channels_context_delay()` or `tp_handle_channels_context_fail()`.
              * @signal
              * @since 0.11.12
+             * @detailed
+             * @run-last
              */
             're-handled::user-action-time': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
         }
@@ -6652,6 +6726,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.12
+         * @construct-only
          */
         get account(): Account;
         /**
@@ -6668,6 +6743,7 @@ export namespace TelepathyGLib {
          * them using their object paths (tp_proxy_get_object_path()).
          *
          * Since 0.13.13
+         * @read-only
          */
         get channel_request(): ChannelRequest;
         /**
@@ -6684,6 +6760,7 @@ export namespace TelepathyGLib {
          * them using their object paths (tp_proxy_get_object_path()).
          *
          * Since 0.13.13
+         * @read-only
          */
         get channelRequest(): ChannelRequest;
         /**
@@ -6694,6 +6771,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.AccountChannelRequest.request_vardict} must be set to a non-`null`
          * value, and the other must remain unspecified.
          * @since 0.19.10
+         * @construct-only
          */
         get request_vardict(): GLib.Variant;
         /**
@@ -6704,6 +6782,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.AccountChannelRequest.request_vardict} must be set to a non-`null`
          * value, and the other must remain unspecified.
          * @since 0.19.10
+         * @construct-only
          */
         get requestVardict(): GLib.Variant;
         /**
@@ -6731,6 +6810,7 @@ export namespace TelepathyGLib {
          * `tp_user_action_time_should_present()` to decide whether to bring its
          * window to the foreground.
          * @since 0.11.12
+         * @construct-only
          */
         get user_action_time(): number;
         /**
@@ -6758,6 +6838,7 @@ export namespace TelepathyGLib {
          * `tp_user_action_time_should_present()` to decide whether to bring its
          * window to the foreground.
          * @since 0.11.12
+         * @construct-only
          */
         get userActionTime(): number;
 
@@ -7573,6 +7654,7 @@ export namespace TelepathyGLib {
              * Emitted when an account from `manager` is disabled.
              * @signal
              * @since 0.9.0
+             * @run-last
              */
             'account-disabled': (arg0: Account) => void;
             /**
@@ -7583,12 +7665,14 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_add_account_features()`.
              * @signal
              * @since 0.9.0
+             * @run-last
              */
             'account-enabled': (arg0: Account) => void;
             /**
              * Emitted when an account is removed from `manager`.
              * @signal
              * @since 0.9.0
+             * @run-last
              */
             'account-removed': (arg0: Account) => void;
             /**
@@ -7603,12 +7687,14 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_add_account_features()`.
              * @signal
              * @since 0.9.0
+             * @run-last
              */
             'account-validity-changed': (arg0: Account, arg1: boolean) => void;
             /**
              * Emitted when the most available presence on `manager` changes.
              * @signal
              * @since 0.9.0
+             * @run-last
              */
             'most-available-presence-changed': (arg0: number, arg1: string, arg2: string) => void;
             'notify::bus-name': (pspec: GObject.ParamSpec) => void;
@@ -8028,11 +8114,13 @@ export namespace TelepathyGLib {
         /**
          * The {@link TelepathyGLib.AccountManager} to create the account on.
          * @since 0.19.1
+         * @construct-only
          */
         get account_manager(): AccountManager;
         /**
          * The {@link TelepathyGLib.AccountManager} to create the account on.
          * @since 0.19.1
+         * @construct-only
          */
         get accountManager(): AccountManager;
         /**
@@ -8045,6 +8133,7 @@ export namespace TelepathyGLib {
          * available, the automatic presence type, status and message will
          * be copied to their "requested" counterparts.
          * @since 0.19.1
+         * @read-only
          */
         get automatic_presence_type(): number;
         /**
@@ -8057,6 +8146,7 @@ export namespace TelepathyGLib {
          * available, the automatic presence type, status and message will
          * be copied to their "requested" counterparts.
          * @since 0.19.1
+         * @read-only
          */
         get automaticPresenceType(): number;
         /**
@@ -8064,6 +8154,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.AccountRequest.automatic_presence_type}. To change this property
          * use `tp_account_request_set_automatic_presence()`.
          * @since 0.19.1
+         * @read-only
          */
         get automatic_status(): string;
         /**
@@ -8071,6 +8162,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.AccountRequest.automatic_presence_type}. To change this property
          * use `tp_account_request_set_automatic_presence()`.
          * @since 0.19.1
+         * @read-only
          */
         get automaticStatus(): string;
         /**
@@ -8078,6 +8170,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.Account.automatic_presence_type}. To change this property use
          * `tp_account_request_set_automatic_presence()`.
          * @since 0.19.1
+         * @read-only
          */
         get automatic_status_message(): string;
         /**
@@ -8085,6 +8178,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.Account.automatic_presence_type}. To change this property use
          * `tp_account_request_set_automatic_presence()`.
          * @since 0.19.1
+         * @read-only
          */
         get automaticStatusMessage(): string;
         /**
@@ -8092,87 +8186,102 @@ export namespace TelepathyGLib {
          * in the {@link TelepathyGLib.AccountRequest.avatar_mime_type} property. To change this
          * property, use `tp_account_request_set_avatar()`.
          * @since 0.19.1
+         * @read-only
          */
         get avatar(): any[];
         /**
          * The mime type of the {@link TelepathyGLib.AccountRequest.avatar} property. To change
          * this property, use `tp_account_request_set_avatar()`.
          * @since 0.19.1
+         * @read-only
          */
         get avatar_mime_type(): string;
         /**
          * The mime type of the {@link TelepathyGLib.AccountRequest.avatar} property. To change
          * this property, use `tp_account_request_set_avatar()`.
          * @since 0.19.1
+         * @read-only
          */
         get avatarMimeType(): string;
         /**
          * Whether the account should connect automatically or not. To change this
          * property, use `tp_account_request_set_connect_automatically()`.
          * @since 0.19.1
+         * @read-only
          */
         get connect_automatically(): boolean;
         /**
          * Whether the account should connect automatically or not. To change this
          * property, use `tp_account_request_set_connect_automatically()`.
          * @since 0.19.1
+         * @read-only
          */
         get connectAutomatically(): boolean;
         /**
          * The account's connection manager name.
          * @since 0.19.1
+         * @construct-only
          */
         get connection_manager(): string;
         /**
          * The account's connection manager name.
          * @since 0.19.1
+         * @construct-only
          */
         get connectionManager(): string;
         /**
          * The account's display name. To change this property use
          * `tp_account_request_set_display_name()`.
          * @since 0.19.1
+         * @construct-only
          */
         get display_name(): string;
         /**
          * The account's display name. To change this property use
          * `tp_account_request_set_display_name()`.
          * @since 0.19.1
+         * @construct-only
          */
         get displayName(): string;
         /**
          * Whether the account is enabled or not. To change this property
          * use `tp_account_request_set_enabled()`.
          * @since 0.19.1
+         * @read-only
          */
         get enabled(): boolean;
         /**
          * The account's icon name. To change this propery, use
          * `tp_account_request_set_icon_name()`.
          * @since 0.19.1
+         * @read-only
          */
         get icon_name(): string;
         /**
          * The account's icon name. To change this propery, use
          * `tp_account_request_set_icon_name()`.
          * @since 0.19.1
+         * @read-only
          */
         get iconName(): string;
         /**
          * The account's nickname. To change this property use
          * `tp_account_request_set_nickname()`.
          * @since 0.19.1
+         * @read-only
          */
         get nickname(): string;
         /**
          * The account's connection parameters. To add a parameter, use
          * `tp_account_request_set_parameter()` or another convience function.
          * @since 0.19.1
+         * @read-only
          */
         get parameters(): GLib.Variant;
         /**
          * The account's properties.
          * @since 0.19.1
+         * @read-only
          */
         get properties(): GLib.Variant;
         /**
@@ -8180,6 +8289,7 @@ export namespace TelepathyGLib {
          * "local-xmpp". Recommended names for most protocols can be found in the
          * Telepathy D-Bus Interface Specification.
          * @since 0.19.1
+         * @construct-only
          */
         get protocol(): string;
         /**
@@ -8187,6 +8297,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ConnectionPresenceType}). To change this property use
          * `tp_account_request_set_requested_presence()`.
          * @since 0.19.1
+         * @read-only
          */
         get requested_presence_type(): number;
         /**
@@ -8194,30 +8305,35 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.ConnectionPresenceType}). To change this property use
          * `tp_account_request_set_requested_presence()`.
          * @since 0.19.1
+         * @read-only
          */
         get requestedPresenceType(): number;
         /**
          * The requested Status string of the account. To change this
          * property use `tp_account_request_set_requested_presence()`.
          * @since 0.19.1
+         * @read-only
          */
         get requested_status(): string;
         /**
          * The requested Status string of the account. To change this
          * property use `tp_account_request_set_requested_presence()`.
          * @since 0.19.1
+         * @read-only
          */
         get requestedStatus(): string;
         /**
          * The requested status message message of the account. To change
          * this property use `tp_account_request_set_requested_presence()`.
          * @since 0.19.1
+         * @read-only
          */
         get requested_status_message(): string;
         /**
          * The requested status message message of the account. To change
          * this property use `tp_account_request_set_requested_presence()`.
          * @since 0.19.1
+         * @read-only
          */
         get requestedStatusMessage(): string;
         /**
@@ -8227,18 +8343,21 @@ export namespace TelepathyGLib {
          * Protocol). To change this property, use
          * `tp_account_request_set_service()`.
          * @since 0.19.1
+         * @read-only
          */
         get service(): string;
         /**
          * The account's storage provider. To change this property use
          * `tp_account_request_set_storage_provider()`.
          * @since 0.19.4
+         * @read-only
          */
         get storage_provider(): string;
         /**
          * The account's storage provider. To change this property use
          * `tp_account_request_set_storage_provider()`.
          * @since 0.19.4
+         * @read-only
          */
         get storageProvider(): string;
         /**
@@ -8248,6 +8367,7 @@ export namespace TelepathyGLib {
          *
          * To add to this property use `tp_account_request_add_supersedes()`.
          * @since 0.19.1
+         * @read-only
          */
         get supersedes(): string[];
 
@@ -8488,6 +8608,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.5
+         * @construct-only
          */
         get account(): Account;
         /**
@@ -8497,6 +8618,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.5
+         * @construct-only
          */
         get channels(): any[];
         /**
@@ -8506,6 +8628,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.5
+         * @construct-only
          */
         get connection(): Connection;
         /**
@@ -8515,6 +8638,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.5
+         * @construct-only
          */
         get dispatch_operation(): ChannelDispatchOperation;
         /**
@@ -8524,6 +8648,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.5
+         * @construct-only
          */
         get dispatchOperation(): ChannelDispatchOperation;
 
@@ -9204,6 +9329,8 @@ export namespace TelepathyGLib {
              * on `self` previously.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'request-added': (arg0: Account, arg1: ChannelRequest) => void;
             /**
@@ -9214,6 +9341,8 @@ export namespace TelepathyGLib {
              * on `self` previously.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'request-removed': (arg0: ChannelRequest, arg1: string, arg2: string) => void;
             'notify::account-manager': (pspec: GObject.ParamSpec) => void;
@@ -9231,6 +9360,8 @@ export namespace TelepathyGLib {
              * on `self` previously.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'request-added::account-manager': (arg0: Account, arg1: ChannelRequest) => void;
             /**
@@ -9242,6 +9373,8 @@ export namespace TelepathyGLib {
              * on `self` previously.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'request-added::channel-factory': (arg0: Account, arg1: ChannelRequest) => void;
             /**
@@ -9253,6 +9386,8 @@ export namespace TelepathyGLib {
              * on `self` previously.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'request-added::dbus-daemon': (arg0: Account, arg1: ChannelRequest) => void;
             /**
@@ -9264,6 +9399,8 @@ export namespace TelepathyGLib {
              * on `self` previously.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'request-added::factory': (arg0: Account, arg1: ChannelRequest) => void;
             /**
@@ -9275,6 +9412,8 @@ export namespace TelepathyGLib {
              * on `self` previously.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'request-added::name': (arg0: Account, arg1: ChannelRequest) => void;
             /**
@@ -9286,6 +9425,8 @@ export namespace TelepathyGLib {
              * on `self` previously.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'request-added::uniquify-name': (arg0: Account, arg1: ChannelRequest) => void;
             /**
@@ -9296,6 +9437,8 @@ export namespace TelepathyGLib {
              * on `self` previously.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'request-removed::account-manager': (arg0: ChannelRequest, arg1: string, arg2: string) => void;
             /**
@@ -9306,6 +9449,8 @@ export namespace TelepathyGLib {
              * on `self` previously.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'request-removed::channel-factory': (arg0: ChannelRequest, arg1: string, arg2: string) => void;
             /**
@@ -9316,6 +9461,8 @@ export namespace TelepathyGLib {
              * on `self` previously.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'request-removed::dbus-daemon': (arg0: ChannelRequest, arg1: string, arg2: string) => void;
             /**
@@ -9326,6 +9473,8 @@ export namespace TelepathyGLib {
              * on `self` previously.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'request-removed::factory': (arg0: ChannelRequest, arg1: string, arg2: string) => void;
             /**
@@ -9336,6 +9485,8 @@ export namespace TelepathyGLib {
              * on `self` previously.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'request-removed::name': (arg0: ChannelRequest, arg1: string, arg2: string) => void;
             /**
@@ -9346,6 +9497,8 @@ export namespace TelepathyGLib {
              * on `self` previously.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'request-removed::uniquify-name': (arg0: ChannelRequest, arg1: string, arg2: string) => void;
         }
@@ -9403,6 +9556,7 @@ export namespace TelepathyGLib {
          * account manager's {@link TelepathyGLib.Proxy.dbus_daemon}.
          * @since 0.11.14
          * @deprecated New code should not use this property, it may be `null` in  the case `self` was constructed with a {@link TelepathyGLib.SimpleClientFactory}.
+         * @construct-only
          */
         get account_manager(): AccountManager;
         /**
@@ -9432,6 +9586,7 @@ export namespace TelepathyGLib {
          * account manager's {@link TelepathyGLib.Proxy.dbus_daemon}.
          * @since 0.11.14
          * @deprecated New code should not use this property, it may be `null` in  the case `self` was constructed with a {@link TelepathyGLib.SimpleClientFactory}.
+         * @construct-only
          */
         get accountManager(): AccountManager;
         /**
@@ -9443,6 +9598,7 @@ export namespace TelepathyGLib {
          * If no channel factory is specified then {@link TelepathyGLib.AutomaticProxyFactory} is used.
          * @since 0.13.2
          * @deprecated since 0.15.5. The factory is taken from  {@link TelepathyGLib.BaseClient.account_manager}.
+         * @construct-only
          */
         get channel_factory(): GObject.Object;
         /**
@@ -9454,6 +9610,7 @@ export namespace TelepathyGLib {
          * If no channel factory is specified then {@link TelepathyGLib.AutomaticProxyFactory} is used.
          * @since 0.13.2
          * @deprecated since 0.15.5. The factory is taken from  {@link TelepathyGLib.BaseClient.account_manager}.
+         * @construct-only
          */
         get channelFactory(): GObject.Object;
         /**
@@ -9467,6 +9624,7 @@ export namespace TelepathyGLib {
          * instead, in which case its {@link TelepathyGLib.Proxy.dbus_daemon} property will be
          * used.
          * @since 0.11.5
+         * @construct-only
          */
         get dbus_daemon(): DBusDaemon;
         /**
@@ -9480,12 +9638,14 @@ export namespace TelepathyGLib {
          * instead, in which case its {@link TelepathyGLib.Proxy.dbus_daemon} property will be
          * used.
          * @since 0.11.5
+         * @construct-only
          */
         get dbusDaemon(): DBusDaemon;
         /**
          * Factory for this base client, used to look up or create
          * {@link TelepathyGLib.Account} objects.
          * @since 0.15.5
+         * @construct-only
          */
         get factory(): SimpleClientFactory;
         /**
@@ -9494,18 +9654,21 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.5
+         * @construct-only
          */
         get name(): string;
         /**
          * If `true`, `tp_base_client_register()` will append an unique token to the
          * service bus name and object path to ensure they are unique.
          * @since 0.11.5
+         * @construct-only
          */
         get uniquify_name(): boolean;
         /**
          * If `true`, `tp_base_client_register()` will append an unique token to the
          * service bus name and object path to ensure they are unique.
          * @since 0.11.5
+         * @construct-only
          */
         get uniquifyName(): boolean;
 
@@ -9984,6 +10147,8 @@ export namespace TelepathyGLib {
              * "clients-interested::org.freedesktop.Telepathy.Connection.Interface.Location"
              * rather than receiving all emissions of this signal.
              * @signal
+             * @detailed
+             * @run-last
              */
             'clients-interested': (arg0: string) => void;
             /**
@@ -9997,6 +10162,8 @@ export namespace TelepathyGLib {
              * "clients-uninterested::org.freedesktop.Telepathy.Connection.Interface.Location"
              * rather than receiving all emissions of this signal.
              * @signal
+             * @detailed
+             * @run-last
              */
             'clients-uninterested': (arg0: string) => void;
             /**
@@ -10005,6 +10172,8 @@ export namespace TelepathyGLib {
              * for this signal and removes connections from its table of active
              * connections when it is received.
              * @signal
+             * @detailed
+             * @run-last
              */
             'shutdown-finished': () => void;
             'notify::account-path-suffix': (pspec: GObject.ParamSpec) => void;
@@ -10019,6 +10188,8 @@ export namespace TelepathyGLib {
              * "clients-interested::org.freedesktop.Telepathy.Connection.Interface.Location"
              * rather than receiving all emissions of this signal.
              * @signal
+             * @detailed
+             * @run-last
              */
             'clients-interested::account-path-suffix': (arg0: string) => void;
             /**
@@ -10031,6 +10202,8 @@ export namespace TelepathyGLib {
              * "clients-interested::org.freedesktop.Telepathy.Connection.Interface.Location"
              * rather than receiving all emissions of this signal.
              * @signal
+             * @detailed
+             * @run-last
              */
             'clients-interested::has-immortal-handles': (arg0: string) => void;
             /**
@@ -10044,6 +10217,8 @@ export namespace TelepathyGLib {
              * "clients-uninterested::org.freedesktop.Telepathy.Connection.Interface.Location"
              * rather than receiving all emissions of this signal.
              * @signal
+             * @detailed
+             * @run-last
              */
             'clients-uninterested::account-path-suffix': (arg0: string) => void;
             /**
@@ -10057,6 +10232,8 @@ export namespace TelepathyGLib {
              * "clients-uninterested::org.freedesktop.Telepathy.Connection.Interface.Location"
              * rather than receiving all emissions of this signal.
              * @signal
+             * @detailed
+             * @run-last
              */
             'clients-uninterested::has-immortal-handles': (arg0: string) => void;
             /**
@@ -10065,6 +10242,8 @@ export namespace TelepathyGLib {
              * for this signal and removes connections from its table of active
              * connections when it is received.
              * @signal
+             * @detailed
+             * @run-last
              */
             'shutdown-finished::account-path-suffix': () => void;
             /**
@@ -10073,6 +10252,8 @@ export namespace TelepathyGLib {
              * for this signal and removes connections from its table of active
              * connections when it is received.
              * @signal
+             * @detailed
+             * @run-last
              */
             'shutdown-finished::has-immortal-handles': () => void;
         }
@@ -10110,6 +10291,7 @@ export namespace TelepathyGLib {
          * It is given by the AccountManager in the connection parameters. Or `null` if
          * the ConnectionManager or the AccountManager are too old.
          * @since 0.23.2
+         * @construct-only
          */
         get account_path_suffix(): string;
         /**
@@ -10121,6 +10303,7 @@ export namespace TelepathyGLib {
          * It is given by the AccountManager in the connection parameters. Or `null` if
          * the ConnectionManager or the AccountManager are too old.
          * @since 0.23.2
+         * @construct-only
          */
         get accountPathSuffix(): string;
         /**
@@ -10128,6 +10311,7 @@ export namespace TelepathyGLib {
          * indicate that this version of telepathy-glib never unreferences handles
          * until the connection becomes disconnected.
          * @since 0.13.8
+         * @read-only
          */
         get has_immortal_handles(): boolean;
         /**
@@ -10135,6 +10319,7 @@ export namespace TelepathyGLib {
          * indicate that this version of telepathy-glib never unreferences handles
          * until the connection becomes disconnected.
          * @since 0.13.8
+         * @read-only
          */
         get hasImmortalHandles(): boolean;
 
@@ -10922,6 +11107,7 @@ export namespace TelepathyGLib {
              * `content`.
              * @signal
              * @since 0.17.5
+             * @run-last
              */
             'content-added': (arg0: GObject.Object) => void;
             /**
@@ -10932,6 +11118,7 @@ export namespace TelepathyGLib {
              * `content`.
              * @signal
              * @since 0.17.5
+             * @run-last
              */
             'content-removed': (arg0: GObject.Object, arg1: CallStateReason) => void;
             /**
@@ -10943,6 +11130,7 @@ export namespace TelepathyGLib {
              * prepared.
              * @signal
              * @since 0.17.5
+             * @run-last
              */
             'members-changed': (arg0: GLib.HashTable<Contact, number>, arg1: Contact[], arg2: CallStateReason) => void;
             /**
@@ -10950,6 +11138,7 @@ export namespace TelepathyGLib {
              * call state changes.
              * @signal
              * @since 0.17.5
+             * @run-last
              */
             'state-changed': (
                 arg0: number,
@@ -11035,122 +11224,145 @@ export namespace TelepathyGLib {
          * It is NOT guaranteed that `TP_CALL_CONTENT_FEATURE_CORE` is prepared on
          * those objects.
          * @since 0.17.5
+         * @read-only
          */
         get contents(): any[];
         /**
          * A {@link TelepathyGLib.CallFlags} specifying the flags of the call state.
          * @since 0.17.5
+         * @read-only
          */
         get flags(): number;
         /**
          * Whether or not the streaming is done by dedicated hardware.
          * @since 0.17.5
+         * @read-only
          */
         get hardware_streaming(): boolean;
         /**
          * Whether or not the streaming is done by dedicated hardware.
          * @since 0.17.5
+         * @read-only
          */
         get hardwareStreaming(): boolean;
         /**
          * A {@link TelepathyGLib.LocalHoldState} specifying if the Call is currently held
          * @since 0.17.6
+         * @read-only
          */
         get hold_state(): number;
         /**
          * A {@link TelepathyGLib.LocalHoldState} specifying if the Call is currently held
          * @since 0.17.6
+         * @read-only
          */
         get holdState(): number;
         /**
          * A {@link TelepathyGLib.LocalHoldStateReason} specifying why the Call is currently held.
          * @since 0.17.6
+         * @read-only
          */
         get hold_state_reason(): number;
         /**
          * A {@link TelepathyGLib.LocalHoldStateReason} specifying why the Call is currently held.
          * @since 0.17.6
+         * @read-only
          */
         get holdStateReason(): number;
         /**
          * Whether or not the Call was started with audio.
          * @since 0.17.5
+         * @read-only
          */
         get initial_audio(): boolean;
         /**
          * Whether or not the Call was started with audio.
          * @since 0.17.5
+         * @read-only
          */
         get initialAudio(): boolean;
         /**
          * If {@link TelepathyGLib.CallChannel.initial_audio} is set to `true`, then this property will
          * is the name of the intial audio content, `null` otherwise.
          * @since 0.17.5
+         * @read-only
          */
         get initial_audio_name(): string;
         /**
          * If {@link TelepathyGLib.CallChannel.initial_audio} is set to `true`, then this property will
          * is the name of the intial audio content, `null` otherwise.
          * @since 0.17.5
+         * @read-only
          */
         get initialAudioName(): string;
         /**
          * Whether or not the Call was started with video.
          * @since 0.17.5
+         * @read-only
          */
         get initial_video(): boolean;
         /**
          * Whether or not the Call was started with video.
          * @since 0.17.5
+         * @read-only
          */
         get initialVideo(): boolean;
         /**
          * If {@link TelepathyGLib.CallChannel.initial_video} is set to `true`, then this property will
          * is the name of the intial video content, `null` otherwise.
          * @since 0.17.5
+         * @read-only
          */
         get initial_video_name(): string;
         /**
          * If {@link TelepathyGLib.CallChannel.initial_video} is set to `true`, then this property will
          * is the name of the intial video content, `null` otherwise.
          * @since 0.17.5
+         * @read-only
          */
         get initialVideoName(): string;
         /**
          * Whether or not call contents can be added or removed.
          * @since 0.17.5
+         * @read-only
          */
         get mutable_contents(): boolean;
         /**
          * Whether or not call contents can be added or removed.
          * @since 0.17.5
+         * @read-only
          */
         get mutableContents(): boolean;
         /**
          * A {@link TelepathyGLib.CallState} specifying the state of the call.
          * @since 0.17.5
+         * @read-only
          */
         get state(): number;
         /**
          * Detailed infoermation about {@link TelepathyGLib.CallChannel.state}. It is a {@link GLib.HashTable}
          * mapping gchar*->GValue, it can be accessed using the tp_asv_* functions.
          * @since 0.17.5
+         * @read-only
          */
         get state_details(): GLib.HashTable<any, any>;
         /**
          * Detailed infoermation about {@link TelepathyGLib.CallChannel.state}. It is a {@link GLib.HashTable}
          * mapping gchar*->GValue, it can be accessed using the tp_asv_* functions.
          * @since 0.17.5
+         * @read-only
          */
         get stateDetails(): GLib.HashTable<any, any>;
         /**
          * Reason why {@link TelepathyGLib.CallChannel.state} last changed.
          * @since 0.17.5
+         * @read-only
          */
         get state_reason(): CallStateReason;
         /**
          * Reason why {@link TelepathyGLib.CallChannel.state} last changed.
          * @since 0.17.5
+         * @read-only
          */
         get stateReason(): CallStateReason;
 
@@ -11514,6 +11726,7 @@ export namespace TelepathyGLib {
              * a {@link TelepathyGLib.CallChannel}.
              * @signal
              * @since 0.17.5
+             * @run-last
              */
             removed: () => void;
             /**
@@ -11524,6 +11737,7 @@ export namespace TelepathyGLib {
              * stream objects.
              * @signal
              * @since 0.17.5
+             * @run-last
              */
             'streams-added': (arg0: CallStream[]) => void;
             /**
@@ -11534,6 +11748,7 @@ export namespace TelepathyGLib {
              * stream objects.
              * @signal
              * @since 0.17.5
+             * @run-last
              */
             'streams-removed': (arg0: CallStream[], arg1: CallStateReason) => void;
             'notify::channel': (pspec: GObject.ParamSpec) => void;
@@ -11575,31 +11790,37 @@ export namespace TelepathyGLib {
         /**
          * The parent {@link TelepathyGLib.CallChannel} of the content.
          * @since 0.17.6
+         * @construct-only
          */
         get channel(): CallChannel;
         /**
          * The {@link TelepathyGLib.Connection} of the call.
          * @since 0.17.5
+         * @construct-only
          */
         get connection(): Connection;
         /**
          * The disposition of this content, from {@link TelepathyGLib.CallContentDisposition}.
          * @since 0.17.5
+         * @read-only
          */
         get disposition(): number;
         /**
          * The media type of this content, from {@link TelepathyGLib.MediaStreamType}.
          * @since 0.17.5
+         * @read-only
          */
         get media_type(): number;
         /**
          * The media type of this content, from {@link TelepathyGLib.MediaStreamType}.
          * @since 0.17.5
+         * @read-only
          */
         get mediaType(): number;
         /**
          * The name of this content.
          * @since 0.17.5
+         * @read-only
          */
         get name(): string;
         /**
@@ -11609,6 +11830,7 @@ export namespace TelepathyGLib {
          * It is NOT guaranteed that `TP_CALL_STREAM_FEATURE_CORE` is prepared on
          * those objects.
          * @since 0.17.5
+         * @read-only
          */
         get streams(): any[];
 
@@ -11758,6 +11980,7 @@ export namespace TelepathyGLib {
              * stream sending state changes.
              * @signal
              * @since 0.17.5
+             * @run-last
              */
             'local-sending-state-changed': (arg0: number, arg1: CallStateReason) => void;
             /**
@@ -11767,6 +11990,7 @@ export namespace TelepathyGLib {
              * It is NOT guaranteed that {@link TelepathyGLib.Contact} objects have any feature prepared.
              * @signal
              * @since 0.17.5
+             * @run-last
              */
             'remote-members-changed': (
                 arg0: GLib.HashTable<Contact, number>,
@@ -11810,32 +12034,38 @@ export namespace TelepathyGLib {
          * If `true`, the user can request that a remote contact starts sending on this
          * stream.
          * @since 0.17.5
+         * @read-only
          */
         get can_request_receiving(): boolean;
         /**
          * If `true`, the user can request that a remote contact starts sending on this
          * stream.
          * @since 0.17.5
+         * @read-only
          */
         get canRequestReceiving(): boolean;
         /**
          * The {@link TelepathyGLib.Connection} of the call.
          * @since 0.17.5
+         * @construct-only
          */
         get connection(): Connection;
         /**
          * The Content that this streams belongs to
          * @since 0.17.6
+         * @construct-only
          */
         get content(): CallContent;
         /**
          * The local user's sending state, from {@link TelepathyGLib.SendingState}.
          * @since 0.17.5
+         * @read-only
          */
         get local_sending_state(): number;
         /**
          * The local user's sending state, from {@link TelepathyGLib.SendingState}.
          * @since 0.17.5
+         * @read-only
          */
         get localSendingState(): number;
 
@@ -12039,6 +12269,7 @@ export namespace TelepathyGLib {
          * `tp_capabilities_supports_text_chats()` are likely to be more useful to
          * the majority of clients.
          * @since 0.19.0
+         * @read-only
          */
         get channel_classes_variant(): GLib.Variant;
         /**
@@ -12054,18 +12285,21 @@ export namespace TelepathyGLib {
          * `tp_capabilities_supports_text_chats()` are likely to be more useful to
          * the majority of clients.
          * @since 0.19.0
+         * @read-only
          */
         get channelClassesVariant(): GLib.Variant;
         /**
          * Whether this object accurately describes the capabilities of a particular
          * contact, or if it's only a guess based on the capabilities of the
          * underlying connection.
+         * @construct-only
          */
         get contact_specific(): boolean;
         /**
          * Whether this object accurately describes the capabilities of a particular
          * contact, or if it's only a guess based on the capabilities of the
          * underlying connection.
+         * @construct-only
          */
         get contactSpecific(): boolean;
 
@@ -12307,6 +12541,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed': (arg0: number, arg1: number) => void;
             /**
@@ -12317,6 +12553,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed': (
                 arg0: Contact[],
@@ -12331,6 +12569,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed': (arg0: number, arg1: number) => void;
             /**
@@ -12338,6 +12578,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed': (
                 arg0: string,
@@ -12356,6 +12598,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed': (
                 arg0: number[],
@@ -12387,6 +12631,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::channel-ready': (arg0: number, arg1: number) => void;
             /**
@@ -12395,6 +12641,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::connection': (arg0: number, arg1: number) => void;
             /**
@@ -12403,6 +12651,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::group-flags': (arg0: number, arg1: number) => void;
             /**
@@ -12411,6 +12661,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::group-self-contact': (arg0: number, arg1: number) => void;
             /**
@@ -12419,6 +12671,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::group-self-handle': (arg0: number, arg1: number) => void;
             /**
@@ -12427,6 +12681,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::identifier': (arg0: number, arg1: number) => void;
             /**
@@ -12435,6 +12691,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::initiator-contact': (arg0: number, arg1: number) => void;
             /**
@@ -12443,6 +12701,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::initiator-handle': (arg0: number, arg1: number) => void;
             /**
@@ -12451,6 +12711,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::initiator-identifier': (arg0: number, arg1: number) => void;
             /**
@@ -12459,6 +12721,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::password-needed': (arg0: number, arg1: number) => void;
             /**
@@ -12467,6 +12731,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::requested': (arg0: number, arg1: number) => void;
             /**
@@ -12475,6 +12741,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::target-contact': (arg0: number, arg1: number) => void;
             /**
@@ -12483,6 +12751,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::bus-name': (arg0: number, arg1: number) => void;
             /**
@@ -12491,6 +12761,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::dbus-daemon': (arg0: number, arg1: number) => void;
             /**
@@ -12499,6 +12771,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::factory': (arg0: number, arg1: number) => void;
             /**
@@ -12507,6 +12781,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::interfaces': (arg0: number, arg1: number) => void;
             /**
@@ -12515,6 +12791,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.11.3
              * @deprecated Use {@link TelepathyGLib.TextChannel.SignalSignatures.contact_chat_state_changed | TelepathyGLib.TextChannel::contact-chat-state-changed} instead
+             * @detailed
+             * @run-last
              */
             'chat-state-changed::object-path': (arg0: number, arg1: number) => void;
             /**
@@ -12525,6 +12803,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::channel-ready': (
                 arg0: Contact[],
@@ -12542,6 +12822,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::connection': (
                 arg0: Contact[],
@@ -12559,6 +12841,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::group-flags': (
                 arg0: Contact[],
@@ -12576,6 +12860,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::group-self-contact': (
                 arg0: Contact[],
@@ -12593,6 +12879,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::group-self-handle': (
                 arg0: Contact[],
@@ -12610,6 +12898,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::identifier': (
                 arg0: Contact[],
@@ -12627,6 +12917,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::initiator-contact': (
                 arg0: Contact[],
@@ -12644,6 +12936,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::initiator-handle': (
                 arg0: Contact[],
@@ -12661,6 +12955,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::initiator-identifier': (
                 arg0: Contact[],
@@ -12678,6 +12974,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::password-needed': (
                 arg0: Contact[],
@@ -12695,6 +12993,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::requested': (
                 arg0: Contact[],
@@ -12712,6 +13012,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::target-contact': (
                 arg0: Contact[],
@@ -12729,6 +13031,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::bus-name': (
                 arg0: Contact[],
@@ -12746,6 +13050,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::dbus-daemon': (
                 arg0: Contact[],
@@ -12763,6 +13069,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::factory': (
                 arg0: Contact[],
@@ -12780,6 +13088,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::interfaces': (
                 arg0: Contact[],
@@ -12797,6 +13107,8 @@ export namespace TelepathyGLib {
              * omitted.
              * @signal
              * @since 0.15.6
+             * @detailed
+             * @run-last
              */
             'group-contacts-changed::object-path': (
                 arg0: Contact[],
@@ -12811,6 +13123,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::channel-ready': (arg0: number, arg1: number) => void;
             /**
@@ -12818,6 +13132,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::connection': (arg0: number, arg1: number) => void;
             /**
@@ -12825,6 +13141,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::group-flags': (arg0: number, arg1: number) => void;
             /**
@@ -12832,6 +13150,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::group-self-contact': (arg0: number, arg1: number) => void;
             /**
@@ -12839,6 +13159,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::group-self-handle': (arg0: number, arg1: number) => void;
             /**
@@ -12846,6 +13168,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::identifier': (arg0: number, arg1: number) => void;
             /**
@@ -12853,6 +13177,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::initiator-contact': (arg0: number, arg1: number) => void;
             /**
@@ -12860,6 +13186,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::initiator-handle': (arg0: number, arg1: number) => void;
             /**
@@ -12867,6 +13195,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::initiator-identifier': (arg0: number, arg1: number) => void;
             /**
@@ -12874,6 +13204,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::password-needed': (arg0: number, arg1: number) => void;
             /**
@@ -12881,6 +13213,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::requested': (arg0: number, arg1: number) => void;
             /**
@@ -12888,6 +13222,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::target-contact': (arg0: number, arg1: number) => void;
             /**
@@ -12895,6 +13231,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::bus-name': (arg0: number, arg1: number) => void;
             /**
@@ -12902,6 +13240,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::dbus-daemon': (arg0: number, arg1: number) => void;
             /**
@@ -12909,6 +13249,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::factory': (arg0: number, arg1: number) => void;
             /**
@@ -12916,6 +13258,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::interfaces': (arg0: number, arg1: number) => void;
             /**
@@ -12923,6 +13267,8 @@ export namespace TelepathyGLib {
              * channel is ready.
              * @signal
              * @since 0.7.12
+             * @detailed
+             * @run-last
              */
             'group-flags-changed::object-path': (arg0: number, arg1: number) => void;
             /**
@@ -12930,6 +13276,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::channel-ready': (
                 arg0: string,
@@ -12945,6 +13293,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::connection': (
                 arg0: string,
@@ -12960,6 +13310,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::group-flags': (
                 arg0: string,
@@ -12975,6 +13327,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::group-self-contact': (
                 arg0: string,
@@ -12990,6 +13344,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::group-self-handle': (
                 arg0: string,
@@ -13005,6 +13361,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::identifier': (
                 arg0: string,
@@ -13020,6 +13378,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::initiator-contact': (
                 arg0: string,
@@ -13035,6 +13395,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::initiator-handle': (
                 arg0: string,
@@ -13050,6 +13412,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::initiator-identifier': (
                 arg0: string,
@@ -13065,6 +13429,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::password-needed': (
                 arg0: string,
@@ -13080,6 +13446,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::requested': (
                 arg0: string,
@@ -13095,6 +13463,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::target-contact': (
                 arg0: string,
@@ -13110,6 +13480,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::bus-name': (
                 arg0: string,
@@ -13125,6 +13497,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::dbus-daemon': (
                 arg0: string,
@@ -13140,6 +13514,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::factory': (
                 arg0: string,
@@ -13155,6 +13531,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::interfaces': (
                 arg0: string,
@@ -13170,6 +13548,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.12
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed::object-path': (
                 arg0: string,
@@ -13188,6 +13568,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::channel-ready': (
                 arg0: number[],
@@ -13204,6 +13586,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::connection': (
                 arg0: number[],
@@ -13220,6 +13604,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::group-flags': (
                 arg0: number[],
@@ -13236,6 +13622,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::group-self-contact': (
                 arg0: number[],
@@ -13252,6 +13640,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::group-self-handle': (
                 arg0: number[],
@@ -13268,6 +13658,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::identifier': (
                 arg0: number[],
@@ -13284,6 +13676,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::initiator-contact': (
                 arg0: number[],
@@ -13300,6 +13694,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::initiator-handle': (
                 arg0: number[],
@@ -13316,6 +13712,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::initiator-identifier': (
                 arg0: number[],
@@ -13332,6 +13730,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::password-needed': (
                 arg0: number[],
@@ -13348,6 +13748,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::requested': (
                 arg0: number[],
@@ -13364,6 +13766,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::target-contact': (
                 arg0: number[],
@@ -13380,6 +13784,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::bus-name': (
                 arg0: number[],
@@ -13396,6 +13802,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::dbus-daemon': (
                 arg0: number[],
@@ -13412,6 +13820,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::factory': (
                 arg0: number[],
@@ -13428,6 +13838,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::interfaces': (
                 arg0: number[],
@@ -13444,6 +13856,8 @@ export namespace TelepathyGLib {
              * @signal
              * @since 0.7.21
              * @deprecated Use {@link TelepathyGLib.Channel.SignalSignatures.group_contacts_changed | TelepathyGLib.Channel::group-contacts-changed} instead.
+             * @detailed
+             * @run-last
              */
             'group-members-changed-detailed::object-path': (
                 arg0: number[],
@@ -13511,6 +13925,7 @@ export namespace TelepathyGLib {
          *
          * Change notification is via notify::channel-ready.
          * @deprecated since 0.17.6: use `tp_proxy_is_prepared()` with  `TP_CHANNEL_FEATURE_CORE` for checks, or `tp_proxy_prepare_async()` for  notification
+         * @read-only
          */
         get channel_ready(): boolean;
         /**
@@ -13528,11 +13943,13 @@ export namespace TelepathyGLib {
          *
          * Change notification is via notify::channel-ready.
          * @deprecated since 0.17.6: use `tp_proxy_is_prepared()` with  `TP_CHANNEL_FEATURE_CORE` for checks, or `tp_proxy_prepare_async()` for  notification
+         * @read-only
          */
         get channelReady(): boolean;
         /**
          * The {@link TelepathyGLib.Connection} to which this {@link TelepathyGLib.Channel} belongs. Used for e.g.
          * handle manipulation.
+         * @construct-only
          */
         get connection(): Connection;
         /**
@@ -13545,6 +13962,7 @@ export namespace TelepathyGLib {
          * Change notification is via notify::group-flags or
          * TpChannel::group-flags-changed.
          * @since 0.7.12
+         * @read-only
          */
         get group_flags(): number;
         /**
@@ -13557,6 +13975,7 @@ export namespace TelepathyGLib {
          * Change notification is via notify::group-flags or
          * TpChannel::group-flags-changed.
          * @since 0.7.12
+         * @read-only
          */
         get groupFlags(): number;
         /**
@@ -13569,6 +13988,7 @@ export namespace TelepathyGLib {
          *
          * Change notification is via notify::group-self-contact.
          * @since 0.15.6
+         * @read-only
          */
         get group_self_contact(): Contact;
         /**
@@ -13581,6 +14001,7 @@ export namespace TelepathyGLib {
          *
          * Change notification is via notify::group-self-contact.
          * @since 0.15.6
+         * @read-only
          */
         get groupSelfContact(): Contact;
         /**
@@ -13593,6 +14014,7 @@ export namespace TelepathyGLib {
          * Change notification is via notify::group-self-handle.
          * @since 0.7.12
          * @deprecated Use {@link TelepathyGLib.Channel.group_self_contact} instead.
+         * @read-only
          */
         get group_self_handle(): number;
         /**
@@ -13605,6 +14027,7 @@ export namespace TelepathyGLib {
          * Change notification is via notify::group-self-handle.
          * @since 0.7.12
          * @deprecated Use {@link TelepathyGLib.Channel.group_self_contact} instead.
+         * @read-only
          */
         get groupSelfHandle(): number;
         /**
@@ -13621,6 +14044,7 @@ export namespace TelepathyGLib {
          * Changed in 0.11.4: this property is never `null`. Previously,
          * it was `null` before an identifier was known, or when a channel
          * with no TargetID D-Bus property had TargetHandleType {@link TelepathyGLib.HandleType.NONE}.
+         * @read-only
          */
         get identifier(): string;
         /**
@@ -13643,6 +14067,7 @@ export namespace TelepathyGLib {
          * finished preparing `TP_CHANNEL_FEATURE_CONTACTS`; until then, it may be
          * `null`.
          * @since 0.15.6
+         * @read-only
          */
         get initiator_contact(): Contact;
         /**
@@ -13665,6 +14090,7 @@ export namespace TelepathyGLib {
          * finished preparing `TP_CHANNEL_FEATURE_CONTACTS`; until then, it may be
          * `null`.
          * @since 0.15.6
+         * @read-only
          */
         get initiatorContact(): Contact;
         /**
@@ -13687,6 +14113,7 @@ export namespace TelepathyGLib {
          * finished preparing `TP_CHANNEL_FEATURE_CORE`; until then, it may be 0.
          * @since 0.11.15
          * @deprecated Use {@link TelepathyGLib.Channel.initiator_contact} instead.
+         * @read-only
          */
         get initiator_handle(): number;
         /**
@@ -13709,6 +14136,7 @@ export namespace TelepathyGLib {
          * finished preparing `TP_CHANNEL_FEATURE_CORE`; until then, it may be 0.
          * @since 0.11.15
          * @deprecated Use {@link TelepathyGLib.Channel.initiator_contact} instead.
+         * @read-only
          */
         get initiatorHandle(): number;
         /**
@@ -13721,6 +14149,7 @@ export namespace TelepathyGLib {
          * the empty string.
          * @since 0.11.15
          * @deprecated Use {@link TelepathyGLib.Channel.initiator_contact} instead.
+         * @read-only
          */
         get initiator_identifier(): string;
         /**
@@ -13733,6 +14162,7 @@ export namespace TelepathyGLib {
          * the empty string.
          * @since 0.11.15
          * @deprecated Use {@link TelepathyGLib.Channel.initiator_contact} instead.
+         * @read-only
          */
         get initiatorIdentifier(): string;
         /**
@@ -13745,6 +14175,7 @@ export namespace TelepathyGLib {
          * Preparing `TP_CHANNEL_FEATURE_PASSWORD` also ensures that the
          * notify::password-needed signal will be fired when this property changes.
          * @since 0.15.2
+         * @read-only
          */
         get password_needed(): boolean;
         /**
@@ -13757,6 +14188,7 @@ export namespace TelepathyGLib {
          * Preparing `TP_CHANNEL_FEATURE_PASSWORD` also ensures that the
          * notify::password-needed signal will be fired when this property changes.
          * @since 0.15.2
+         * @read-only
          */
         get passwordNeeded(): boolean;
         /**
@@ -13775,6 +14207,7 @@ export namespace TelepathyGLib {
          * finished preparing `TP_CHANNEL_FEATURE_CORE`; until then, it may return
          * `false` even if the channel was actually requested.
          * @since 0.11.15
+         * @read-only
          */
         get requested(): boolean;
         /**
@@ -13787,6 +14220,7 @@ export namespace TelepathyGLib {
          * finished preparing `TP_CHANNEL_FEATURE_CONTACTS`; until then, it may be
          * `null`.
          * @since 0.15.6
+         * @read-only
          */
         get target_contact(): Contact;
         /**
@@ -13799,6 +14233,7 @@ export namespace TelepathyGLib {
          * finished preparing `TP_CHANNEL_FEATURE_CONTACTS`; until then, it may be
          * `null`.
          * @since 0.15.6
+         * @read-only
          */
         get targetContact(): Contact;
 
@@ -14424,6 +14859,8 @@ export namespace TelepathyGLib {
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
              * @since 0.11.5
+             * @detailed
+             * @run-last
              */
             'channel-lost': (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
             'notify::account': (pspec: GObject.ParamSpec) => void;
@@ -14439,54 +14876,72 @@ export namespace TelepathyGLib {
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
              * @since 0.11.5
+             * @detailed
+             * @run-last
              */
             'channel-lost::account': (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
              * @since 0.11.5
+             * @detailed
+             * @run-last
              */
             'channel-lost::channels': (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
              * @since 0.11.5
+             * @detailed
+             * @run-last
              */
             'channel-lost::connection': (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
              * @since 0.11.5
+             * @detailed
+             * @run-last
              */
             'channel-lost::possible-handlers': (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
              * @since 0.11.5
+             * @detailed
+             * @run-last
              */
             'channel-lost::bus-name': (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
              * @since 0.11.5
+             * @detailed
+             * @run-last
              */
             'channel-lost::dbus-daemon': (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
              * @since 0.11.5
+             * @detailed
+             * @run-last
              */
             'channel-lost::factory': (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
              * @since 0.11.5
+             * @detailed
+             * @run-last
              */
             'channel-lost::interfaces': (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
              * @since 0.11.5
+             * @detailed
+             * @run-last
              */
             'channel-lost::object-path': (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
         }
@@ -14567,6 +15022,7 @@ export namespace TelepathyGLib {
          * This is not guaranteed to be set until `tp_proxy_prepare_async()` has
          * finished preparing `TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE`.
          * @since 0.11.5
+         * @construct-only
          */
         get account(): Account;
         /**
@@ -14577,6 +15033,7 @@ export namespace TelepathyGLib {
          * This is not guaranteed to be set until `tp_proxy_prepare_async()` has
          * finished preparing `TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE`.
          * @since 0.11.5
+         * @construct-only
          */
         get channels(): any[];
         /**
@@ -14587,6 +15044,7 @@ export namespace TelepathyGLib {
          * This is not guaranteed to be set until `tp_proxy_prepare_async()` has
          * finished preparing `TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE`.
          * @since 0.11.5
+         * @construct-only
          */
         get connection(): Connection;
         /**
@@ -14599,6 +15057,7 @@ export namespace TelepathyGLib {
          * This is not guaranteed to be set until `tp_proxy_prepare_async()` has
          * finished preparing `TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE`.
          * @since 0.11.5
+         * @read-only
          */
         get possible_handlers(): string[];
         /**
@@ -14611,6 +15070,7 @@ export namespace TelepathyGLib {
          * This is not guaranteed to be set until `tp_proxy_prepare_async()` has
          * finished preparing `TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE`.
          * @since 0.11.5
+         * @read-only
          */
         get possibleHandlers(): string[];
 
@@ -15297,6 +15757,8 @@ export namespace TelepathyGLib {
              * Emitted when the channel request succeeds.
              * @signal
              * @deprecated since 0.13.14. Use {@link TelepathyGLib.ChannelRequest.SignalSignatures.succeeded_with_channel | TelepathyGLib.ChannelRequest::succeeded-with-channel}, which provides the resulting channel, instead.
+             * @detailed
+             * @run-last
              */
             succeeded: () => void;
             /**
@@ -15312,6 +15774,8 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_dup_channel_features()` himself.
              * @signal
              * @since 0.13.14
+             * @detailed
+             * @run-last
              */
             'succeeded-with-channel': (arg0: Connection, arg1: Channel) => void;
             'notify::account': (pspec: GObject.ParamSpec) => void;
@@ -15329,66 +15793,88 @@ export namespace TelepathyGLib {
              * Emitted when the channel request succeeds.
              * @signal
              * @deprecated since 0.13.14. Use {@link TelepathyGLib.ChannelRequest.SignalSignatures.succeeded_with_channel | TelepathyGLib.ChannelRequest::succeeded-with-channel}, which provides the resulting channel, instead.
+             * @detailed
+             * @run-last
              */
             'succeeded::account': () => void;
             /**
              * Emitted when the channel request succeeds.
              * @signal
              * @deprecated since 0.13.14. Use {@link TelepathyGLib.ChannelRequest.SignalSignatures.succeeded_with_channel | TelepathyGLib.ChannelRequest::succeeded-with-channel}, which provides the resulting channel, instead.
+             * @detailed
+             * @run-last
              */
             'succeeded::channel-factory': () => void;
             /**
              * Emitted when the channel request succeeds.
              * @signal
              * @deprecated since 0.13.14. Use {@link TelepathyGLib.ChannelRequest.SignalSignatures.succeeded_with_channel | TelepathyGLib.ChannelRequest::succeeded-with-channel}, which provides the resulting channel, instead.
+             * @detailed
+             * @run-last
              */
             'succeeded::hints-vardict': () => void;
             /**
              * Emitted when the channel request succeeds.
              * @signal
              * @deprecated since 0.13.14. Use {@link TelepathyGLib.ChannelRequest.SignalSignatures.succeeded_with_channel | TelepathyGLib.ChannelRequest::succeeded-with-channel}, which provides the resulting channel, instead.
+             * @detailed
+             * @run-last
              */
             'succeeded::immutable-properties-vardict': () => void;
             /**
              * Emitted when the channel request succeeds.
              * @signal
              * @deprecated since 0.13.14. Use {@link TelepathyGLib.ChannelRequest.SignalSignatures.succeeded_with_channel | TelepathyGLib.ChannelRequest::succeeded-with-channel}, which provides the resulting channel, instead.
+             * @detailed
+             * @run-last
              */
             'succeeded::preferred-handler': () => void;
             /**
              * Emitted when the channel request succeeds.
              * @signal
              * @deprecated since 0.13.14. Use {@link TelepathyGLib.ChannelRequest.SignalSignatures.succeeded_with_channel | TelepathyGLib.ChannelRequest::succeeded-with-channel}, which provides the resulting channel, instead.
+             * @detailed
+             * @run-last
              */
             'succeeded::user-action-time': () => void;
             /**
              * Emitted when the channel request succeeds.
              * @signal
              * @deprecated since 0.13.14. Use {@link TelepathyGLib.ChannelRequest.SignalSignatures.succeeded_with_channel | TelepathyGLib.ChannelRequest::succeeded-with-channel}, which provides the resulting channel, instead.
+             * @detailed
+             * @run-last
              */
             'succeeded::bus-name': () => void;
             /**
              * Emitted when the channel request succeeds.
              * @signal
              * @deprecated since 0.13.14. Use {@link TelepathyGLib.ChannelRequest.SignalSignatures.succeeded_with_channel | TelepathyGLib.ChannelRequest::succeeded-with-channel}, which provides the resulting channel, instead.
+             * @detailed
+             * @run-last
              */
             'succeeded::dbus-daemon': () => void;
             /**
              * Emitted when the channel request succeeds.
              * @signal
              * @deprecated since 0.13.14. Use {@link TelepathyGLib.ChannelRequest.SignalSignatures.succeeded_with_channel | TelepathyGLib.ChannelRequest::succeeded-with-channel}, which provides the resulting channel, instead.
+             * @detailed
+             * @run-last
              */
             'succeeded::factory': () => void;
             /**
              * Emitted when the channel request succeeds.
              * @signal
              * @deprecated since 0.13.14. Use {@link TelepathyGLib.ChannelRequest.SignalSignatures.succeeded_with_channel | TelepathyGLib.ChannelRequest::succeeded-with-channel}, which provides the resulting channel, instead.
+             * @detailed
+             * @run-last
              */
             'succeeded::interfaces': () => void;
             /**
              * Emitted when the channel request succeeds.
              * @signal
              * @deprecated since 0.13.14. Use {@link TelepathyGLib.ChannelRequest.SignalSignatures.succeeded_with_channel | TelepathyGLib.ChannelRequest::succeeded-with-channel}, which provides the resulting channel, instead.
+             * @detailed
+             * @run-last
              */
             'succeeded::object-path': () => void;
             /**
@@ -15404,6 +15890,8 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_dup_channel_features()` himself.
              * @signal
              * @since 0.13.14
+             * @detailed
+             * @run-last
              */
             'succeeded-with-channel::account': (arg0: Connection, arg1: Channel) => void;
             /**
@@ -15419,6 +15907,8 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_dup_channel_features()` himself.
              * @signal
              * @since 0.13.14
+             * @detailed
+             * @run-last
              */
             'succeeded-with-channel::channel-factory': (arg0: Connection, arg1: Channel) => void;
             /**
@@ -15434,6 +15924,8 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_dup_channel_features()` himself.
              * @signal
              * @since 0.13.14
+             * @detailed
+             * @run-last
              */
             'succeeded-with-channel::hints-vardict': (arg0: Connection, arg1: Channel) => void;
             /**
@@ -15449,6 +15941,8 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_dup_channel_features()` himself.
              * @signal
              * @since 0.13.14
+             * @detailed
+             * @run-last
              */
             'succeeded-with-channel::immutable-properties-vardict': (arg0: Connection, arg1: Channel) => void;
             /**
@@ -15464,6 +15958,8 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_dup_channel_features()` himself.
              * @signal
              * @since 0.13.14
+             * @detailed
+             * @run-last
              */
             'succeeded-with-channel::preferred-handler': (arg0: Connection, arg1: Channel) => void;
             /**
@@ -15479,6 +15975,8 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_dup_channel_features()` himself.
              * @signal
              * @since 0.13.14
+             * @detailed
+             * @run-last
              */
             'succeeded-with-channel::user-action-time': (arg0: Connection, arg1: Channel) => void;
             /**
@@ -15494,6 +15992,8 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_dup_channel_features()` himself.
              * @signal
              * @since 0.13.14
+             * @detailed
+             * @run-last
              */
             'succeeded-with-channel::bus-name': (arg0: Connection, arg1: Channel) => void;
             /**
@@ -15509,6 +16009,8 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_dup_channel_features()` himself.
              * @signal
              * @since 0.13.14
+             * @detailed
+             * @run-last
              */
             'succeeded-with-channel::dbus-daemon': (arg0: Connection, arg1: Channel) => void;
             /**
@@ -15524,6 +16026,8 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_dup_channel_features()` himself.
              * @signal
              * @since 0.13.14
+             * @detailed
+             * @run-last
              */
             'succeeded-with-channel::factory': (arg0: Connection, arg1: Channel) => void;
             /**
@@ -15539,6 +16043,8 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_dup_channel_features()` himself.
              * @signal
              * @since 0.13.14
+             * @detailed
+             * @run-last
              */
             'succeeded-with-channel::interfaces': (arg0: Connection, arg1: Channel) => void;
             /**
@@ -15554,6 +16060,8 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_dup_channel_features()` himself.
              * @signal
              * @since 0.13.14
+             * @detailed
+             * @run-last
              */
             'succeeded-with-channel::object-path': (arg0: Connection, arg1: Channel) => void;
         }
@@ -15617,6 +16125,7 @@ export namespace TelepathyGLib {
          *
          * Read-only.
          * @since 0.15.3
+         * @read-only
          */
         get account(): Account;
         /**
@@ -15652,6 +16161,7 @@ export namespace TelepathyGLib {
          *
          * Read-only.
          * @since 0.19.10
+         * @read-only
          */
         get hints_vardict(): GLib.Variant;
         /**
@@ -15661,6 +16171,7 @@ export namespace TelepathyGLib {
          *
          * Read-only.
          * @since 0.19.10
+         * @read-only
          */
         get hintsVardict(): GLib.Variant;
         /**
@@ -15673,6 +16184,7 @@ export namespace TelepathyGLib {
          *
          * Read-only except during construction.
          * @since 0.19.10
+         * @read-only
          */
         get immutable_properties_vardict(): GLib.Variant;
         /**
@@ -15685,6 +16197,7 @@ export namespace TelepathyGLib {
          *
          * Read-only except during construction.
          * @since 0.19.10
+         * @read-only
          */
         get immutablePropertiesVardict(): GLib.Variant;
         /**
@@ -15694,6 +16207,7 @@ export namespace TelepathyGLib {
          *
          * Read-only.
          * @since 0.15.3
+         * @read-only
          */
         get preferred_handler(): string;
         /**
@@ -15703,6 +16217,7 @@ export namespace TelepathyGLib {
          *
          * Read-only.
          * @since 0.15.3
+         * @read-only
          */
         get preferredHandler(): string;
         /**
@@ -15712,6 +16227,7 @@ export namespace TelepathyGLib {
          *
          * Read-only.
          * @since 0.15.3
+         * @read-only
          */
         get user_action_time(): number;
         /**
@@ -15721,6 +16237,7 @@ export namespace TelepathyGLib {
          *
          * Read-only.
          * @since 0.15.3
+         * @read-only
          */
         get userActionTime(): number;
 
@@ -15893,6 +16410,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -15909,6 +16428,7 @@ export namespace TelepathyGLib {
              * `TP_CONNECTION_FEATURE_CONTACT_BLOCKING`.
              * @signal
              * @since 0.17.0
+             * @run-last
              */
             'blocked-contacts-changed': (arg0: Contact[], arg1: Contact[]) => void;
             /**
@@ -15925,6 +16445,7 @@ export namespace TelepathyGLib {
              * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
              * @signal
              * @since 0.15.5
+             * @run-last
              */
             'contact-list-changed': (arg0: Contact[], arg1: Contact[]) => void;
             /**
@@ -15947,6 +16468,7 @@ export namespace TelepathyGLib {
              * `TP_CONNECTION_FEATURE_CONTACT_GROUPS`.
              * @signal
              * @since 0.15.5
+             * @run-last
              */
             'group-renamed': (arg0: string, arg1: string) => void;
             /**
@@ -15960,6 +16482,7 @@ export namespace TelepathyGLib {
              * `TP_CONNECTION_FEATURE_CONTACT_GROUPS`.
              * @signal
              * @since 0.15.5
+             * @run-last
              */
             'groups-created': (arg0: string[]) => void;
             /**
@@ -15974,6 +16497,7 @@ export namespace TelepathyGLib {
              * `TP_CONNECTION_FEATURE_CONTACT_GROUPS`.
              * @signal
              * @since 0.15.5
+             * @run-last
              */
             'groups-removed': (arg0: string[]) => void;
             'notify::balance': (pspec: GObject.ParamSpec) => void;
@@ -16012,6 +16536,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::balance': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16023,6 +16549,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::balance-currency': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16034,6 +16562,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::balance-scale': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16045,6 +16575,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::balance-uri': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16056,6 +16588,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::blocked-contacts': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16067,6 +16601,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::can-change-contact-list': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16078,6 +16614,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::can-report-abusive': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16089,6 +16627,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::capabilities': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16100,6 +16640,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::cm-name': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16111,6 +16653,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::connection-manager-name': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16122,6 +16666,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::connection-ready': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16133,6 +16679,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::contact-groups': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16144,6 +16692,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::contact-list-persists': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16155,6 +16705,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::contact-list-state': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16166,6 +16718,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::disjoint-groups': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16177,6 +16731,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::group-storage': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16188,6 +16744,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::protocol-name': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16199,6 +16757,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::request-uses-message': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16210,6 +16770,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::self-contact': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16221,6 +16783,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::self-handle': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16232,6 +16796,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::status': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16243,6 +16809,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::status-reason': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16254,6 +16822,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::bus-name': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16265,6 +16835,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::dbus-daemon': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16276,6 +16848,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::factory': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16287,6 +16861,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::interfaces': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -16298,6 +16874,8 @@ export namespace TelepathyGLib {
              * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
              * @signal
              * @since 0.15.1
+             * @detailed
+             * @run-last
              */
             'balance-changed::object-path': (arg0: number, arg1: number, arg2: string) => void;
         }
@@ -16370,6 +16948,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
          *
          * See Also: `tp_connection_get_balance()`
+         * @read-only
          */
         get balance(): number;
         /**
@@ -16379,6 +16958,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
          *
          * See Also: `tp_connection_get_balance()`
+         * @read-only
          */
         get balance_currency(): string;
         /**
@@ -16388,6 +16968,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
          *
          * See Also: `tp_connection_get_balance()`
+         * @read-only
          */
         get balanceCurrency(): string;
         /**
@@ -16397,6 +16978,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
          *
          * See Also: `tp_connection_get_balance()`
+         * @read-only
          */
         get balance_scale(): number;
         /**
@@ -16406,6 +16988,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
          *
          * See Also: `tp_connection_get_balance()`
+         * @read-only
          */
         get balanceScale(): number;
         /**
@@ -16413,6 +16996,7 @@ export namespace TelepathyGLib {
          *
          * For this property to be valid, you must first call
          * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
+         * @read-only
          */
         get balance_uri(): string;
         /**
@@ -16420,6 +17004,7 @@ export namespace TelepathyGLib {
          *
          * For this property to be valid, you must first call
          * `tp_proxy_prepare_async()` with the feature `TP_CONNECTION_FEATURE_BALANCE`.
+         * @read-only
          */
         get balanceUri(): string;
         /**
@@ -16434,6 +17019,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature
          * `TP_CONNECTION_FEATURE_CONTACT_BLOCKING`.
          * @since 0.17.0
+         * @read-only
          */
         get blocked_contacts(): any[];
         /**
@@ -16448,6 +17034,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature
          * `TP_CONNECTION_FEATURE_CONTACT_BLOCKING`.
          * @since 0.17.0
+         * @read-only
          */
         get blockedContacts(): any[];
         /**
@@ -16462,6 +17049,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST_PROPERTIES` or
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
+         * @read-only
          */
         get can_change_contact_list(): boolean;
         /**
@@ -16476,6 +17064,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST_PROPERTIES` or
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
+         * @read-only
          */
         get canChangeContactList(): boolean;
         /**
@@ -16487,6 +17076,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature
          * `TP_CONNECTION_FEATURE_CONTACT_BLOCKING`.
          * @since 0.17.0
+         * @read-only
          */
         get can_report_abusive(): boolean;
         /**
@@ -16498,6 +17088,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature
          * `TP_CONNECTION_FEATURE_CONTACT_BLOCKING`.
          * @since 0.17.0
+         * @read-only
          */
         get canReportAbusive(): boolean;
         /**
@@ -16506,28 +17097,33 @@ export namespace TelepathyGLib {
          *
          * To wait for valid capability information, call `tp_proxy_prepare_async()`
          * with the feature `TP_CONNECTION_FEATURE_CAPABILITIES`.
+         * @read-only
          */
         get capabilities(): Capabilities;
         /**
          * This connection's connection manager name.
          * @since 0.19.3
+         * @read-only
          */
         get cm_name(): string;
         /**
          * This connection's connection manager name.
          * @since 0.19.3
+         * @read-only
          */
         get cmName(): string;
         /**
          * This connection's connection manager name.
          * @since 0.13.16
          * @deprecated Use {@link TelepathyGLib.Connection.cm_name} instead.
+         * @read-only
          */
         get connection_manager_name(): string;
         /**
          * This connection's connection manager name.
          * @since 0.13.16
          * @deprecated Use {@link TelepathyGLib.Connection.cm_name} instead.
+         * @read-only
          */
         get connectionManagerName(): string;
         /**
@@ -16542,6 +17138,7 @@ export namespace TelepathyGLib {
          * it has changed to `true`, it remains `true` even if the connection has
          * been invalidated.
          * @deprecated since 0.17.6: use `tp_proxy_is_prepared()` with  `TP_CHANNEL_FEATURE_CONNECTED` for checks, or `tp_proxy_prepare_async()` for  notification
+         * @read-only
          */
         get connection_ready(): boolean;
         /**
@@ -16556,6 +17153,7 @@ export namespace TelepathyGLib {
          * it has changed to `true`, it remains `true` even if the connection has
          * been invalidated.
          * @deprecated since 0.17.6: use `tp_proxy_is_prepared()` with  `TP_CHANNEL_FEATURE_CONNECTED` for checks, or `tp_proxy_prepare_async()` for  notification
+         * @read-only
          */
         get connectionReady(): boolean;
         /**
@@ -16571,6 +17169,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature
          * `TP_CONNECTION_FEATURE_CONTACT_GROUPS`.
          * @since 0.15.5
+         * @read-only
          */
         get contact_groups(): string[];
         /**
@@ -16586,6 +17185,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature
          * `TP_CONNECTION_FEATURE_CONTACT_GROUPS`.
          * @since 0.15.5
+         * @read-only
          */
         get contactGroups(): string[];
         /**
@@ -16599,6 +17199,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST_PROPERTIES` or
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
+         * @read-only
          */
         get contact_list_persists(): boolean;
         /**
@@ -16612,6 +17213,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST_PROPERTIES` or
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
+         * @read-only
          */
         get contactListPersists(): boolean;
         /**
@@ -16622,6 +17224,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST_PROPERTIES` or
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
+         * @read-only
          */
         get contact_list_state(): number;
         /**
@@ -16632,6 +17235,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST_PROPERTIES` or
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
+         * @read-only
          */
         get contactListState(): number;
         /**
@@ -16646,6 +17250,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature
          * `TP_CONNECTION_FEATURE_CONTACT_GROUPS`.
          * @since 0.15.5
+         * @read-only
          */
         get disjoint_groups(): boolean;
         /**
@@ -16660,6 +17265,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature
          * `TP_CONNECTION_FEATURE_CONTACT_GROUPS`.
          * @since 0.15.5
+         * @read-only
          */
         get disjointGroups(): boolean;
         /**
@@ -16673,6 +17279,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature
          * `TP_CONNECTION_FEATURE_CONTACT_GROUPS`.
          * @since 0.15.5
+         * @read-only
          */
         get group_storage(): number;
         /**
@@ -16686,6 +17293,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature
          * `TP_CONNECTION_FEATURE_CONTACT_GROUPS`.
          * @since 0.15.5
+         * @read-only
          */
         get groupStorage(): number;
         /**
@@ -16693,6 +17301,7 @@ export namespace TelepathyGLib {
          * "msn" or "local-xmpp". Recommended names for most protocols can be
          * found in the Telepathy D-Bus Interface Specification.
          * @since 0.13.16
+         * @read-only
          */
         get protocol_name(): string;
         /**
@@ -16700,6 +17309,7 @@ export namespace TelepathyGLib {
          * "msn" or "local-xmpp". Recommended names for most protocols can be
          * found in the Telepathy D-Bus Interface Specification.
          * @since 0.13.16
+         * @read-only
          */
         get protocolName(): string;
         /**
@@ -16714,6 +17324,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST_PROPERTIES` or
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
+         * @read-only
          */
         get request_uses_message(): boolean;
         /**
@@ -16728,6 +17339,7 @@ export namespace TelepathyGLib {
          * `TP_CONNECTION_FEATURE_CONTACT_LIST_PROPERTIES` or
          * `TP_CONNECTION_FEATURE_CONTACT_LIST`.
          * @since 0.15.5
+         * @read-only
          */
         get requestUsesMessage(): boolean;
         /**
@@ -16745,6 +17357,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature
          * `TP_CONNECTION_FEATURE_CONNECTED`.
          * @since 0.13.9
+         * @read-only
          */
         get self_contact(): Contact;
         /**
@@ -16762,6 +17375,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature
          * `TP_CONNECTION_FEATURE_CONNECTED`.
          * @since 0.13.9
+         * @read-only
          */
         get selfContact(): Contact;
         /**
@@ -16776,6 +17390,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature
          * `TP_CONNECTION_FEATURE_CONNECTED`.
          * @deprecated Use {@link TelepathyGLib.Connection.self_contact} instead.
+         * @read-only
          */
         get self_handle(): number;
         /**
@@ -16790,6 +17405,7 @@ export namespace TelepathyGLib {
          * `tp_proxy_prepare_async()` with the feature
          * `TP_CONNECTION_FEATURE_CONNECTED`.
          * @deprecated Use {@link TelepathyGLib.Connection.self_contact} instead.
+         * @read-only
          */
         get selfHandle(): number;
         /**
@@ -16802,6 +17418,7 @@ export namespace TelepathyGLib {
          * Since version 0.11.3, the change to status
          * {@link TelepathyGLib.ConnectionStatus.CONNECTED} is delayed slightly, until introspection
          * of the connection has finished.
+         * @read-only
          */
         get status(): number;
         /**
@@ -16811,6 +17428,7 @@ export namespace TelepathyGLib {
          * The reason why {@link TelepathyGLib.Connection.status} changed to its current value,
          * or TP_CONNECTION_STATUS_REASON_NONE_SPECIFIED if unknown.
          * know yet.
+         * @read-only
          */
         get status_reason(): number;
         /**
@@ -16820,6 +17438,7 @@ export namespace TelepathyGLib {
          * The reason why {@link TelepathyGLib.Connection.status} changed to its current value,
          * or TP_CONNECTION_STATUS_REASON_NONE_SPECIFIED if unknown.
          * know yet.
+         * @read-only
          */
         get statusReason(): number;
 
@@ -18037,12 +18656,16 @@ export namespace TelepathyGLib {
             /**
              * Emitted when the connection manager's well-known name appears on the bus.
              * @signal
+             * @detailed
+             * @run-last
              */
             activated: () => void;
             /**
              * Emitted when the connection manager's well-known name disappears from
              * the bus or when activation fails.
              * @signal
+             * @detailed
+             * @run-last
              */
             exited: () => void;
             /**
@@ -18051,6 +18674,8 @@ export namespace TelepathyGLib {
              * This signal is not very helpful. Using
              * `tp_proxy_prepare_async()` instead is recommended.
              * @signal
+             * @detailed
+             * @run-last
              */
             'got-info': (arg0: number) => void;
             'notify::always-introspect': (pspec: GObject.ParamSpec) => void;
@@ -18066,111 +18691,151 @@ export namespace TelepathyGLib {
             /**
              * Emitted when the connection manager's well-known name appears on the bus.
              * @signal
+             * @detailed
+             * @run-last
              */
             'activated::always-introspect': () => void;
             /**
              * Emitted when the connection manager's well-known name appears on the bus.
              * @signal
+             * @detailed
+             * @run-last
              */
             'activated::cm-name': () => void;
             /**
              * Emitted when the connection manager's well-known name appears on the bus.
              * @signal
+             * @detailed
+             * @run-last
              */
             'activated::connection-manager': () => void;
             /**
              * Emitted when the connection manager's well-known name appears on the bus.
              * @signal
+             * @detailed
+             * @run-last
              */
             'activated::info-source': () => void;
             /**
              * Emitted when the connection manager's well-known name appears on the bus.
              * @signal
+             * @detailed
+             * @run-last
              */
             'activated::manager-file': () => void;
             /**
              * Emitted when the connection manager's well-known name appears on the bus.
              * @signal
+             * @detailed
+             * @run-last
              */
             'activated::bus-name': () => void;
             /**
              * Emitted when the connection manager's well-known name appears on the bus.
              * @signal
+             * @detailed
+             * @run-last
              */
             'activated::dbus-daemon': () => void;
             /**
              * Emitted when the connection manager's well-known name appears on the bus.
              * @signal
+             * @detailed
+             * @run-last
              */
             'activated::factory': () => void;
             /**
              * Emitted when the connection manager's well-known name appears on the bus.
              * @signal
+             * @detailed
+             * @run-last
              */
             'activated::interfaces': () => void;
             /**
              * Emitted when the connection manager's well-known name appears on the bus.
              * @signal
+             * @detailed
+             * @run-last
              */
             'activated::object-path': () => void;
             /**
              * Emitted when the connection manager's well-known name disappears from
              * the bus or when activation fails.
              * @signal
+             * @detailed
+             * @run-last
              */
             'exited::always-introspect': () => void;
             /**
              * Emitted when the connection manager's well-known name disappears from
              * the bus or when activation fails.
              * @signal
+             * @detailed
+             * @run-last
              */
             'exited::cm-name': () => void;
             /**
              * Emitted when the connection manager's well-known name disappears from
              * the bus or when activation fails.
              * @signal
+             * @detailed
+             * @run-last
              */
             'exited::connection-manager': () => void;
             /**
              * Emitted when the connection manager's well-known name disappears from
              * the bus or when activation fails.
              * @signal
+             * @detailed
+             * @run-last
              */
             'exited::info-source': () => void;
             /**
              * Emitted when the connection manager's well-known name disappears from
              * the bus or when activation fails.
              * @signal
+             * @detailed
+             * @run-last
              */
             'exited::manager-file': () => void;
             /**
              * Emitted when the connection manager's well-known name disappears from
              * the bus or when activation fails.
              * @signal
+             * @detailed
+             * @run-last
              */
             'exited::bus-name': () => void;
             /**
              * Emitted when the connection manager's well-known name disappears from
              * the bus or when activation fails.
              * @signal
+             * @detailed
+             * @run-last
              */
             'exited::dbus-daemon': () => void;
             /**
              * Emitted when the connection manager's well-known name disappears from
              * the bus or when activation fails.
              * @signal
+             * @detailed
+             * @run-last
              */
             'exited::factory': () => void;
             /**
              * Emitted when the connection manager's well-known name disappears from
              * the bus or when activation fails.
              * @signal
+             * @detailed
+             * @run-last
              */
             'exited::interfaces': () => void;
             /**
              * Emitted when the connection manager's well-known name disappears from
              * the bus or when activation fails.
              * @signal
+             * @detailed
+             * @run-last
              */
             'exited::object-path': () => void;
             /**
@@ -18179,6 +18844,8 @@ export namespace TelepathyGLib {
              * This signal is not very helpful. Using
              * `tp_proxy_prepare_async()` instead is recommended.
              * @signal
+             * @detailed
+             * @run-last
              */
             'got-info::always-introspect': (arg0: number) => void;
             /**
@@ -18187,6 +18854,8 @@ export namespace TelepathyGLib {
              * This signal is not very helpful. Using
              * `tp_proxy_prepare_async()` instead is recommended.
              * @signal
+             * @detailed
+             * @run-last
              */
             'got-info::cm-name': (arg0: number) => void;
             /**
@@ -18195,6 +18864,8 @@ export namespace TelepathyGLib {
              * This signal is not very helpful. Using
              * `tp_proxy_prepare_async()` instead is recommended.
              * @signal
+             * @detailed
+             * @run-last
              */
             'got-info::connection-manager': (arg0: number) => void;
             /**
@@ -18203,6 +18874,8 @@ export namespace TelepathyGLib {
              * This signal is not very helpful. Using
              * `tp_proxy_prepare_async()` instead is recommended.
              * @signal
+             * @detailed
+             * @run-last
              */
             'got-info::info-source': (arg0: number) => void;
             /**
@@ -18211,6 +18884,8 @@ export namespace TelepathyGLib {
              * This signal is not very helpful. Using
              * `tp_proxy_prepare_async()` instead is recommended.
              * @signal
+             * @detailed
+             * @run-last
              */
             'got-info::manager-file': (arg0: number) => void;
             /**
@@ -18219,6 +18894,8 @@ export namespace TelepathyGLib {
              * This signal is not very helpful. Using
              * `tp_proxy_prepare_async()` instead is recommended.
              * @signal
+             * @detailed
+             * @run-last
              */
             'got-info::bus-name': (arg0: number) => void;
             /**
@@ -18227,6 +18904,8 @@ export namespace TelepathyGLib {
              * This signal is not very helpful. Using
              * `tp_proxy_prepare_async()` instead is recommended.
              * @signal
+             * @detailed
+             * @run-last
              */
             'got-info::dbus-daemon': (arg0: number) => void;
             /**
@@ -18235,6 +18914,8 @@ export namespace TelepathyGLib {
              * This signal is not very helpful. Using
              * `tp_proxy_prepare_async()` instead is recommended.
              * @signal
+             * @detailed
+             * @run-last
              */
             'got-info::factory': (arg0: number) => void;
             /**
@@ -18243,6 +18924,8 @@ export namespace TelepathyGLib {
              * This signal is not very helpful. Using
              * `tp_proxy_prepare_async()` instead is recommended.
              * @signal
+             * @detailed
+             * @run-last
              */
             'got-info::interfaces': (arg0: number) => void;
             /**
@@ -18251,6 +18934,8 @@ export namespace TelepathyGLib {
              * This signal is not very helpful. Using
              * `tp_proxy_prepare_async()` instead is recommended.
              * @signal
+             * @detailed
+             * @run-last
              */
             'got-info::object-path': (arg0: number) => void;
         }
@@ -18314,21 +18999,25 @@ export namespace TelepathyGLib {
         /**
          * The name of the connection manager, e.g. "gabble" (read-only).
          * @since 0.19.3
+         * @read-only
          */
         get cm_name(): string;
         /**
          * The name of the connection manager, e.g. "gabble" (read-only).
          * @since 0.19.3
+         * @read-only
          */
         get cmName(): string;
         /**
          * The name of the connection manager, e.g. "gabble" (read-only).
          * @deprecated Use {@link TelepathyGLib.ConnectionManager.cm_name} instead.
+         * @read-only
          */
         get connection_manager(): string;
         /**
          * The name of the connection manager, e.g. "gabble" (read-only).
          * @deprecated Use {@link TelepathyGLib.ConnectionManager.cm_name} instead.
+         * @read-only
          */
         get connectionManager(): string;
         /**
@@ -18340,6 +19029,7 @@ export namespace TelepathyGLib {
          *
          * (Note that this is of type `G_TYPE_UINT`, not `TP_TYPE_CM_INFO_SOURCE`,
          * for historical reasons.)
+         * @read-only
          */
         get info_source(): number;
         /**
@@ -18351,6 +19041,7 @@ export namespace TelepathyGLib {
          *
          * (Note that this is of type `G_TYPE_UINT`, not `TP_TYPE_CM_INFO_SOURCE`,
          * for historical reasons.)
+         * @read-only
          */
         get infoSource(): number;
         /**
@@ -18548,18 +19239,21 @@ export namespace TelepathyGLib {
              * {@link TelepathyGLib.Contact.contact_groups} property is already updated.
              * @signal
              * @since 0.13.14
+             * @run-last
              */
             'contact-groups-changed': (arg0: string[], arg1: string[]) => void;
             /**
              * Emitted when this contact's presence changes.
              * @signal
              * @since 0.11.7
+             * @run-last
              */
             'presence-changed': (arg0: number, arg1: string, arg2: string) => void;
             /**
              * Emitted when this contact's subscription states changes.
              * @signal
              * @since 0.13.12
+             * @run-last
              */
             'subscription-states-changed': (arg0: number, arg1: number, arg2: string) => void;
             'notify::alias': (pspec: GObject.ParamSpec) => void;
@@ -18663,6 +19357,7 @@ export namespace TelepathyGLib {
          *
          * This is never `null` for contact objects that are visible to library-user
          * code.
+         * @read-only
          */
         get alias(): string;
         /**
@@ -18678,6 +19373,7 @@ export namespace TelepathyGLib {
          * contact. Note that setting {@link TelepathyGLib.ContactFeature.AVATAR_DATA} will also
          * implicitly set {@link TelepathyGLib.ContactFeature.AVATAR_TOKEN}.
          * @since 0.11.6
+         * @read-only
          */
         get avatar_file(): Gio.File;
         /**
@@ -18693,6 +19389,7 @@ export namespace TelepathyGLib {
          * contact. Note that setting {@link TelepathyGLib.ContactFeature.AVATAR_DATA} will also
          * implicitly set {@link TelepathyGLib.ContactFeature.AVATAR_TOKEN}.
          * @since 0.11.6
+         * @read-only
          */
         get avatarFile(): Gio.File;
         /**
@@ -18701,6 +19398,7 @@ export namespace TelepathyGLib {
          *
          * This is always the MIME type of the image given by {@link TelepathyGLib.Contact.avatar_file}.
          * @since 0.11.6
+         * @read-only
          */
         get avatar_mime_type(): string;
         /**
@@ -18709,6 +19407,7 @@ export namespace TelepathyGLib {
          *
          * This is always the MIME type of the image given by {@link TelepathyGLib.Contact.avatar_file}.
          * @since 0.11.6
+         * @read-only
          */
         get avatarMimeType(): string;
         /**
@@ -18719,6 +19418,7 @@ export namespace TelepathyGLib {
          * This may be `null` if it is not known whether this contact has an avatar
          * or not (either for network protocol reasons, or because this {@link TelepathyGLib.Contact}
          * has not been set up to track {@link TelepathyGLib.ContactFeature.AVATAR_TOKEN}).
+         * @read-only
          */
         get avatar_token(): string;
         /**
@@ -18729,6 +19429,7 @@ export namespace TelepathyGLib {
          * This may be `null` if it is not known whether this contact has an avatar
          * or not (either for network protocol reasons, or because this {@link TelepathyGLib.Contact}
          * has not been set up to track {@link TelepathyGLib.ContactFeature.AVATAR_TOKEN}).
+         * @read-only
          */
         get avatarToken(): string;
         /**
@@ -18741,6 +19442,7 @@ export namespace TelepathyGLib {
          * This may be `null` if this {@link TelepathyGLib.Contact} object has not been set up to track
          * {@link TelepathyGLib.ContactFeature.CAPABILITIES}.
          * @since 0.11.3
+         * @read-only
          */
         get capabilities(): Capabilities;
         /**
@@ -18750,6 +19452,7 @@ export namespace TelepathyGLib {
          * set on this contact; it may also be `null` if that feature is prepared, but
          * the contact's client types are unknown.
          * @since 0.13.1
+         * @read-only
          */
         get client_types(): string[];
         /**
@@ -18759,10 +19462,12 @@ export namespace TelepathyGLib {
          * set on this contact; it may also be `null` if that feature is prepared, but
          * the contact's client types are unknown.
          * @since 0.13.1
+         * @read-only
          */
         get clientTypes(): string[];
         /**
          * The {@link TelepathyGLib.Connection} to which this contact belongs.
+         * @read-only
          */
         get connection(): Connection;
         /**
@@ -18772,6 +19477,7 @@ export namespace TelepathyGLib {
          * on this contact, or if the connection does not implement ContactGroups
          * interface.
          * @since 0.13.14
+         * @read-only
          */
         get contact_groups(): string[];
         /**
@@ -18781,6 +19487,7 @@ export namespace TelepathyGLib {
          * on this contact, or if the connection does not implement ContactGroups
          * interface.
          * @since 0.13.14
+         * @read-only
          */
         get contactGroups(): string[];
         /**
@@ -18789,6 +19496,7 @@ export namespace TelepathyGLib {
          * This is set to `null` if {@link TelepathyGLib.ContactFeature.CONTACT_INFO} is not set on this
          * contact.
          * @since 0.11.7
+         * @read-only
          */
         get contact_info(): ContactInfoList;
         /**
@@ -18797,6 +19505,7 @@ export namespace TelepathyGLib {
          * This is set to `null` if {@link TelepathyGLib.ContactFeature.CONTACT_INFO} is not set on this
          * contact.
          * @since 0.11.7
+         * @read-only
          */
         get contactInfo(): ContactInfoList;
         /**
@@ -18813,6 +19522,7 @@ export namespace TelepathyGLib {
          *
          * If the {@link TelepathyGLib.Contact.connection} becomes invalid, this property is no longer
          * meaningful and will be set to 0.
+         * @read-only
          */
         get handle(): number;
         /**
@@ -18822,6 +19532,7 @@ export namespace TelepathyGLib {
          *
          * This is never `null` for contact objects that are visible to library-user
          * code.
+         * @read-only
          */
         get identifier(): string;
         /**
@@ -18831,6 +19542,7 @@ export namespace TelepathyGLib {
          * prepared on this contact, or if the connection does not implement
          * ContactBlocking interface.
          * @since 0.17.0
+         * @read-only
          */
         get is_blocked(): boolean;
         /**
@@ -18840,6 +19552,7 @@ export namespace TelepathyGLib {
          * prepared on this contact, or if the connection does not implement
          * ContactBlocking interface.
          * @since 0.17.0
+         * @read-only
          */
         get isBlocked(): boolean;
         /**
@@ -18855,6 +19568,7 @@ export namespace TelepathyGLib {
          * This property contains the same information as {@link TelepathyGLib.Contact.location},
          * in a different format.
          * @since 0.19.10
+         * @read-only
          */
         get location_vardict(): GLib.Variant;
         /**
@@ -18870,6 +19584,7 @@ export namespace TelepathyGLib {
          * This property contains the same information as {@link TelepathyGLib.Contact.location},
          * in a different format.
          * @since 0.19.10
+         * @read-only
          */
         get locationVardict(): GLib.Variant;
         /**
@@ -18881,6 +19596,7 @@ export namespace TelepathyGLib {
          * This may be an empty string even if the contact has set a message,
          * if this {@link TelepathyGLib.Contact} object has not been set up to track
          * {@link TelepathyGLib.ContactFeature.PRESENCE}. It is never `null`.
+         * @read-only
          */
         get presence_message(): string;
         /**
@@ -18892,6 +19608,7 @@ export namespace TelepathyGLib {
          * This may be an empty string even if the contact has set a message,
          * if this {@link TelepathyGLib.Contact} object has not been set up to track
          * {@link TelepathyGLib.ContactFeature.PRESENCE}. It is never `null`.
+         * @read-only
          */
         get presenceMessage(): string;
         /**
@@ -18901,6 +19618,7 @@ export namespace TelepathyGLib {
          *
          * This may be an empty string if this {@link TelepathyGLib.Contact} object has not been set up
          * to track {@link TelepathyGLib.ContactFeature.PRESENCE}. It is never `null`.
+         * @read-only
          */
         get presence_status(): string;
         /**
@@ -18910,6 +19628,7 @@ export namespace TelepathyGLib {
          *
          * This may be an empty string if this {@link TelepathyGLib.Contact} object has not been set up
          * to track {@link TelepathyGLib.ContactFeature.PRESENCE}. It is never `null`.
+         * @read-only
          */
         get presenceStatus(): string;
         /**
@@ -18921,6 +19640,7 @@ export namespace TelepathyGLib {
          *
          * This may be {@link TelepathyGLib.ConnectionPresenceType.UNSET} if this {@link TelepathyGLib.Contact}
          * has not been set up to track {@link TelepathyGLib.ContactFeature.PRESENCE}.
+         * @read-only
          */
         get presence_type(): number;
         /**
@@ -18932,6 +19652,7 @@ export namespace TelepathyGLib {
          *
          * This may be {@link TelepathyGLib.ConnectionPresenceType.UNSET} if this {@link TelepathyGLib.Contact}
          * has not been set up to track {@link TelepathyGLib.ContactFeature.PRESENCE}.
+         * @read-only
          */
         get presenceType(): number;
         /**
@@ -18942,6 +19663,7 @@ export namespace TelepathyGLib {
          * This is set to `null` until {@link TelepathyGLib.ContactFeature.SUBSCRIPTION_STATES} has been
          * prepared, and it is guaranteed to be non-`null` afterward.
          * @since 0.13.12
+         * @read-only
          */
         get publish_request(): string;
         /**
@@ -18952,6 +19674,7 @@ export namespace TelepathyGLib {
          * This is set to `null` until {@link TelepathyGLib.ContactFeature.SUBSCRIPTION_STATES} has been
          * prepared, and it is guaranteed to be non-`null` afterward.
          * @since 0.13.12
+         * @read-only
          */
         get publishRequest(): string;
         /**
@@ -18961,6 +19684,7 @@ export namespace TelepathyGLib {
          * This is set to {@link TelepathyGLib.SubscriptionState.UNKNOWN} until
          * {@link TelepathyGLib.ContactFeature.SUBSCRIPTION_STATES} has been prepared
          * @since 0.13.12
+         * @read-only
          */
         get publish_state(): number;
         /**
@@ -18970,6 +19694,7 @@ export namespace TelepathyGLib {
          * This is set to {@link TelepathyGLib.SubscriptionState.UNKNOWN} until
          * {@link TelepathyGLib.ContactFeature.SUBSCRIPTION_STATES} has been prepared
          * @since 0.13.12
+         * @read-only
          */
         get publishState(): number;
         /**
@@ -18979,6 +19704,7 @@ export namespace TelepathyGLib {
          * This is set to {@link TelepathyGLib.SubscriptionState.UNKNOWN} until
          * {@link TelepathyGLib.ContactFeature.SUBSCRIPTION_STATES} has been prepared
          * @since 0.13.12
+         * @read-only
          */
         get subscribe_state(): number;
         /**
@@ -18988,6 +19714,7 @@ export namespace TelepathyGLib {
          * This is set to {@link TelepathyGLib.SubscriptionState.UNKNOWN} until
          * {@link TelepathyGLib.ContactFeature.SUBSCRIPTION_STATES} has been prepared
          * @since 0.13.12
+         * @read-only
          */
         get subscribeState(): number;
 
@@ -19585,6 +20312,7 @@ export namespace TelepathyGLib {
              * be emitted multiple times for the same search.
              * @signal
              * @since 0.13.11
+             * @run-last
              */
             'search-results-received': (arg0: ContactSearchResult[]) => void;
             'notify::account': (pspec: GObject.ParamSpec) => void;
@@ -19617,6 +20345,7 @@ export namespace TelepathyGLib {
         /**
          * This search's account.
          * @since 0.13.11
+         * @construct-only
          */
         get account(): Account;
         /**
@@ -19639,11 +20368,13 @@ export namespace TelepathyGLib {
          * To change the server after the object has been constructed,
          * use `tp_contact_search_reset_async()`.
          * @since 0.13.11
+         * @construct-only
          */
         get server(): string;
         /**
          * This search's state, as a %TpChannelContactSearchState.
          * @since 0.13.11
+         * @read-only
          */
         get state(): number;
 
@@ -20458,6 +21189,9 @@ export namespace TelepathyGLib {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get identifier(): string;
 
         /**
@@ -20732,6 +21466,7 @@ export namespace TelepathyGLib {
          *
          * Will be `null` for outgoing tubes until the tube has been offered.
          * @since 0.19.10
+         * @read-only
          */
         get parameters_vardict(): GLib.Variant;
         /**
@@ -20739,16 +21474,19 @@ export namespace TelepathyGLib {
          *
          * Will be `null` for outgoing tubes until the tube has been offered.
          * @since 0.19.10
+         * @read-only
          */
         get parametersVardict(): GLib.Variant;
         /**
          * A string representing the service name that will be used over the tube.
          * @since 0.18.0
+         * @read-only
          */
         get service_name(): string;
         /**
          * A string representing the service name that will be used over the tube.
          * @since 0.18.0
+         * @read-only
          */
         get serviceName(): string;
 
@@ -20889,6 +21627,7 @@ export namespace TelepathyGLib {
              * property is set to `true`.
              * @signal
              * @since 0.19.0
+             * @run-last
              */
             'new-debug-message': (arg0: DebugMessage) => void;
             'notify::enabled': (pspec: GObject.ParamSpec) => void;
@@ -20922,6 +21661,7 @@ export namespace TelepathyGLib {
          * This property is meaningless until the
          * `TP_DEBUG_CLIENT_FEATURE_CORE` feature has been prepared.
          * @since 0.19.0
+         * @read-only
          */
         get enabled(): boolean;
 
@@ -21074,26 +21814,31 @@ export namespace TelepathyGLib {
         /**
          * Category of the debug message, or `null` if none was specified.
          * @since 0.19.0
+         * @read-only
          */
         get category(): string;
         /**
          * Domain of the debug message.
          * @since 0.19.0
+         * @read-only
          */
         get domain(): string;
         /**
          * A {@link GLib.LogLevelFlags} representing the level of the debug message.
          * @since 0.19.0
+         * @read-only
          */
         get level(): number;
         /**
          * Text of the debug message, stripped from its trailing whitespaces.
          * @since 0.19.0
+         * @read-only
          */
         get message(): string;
         /**
          * Timestamp of the debug message.
          * @since 0.19.0
+         * @read-only
          */
         get time(): GLib.DateTime;
 
@@ -21229,6 +21974,7 @@ export namespace TelepathyGLib {
          * transferred.
          *
          * Since 0.15.5
+         * @read-only
          */
         get date(): GLib.DateTime;
         /**
@@ -21236,6 +21982,7 @@ export namespace TelepathyGLib {
          * sending the file transfer offer.
          *
          * Since 0.15.5
+         * @read-only
          */
         get description(): string;
         /**
@@ -21253,6 +22000,7 @@ export namespace TelepathyGLib {
          * `TP_FILE_TRANSFER_CHANNEL_FEATURE_CORE` does not have to be
          * prepared and there is no change notification.
          * @since 0.17.1
+         * @read-only
          */
         get file(): Gio.File;
         /**
@@ -21260,6 +22008,7 @@ export namespace TelepathyGLib {
          * suggested filename for the receiver.
          *
          * Since 0.15.5
+         * @read-only
          */
         get filename(): string;
         /**
@@ -21268,6 +22017,7 @@ export namespace TelepathyGLib {
          * The `TP_FILE_TRANSFER_CHANNEL_FEATURE_CORE` feature has to be
          * prepared for this property to be meaningful and kept up to date.
          * @since 0.17.1
+         * @read-only
          */
         get initial_offset(): number;
         /**
@@ -21276,16 +22026,19 @@ export namespace TelepathyGLib {
          * The `TP_FILE_TRANSFER_CHANNEL_FEATURE_CORE` feature has to be
          * prepared for this property to be meaningful and kept up to date.
          * @since 0.17.1
+         * @read-only
          */
         get initialOffset(): number;
         /**
          * The MIME type of the file to be transferred.
          * @since 0.15.5
+         * @read-only
          */
         get mime_type(): string;
         /**
          * The MIME type of the file to be transferred.
          * @since 0.15.5
+         * @read-only
          */
         get mimeType(): string;
         /**
@@ -21316,6 +22069,7 @@ export namespace TelepathyGLib {
          * The `TP_FILE_TRANSFER_CHANNEL_FEATURE_CORE` feature has to be
          * prepared for this property to be meaningful.
          * @since 0.17.1
+         * @read-only
          */
         get service_name(): string;
         /**
@@ -21346,6 +22100,7 @@ export namespace TelepathyGLib {
          * The `TP_FILE_TRANSFER_CHANNEL_FEATURE_CORE` feature has to be
          * prepared for this property to be meaningful.
          * @since 0.17.1
+         * @read-only
          */
         get serviceName(): string;
         /**
@@ -21353,6 +22108,7 @@ export namespace TelepathyGLib {
          * or `G_MAXUINT64` if not known.
          *
          * Since 0.15.5
+         * @read-only
          */
         get size(): number;
         /**
@@ -21362,6 +22118,7 @@ export namespace TelepathyGLib {
          * prepared for this property to be meaningful and kept up to date.
          *
          * Since 0.17.1
+         * @read-only
          */
         get state(): number;
         /**
@@ -21371,6 +22128,7 @@ export namespace TelepathyGLib {
          * The `TP_FILE_TRANSFER_CHANNEL_FEATURE_CORE` feature has to be
          * prepared for this property to be meaningful and kept up to date.
          * @since 0.15.5
+         * @read-only
          */
         get transferred_bytes(): number;
         /**
@@ -21380,6 +22138,7 @@ export namespace TelepathyGLib {
          * The `TP_FILE_TRANSFER_CHANNEL_FEATURE_CORE` feature has to be
          * prepared for this property to be meaningful and kept up to date.
          * @since 0.15.5
+         * @read-only
          */
         get transferredBytes(): number;
 
@@ -21596,6 +22355,8 @@ export namespace TelepathyGLib {
              * Emitted when tp_handle_channels_context_accept has been called on `self`.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             done: () => void;
             'notify::account': (pspec: GObject.ParamSpec) => void;
@@ -21607,30 +22368,40 @@ export namespace TelepathyGLib {
              * Emitted when tp_handle_channels_context_accept has been called on `self`.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'done::account': () => void;
             /**
              * Emitted when tp_handle_channels_context_accept has been called on `self`.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'done::channels': () => void;
             /**
              * Emitted when tp_handle_channels_context_accept has been called on `self`.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'done::connection': () => void;
             /**
              * Emitted when tp_handle_channels_context_accept has been called on `self`.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'done::requests-satisfied': () => void;
             /**
              * Emitted when tp_handle_channels_context_accept has been called on `self`.
              * @signal
              * @since 0.11.6
+             * @detailed
+             * @run-last
              */
             'done::user-action-time': () => void;
         }
@@ -21666,6 +22437,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.6
+         * @construct-only
          */
         get account(): Account;
         /**
@@ -21675,6 +22447,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.6
+         * @construct-only
          */
         get channels(): any[];
         /**
@@ -21684,6 +22457,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.6
+         * @construct-only
          */
         get connection(): Connection;
         /**
@@ -21693,6 +22467,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.6
+         * @construct-only
          */
         get requests_satisfied(): any[];
         /**
@@ -21702,6 +22477,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.6
+         * @construct-only
          */
         get requestsSatisfied(): any[];
         /**
@@ -21712,6 +22488,7 @@ export namespace TelepathyGLib {
          *
          * Read-only except during construction.
          * @since 0.11.6
+         * @construct-only
          */
         get user_action_time(): number;
         /**
@@ -21722,6 +22499,7 @@ export namespace TelepathyGLib {
          *
          * Read-only except during construction.
          * @since 0.11.6
+         * @construct-only
          */
         get userActionTime(): number;
 
@@ -22151,6 +22929,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.5
+         * @construct-only
          */
         get account(): Account;
         /**
@@ -22160,6 +22939,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.5
+         * @construct-only
          */
         get channels(): any[];
         /**
@@ -22169,6 +22949,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.5
+         * @construct-only
          */
         get connection(): Connection;
         /**
@@ -22177,6 +22958,7 @@ export namespace TelepathyGLib {
          * or `null` if none has been passed.
          * Read-only except during construction.
          * @since 0.11.5
+         * @construct-only
          */
         get dispatch_operation(): ChannelDispatchOperation;
         /**
@@ -22185,6 +22967,7 @@ export namespace TelepathyGLib {
          * or `null` if none has been passed.
          * Read-only except during construction.
          * @since 0.11.5
+         * @construct-only
          */
         get dispatchOperation(): ChannelDispatchOperation;
         /**
@@ -22194,6 +22977,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.5
+         * @construct-only
          */
         get requests(): any[];
 
@@ -22343,6 +23127,7 @@ export namespace TelepathyGLib {
          * or telephone number (tel:+1-555-0123) might have
          * { "sip", "sips", "tel", NULL }.
          * @since 0.23.1
+         * @read-only
          */
         get addressable_uri_schemes(): string[];
         /**
@@ -22355,6 +23140,7 @@ export namespace TelepathyGLib {
          * or telephone number (tel:+1-555-0123) might have
          * { "sip", "sips", "tel", NULL }.
          * @since 0.23.1
+         * @read-only
          */
         get addressableUriSchemes(): string[];
         /**
@@ -22366,6 +23152,7 @@ export namespace TelepathyGLib {
          * by SIP URI (vCard field SIP) or telephone number (vCard field TEL)
          * might have { "sip", "tel", NULL }.
          * @since 0.23.1
+         * @read-only
          */
         get addressable_vcard_fields(): string[];
         /**
@@ -22377,6 +23164,7 @@ export namespace TelepathyGLib {
          * by SIP URI (vCard field SIP) or telephone number (vCard field TEL)
          * might have { "sip", "tel", NULL }.
          * @since 0.23.1
+         * @read-only
          */
         get addressableVcardFields(): string[];
         /**
@@ -22385,6 +23173,7 @@ export namespace TelepathyGLib {
          * the connection reaches the CONNECTED state, or `null` if
          * `TP_PROTOCOL_FEATURE_CORE` has not been prepared.
          * @since 0.13.9
+         * @read-only
          */
         get authentication_types(): string[];
         /**
@@ -22393,6 +23182,7 @@ export namespace TelepathyGLib {
          * the connection reaches the CONNECTED state, or `null` if
          * `TP_PROTOCOL_FEATURE_CORE` has not been prepared.
          * @since 0.13.9
+         * @read-only
          */
         get authenticationTypes(): string[];
         /**
@@ -22400,6 +23190,7 @@ export namespace TelepathyGLib {
          * protocol, or `null` if `TP_PROTOCOL_FEATURE_CORE` has not been prepared or
          * if the protocol doesn't support avatars.
          * @since 0.15.6
+         * @read-only
          */
         get avatar_requirements(): any;
         /**
@@ -22407,6 +23198,7 @@ export namespace TelepathyGLib {
          * protocol, or `null` if `TP_PROTOCOL_FEATURE_CORE` has not been prepared or
          * if the protocol doesn't support avatars.
          * @since 0.15.6
+         * @read-only
          */
         get avatarRequirements(): any;
         /**
@@ -22414,16 +23206,19 @@ export namespace TelepathyGLib {
          * protocol, or `null` if this is unknown or the `TP_PROTOCOL_FEATURE_CORE`
          * feature has not been prepared.
          * @since 0.11.11
+         * @read-only
          */
         get capabilities(): Capabilities;
         /**
          * The name of the connection manager this protocol is on.
          * @since 0.19.1
+         * @construct-only
          */
         get cm_name(): string;
         /**
          * The name of the connection manager this protocol is on.
          * @since 0.19.1
+         * @construct-only
          */
         get cmName(): string;
         /**
@@ -22439,6 +23234,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.Protocol.english_name}, but should use this English version as a
          * fallback if no translated version can be found.
          * @since 0.11.11
+         * @read-only
          */
         get english_name(): string;
         /**
@@ -22454,6 +23250,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.Protocol.english_name}, but should use this English version as a
          * fallback if no translated version can be found.
          * @since 0.11.11
+         * @read-only
          */
         get englishName(): string;
         /**
@@ -22462,6 +23259,7 @@ export namespace TelepathyGLib {
          * prepared, a default is used; currently, this is "im-" plus
          * {@link TelepathyGLib.Protocol.protocol_name}.
          * @since 0.11.11
+         * @read-only
          */
         get icon_name(): string;
         /**
@@ -22470,6 +23268,7 @@ export namespace TelepathyGLib {
          * prepared, a default is used; currently, this is "im-" plus
          * {@link TelepathyGLib.Protocol.protocol_name}.
          * @since 0.11.11
+         * @read-only
          */
         get iconName(): string;
         /**
@@ -22477,6 +23276,7 @@ export namespace TelepathyGLib {
          * for this protocol, or `null` if `TP_PROTOCOL_FEATURE_PARAMETERS` has not
          * been prepared.
          * @since 0.11.11
+         * @read-only
          */
         get param_names(): string[];
         /**
@@ -22484,18 +23284,21 @@ export namespace TelepathyGLib {
          * for this protocol, or `null` if `TP_PROTOCOL_FEATURE_PARAMETERS` has not
          * been prepared.
          * @since 0.11.11
+         * @read-only
          */
         get paramNames(): string[];
         /**
          * The machine-readable name of the protocol, taken from the Telepathy
          * D-Bus Interface Specification, such as "jabber" or "local-xmpp".
          * @since 0.11.11
+         * @construct-only
          */
         get protocol_name(): string;
         /**
          * The machine-readable name of the protocol, taken from the Telepathy
          * D-Bus Interface Specification, such as "jabber" or "local-xmpp".
          * @since 0.11.11
+         * @construct-only
          */
         get protocolName(): string;
         /**
@@ -22508,6 +23311,7 @@ export namespace TelepathyGLib {
          * will both be unavailable, and this {@link TelepathyGLib.Protocol} object will only be useful
          * as a way to access lower-level D-Bus calls.
          * @since 0.23.3
+         * @read-only
          */
         get protocol_properties_vardict(): GLib.Variant;
         /**
@@ -22520,6 +23324,7 @@ export namespace TelepathyGLib {
          * will both be unavailable, and this {@link TelepathyGLib.Protocol} object will only be useful
          * as a way to access lower-level D-Bus calls.
          * @since 0.23.3
+         * @read-only
          */
         get protocolPropertiesVardict(): GLib.Variant;
         /**
@@ -22527,6 +23332,7 @@ export namespace TelepathyGLib {
          * identifiers, normalized to lower case, or `null` if there is no such field
          * or the `TP_PROTOCOL_FEATURE_CORE` feature has not been prepared.
          * @since 0.11.11
+         * @read-only
          */
         get vcard_field(): string;
         /**
@@ -22534,6 +23340,7 @@ export namespace TelepathyGLib {
          * identifiers, normalized to lower case, or `null` if there is no such field
          * or the `TP_PROTOCOL_FEATURE_CORE` feature has not been prepared.
          * @since 0.11.11
+         * @read-only
          */
         get vcardField(): string;
 
@@ -22901,6 +23708,8 @@ export namespace TelepathyGLib {
              * The intended use is to call `dbus_g_proxy_add_signals()`. This signal
              * should only be used by TpProy implementations
              * @signal
+             * @detailed
+             * @run-last
              */
             'interface-added': (arg0: number, arg1: unknown) => void;
             /**
@@ -22915,6 +23724,8 @@ export namespace TelepathyGLib {
              * Any pending or future method calls made on this proxy will fail gracefully
              * with the same error as returned by `tp_proxy_get_invalidated()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             invalidated: (arg0: number, arg1: number, arg2: string) => void;
             'notify::bus-name': (pspec: GObject.ParamSpec) => void;
@@ -22932,6 +23743,8 @@ export namespace TelepathyGLib {
              * The intended use is to call `dbus_g_proxy_add_signals()`. This signal
              * should only be used by TpProy implementations
              * @signal
+             * @detailed
+             * @run-last
              */
             'interface-added::bus-name': (arg0: number, arg1: unknown) => void;
             /**
@@ -22944,6 +23757,8 @@ export namespace TelepathyGLib {
              * The intended use is to call `dbus_g_proxy_add_signals()`. This signal
              * should only be used by TpProy implementations
              * @signal
+             * @detailed
+             * @run-last
              */
             'interface-added::dbus-daemon': (arg0: number, arg1: unknown) => void;
             /**
@@ -22956,6 +23771,8 @@ export namespace TelepathyGLib {
              * The intended use is to call `dbus_g_proxy_add_signals()`. This signal
              * should only be used by TpProy implementations
              * @signal
+             * @detailed
+             * @run-last
              */
             'interface-added::factory': (arg0: number, arg1: unknown) => void;
             /**
@@ -22968,6 +23785,8 @@ export namespace TelepathyGLib {
              * The intended use is to call `dbus_g_proxy_add_signals()`. This signal
              * should only be used by TpProy implementations
              * @signal
+             * @detailed
+             * @run-last
              */
             'interface-added::interfaces': (arg0: number, arg1: unknown) => void;
             /**
@@ -22980,6 +23799,8 @@ export namespace TelepathyGLib {
              * The intended use is to call `dbus_g_proxy_add_signals()`. This signal
              * should only be used by TpProy implementations
              * @signal
+             * @detailed
+             * @run-last
              */
             'interface-added::object-path': (arg0: number, arg1: unknown) => void;
             /**
@@ -22994,6 +23815,8 @@ export namespace TelepathyGLib {
              * Any pending or future method calls made on this proxy will fail gracefully
              * with the same error as returned by `tp_proxy_get_invalidated()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'invalidated::bus-name': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -23008,6 +23831,8 @@ export namespace TelepathyGLib {
              * Any pending or future method calls made on this proxy will fail gracefully
              * with the same error as returned by `tp_proxy_get_invalidated()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'invalidated::dbus-daemon': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -23022,6 +23847,8 @@ export namespace TelepathyGLib {
              * Any pending or future method calls made on this proxy will fail gracefully
              * with the same error as returned by `tp_proxy_get_invalidated()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'invalidated::factory': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -23036,6 +23863,8 @@ export namespace TelepathyGLib {
              * Any pending or future method calls made on this proxy will fail gracefully
              * with the same error as returned by `tp_proxy_get_invalidated()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'invalidated::interfaces': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -23050,6 +23879,8 @@ export namespace TelepathyGLib {
              * Any pending or future method calls made on this proxy will fail gracefully
              * with the same error as returned by `tp_proxy_get_invalidated()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'invalidated::object-path': (arg0: number, arg1: number, arg2: string) => void;
         }
@@ -23080,39 +23911,47 @@ export namespace TelepathyGLib {
 
         /**
          * The D-Bus bus name for this object. Read-only except during construction.
+         * @construct-only
          */
         get bus_name(): string;
         /**
          * The D-Bus bus name for this object. Read-only except during construction.
+         * @construct-only
          */
         get busName(): string;
         /**
          * The D-Bus daemon for this object (this object itself, if it is a
          * TpDBusDaemon). Read-only except during construction.
+         * @construct-only
          */
         get dbus_daemon(): DBusDaemon;
         /**
          * The D-Bus daemon for this object (this object itself, if it is a
          * TpDBusDaemon). Read-only except during construction.
+         * @construct-only
          */
         get dbusDaemon(): DBusDaemon;
         /**
          * The {@link TelepathyGLib.SimpleClientFactory} used to create this proxy,
          * or `null` if this proxy was not created through a factory.
+         * @construct-only
          */
         get factory(): SimpleClientFactory;
         /**
          * Known D-Bus interface names for this object.
+         * @read-only
          */
         get interfaces(): string[];
         /**
          * The D-Bus object path for this object. Read-only except during
          * construction.
+         * @construct-only
          */
         get object_path(): string;
         /**
          * The D-Bus object path for this object. Read-only except during
          * construction.
+         * @construct-only
          */
         get objectPath(): string;
 
@@ -23522,6 +24361,7 @@ export namespace TelepathyGLib {
              * for details.
              * @signal
              * @since 0.19.0
+             * @run-last
              */
             failed: (arg0: GLib.Error) => void;
             /**
@@ -23530,6 +24370,7 @@ export namespace TelepathyGLib {
              * continue using it once the signal callback has returned.
              * @signal
              * @since 0.19.0
+             * @run-last
              */
             'got-room': (arg0: RoomInfo) => void;
             'notify::account': (pspec: GObject.ParamSpec) => void;
@@ -23559,6 +24400,7 @@ export namespace TelepathyGLib {
         /**
          * The {@link TelepathyGLib.Account} to use for the room listing.
          * @since 0.19.0
+         * @construct-only
          */
         get account(): Account;
         /**
@@ -23567,12 +24409,14 @@ export namespace TelepathyGLib {
          * This property is meaningless until the
          * `TP_ROOM_LIST_FEATURE_LISTING` feature has been prepared.
          * @since 0.19.0
+         * @read-only
          */
         get listing(): boolean;
         /**
          * The DNS name of the server whose rooms are listed by this channel, or
          * `null`.
          * @since 0.19.0
+         * @construct-only
          */
         get server(): string;
 
@@ -24330,6 +25174,7 @@ export namespace TelepathyGLib {
          * A {@link TelepathyGLib.Contact} representing the sender of the message, if known, or `null`
          * otherwise.
          * @since 0.13.9
+         * @construct-only
          */
         get sender(): Contact;
 
@@ -24419,22 +25264,26 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.5
+         * @construct-only
          */
         set callback(val: any);
         /**
          * The {@link GLib.DestroyNotify} function called to free {@link TelepathyGLib.SimpleApprover.user_data}
          * when the {@link TelepathyGLib.SimpleApprover} is destroyed.
          * @since 0.11.5
+         * @construct-only
          */
         set destroy(val: any);
         /**
          * The user-data pointer passed to {@link TelepathyGLib.SimpleApprover.callback}.
          * @since 0.11.5
+         * @construct-only
          */
         set user_data(val: any);
         /**
          * The user-data pointer passed to {@link TelepathyGLib.SimpleApprover.callback}.
          * @since 0.11.5
+         * @construct-only
          */
         set userData(val: any);
 
@@ -24522,10 +25371,12 @@ export namespace TelepathyGLib {
 
         /**
          * The D-Bus daemon for this object.
+         * @construct-only
          */
         get dbus_daemon(): DBusDaemon;
         /**
          * The D-Bus daemon for this object.
+         * @construct-only
          */
         get dbusDaemon(): DBusDaemon;
 
@@ -24889,11 +25740,13 @@ export namespace TelepathyGLib {
         /**
          * The value of the Handler.BypassApproval D-Bus property.
          * @since 0.11.6
+         * @construct-only
          */
         set bypass_approval(val: boolean);
         /**
          * The value of the Handler.BypassApproval D-Bus property.
          * @since 0.11.6
+         * @construct-only
          */
         set bypassApproval(val: boolean);
         /**
@@ -24902,27 +25755,32 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.6
+         * @construct-only
          */
         set callback(val: any);
         /**
          * The {@link GLib.DestroyNotify} function called to free {@link TelepathyGLib.SimpleHandler.user_data}
          * when the {@link TelepathyGLib.SimpleHandler} is destroyed.
          * @since 0.11.6
+         * @construct-only
          */
         set destroy(val: any);
         /**
          * If `true`, the Handler will implement the Requests interface
          * @since 0.11.6
+         * @construct-only
          */
         set requests(val: boolean);
         /**
          * The user-data pointer passed to {@link TelepathyGLib.SimpleHandler.callback}.
          * @since 0.11.6
+         * @construct-only
          */
         set user_data(val: any);
         /**
          * The user-data pointer passed to {@link TelepathyGLib.SimpleHandler.callback}.
          * @since 0.11.6
+         * @construct-only
          */
         set userData(val: any);
 
@@ -25032,29 +25890,34 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.11.5
+         * @construct-only
          */
         set callback(val: any);
         /**
          * The {@link GLib.DestroyNotify} function called to free the user-data pointer when
          * the {@link TelepathyGLib.SimpleObserver} is destroyed.
          * @since 0.11.5
+         * @construct-only
          */
         set destroy(val: any);
         /**
          * The value of the Observer.Recover D-Bus property.
          * @since 0.11.5
+         * @construct-only
          */
         set recover(val: boolean);
         /**
          * The user-data pointer passed to the callback implementing the
          * ObserveChannels D-Bus method.
          * @since 0.11.5
+         * @construct-only
          */
         set user_data(val: any);
         /**
          * The user-data pointer passed to the callback implementing the
          * ObserveChannels D-Bus method.
          * @since 0.11.5
+         * @construct-only
          */
         set userData(val: any);
 
@@ -25129,6 +25992,7 @@ export namespace TelepathyGLib {
              * Consumers of this signal must take their own references to
              * `tube_connection`
              * @signal
+             * @run-last
              */
             incoming: (arg0: StreamTubeConnection) => void;
             'notify::parameters-vardict': (pspec: GObject.ParamSpec) => void;
@@ -25176,6 +26040,7 @@ export namespace TelepathyGLib {
          *
          * Will be `null` for outgoing tubes until the tube has been offered.
          * @since 0.19.10
+         * @read-only
          */
         get parameters_vardict(): GLib.Variant;
         /**
@@ -25183,11 +26048,13 @@ export namespace TelepathyGLib {
          *
          * Will be `null` for outgoing tubes until the tube has been offered.
          * @since 0.19.10
+         * @read-only
          */
         get parametersVardict(): GLib.Variant;
         /**
          * A string representing the service name that will be used over the tube.
          * @since 0.13.2
+         * @read-only
          */
         get service(): string;
 
@@ -25338,6 +26205,7 @@ export namespace TelepathyGLib {
              * a tube connection has been closed.
              * @signal
              * @since 0.13.2
+             * @run-last
              */
             closed: (arg0: GLib.Error) => void;
             'notify::channel': (pspec: GObject.ParamSpec) => void;
@@ -25370,6 +26238,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.13.2
+         * @construct-only
          */
         get channel(): StreamTubeChannel;
         /**
@@ -25380,6 +26249,7 @@ export namespace TelepathyGLib {
          * features previously passed to
          * `tp_simple_client_factory_add_contact_features()` prepared.
          * @since 0.13.2
+         * @construct-only
          */
         get contact(): Contact;
         /**
@@ -25388,6 +26258,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.13.2
+         * @construct-only
          */
         get socket_connection(): Gio.SocketConnection;
         /**
@@ -25396,6 +26267,7 @@ export namespace TelepathyGLib {
          *
          * This property can't be `null`.
          * @since 0.13.2
+         * @construct-only
          */
         get socketConnection(): Gio.SocketConnection;
 
@@ -25506,6 +26378,7 @@ export namespace TelepathyGLib {
          *
          * For "pgp" certificates, each certificate is a binary OpenPGP key.
          * @since 0.19.0
+         * @read-only
          */
         get cert_data(): any[];
         /**
@@ -25521,16 +26394,19 @@ export namespace TelepathyGLib {
          *
          * For "pgp" certificates, each certificate is a binary OpenPGP key.
          * @since 0.19.0
+         * @read-only
          */
         get certData(): any[];
         /**
          * The type of the certificate, typically either "x509" or "pgp".
          * @since 0.19.0
+         * @read-only
          */
         get cert_type(): string;
         /**
          * The type of the certificate, typically either "x509" or "pgp".
          * @since 0.19.0
+         * @read-only
          */
         get certType(): string;
         /**
@@ -25538,6 +26414,7 @@ export namespace TelepathyGLib {
          * parent object is invalidated, the certificate is also invalidated, and
          * this property is set to `null`.
          * @since 0.19.0
+         * @construct-only
          */
         get parent(): Proxy;
         /**
@@ -25546,6 +26423,7 @@ export namespace TelepathyGLib {
          *
          * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}::state will be emitted when this changes.
          * @since 0.19.0
+         * @read-only
          */
         get state(): number;
 
@@ -25778,27 +26656,32 @@ export namespace TelepathyGLib {
         /**
          * The D-Bus error name of the rejection
          * @since 0.19.0
+         * @construct-only
          */
         get dbus_error(): string;
         /**
          * The D-Bus error name of the rejection
          * @since 0.19.0
+         * @construct-only
          */
         get dbusError(): string;
         /**
          * A #G_VARIANT_TYPE_VARDICT containing the details of the rejection
          * @since 0.19.0
+         * @construct-only
          */
         get details(): GLib.Variant;
         /**
          * a {@link GLib.Error} (likely to be in the `TP_ERROR` domain) indicating the reason
          * of the rejection
          * @since 0.19.0
+         * @construct-only
          */
         get error(): GLib.Error;
         /**
          * {@link TelepathyGLib.TLSCertificateRejectReason} representing the reason of the rejection
          * @since 0.19.0
+         * @construct-only
          */
         get reason(): number;
 
@@ -25879,6 +26762,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed': (arg0: Contact, arg1: number) => void;
             /**
@@ -25897,6 +26782,7 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_add_contact_features()` prepared.
              * @signal
              * @since 0.13.10
+             * @run-last
              */
             'message-received': (arg0: SignalledMessage) => void;
             /**
@@ -25908,6 +26794,7 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_add_contact_features()` prepared.
              * @signal
              * @since 0.13.10
+             * @run-last
              */
             'message-sent': (arg0: SignalledMessage, arg1: number, arg2: string) => void;
             /**
@@ -25922,6 +26809,7 @@ export namespace TelepathyGLib {
              * `tp_simple_client_factory_add_contact_features()` prepared.
              * @signal
              * @since 0.13.10
+             * @run-last
              */
             'pending-message-removed': (arg0: SignalledMessage) => void;
             'notify::delivery-reporting-support': (pspec: GObject.ParamSpec) => void;
@@ -25952,6 +26840,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::delivery-reporting-support': (arg0: Contact, arg1: number) => void;
             /**
@@ -25960,6 +26850,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::is-sms-channel': (arg0: Contact, arg1: number) => void;
             /**
@@ -25968,6 +26860,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::message-part-support-flags': (arg0: Contact, arg1: number) => void;
             /**
@@ -25976,6 +26870,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::sms-flash': (arg0: Contact, arg1: number) => void;
             /**
@@ -25984,6 +26880,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::supported-content-types': (arg0: Contact, arg1: number) => void;
             /**
@@ -25992,6 +26890,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::channel-ready': (arg0: Contact, arg1: number) => void;
             /**
@@ -26000,6 +26900,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::connection': (arg0: Contact, arg1: number) => void;
             /**
@@ -26008,6 +26910,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::group-flags': (arg0: Contact, arg1: number) => void;
             /**
@@ -26016,6 +26920,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::group-self-contact': (arg0: Contact, arg1: number) => void;
             /**
@@ -26024,6 +26930,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::group-self-handle': (arg0: Contact, arg1: number) => void;
             /**
@@ -26032,6 +26940,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::identifier': (arg0: Contact, arg1: number) => void;
             /**
@@ -26040,6 +26950,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::initiator-contact': (arg0: Contact, arg1: number) => void;
             /**
@@ -26048,6 +26960,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::initiator-handle': (arg0: Contact, arg1: number) => void;
             /**
@@ -26056,6 +26970,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::initiator-identifier': (arg0: Contact, arg1: number) => void;
             /**
@@ -26064,6 +26980,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::password-needed': (arg0: Contact, arg1: number) => void;
             /**
@@ -26072,6 +26990,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::requested': (arg0: Contact, arg1: number) => void;
             /**
@@ -26080,6 +27000,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::target-contact': (arg0: Contact, arg1: number) => void;
             /**
@@ -26088,6 +27010,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::bus-name': (arg0: Contact, arg1: number) => void;
             /**
@@ -26096,6 +27020,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::dbus-daemon': (arg0: Contact, arg1: number) => void;
             /**
@@ -26104,6 +27030,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::factory': (arg0: Contact, arg1: number) => void;
             /**
@@ -26112,6 +27040,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::interfaces': (arg0: Contact, arg1: number) => void;
             /**
@@ -26120,6 +27050,8 @@ export namespace TelepathyGLib {
              * `TP_CHANNEL_FEATURE_GROUP` and `TP_CHANNEL_FEATURE_CONTACTS`.
              * @signal
              * @since 0.19.0
+             * @detailed
+             * @run-last
              */
             'contact-chat-state-changed::object-path': (arg0: Contact, arg1: number) => void;
         }
@@ -26154,12 +27086,14 @@ export namespace TelepathyGLib {
          * A {@link TelepathyGLib.DeliveryReportingSupportFlags} indicating features supported
          * by this channel.
          * @since 0.13.10
+         * @read-only
          */
         get delivery_reporting_support(): number;
         /**
          * A {@link TelepathyGLib.DeliveryReportingSupportFlags} indicating features supported
          * by this channel.
          * @since 0.13.10
+         * @read-only
          */
         get deliveryReportingSupport(): number;
         /**
@@ -26169,6 +27103,7 @@ export namespace TelepathyGLib {
          * This property is not guaranteed to have a meaningful value until
          * TP_TEXT_CHANNEL_FEATURE_SMS has been prepared.
          * @since 0.15.1
+         * @read-only
          */
         get is_sms_channel(): boolean;
         /**
@@ -26178,18 +27113,21 @@ export namespace TelepathyGLib {
          * This property is not guaranteed to have a meaningful value until
          * TP_TEXT_CHANNEL_FEATURE_SMS has been prepared.
          * @since 0.15.1
+         * @read-only
          */
         get isSmsChannel(): boolean;
         /**
          * A {@link TelepathyGLib.MessagePartSupportFlags} indicating the level of support for
          * message parts on this channel.
          * @since 0.13.10
+         * @read-only
          */
         get message_part_support_flags(): number;
         /**
          * A {@link TelepathyGLib.MessagePartSupportFlags} indicating the level of support for
          * message parts on this channel.
          * @since 0.13.10
+         * @read-only
          */
         get messagePartSupportFlags(): number;
         /**
@@ -26198,6 +27136,7 @@ export namespace TelepathyGLib {
          * on this channel). If `false`, no incoming class 0 SMSes will appear
          * on this channel.
          * @since 0.15.1
+         * @read-only
          */
         get sms_flash(): boolean;
         /**
@@ -26206,18 +27145,21 @@ export namespace TelepathyGLib {
          * on this channel). If `false`, no incoming class 0 SMSes will appear
          * on this channel.
          * @since 0.15.1
+         * @read-only
          */
         get smsFlash(): boolean;
         /**
          * A {@link GLib.Strv} containing the MIME types supported by this channel, with more
          * preferred MIME types appearing earlier in the array.
          * @since 0.13.10
+         * @read-only
          */
         get supported_content_types(): string[];
         /**
          * A {@link GLib.Strv} containing the MIME types supported by this channel, with more
          * preferred MIME types appearing earlier in the array.
          * @since 0.13.10
+         * @read-only
          */
         get supportedContentTypes(): string[];
 
@@ -28205,7 +29147,13 @@ export namespace TelepathyGLib {
     interface HandleRepoIface extends GObject.Object {
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle_type(): number;
+        /**
+         * @construct-only
+         */
         get handleType(): number;
     }
 

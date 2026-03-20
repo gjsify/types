@@ -32,6 +32,9 @@ export namespace GVnc {
         S32,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionAuth {
         export const $gtype: GObject.GType<ConnectionAuth>;
     }
@@ -91,6 +94,9 @@ export namespace GVnc {
         MSLOGON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionAuthVencrypt {
         export const $gtype: GObject.GType<ConnectionAuthVencrypt>;
     }
@@ -110,6 +116,9 @@ export namespace GVnc {
         TLSSASL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionCredential {
         export const $gtype: GObject.GType<ConnectionCredential>;
     }
@@ -124,6 +133,9 @@ export namespace GVnc {
         CA_CERT_DATA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionEncoding {
         export const $gtype: GObject.GType<ConnectionEncoding>;
     }
@@ -165,6 +177,9 @@ export namespace GVnc {
         ALPHA_CURSOR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionPowerAction {
         export const $gtype: GObject.GType<ConnectionPowerAction>;
     }
@@ -178,6 +193,9 @@ export namespace GVnc {
         RESET,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionResizeStatus {
         export const $gtype: GObject.GType<ConnectionResizeStatus>;
     }
@@ -241,14 +259,17 @@ export namespace GVnc {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'vnc-audio-playback-data': (arg0: AudioSample) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-audio-playback-start': (arg0: AudioFormat) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-audio-playback-stop': () => void;
         }
@@ -821,17 +842,41 @@ export namespace GVnc {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get buffer(): any;
         get color_map(): ColorMap;
         set color_map(val: ColorMap);
         get colorMap(): ColorMap;
         set colorMap(val: ColorMap);
+        /**
+         * @construct-only
+         */
         get height(): number;
+        /**
+         * @construct-only
+         */
         get local_format(): PixelFormat;
+        /**
+         * @construct-only
+         */
         get localFormat(): PixelFormat;
+        /**
+         * @construct-only
+         */
         get remote_format(): PixelFormat;
+        /**
+         * @construct-only
+         */
         get remoteFormat(): PixelFormat;
+        /**
+         * @construct-only
+         */
         get rowstride(): number;
+        /**
+         * @construct-only
+         */
         get width(): number;
 
         /**
@@ -1538,83 +1583,103 @@ export namespace GVnc {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'vnc-auth-choose-subtype': (arg0: number, arg1: GObject.ValueArray) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-auth-choose-type': (arg0: GObject.ValueArray) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-auth-credential': (arg0: GObject.ValueArray) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-auth-failure': (arg0: string) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-auth-unsupported': (arg0: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-bell': () => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-connected': () => void;
             /**
              * Emitted when the cursor is changed.
              * @signal
+             * @run-first
              */
             'vnc-cursor-changed': (arg0: Cursor | null) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-desktop-rename': (arg0: string) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-desktop-resize': (arg0: number, arg1: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-disconnected': () => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-error': (arg0: string) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-framebuffer-update': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-initialized': () => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-led-state': () => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-pixel-format-changed': (arg0: PixelFormat) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-pointer-mode-changed': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-power-control-failed': () => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-power-control-initialized': () => void;
             /**
              * @signal
+             * @run-first
              */
             'vnc-server-cut-text': (arg0: string) => void;
             'notify::framebuffer': (pspec: GObject.ParamSpec) => void;

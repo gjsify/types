@@ -22,6 +22,9 @@ export namespace GXml {
      * GXml-0.16
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CssSelectorType {
         export const $gtype: GObject.GType<CssSelectorType>;
     }
@@ -49,6 +52,9 @@ export namespace GXml {
         BEFORE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NodeType {
         export const $gtype: GObject.GType<NodeType>;
     }
@@ -72,6 +78,9 @@ export namespace GXml {
         NOTATION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace XPathObjectType {
         export const $gtype: GObject.GType<XPathObjectType>;
     }
@@ -301,6 +310,9 @@ export namespace GXml {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TDocumentReadType {
         export const $gtype: GObject.GType<TDocumentReadType>;
     }
@@ -314,6 +326,9 @@ export namespace GXml {
         STOP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomEventPhase {
         export const $gtype: GObject.GType<DomEventPhase>;
     }
@@ -328,6 +343,9 @@ export namespace GXml {
         BUBBLING_PHASE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomNodeNodeType {
         export const $gtype: GObject.GType<DomNodeNodeType>;
     }
@@ -351,6 +369,9 @@ export namespace GXml {
         NOTATION_NODE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomRangeBoundaryPoints {
         export const $gtype: GObject.GType<DomRangeBoundaryPoints>;
     }
@@ -371,6 +392,9 @@ export namespace GXml {
     interface DomMutationCallback {
         (mutations: Gee.List, observer: DomMutationObserver): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace DomEventFlags {
         export const $gtype: GObject.GType<DomEventFlags>;
     }
@@ -386,6 +410,9 @@ export namespace GXml {
         DISPATCH_FLAG,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DomNodeDocumentPosition {
         export const $gtype: GObject.GType<DomNodeDocumentPosition>;
     }
@@ -523,6 +550,9 @@ export namespace GXml {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get selectors(): Gee.List;
 
         /**
@@ -694,7 +724,10 @@ export namespace GXml {
             ...args: GObject.GjsParameters<DomElementList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomHTMLCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomHTMLCollection
+         */
         get length(): number;
         /**
          * @param index
@@ -1692,7 +1725,10 @@ export namespace GXml {
             ...args: GObject.GjsParameters<ElementList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomHTMLCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomHTMLCollection
+         */
         get length(): number;
         /**
          * @param index
@@ -2228,7 +2264,13 @@ export namespace GXml {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get default_options(): number;
+        /**
+         * @read-only
+         */
         get defaultOptions(): number;
 
         /**
@@ -2828,22 +2870,43 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GomAttr.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomAttr */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomAttr
+         */
         get namespace_uri(): string;
-        /** @category Inherited from GXml.DomAttr */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomAttr
+         */
         get namespaceUri(): string;
-        /** @category Inherited from GXml.DomAttr */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomAttr
+         */
         get prefix(): string;
-        /** @category Inherited from GXml.DomAttr */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomAttr
+         */
         get local_name(): string;
-        /** @category Inherited from GXml.DomAttr */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomAttr
+         */
         get localName(): string;
-        /** @category Inherited from GXml.DomAttr */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomAttr
+         */
         get name(): string;
         /** @category Inherited from GXml.DomAttr */
         get value(): string;
         set value(val: string);
-        /** @category Inherited from GXml.DomAttr */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomAttr
+         */
         get specified(): boolean;
         get_namespace_uri(): string;
         get_prefix(): string;
@@ -3365,13 +3428,25 @@ export namespace GXml {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get items_name(): string;
+        /**
+         * @read-only
+         */
         get itemsName(): string;
         get items_type(): GObject.GType;
         set items_type(val: GObject.GType);
         get itemsType(): GObject.GType;
         set itemsType(val: GObject.GType);
+        /**
+         * @read-only
+         */
         get nodes_index(): GLib.Queue;
+        /**
+         * @read-only
+         */
         get nodesIndex(): GLib.Queue;
         get element(): GomElement;
         set element(val: GomElement);
@@ -3518,16 +3593,28 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GomArrayList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get nodes_index(): GLib.Queue;
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get nodesIndex(): GLib.Queue;
         /** @category Inherited from GXml.GomCollection */
         get element(): GomElement;
         set element(val: GomElement);
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get items_name(): string;
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get itemsName(): string;
         /** @category Inherited from GXml.GomCollection */
         get items_type(): GObject.GType;
@@ -3535,7 +3622,10 @@ export namespace GXml {
         /** @category Inherited from GXml.GomCollection */
         get itemsType(): GObject.GType;
         set itemsType(val: GObject.GType);
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get length(): number;
         search(): void;
         /**
@@ -4181,16 +4271,28 @@ export namespace GXml {
          * @param value
          */
         set_attribute_key(value: string): void;
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get nodes_index(): GLib.Queue;
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get nodesIndex(): GLib.Queue;
         /** @category Inherited from GXml.GomCollection */
         get element(): GomElement;
         set element(val: GomElement);
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get items_name(): string;
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get itemsName(): string;
         /** @category Inherited from GXml.GomCollection */
         get items_type(): GObject.GType;
@@ -4198,7 +4300,10 @@ export namespace GXml {
         /** @category Inherited from GXml.GomCollection */
         get itemsType(): GObject.GType;
         set itemsType(val: GObject.GType);
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get length(): number;
         search(): void;
         /**
@@ -4877,16 +4982,28 @@ export namespace GXml {
          * @param value
          */
         set_attribute_secondary_key(value: string): void;
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get nodes_index(): GLib.Queue;
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get nodesIndex(): GLib.Queue;
         /** @category Inherited from GXml.GomCollection */
         get element(): GomElement;
         set element(val: GomElement);
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get items_name(): string;
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get itemsName(): string;
         /** @category Inherited from GXml.GomCollection */
         get items_type(): GObject.GType;
@@ -4894,7 +5011,10 @@ export namespace GXml {
         /** @category Inherited from GXml.GomCollection */
         get itemsType(): GObject.GType;
         set itemsType(val: GObject.GType);
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get length(): number;
         search(): void;
         /**
@@ -5601,16 +5721,28 @@ export namespace GXml {
          * @param value
          */
         set_attribute_third_key(value: string): void;
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get nodes_index(): GLib.Queue;
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get nodesIndex(): GLib.Queue;
         /** @category Inherited from GXml.GomCollection */
         get element(): GomElement;
         set element(val: GomElement);
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get items_name(): string;
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get itemsName(): string;
         /** @category Inherited from GXml.GomCollection */
         get items_type(): GObject.GType;
@@ -5618,7 +5750,10 @@ export namespace GXml {
         /** @category Inherited from GXml.GomCollection */
         get itemsType(): GObject.GType;
         set itemsType(val: GObject.GType);
-        /** @category Inherited from GXml.GomCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.GomCollection
+         */
         get length(): number;
         search(): void;
         /**
@@ -6374,47 +6509,110 @@ export namespace GXml {
          * @param _res_
          */
         read_from_string_finish(_res_: Gio.AsyncResult): void;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get children(): DomHTMLCollection;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get first_element_child(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get firstElementChild(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get last_element_child(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get lastElementChild(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get child_element_count(): number;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get childElementCount(): number;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get implementation(): DomImplementation;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get url(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get document_uri(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get documentUri(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get origin(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get compat_mode(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get compatMode(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get character_set(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get characterSet(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get content_type(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get contentType(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get doctype(): DomDocumentType;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get document_element(): DomElement;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get documentElement(): DomElement;
         /**
          * @param selectors
@@ -7720,15 +7918,30 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GomDocumentType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomDocumentType */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocumentType
+         */
         get name(): string;
-        /** @category Inherited from GXml.DomDocumentType */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocumentType
+         */
         get public_id(): string;
-        /** @category Inherited from GXml.DomDocumentType */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocumentType
+         */
         get publicId(): string;
-        /** @category Inherited from GXml.DomDocumentType */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocumentType
+         */
         get system_id(): string;
-        /** @category Inherited from GXml.DomDocumentType */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocumentType
+         */
         get systemId(): string;
         remove(): void;
         /**
@@ -8268,19 +8481,40 @@ export namespace GXml {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get children(): DomHTMLCollection;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get first_element_child(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get firstElementChild(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get last_element_child(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get lastElementChild(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get child_element_count(): number;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get childElementCount(): number;
         /**
          * @param selectors
@@ -9115,41 +9349,95 @@ export namespace GXml {
          * @param value
          */
         set_unparsed(value: string): void;
-        /** @category Inherited from GXml.DomNonDocumentTypeChildNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNonDocumentTypeChildNode
+         */
         get previous_element_sibling(): DomElement;
-        /** @category Inherited from GXml.DomNonDocumentTypeChildNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNonDocumentTypeChildNode
+         */
         get previousElementSibling(): DomElement;
-        /** @category Inherited from GXml.DomNonDocumentTypeChildNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNonDocumentTypeChildNode
+         */
         get next_element_sibling(): DomElement;
-        /** @category Inherited from GXml.DomNonDocumentTypeChildNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNonDocumentTypeChildNode
+         */
         get nextElementSibling(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get children(): DomHTMLCollection;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get first_element_child(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get firstElementChild(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get last_element_child(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get lastElementChild(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get child_element_count(): number;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get childElementCount(): number;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get namespace_uri(): string;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get namespaceUri(): string;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get prefix(): string;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get local_name(): string;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get localName(): string;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get tag_name(): string;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get tagName(): string;
         /** @category Inherited from GXml.DomElement */
         get id(): string;
@@ -9160,11 +9448,20 @@ export namespace GXml {
         /** @category Inherited from GXml.DomElement */
         get className(): string;
         set className(val: string);
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get class_list(): DomTokenList;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get classList(): DomTokenList;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get attributes(): DomNamedNodeMap;
         remove(): void;
         /**
@@ -10018,7 +10315,10 @@ export namespace GXml {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomNamedNodeMap */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNamedNodeMap
+         */
         get length(): number;
         /**
          * @param index
@@ -10615,17 +10915,35 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GomNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get node_type(): DomNodeNodeType;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get nodeType(): DomNodeNodeType;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get node_name(): string;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get nodeName(): string;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get base_uri(): string;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get baseUri(): string;
         /** @category Inherited from GXml.DomNode */
         get owner_document(): DomDocument;
@@ -10633,33 +10951,75 @@ export namespace GXml {
         /** @category Inherited from GXml.DomNode */
         get ownerDocument(): DomDocument;
         set ownerDocument(val: DomDocument);
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get parent_node(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get parentNode(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get parent_element(): DomElement;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get parentElement(): DomElement;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get child_nodes(): DomNodeList;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get childNodes(): DomNodeList;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get first_child(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get firstChild(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get last_child(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get lastChild(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get previous_sibling(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get previousSibling(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get next_sibling(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get nextSibling(): DomNode;
         /** @category Inherited from GXml.DomNode */
         get node_value(): string;
@@ -11424,7 +11784,10 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GomNodeList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomNodeList */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNodeList
+         */
         get length(): number;
         /**
          * @param index
@@ -14768,9 +15131,21 @@ export namespace GXml {
         set content_type(val: GomXsdBaseContent);
         get contentType(): GomXsdBaseContent;
         set contentType(val: GomXsdBaseContent);
+        /**
+         * @read-only
+         */
         get type_attributes(): GomXsdList;
+        /**
+         * @read-only
+         */
         get typeAttributes(): GomXsdList;
+        /**
+         * @read-only
+         */
         get group_attributes(): GomXsdList;
+        /**
+         * @read-only
+         */
         get groupAttributes(): GomXsdList;
 
         /**
@@ -15762,6 +16137,9 @@ export namespace GXml {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
 
         /**
@@ -16191,18 +16569,33 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GomCharacterData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomNonDocumentTypeChildNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNonDocumentTypeChildNode
+         */
         get previous_element_sibling(): DomElement;
-        /** @category Inherited from GXml.DomNonDocumentTypeChildNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNonDocumentTypeChildNode
+         */
         get previousElementSibling(): DomElement;
-        /** @category Inherited from GXml.DomNonDocumentTypeChildNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNonDocumentTypeChildNode
+         */
         get next_element_sibling(): DomElement;
-        /** @category Inherited from GXml.DomNonDocumentTypeChildNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNonDocumentTypeChildNode
+         */
         get nextElementSibling(): DomElement;
         /** @category Inherited from GXml.DomCharacterData */
         get data(): string;
         set data(val: string);
-        /** @category Inherited from GXml.DomCharacterData */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomCharacterData
+         */
         get length(): number;
         get_previous_element_sibling(): DomElement;
         get_next_element_sibling(): DomElement;
@@ -16787,14 +17180,23 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GomText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomText */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomText
+         */
         get whole_text(): string;
-        /** @category Inherited from GXml.DomText */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomText
+         */
         get wholeText(): string;
         /** @category Inherited from GXml.DomCharacterData */
         get data(): string;
         set data(val: string);
-        /** @category Inherited from GXml.DomCharacterData */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomCharacterData
+         */
         get length(): number;
         /**
          * @param offset
@@ -16953,12 +17355,18 @@ export namespace GXml {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomProcessingInstruction */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomProcessingInstruction
+         */
         get target(): string;
         /** @category Inherited from GXml.DomCharacterData */
         get data(): string;
         set data(val: string);
-        /** @category Inherited from GXml.DomCharacterData */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomCharacterData
+         */
         get length(): number;
         get_target(): string;
         /**
@@ -17107,7 +17515,10 @@ export namespace GXml {
         /** @category Inherited from GXml.DomCharacterData */
         get data(): string;
         set data(val: string);
-        /** @category Inherited from GXml.DomCharacterData */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomCharacterData
+         */
         get length(): number;
         /**
          * @param offset
@@ -17260,22 +17671,43 @@ export namespace GXml {
         /** @category Inherited from GXml.Attribute */
         get namespace(): Namespace;
         set namespace(val: Namespace);
-        /** @category Inherited from GXml.Attribute */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Attribute
+         */
         get prefix(): string;
-        /** @category Inherited from GXml.DomAttr */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomAttr
+         */
         get namespace_uri(): string;
-        /** @category Inherited from GXml.DomAttr */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomAttr
+         */
         get namespaceUri(): string;
-        /** @category Inherited from GXml.DomAttr */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomAttr
+         */
         get local_name(): string;
-        /** @category Inherited from GXml.DomAttr */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomAttr
+         */
         get localName(): string;
-        /** @category Inherited from GXml.DomAttr */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomAttr
+         */
         get name(): string;
         /** @category Inherited from GXml.DomAttr */
         get value(): string;
         set value(val: string);
-        /** @category Inherited from GXml.DomAttr */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomAttr
+         */
         get specified(): boolean;
         get_namespace(): Namespace;
         /**
@@ -17854,7 +18286,10 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GCDATA.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.CDATA */
+        /**
+         * @read-only
+         * @category Inherited from GXml.CDATA
+         */
         get str(): string;
         get_str(): string;
         /**
@@ -18386,7 +18821,10 @@ export namespace GXml {
         /** @category Inherited from GXml.DomCharacterData */
         get data(): string;
         set data(val: string);
-        /** @category Inherited from GXml.DomCharacterData */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomCharacterData
+         */
         get length(): number;
         get_str(): string;
         /**
@@ -19493,13 +19931,25 @@ export namespace GXml {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomNonDocumentTypeChildNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNonDocumentTypeChildNode
+         */
         get previous_element_sibling(): DomElement;
-        /** @category Inherited from GXml.DomNonDocumentTypeChildNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNonDocumentTypeChildNode
+         */
         get previousElementSibling(): DomElement;
-        /** @category Inherited from GXml.DomNonDocumentTypeChildNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNonDocumentTypeChildNode
+         */
         get next_element_sibling(): DomElement;
-        /** @category Inherited from GXml.DomNonDocumentTypeChildNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNonDocumentTypeChildNode
+         */
         get nextElementSibling(): DomElement;
         get_previous_element_sibling(): DomElement;
         get_next_element_sibling(): DomElement;
@@ -20036,7 +20486,10 @@ export namespace GXml {
         /** @category Inherited from GXml.DomCharacterData */
         get data(): string;
         set data(val: string);
-        /** @category Inherited from GXml.DomCharacterData */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomCharacterData
+         */
         get length(): number;
         get_str(): string;
         /**
@@ -20713,52 +21166,118 @@ export namespace GXml {
         /** @category Inherited from GXml.Document */
         get backup(): boolean;
         set backup(val: boolean);
-        /** @category Inherited from GXml.Document */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Document
+         */
         get root(): Node;
         /** @category Inherited from GXml.Document */
         get file(): Gio.File;
         set file(val: Gio.File);
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get children(): DomHTMLCollection;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get first_element_child(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get firstElementChild(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get last_element_child(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get lastElementChild(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get child_element_count(): number;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get childElementCount(): number;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get implementation(): DomImplementation;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get url(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get document_uri(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get documentUri(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get origin(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get compat_mode(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get compatMode(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get character_set(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get characterSet(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get content_type(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get contentType(): string;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get doctype(): DomDocumentType;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get document_element(): DomElement;
-        /** @category Inherited from GXml.DomDocument */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocument
+         */
         get documentElement(): DomElement;
         /**
          * @param name
@@ -22220,15 +22739,30 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GDocumentType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomDocumentType */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocumentType
+         */
         get name(): string;
-        /** @category Inherited from GXml.DomDocumentType */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocumentType
+         */
         get public_id(): string;
-        /** @category Inherited from GXml.DomDocumentType */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocumentType
+         */
         get publicId(): string;
-        /** @category Inherited from GXml.DomDocumentType */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocumentType
+         */
         get system_id(): string;
-        /** @category Inherited from GXml.DomDocumentType */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomDocumentType
+         */
         get systemId(): string;
         remove(): void;
         /**
@@ -23274,21 +23808,45 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GDomNodeIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomNodeIterator */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNodeIterator
+         */
         get root(): DomNode;
-        /** @category Inherited from GXml.DomNodeIterator */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNodeIterator
+         */
         get reference_node(): DomNode;
-        /** @category Inherited from GXml.DomNodeIterator */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNodeIterator
+         */
         get referenceNode(): DomNode;
-        /** @category Inherited from GXml.DomNodeIterator */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNodeIterator
+         */
         get pointer_before_reference_node(): boolean;
-        /** @category Inherited from GXml.DomNodeIterator */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNodeIterator
+         */
         get pointerBeforeReferenceNode(): boolean;
-        /** @category Inherited from GXml.DomNodeIterator */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNodeIterator
+         */
         get what_to_show(): number;
-        /** @category Inherited from GXml.DomNodeIterator */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNodeIterator
+         */
         get whatToShow(): number;
-        /** @category Inherited from GXml.DomNodeIterator */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNodeIterator
+         */
         get filter(): DomNodeFilter;
         next_node(): DomNode;
         previous_node(): DomNode;
@@ -23838,17 +24396,35 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GDomTreeWalker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomTreeWalker */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomTreeWalker
+         */
         get root(): DomNode;
-        /** @category Inherited from GXml.DomTreeWalker */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomTreeWalker
+         */
         get what_to_show(): number;
-        /** @category Inherited from GXml.DomTreeWalker */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomTreeWalker
+         */
         get whatToShow(): number;
-        /** @category Inherited from GXml.DomTreeWalker */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomTreeWalker
+         */
         get filter(): DomNodeFilter;
-        /** @category Inherited from GXml.DomTreeWalker */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomTreeWalker
+         */
         get current_node(): DomNode;
-        /** @category Inherited from GXml.DomTreeWalker */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomTreeWalker
+         */
         get currentNode(): DomNode;
         parentNode(): DomNode;
         firstChild(): DomNode;
@@ -24423,7 +24999,10 @@ export namespace GXml {
         // Methods
 
         update(): void;
-        /** @category Inherited from GXml.DomTokenList */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomTokenList
+         */
         get length(): number;
         /**
          * @param index
@@ -25042,7 +25621,10 @@ export namespace GXml {
         /** @category Inherited from GXml.DomSettableTokenList */
         get value(): string;
         set value(val: string);
-        /** @category Inherited from GXml.DomTokenList */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomTokenList
+         */
         get length(): number;
         get_value(): string;
         /**
@@ -25212,7 +25794,10 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GDomHTMLCollection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomHTMLCollection */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomHTMLCollection
+         */
         get length(): number;
         /**
          * @param index
@@ -25780,35 +26365,80 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GDomEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get etype(): string;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get event_target(): DomEventTarget;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get eventTarget(): DomEventTarget;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get current_target(): DomEventTarget;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get currentTarget(): DomEventTarget;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get bubbles(): boolean;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get cancelable(): boolean;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get is_trusted(): boolean;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get isTrusted(): boolean;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get time_stamp(): DomTimeStamp;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get timeStamp(): DomTimeStamp;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get default_prevented(): boolean;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get defaultPrevented(): boolean;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get event_phase(): DomEventPhase;
-        /** @category Inherited from GXml.DomEvent */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomEvent
+         */
         get eventPhase(): DomEventPhase;
         stop_propagation(): void;
         stop_immediate_propagation(): void;
@@ -26355,6 +26985,9 @@ export namespace GXml {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get detail(): GObject.Value;
 
         /**
@@ -26466,27 +27099,60 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GDomRange.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomRange */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomRange
+         */
         get start_container(): DomNode;
-        /** @category Inherited from GXml.DomRange */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomRange
+         */
         get startContainer(): DomNode;
-        /** @category Inherited from GXml.DomRange */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomRange
+         */
         get start_offset(): number;
-        /** @category Inherited from GXml.DomRange */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomRange
+         */
         get startOffset(): number;
-        /** @category Inherited from GXml.DomRange */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomRange
+         */
         get end_container(): DomNode;
-        /** @category Inherited from GXml.DomRange */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomRange
+         */
         get endContainer(): DomNode;
-        /** @category Inherited from GXml.DomRange */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomRange
+         */
         get end_offset(): number;
-        /** @category Inherited from GXml.DomRange */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomRange
+         */
         get endOffset(): number;
-        /** @category Inherited from GXml.DomRange */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomRange
+         */
         get collapsed(): boolean;
-        /** @category Inherited from GXml.DomRange */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomRange
+         */
         get common_ancestor_container(): DomNode;
-        /** @category Inherited from GXml.DomRange */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomRange
+         */
         get commonAncestorContainer(): DomNode;
         /**
          * @param node
@@ -27227,33 +27893,75 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get children(): DomHTMLCollection;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get first_element_child(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get firstElementChild(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get last_element_child(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get lastElementChild(): DomElement;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get child_element_count(): number;
-        /** @category Inherited from GXml.DomParentNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomParentNode
+         */
         get childElementCount(): number;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get namespace_uri(): string;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get namespaceUri(): string;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get prefix(): string;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get local_name(): string;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get localName(): string;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get tag_name(): string;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get tagName(): string;
         /** @category Inherited from GXml.DomElement */
         get id(): string;
@@ -27264,11 +27972,20 @@ export namespace GXml {
         /** @category Inherited from GXml.DomElement */
         get className(): string;
         set className(val: string);
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get class_list(): DomTokenList;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get classList(): DomTokenList;
-        /** @category Inherited from GXml.DomElement */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomElement
+         */
         get attributes(): DomNamedNodeMap;
         /** @category Inherited from GXml.Element */
         get content(): string;
@@ -28115,7 +28832,10 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GHashMapAttr.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomNamedNodeMap */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNamedNodeMap
+         */
         get length(): number;
         /**
          * @param index
@@ -28767,13 +29487,25 @@ export namespace GXml {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gee.MapIterator */
+        /**
+         * @read-only
+         * @category Inherited from Gee.MapIterator
+         */
         get valid(): boolean;
-        /** @category Inherited from Gee.MapIterator */
+        /**
+         * @read-only
+         * @category Inherited from Gee.MapIterator
+         */
         get mutable(): boolean;
-        /** @category Inherited from Gee.MapIterator */
+        /**
+         * @read-only
+         * @category Inherited from Gee.MapIterator
+         */
         get read_only(): boolean;
-        /** @category Inherited from Gee.MapIterator */
+        /**
+         * @read-only
+         * @category Inherited from Gee.MapIterator
+         */
         get readOnly(): boolean;
         next(): boolean;
         has_next(): boolean;
@@ -29363,7 +30095,10 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GListChildren.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.DomNodeList */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNodeList
+         */
         get length(): number;
         /**
          * @param index
@@ -29947,11 +30682,20 @@ export namespace GXml {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gee.Iterator */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterator
+         */
         get valid(): boolean;
-        /** @category Inherited from Gee.Iterator */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterator
+         */
         get read_only(): boolean;
-        /** @category Inherited from Gee.Iterator */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterator
+         */
         get readOnly(): boolean;
         /**
          * @param f
@@ -30775,11 +31519,20 @@ export namespace GXml {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gee.Iterator */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterator
+         */
         get valid(): boolean;
-        /** @category Inherited from Gee.Iterator */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterator
+         */
         get read_only(): boolean;
-        /** @category Inherited from Gee.Iterator */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterator
+         */
         get readOnly(): boolean;
         /**
          * @param f
@@ -31510,9 +32263,15 @@ export namespace GXml {
         // Methods
 
         get_internal_ns(): any;
-        /** @category Inherited from GXml.Namespace */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Namespace
+         */
         get uri(): string;
-        /** @category Inherited from GXml.Namespace */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Namespace
+         */
         get prefix(): string;
         get_uri(): string;
         get_prefix(): string;
@@ -32030,14 +32789,41 @@ export namespace GXml {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get attrs(): Gee.Map;
+        /**
+         * @read-only
+         */
         get children_nodes(): Gee.BidirList;
+        /**
+         * @read-only
+         */
         get childrenNodes(): Gee.BidirList;
+        /**
+         * @read-only
+         */
         get namespaces(): Gee.List;
+        /**
+         * @read-only
+         */
         get document(): Document;
+        /**
+         * @read-only
+         */
         get parent(): Node;
+        /**
+         * @read-only
+         */
         get type_node(): NodeType;
+        /**
+         * @read-only
+         */
         get typeNode(): NodeType;
+        /**
+         * @read-only
+         */
         get name(): string;
         get value(): string;
         set value(val: string);
@@ -32157,17 +32943,35 @@ export namespace GXml {
          * @param value
          */
         set_value(value: string): void;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get node_type(): DomNodeNodeType;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get nodeType(): DomNodeNodeType;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get node_name(): string;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get nodeName(): string;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get base_uri(): string;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get baseUri(): string;
         /** @category Inherited from GXml.DomNode */
         get owner_document(): DomDocument;
@@ -32175,33 +32979,75 @@ export namespace GXml {
         /** @category Inherited from GXml.DomNode */
         get ownerDocument(): DomDocument;
         set ownerDocument(val: DomDocument);
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get parent_node(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get parentNode(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get parent_element(): DomElement;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get parentElement(): DomElement;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get child_nodes(): DomNodeList;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get childNodes(): DomNodeList;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get first_child(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get firstChild(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get last_child(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get lastChild(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get previous_sibling(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get previousSibling(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get next_sibling(): DomNode;
-        /** @category Inherited from GXml.DomNode */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomNode
+         */
         get nextSibling(): DomNode;
         /** @category Inherited from GXml.DomNode */
         get node_value(): string;
@@ -33029,12 +33875,18 @@ export namespace GXml {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.ProcessingInstruction */
+        /**
+         * @read-only
+         * @category Inherited from GXml.ProcessingInstruction
+         */
         get target(): string;
         /** @category Inherited from GXml.ProcessingInstruction */
         get data(): string;
         set data(val: string);
-        /** @category Inherited from GXml.DomCharacterData */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomCharacterData
+         */
         get length(): number;
         get_target(): string;
         get_data(): string;
@@ -33622,14 +34474,23 @@ export namespace GXml {
         /** @category Inherited from GXml.Text */
         get str(): string;
         set str(val: string);
-        /** @category Inherited from GXml.DomText */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomText
+         */
         get whole_text(): string;
-        /** @category Inherited from GXml.DomText */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomText
+         */
         get wholeText(): string;
         /** @category Inherited from GXml.DomCharacterData */
         get data(): string;
         set data(val: string);
-        /** @category Inherited from GXml.DomCharacterData */
+        /**
+         * @read-only
+         * @category Inherited from GXml.DomCharacterData
+         */
         get length(): number;
         get_str(): string;
         /**
@@ -34226,23 +35087,50 @@ export namespace GXml {
             ...args: GObject.GjsParameters<GXPathObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.XPathObject */
+        /**
+         * @read-only
+         * @category Inherited from GXml.XPathObject
+         */
         get object_type(): XPathObjectType;
-        /** @category Inherited from GXml.XPathObject */
+        /**
+         * @read-only
+         * @category Inherited from GXml.XPathObject
+         */
         get objectType(): XPathObjectType;
-        /** @category Inherited from GXml.XPathObject */
+        /**
+         * @read-only
+         * @category Inherited from GXml.XPathObject
+         */
         get boolean_value(): boolean;
-        /** @category Inherited from GXml.XPathObject */
+        /**
+         * @read-only
+         * @category Inherited from GXml.XPathObject
+         */
         get booleanValue(): boolean;
-        /** @category Inherited from GXml.XPathObject */
+        /**
+         * @read-only
+         * @category Inherited from GXml.XPathObject
+         */
         get string_value(): string;
-        /** @category Inherited from GXml.XPathObject */
+        /**
+         * @read-only
+         * @category Inherited from GXml.XPathObject
+         */
         get stringValue(): string;
-        /** @category Inherited from GXml.XPathObject */
+        /**
+         * @read-only
+         * @category Inherited from GXml.XPathObject
+         */
         get number_value(): number;
-        /** @category Inherited from GXml.XPathObject */
+        /**
+         * @read-only
+         * @category Inherited from GXml.XPathObject
+         */
         get numberValue(): number;
-        /** @category Inherited from GXml.XPathObject */
+        /**
+         * @read-only
+         * @category Inherited from GXml.XPathObject
+         */
         get nodeset(): DomHTMLCollection;
         get_object_type(): XPathObjectType;
         get_boolean_value(): boolean;
@@ -36861,13 +37749,25 @@ export namespace GXml {
         set_ignored_serializable_properties(
             value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>,
         ): void;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknown_serializable_properties(): Gee.Map;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknownSerializableProperties(): Gee.Map;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknown_serializable_nodes(): Gee.Collection;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknownSerializableNodes(): Gee.Collection;
         /** @category Inherited from GXml.Serializable */
         get serialized_xml_node_value(): string;
@@ -37426,14 +38326,41 @@ export namespace GXml {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get value_type(): GObject.GType;
+        /**
+         * @read-only
+         */
         get valueType(): GObject.GType;
+        /**
+         * @read-only
+         */
         get primary_key_type(): GObject.GType;
+        /**
+         * @read-only
+         */
         get primaryKeyType(): GObject.GType;
+        /**
+         * @read-only
+         */
         get secondary_key_type(): GObject.GType;
+        /**
+         * @read-only
+         */
         get secondaryKeyType(): GObject.GType;
+        /**
+         * @read-only
+         */
         get primary_keys(): Gee.Collection;
+        /**
+         * @read-only
+         */
         get primaryKeys(): Gee.Collection;
+        /**
+         * @read-only
+         */
         get size(): number;
         get ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
         set ignored_serializable_properties(val: GLib.HashTable<string, GObject.ParamSpec>);
@@ -37648,13 +38575,25 @@ export namespace GXml {
         set_ignored_serializable_properties(
             value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>,
         ): void;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknown_serializable_properties(): Gee.Map;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknownSerializableProperties(): Gee.Map;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknown_serializable_nodes(): Gee.Collection;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknownSerializableNodes(): Gee.Collection;
         /** @category Inherited from GXml.Serializable */
         get serialized_xml_node_value(): string;
@@ -38537,13 +39476,25 @@ export namespace GXml {
         set_ignored_serializable_properties(
             value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>,
         ): void;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknown_serializable_properties(): Gee.Map;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknownSerializableProperties(): Gee.Map;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknown_serializable_nodes(): Gee.Collection;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknownSerializableNodes(): Gee.Collection;
         /** @category Inherited from GXml.Serializable */
         get serialized_xml_node_value(): string;
@@ -39267,13 +40218,25 @@ export namespace GXml {
         set_ignored_serializable_properties(
             value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>,
         ): void;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknown_serializable_properties(): Gee.Map;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknownSerializableProperties(): Gee.Map;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknown_serializable_nodes(): Gee.Collection;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknownSerializableNodes(): Gee.Collection;
         /** @category Inherited from GXml.Serializable */
         get serialized_xml_node_value(): string;
@@ -40031,13 +40994,25 @@ export namespace GXml {
         set_ignored_serializable_properties(
             value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>,
         ): void;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknown_serializable_properties(): Gee.Map;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknownSerializableProperties(): Gee.Map;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknown_serializable_nodes(): Gee.Collection;
-        /** @category Inherited from GXml.Serializable */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Serializable
+         */
         get unknownSerializableNodes(): Gee.Collection;
         /** @category Inherited from GXml.Serializable */
         get serialized_xml_node_value(): string;
@@ -41214,7 +42189,10 @@ export namespace GXml {
         /** @category Inherited from GXml.Attribute */
         get namespace(): Namespace;
         set namespace(val: Namespace);
-        /** @category Inherited from GXml.Attribute */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Attribute
+         */
         get prefix(): string;
         get_namespace(): Namespace;
         /**
@@ -41759,7 +42737,10 @@ export namespace GXml {
             ...args: GObject.GjsParameters<TCDATA.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.CDATA */
+        /**
+         * @read-only
+         * @category Inherited from GXml.CDATA
+         */
         get str(): string;
         get_str(): string;
         /**
@@ -42910,7 +43891,10 @@ export namespace GXml {
         /** @category Inherited from GXml.Document */
         get backup(): boolean;
         set backup(val: boolean);
-        /** @category Inherited from GXml.Document */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Document
+         */
         get root(): Node;
         /** @category Inherited from GXml.Document */
         get file(): Gio.File;
@@ -43571,9 +44555,15 @@ export namespace GXml {
             ...args: GObject.GjsParameters<TElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.Element */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Element
+         */
         get tag_name(): string;
-        /** @category Inherited from GXml.Element */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Element
+         */
         get tagName(): string;
         /** @category Inherited from GXml.Element */
         get content(): string;
@@ -44180,9 +45170,15 @@ export namespace GXml {
             ...args: GObject.GjsParameters<TNamespace.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.Namespace */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Namespace
+         */
         get uri(): string;
-        /** @category Inherited from GXml.Namespace */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Namespace
+         */
         get prefix(): string;
         get_uri(): string;
         get_prefix(): string;
@@ -44682,16 +45678,43 @@ export namespace GXml {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get attrs(): Gee.Map;
+        /**
+         * @read-only
+         */
         get children_nodes(): Gee.BidirList;
+        /**
+         * @read-only
+         */
         get childrenNodes(): Gee.BidirList;
+        /**
+         * @read-only
+         */
         get document(): Document;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get namespaces(): Gee.List;
+        /**
+         * @read-only
+         */
         get type_node(): NodeType;
+        /**
+         * @read-only
+         */
         get typeNode(): NodeType;
         get value(): string;
         set value(val: string);
+        /**
+         * @read-only
+         */
         get parent(): Node;
 
         /**
@@ -45436,7 +46459,10 @@ export namespace GXml {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GXml.ProcessingInstruction */
+        /**
+         * @read-only
+         * @category Inherited from GXml.ProcessingInstruction
+         */
         get target(): string;
         /** @category Inherited from GXml.ProcessingInstruction */
         get data(): string;
@@ -46523,7 +47549,10 @@ export namespace GXml {
         /** @category Inherited from GXml.Parser */
         get indent(): boolean;
         set indent(val: boolean);
-        /** @category Inherited from GXml.Parser */
+        /**
+         * @read-only
+         * @category Inherited from GXml.Parser
+         */
         get node(): DomNode;
         /**
          * @param file
@@ -49468,6 +50497,9 @@ export namespace GXml {
 
         get namespace(): Namespace;
         set namespace(val: Namespace);
+        /**
+         * @read-only
+         */
         get prefix(): string;
 
         // Methods
@@ -49515,6 +50547,9 @@ export namespace GXml {
     interface CDATA extends GObject.Object, CDATA.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get str(): string;
 
         // Methods
@@ -49772,6 +50807,9 @@ export namespace GXml {
         set prefixDefaultNs(val: boolean);
         get backup(): boolean;
         set backup(val: boolean);
+        /**
+         * @read-only
+         */
         get root(): Node;
         get file(): Gio.File;
         set file(val: Gio.File);
@@ -49922,14 +50960,35 @@ export namespace GXml {
     interface DomAttr extends GObject.Object, DomAttr.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get namespace_uri(): string;
+        /**
+         * @read-only
+         */
         get namespaceUri(): string;
+        /**
+         * @read-only
+         */
         get prefix(): string;
+        /**
+         * @read-only
+         */
         get local_name(): string;
+        /**
+         * @read-only
+         */
         get localName(): string;
+        /**
+         * @read-only
+         */
         get name(): string;
         get value(): string;
         set value(val: string);
+        /**
+         * @read-only
+         */
         get specified(): boolean;
 
         // Methods
@@ -50023,6 +51082,9 @@ export namespace GXml {
 
         get data(): string;
         set data(val: string);
+        /**
+         * @read-only
+         */
         get length(): number;
 
         // Methods
@@ -50106,7 +51168,13 @@ export namespace GXml {
     interface DomText extends DomCharacterData, DomText.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get whole_text(): string;
+        /**
+         * @read-only
+         */
         get wholeText(): string;
 
         // Methods
@@ -50153,6 +51221,9 @@ export namespace GXml {
     interface DomProcessingInstruction extends DomCharacterData, DomProcessingInstruction.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get target(): string;
 
         // Methods
@@ -50288,12 +51359,33 @@ export namespace GXml {
     interface DomParentNode extends GObject.Object, DomParentNode.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get children(): DomHTMLCollection;
+        /**
+         * @read-only
+         */
         get first_element_child(): DomElement;
+        /**
+         * @read-only
+         */
         get firstElementChild(): DomElement;
+        /**
+         * @read-only
+         */
         get last_element_child(): DomElement;
+        /**
+         * @read-only
+         */
         get lastElementChild(): DomElement;
+        /**
+         * @read-only
+         */
         get child_element_count(): number;
+        /**
+         * @read-only
+         */
         get childElementCount(): number;
 
         // Methods
@@ -50359,9 +51451,21 @@ export namespace GXml {
     interface DomNonDocumentTypeChildNode extends GObject.Object, DomNonDocumentTypeChildNode.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get previous_element_sibling(): DomElement;
+        /**
+         * @read-only
+         */
         get previousElementSibling(): DomElement;
+        /**
+         * @read-only
+         */
         get next_element_sibling(): DomElement;
+        /**
+         * @read-only
+         */
         get nextElementSibling(): DomElement;
 
         // Methods
@@ -50446,6 +51550,9 @@ export namespace GXml {
     interface DomNodeList extends GObject.Object, DomNodeList.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
 
         // Methods
@@ -50511,6 +51618,9 @@ export namespace GXml {
     interface DomHTMLCollection extends GObject.Object, DomHTMLCollection.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
 
         // Methods
@@ -50601,13 +51711,37 @@ export namespace GXml {
     interface DomNodeIterator extends GObject.Object, DomNodeIterator.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get root(): DomNode;
+        /**
+         * @read-only
+         */
         get reference_node(): DomNode;
+        /**
+         * @read-only
+         */
         get referenceNode(): DomNode;
+        /**
+         * @read-only
+         */
         get pointer_before_reference_node(): boolean;
+        /**
+         * @read-only
+         */
         get pointerBeforeReferenceNode(): boolean;
+        /**
+         * @read-only
+         */
         get what_to_show(): number;
+        /**
+         * @read-only
+         */
         get whatToShow(): number;
+        /**
+         * @read-only
+         */
         get filter(): DomNodeFilter;
 
         // Methods
@@ -50702,11 +51836,29 @@ export namespace GXml {
     interface DomTreeWalker extends GObject.Object, DomTreeWalker.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get root(): DomNode;
+        /**
+         * @read-only
+         */
         get what_to_show(): number;
+        /**
+         * @read-only
+         */
         get whatToShow(): number;
+        /**
+         * @read-only
+         */
         get filter(): DomNodeFilter;
+        /**
+         * @read-only
+         */
         get current_node(): DomNode;
+        /**
+         * @read-only
+         */
         get currentNode(): DomNode;
 
         // Methods
@@ -50796,6 +51948,9 @@ export namespace GXml {
     interface DomNamedNodeMap extends GObject.Object, DomNamedNodeMap.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
 
         // Methods
@@ -50899,6 +52054,9 @@ export namespace GXml {
     interface DomTokenList extends GObject.Object, DomTokenList.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
 
         // Methods
@@ -51142,19 +52300,61 @@ export namespace GXml {
     interface DomDocument extends GObject.Object, DomDocument.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get implementation(): DomImplementation;
+        /**
+         * @read-only
+         */
         get url(): string;
+        /**
+         * @read-only
+         */
         get document_uri(): string;
+        /**
+         * @read-only
+         */
         get documentUri(): string;
+        /**
+         * @read-only
+         */
         get origin(): string;
+        /**
+         * @read-only
+         */
         get compat_mode(): string;
+        /**
+         * @read-only
+         */
         get compatMode(): string;
+        /**
+         * @read-only
+         */
         get character_set(): string;
+        /**
+         * @read-only
+         */
         get characterSet(): string;
+        /**
+         * @read-only
+         */
         get content_type(): string;
+        /**
+         * @read-only
+         */
         get contentType(): string;
+        /**
+         * @read-only
+         */
         get doctype(): DomDocumentType;
+        /**
+         * @read-only
+         */
         get document_element(): DomElement;
+        /**
+         * @read-only
+         */
         get documentElement(): DomElement;
 
         // Methods
@@ -51388,10 +52588,25 @@ export namespace GXml {
     interface DomDocumentType extends GObject.Object, DomDocumentType.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get public_id(): string;
+        /**
+         * @read-only
+         */
         get publicId(): string;
+        /**
+         * @read-only
+         */
         get system_id(): string;
+        /**
+         * @read-only
+         */
         get systemId(): string;
 
         // Methods
@@ -51602,12 +52817,33 @@ export namespace GXml {
     interface DomElement extends GObject.Object, DomElement.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get namespace_uri(): string;
+        /**
+         * @read-only
+         */
         get namespaceUri(): string;
+        /**
+         * @read-only
+         */
         get prefix(): string;
+        /**
+         * @read-only
+         */
         get local_name(): string;
+        /**
+         * @read-only
+         */
         get localName(): string;
+        /**
+         * @read-only
+         */
         get tag_name(): string;
+        /**
+         * @read-only
+         */
         get tagName(): string;
         get id(): string;
         set id(val: string);
@@ -51615,8 +52851,17 @@ export namespace GXml {
         set class_name(val: string);
         get className(): string;
         set className(val: string);
+        /**
+         * @read-only
+         */
         get class_list(): DomTokenList;
+        /**
+         * @read-only
+         */
         get classList(): DomTokenList;
+        /**
+         * @read-only
+         */
         get attributes(): DomNamedNodeMap;
 
         // Methods
@@ -51896,20 +53141,65 @@ export namespace GXml {
     interface DomEvent extends GObject.Object, DomEvent.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get etype(): string;
+        /**
+         * @read-only
+         */
         get event_target(): DomEventTarget;
+        /**
+         * @read-only
+         */
         get eventTarget(): DomEventTarget;
+        /**
+         * @read-only
+         */
         get current_target(): DomEventTarget;
+        /**
+         * @read-only
+         */
         get currentTarget(): DomEventTarget;
+        /**
+         * @read-only
+         */
         get bubbles(): boolean;
+        /**
+         * @read-only
+         */
         get cancelable(): boolean;
+        /**
+         * @read-only
+         */
         get is_trusted(): boolean;
+        /**
+         * @read-only
+         */
         get isTrusted(): boolean;
+        /**
+         * @read-only
+         */
         get time_stamp(): DomTimeStamp;
+        /**
+         * @read-only
+         */
         get timeStamp(): DomTimeStamp;
+        /**
+         * @read-only
+         */
         get default_prevented(): boolean;
+        /**
+         * @read-only
+         */
         get defaultPrevented(): boolean;
+        /**
+         * @read-only
+         */
         get event_phase(): DomEventPhase;
+        /**
+         * @read-only
+         */
         get eventPhase(): DomEventPhase;
 
         // Methods
@@ -51982,6 +53272,9 @@ export namespace GXml {
     interface DomCustomEvent extends GObject.Object, DomCustomEvent.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get detail(): GObject.Value;
 
         // Methods
@@ -52140,7 +53433,13 @@ export namespace GXml {
     interface DomMutationRecord extends GObject.Object, DomMutationRecord.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get mtype(): string;
+        /**
+         * @read-only
+         */
         get target(): DomNode;
         get added_nodes(): DomNodeList;
         set added_nodes(val: DomNodeList);
@@ -52150,15 +53449,45 @@ export namespace GXml {
         set removed_nodes(val: DomNodeList);
         get removedNodes(): DomNodeList;
         set removedNodes(val: DomNodeList);
+        /**
+         * @read-only
+         */
         get previous_sibling(): DomNode;
+        /**
+         * @read-only
+         */
         get previousSibling(): DomNode;
+        /**
+         * @read-only
+         */
         get next_sibling(): DomNode;
+        /**
+         * @read-only
+         */
         get nextSibling(): DomNode;
+        /**
+         * @read-only
+         */
         get attribute_name(): string;
+        /**
+         * @read-only
+         */
         get attributeName(): string;
+        /**
+         * @read-only
+         */
         get attribute_namespace(): string;
+        /**
+         * @read-only
+         */
         get attributeNamespace(): string;
+        /**
+         * @read-only
+         */
         get old_value(): string;
+        /**
+         * @read-only
+         */
         get oldValue(): string;
 
         // Methods
@@ -52378,29 +53707,89 @@ export namespace GXml {
     interface DomNode extends GObject.Object, DomNode.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get node_type(): DomNodeNodeType;
+        /**
+         * @read-only
+         */
         get nodeType(): DomNodeNodeType;
+        /**
+         * @read-only
+         */
         get node_name(): string;
+        /**
+         * @read-only
+         */
         get nodeName(): string;
+        /**
+         * @read-only
+         */
         get base_uri(): string;
+        /**
+         * @read-only
+         */
         get baseUri(): string;
         get owner_document(): DomDocument;
         set owner_document(val: DomDocument);
         get ownerDocument(): DomDocument;
         set ownerDocument(val: DomDocument);
+        /**
+         * @read-only
+         */
         get parent_node(): DomNode;
+        /**
+         * @read-only
+         */
         get parentNode(): DomNode;
+        /**
+         * @read-only
+         */
         get parent_element(): DomElement;
+        /**
+         * @read-only
+         */
         get parentElement(): DomElement;
+        /**
+         * @read-only
+         */
         get child_nodes(): DomNodeList;
+        /**
+         * @read-only
+         */
         get childNodes(): DomNodeList;
+        /**
+         * @read-only
+         */
         get first_child(): DomNode;
+        /**
+         * @read-only
+         */
         get firstChild(): DomNode;
+        /**
+         * @read-only
+         */
         get last_child(): DomNode;
+        /**
+         * @read-only
+         */
         get lastChild(): DomNode;
+        /**
+         * @read-only
+         */
         get previous_sibling(): DomNode;
+        /**
+         * @read-only
+         */
         get previousSibling(): DomNode;
+        /**
+         * @read-only
+         */
         get next_sibling(): DomNode;
+        /**
+         * @read-only
+         */
         get nextSibling(): DomNode;
         get node_value(): string;
         set node_value(val: string);
@@ -52657,16 +54046,49 @@ export namespace GXml {
     interface DomRange extends GObject.Object, DomRange.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get start_container(): DomNode;
+        /**
+         * @read-only
+         */
         get startContainer(): DomNode;
+        /**
+         * @read-only
+         */
         get start_offset(): number;
+        /**
+         * @read-only
+         */
         get startOffset(): number;
+        /**
+         * @read-only
+         */
         get end_container(): DomNode;
+        /**
+         * @read-only
+         */
         get endContainer(): DomNode;
+        /**
+         * @read-only
+         */
         get end_offset(): number;
+        /**
+         * @read-only
+         */
         get endOffset(): number;
+        /**
+         * @read-only
+         */
         get collapsed(): boolean;
+        /**
+         * @read-only
+         */
         get common_ancestor_container(): DomNode;
+        /**
+         * @read-only
+         */
         get commonAncestorContainer(): DomNode;
 
         // Methods
@@ -52835,7 +54257,13 @@ export namespace GXml {
     interface Element extends GObject.Object, Element.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get tag_name(): string;
+        /**
+         * @read-only
+         */
         get tagName(): string;
         get content(): string;
         set content(val: string);
@@ -52981,16 +54409,31 @@ export namespace GXml {
     interface GomCollection extends GObject.Object, GomCollection.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get nodes_index(): GLib.Queue;
+        /**
+         * @read-only
+         */
         get nodesIndex(): GLib.Queue;
         get element(): GomElement;
         set element(val: GomElement);
+        /**
+         * @read-only
+         */
         get items_name(): string;
+        /**
+         * @read-only
+         */
         get itemsName(): string;
         get items_type(): GObject.GType;
         set items_type(val: GObject.GType);
         get itemsType(): GObject.GType;
         set itemsType(val: GObject.GType);
+        /**
+         * @read-only
+         */
         get length(): number;
 
         // Methods
@@ -53387,7 +54830,13 @@ export namespace GXml {
     interface Namespace extends GObject.Object, Namespace.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get uri(): string;
+        /**
+         * @read-only
+         */
         get prefix(): string;
 
         // Methods
@@ -53521,16 +54970,43 @@ export namespace GXml {
     interface Node extends GObject.Object, Node.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get namespaces(): Gee.List;
+        /**
+         * @read-only
+         */
         get children_nodes(): Gee.BidirList;
+        /**
+         * @read-only
+         */
         get childrenNodes(): Gee.BidirList;
+        /**
+         * @read-only
+         */
         get attrs(): Gee.Map;
+        /**
+         * @read-only
+         */
         get name(): string;
         get value(): string;
         set value(val: string);
+        /**
+         * @read-only
+         */
         get type_node(): NodeType;
+        /**
+         * @read-only
+         */
         get typeNode(): NodeType;
+        /**
+         * @read-only
+         */
         get document(): Document;
+        /**
+         * @read-only
+         */
         get parent(): Node;
 
         // Methods
@@ -53617,9 +55093,21 @@ export namespace GXml {
     interface Notation extends GObject.Object, Notation.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get public_id(): string;
+        /**
+         * @read-only
+         */
         get publicId(): string;
+        /**
+         * @read-only
+         */
         get external_id(): string;
+        /**
+         * @read-only
+         */
         get externalId(): string;
 
         // Methods
@@ -53928,6 +55416,9 @@ export namespace GXml {
         set backup(val: boolean);
         get indent(): boolean;
         set indent(val: boolean);
+        /**
+         * @read-only
+         */
         get node(): DomNode;
 
         // Methods
@@ -54252,6 +55743,9 @@ export namespace GXml {
     interface ProcessingInstruction extends GObject.Object, ProcessingInstruction.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get target(): string;
         get data(): string;
         set data(val: string);
@@ -55322,9 +56816,21 @@ export namespace GXml {
         set content_type(val: IXsdBaseContent);
         get contentType(): IXsdBaseContent;
         set contentType(val: IXsdBaseContent);
+        /**
+         * @read-only
+         */
         get type_attributes(): IXsdListAttributes;
+        /**
+         * @read-only
+         */
         get typeAttributes(): IXsdListAttributes;
+        /**
+         * @read-only
+         */
         get group_attributes(): IXsdListAttributesGroup;
+        /**
+         * @read-only
+         */
         get groupAttributes(): IXsdListAttributesGroup;
 
         // Methods
@@ -56091,6 +57597,9 @@ export namespace GXml {
         set items_name(val: GObject.GType);
         get itemsName(): GObject.GType;
         set itemsName(val: GObject.GType);
+        /**
+         * @read-only
+         */
         get length(): number;
 
         // Methods
@@ -56385,9 +57894,21 @@ export namespace GXml {
     interface Serializable extends GObject.Object, Serializable.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get unknown_serializable_properties(): Gee.Map;
+        /**
+         * @read-only
+         */
         get unknownSerializableProperties(): Gee.Map;
+        /**
+         * @read-only
+         */
         get unknown_serializable_nodes(): Gee.Collection;
+        /**
+         * @read-only
+         */
         get unknownSerializableNodes(): Gee.Collection;
         get serialized_xml_node_value(): string;
         set serialized_xml_node_value(val: string);
@@ -56817,14 +58338,41 @@ export namespace GXml {
     interface XPathObject extends GObject.Object, XPathObject.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get object_type(): XPathObjectType;
+        /**
+         * @read-only
+         */
         get objectType(): XPathObjectType;
+        /**
+         * @read-only
+         */
         get boolean_value(): boolean;
+        /**
+         * @read-only
+         */
         get booleanValue(): boolean;
+        /**
+         * @read-only
+         */
         get string_value(): string;
+        /**
+         * @read-only
+         */
         get stringValue(): string;
+        /**
+         * @read-only
+         */
         get number_value(): number;
+        /**
+         * @read-only
+         */
         get numberValue(): number;
+        /**
+         * @read-only
+         */
         get nodeset(): DomHTMLCollection;
 
         // Methods

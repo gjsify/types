@@ -794,6 +794,9 @@ export namespace Modulemd {
         set buildonly(val: boolean);
         get buildorder(): number;
         set buildorder(val: number);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get rationale(): string;
         set rationale(val: string);
@@ -1215,8 +1218,17 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get mdversion(): number;
+        /**
+         * @construct-only
+         */
         get module_name(): string;
+        /**
+         * @construct-only
+         */
         get moduleName(): string;
 
         /**
@@ -1567,7 +1579,13 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get module_name(): string;
+        /**
+         * @construct-only
+         */
         get moduleName(): string;
 
         /**
@@ -2059,10 +2077,25 @@ export namespace Modulemd {
         set arch(val: string);
         get context(): string;
         set context(val: string);
+        /**
+         * @read-only
+         */
         get mdversion(): number;
+        /**
+         * @construct-only
+         */
         get module_name(): string;
+        /**
+         * @construct-only
+         */
         get moduleName(): string;
+        /**
+         * @construct-only
+         */
         get stream_name(): string;
+        /**
+         * @construct-only
+         */
         get streamName(): string;
         get version(): number;
         set version(val: number);
@@ -3142,7 +3175,13 @@ export namespace Modulemd {
         set eol_date(val: number);
         get eolDate(): number;
         set eolDate(val: number);
+        /**
+         * @construct-only
+         */
         get mdversion(): number;
+        /**
+         * @construct-only
+         */
         get message(): string;
         get modified(): number;
         set modified(val: number);
@@ -3150,9 +3189,21 @@ export namespace Modulemd {
         set module_context(val: string);
         get moduleContext(): string;
         set moduleContext(val: string);
+        /**
+         * @construct-only
+         */
         get module_name(): string;
+        /**
+         * @construct-only
+         */
         get moduleName(): string;
+        /**
+         * @construct-only
+         */
         get module_stream(): string;
+        /**
+         * @construct-only
+         */
         get moduleStream(): string;
         get obsoleted_by_module_name(): string;
         set obsoleted_by_module_name(val: string);
@@ -3611,6 +3662,9 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
 
         /**
@@ -3747,6 +3801,9 @@ export namespace Modulemd {
         set epoch(val: number);
         get name(): string;
         set name(val: string);
+        /**
+         * @read-only
+         */
         get nevra(): string;
         get release(): string;
         set release(val: string);
@@ -3870,6 +3927,9 @@ export namespace Modulemd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
 
         /**
@@ -4047,10 +4107,25 @@ export namespace Modulemd {
 
         get modified(): number;
         set modified(val: number);
+        /**
+         * @construct-only
+         */
         get module_name(): string;
+        /**
+         * @construct-only
+         */
         get moduleName(): string;
+        /**
+         * @construct-only
+         */
         get module_stream(): string;
+        /**
+         * @construct-only
+         */
         get moduleStream(): string;
+        /**
+         * @construct-only
+         */
         get version(): number;
 
         /**
@@ -4151,6 +4226,9 @@ export namespace Modulemd {
 
         get description(): string;
         set description(val: string);
+        /**
+         * @construct-only
+         */
         get locale(): string;
         get summary(): string;
         set summary(val: string);

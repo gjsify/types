@@ -57,6 +57,9 @@ export namespace Gly {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MemoryFormat {
         export const $gtype: GObject.GType<MemoryFormat>;
     }
@@ -161,6 +164,9 @@ export namespace Gly {
         G16,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SandboxSelector {
         export const $gtype: GObject.GType<SandboxSelector>;
     }
@@ -470,6 +476,9 @@ export namespace Gly {
 
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
         get sandbox_selector(): SandboxSelector;
         set sandbox_selector(val: SandboxSelector);

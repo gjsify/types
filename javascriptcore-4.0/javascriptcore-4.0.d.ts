@@ -462,14 +462,17 @@ export namespace JavaScriptCore {
 
         /**
          * The {@link JavaScriptCore.Context} in which the class was registered.
+         * @construct-only
          */
         set context(val: Context);
         /**
          * The name of the class.
+         * @construct-only
          */
         get name(): string;
         /**
          * The parent class or `null` in case of final classes.
+         * @construct-only
          */
         get parent(): Class;
 
@@ -670,10 +673,12 @@ export namespace JavaScriptCore {
 
         /**
          * The {@link JavaScriptCore.VirtualMachine} in which the context was created.
+         * @construct-only
          */
         get virtual_machine(): VirtualMachine;
         /**
          * The {@link JavaScriptCore.VirtualMachine} in which the context was created.
+         * @construct-only
          */
         get virtualMachine(): VirtualMachine;
 
@@ -1000,6 +1005,7 @@ export namespace JavaScriptCore {
 
         /**
          * The {@link JavaScriptCore.Context} in which the value was created.
+         * @construct-only
          */
         get context(): Context;
 
@@ -1473,6 +1479,7 @@ export namespace JavaScriptCore {
             /**
              * This signal is emitted when the JavaScript value is destroyed.
              * @signal
+             * @run-last
              */
             cleared: () => void;
             'notify::value': (pspec: GObject.ParamSpec) => void;
@@ -1498,6 +1505,7 @@ export namespace JavaScriptCore {
 
         /**
          * The {@link JavaScriptCore.Value} referencing the JavaScript value.
+         * @construct-only
          */
         set value(val: Value);
 

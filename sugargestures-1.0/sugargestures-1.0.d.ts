@@ -29,6 +29,9 @@ export namespace SugarGestures {
      * SugarGestures-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EventControllerState {
         export const $gtype: GObject.GType<EventControllerState>;
     }
@@ -43,6 +46,9 @@ export namespace SugarGestures {
         NOT_RECOGNIZED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SwipeDirection {
         export const $gtype: GObject.GType<SwipeDirection>;
     }
@@ -57,6 +63,9 @@ export namespace SugarGestures {
         DOWN,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace EventControllerFlags {
         export const $gtype: GObject.GType<EventControllerFlags>;
     }
@@ -69,6 +78,9 @@ export namespace SugarGestures {
         EXCLUSIVE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SwipeDirectionFlags {
         export const $gtype: GObject.GType<SwipeDirectionFlags>;
     }
@@ -88,14 +100,17 @@ export namespace SugarGestures {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             began: () => void;
             /**
              * @signal
+             * @run-last
              */
             ended: () => void;
             /**
              * @signal
+             * @run-last
              */
             updated: () => void;
             'notify::state': (pspec: GObject.ParamSpec) => void;
@@ -118,6 +133,9 @@ export namespace SugarGestures {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get state(): EventControllerState;
         get widget(): Gtk.Widget;
         set widget(val: Gtk.Widget);
@@ -210,6 +228,7 @@ export namespace SugarGestures {
         interface SignalSignatures extends EventController.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             pressed: (arg0: number, arg1: number) => void;
             'notify::threshold': (pspec: GObject.ParamSpec) => void;
@@ -297,6 +316,7 @@ export namespace SugarGestures {
         interface SignalSignatures extends TouchController.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'angle-changed': (arg0: number, arg1: number) => void;
             'notify::max-touches': (pspec: GObject.ParamSpec) => void;
@@ -383,6 +403,7 @@ export namespace SugarGestures {
         interface SignalSignatures extends EventController.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'swipe-ended': (arg0: SwipeDirection) => void;
             'notify::directions': (pspec: GObject.ParamSpec) => void;
@@ -405,6 +426,9 @@ export namespace SugarGestures {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get directions(): SwipeDirectionFlags;
 
         /**
@@ -558,6 +582,7 @@ export namespace SugarGestures {
         interface SignalSignatures extends TouchController.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'scale-changed': (arg0: number) => void;
             'notify::max-touches': (pspec: GObject.ParamSpec) => void;

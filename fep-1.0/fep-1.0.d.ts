@@ -20,6 +20,9 @@ export namespace Fep {
      * Fep-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GAttrType {
         export const $gtype: GObject.GType<GAttrType>;
     }
@@ -58,6 +61,9 @@ export namespace Fep {
         BLINK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GAttrUnderline {
         export const $gtype: GObject.GType<GAttrUnderline>;
     }
@@ -88,6 +94,9 @@ export namespace Fep {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GEventType {
         export const $gtype: GObject.GType<GEventType>;
     }
@@ -116,16 +125,19 @@ export namespace Fep {
             /**
              * The ::filter-event signal is emitted when key event is dispatched.
              * @signal
+             * @run-last
              */
             'filter-event': (arg0: any | null) => boolean | void;
             /**
              * The ::filter-key-event signal is emitted when key event is dispatched.
              * @signal
+             * @run-last
              */
             'filter-key-event': (arg0: number, arg1: number) => boolean | void;
             /**
              * The ::resized signal is emitted when terminal is resized.
              * @signal
+             * @run-last
              */
             resized: (arg0: number, arg1: number) => void;
             'notify::address': (pspec: GObject.ParamSpec) => void;
@@ -146,6 +158,9 @@ export namespace Fep {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get address(): string;
 
         /**

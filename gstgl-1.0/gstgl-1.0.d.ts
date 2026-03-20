@@ -53,6 +53,9 @@ export namespace GstGL {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GLConfigCaveat {
         export const $gtype: GObject.GType<GLConfigCaveat>;
     }
@@ -119,6 +122,9 @@ export namespace GstGL {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GLFormat {
         export const $gtype: GObject.GType<GLFormat>;
     }
@@ -210,6 +216,9 @@ export namespace GstGL {
         RG16,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GLQueryType {
         export const $gtype: GObject.GType<GLQueryType>;
     }
@@ -342,6 +351,9 @@ export namespace GstGL {
         static '450': number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GLStereoDownmix {
         export const $gtype: GObject.GType<GLStereoDownmix>;
     }
@@ -365,6 +377,9 @@ export namespace GstGL {
         AMBER_BLUE_DUBOIS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GLTextureTarget {
         export const $gtype: GObject.GType<GLTextureTarget>;
     }
@@ -399,6 +414,9 @@ export namespace GstGL {
         EXTERNAL_OES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GLUploadReturn {
         export const $gtype: GObject.GType<GLUploadReturn>;
     }
@@ -1085,6 +1103,9 @@ export namespace GstGL {
     interface GLWindowResizeCB {
         (data: any | null, width: number, height: number): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace GLAPI {
         export const $gtype: GObject.GType<GLAPI>;
     }
@@ -1120,6 +1141,9 @@ export namespace GstGL {
         ANY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GLBaseMemoryTransfer {
         export const $gtype: GObject.GType<GLBaseMemoryTransfer>;
     }
@@ -1140,6 +1164,9 @@ export namespace GstGL {
         UPLOAD,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GLConfigSurfaceType {
         export const $gtype: GObject.GType<GLConfigSurfaceType>;
     }
@@ -1167,6 +1194,9 @@ export namespace GstGL {
         PIXMAP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GLDisplayType {
         export const $gtype: GObject.GType<GLDisplayType>;
     }
@@ -1233,6 +1263,9 @@ export namespace GstGL {
         ANY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GLPlatform {
         export const $gtype: GObject.GType<GLPlatform>;
     }
@@ -1272,6 +1305,9 @@ export namespace GstGL {
         ANY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GLSLProfile {
         export const $gtype: GObject.GType<GLSLProfile>;
     }
@@ -1332,6 +1368,9 @@ export namespace GstGL {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get context(): GLContext;
 
         /**
@@ -1512,6 +1551,7 @@ export namespace GstGL {
         /**
          * The {@link GstGL.GLContext} in use by this {@link GstGL.GLBaseMixer}
          * @since 1.24
+         * @read-only
          */
         get context(): GLContext;
 
@@ -2437,6 +2477,7 @@ export namespace GstGL {
              * It can be called in any thread and it is emitted with
              * display's object lock held.
              * @signal
+             * @run-last
              */
             'create-context': (arg0: GLContext) => GLContext | null;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -3422,6 +3463,9 @@ export namespace GstGL {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get linked(): boolean;
 
         /**
@@ -4057,18 +4101,21 @@ export namespace GstGL {
              * Will be emitted when a key event is received by the GstGLwindow.
              * @signal
              * @since 1.6
+             * @run-last
              */
             'key-event': (arg0: string, arg1: string) => void;
             /**
              * Will be emitted when a mouse event is received by the GstGLwindow.
              * @signal
              * @since 1.6
+             * @run-last
              */
             'mouse-event': (arg0: string, arg1: number, arg2: number, arg3: number) => void;
             /**
              * Will be emitted when a mouse scroll event is received by the GstGLwindow.
              * @signal
              * @since 1.18
+             * @run-last
              */
             'scroll-event': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
             /**
@@ -4078,6 +4125,7 @@ export namespace GstGL {
              * direct handle comparision.
              * @signal
              * @since 1.20
+             * @run-last
              */
             'window-handle-changed': () => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;

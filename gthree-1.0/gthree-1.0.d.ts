@@ -577,10 +577,12 @@ export namespace Gthree {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             finished: (arg0: AnimationAction, arg1: number) => void;
             /**
              * @signal
+             * @run-last
              */
             loop: (arg0: AnimationAction, arg1: number) => void;
         }
@@ -2589,7 +2591,13 @@ export namespace Gthree {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get geometry(): Geometry;
+        /**
+         * @construct-only
+         */
         get material(): Material;
 
         /**
@@ -3168,6 +3176,9 @@ export namespace Gthree {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get geometry(): Geometry;
         get materials(): any[];
         set materials(val: any[]);
@@ -5100,10 +5111,12 @@ export namespace Gthree {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-cleanup
              */
             destroy: () => void;
             /**
              * @signal
+             * @run-last
              */
             'parent-set': (arg0: Object) => void;
             'notify::first-child': (pspec: GObject.ParamSpec) => void;
@@ -5138,14 +5151,41 @@ export namespace Gthree {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get first_child(): Object;
+        /**
+         * @read-only
+         */
         get firstChild(): Object;
+        /**
+         * @read-only
+         */
         get last_child(): Object;
+        /**
+         * @read-only
+         */
         get lastChild(): Object;
+        /**
+         * @read-only
+         */
         get next_sibling(): Object;
+        /**
+         * @read-only
+         */
         get nextSibling(): Object;
+        /**
+         * @read-only
+         */
         get parent(): Object;
+        /**
+         * @read-only
+         */
         get previous_sibling(): Object;
+        /**
+         * @read-only
+         */
         get previousSibling(): Object;
         get visible(): boolean;
         set visible(val: boolean);
@@ -5975,6 +6015,9 @@ export namespace Gthree {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get geometry(): Geometry;
         get material(): Material;
         set material(val: Material);
@@ -6998,6 +7041,9 @@ export namespace Gthree {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get shader(): Shader;
         get use_lights(): boolean;
         set use_lights(val: boolean);
@@ -7208,6 +7254,9 @@ export namespace Gthree {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get root(): Object;
 
         /**
@@ -7722,7 +7771,13 @@ export namespace Gthree {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get pixbuf(): GdkPixbuf.Pixbuf;
+        /**
+         * @construct-only
+         */
         get surface(): cairo.Surface;
 
         /**

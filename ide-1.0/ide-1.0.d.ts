@@ -55,6 +55,9 @@ export namespace Ide {
         DELETED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BuildLogStream {
         export const $gtype: GObject.GType<BuildLogStream>;
     }
@@ -67,6 +70,9 @@ export namespace Ide {
         STDERR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CursorType {
         export const $gtype: GObject.GType<CursorType>;
     }
@@ -99,6 +105,9 @@ export namespace Ide {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DiagnosticSeverity {
         export const $gtype: GObject.GType<DiagnosticSeverity>;
     }
@@ -134,6 +143,9 @@ export namespace Ide {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace HighlightResult {
         export const $gtype: GObject.GType<HighlightResult>;
     }
@@ -146,6 +158,9 @@ export namespace Ide {
         CONTINUE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IndentStyle {
         export const $gtype: GObject.GType<IndentStyle>;
     }
@@ -158,6 +173,9 @@ export namespace Ide {
         TABS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LayoutGridSplit {
         export const $gtype: GObject.GType<LayoutGridSplit>;
     }
@@ -195,6 +213,9 @@ export namespace Ide {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceViewModeType {
         export const $gtype: GObject.GType<SourceViewModeType>;
     }
@@ -209,6 +230,9 @@ export namespace Ide {
         MODAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceViewMovement {
         export const $gtype: GObject.GType<SourceViewMovement>;
     }
@@ -451,6 +475,9 @@ export namespace Ide {
         PREVIOUS_MATCH_SEARCH_CHAR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceViewTheatric {
         export const $gtype: GObject.GType<SourceViewTheatric>;
     }
@@ -470,6 +497,9 @@ export namespace Ide {
         SHRINK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SymbolKind {
         export const $gtype: GObject.GType<SymbolKind>;
     }
@@ -524,6 +554,9 @@ export namespace Ide {
         XML_CDATA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ThreadPoolKind {
         export const $gtype: GObject.GType<ThreadPoolKind>;
     }
@@ -570,6 +603,9 @@ export namespace Ide {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VcsConfigType {
         export const $gtype: GObject.GType<VcsConfigType>;
     }
@@ -986,6 +1022,9 @@ export namespace Ide {
     interface WidgetContextHandler {
         (widget: Gtk.Widget, context: Context): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace BufferLineFlags {
         export const $gtype: GObject.GType<BufferLineFlags>;
     }
@@ -1003,6 +1042,9 @@ export namespace Ide {
         NOTE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BuildPhase {
         export const $gtype: GObject.GType<BuildPhase>;
     }
@@ -1027,6 +1069,9 @@ export namespace Ide {
         FAILED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SymbolFlags {
         export const $gtype: GObject.GType<SymbolFlags>;
     }
@@ -1763,6 +1808,7 @@ export namespace Ide {
          *
          * {@link Ide.WorkbenchAddin} can hook how these are loaded, by implementing the
          * IdeWorkbenchAddin::can_open() vfunc and associated functions.
+         * @construct-only
          */
         get uri(): Uri;
 
@@ -1827,6 +1873,7 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'navigate-to': (arg0: BackForwardItem) => void;
             'notify::can-go-backward': (pspec: GObject.ParamSpec) => void;
@@ -1855,11 +1902,29 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get can_go_backward(): boolean;
+        /**
+         * @read-only
+         */
         get canGoBackward(): boolean;
+        /**
+         * @read-only
+         */
         get can_go_forward(): boolean;
+        /**
+         * @read-only
+         */
         get canGoForward(): boolean;
+        /**
+         * @read-only
+         */
         get current_item(): BackForwardItem;
+        /**
+         * @read-only
+         */
         get currentItem(): BackForwardItem;
 
         /**
@@ -1937,33 +2002,39 @@ export namespace Ide {
              * want to attach to this signal to update the location of the insert mark in
              * the display.
              * @signal
+             * @run-last
              */
             'cursor-moved': (arg0: Gtk.TextIter) => void;
             /**
              * This signal is emitted when the buffer should be destroyed, as the
              * {@link Ide.BufferManager} has reclaimed the buffer.
              * @signal
+             * @run-last
              */
             destroy: () => void;
             /**
              * This signal is emitted when the calculated line flags have changed. This occurs when
              * diagnostics and line changes have been recalculated.
              * @signal
+             * @run-last
              */
             'line-flags-changed': () => void;
             /**
              * This signal is emitted when the buffer manager has completed loading the file.
              * @signal
+             * @run-last
              */
             loaded: () => void;
             /**
              * This signal is emitted when the buffer manager has completed saving the file.
              * @signal
+             * @run-last
              */
             saved: () => void;
             /**
              * This signal is emitted when the buffer has completed loading a new symbol resolver.
              * @signal
+             * @run-last
              */
             'symbol-resolver-loaded': () => void;
             'notify::busy': (pspec: GObject.ParamSpec) => void;
@@ -2020,19 +2091,43 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get busy(): boolean;
+        /**
+         * @read-only
+         */
         get changed_on_volume(): boolean;
+        /**
+         * @read-only
+         */
         get changedOnVolume(): boolean;
+        /**
+         * @construct-only
+         */
         get context(): Context;
         get file(): File;
         set file(val: File);
+        /**
+         * @read-only
+         */
         get has_diagnostics(): boolean;
+        /**
+         * @read-only
+         */
         get hasDiagnostics(): boolean;
         get highlight_diagnostics(): boolean;
         set highlight_diagnostics(val: boolean);
         get highlightDiagnostics(): boolean;
         set highlightDiagnostics(val: boolean);
+        /**
+         * @read-only
+         */
         get read_only(): boolean;
+        /**
+         * @read-only
+         */
         get readOnly(): boolean;
         get style_scheme_name(): string;
         set style_scheme_name(val: string);
@@ -2319,6 +2414,7 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
             'notify::buffer': (pspec: GObject.ParamSpec) => void;
@@ -2340,6 +2436,9 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set buffer(val: Buffer);
 
         /**
@@ -2414,18 +2513,21 @@ export namespace Ide {
              * This signal is emitted when a view for `buffer` has received focus. You might connect to this
              * signal when you want to perform an operation while a buffer is in focus.
              * @signal
+             * @run-last
              */
             'buffer-focus-enter': (arg0: Buffer) => void;
             /**
              * This signal is emitted when the focus has left the view containing `buffer`. You might connect
              * to this signal to stop any work you were performing while the buffer was focused.
              * @signal
+             * @run-last
              */
             'buffer-focus-leave': (arg0: Buffer) => void;
             /**
              * This signal is emitted when a buffer has been successfully loaded. You might connect to this
              * signal to be notified when a buffer has completed loading.
              * @signal
+             * @run-last
              */
             'buffer-loaded': (arg0: Buffer) => void;
             /**
@@ -2434,6 +2536,7 @@ export namespace Ide {
              * storage.
              * The buffer:file property point to the saved file.
              * @signal
+             * @run-last
              */
             'buffer-saved': (arg0: Buffer) => void;
             /**
@@ -2441,6 +2544,7 @@ export namespace Ide {
              * buffer before the items-changed signal is emitted for which it is too late to get
              * a pointer to the buffer.
              * @signal
+             * @run-last
              */
             'buffer-unloaded': (arg0: Buffer) => void;
             /**
@@ -2451,6 +2555,7 @@ export namespace Ide {
              * The first handler of this signal is responsible for returning an
              * {@link Ide.Buffer} or `null`, for which one will be created.
              * @signal
+             * @run-last
              */
             'create-buffer': (arg0: File) => Buffer | null;
             /**
@@ -2460,6 +2565,7 @@ export namespace Ide {
              * If `create_new_view` is `false`, then the buffer is probably being force-reloaded due to
              * changes from the host file-system.
              * @signal
+             * @run-last
              */
             'load-buffer': (arg0: Buffer, arg1: boolean) => void;
             /**
@@ -2467,6 +2573,7 @@ export namespace Ide {
              * if you'd like to perform mutation of the buffer before it is persisted to storage.
              * Till the "buffer-saved" signal is emmited, the buffer:file property point to the current file.
              * @signal
+             * @run-last
              */
             'save-buffer': (arg0: Buffer) => void;
             'notify::auto-save': (pspec: GObject.ParamSpec) => void;
@@ -3365,12 +3472,14 @@ export namespace Ide {
              * Contrast this with {@link Ide.BuildManager.SignalSignatures.build_finished | Ide.BuildManager::build-finished} for a successful
              * build.
              * @signal
+             * @run-last
              */
             'build-failed': (arg0: BuildPipeline) => void;
             /**
              * The "build-finished" signal is emitted when a build completed
              * successfully.
              * @signal
+             * @run-last
              */
             'build-finished': (arg0: BuildPipeline) => void;
             /**
@@ -3378,6 +3487,7 @@ export namespace Ide {
              * The build may be an incremental build. The `pipeline` instance is
              * the build pipeline which is being executed.
              * @signal
+             * @run-last
              */
             'build-started': (arg0: BuildPipeline) => void;
             'notify::busy': (pspec: GObject.ParamSpec) => void;
@@ -3421,6 +3531,7 @@ export namespace Ide {
          * executing. This can be bound to UI elements to display to the
          * user that a build is active (and therefore other builds cannot
          * be activated at the moment).
+         * @read-only
          */
         get busy(): boolean;
         /**
@@ -3428,6 +3539,7 @@ export namespace Ide {
          *
          * This might be false if the required runtime is not available or other
          * errors in setting up the build pipeline.
+         * @read-only
          */
         get can_build(): boolean;
         /**
@@ -3435,34 +3547,43 @@ export namespace Ide {
          *
          * This might be false if the required runtime is not available or other
          * errors in setting up the build pipeline.
+         * @read-only
          */
         get canBuild(): boolean;
         /**
          * The "has-diagnostics" property indicates that there have been
          * diagnostics found during the last execution of the build pipeline.
+         * @read-only
          */
         get has_diagnostics(): boolean;
         /**
          * The "has-diagnostics" property indicates that there have been
          * diagnostics found during the last execution of the build pipeline.
+         * @read-only
          */
         get hasDiagnostics(): boolean;
         /**
          * The "last-build-time" property contains a {@link GLib.DateTime} of the time
          * the last build request was submitted.
+         * @read-only
          */
         get last_build_time(): GLib.DateTime;
         /**
          * The "last-build-time" property contains a {@link GLib.DateTime} of the time
          * the last build request was submitted.
+         * @read-only
          */
         get lastBuildTime(): GLib.DateTime;
         /**
          * The "message" property contains a string message describing
          * the current state of the build process. This may be bound to
          * UI elements to notify the user of the buid progress.
+         * @read-only
          */
         get message(): string;
+        /**
+         * @read-only
+         */
         get pipeline(): BuildPipeline;
         /**
          * The "running-time" property can be bound by UI elements that
@@ -3473,6 +3594,7 @@ export namespace Ide {
          * The value of this property is a {@link GLib.TimeSpan}, which are 64-bit signed
          * integers with microsecond precision. See `G_USEC_PER_SEC` for a constant
          * to tranform this to seconds.
+         * @read-only
          */
         get running_time(): number;
         /**
@@ -3484,6 +3606,7 @@ export namespace Ide {
          * The value of this property is a {@link GLib.TimeSpan}, which are 64-bit signed
          * integers with microsecond precision. See `G_USEC_PER_SEC` for a constant
          * to tranform this to seconds.
+         * @read-only
          */
         get runningTime(): number;
 
@@ -4664,6 +4787,7 @@ export namespace Ide {
              * This signal is emitted when a plugin has detected a diagnostic while
              * building the pipeline.
              * @signal
+             * @run-last
              */
             diagnostic: (arg0: Diagnostic) => void;
             /**
@@ -4671,12 +4795,14 @@ export namespace Ide {
              * If the build failed to complete all requested stages, then `failed` will
              * be set to `true`, otherwise `false`.
              * @signal
+             * @run-last
              */
             finished: (arg0: boolean) => void;
             /**
              * This signal is emitted when the pipeline has started executing in
              * response to `ide_build_pipeline_execute_async()` being called.
              * @signal
+             * @run-last
              */
             started: (arg0: BuildPhase) => void;
             'notify::busy': (pspec: GObject.ParamSpec) => void;
@@ -4743,11 +4869,16 @@ export namespace Ide {
         set busy(val: boolean);
         /**
          * The configuration to use for the build pipeline.
+         * @construct-only
          */
         get configuration(): Configuration;
+        /**
+         * @read-only
+         */
         get message(): string;
         /**
          * The current build phase during execution of the pipeline.
+         * @read-only
          */
         get phase(): BuildPhase;
 
@@ -5584,6 +5715,7 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             chain: (arg0: BuildStage) => boolean | void;
             /**
@@ -5599,6 +5731,7 @@ export namespace Ide {
              * be paused until a matching number of `ide_build_stage_unpause()` calls
              * have been made.
              * @signal
+             * @run-last
              */
             query: (arg0: BuildPipeline, arg1: Gio.Cancellable | null) => void;
             /**
@@ -5608,6 +5741,7 @@ export namespace Ide {
              * request that "configure" is removed so that autogen.sh will be executed
              * as part of the next build.
              * @signal
+             * @run-last
              */
             reap: (arg0: Dazzle.DirectoryReaper) => void;
             'notify::check-stdout': (pspec: GObject.ParamSpec) => void;
@@ -6162,6 +6296,9 @@ export namespace Ide {
         set disable_when_metered(val: boolean);
         get disableWhenMetered(): boolean;
         set disableWhenMetered(val: boolean);
+        /**
+         * @construct-only
+         */
         get transfer(): Transfer;
 
         /**
@@ -7014,6 +7151,9 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get query(): string;
 
         /**
@@ -7849,6 +7989,7 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
             'notify::app-id': (pspec: GObject.ParamSpec) => void;
@@ -7933,7 +8074,13 @@ export namespace Ide {
         set display_name(val: string);
         get displayName(): string;
         set displayName(val: string);
+        /**
+         * @read-only
+         */
         get environ(): string[];
+        /**
+         * @construct-only
+         */
         get id(): string;
         get parallelism(): number;
         set parallelism(val: number);
@@ -7943,6 +8090,9 @@ export namespace Ide {
         set postInstallCommands(val: string[]);
         get prefix(): string;
         set prefix(val: string);
+        /**
+         * @read-only
+         */
         get ready(): boolean;
         get runtime(): Runtime;
         set runtime(val: Runtime);
@@ -8227,6 +8377,7 @@ export namespace Ide {
              * This signal is emitted any time a new configuration is selected or the
              * currently selected configurations state changes.
              * @signal
+             * @run-last
              */
             invalidate: () => void;
             'notify::current': (pspec: GObject.ParamSpec) => void;
@@ -8257,7 +8408,13 @@ export namespace Ide {
 
         get current(): Configuration;
         set current(val: Configuration);
+        /**
+         * @read-only
+         */
         get current_display_name(): string;
+        /**
+         * @read-only
+         */
         get currentDisplayName(): string;
 
         /**
@@ -9112,6 +9269,7 @@ export namespace Ide {
              * work that requires subsystems that may not be loaded during context
              * startup.
              * @signal
+             * @run-last
              */
             loaded: () => void;
             'notify::back-forward-list': (pspec: GObject.ParamSpec) => void;
@@ -9167,33 +9325,93 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get back_forward_list(): BackForwardList;
+        /**
+         * @read-only
+         */
         get backForwardList(): BackForwardList;
+        /**
+         * @read-only
+         */
         get buffer_manager(): BufferManager;
+        /**
+         * @read-only
+         */
         get bufferManager(): BufferManager;
+        /**
+         * @read-only
+         */
         get build_system(): BuildSystem;
+        /**
+         * @read-only
+         */
         get buildSystem(): BuildSystem;
+        /**
+         * @read-only
+         */
         get configuration_manager(): ConfigurationManager;
+        /**
+         * @read-only
+         */
         get configurationManager(): ConfigurationManager;
+        /**
+         * @read-only
+         */
         get device_manager(): DeviceManager;
+        /**
+         * @read-only
+         */
         get deviceManager(): DeviceManager;
+        /**
+         * @read-only
+         */
         get project(): Project;
+        /**
+         * @construct-only
+         */
         get project_file(): Gio.File;
+        /**
+         * @construct-only
+         */
         get projectFile(): Gio.File;
         get root_build_dir(): string;
         set root_build_dir(val: string);
         get rootBuildDir(): string;
         set rootBuildDir(val: string);
+        /**
+         * @read-only
+         */
         get runtime_manager(): RuntimeManager;
+        /**
+         * @read-only
+         */
         get runtimeManager(): RuntimeManager;
+        /**
+         * @read-only
+         */
         get search_engine(): SearchEngine;
+        /**
+         * @read-only
+         */
         get searchEngine(): SearchEngine;
         get snippets_manager(): SourceSnippetsManager;
         set snippets_manager(val: SourceSnippetsManager);
         get snippetsManager(): SourceSnippetsManager;
         set snippetsManager(val: SourceSnippetsManager);
+        /**
+         * @read-only
+         */
         get unsaved_files(): UnsavedFiles;
+        /**
+         * @read-only
+         */
         get unsavedFiles(): UnsavedFiles;
+        /**
+         * @read-only
+         */
         get vcs(): Vcs;
 
         /**
@@ -10245,7 +10463,13 @@ export namespace Ide {
         set displayName(val: string);
         get id(): string;
         set id(val: string);
+        /**
+         * @read-only
+         */
         get system_type(): string;
+        /**
+         * @read-only
+         */
         get systemType(): string;
 
         /**
@@ -10346,10 +10570,12 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'device-added': (arg0: DeviceProvider, arg1: Device) => void;
             /**
              * @signal
+             * @run-last
              */
             'device-removed': (arg0: DeviceProvider, arg1: Device) => void;
             'notify::settled': (pspec: GObject.ParamSpec) => void;
@@ -10372,6 +10598,9 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get settled(): boolean;
 
         /**
@@ -10987,6 +11216,7 @@ export namespace Ide {
              * This signal is emitted when the diagnostics have changed for any
              * file managed by the IdeDiagnosticsManager.
              * @signal
+             * @run-last
              */
             changed: () => void;
             'notify::busy': (pspec: GObject.ParamSpec) => void;
@@ -11008,6 +11238,9 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get busy(): boolean;
 
         /**
@@ -11634,7 +11867,13 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get project_file(): Gio.File;
+        /**
+         * @construct-only
+         */
         get projectFile(): Gio.File;
 
         /**
@@ -11674,7 +11913,10 @@ export namespace Ide {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Ide.BuildSystem */
+        /**
+         * @construct-only
+         * @category Inherited from Ide.BuildSystem
+         */
         get context(): Context;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -12537,15 +12779,30 @@ export namespace Ide {
             ...args: GObject.GjsParameters<DirectoryVcs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Ide.Vcs */
+        /**
+         * @read-only
+         * @category Inherited from Ide.Vcs
+         */
         get branch_name(): string;
-        /** @category Inherited from Ide.Vcs */
+        /**
+         * @read-only
+         * @category Inherited from Ide.Vcs
+         */
         get branchName(): string;
-        /** @category Inherited from Ide.Vcs */
+        /**
+         * @construct-only
+         * @category Inherited from Ide.Vcs
+         */
         set context(val: Context);
-        /** @category Inherited from Ide.Vcs */
+        /**
+         * @read-only
+         * @category Inherited from Ide.Vcs
+         */
         get working_directory(): Gio.File;
-        /** @category Inherited from Ide.Vcs */
+        /**
+         * @read-only
+         * @category Inherited from Ide.Vcs
+         */
         get workingDirectory(): Gio.File;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -13522,10 +13779,12 @@ export namespace Ide {
         interface SignalSignatures extends Dazzle.DockOverlay.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'view-added': (arg0: Gtk.Widget) => void;
             /**
              * @signal
+             * @run-last
              */
             'view-removed': (arg0: Gtk.Widget) => void;
             'notify::active-view': (pspec: GObject.ParamSpec) => void;
@@ -13602,7 +13861,13 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get active_view(): Gtk.Widget;
+        /**
+         * @read-only
+         */
         get activeView(): Gtk.Widget;
 
         /**
@@ -13701,7 +13966,10 @@ export namespace Ide {
         /** @category Inherited from Gtk.Container */
         get borderWidth(): number;
         set borderWidth(val: number);
-        /** @category Inherited from Gtk.Container */
+        /**
+         * @write-only
+         * @category Inherited from Gtk.Container
+         */
         set child(val: Gtk.Widget);
         /** @category Inherited from Gtk.Container */
         get resize_mode(): Gtk.ResizeMode;
@@ -13727,9 +13995,15 @@ export namespace Ide {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -14043,6 +14317,7 @@ export namespace Ide {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -14050,6 +14325,7 @@ export namespace Ide {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -14171,6 +14447,7 @@ export namespace Ide {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -18939,6 +19216,7 @@ export namespace Ide {
         interface SignalSignatures extends LayoutView.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'request-documentation': (arg0: string) => void;
             'notify::document': (pspec: GObject.ParamSpec) => void;
@@ -19013,6 +19291,9 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get document(): Buffer;
 
         /**
@@ -19517,6 +19798,7 @@ export namespace Ide {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
         }
@@ -20262,9 +20544,21 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get engine(): Peas.Engine;
+        /**
+         * @read-only
+         */
         get extension(): GObject.Object;
+        /**
+         * @construct-only
+         */
         get interface_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get interfaceType(): GObject.GType;
         get key(): string;
         set key(val: string);
@@ -20345,10 +20639,12 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'extension-added': (arg0: Peas.PluginInfo, arg1: GObject.Object) => void;
             /**
              * @signal
+             * @run-last
              */
             'extension-removed': (arg0: Peas.PluginInfo, arg1: GObject.Object) => void;
             'notify::engine': (pspec: GObject.ParamSpec) => void;
@@ -20377,8 +20673,17 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get engine(): Peas.Engine;
+        /**
+         * @construct-only
+         */
         get interface_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get interfaceType(): GObject.GType;
         get key(): string;
         set key(val: string);
@@ -20489,12 +20794,33 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
+        /**
+         * @read-only
+         */
         get is_temporary(): boolean;
+        /**
+         * @read-only
+         */
         get isTemporary(): boolean;
+        /**
+         * @read-only
+         */
         get language(): GtkSource.Language;
+        /**
+         * @construct-only
+         */
         get path(): string;
+        /**
+         * @construct-only
+         */
         get temporary_id(): number;
+        /**
+         * @construct-only
+         */
         get temporaryId(): number;
 
         /**
@@ -20713,6 +21039,9 @@ export namespace Ide {
         set encoding_set(val: boolean);
         get encodingSet(): boolean;
         set encodingSet(val: boolean);
+        /**
+         * @construct-only
+         */
         get file(): File;
         get indent_style(): IndentStyle;
         set indent_style(val: IndentStyle);
@@ -20967,7 +21296,13 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get buffer(): Buffer;
+        /**
+         * @read-only
+         */
         get highlighter(): Highlighter;
 
         /**
@@ -21049,24 +21384,32 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             notification: (arg0: string, arg1: GLib.Variant) => void;
             /**
              * @signal
+             * @run-last
              */
             'published-diagnostics': (arg0: Gio.File, arg1: Diagnostics) => void;
             /**
              * @signal
+             * @run-last
              */
             'supports-language': (arg0: string) => boolean | void;
             'notify::io-stream': (pspec: GObject.ParamSpec) => void;
             'notify::context': (pspec: GObject.ParamSpec) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'notification::io-stream': (arg0: string, arg1: GLib.Variant) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'notification::context': (arg0: string, arg1: GLib.Variant) => void;
         }
@@ -21087,7 +21430,13 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get io_stream(): Gio.IOStream;
+        /**
+         * @construct-only
+         */
         get ioStream(): Gio.IOStream;
 
         /**
@@ -22140,7 +22489,10 @@ export namespace Ide {
          * @param client
          */
         set_client(client: LangservClient): void;
-        /** @category Inherited from Ide.Object */
+        /**
+         * @construct-only
+         * @category Inherited from Ide.Object
+         */
         get context(): Context;
         /**
          * @param file
@@ -22979,7 +23331,10 @@ export namespace Ide {
          * @param client
          */
         set_client(client: LangservClient): void;
-        /** @category Inherited from Ide.Highlighter */
+        /**
+         * @construct-only
+         * @category Inherited from Ide.Highlighter
+         */
         set context(val: Context);
         load(): void;
         /**
@@ -23083,6 +23438,9 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @write-only
+         */
         set buffer(val: Buffer);
         get client(): LangservClient;
         set client(val: LangservClient);
@@ -23135,7 +23493,10 @@ export namespace Ide {
          * @param client
          */
         set_client(client: LangservClient): void;
-        /** @category Inherited from Ide.Object */
+        /**
+         * @construct-only
+         * @category Inherited from Ide.Object
+         */
         get context(): Context;
         load(): void;
         /**
@@ -23417,7 +23778,10 @@ export namespace Ide {
          * @param client
          */
         set_client(client: LangservClient): void;
-        /** @category Inherited from Ide.Object */
+        /**
+         * @construct-only
+         * @category Inherited from Ide.Object
+         */
         get context(): Context;
         /**
          * @param location
@@ -24252,7 +24616,13 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get active_view(): Gtk.Widget;
+        /**
+         * @read-only
+         */
         get activeView(): Gtk.Widget;
 
         /**
@@ -24306,7 +24676,10 @@ export namespace Ide {
         /** @category Inherited from Gtk.Container */
         get borderWidth(): number;
         set borderWidth(val: number);
-        /** @category Inherited from Gtk.Container */
+        /**
+         * @write-only
+         * @category Inherited from Gtk.Container
+         */
         set child(val: Gtk.Widget);
         /** @category Inherited from Gtk.Container */
         get resize_mode(): Gtk.ResizeMode;
@@ -24332,9 +24705,15 @@ export namespace Ide {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -24648,6 +25027,7 @@ export namespace Ide {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -24655,6 +25035,7 @@ export namespace Ide {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -24776,6 +25157,7 @@ export namespace Ide {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -29387,6 +29769,7 @@ export namespace Ide {
         interface SignalSignatures extends Gtk.Bin.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             empty: () => void;
             'notify::border-width': (pspec: GObject.ParamSpec) => void;
@@ -30095,9 +30478,15 @@ export namespace Ide {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -30411,6 +30800,7 @@ export namespace Ide {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -30418,6 +30808,7 @@ export namespace Ide {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -30539,6 +30930,7 @@ export namespace Ide {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -34789,6 +35181,7 @@ export namespace Ide {
         interface SignalSignatures extends Gtk.Bin.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             empty: () => void;
             /**
@@ -34796,6 +35189,7 @@ export namespace Ide {
              *
              * This should only be used by {@link Ide.LayoutGrid}.
              * @signal
+             * @run-last
              */
             split: (arg0: LayoutView, arg1: number, arg2: Gio.File) => void;
             'notify::active-view': (pspec: GObject.ParamSpec) => void;
@@ -35457,11 +35851,29 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get can_split(): boolean;
+        /**
+         * @read-only
+         */
         get canSplit(): boolean;
+        /**
+         * @read-only
+         */
         get modified(): boolean;
+        /**
+         * @read-only
+         */
         get special_title(): string;
+        /**
+         * @read-only
+         */
         get specialTitle(): string;
+        /**
+         * @read-only
+         */
         get title(): string;
 
         /**
@@ -36127,6 +36539,7 @@ export namespace Ide {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             destroy: () => void;
             'notify::context': (pspec: GObject.ParamSpec) => void;
@@ -36147,6 +36560,9 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get context(): Context;
 
         /**
@@ -36820,10 +37236,13 @@ export namespace Ide {
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             activate: () => void;
             /**
              * @signal
+             * @run-last
              */
             'result-activated': (arg0: SearchResult) => void;
             'notify::context': (pspec: GObject.ParamSpec) => void;
@@ -37420,14 +37839,20 @@ export namespace Ide {
         interface SignalSignatures extends Gtk.Entry.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-first
              */
             'clear-search': () => void;
             /**
              * @signal
+             * @action
+             * @run-first
              */
             'move-next-result': () => void;
             /**
              * @signal
+             * @action
+             * @run-first
              */
             'move-previous-result': () => void;
             'notify::activates-default': (pspec: GObject.ParamSpec) => void;
@@ -37624,9 +38049,15 @@ export namespace Ide {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -37940,6 +38371,7 @@ export namespace Ide {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -37947,6 +38379,7 @@ export namespace Ide {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -38068,6 +38501,7 @@ export namespace Ide {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -42371,10 +42805,12 @@ export namespace Ide {
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'result-activated': (arg0: Gtk.Widget, arg1: SearchResult) => void;
             /**
              * @signal
+             * @run-last
              */
             'result-selected': (arg0: SearchResult) => void;
             'notify::provider': (pspec: GObject.ParamSpec) => void;
@@ -42446,6 +42882,9 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get provider(): SearchProvider;
 
         /**
@@ -43051,7 +43490,13 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @write-only
+         */
         set icon_name(val: string);
+        /**
+         * @write-only
+         */
         set iconName(val: string);
         get result(): SearchResult;
         set result(val: SearchResult);
@@ -43580,6 +44025,9 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get packages(): string[];
 
         /**
@@ -44722,6 +45170,9 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get completed(): boolean;
         get fraction(): number;
         set fraction(val: number);
@@ -44811,10 +45262,12 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'file-renamed': (arg0: Gio.File, arg1: Gio.File) => void;
             /**
              * @signal
+             * @run-last
              */
             'file-trashed': (arg0: Gio.File) => void;
             'notify::id': (pspec: GObject.ParamSpec) => void;
@@ -44840,8 +45293,17 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get id(): string;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get root(): ProjectItem;
 
         /**
@@ -45121,8 +45583,17 @@ export namespace Ide {
         set file_info(val: Gio.FileInfo);
         get fileInfo(): Gio.FileInfo;
         set fileInfo(val: Gio.FileInfo);
+        /**
+         * @read-only
+         */
         get is_directory(): boolean;
+        /**
+         * @read-only
+         */
         get isDirectory(): boolean;
+        /**
+         * @read-only
+         */
         get name(): string;
         get path(): string;
         set path(val: string);
@@ -46741,12 +47212,14 @@ export namespace Ide {
              * on an {@link Ide.Runner}. It can be used by plugins to tweak things right
              * before the runner is executed.
              * @signal
+             * @run-last
              */
             run: (arg0: Runner) => void;
             /**
              * This signal is emitted when the run manager has stopped the currently
              * executing inferior.
              * @signal
+             * @run-last
              */
             stopped: () => void;
             'notify::build-target': (pspec: GObject.ParamSpec) => void;
@@ -46778,7 +47251,13 @@ export namespace Ide {
         set build_target(val: BuildTarget);
         get buildTarget(): BuildTarget;
         set buildTarget(val: BuildTarget);
+        /**
+         * @read-only
+         */
         get busy(): boolean;
+        /**
+         * @read-only
+         */
         get handler(): string;
 
         /**
@@ -47897,10 +48376,12 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             exited: () => void;
             /**
              * @signal
+             * @run-last
              */
             spawned: (arg0: string) => void;
             'notify::argv': (pspec: GObject.ParamSpec) => void;
@@ -47938,6 +48419,9 @@ export namespace Ide {
         set clear_env(val: boolean);
         get clearEnv(): boolean;
         set clearEnv(val: boolean);
+        /**
+         * @read-only
+         */
         get environment(): Environment;
         /**
          * If the runner has "failed". This should be set if a plugin can determine
@@ -49068,18 +49552,22 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             completed: () => void;
             /**
              * @signal
+             * @run-last
              */
             'count-set': (arg0: SearchProvider, arg1: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'result-added': (arg0: SearchProvider, arg1: SearchResult) => void;
             /**
              * @signal
+             * @run-last
              */
             'result-removed': (arg0: SearchProvider, arg1: SearchResult) => void;
             'notify::context': (pspec: GObject.ParamSpec) => void;
@@ -49262,8 +49750,17 @@ export namespace Ide {
 
         get provider(): SearchProvider;
         set provider(val: SearchProvider);
+        /**
+         * @construct-only
+         */
         get score(): number;
+        /**
+         * @construct-only
+         */
         get subtitle(): string;
+        /**
+         * @construct-only
+         */
         get title(): string;
 
         /**
@@ -49333,6 +49830,8 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             changed: (arg0: string) => void;
             'notify::ignore-project-settings': (pspec: GObject.ParamSpec) => void;
@@ -49341,18 +49840,26 @@ export namespace Ide {
             'notify::context': (pspec: GObject.ParamSpec) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'changed::ignore-project-settings': (arg0: string) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'changed::relative-path': (arg0: string) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'changed::schema-id': (arg0: string) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'changed::context': (arg0: string) => void;
         }
@@ -49384,11 +49891,29 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get ignore_project_settings(): boolean;
+        /**
+         * @construct-only
+         */
         get ignoreProjectSettings(): boolean;
+        /**
+         * @construct-only
+         */
         get relative_path(): string;
+        /**
+         * @construct-only
+         */
         get relativePath(): string;
+        /**
+         * @construct-only
+         */
         get schema_id(): string;
+        /**
+         * @construct-only
+         */
         get schemaId(): string;
 
         /**
@@ -49532,10 +50057,14 @@ export namespace Ide {
         interface SignalSignatures extends GtkSource.Map.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'hide-map': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'show-map': () => void;
             'notify::font-desc': (pspec: GObject.ParamSpec) => void;
@@ -50162,20 +50691,41 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get buffer(): Gtk.TextBuffer;
         get description(): string;
         set description(val: string);
         get language(): string;
         set language(val: string);
+        /**
+         * @read-only
+         */
         get mark_begin(): Gtk.TextMark;
+        /**
+         * @read-only
+         */
         get markBegin(): Gtk.TextMark;
+        /**
+         * @read-only
+         */
         get mark_end(): Gtk.TextMark;
+        /**
+         * @read-only
+         */
         get markEnd(): Gtk.TextMark;
         get snippet_text(): string;
         set snippet_text(val: string);
         get snippetText(): string;
         set snippetText(val: string);
+        /**
+         * @read-only
+         */
         get tab_stop(): number;
+        /**
+         * @read-only
+         */
         get tabStop(): number;
         get trigger(): string;
         set trigger(val: string);
@@ -50392,6 +50942,7 @@ export namespace Ide {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             changed: () => void;
         }
@@ -50658,14 +51209,20 @@ export namespace Ide {
         interface SignalSignatures extends GtkSource.View.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             action: (arg0: string, arg1: string, arg2: string) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'add-cursor': (arg0: CursorType) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'append-to-count': (arg0: number) => void;
             /**
@@ -50675,6 +51232,8 @@ export namespace Ide {
              *
              * Pair this with an emission of {@link Ide.SourceView.SignalSignatures.end_macro | Ide.SourceView::end-macro} to complete the sequence.
              * @signal
+             * @action
+             * @run-last
              */
             'begin-macro': () => void;
             /**
@@ -50683,10 +51242,14 @@ export namespace Ide {
              * cursor position will be used as the location when sending the request to
              * the provider.
              * @signal
+             * @action
+             * @run-last
              */
             'begin-rename': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'begin-user-action': () => void;
             /**
@@ -50698,42 +51261,62 @@ export namespace Ide {
              *
              * Use of this signal is not recommended except in very specific cases.
              * @signal
+             * @action
+             * @run-last
              */
             'capture-modifier': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'clear-count': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'clear-modifier': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'clear-search': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'clear-selection': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'clear-snippets': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'cycle-completion': (arg0: Gtk.DirectionType) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'decrease-font-size': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'delete-selection': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'duplicate-entire-line': () => void;
             /**
@@ -50743,38 +51326,55 @@ export namespace Ide {
              * since {@link Ide.SourceView} will only keep the most recent macro recording. This can be
              * helpful when implementing recording sequences such as in Vim.
              * @signal
+             * @action
+             * @run-last
              */
             'end-macro': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'end-user-action': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'find-references': () => void;
             /**
              * @signal
+             * @run-last
              */
             'focus-location': (arg0: SourceLocation) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'format-selection': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'goto-definition': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'hide-completion': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'increase-font-size': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'indent-selection': (arg0: number) => void;
             /**
@@ -50782,19 +51382,26 @@ export namespace Ide {
              * If `use_count` is `true`, then the character will be inserted
              * {@link Ide.SourceView.count} times.
              * @signal
+             * @action
+             * @run-last
              */
             'insert-modifier': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             jump: (arg0: Gtk.TextIter) => void;
             /**
              * Moves to the next search result either forwards or backwards.
              * @signal
+             * @action
+             * @run-last
              */
             'move-error': (arg0: Gtk.DirectionType) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'move-search': (
                 arg0: Gtk.DirectionType,
@@ -50806,21 +51413,28 @@ export namespace Ide {
             ) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             movement: (arg0: SourceViewMovement, arg1: boolean, arg2: boolean, arg3: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'paste-clipboard-extended': (arg0: boolean, arg1: boolean, arg2: boolean) => void;
             /**
              * Reselects a previousl selected range of text that was saved using
              * IdeSourceView::push-selection.
              * @signal
+             * @action
+             * @run-last
              */
             'pop-selection': () => void;
             /**
              * Pops the current snippet from the sourceview if there is one.
              * @signal
+             * @run-last
              */
             'pop-snippet': () => void;
             /**
@@ -50828,86 +51442,125 @@ export namespace Ide {
              * IdeSourceView::pop-selection. You must pop the selection to keep
              * the selection stack in consistent order.
              * @signal
+             * @action
+             * @run-last
              */
             'push-selection': () => void;
             /**
              * Pushes `snippet` onto the snippet stack at either `iter` or the insertion
              * mark if `iter` is not provided.
              * @signal
+             * @run-last
              */
             'push-snippet': (arg0: SourceSnippet, arg1: Gtk.TextIter | null) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'rebuild-highlight': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             reindent: () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'remove-cursors': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'replay-macro': (arg0: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'request-documentation': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'reset-font-size': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'restore-insert-mark': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'save-command': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'save-insert-mark': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'save-search-char': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'select-inner': (arg0: string, arg1: string, arg2: boolean, arg3: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'select-tag': (arg0: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'selection-theatric': (arg0: SourceViewTheatric) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'set-mode': (arg0: string, arg1: SourceViewModeType) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'set-overwrite': (arg0: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'set-search-text': (arg0: string, arg1: boolean) => void;
             /**
              * This signal is meant to be activated from keybindings to sort the currently selected lines.
              * The lines are sorted using `qsort()` and either `strcmp()` or `strcasecmp()`.
              * @signal
+             * @action
+             * @run-last
              */
             sort: (arg0: boolean, arg1: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'swap-selection-bounds': () => void;
             'notify::back-forward-list': (pspec: GObject.ParamSpec) => void;
@@ -51086,22 +51739,49 @@ export namespace Ide {
         set enable_word_completion(val: boolean);
         get enableWordCompletion(): boolean;
         set enableWordCompletion(val: boolean);
+        /**
+         * @read-only
+         */
         get file_settings(): FileSettings;
+        /**
+         * @read-only
+         */
         get fileSettings(): FileSettings;
         get font_desc(): Pango.FontDescription;
         set font_desc(val: Pango.FontDescription);
         get fontDesc(): Pango.FontDescription;
         set fontDesc(val: Pango.FontDescription);
+        /**
+         * @write-only
+         */
         set font_name(val: string);
+        /**
+         * @write-only
+         */
         set fontName(val: string);
+        /**
+         * @write-only
+         */
         set indent_style(val: IndentStyle);
+        /**
+         * @write-only
+         */
         set indentStyle(val: IndentStyle);
+        /**
+         * @read-only
+         */
         get indenter(): Indenter;
         get insert_matching_brace(): boolean;
         set insert_matching_brace(val: boolean);
         get insertMatchingBrace(): boolean;
         set insertMatchingBrace(val: boolean);
+        /**
+         * @read-only
+         */
         get mode_display_name(): string;
+        /**
+         * @read-only
+         */
         get modeDisplayName(): string;
         get overscroll(): number;
         set overscroll(val: number);
@@ -51117,7 +51797,13 @@ export namespace Ide {
         set scroll_offset(val: number);
         get scrollOffset(): number;
         set scrollOffset(val: number);
+        /**
+         * @read-only
+         */
         get search_context(): GtkSource.SearchContext;
+        /**
+         * @read-only
+         */
         get searchContext(): GtkSource.SearchContext;
         get search_direction(): Gtk.DirectionType;
         set search_direction(val: Gtk.DirectionType);
@@ -52152,150 +52838,224 @@ export namespace Ide {
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             action: (arg0: string, arg1: string, arg2: string) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'add-cursor': (arg0: CursorType) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'append-to-count': (arg0: number) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             backspace: () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'begin-macro': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'begin-rename': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'begin-user-action': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'capture-modifier': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'change-case': (arg0: GtkSource.ChangeCaseType) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'change-number': (arg0: number) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'clear-count': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'clear-modifier': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'clear-search': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'clear-selection': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'clear-snippets': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'copy-clipboard': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'cut-clipboard': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'cycle-completion': (arg0: Gtk.DirectionType) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'decrease-font-size': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'delete-from-cursor': (arg0: Gtk.DeleteType, arg1: number) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'delete-selection': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'duplicate-entire-line': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'end-macro': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'end-user-action': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'find-references': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'format-selection': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'goto-definition': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'hide-completion': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'increase-font-size': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'indent-selection': (arg0: number) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'insert-at-cursor': (arg0: string) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'insert-modifier': (arg0: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'join-lines': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'move-cursor': (arg0: Gtk.MovementStep, arg1: number, arg2: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'move-error': (arg0: Gtk.DirectionType) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'move-lines': (arg0: boolean, arg1: number) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'move-search': (
                 arg0: Gtk.DirectionType,
@@ -52307,138 +53067,206 @@ export namespace Ide {
             ) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'move-to-matching-bracket': (arg0: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'move-viewport': (arg0: Gtk.ScrollStep, arg1: number) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'move-words': (arg0: number) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             movement: (arg0: SourceViewMovement, arg1: boolean, arg2: boolean, arg3: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'paste-clipboard': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'paste-clipboard-extended': (arg0: boolean, arg1: boolean, arg2: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'pop-selection': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'preedit-changed': (arg0: string) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'push-selection': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'rebuild-highlight': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             redo: () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             reindent: () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'remove-cursors': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'replay-macro': (arg0: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'request-documentation': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'reset-font-size': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'restore-insert-mark': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'save-command': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'save-insert-mark': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'save-search-char': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'select-all': (arg0: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'select-inner': (arg0: string, arg1: string, arg2: boolean, arg3: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'select-tag': (arg0: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'selection-theatric': (arg0: SourceViewTheatric) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'set-anchor': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'set-mode': (arg0: string, arg1: SourceViewModeType) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'set-overwrite': (arg0: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'set-search-text': (arg0: string, arg1: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'show-completion': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             sort: (arg0: boolean, arg1: boolean) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'swap-selection-bounds': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'toggle-cursor-visible': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'toggle-overwrite': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             undo: () => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -52498,6 +53326,9 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get name(): string;
 
         /**
@@ -53381,14 +54212,17 @@ export namespace Ide {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             spawned: (arg0: Subprocess) => void;
             /**
              * @signal
+             * @run-last
              */
             supervise: (arg0: SubprocessLauncher) => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             unsupervise: (arg0: SubprocessLauncher) => boolean | void;
         }
@@ -53749,7 +54583,13 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get active(): boolean;
+        /**
+         * @read-only
+         */
         get completed(): boolean;
         get icon_name(): string;
         set icon_name(val: string);
@@ -53947,6 +54787,9 @@ export namespace Ide {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get transfer(): Transfer;
 
         /**
@@ -54007,9 +54850,15 @@ export namespace Ide {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -54323,6 +55172,7 @@ export namespace Ide {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -54330,6 +55180,7 @@ export namespace Ide {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -54451,6 +55302,7 @@ export namespace Ide {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -58501,17 +59353,20 @@ export namespace Ide {
             /**
              * This signal is emitted when all of the transfers have completed or failed.
              * @signal
+             * @run-last
              */
             'all-transfers-completed': () => void;
             /**
              * This signal is emitted when a transfer has completed successfully.
              * @signal
+             * @run-last
              */
             'transfer-completed': (arg0: Transfer) => void;
             /**
              * This signal is emitted when a transfer has failed to complete
              * successfully.
              * @signal
+             * @run-last
              */
             'transfer-failed': (arg0: Transfer, arg1: GLib.Error) => void;
             'notify::has-active': (pspec: GObject.ParamSpec) => void;
@@ -58539,15 +59394,18 @@ export namespace Ide {
 
         /**
          * If there are transfers active, this will be set.
+         * @read-only
          */
         get has_active(): boolean;
         /**
          * If there are transfers active, this will be set.
+         * @read-only
          */
         get hasActive(): boolean;
         /**
          * A double between and including 0.0 and 1.0 describing the progress of
          * all tasks.
+         * @read-only
          */
         get progress(): number;
 
@@ -59195,6 +60053,7 @@ export namespace Ide {
             /**
              * This signal is emitted when the cancel button is clicked.
              * @signal
+             * @run-last
              */
             cancelled: () => void;
             'notify::transfer': (pspec: GObject.ParamSpec) => void;
@@ -59903,9 +60762,15 @@ export namespace Ide {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -60219,6 +61084,7 @@ export namespace Ide {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -60226,6 +61092,7 @@ export namespace Ide {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -60347,6 +61214,7 @@ export namespace Ide {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -65104,15 +65972,20 @@ export namespace Ide {
         interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-first
              */
             action: (arg0: string, arg1: string, arg2: string) => void;
             /**
              * This signal is meant for keybindings to change the current perspective.
              * @signal
+             * @action
+             * @run-first
              */
             'set-perspective': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             unload: (arg0: Context) => void;
             'notify::context': (pspec: GObject.ParamSpec) => void;
@@ -65239,6 +66112,7 @@ export namespace Ide {
          *
          * The creation of {@link Ide.WorkbenchAddin} addins are deferred until this property
          * has been set.
+         * @read-only
          */
         get context(): Context;
         /**
@@ -65247,6 +66121,7 @@ export namespace Ide {
          * project.
          *
          * This should not be used by application plugins.
+         * @construct-only
          */
         get disable_greeter(): boolean;
         /**
@@ -65255,6 +66130,7 @@ export namespace Ide {
          * project.
          *
          * This should not be used by application plugins.
+         * @construct-only
          */
         get disableGreeter(): boolean;
         /**
@@ -69381,8 +70257,17 @@ export namespace Ide {
     interface BuildSystem extends Object, BuildSystem.Interface {
         // Properties
 
+        /**
+         * @construct-only
+         */
         get context(): Context;
+        /**
+         * @construct-only
+         */
         get project_file(): Gio.File;
+        /**
+         * @construct-only
+         */
         get projectFile(): Gio.File;
 
         // Methods
@@ -69762,7 +70647,13 @@ export namespace Ide {
     interface DeviceProvider extends Object, DeviceProvider.Interface {
         // Properties
 
+        /**
+         * @construct-only
+         */
         set context(val: Context);
+        /**
+         * @read-only
+         */
         get settled(): boolean;
 
         // Methods
@@ -70163,7 +71054,13 @@ export namespace Ide {
     interface GenesisAddin extends GObject.Object, GenesisAddin.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get is_ready(): boolean;
+        /**
+         * @read-only
+         */
         get isReady(): boolean;
 
         // Methods
@@ -70253,6 +71150,9 @@ export namespace Ide {
     interface Highlighter extends Object, Highlighter.Interface {
         // Properties
 
+        /**
+         * @construct-only
+         */
         set context(val: Context);
 
         // Methods
@@ -70996,6 +71896,9 @@ export namespace Ide {
     interface RenameProvider extends Object, RenameProvider.Interface {
         // Properties
 
+        /**
+         * @write-only
+         */
         set buffer(val: Buffer);
 
         // Methods
@@ -72278,10 +73181,25 @@ export namespace Ide {
     interface Vcs extends Object, Vcs.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get branch_name(): string;
+        /**
+         * @read-only
+         */
         get branchName(): string;
+        /**
+         * @construct-only
+         */
         set context(val: Context);
+        /**
+         * @read-only
+         */
         get working_directory(): Gio.File;
+        /**
+         * @read-only
+         */
         get workingDirectory(): Gio.File;
 
         // Methods

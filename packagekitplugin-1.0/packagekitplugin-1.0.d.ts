@@ -926,6 +926,7 @@ export namespace PackageKitPlugin {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             finished: () => void;
         }

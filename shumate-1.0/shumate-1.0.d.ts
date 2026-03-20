@@ -56,6 +56,9 @@ export namespace Shumate {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GeometryType {
         export const $gtype: GObject.GType<GeometryType>;
     }
@@ -96,6 +99,9 @@ export namespace Shumate {
         MULTIPOLYGON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MapProjection {
         export const $gtype: GObject.GType<MapProjection>;
     }
@@ -111,6 +117,9 @@ export namespace Shumate {
         MERCATOR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace State {
         export const $gtype: GObject.GType<State>;
     }
@@ -224,6 +233,9 @@ export namespace Shumate {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Unit {
         export const $gtype: GObject.GType<Unit>;
     }
@@ -1796,6 +1808,7 @@ export namespace Shumate {
              * steps, such as data from the file cache, as well as the final result.
              * @signal
              * @deprecated since 1.1: Use {@link DataSource.start_request} and connect to the notify signals of the resulting {@link DataSourceRequest}.
+             * @run-last
              */
             'received-data': (arg0: number, arg1: number, arg2: number, arg3: GLib.Bytes) => void;
             'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
@@ -2086,37 +2099,44 @@ export namespace Shumate {
          * request will not receive further updates to either
          * {@link DataSourceRequest.data} or {@link DataSourceRequest.error}.
          * @since 1.1
+         * @read-only
          */
         get completed(): boolean;
         /**
          * The most recent data for the tile, if available. If an error is emitted,
          * this will be set to `null`.
          * @since 1.1
+         * @read-only
          */
         get data(): GLib.Bytes;
         /**
          * The error that occurred during the request, if any.
          * @since 1.1
+         * @read-only
          */
         get error(): GLib.Error;
         /**
          * The X coordinate of the requested tile.
          * @since 1.1
+         * @construct-only
          */
         get x(): number;
         /**
          * The Y coordinate of the requested tile.
          * @since 1.1
+         * @construct-only
          */
         get y(): number;
         /**
          * The zoom level of the requested tile.
          * @since 1.1
+         * @construct-only
          */
         get zoom_level(): number;
         /**
          * The zoom level of the requested tile.
          * @since 1.1
+         * @construct-only
          */
         get zoomLevel(): number;
 
@@ -2268,20 +2288,24 @@ export namespace Shumate {
 
         /**
          * The directory where the tile database is stored.
+         * @construct-only
          */
         get cache_dir(): string;
         /**
          * The directory where the tile database is stored.
+         * @construct-only
          */
         get cacheDir(): string;
         /**
          * The key used to store and retrieve tiles from the cache. Different keys
          * can be used to store multiple tilesets in the same cache directory.
+         * @construct-only
          */
         get cache_key(): string;
         /**
          * The key used to store and retrieve tiles from the cache. Different keys
          * can be used to store multiple tilesets in the same cache directory.
+         * @construct-only
          */
         get cacheKey(): string;
         /**
@@ -2587,6 +2611,9 @@ export namespace Shumate {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get viewport(): Viewport;
 
         /**
@@ -4307,6 +4334,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed': () => void;
             'notify::animate-zoom': (pspec: GObject.ParamSpec) => void;
@@ -4356,6 +4385,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::animate-zoom': () => void;
             /**
@@ -4364,6 +4395,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::go-to-duration': () => void;
             /**
@@ -4372,6 +4405,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::state': () => void;
             /**
@@ -4380,6 +4415,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::viewport': () => void;
             /**
@@ -4388,6 +4425,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::zoom-on-double-click': () => void;
             /**
@@ -4396,6 +4435,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::can-focus': () => void;
             /**
@@ -4404,6 +4445,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::can-target': () => void;
             /**
@@ -4412,6 +4455,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::css-classes': () => void;
             /**
@@ -4420,6 +4465,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::css-name': () => void;
             /**
@@ -4428,6 +4475,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::cursor': () => void;
             /**
@@ -4436,6 +4485,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::focus-on-click': () => void;
             /**
@@ -4444,6 +4495,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::focusable': () => void;
             /**
@@ -4452,6 +4505,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::halign': () => void;
             /**
@@ -4460,6 +4515,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::has-default': () => void;
             /**
@@ -4468,6 +4525,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::has-focus': () => void;
             /**
@@ -4476,6 +4535,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::has-tooltip': () => void;
             /**
@@ -4484,6 +4545,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::height-request': () => void;
             /**
@@ -4492,6 +4555,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::hexpand': () => void;
             /**
@@ -4500,6 +4565,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::hexpand-set': () => void;
             /**
@@ -4508,6 +4575,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::layout-manager': () => void;
             /**
@@ -4516,6 +4585,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::limit-events': () => void;
             /**
@@ -4524,6 +4595,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::margin-bottom': () => void;
             /**
@@ -4532,6 +4605,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::margin-end': () => void;
             /**
@@ -4540,6 +4615,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::margin-start': () => void;
             /**
@@ -4548,6 +4625,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::margin-top': () => void;
             /**
@@ -4556,6 +4635,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::name': () => void;
             /**
@@ -4564,6 +4645,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::opacity': () => void;
             /**
@@ -4572,6 +4655,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::overflow': () => void;
             /**
@@ -4580,6 +4665,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::parent': () => void;
             /**
@@ -4588,6 +4675,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::receives-default': () => void;
             /**
@@ -4596,6 +4685,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::root': () => void;
             /**
@@ -4604,6 +4695,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::scale-factor': () => void;
             /**
@@ -4612,6 +4705,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::sensitive': () => void;
             /**
@@ -4620,6 +4715,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::tooltip-markup': () => void;
             /**
@@ -4628,6 +4725,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::tooltip-text': () => void;
             /**
@@ -4636,6 +4735,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::valign': () => void;
             /**
@@ -4644,6 +4745,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::vexpand': () => void;
             /**
@@ -4652,6 +4755,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::vexpand-set': () => void;
             /**
@@ -4660,6 +4765,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::visible': () => void;
             /**
@@ -4668,6 +4775,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::width-request': () => void;
             /**
@@ -4676,6 +4785,8 @@ export namespace Shumate {
              * only for go-to animation, you should connect to
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
+             * @detailed
+             * @run-last
              */
             'animation-completed::accessible-role': () => void;
         }
@@ -4755,11 +4866,13 @@ export namespace Shumate {
         /**
          * The view's global state. Useful to inform using if the view is busy loading
          * tiles or not.
+         * @read-only
          */
         get state(): State;
         /**
          * The viewport, which contains information about the center, rotation, zoom,
          * etc. of the map.
+         * @read-only
          */
         get viewport(): Viewport;
         /**
@@ -5690,18 +5803,21 @@ export namespace Shumate {
              * As the map is panned or zoomed, this signal may be emitted multiple times.
              * @signal
              * @since 1.4
+             * @run-last
              */
             'map-loaded': (arg0: boolean) => void;
             /**
              * Emitted when a symbol in the map layer is clicked.
              * @signal
              * @since 1.1
+             * @run-last
              */
             'symbol-clicked': (arg0: SymbolEvent) => void;
             /**
              * Emitted when a tile fails to load.
              * @signal
              * @since 1.4
+             * @run-last
              */
             'tile-error': (arg0: Tile, arg1: GLib.Error) => void;
             'notify::map-source': (pspec: GObject.ParamSpec) => void;
@@ -5770,7 +5886,13 @@ export namespace Shumate {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get map_source(): MapSource;
+        /**
+         * @construct-only
+         */
         get mapSource(): MapSource;
 
         /**
@@ -8278,11 +8400,13 @@ export namespace Shumate {
             /**
              * Emitted when a marker in the layer is selected.
              * @signal
+             * @run-last
              */
             'marker-selected': (arg0: Marker) => void;
             /**
              * Emitted when a marker in the layer is unselected.
              * @signal
+             * @run-last
              */
             'marker-unselected': (arg0: Marker) => void;
             'notify::selection-mode': (pspec: GObject.ParamSpec) => void;
@@ -10327,11 +10451,13 @@ export namespace Shumate {
         /**
          * The data source that provides image tiles to display. In most cases,
          * a {@link TileDownloader} is sufficient.
+         * @construct-only
          */
         get data_source(): DataSource;
         /**
          * The data source that provides image tiles to display. In most cases,
          * a {@link TileDownloader} is sufficient.
+         * @construct-only
          */
         get dataSource(): DataSource;
 
@@ -11326,6 +11452,7 @@ export namespace Shumate {
              * clicked.
              * @signal
              * @since 1.1
+             * @run-last
              */
             'symbol-clicked': (arg0: SymbolEvent) => void;
             'notify::base-map-layer': (pspec: GObject.ParamSpec) => void;
@@ -11415,6 +11542,7 @@ export namespace Shumate {
          * This is a read-only property. To change the basemap, set the
          * {@link SimpleMap.map_source} property.
          * @since 1.4
+         * @read-only
          */
         get base_map_layer(): MapLayer;
         /**
@@ -11423,21 +11551,37 @@ export namespace Shumate {
          * This is a read-only property. To change the basemap, set the
          * {@link SimpleMap.map_source} property.
          * @since 1.4
+         * @read-only
          */
         get baseMapLayer(): MapLayer;
+        /**
+         * @read-only
+         */
         get compass(): Compass;
+        /**
+         * @read-only
+         */
         get license(): License;
+        /**
+         * @read-only
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         map: Map | any;
         get map_source(): MapSource;
         set map_source(val: MapSource);
         get mapSource(): MapSource;
         set mapSource(val: MapSource);
+        /**
+         * @read-only
+         */
         get scale(): Scale;
         get show_zoom_buttons(): boolean;
         set show_zoom_buttons(val: boolean);
         get showZoomButtons(): boolean;
         set showZoomButtons(val: boolean);
+        /**
+         * @read-only
+         */
         get viewport(): Viewport;
 
         /**
@@ -12352,17 +12496,20 @@ export namespace Shumate {
          * The ID of the feature that this event pertains to, as it was given in the
          * data source.
          * @since 1.1
+         * @read-only
          */
         get feature_id(): string;
         /**
          * The ID of the feature that this event pertains to, as it was given in the
          * data source.
          * @since 1.1
+         * @read-only
          */
         get featureId(): string;
         /**
          * The ID of the style layer of the symbol that this event pertains to.
          * @since 1.1
+         * @read-only
          */
         get layer(): string;
         /**
@@ -12379,10 +12526,12 @@ export namespace Shumate {
         set nPress(val: number);
         /**
          * The ID of the source layer of the symbol that this event pertains to.
+         * @read-only
          */
         get source_layer(): string;
         /**
          * The ID of the source layer of the symbol that this event pertains to.
+         * @read-only
          */
         get sourceLayer(): string;
 
@@ -13233,6 +13382,7 @@ export namespace Shumate {
          * - "{z}": The zoom level of the tile
          * - "{tmsy}": The inverted Y coordinate (i.e. tile numbering starts with 0 at
          * the bottom, rather than top, of the map)
+         * @construct-only
          */
         get url_template(): string;
         /**
@@ -13244,6 +13394,7 @@ export namespace Shumate {
          * - "{z}": The zoom level of the tile
          * - "{tmsy}": The inverted Y coordinate (i.e. tile numbering starts with 0 at
          * the bottom, rather than top, of the map)
+         * @construct-only
          */
         get urlTemplate(): string;
 
@@ -13400,6 +13551,9 @@ export namespace Shumate {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get reader(): VectorReader;
 
         /**
@@ -13614,6 +13768,7 @@ export namespace Shumate {
          * format.
          *
          * Note that not all features of the specification are supported.
+         * @construct-only
          */
         get style_json(): string;
         /**
@@ -13621,6 +13776,7 @@ export namespace Shumate {
          * format.
          *
          * Note that not all features of the specification are supported.
+         * @construct-only
          */
         get styleJson(): string;
 
@@ -14290,41 +14446,49 @@ export namespace Shumate {
         /**
          * The height at which the sprite should be drawn, in pixels.
          * @since 1.1
+         * @construct-only
          */
         get height(): number;
         /**
          * The intended scale factor of the sprite.
          * @since 1.1
+         * @construct-only
          */
         get scale_factor(): number;
         /**
          * The intended scale factor of the sprite.
          * @since 1.1
+         * @construct-only
          */
         get scaleFactor(): number;
         /**
          * The {@link Gdk.Paintable} used to draw the sprite.
          * @since 1.1
+         * @construct-only
          */
         get source_paintable(): Gdk.Paintable;
         /**
          * The {@link Gdk.Paintable} used to draw the sprite.
          * @since 1.1
+         * @construct-only
          */
         get sourcePaintable(): Gdk.Paintable;
         /**
          * The area of the source rectangle to draw, or `null` to use the entire paintable.
          * @since 1.1
+         * @construct-only
          */
         get source_rect(): Gdk.Rectangle;
         /**
          * The area of the source rectangle to draw, or `null` to use the entire paintable.
          * @since 1.1
+         * @construct-only
          */
         get sourceRect(): Gdk.Rectangle;
         /**
          * The width at which the sprite should be drawn, in pixels.
          * @since 1.1
+         * @construct-only
          */
         get width(): number;
 

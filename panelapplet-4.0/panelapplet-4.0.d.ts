@@ -30,6 +30,9 @@ export namespace PanelApplet {
      * PanelApplet-4.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AppletOrient {
         export const $gtype: GObject.GType<AppletOrient>;
     }
@@ -54,6 +57,9 @@ export namespace PanelApplet {
     interface AppletFactoryCallback {
         (applet: Applet, iid: string): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace AppletFlags {
         export const $gtype: GObject.GType<AppletFlags>;
     }
@@ -76,22 +82,27 @@ export namespace PanelApplet {
             /**
              * Emitted when the background of `applet` has changed.
              * @signal
+             * @run-last
              */
             'change-background': (arg0: cairo.Pattern) => void;
             /**
              * Emitted when the {@link PanelApplet.AppletOrient} of `applet` has changed.
              * @signal
+             * @run-last
              */
             'change-orient': (arg0: number) => void;
             /**
              * Emitted when the size of the panel `applet` is on has changed.
              * @signal
+             * @run-last
              */
             'change-size': (arg0: number) => void;
             /**
              * Emitted when the focus is moved out of `applet`. This is an
              * implementation detail.
              * @signal
+             * @action
+             * @run-last
              */
             'move-focus-out-of-applet': (arg0: Gtk.DirectionType) => void;
             'notify::flags': (pspec: GObject.ParamSpec) => void;

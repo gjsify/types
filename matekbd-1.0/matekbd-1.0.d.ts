@@ -117,6 +117,7 @@ export namespace Matekbd {
         interface SignalSignatures extends Gtk.Notebook.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'reinit-ui': () => void;
             'notify::enable-popup': (pspec: GObject.ParamSpec) => void;
@@ -711,6 +712,7 @@ export namespace Matekbd {
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'bad-keycode': (arg0: number) => void;
             'notify::app-paintable': (pspec: GObject.ParamSpec) => void;

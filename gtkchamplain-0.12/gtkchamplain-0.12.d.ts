@@ -118,11 +118,13 @@ export namespace GtkChamplain {
         /**
          * The {@link Champlain.View} to embed in the Gtk+ widget.
          * @since 0.4
+         * @read-only
          */
         get champlain_view(): Champlain.View;
         /**
          * The {@link Champlain.View} to embed in the Gtk+ widget.
          * @since 0.4
+         * @read-only
          */
         get champlainView(): Champlain.View;
 

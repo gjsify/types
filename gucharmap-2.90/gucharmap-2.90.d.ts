@@ -29,6 +29,9 @@ export namespace Gucharmap {
      * Gucharmap-2.90
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CharmapPageType {
         export const $gtype: GObject.GType<CharmapPageType>;
     }
@@ -41,6 +44,9 @@ export namespace Gucharmap {
         DETAILS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UnicodeVersion {
         export const $gtype: GObject.GType<UnicodeVersion>;
     }
@@ -713,9 +719,21 @@ export namespace Gucharmap {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get first_codepoint(): number;
+        /**
+         * @construct-only
+         */
         get firstCodepoint(): number;
+        /**
+         * @construct-only
+         */
         get last_codepoint(): number;
+        /**
+         * @construct-only
+         */
         get lastCodepoint(): number;
 
         /**
@@ -2840,10 +2858,12 @@ export namespace Gucharmap {
         interface SignalSignatures extends Gtk.Paned.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'link-clicked': (arg0: number, arg1: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'status-message': (arg0: string) => void;
             'notify::active-chapter': (pspec: GObject.ParamSpec) => void;
@@ -2948,13 +2968,25 @@ export namespace Gucharmap {
         set active_character(val: number);
         get activeCharacter(): number;
         set activeCharacter(val: number);
+        /**
+         * @read-only
+         */
         get active_codepoint_list(): CodepointList;
+        /**
+         * @read-only
+         */
         get activeCodepointList(): CodepointList;
         get active_page(): number;
         set active_page(val: number);
         get activePage(): number;
         set activePage(val: number);
+        /**
+         * @write-only
+         */
         set chapters_model(val: ChaptersModel);
+        /**
+         * @write-only
+         */
         set chaptersModel(val: ChaptersModel);
         get font_desc(): Pango.FontDescription;
         set font_desc(val: Pango.FontDescription);
@@ -3546,22 +3578,31 @@ export namespace Gucharmap {
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             activate: () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'copy-clipboard': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'move-cursor': (arg0: Gtk.MovementStep, arg1: number) => boolean | void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'paste-clipboard': () => void;
             /**
              * @signal
+             * @run-first
              */
             'status-message': (arg0: string) => void;
             'notify::active-character': (pspec: GObject.ParamSpec) => void;
@@ -3674,7 +3715,13 @@ export namespace Gucharmap {
         set zoom_enabled(val: boolean);
         get zoomEnabled(): boolean;
         set zoomEnabled(val: boolean);
+        /**
+         * @read-only
+         */
         get zoom_showing(): boolean;
+        /**
+         * @read-only
+         */
         get zoomShowing(): boolean;
 
         /**

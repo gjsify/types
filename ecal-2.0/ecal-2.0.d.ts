@@ -57,6 +57,9 @@ export namespace ECal {
         INVALID_RANGE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClientSourceType {
         export const $gtype: GObject.GType<ClientSourceType>;
     }
@@ -81,6 +84,9 @@ export namespace ECal {
         MEMOS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ComponentAlarmAction {
         export const $gtype: GObject.GType<ComponentAlarmAction>;
     }
@@ -116,6 +122,9 @@ export namespace ECal {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ComponentAlarmTriggerKind {
         export const $gtype: GObject.GType<ComponentAlarmTriggerKind>;
     }
@@ -130,6 +139,9 @@ export namespace ECal {
         ABSOLUTE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ComponentClassification {
         export const $gtype: GObject.GType<ComponentClassification>;
     }
@@ -161,6 +173,9 @@ export namespace ECal {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ComponentPeriodKind {
         export const $gtype: GObject.GType<ComponentPeriodKind>;
     }
@@ -180,6 +195,9 @@ export namespace ECal {
         DURATION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ComponentRangeKind {
         export const $gtype: GObject.GType<ComponentRangeKind>;
     }
@@ -203,6 +221,9 @@ export namespace ECal {
         THISFUTURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ComponentTransparency {
         export const $gtype: GObject.GType<ComponentTransparency>;
     }
@@ -230,6 +251,9 @@ export namespace ECal {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ComponentVType {
         export const $gtype: GObject.GType<ComponentVType>;
     }
@@ -1506,6 +1530,9 @@ export namespace ECal {
         NOTIFY_INITIAL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ObjModType {
         export const $gtype: GObject.GType<ObjModType>;
     }
@@ -1538,6 +1565,9 @@ export namespace ECal {
         ONLY_THIS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace OperationFlags {
         export const $gtype: GObject.GType<OperationFlags>;
     }
@@ -1587,6 +1617,9 @@ export namespace ECal {
         DISABLE_ITIP_MESSAGE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RecurDescribeRecurrenceFlags {
         export const $gtype: GObject.GType<RecurDescribeRecurrenceFlags>;
     }
@@ -1636,6 +1669,7 @@ export namespace ECal {
         interface SignalSignatures extends EDataServer.Client.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'free-busy-data': (arg0: Component[]) => void;
             'notify::default-timezone': (pspec: GObject.ParamSpec) => void;
@@ -1678,7 +1712,13 @@ export namespace ECal {
         set default_timezone(val: ICalGLib.Timezone);
         get defaultTimezone(): ICalGLib.Timezone;
         set defaultTimezone(val: ICalGLib.Timezone);
+        /**
+         * @construct-only
+         */
         get source_type(): ClientSourceType;
+        /**
+         * @construct-only
+         */
         get sourceType(): ClientSourceType;
 
         /**
@@ -4155,22 +4195,27 @@ export namespace ECal {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             complete: (arg0: GLib.Error) => void;
             /**
              * @signal
+             * @run-first
              */
             'objects-added': (arg0: ICalGLib.Component[]) => void;
             /**
              * @signal
+             * @run-first
              */
             'objects-modified': (arg0: ICalGLib.Component[]) => void;
             /**
              * @signal
+             * @run-first
              */
             'objects-removed': (arg0: ComponentId[]) => void;
             /**
              * @signal
+             * @run-first
              */
             progress: (arg0: number, arg1: string) => void;
             'notify::client': (pspec: GObject.ParamSpec) => void;
@@ -4201,18 +4246,22 @@ export namespace ECal {
 
         /**
          * The ECalClient for the view
+         * @construct-only
          */
         get client(): Client;
         /**
          * The GDBusConnection used to create the D-Bus proxy
+         * @construct-only
          */
         get connection(): Gio.DBusConnection;
         /**
          * The object path used to create the D-Bus proxy
+         * @construct-only
          */
         get object_path(): string;
         /**
          * The object path used to create the D-Bus proxy
+         * @construct-only
          */
         get objectPath(): string;
 
@@ -5575,6 +5624,7 @@ export namespace ECal {
              * is notified as changed, because this list is not held in memory.
              * @signal
              * @since 3.30
+             * @run-last
              */
             changed: () => void;
             /**
@@ -5583,12 +5633,14 @@ export namespace ECal {
              * when nothing wrote to it yet.
              * @signal
              * @since 3.30
+             * @action
              */
             'format-time': (arg0: ReminderData, arg1: ICalGLib.Time, arg2: any, arg3: number) => void;
             /**
              * Signal is emitted when any reminder is either overdue or triggered.
              * @signal
              * @since 3.30
+             * @run-last
              */
             triggered: (arg0: ReminderData[], arg1: boolean) => void;
             'notify::default-zone': (pspec: GObject.ParamSpec) => void;
@@ -5633,6 +5685,7 @@ export namespace ECal {
         /**
          * The {@link EDataServer.SourceRegistry} which manages {@link EDataServer.Source} instances.
          * @since 3.30
+         * @construct-only
          */
         get registry(): EDataServer.SourceRegistry;
         /**

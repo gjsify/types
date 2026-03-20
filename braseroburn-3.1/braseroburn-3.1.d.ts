@@ -289,54 +289,67 @@ export namespace BraseroBurn {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'action-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'blank-failure': () => number;
             /**
              * @signal
+             * @run-last
              */
             'disable-joliet': () => number;
             /**
              * @signal
+             * @run-last
              */
             'dummy-success': () => number;
             /**
              * @signal
+             * @run-last
              */
             'eject-failure': (arg0: unknown) => number;
             /**
              * @signal
+             * @run-last
              */
             'insert-media': (arg0: unknown, arg1: number, arg2: number) => number;
             /**
              * @signal
+             * @run-last
              */
             'install-missing': (arg0: number, arg1: string) => number;
             /**
              * @signal
+             * @run-last
              */
             'location-request': (arg0: any | null, arg1: number) => number;
             /**
              * @signal
+             * @run-last
              */
             'progress-changed': (arg0: number, arg1: number, arg2: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'warn-audio-to-appendable': () => number;
             /**
              * @signal
+             * @run-last
              */
             'warn-data-loss': () => number;
             /**
              * @signal
+             * @run-last
              */
             'warn-previous-session-loss': () => number;
             /**
              * @signal
+             * @run-last
              */
             'warn-rewritable': () => number;
         }
@@ -1217,6 +1230,9 @@ export namespace BraseroBurn {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get session(): BurnSession;
 
         /**
@@ -1724,27 +1740,32 @@ export namespace BraseroBurn {
             /**
              * This signal gets emitted when the medium to burn to changed.
              * @signal
+             * @run-last
              */
             'output-changed': (arg0: unknown) => void;
             /**
              * This signal gets emitted when a tag changed for `session` (whether it
              * was removed, added, or it changed).
              * @signal
+             * @run-first
              */
             'tag-changed': (arg0: string) => void;
             /**
              * This signal gets emitted when a track is added to `session`.
              * @signal
+             * @run-last
              */
             'track-added': (arg0: Track) => void;
             /**
              * This signal gets emitted when the contents of a track changed.
              * @signal
+             * @run-last
              */
             'track-changed': (arg0: Track) => void;
             /**
              * This signal gets emitted when a track is removed from `session`.
              * @signal
+             * @run-last
              */
             'track-removed': (arg0: Track, arg1: number) => void;
             'notify::flags': (pspec: GObject.ParamSpec) => void;
@@ -2128,10 +2149,14 @@ export namespace BraseroBurn {
         interface SignalSignatures extends SessionSpan.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'is-valid': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'wrong-extension': () => boolean | void;
             'notify::flags': (pspec: GObject.ParamSpec) => void;
@@ -3629,6 +3654,7 @@ export namespace BraseroBurn {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             changed: () => void;
         }
@@ -4002,50 +4028,62 @@ export namespace BraseroBurn {
         interface SignalSignatures extends TrackData.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'deep-directory': (arg0: string) => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             'icon-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'image-uri': (arg0: string) => number;
             /**
              * @signal
+             * @run-last
              */
             'joliet-rename': () => void;
             /**
              * @signal
+             * @run-last
              */
             'name-collision': (arg0: string) => boolean | void;
             /**
              * @signal
+             * @run-first
              */
             'recursive-sym': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'session-available': (arg0: GObject.Object, arg1: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'session-loaded': (arg0: GObject.Object, arg1: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'source-loaded': (arg0: any | null) => void;
             /**
              * @signal
+             * @run-last
              */
             'source-loading': (arg0: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'unknown-uri': (arg0: string) => void;
             /**
              * @signal
+             * @run-first
              */
             'unreadable-uri': (arg0: any | null, arg1: string) => void;
         }

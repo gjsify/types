@@ -18,6 +18,9 @@ export namespace Gegl {
      * Gegl-0.3
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AbyssPolicy {
         export const $gtype: GObject.GType<AbyssPolicy>;
     }
@@ -33,6 +36,9 @@ export namespace Gegl {
         WHITE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DistanceMetric {
         export const $gtype: GObject.GType<DistanceMetric>;
     }
@@ -46,6 +52,9 @@ export namespace Gegl {
         CHEBYSHEV,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DitherMethod {
         export const $gtype: GObject.GType<DitherMethod>;
     }
@@ -65,6 +74,9 @@ export namespace Gegl {
         XOR_COVARIANT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Orientation {
         export const $gtype: GObject.GType<Orientation>;
     }
@@ -77,6 +89,9 @@ export namespace Gegl {
         VERTICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SamplerType {
         export const $gtype: GObject.GType<SamplerType>;
     }
@@ -609,6 +624,9 @@ export namespace Gegl {
             data?: any | null,
         ): any | null;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace AccessMode {
         export const $gtype: GObject.GType<AccessMode>;
     }
@@ -758,6 +776,7 @@ export namespace Gegl {
         interface SignalSignatures extends TileHandler.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: (arg0: Rectangle) => void;
             'notify::abyss-height': (pspec: GObject.ParamSpec) => void;
@@ -820,30 +839,93 @@ export namespace Gegl {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get abyss_height(): number;
+        /**
+         * @construct-only
+         */
         get abyssHeight(): number;
+        /**
+         * @construct-only
+         */
         get abyss_width(): number;
+        /**
+         * @construct-only
+         */
         get abyssWidth(): number;
+        /**
+         * @construct-only
+         */
         get abyss_x(): number;
+        /**
+         * @construct-only
+         */
         get abyssX(): number;
+        /**
+         * @construct-only
+         */
         get abyss_y(): number;
+        /**
+         * @construct-only
+         */
         get abyssY(): number;
+        /**
+         * @construct-only
+         */
         get backend(): TileBackend;
         get format(): any;
         set format(val: any);
         get height(): number;
         set height(val: number);
+        /**
+         * @construct-only
+         */
         get path(): string;
+        /**
+         * @read-only
+         */
         get pixels(): number;
+        /**
+         * @read-only
+         */
         get px_size(): number;
+        /**
+         * @read-only
+         */
         get pxSize(): number;
+        /**
+         * @construct-only
+         */
         get shift_x(): number;
+        /**
+         * @construct-only
+         */
         get shiftX(): number;
+        /**
+         * @construct-only
+         */
         get shift_y(): number;
+        /**
+         * @construct-only
+         */
         get shiftY(): number;
+        /**
+         * @construct-only
+         */
         get tile_height(): number;
+        /**
+         * @construct-only
+         */
         get tileHeight(): number;
+        /**
+         * @construct-only
+         */
         get tile_width(): number;
+        /**
+         * @construct-only
+         */
         get tileWidth(): number;
         get width(): number;
         set width(val: number);
@@ -1376,14 +1458,17 @@ export namespace Gegl {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             computed: (arg0: Rectangle) => void;
             /**
              * @signal
+             * @run-last
              */
             invalidated: (arg0: Rectangle) => void;
             /**
              * @signal
+             * @run-last
              */
             progress: (arg0: number) => void;
             'notify::dont-cache': (pspec: GObject.ParamSpec) => void;
@@ -1831,6 +1916,7 @@ export namespace Gegl {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: (arg0: any | null) => void;
         }
@@ -2043,7 +2129,13 @@ export namespace Gegl {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get chunksize(): number;
+        /**
+         * @write-only
+         */
         set node(val: Node);
         get progress(): number;
         set progress(val: number);
@@ -2163,23 +2255,77 @@ export namespace Gegl {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get swap_busy(): boolean;
+        /**
+         * @read-only
+         */
         get swapBusy(): boolean;
+        /**
+         * @read-only
+         */
         get swap_file_size(): number;
+        /**
+         * @read-only
+         */
         get swapFileSize(): number;
+        /**
+         * @read-only
+         */
         get swap_total(): number;
+        /**
+         * @read-only
+         */
         get swapTotal(): number;
+        /**
+         * @read-only
+         */
         get tile_cache_hits(): number;
+        /**
+         * @read-only
+         */
         get tileCacheHits(): number;
+        /**
+         * @read-only
+         */
         get tile_cache_misses(): number;
+        /**
+         * @read-only
+         */
         get tileCacheMisses(): number;
+        /**
+         * @read-only
+         */
         get tile_cache_total(): number;
+        /**
+         * @read-only
+         */
         get tileCacheTotal(): number;
+        /**
+         * @read-only
+         */
         get tile_cache_total_max(): number;
+        /**
+         * @read-only
+         */
         get tileCacheTotalMax(): number;
+        /**
+         * @read-only
+         */
         get tile_cache_total_uncloned(): number;
+        /**
+         * @read-only
+         */
         get tileCacheTotalUncloned(): number;
+        /**
+         * @read-only
+         */
         get zoom_total(): number;
+        /**
+         * @read-only
+         */
         get zoomTotal(): number;
 
         /**
@@ -2259,14 +2405,41 @@ export namespace Gegl {
         set flush_on_destroy(val: boolean);
         get flushOnDestroy(): boolean;
         set flushOnDestroy(val: boolean);
+        /**
+         * @construct-only
+         */
         get format(): any;
+        /**
+         * @read-only
+         */
         get px_size(): number;
+        /**
+         * @read-only
+         */
         get pxSize(): number;
+        /**
+         * @construct-only
+         */
         get tile_height(): number;
+        /**
+         * @construct-only
+         */
         get tileHeight(): number;
+        /**
+         * @read-only
+         */
         get tile_size(): number;
+        /**
+         * @read-only
+         */
         get tileSize(): number;
+        /**
+         * @construct-only
+         */
         get tile_width(): number;
+        /**
+         * @construct-only
+         */
         get tileWidth(): number;
 
         /**

@@ -24,6 +24,9 @@ export namespace GData {
      * GData-0.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BatchOperationType {
         export const $gtype: GObject.GType<BatchOperationType>;
     }
@@ -75,6 +78,9 @@ export namespace GData {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MediaExpression {
         export const $gtype: GObject.GType<MediaExpression>;
     }
@@ -98,6 +104,9 @@ export namespace GData {
         NONSTOP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MediaMedium {
         export const $gtype: GObject.GType<MediaMedium>;
     }
@@ -134,6 +143,9 @@ export namespace GData {
         EXECUTABLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OperationType {
         export const $gtype: GObject.GType<OperationType>;
     }
@@ -205,6 +217,9 @@ export namespace GData {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PicasaWebVisibility {
         export const $gtype: GObject.GType<PicasaWebVisibility>;
     }
@@ -297,6 +312,9 @@ export namespace GData {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace YouTubeAge {
         export const $gtype: GObject.GType<YouTubeAge>;
     }
@@ -325,6 +343,9 @@ export namespace GData {
         THIS_MONTH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace YouTubePermission {
         export const $gtype: GObject.GType<YouTubePermission>;
     }
@@ -352,6 +373,9 @@ export namespace GData {
         MODERATED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace YouTubeSafeSearch {
         export const $gtype: GObject.GType<YouTubeSafeSearch>;
     }
@@ -411,6 +435,9 @@ export namespace GData {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace YouTubeStandardFeedType {
         export const $gtype: GObject.GType<YouTubeStandardFeedType>;
     }
@@ -1629,6 +1656,7 @@ export namespace GData {
          *
          * API reference: <ulink type="http" url="http://www.atomenabled.org/developers/protocol/#appCategories2">app:categories</ulink>
          * @since 0.7.0
+         * @read-only
          */
         get is_fixed(): boolean;
         /**
@@ -1636,6 +1664,7 @@ export namespace GData {
          *
          * API reference: <ulink type="http" url="http://www.atomenabled.org/developers/protocol/#appCategories2">app:categories</ulink>
          * @since 0.7.0
+         * @read-only
          */
         get isFixed(): boolean;
 
@@ -1734,6 +1763,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/protocol/#appEdited">
          * Atom Publishing Protocol specification</ulink>.
          * @since 0.7.0
+         * @read-only
          */
         get edited(): number;
         /**
@@ -1742,6 +1772,7 @@ export namespace GData {
          * modified by the client. If no authorisation key is set (and hence none is needed for access to the item),
          * this will be `null`.
          * @since 0.16.0
+         * @read-only
          */
         get key(): string;
         /**
@@ -2503,18 +2534,21 @@ export namespace GData {
          * A URI detailing the scope of the authorization domain, as enumerated in the
          * <ulink type="http" url="http://code.google.com/apis/documents/faq_gdata.html#AuthScopes">online documentation</ulink>.
          * @since 0.9.0
+         * @construct-only
          */
         get scope(): string;
         /**
          * The name of the service which contains the authorization domain, as enumerated in the
          * <ulink type="http" url="http://code.google.com/apis/documents/faq_gdata.html#clientlogin">online documentation</ulink>.
          * @since 0.9.0
+         * @construct-only
          */
         get service_name(): string;
         /**
          * The name of the service which contains the authorization domain, as enumerated in the
          * <ulink type="http" url="http://code.google.com/apis/documents/faq_gdata.html#clientlogin">online documentation</ulink>.
          * @since 0.9.0
+         * @construct-only
          */
         get serviceName(): string;
 
@@ -2606,6 +2640,7 @@ export namespace GData {
          * All requests in the batch operation must be authorizable under this single authorization domain. If requests need different authorization
          * domains, they must be performed in different batch operations.
          * @since 0.9.0
+         * @construct-only
          */
         get authorization_domain(): AuthorizationDomain;
         /**
@@ -2615,21 +2650,25 @@ export namespace GData {
          * All requests in the batch operation must be authorizable under this single authorization domain. If requests need different authorization
          * domains, they must be performed in different batch operations.
          * @since 0.9.0
+         * @construct-only
          */
         get authorizationDomain(): AuthorizationDomain;
         /**
          * The feed URI that this batch operation will be sent to.
          * @since 0.7.0
+         * @construct-only
          */
         get feed_uri(): string;
         /**
          * The feed URI that this batch operation will be sent to.
          * @since 0.7.0
+         * @construct-only
          */
         get feedUri(): string;
         /**
          * The service this batch operation is attached to.
          * @since 0.7.0
+         * @construct-only
          */
         get service(): Service;
 
@@ -2936,12 +2975,14 @@ export namespace GData {
          * Indicates the access level the current user has to the calendar. For example: `GDATA_CALENDAR_ACCESS_ROLE_READ` or
          * `GDATA_CALENDAR_ACCESS_ROLE_FREE_BUSY`. The "current user" is the one authenticated against the service's {@link GData.Service.authorizer},
          * or the guest user.
+         * @read-only
          */
         get access_level(): string;
         /**
          * Indicates the access level the current user has to the calendar. For example: `GDATA_CALENDAR_ACCESS_ROLE_READ` or
          * `GDATA_CALENDAR_ACCESS_ROLE_FREE_BUSY`. The "current user" is the one authenticated against the service's {@link GData.Service.authorizer},
          * or the guest user.
+         * @read-only
          */
         get accessLevel(): string;
         /**
@@ -3094,6 +3135,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/reference.html#ResourceVersioning">
          * GData specification</ulink>.
          * @since 0.2.0
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get etag(): string;
@@ -3103,18 +3145,21 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.id">
          * Atom specification</ulink>.
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get id(): string;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get is_inserted(): boolean;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get isInserted(): boolean;
@@ -3123,6 +3168,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.published">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get published(): number;
@@ -3160,6 +3206,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.updated">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get updated(): number;
@@ -3440,6 +3487,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/protocol/#appEdited">
          * Atom Publishing Protocol specification</ulink>.
+         * @read-only
          */
         get edited(): number;
         /**
@@ -3499,21 +3547,25 @@ export namespace GData {
         /**
          * The event ID for the original event, if this event is an exception to a recurring event.
          * @since 0.3.0
+         * @read-only
          */
         get original_event_id(): string;
         /**
          * The event ID for the original event, if this event is an exception to a recurring event.
          * @since 0.3.0
+         * @read-only
          */
         get originalEventId(): string;
         /**
          * The event URI for the original event, if this event is an exception to a recurring event.
          * @since 0.3.0
+         * @read-only
          */
         get original_event_uri(): string;
         /**
          * The event URI for the original event, if this event is an exception to a recurring event.
          * @since 0.3.0
+         * @read-only
          */
         get originalEventUri(): string;
         /**
@@ -5955,6 +6007,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/reference.html#ResourceVersioning">
          * GData specification</ulink>.
          * @since 0.2.0
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get etag(): string;
@@ -5964,18 +6017,21 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.id">
          * Atom specification</ulink>.
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get id(): string;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get is_inserted(): boolean;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get isInserted(): boolean;
@@ -5984,6 +6040,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.published">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get published(): number;
@@ -6021,6 +6078,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.updated">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get updated(): number;
@@ -6334,6 +6392,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/reference.html#ResourceVersioning">
          * GData specification</ulink>.
          * @since 0.2.0
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get etag(): string;
@@ -6343,18 +6402,21 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.id">
          * Atom specification</ulink>.
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get id(): string;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get is_inserted(): boolean;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get isInserted(): boolean;
@@ -6363,6 +6425,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.published">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get published(): number;
@@ -6400,6 +6463,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.updated">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get updated(): number;
@@ -6573,6 +6637,7 @@ export namespace GData {
         /**
          * The human-readable name of this shared drive.
          * @since 0.18.0
+         * @read-only
          */
         get name(): string;
 
@@ -6751,11 +6816,13 @@ export namespace GData {
         /**
          * Indicates whether the current user can edit this file.
          * @since 0.18.0
+         * @read-only
          */
         get can_edit(): boolean;
         /**
          * Indicates whether the current user can edit this file.
          * @since 0.18.0
+         * @read-only
          */
         get canEdit(): boolean;
         /**
@@ -6764,6 +6831,7 @@ export namespace GData {
          * {@link GData.DocumentsSpreadsheet} and {@link GData.DocumentsFolder} are not binary
          * data and so have no size. Measured in bytes.
          * @since 0.17.7
+         * @read-only
          */
         get file_size(): number;
         /**
@@ -6772,6 +6840,7 @@ export namespace GData {
          * {@link GData.DocumentsSpreadsheet} and {@link GData.DocumentsFolder} are not binary
          * data and so have no size. Measured in bytes.
          * @since 0.17.7
+         * @read-only
          */
         get fileSize(): number;
         /**
@@ -6791,21 +6860,25 @@ export namespace GData {
         /**
          * Indicates the author of the last modification.
          * @since 0.4.0
+         * @read-only
          */
         get last_modified_by(): Author;
         /**
          * Indicates the author of the last modification.
          * @since 0.4.0
+         * @read-only
          */
         get lastModifiedBy(): Author;
         /**
          * The last time the document was viewed.
          * @since 0.4.0
+         * @read-only
          */
         get last_viewed(): number;
         /**
          * The last time the document was viewed.
          * @since 0.4.0
+         * @read-only
          */
         get lastViewed(): number;
         /**
@@ -6814,6 +6887,7 @@ export namespace GData {
          *
          * This property will be <code class="literal">0</code> for documents which aren't consuming any quota.
          * @since 0.13.0
+         * @read-only
          */
         get quota_used(): number;
         /**
@@ -6822,6 +6896,7 @@ export namespace GData {
          *
          * This property will be <code class="literal">0</code> for documents which aren't consuming any quota.
          * @since 0.13.0
+         * @read-only
          */
         get quotaUsed(): number;
         /**
@@ -6837,6 +6912,7 @@ export namespace GData {
          * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`resource_ids_explained`">Google Documents
          * API reference</ulink>.
          * @since 0.11.0
+         * @read-only
          */
         get resource_id(): string;
         /**
@@ -6852,16 +6928,19 @@ export namespace GData {
          * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`resource_ids_explained`">Google Documents
          * API reference</ulink>.
          * @since 0.11.0
+         * @read-only
          */
         get resourceId(): string;
         /**
          * The UNIX timestamp for the time at which this file was shared with the user.
          * @since 0.18.0
+         * @read-only
          */
         get shared_with_me_date(): number;
         /**
          * The UNIX timestamp for the time at which this file was shared with the user.
          * @since 0.18.0
+         * @read-only
          */
         get sharedWithMeDate(): number;
         /**
@@ -7022,6 +7101,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/reference.html#ResourceVersioning">
          * GData specification</ulink>.
          * @since 0.2.0
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get etag(): string;
@@ -7031,18 +7111,21 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.id">
          * Atom specification</ulink>.
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get id(): string;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get is_inserted(): boolean;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get isInserted(): boolean;
@@ -7051,6 +7134,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.published">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get published(): number;
@@ -7088,6 +7172,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.updated">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get updated(): number;
@@ -7470,6 +7555,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/reference.html#ResourceVersioning">
          * GData specification</ulink>.
          * @since 0.2.0
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get etag(): string;
@@ -7479,18 +7565,21 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.id">
          * Atom specification</ulink>.
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get id(): string;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get is_inserted(): boolean;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get isInserted(): boolean;
@@ -7499,6 +7588,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.published">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get published(): number;
@@ -7536,6 +7626,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.updated">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get updated(): number;
@@ -7769,21 +7860,25 @@ export namespace GData {
         /**
          * The user quota limit across all services. Measured in bytes.
          * @since 0.17.9
+         * @read-only
          */
         get quota_total(): number;
         /**
          * The user quota limit across all services. Measured in bytes.
          * @since 0.17.9
+         * @read-only
          */
         get quotaTotal(): number;
         /**
          * The amount of user quota used up across all services. Measured in bytes.
          * @since 0.17.9
+         * @read-only
          */
         get quota_used(): number;
         /**
          * The amount of user quota used up across all services. Measured in bytes.
          * @since 0.17.9
+         * @read-only
          */
         get quotaUsed(): number;
 
@@ -7948,6 +8043,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/reference.html#ResourceVersioning">
          * GData specification</ulink>.
          * @since 0.2.0
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get etag(): string;
@@ -7957,18 +8053,21 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.id">
          * Atom specification</ulink>.
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get id(): string;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get is_inserted(): boolean;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get isInserted(): boolean;
@@ -7977,6 +8076,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.published">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get published(): number;
@@ -8014,6 +8114,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.updated">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get updated(): number;
@@ -8265,6 +8366,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/reference.html#ResourceVersioning">
          * GData specification</ulink>.
          * @since 0.2.0
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get etag(): string;
@@ -8274,18 +8376,21 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.id">
          * Atom specification</ulink>.
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get id(): string;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get is_inserted(): boolean;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get isInserted(): boolean;
@@ -8294,6 +8399,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.published">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get published(): number;
@@ -8331,6 +8437,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.updated">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get updated(): number;
@@ -8504,6 +8611,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="https://developers.google.com/drive/api/v2/reference/properties">Properties Resource</ulink>
          * @since 0.17.11
+         * @construct-only
          */
         get etag(): string;
         /**
@@ -10627,6 +10735,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/reference.html#ResourceVersioning">
          * GData specification</ulink>.
          * @since 0.2.0
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get etag(): string;
@@ -10636,18 +10745,21 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.id">
          * Atom specification</ulink>.
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get id(): string;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get is_inserted(): boolean;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get isInserted(): boolean;
@@ -10656,6 +10768,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.published">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get published(): number;
@@ -10693,6 +10806,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.updated">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get updated(): number;
@@ -10942,6 +11056,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/reference.html#ResourceVersioning">
          * GData specification</ulink>.
          * @since 0.2.0
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get etag(): string;
@@ -10951,18 +11066,21 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.id">
          * Atom specification</ulink>.
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get id(): string;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get is_inserted(): boolean;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get isInserted(): boolean;
@@ -10971,6 +11089,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.published">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get published(): number;
@@ -11008,6 +11127,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.updated">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get updated(): number;
@@ -11306,12 +11426,14 @@ export namespace GData {
          * The authorization domain for the download, against which the {@link GData.Service.authorizer} for the {@link GData.DownloadStream.service} should be
          * authorized. This may be `null` if authorization is not needed for the download.
          * @since 0.9.0
+         * @construct-only
          */
         get authorization_domain(): AuthorizationDomain;
         /**
          * The authorization domain for the download, against which the {@link GData.Service.authorizer} for the {@link GData.DownloadStream.service} should be
          * authorized. This may be `null` if authorization is not needed for the download.
          * @since 0.9.0
+         * @construct-only
          */
         get authorizationDomain(): AuthorizationDomain;
         /**
@@ -11325,6 +11447,7 @@ export namespace GData {
          * passed to individual {@link Gio.InputStream} operations will not cancel the download operation proper if cancelled — they will merely cancel that API
          * call. The only way to cancel the download operation completely is using {@link GData.DownloadStream.cancellable}.
          * @since 0.8.0
+         * @construct-only
          */
         get cancellable(): Gio.Cancellable;
         /**
@@ -11335,6 +11458,7 @@ export namespace GData {
          * the {@link GData.DownloadStream}. It is the client's responsibility to ensure that any notification signal handlers are either multi-thread safe
          * or marshal the notification to the thread which owns the {@link GData.DownloadStream} as appropriate.
          * @since 0.5.0
+         * @read-only
          */
         get content_length(): number;
         /**
@@ -11345,6 +11469,7 @@ export namespace GData {
          * the {@link GData.DownloadStream}. It is the client's responsibility to ensure that any notification signal handlers are either multi-thread safe
          * or marshal the notification to the thread which owns the {@link GData.DownloadStream} as appropriate.
          * @since 0.5.0
+         * @read-only
          */
         get contentLength(): number;
         /**
@@ -11355,6 +11480,7 @@ export namespace GData {
          * the {@link GData.DownloadStream}. It is the client's responsibility to ensure that any notification signal handlers are either multi-thread safe
          * or marshal the notification to the thread which owns the {@link GData.DownloadStream} as appropriate.
          * @since 0.5.0
+         * @read-only
          */
         get content_type(): string;
         /**
@@ -11365,21 +11491,25 @@ export namespace GData {
          * the {@link GData.DownloadStream}. It is the client's responsibility to ensure that any notification signal handlers are either multi-thread safe
          * or marshal the notification to the thread which owns the {@link GData.DownloadStream} as appropriate.
          * @since 0.5.0
+         * @read-only
          */
         get contentType(): string;
         /**
          * The URI of the file to download. This must be HTTPS.
          * @since 0.5.0
+         * @construct-only
          */
         get download_uri(): string;
         /**
          * The URI of the file to download. This must be HTTPS.
          * @since 0.5.0
+         * @construct-only
          */
         get downloadUri(): string;
         /**
          * The service which is used to authorize the download, and to which the download relates.
          * @since 0.5.0
+         * @construct-only
          */
         get service(): Service;
 
@@ -12092,6 +12222,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/reference.html#ResourceVersioning">
          * GData specification</ulink>.
          * @since 0.2.0
+         * @construct-only
          */
         get etag(): string;
         /**
@@ -12100,16 +12231,19 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.id">
          * Atom specification</ulink>.
+         * @construct-only
          */
         get id(): string;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          */
         get is_inserted(): boolean;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          */
         get isInserted(): boolean;
         /**
@@ -12117,6 +12251,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.published">Atom specification</ulink>.
+         * @read-only
          */
         get published(): number;
         /**
@@ -12150,6 +12285,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.updated">Atom specification</ulink>.
+         * @read-only
          */
         get updated(): number;
 
@@ -12384,6 +12520,7 @@ export namespace GData {
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/reference.html#ResourceVersioning">online documentation</ulink> for
          * more information.
          * @since 0.2.0
+         * @read-only
          */
         get etag(): string;
         /**
@@ -12391,6 +12528,7 @@ export namespace GData {
          *
          * API reference: <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_generator">
          * atom:generator</ulink>
+         * @read-only
          */
         get generator(): Generator;
         /**
@@ -12399,12 +12537,14 @@ export namespace GData {
          * API reference:
          * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.icon">atom:icon</ulink>
          * @since 0.6.0
+         * @read-only
          */
         get icon(): string;
         /**
          * The unique and permanent URN ID for the feed.
          *
          * API reference: <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_id">atom:id</ulink>
+         * @read-only
          */
         get id(): string;
         /**
@@ -12413,6 +12553,7 @@ export namespace GData {
          * API reference:
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_openSearch:itemsPerPage">
          * openSearch:itemsPerPage</ulink>
+         * @read-only
          */
         get items_per_page(): number;
         /**
@@ -12421,12 +12562,14 @@ export namespace GData {
          * API reference:
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_openSearch:itemsPerPage">
          * openSearch:itemsPerPage</ulink>
+         * @read-only
          */
         get itemsPerPage(): number;
         /**
          * The URI of a logo for the feed.
          *
          * API reference: <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_logo">atom:logo</ulink>
+         * @read-only
          */
         get logo(): string;
         /**
@@ -12435,6 +12578,7 @@ export namespace GData {
          * querying APIs which use page tokens rather than page numbers or
          * offsets.
          * @since 0.17.7
+         * @read-only
          */
         get next_page_token(): string;
         /**
@@ -12443,6 +12587,7 @@ export namespace GData {
          * querying APIs which use page tokens rather than page numbers or
          * offsets.
          * @since 0.17.7
+         * @read-only
          */
         get nextPageToken(): string;
         /**
@@ -12451,6 +12596,7 @@ export namespace GData {
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.rights">Atom specification</ulink>.
          * @since 0.7.0
+         * @read-only
          */
         get rights(): string;
         /**
@@ -12461,6 +12607,7 @@ export namespace GData {
          *
          * API reference: <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_openSearch:startIndex">
          * openSearch:startIndex</ulink>
+         * @read-only
          */
         get start_index(): number;
         /**
@@ -12471,12 +12618,14 @@ export namespace GData {
          *
          * API reference: <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_openSearch:startIndex">
          * openSearch:startIndex</ulink>
+         * @read-only
          */
         get startIndex(): number;
         /**
          * The subtitle of the feed.
          *
          * API reference: <ulink type="http" url="http://atomenabled.org/developers/syndication/">atom:subtitle</ulink>
+         * @read-only
          */
         get subtitle(): string;
         /**
@@ -12484,6 +12633,7 @@ export namespace GData {
          *
          * API reference:
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_title">atom:title</ulink>
+         * @read-only
          */
         get title(): string;
         /**
@@ -12495,6 +12645,7 @@ export namespace GData {
          * API reference:
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_openSearch:totalResults">
          * openSearch:totalResults</ulink>
+         * @read-only
          */
         get total_results(): number;
         /**
@@ -12506,6 +12657,7 @@ export namespace GData {
          * API reference:
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_openSearch:totalResults">
          * openSearch:totalResults</ulink>
+         * @read-only
          */
         get totalResults(): number;
         /**
@@ -12513,6 +12665,7 @@ export namespace GData {
          *
          * API reference: <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_updated">
          * atom:updated</ulink>
+         * @read-only
          */
         get updated(): number;
 
@@ -19105,6 +19258,7 @@ export namespace GData {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
          * @since 0.5.0
+         * @read-only
          */
         get country(): string;
         /**
@@ -19115,6 +19269,7 @@ export namespace GData {
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>
          * or <ulink type="http" url="http://www.iso.org/iso/iso-3166-1_decoding_table">ISO 3166-1 alpha-2</ulink>.
          * @since 0.5.0
+         * @read-only
          */
         get country_code(): string;
         /**
@@ -19125,6 +19280,7 @@ export namespace GData {
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>
          * or <ulink type="http" url="http://www.iso.org/iso/iso-3166-1_decoding_table">ISO 3166-1 alpha-2</ulink>.
          * @since 0.5.0
+         * @read-only
          */
         get countryCode(): string;
         /**
@@ -20040,6 +20196,7 @@ export namespace GData {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdReminder">GData specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get is_absolute_time(): boolean;
         /**
@@ -20048,6 +20205,7 @@ export namespace GData {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdReminder">GData specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get isAbsoluteTime(): boolean;
         /**
@@ -22584,6 +22742,7 @@ export namespace GData {
          * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.generator">
          * Atom specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get name(): string;
         /**
@@ -22593,6 +22752,7 @@ export namespace GData {
          * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.generator">
          * Atom specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get uri(): string;
         /**
@@ -22602,6 +22762,7 @@ export namespace GData {
          * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.generator">
          * Atom specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get version(): string;
 
@@ -23153,11 +23314,13 @@ export namespace GData {
         /**
          * The GOA account providing authentication. This should have all the necessary services enabled on it.
          * @since 0.13.1
+         * @construct-only
          */
         get goa_object(): Goa.Object;
         /**
          * The GOA account providing authentication. This should have all the necessary services enabled on it.
          * @since 0.13.1
+         * @construct-only
          */
         get goaObject(): Goa.Object;
 
@@ -24740,6 +24903,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get content_type(): string;
         /**
@@ -24747,6 +24911,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get contentType(): string;
         /**
@@ -24754,6 +24919,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get duration(): number;
         /**
@@ -24761,6 +24927,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get expression(): MediaExpression;
         /**
@@ -24768,6 +24935,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get filesize(): number;
         /**
@@ -24775,6 +24943,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get height(): number;
         /**
@@ -24782,6 +24951,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get is_default(): boolean;
         /**
@@ -24789,6 +24959,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get isDefault(): boolean;
         /**
@@ -24797,6 +24968,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get medium(): MediaMedium;
         /**
@@ -24804,6 +24976,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get uri(): string;
         /**
@@ -24811,6 +24984,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get width(): number;
 
@@ -24941,6 +25115,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get credit(): string;
         /**
@@ -24948,6 +25123,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get role(): string;
         /**
@@ -24955,6 +25131,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get scheme(): string;
 
@@ -25047,6 +25224,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get height(): number;
         /**
@@ -25054,6 +25232,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get time(): number;
         /**
@@ -25061,6 +25240,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get uri(): string;
         /**
@@ -25068,6 +25248,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get width(): number;
 
@@ -25195,6 +25376,7 @@ export namespace GData {
          * <replaceable>application name</replaceable>-
          * <replaceable>version ID</replaceable></literal>.
          * @since 0.17.0
+         * @construct-only
          */
         get client_id(): string;
         /**
@@ -25206,6 +25388,7 @@ export namespace GData {
          * <replaceable>application name</replaceable>-
          * <replaceable>version ID</replaceable></literal>.
          * @since 0.17.0
+         * @construct-only
          */
         get clientId(): string;
         /**
@@ -25218,6 +25401,7 @@ export namespace GData {
          * <ulink url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#handlingtheresponse" type="http">reference
          * documentation</ulink> for details.
          * @since 0.17.0
+         * @construct-only
          */
         get client_secret(): string;
         /**
@@ -25230,6 +25414,7 @@ export namespace GData {
          * <ulink url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#handlingtheresponse" type="http">reference
          * documentation</ulink> for details.
          * @since 0.17.0
+         * @construct-only
          */
         get clientSecret(): string;
         /**
@@ -25288,6 +25473,7 @@ export namespace GData {
          * See the <ulink type="http" url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#choosingredirecturi">reference
          * documentation</ulink> for details about choosing a redirect URI.
          * @since 0.17.0
+         * @construct-only
          */
         get redirect_uri(): string;
         /**
@@ -25319,6 +25505,7 @@ export namespace GData {
          * See the <ulink type="http" url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#choosingredirecturi">reference
          * documentation</ulink> for details about choosing a redirect URI.
          * @since 0.17.0
+         * @construct-only
          */
         get redirectUri(): string;
         /**
@@ -26253,11 +26440,13 @@ export namespace GData {
         /**
          * Specifies whether the object was constructed by parsing XML or manually.
          * @since 0.7.0
+         * @construct-only
          */
         get constructed_from_xml(): boolean;
         /**
          * Specifies whether the object was constructed by parsing XML or manually.
          * @since 0.7.0
+         * @construct-only
          */
         get constructedFromXml(): boolean;
 
@@ -26448,6 +26637,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_id">
          * gphoto specification</ulink>.
          * @since 0.7.0
+         * @construct-only
          */
         get album_id(): string;
         /**
@@ -26458,6 +26648,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_id">
          * gphoto specification</ulink>.
          * @since 0.7.0
+         * @construct-only
          */
         get albumId(): string;
         /**
@@ -26467,6 +26658,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_bytesUsed">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get bytes_used(): number;
         /**
@@ -26476,6 +26668,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_bytesUsed">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get bytesUsed(): number;
         /**
@@ -26484,6 +26677,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_commentCount">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get comment_count(): number;
         /**
@@ -26492,6 +26686,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_commentCount">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get commentCount(): number;
         /**
@@ -26500,6 +26695,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/protocol/#appEdited">
          * Atom Publishing Protocol specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get edited(): number;
         get is_commenting_enabled(): boolean;
@@ -26541,6 +26737,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_nickname">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get nickname(): string;
         /**
@@ -26549,6 +26746,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_numphotos">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get num_photos(): number;
         /**
@@ -26557,6 +26755,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_numphotos">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get numPhotos(): number;
         /**
@@ -26566,6 +26765,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_numphotosremaining">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get num_photos_remaining(): number;
         /**
@@ -26575,6 +26775,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_numphotosremaining">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get numPhotosRemaining(): number;
         /**
@@ -26601,6 +26802,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_user">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get user(): string;
         /**
@@ -27049,6 +27251,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_commentCount">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get comment_count(): number;
         /**
@@ -27057,6 +27260,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_commentCount">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get commentCount(): number;
         /**
@@ -27065,6 +27269,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#media_credit">Media RSS
          * specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get credit(): string;
         /**
@@ -27073,6 +27278,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#exif_reference">
          * EXIF element reference</ulink>.
          * @since 0.5.0
+         * @read-only
          */
         get distance(): number;
         /**
@@ -27081,6 +27287,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/protocol/#appEdited">
          * Atom Publishing Protocol specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get edited(): number;
         /**
@@ -27089,6 +27296,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#exif_reference">
          * EXIF element reference</ulink>.
          * @since 0.5.0
+         * @read-only
          */
         get exposure(): number;
         /**
@@ -27100,6 +27308,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_id">
          * gphoto specification</ulink>.
          * @since 0.7.0
+         * @construct-only
          */
         get file_id(): string;
         /**
@@ -27111,6 +27320,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_id">
          * gphoto specification</ulink>.
          * @since 0.7.0
+         * @construct-only
          */
         get fileId(): string;
         /**
@@ -27119,6 +27329,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#exif_reference">
          * EXIF element reference</ulink>.
          * @since 0.5.0
+         * @read-only
          */
         get flash(): boolean;
         /**
@@ -27127,6 +27338,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#exif_reference">
          * EXIF element reference</ulink>.
          * @since 0.5.0
+         * @read-only
          */
         get focal_length(): number;
         /**
@@ -27135,6 +27347,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#exif_reference">
          * EXIF element reference</ulink>.
          * @since 0.5.0
+         * @read-only
          */
         get focalLength(): number;
         /**
@@ -27143,6 +27356,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#exif_reference">
          * EXIF element reference</ulink>.
          * @since 0.5.0
+         * @read-only
          */
         get fstop(): number;
         /**
@@ -27151,6 +27365,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_height">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get height(): number;
         /**
@@ -27159,6 +27374,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#exif_reference">
          * EXIF element reference</ulink>.
          * @since 0.5.0
+         * @read-only
          */
         get image_unique_id(): string;
         /**
@@ -27167,6 +27383,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#exif_reference">
          * EXIF element reference</ulink>.
          * @since 0.5.0
+         * @read-only
          */
         get imageUniqueId(): string;
         /**
@@ -27187,6 +27404,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#exif_reference">
          * EXIF element reference</ulink> and ISO 5800:1987.
          * @since 0.5.0
+         * @read-only
          */
         get iso(): number;
         /**
@@ -27215,6 +27433,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#exif_reference">
          * EXIF element reference</ulink>.
          * @since 0.5.0
+         * @read-only
          */
         get make(): string;
         /**
@@ -27223,6 +27442,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#exif_reference">
          * EXIF element reference</ulink>.
          * @since 0.5.0
+         * @read-only
          */
         get model(): string;
         /**
@@ -27241,6 +27461,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_size">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get size(): number;
         /**
@@ -27267,6 +27488,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_version">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @construct-only
          */
         get version(): string;
         /**
@@ -27275,6 +27497,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_videostatus">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get video_status(): string;
         /**
@@ -27283,6 +27506,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_videostatus">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get videoStatus(): string;
         /**
@@ -27291,6 +27515,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_width">
          * gphoto specification</ulink>.
          * @since 0.4.0
+         * @read-only
          */
         get width(): number;
 
@@ -27568,6 +27793,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/reference.html#ResourceVersioning">
          * GData specification</ulink>.
          * @since 0.2.0
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get etag(): string;
@@ -27577,18 +27803,21 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.id">
          * Atom specification</ulink>.
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get id(): string;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get is_inserted(): boolean;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get isInserted(): boolean;
@@ -27597,6 +27826,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.published">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get published(): number;
@@ -27634,6 +27864,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.updated">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get updated(): number;
@@ -28570,6 +28801,7 @@ export namespace GData {
          *
          * If the {@link GData.PicasaWebUser} does not represent the currently authenticated user, this will be <code class="literal">-1</code>.
          * @since 0.6.0
+         * @read-only
          */
         get max_photos_per_album(): number;
         /**
@@ -28578,12 +28810,14 @@ export namespace GData {
          *
          * If the {@link GData.PicasaWebUser} does not represent the currently authenticated user, this will be <code class="literal">-1</code>.
          * @since 0.6.0
+         * @read-only
          */
         get maxPhotosPerAlbum(): number;
         /**
          * The user's nickname. This is a user-specified value that should be used when referring to the user by name.
          * http://code.google.com/apis/picasaweb/docs/2.0/reference.html#gphoto_nickname
          * @since 0.6.0
+         * @read-only
          */
         get nickname(): string;
         /**
@@ -28592,6 +28826,7 @@ export namespace GData {
          *
          * If the {@link GData.PicasaWebUser} does not represent the currently authenticated user, this will be <code class="literal">-1</code>.
          * @since 0.6.0
+         * @read-only
          */
         get quota_current(): number;
         /**
@@ -28600,6 +28835,7 @@ export namespace GData {
          *
          * If the {@link GData.PicasaWebUser} does not represent the currently authenticated user, this will be <code class="literal">-1</code>.
          * @since 0.6.0
+         * @read-only
          */
         get quotaCurrent(): number;
         /**
@@ -28608,6 +28844,7 @@ export namespace GData {
          *
          * If the {@link GData.PicasaWebUser} does not represent the currently authenticated user, this will be <code class="literal">-1</code>.
          * @since 0.6.0
+         * @read-only
          */
         get quota_limit(): number;
         /**
@@ -28616,24 +28853,28 @@ export namespace GData {
          *
          * If the {@link GData.PicasaWebUser} does not represent the currently authenticated user, this will be <code class="literal">-1</code>.
          * @since 0.6.0
+         * @read-only
          */
         get quotaLimit(): number;
         /**
          * The URI of a thumbnail-sized portrait of the user.
          * http://code.google.com/apis/picasaweb/docs/2.0/reference.html#gphoto_thumbnail
          * @since 0.6.0
+         * @read-only
          */
         get thumbnail_uri(): string;
         /**
          * The URI of a thumbnail-sized portrait of the user.
          * http://code.google.com/apis/picasaweb/docs/2.0/reference.html#gphoto_thumbnail
          * @since 0.6.0
+         * @read-only
          */
         get thumbnailUri(): string;
         /**
          * The username of the user, as seen in feed URLs.
          * http://code.google.com/apis/picasaweb/docs/2.0/reference.html#gphoto_user
          * @since 0.6.0
+         * @read-only
          */
         get user(): string;
 
@@ -30478,6 +30719,7 @@ export namespace GData {
          * had been marked completed when the task list was last cleared.
          * The default is `false`. This field is read-only.
          * @since 0.15.0
+         * @read-only
          */
         get is_hidden(): boolean;
         /**
@@ -30485,6 +30727,7 @@ export namespace GData {
          * had been marked completed when the task list was last cleared.
          * The default is `false`. This field is read-only.
          * @since 0.15.0
+         * @read-only
          */
         get isHidden(): boolean;
         /**
@@ -30750,12 +30993,14 @@ export namespace GData {
          * The authorization domain for the upload, against which the {@link GData.Service.authorizer} for the {@link GData.DownloadStream.service} should be
          * authorized. This may be `null` if authorization is not needed for the upload.
          * @since 0.9.0
+         * @construct-only
          */
         get authorization_domain(): AuthorizationDomain;
         /**
          * The authorization domain for the upload, against which the {@link GData.Service.authorizer} for the {@link GData.DownloadStream.service} should be
          * authorized. This may be `null` if authorization is not needed for the upload.
          * @since 0.9.0
+         * @construct-only
          */
         get authorizationDomain(): AuthorizationDomain;
         /**
@@ -30769,6 +31014,7 @@ export namespace GData {
          * to individual {@link Gio.OutputStream} operations will not cancel the upload operation proper if cancelled — they will merely cancel that API call.
          * The only way to cancel the upload operation completely is using {@link GData.UploadStream.cancellable}.
          * @since 0.8.0
+         * @construct-only
          */
         get cancellable(): Gio.Cancellable;
         /**
@@ -30777,6 +31023,7 @@ export namespace GData {
          *
          * If this is <code class="literal">-1</code> the upload will be non-resumable; if it is non-negative, the upload will be resumable.
          * @since 0.13.0
+         * @construct-only
          */
         get content_length(): number;
         /**
@@ -30785,46 +31032,55 @@ export namespace GData {
          *
          * If this is <code class="literal">-1</code> the upload will be non-resumable; if it is non-negative, the upload will be resumable.
          * @since 0.13.0
+         * @construct-only
          */
         get contentLength(): number;
         /**
          * The content type of the file being uploaded (i.e. as returned by `g_file_info_get_content_type()`).
          * @since 0.5.0
+         * @construct-only
          */
         get content_type(): string;
         /**
          * The content type of the file being uploaded (i.e. as returned by `g_file_info_get_content_type()`).
          * @since 0.5.0
+         * @construct-only
          */
         get contentType(): string;
         /**
          * The entry used for metadata to upload.
          * @since 0.5.0
+         * @construct-only
          */
         get entry(): Entry;
         /**
          * The HTTP request method to use when uploading the file.
          * @since 0.7.0
+         * @construct-only
          */
         get method(): string;
         /**
          * The service which is used to authorize the upload, and to which the upload relates.
          * @since 0.5.0
+         * @construct-only
          */
         get service(): Service;
         /**
          * The slug of the file being uploaded. This is usually the display name of the file (i.e. as returned by `g_file_info_get_display_name()`).
          * @since 0.5.0
+         * @construct-only
          */
         get slug(): string;
         /**
          * The URI to upload the data and metadata to. This must be HTTPS.
          * @since 0.5.0
+         * @construct-only
          */
         get upload_uri(): string;
         /**
          * The URI to upload the data and metadata to. This must be HTTPS.
          * @since 0.5.0
+         * @construct-only
          */
         get uploadUri(): string;
 
@@ -30988,21 +31244,25 @@ export namespace GData {
         /**
          * Whether new videos can be added to the category.
          * @since 0.7.0
+         * @read-only
          */
         get is_assignable(): boolean;
         /**
          * Whether new videos can be added to the category.
          * @since 0.7.0
+         * @read-only
          */
         get isAssignable(): boolean;
         /**
          * Whether the category is deprecated.
          * @since 0.7.0
+         * @read-only
          */
         get is_deprecated(): boolean;
         /**
          * Whether the category is deprecated.
          * @since 0.7.0
+         * @read-only
          */
         get isDeprecated(): boolean;
 
@@ -32025,6 +32285,7 @@ export namespace GData {
          * With the port from v2 to v3 of the YouTube API in libgdata
          * 0.17.0, it might be necessary to update your application’s
          * developer key.
+         * @construct-only
          */
         get developer_key(): string;
         /**
@@ -32034,6 +32295,7 @@ export namespace GData {
          * With the port from v2 to v3 of the YouTube API in libgdata
          * 0.17.0, it might be necessary to update your application’s
          * developer key.
+         * @construct-only
          */
         get developerKey(): string;
 
@@ -32966,6 +33228,7 @@ export namespace GData {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
          * @since 0.4.0
+         * @construct-only
          */
         get help_uri(): string;
         /**
@@ -32975,6 +33238,7 @@ export namespace GData {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
          * @since 0.4.0
+         * @construct-only
          */
         get helpUri(): string;
         /**
@@ -32983,6 +33247,7 @@ export namespace GData {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
          * @since 0.4.0
+         * @construct-only
          */
         get message(): string;
         /**
@@ -32991,6 +33256,7 @@ export namespace GData {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
          * @since 0.4.0
+         * @construct-only
          */
         get name(): string;
         /**
@@ -32999,6 +33265,7 @@ export namespace GData {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
          * @since 0.4.0
+         * @construct-only
          */
         get reason_code(): string;
         /**
@@ -33007,6 +33274,7 @@ export namespace GData {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
          * @since 0.4.0
+         * @construct-only
          */
         get reasonCode(): string;
 
@@ -33167,6 +33435,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.likeCount">online documentation</ulink>.
+         * @read-only
          */
         get average_rating(): number;
         /**
@@ -33174,6 +33443,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.likeCount">online documentation</ulink>.
+         * @read-only
          */
         get averageRating(): number;
         /**
@@ -33197,6 +33467,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#contentDetails.duration">online documentation</ulink>.
+         * @read-only
          */
         get duration(): number;
         /**
@@ -33204,6 +33475,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.favoriteCount">online documentation</ulink>.
+         * @read-only
          */
         get favorite_count(): number;
         /**
@@ -33211,6 +33483,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.favoriteCount">online documentation</ulink>.
+         * @read-only
          */
         get favoriteCount(): number;
         get is_private(): boolean;
@@ -33262,6 +33535,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.likeCount">online documentation</ulink>.
+         * @read-only
          */
         get max_rating(): number;
         /**
@@ -33269,6 +33543,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.likeCount">online documentation</ulink>.
+         * @read-only
          */
         get maxRating(): number;
         /**
@@ -33276,6 +33551,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.likeCount">online documentation</ulink>.
+         * @read-only
          */
         get min_rating(): number;
         /**
@@ -33283,14 +33559,17 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.likeCount">online documentation</ulink>.
+         * @read-only
          */
         get minRating(): number;
         /**
          * A URI for a browser-based media player for the full-length video (i.e. the video's page on YouTube).
+         * @read-only
          */
         get player_uri(): string;
         /**
          * A URI for a browser-based media player for the full-length video (i.e. the video's page on YouTube).
+         * @read-only
          */
         get playerUri(): string;
         /**
@@ -33298,6 +33577,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.likeCount">online documentation</ulink>.
+         * @read-only
          */
         get rating_count(): number;
         /**
@@ -33305,6 +33585,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.likeCount">online documentation</ulink>.
+         * @read-only
          */
         get ratingCount(): number;
         /**
@@ -33322,6 +33603,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#status.uploadStatus">online documentation</ulink>.
+         * @read-only
          */
         get state(): YouTubeState;
         /**
@@ -33329,6 +33611,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#snippet.publishedAt">online documentation</ulink>.
+         * @read-only
          */
         get uploaded(): number;
         /**
@@ -33336,6 +33619,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.viewCount">online documentation</ulink>.
+         * @read-only
          */
         get view_count(): number;
         /**
@@ -33343,6 +33627,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.viewCount">online documentation</ulink>.
+         * @read-only
          */
         get viewCount(): number;
 
@@ -33613,6 +33898,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/reference.html#ResourceVersioning">
          * GData specification</ulink>.
          * @since 0.2.0
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get etag(): string;
@@ -33622,18 +33908,21 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.id">
          * Atom specification</ulink>.
+         * @construct-only
          * @category Inherited from GData.Entry
          */
         get id(): string;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get is_inserted(): boolean;
         /**
          * Whether the entry has been inserted on the server. This is `false` for entries which have just been created using `gdata_entry_new()` and
          * `true` for entries returned from the server by queries. It is set to `true` when an entry is inserted using `gdata_service_insert_entry()`.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get isInserted(): boolean;
@@ -33642,6 +33931,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.published">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get published(): number;
@@ -33679,6 +33969,7 @@ export namespace GData {
          *
          * For more information, see the <ulink type="http"
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.updated">Atom specification</ulink>.
+         * @read-only
          * @category Inherited from GData.Entry
          */
         get updated(): number;

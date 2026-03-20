@@ -19,6 +19,9 @@ export namespace Atspi {
      * Atspi-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CollectionMatchType {
         export const $gtype: GObject.GType<CollectionMatchType>;
     }
@@ -59,6 +62,9 @@ export namespace Atspi {
         LAST_DEFINED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CollectionSortOrder {
         export const $gtype: GObject.GType<CollectionSortOrder>;
     }
@@ -104,6 +110,9 @@ export namespace Atspi {
         LAST_DEFINED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CollectionTreeTraversalType {
         export const $gtype: GObject.GType<CollectionTreeTraversalType>;
     }
@@ -133,6 +142,9 @@ export namespace Atspi {
         LAST_DEFINED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ComponentLayer {
         export const $gtype: GObject.GType<ComponentLayer>;
     }
@@ -205,6 +217,9 @@ export namespace Atspi {
         LAST_DEFINED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CoordType {
         export const $gtype: GObject.GType<CoordType>;
     }
@@ -231,6 +246,9 @@ export namespace Atspi {
         PARENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EventType {
         export const $gtype: GObject.GType<EventType>;
     }
@@ -264,6 +282,9 @@ export namespace Atspi {
         BUTTON_RELEASED_EVENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace KeyEventType {
         export const $gtype: GObject.GType<KeyEventType>;
     }
@@ -283,6 +304,9 @@ export namespace Atspi {
         RELEASED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace KeySynthType {
         export const $gtype: GObject.GType<KeySynthType>;
     }
@@ -339,6 +363,9 @@ export namespace Atspi {
         UNLOCKMODIFIERS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocaleType {
         export const $gtype: GObject.GType<LocaleType>;
     }
@@ -379,6 +406,9 @@ export namespace Atspi {
         TIME,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }
@@ -427,6 +457,9 @@ export namespace Atspi {
         NUMLOCK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RelationType {
         export const $gtype: GObject.GType<RelationType>;
     }
@@ -608,6 +641,9 @@ export namespace Atspi {
         LAST_DEFINED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Role {
         export const $gtype: GObject.GType<Role>;
     }
@@ -1347,6 +1383,9 @@ export namespace Atspi {
         LAST_DEFINED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScrollType {
         export const $gtype: GObject.GType<ScrollType>;
     }
@@ -1393,6 +1432,9 @@ export namespace Atspi {
         ANYWHERE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StateType {
         export const $gtype: GObject.GType<StateType>;
     }
@@ -1704,6 +1746,9 @@ export namespace Atspi {
         LAST_DEFINED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextBoundaryType {
         export const $gtype: GObject.GType<TextBoundaryType>;
     }
@@ -1771,6 +1816,9 @@ export namespace Atspi {
         LINE_END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextClipType {
         export const $gtype: GObject.GType<TextClipType>;
     }
@@ -1802,6 +1850,9 @@ export namespace Atspi {
         BOTH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextGranularity {
         export const $gtype: GObject.GType<TextGranularity>;
     }
@@ -2147,6 +2198,9 @@ export namespace Atspi {
     interface KeyCallback {
         (device: Device, pressed: boolean, keycode: number, keysym: number, modifiers: number, keystring: string): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace Cache {
         export const $gtype: GObject.GType<Cache>;
     }
@@ -2169,6 +2223,9 @@ export namespace Atspi {
         UNDEFINED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace KeyListenerSyncType {
         export const $gtype: GObject.GType<KeyListenerSyncType>;
     }
@@ -2224,6 +2281,8 @@ export namespace Atspi {
              * say-all
              * caret-tracking
              * @signal
+             * @detailed
+             * @run-last
              */
             'mode-changed': (arg0: number, arg1: string) => void;
             /**
@@ -2232,6 +2291,7 @@ export namespace Atspi {
              * text within an object. This allows a magnifier to gain the information
              * needed to highlight the object that the screen reader is reading.
              * @signal
+             * @run-last
              */
             'region-changed': (arg0: number, arg1: number) => void;
         }

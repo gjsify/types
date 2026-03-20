@@ -29,6 +29,9 @@ export namespace GooCanvas {
      * GooCanvas-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CairoAntialias {
         export const $gtype: GObject.GType<CairoAntialias>;
     }
@@ -47,6 +50,9 @@ export namespace GooCanvas {
         SUBPIXEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CairoFillRule {
         export const $gtype: GObject.GType<CairoFillRule>;
     }
@@ -63,6 +69,9 @@ export namespace GooCanvas {
         EVEN_ODD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CairoHintMetrics {
         export const $gtype: GObject.GType<CairoHintMetrics>;
     }
@@ -80,6 +89,9 @@ export namespace GooCanvas {
         ON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CairoLineCap {
         export const $gtype: GObject.GType<CairoLineCap>;
     }
@@ -97,6 +109,9 @@ export namespace GooCanvas {
         SQUARE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CairoLineJoin {
         export const $gtype: GObject.GType<CairoLineJoin>;
     }
@@ -114,6 +129,9 @@ export namespace GooCanvas {
         BEVEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CairoOperator {
         export const $gtype: GObject.GType<CairoOperator>;
     }
@@ -142,6 +160,9 @@ export namespace GooCanvas {
         SATURATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CanvasAnchorType {
         export const $gtype: GObject.GType<CanvasAnchorType>;
     }
@@ -222,6 +243,9 @@ export namespace GooCanvas {
         E,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CanvasAnimateType {
         export const $gtype: GObject.GType<CanvasAnimateType>;
     }
@@ -252,6 +276,9 @@ export namespace GooCanvas {
         BOUNCE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CanvasItemVisibility {
         export const $gtype: GObject.GType<CanvasItemVisibility>;
     }
@@ -284,6 +311,9 @@ export namespace GooCanvas {
         VISIBLE_ABOVE_THRESHOLD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CanvasPathCommandType {
         export const $gtype: GObject.GType<CanvasPathCommandType>;
     }
@@ -440,6 +470,9 @@ export namespace GooCanvas {
      * @gir-type Alias
      */
     type CairoPattern = object | null;
+    /**
+     * @gir-type Flags
+     */
     export namespace CanvasPointerEvents {
         export const $gtype: GObject.GType<CanvasPointerEvents>;
     }
@@ -523,6 +556,7 @@ export namespace GooCanvas {
              *
              * Applications can set up signal handlers for the new items here.
              * @signal
+             * @run-last
              */
             'item-created': (arg0: CanvasItem, arg1: CanvasItemModel) => void;
             'notify::anchor': (pspec: GObject.ParamSpec) => void;
@@ -737,19 +771,33 @@ export namespace GooCanvas {
         set automatic_bounds(val: boolean);
         get automaticBounds(): boolean;
         set automaticBounds(val: boolean);
+        /**
+         * @write-only
+         */
         set background_color(val: string);
+        /**
+         * @write-only
+         */
         set backgroundColor(val: string);
         /**
          * The color to use for the canvas background, specified as a GdkRGBA.
          * @since 2.0.1
+         * @write-only
          */
         set background_color_gdk_rgba(val: Gdk.RGBA);
         /**
          * The color to use for the canvas background, specified as a GdkRGBA.
          * @since 2.0.1
+         * @write-only
          */
         set backgroundColorGdkRgba(val: Gdk.RGBA);
+        /**
+         * @write-only
+         */
         set background_color_rgb(val: number);
+        /**
+         * @write-only
+         */
         set backgroundColorRgb(val: number);
         get bounds_from_origin(): boolean;
         set bounds_from_origin(val: boolean);
@@ -4503,7 +4551,13 @@ export namespace GooCanvas {
 
         // Properties
 
+        /**
+         * @write-only
+         */
         set border_color(val: string);
+        /**
+         * @write-only
+         */
         set borderColor(val: string);
         /**
          * The color to use for the border, specified as a GdkRGBA.
@@ -4525,7 +4579,13 @@ export namespace GooCanvas {
         set border_pattern(val: CairoPattern);
         get borderPattern(): CairoPattern;
         set borderPattern(val: CairoPattern);
+        /**
+         * @write-only
+         */
         set border_pixbuf(val: GdkPixbuf.Pixbuf);
+        /**
+         * @write-only
+         */
         set borderPixbuf(val: GdkPixbuf.Pixbuf);
         get border_width(): number;
         set border_width(val: number);
@@ -4533,7 +4593,13 @@ export namespace GooCanvas {
         set borderWidth(val: number);
         get height(): number;
         set height(val: number);
+        /**
+         * @write-only
+         */
         set horz_grid_line_color(val: string);
+        /**
+         * @write-only
+         */
         set horzGridLineColor(val: string);
         /**
          * The color to use for the horizontal grid lines, specified as a GdkRGBA.
@@ -4555,7 +4621,13 @@ export namespace GooCanvas {
         set horz_grid_line_pattern(val: CairoPattern);
         get horzGridLinePattern(): CairoPattern;
         set horzGridLinePattern(val: CairoPattern);
+        /**
+         * @write-only
+         */
         set horz_grid_line_pixbuf(val: GdkPixbuf.Pixbuf);
+        /**
+         * @write-only
+         */
         set horzGridLinePixbuf(val: GdkPixbuf.Pixbuf);
         get horz_grid_line_width(): number;
         set horz_grid_line_width(val: number);
@@ -4569,7 +4641,13 @@ export namespace GooCanvas {
         set show_vert_grid_lines(val: boolean);
         get showVertGridLines(): boolean;
         set showVertGridLines(val: boolean);
+        /**
+         * @write-only
+         */
         set vert_grid_line_color(val: string);
+        /**
+         * @write-only
+         */
         set vertGridLineColor(val: string);
         /**
          * The color to use for the vertical grid lines, specified as a GdkRGBA.
@@ -4591,7 +4669,13 @@ export namespace GooCanvas {
         set vert_grid_line_pattern(val: CairoPattern);
         get vertGridLinePattern(): CairoPattern;
         set vertGridLinePattern(val: CairoPattern);
+        /**
+         * @write-only
+         */
         set vert_grid_line_pixbuf(val: GdkPixbuf.Pixbuf);
+        /**
+         * @write-only
+         */
         set vertGridLinePixbuf(val: GdkPixbuf.Pixbuf);
         get vert_grid_line_width(): number;
         set vert_grid_line_width(val: number);
@@ -6078,7 +6162,13 @@ export namespace GooCanvas {
 
         // Properties
 
+        /**
+         * @write-only
+         */
         set border_color(val: string);
+        /**
+         * @write-only
+         */
         set borderColor(val: string);
         get border_color_gdk_rgba(): Gdk.RGBA;
         set border_color_gdk_rgba(val: Gdk.RGBA);
@@ -6092,7 +6182,13 @@ export namespace GooCanvas {
         set border_pattern(val: CairoPattern);
         get borderPattern(): CairoPattern;
         set borderPattern(val: CairoPattern);
+        /**
+         * @write-only
+         */
         set border_pixbuf(val: GdkPixbuf.Pixbuf);
+        /**
+         * @write-only
+         */
         set borderPixbuf(val: GdkPixbuf.Pixbuf);
         get border_width(): number;
         set border_width(val: number);
@@ -6100,7 +6196,13 @@ export namespace GooCanvas {
         set borderWidth(val: number);
         get height(): number;
         set height(val: number);
+        /**
+         * @write-only
+         */
         set horz_grid_line_color(val: string);
+        /**
+         * @write-only
+         */
         set horzGridLineColor(val: string);
         get horz_grid_line_color_gdk_rgba(): Gdk.RGBA;
         set horz_grid_line_color_gdk_rgba(val: Gdk.RGBA);
@@ -6114,7 +6216,13 @@ export namespace GooCanvas {
         set horz_grid_line_pattern(val: CairoPattern);
         get horzGridLinePattern(): CairoPattern;
         set horzGridLinePattern(val: CairoPattern);
+        /**
+         * @write-only
+         */
         set horz_grid_line_pixbuf(val: GdkPixbuf.Pixbuf);
+        /**
+         * @write-only
+         */
         set horzGridLinePixbuf(val: GdkPixbuf.Pixbuf);
         get horz_grid_line_width(): number;
         set horz_grid_line_width(val: number);
@@ -6128,7 +6236,13 @@ export namespace GooCanvas {
         set show_vert_grid_lines(val: boolean);
         get showVertGridLines(): boolean;
         set showVertGridLines(val: boolean);
+        /**
+         * @write-only
+         */
         set vert_grid_line_color(val: string);
+        /**
+         * @write-only
+         */
         set vertGridLineColor(val: string);
         get vert_grid_line_color_gdk_rgba(): Gdk.RGBA;
         set vert_grid_line_color_gdk_rgba(val: Gdk.RGBA);
@@ -6142,7 +6256,13 @@ export namespace GooCanvas {
         set vert_grid_line_pattern(val: CairoPattern);
         get vertGridLinePattern(): CairoPattern;
         set vertGridLinePattern(val: CairoPattern);
+        /**
+         * @write-only
+         */
         set vert_grid_line_pixbuf(val: GdkPixbuf.Pixbuf);
+        /**
+         * @write-only
+         */
         set vertGridLinePixbuf(val: GdkPixbuf.Pixbuf);
         get vert_grid_line_width(): number;
         set vert_grid_line_width(val: number);
@@ -9429,6 +9549,9 @@ export namespace GooCanvas {
         set height(val: number);
         get pattern(): CairoPattern;
         set pattern(val: CairoPattern);
+        /**
+         * @write-only
+         */
         set pixbuf(val: GdkPixbuf.Pixbuf);
         get scale_to_fit(): boolean;
         set scale_to_fit(val: boolean);
@@ -10816,6 +10939,9 @@ export namespace GooCanvas {
         set height(val: number);
         get pattern(): CairoPattern;
         set pattern(val: CairoPattern);
+        /**
+         * @write-only
+         */
         set pixbuf(val: GdkPixbuf.Pixbuf);
         get scale_to_fit(): boolean;
         set scale_to_fit(val: boolean);
@@ -11853,6 +11979,7 @@ export namespace GooCanvas {
          * as a string using the same syntax
          * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
          * Graphics (SVG)</ulink> path element.
+         * @write-only
          */
         set clip_path(val: string);
         /**
@@ -11860,9 +11987,16 @@ export namespace GooCanvas {
          * as a string using the same syntax
          * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
          * Graphics (SVG)</ulink> path element.
+         * @write-only
          */
         set clipPath(val: string);
+        /**
+         * @write-only
+         */
         set fill_color(val: string);
+        /**
+         * @write-only
+         */
         set fillColor(val: string);
         get fill_color_gdk_rgba(): Gdk.RGBA;
         set fill_color_gdk_rgba(val: Gdk.RGBA);
@@ -11876,7 +12010,13 @@ export namespace GooCanvas {
         set fill_pattern(val: CairoPattern);
         get fillPattern(): CairoPattern;
         set fillPattern(val: CairoPattern);
+        /**
+         * @write-only
+         */
         set fill_pixbuf(val: GdkPixbuf.Pixbuf);
+        /**
+         * @write-only
+         */
         set fillPixbuf(val: GdkPixbuf.Pixbuf);
         get fill_rule(): CairoFillRule;
         set fill_rule(val: CairoFillRule);
@@ -11914,7 +12054,13 @@ export namespace GooCanvas {
         set lineWidth(val: number);
         get operator(): CairoOperator;
         set operator(val: CairoOperator);
+        /**
+         * @write-only
+         */
         set stroke_color(val: string);
+        /**
+         * @write-only
+         */
         set strokeColor(val: string);
         get stroke_color_gdk_rgba(): Gdk.RGBA;
         set stroke_color_gdk_rgba(val: Gdk.RGBA);
@@ -11928,7 +12074,13 @@ export namespace GooCanvas {
         set stroke_pattern(val: CairoPattern);
         get strokePattern(): CairoPattern;
         set strokePattern(val: CairoPattern);
+        /**
+         * @write-only
+         */
         set stroke_pixbuf(val: GdkPixbuf.Pixbuf);
+        /**
+         * @write-only
+         */
         set strokePixbuf(val: GdkPixbuf.Pixbuf);
 
         /**
@@ -12905,6 +13057,7 @@ export namespace GooCanvas {
          * as a string using the same syntax
          * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
          * Graphics (SVG)</ulink> path element.
+         * @write-only
          */
         set clip_path(val: string);
         /**
@@ -12912,9 +13065,16 @@ export namespace GooCanvas {
          * as a string using the same syntax
          * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
          * Graphics (SVG)</ulink> path element.
+         * @write-only
          */
         set clipPath(val: string);
+        /**
+         * @write-only
+         */
         set fill_color(val: string);
+        /**
+         * @write-only
+         */
         set fillColor(val: string);
         /**
          * The color to use to paint the interior of the item, specified as a GdkRGBA. To disable painting set the 'fill-pattern' property to NULL.
@@ -12936,7 +13096,13 @@ export namespace GooCanvas {
         set fill_pattern(val: CairoPattern);
         get fillPattern(): CairoPattern;
         set fillPattern(val: CairoPattern);
+        /**
+         * @write-only
+         */
         set fill_pixbuf(val: GdkPixbuf.Pixbuf);
+        /**
+         * @write-only
+         */
         set fillPixbuf(val: GdkPixbuf.Pixbuf);
         get fill_rule(): CairoFillRule;
         set fill_rule(val: CairoFillRule);
@@ -12974,7 +13140,13 @@ export namespace GooCanvas {
         set lineWidth(val: number);
         get operator(): CairoOperator;
         set operator(val: CairoOperator);
+        /**
+         * @write-only
+         */
         set stroke_color(val: string);
+        /**
+         * @write-only
+         */
         set strokeColor(val: string);
         /**
          * The color to use for the item's perimeter, specified as a GdkRGBA. To disable painting set the 'stroke-pattern' property to NULL.
@@ -12996,7 +13168,13 @@ export namespace GooCanvas {
         set stroke_pattern(val: CairoPattern);
         get strokePattern(): CairoPattern;
         set strokePattern(val: CairoPattern);
+        /**
+         * @write-only
+         */
         set stroke_pixbuf(val: GdkPixbuf.Pixbuf);
+        /**
+         * @write-only
+         */
         set strokePixbuf(val: GdkPixbuf.Pixbuf);
 
         /**
@@ -14471,6 +14649,7 @@ export namespace GooCanvas {
          * The sequence of path commands, specified as a string using the same syntax
          * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
          * Graphics (SVG)</ulink> path element.
+         * @write-only
          */
         set data(val: string);
         get height(): number;
@@ -15842,6 +16021,9 @@ export namespace GooCanvas {
 
         // Properties
 
+        /**
+         * @write-only
+         */
         set data(val: string);
         get height(): number;
         set height(val: number);

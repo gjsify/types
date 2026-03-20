@@ -18,6 +18,9 @@ export namespace GConf {
      * GConf-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClientErrorHandlingMode {
         export const $gtype: GObject.GType<ClientErrorHandlingMode>;
     }
@@ -31,6 +34,9 @@ export namespace GConf {
         HANDLE_ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClientPreloadType {
         export const $gtype: GObject.GType<ClientPreloadType>;
     }
@@ -79,6 +85,9 @@ export namespace GConf {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ValueType {
         export const $gtype: GObject.GType<ValueType>;
     }
@@ -199,6 +208,9 @@ export namespace GConf {
     interface ListenersPredicate {
         (location: string, cnxn_id: number, listener_data?: any | null): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace UnsetFlags {
         export const $gtype: GObject.GType<UnsetFlags>;
     }
@@ -215,14 +227,17 @@ export namespace GConf {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             error: (arg0: any | null) => void;
             /**
              * @signal
+             * @run-last
              */
             'unreturned-error': (arg0: any | null) => void;
             /**
              * @signal
+             * @run-last
              */
             'value-changed': (arg0: string, arg1: any | null) => void;
         }

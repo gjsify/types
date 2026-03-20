@@ -80,6 +80,9 @@ export namespace EBookContacts {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BookCursorOrigin {
         export const $gtype: GObject.GType<BookCursorOrigin>;
     }
@@ -108,6 +111,9 @@ export namespace EBookContacts {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BookCursorSortType {
         export const $gtype: GObject.GType<BookCursorSortType>;
     }
@@ -128,6 +134,9 @@ export namespace EBookContacts {
         DESCENDING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BookIndexType {
         export const $gtype: GObject.GType<BookIndexType>;
     }
@@ -1018,6 +1027,9 @@ export namespace EBookContacts {
      * @gir-type Alias
      */
     type ContactAttrList = object | null;
+    /**
+     * @gir-type Flags
+     */
     export namespace BookClientViewFlags {
         export const $gtype: GObject.GType<BookClientViewFlags>;
     }
@@ -1047,6 +1059,9 @@ export namespace EBookContacts {
         MANUAL_QUERY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BookCursorStepFlags {
         export const $gtype: GObject.GType<BookCursorStepFlags>;
     }
@@ -1067,6 +1082,9 @@ export namespace EBookContacts {
         FETCH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BookOperationFlags {
         export const $gtype: GObject.GType<BookOperationFlags>;
     }
@@ -2130,7 +2148,13 @@ export namespace EBookContacts {
         set mobilePhone(val: string);
         get name(): ContactName;
         set name(val: ContactName);
+        /**
+         * @read-only
+         */
         get name_or_org(): string;
+        /**
+         * @read-only
+         */
         get nameOrOrg(): string;
         get nickname(): string;
         set nickname(val: string);

@@ -22,6 +22,9 @@ export namespace SpiceClientGLib {
      * SpiceClientGLib-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ChannelEvent {
         export const $gtype: GObject.GType<ChannelEvent>;
     }
@@ -144,6 +147,9 @@ export namespace SpiceClientGLib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SessionMigration {
         export const $gtype: GObject.GType<SessionMigration>;
     }
@@ -667,6 +673,9 @@ export namespace SpiceClientGLib {
      * @gir-type Alias
      */
     type VReader = object | null;
+    /**
+     * @gir-type Flags
+     */
     export namespace InputsLock {
         export const $gtype: GObject.GType<InputsLock>;
     }
@@ -690,6 +699,9 @@ export namespace SpiceClientGLib {
         CAPS_LOCK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SessionVerify {
         export const $gtype: GObject.GType<SessionVerify>;
     }
@@ -738,10 +750,17 @@ export namespace SpiceClientGLib {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get main_context(): GLib.MainContext;
+        /**
+         * @construct-only
+         */
         get mainContext(): GLib.MainContext;
         /**
          * {@link SpiceClientGLib.Session} this {@link SpiceClientGLib.Audio} is associated with
+         * @construct-only
          */
         get session(): Session;
 
@@ -863,6 +882,7 @@ export namespace SpiceClientGLib {
              * `spice_channel_get_error()` may provide additional informations
              * on the source of the error.
              * @signal
+             * @run-first
              */
             'channel-event': (arg0: ChannelEvent) => void;
             /**
@@ -870,6 +890,7 @@ export namespace SpiceClientGLib {
              * connection is requested. This signal is emitted when the
              * connection is made with `spice_session_open_fd()`.
              * @signal
+             * @run-first
              */
             'open-fd': (arg0: number) => void;
             'notify::channel-id': (pspec: GObject.ParamSpec) => void;
@@ -903,9 +924,21 @@ export namespace SpiceClientGLib {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get channel_id(): number;
+        /**
+         * @construct-only
+         */
         get channelId(): number;
+        /**
+         * @construct-only
+         */
         get channel_type(): number;
+        /**
+         * @construct-only
+         */
         get channelType(): number;
         /**
          * Get the underlying {@link Gio.Socket}. Note that you should not read or
@@ -913,11 +946,24 @@ export namespace SpiceClientGLib {
          * the channel stream.  This property is mainly useful to get some
          * connections details.
          * @since 0.33
+         * @read-only
          */
         get socket(): Gio.Socket;
+        /**
+         * @construct-only
+         */
         get spice_session(): Session;
+        /**
+         * @construct-only
+         */
         get spiceSession(): Session;
+        /**
+         * @read-only
+         */
         get total_read_bytes(): number;
+        /**
+         * @read-only
+         */
         get totalReadBytes(): number;
 
         /**
@@ -1119,18 +1165,21 @@ export namespace SpiceClientGLib {
              * The {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_hide | SpiceClientGLib.CursorChannel::cursor-hide} signal is emitted to hide
              * the cursor/pointer on the display area.
              * @signal
+             * @run-first
              */
             'cursor-hide': () => void;
             /**
              * The {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_move | SpiceClientGLib.CursorChannel::cursor-move} signal is emitted to update
              * the cursor position on the display area.
              * @signal
+             * @run-first
              */
             'cursor-move': (arg0: number, arg1: number) => void;
             /**
              * The {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_reset | SpiceClientGLib.CursorChannel::cursor-reset} signal is emitted to
              * reset the cursor to its default context.
              * @signal
+             * @run-first
              */
             'cursor-reset': () => void;
             /**
@@ -1138,6 +1187,7 @@ export namespace SpiceClientGLib {
              * cursor aspect and position on the display area.
              * @signal
              * @deprecated since 0.34: Use {@link SpiceClientGLib.CursorChannel.cursor} notify instead.
+             * @run-first
              */
             'cursor-set': (arg0: number, arg1: number, arg2: number, arg3: number, arg4: any | null) => void;
             'notify::cursor': (pspec: GObject.ParamSpec) => void;
@@ -1167,6 +1217,7 @@ export namespace SpiceClientGLib {
         /**
          * The last {@link SpiceClientGLib.CursorShape} received.
          * @since 0.34
+         * @read-only
          */
         get cursor(): CursorShape;
 
@@ -1235,6 +1286,7 @@ export namespace SpiceClientGLib {
              * when the rectangular region x/y/w/h of the primary buffer is
              * updated.
              * @signal
+             * @run-first
              */
             'display-invalidate': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
             /**
@@ -1242,12 +1294,14 @@ export namespace SpiceClientGLib {
              * the `RED_DISPLAY_MARK` command is received, and the display
              * should be exposed.
              * @signal
+             * @run-first
              */
             'display-mark': (arg0: number) => void;
             /**
              * The {@link SpiceClientGLib.DisplayChannel.SignalSignatures.display_primary_create | SpiceClientGLib.DisplayChannel::display-primary-create} signal
              * provides main display buffer data.
              * @signal
+             * @run-first
              */
             'display-primary-create': (
                 arg0: number,
@@ -1262,6 +1316,7 @@ export namespace SpiceClientGLib {
              * emitted when the primary surface is freed and should not be
              * accessed anymore.
              * @signal
+             * @run-first
              */
             'display-primary-destroy': () => void;
             /**
@@ -1325,17 +1380,23 @@ export namespace SpiceClientGLib {
         /**
          * The last {@link SpiceClientGLib.GlScanout} received.
          * @since 0.31
+         * @read-only
          */
         get gl_scanout(): GlScanout;
         /**
          * The last {@link SpiceClientGLib.GlScanout} received.
          * @since 0.31
+         * @read-only
          */
         get glScanout(): GlScanout;
+        /**
+         * @read-only
+         */
         get height(): number;
         /**
          * Current monitors configuration.
          * @since 0.13
+         * @read-only
          */
         get monitors(): any[];
         /**
@@ -1343,6 +1404,7 @@ export namespace SpiceClientGLib {
          * May change during client lifetime, for instance guest may
          * reboot or dynamically adjust this.
          * @since 0.13
+         * @read-only
          */
         get monitors_max(): number;
         /**
@@ -1350,8 +1412,12 @@ export namespace SpiceClientGLib {
          * May change during client lifetime, for instance guest may
          * reboot or dynamically adjust this.
          * @since 0.13
+         * @read-only
          */
         get monitorsMax(): number;
+        /**
+         * @read-only
+         */
         get width(): number;
 
         /**
@@ -1430,6 +1496,7 @@ export namespace SpiceClientGLib {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             finished: (arg0: GLib.Error) => void;
             'notify::cancellable': (pspec: GObject.ParamSpec) => void;
@@ -1464,14 +1531,41 @@ export namespace SpiceClientGLib {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get cancellable(): Gio.Cancellable;
+        /**
+         * @construct-only
+         */
         get channel(): MainChannel;
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
+        /**
+         * @construct-only
+         */
         get id(): number;
+        /**
+         * @read-only
+         */
         get progress(): number;
+        /**
+         * @read-only
+         */
         get total_bytes(): number;
+        /**
+         * @read-only
+         */
         get totalBytes(): number;
+        /**
+         * @read-only
+         */
         get transferred_bytes(): number;
+        /**
+         * @read-only
+         */
         get transferredBytes(): number;
 
         /**
@@ -1527,6 +1621,7 @@ export namespace SpiceClientGLib {
              * the guest keyboard locks are changed. You can read the current
              * state from {@link SpiceClientGLib.InputsChannel.key_modifiers} property.
              * @signal
+             * @run-first
              */
             'inputs-modifiers': () => void;
             'notify::key-modifiers': (pspec: GObject.ParamSpec) => void;
@@ -1554,7 +1649,13 @@ export namespace SpiceClientGLib {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get key_modifiers(): number;
+        /**
+         * @read-only
+         */
         get keyModifiers(): number;
 
         /**
@@ -1645,12 +1746,14 @@ export namespace SpiceClientGLib {
              * Notify when the %SpiceMainChannel:agent-connected or
              * %SpiceMainChannel:agent-caps-0 property change.
              * @signal
+             * @run-first
              */
             'main-agent-update': () => void;
             /**
              * Provides guest clipboard data requested by `spice_main_clipboard_request()`.
              * @signal
              * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection instead.
+             * @run-last
              */
             'main-clipboard': (arg0: number, arg1: any | null, arg2: number) => void;
             /**
@@ -1658,6 +1761,7 @@ export namespace SpiceClientGLib {
              * which `types`.
              * @signal
              * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection-grab instead.
+             * @run-last
              */
             'main-clipboard-grab': (arg0: any | null, arg1: number) => boolean | void;
             /**
@@ -1665,18 +1769,21 @@ export namespace SpiceClientGLib {
              * clipboard data is available from the guest.
              * @signal
              * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection-release instead.
+             * @run-last
              */
             'main-clipboard-release': () => void;
             /**
              * Request clipboard data from the client.
              * @signal
              * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection-request instead.
+             * @run-last
              */
             'main-clipboard-request': (arg0: number) => boolean | void;
             /**
              * Informs that clipboard selection data are available.
              * @signal
              * @since 0.6
+             * @run-last
              */
             'main-clipboard-selection': (arg0: number, arg1: number, arg2: any | null, arg3: number) => void;
             /**
@@ -1684,6 +1791,7 @@ export namespace SpiceClientGLib {
              * which `types`.
              * @signal
              * @since 0.6
+             * @run-last
              */
             'main-clipboard-selection-grab': (arg0: number, arg1: any | null, arg2: number) => boolean | void;
             /**
@@ -1691,17 +1799,20 @@ export namespace SpiceClientGLib {
              * clipboard data is available from the guest.
              * @signal
              * @since 0.6
+             * @run-last
              */
             'main-clipboard-selection-release': (arg0: number) => void;
             /**
              * Request clipboard data from the client.
              * @signal
              * @since 0.6
+             * @run-last
              */
             'main-clipboard-selection-request': (arg0: number, arg1: number) => boolean | void;
             /**
              * Notify when the mouse mode has changed.
              * @signal
+             * @run-first
              */
             'main-mouse-update': () => void;
             /**
@@ -1710,6 +1821,7 @@ export namespace SpiceClientGLib {
              * to `TRUE`, then follow {@link SpiceClientGLib.Session.SignalSignatures.channel_new | SpiceClientGLib.Session::channel-new} creation, and
              * use `spice_channel_open_fd()` once the socket is created.
              * @signal
+             * @run-last
              */
             'migration-started': (arg0: GObject.Object) => void;
             /**
@@ -1718,6 +1830,7 @@ export namespace SpiceClientGLib {
              * object and use it to monitor the status of the file transfer task.
              * @signal
              * @since 0.31
+             * @run-last
              */
             'new-file-transfer': (arg0: GObject.Object) => void;
             'notify::agent-caps-0': (pspec: GObject.ParamSpec) => void;
@@ -1773,9 +1886,21 @@ export namespace SpiceClientGLib {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get agent_caps_0(): number;
+        /**
+         * @read-only
+         */
         get agentCaps0(): number;
+        /**
+         * @read-only
+         */
         get agent_connected(): boolean;
+        /**
+         * @read-only
+         */
         get agentConnected(): boolean;
         /**
          * @deprecated since 0.37: Deprecated due lack of support in drivers, only Windows 7 and older. This option is currently ignored.
@@ -1837,6 +1962,7 @@ export namespace SpiceClientGLib {
          * shape messages. In server mode (`SPICE_MOUSE_MODE_SERVER`), the
          * client sends relative mouse movements and the server sends
          * position and shape commands.
+         * @read-only
          */
         get mouse_mode(): number;
         /**
@@ -1847,6 +1973,7 @@ export namespace SpiceClientGLib {
          * shape messages. In server mode (`SPICE_MOUSE_MODE_SERVER`), the
          * client sends relative mouse movements and the server sends
          * position and shape commands.
+         * @read-only
          */
         get mouseMode(): number;
 
@@ -2082,22 +2209,26 @@ export namespace SpiceClientGLib {
             /**
              * Provide audio data to be played.
              * @signal
+             * @run-first
              */
             'playback-data': (arg0: any | null, arg1: number) => void;
             /**
              * Notify when the current playback delay is requested
              * @signal
+             * @run-first
              */
             'playback-get-delay': () => void;
             /**
              * Notify when the playback should start, and provide audio format
              * characteristics.
              * @signal
+             * @run-first
              */
             'playback-start': (arg0: number, arg1: number, arg2: number) => void;
             /**
              * Notify when the playback should stop.
              * @signal
+             * @run-first
              */
             'playback-stop': () => void;
             'notify::min-latency': (pspec: GObject.ParamSpec) => void;
@@ -2209,6 +2340,7 @@ export namespace SpiceClientGLib {
              * port data is received.
              * @signal
              * @since 0.15
+             * @run-last
              */
             'port-data': (arg0: any | null, arg1: number) => void;
             /**
@@ -2216,6 +2348,7 @@ export namespace SpiceClientGLib {
              * port event is received.
              * @signal
              * @since 0.15
+             * @run-last
              */
             'port-event': (arg0: number) => void;
             'notify::port-name': (pspec: GObject.ParamSpec) => void;
@@ -2246,9 +2379,21 @@ export namespace SpiceClientGLib {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get port_name(): string;
+        /**
+         * @read-only
+         */
         get portName(): string;
+        /**
+         * @read-only
+         */
         get port_opened(): boolean;
+        /**
+         * @read-only
+         */
         get portOpened(): boolean;
 
         /**
@@ -2344,6 +2489,7 @@ export namespace SpiceClientGLib {
              * Event emitted whenever a QMP event is received.
              * @signal
              * @since 0.36
+             * @run-first
              */
             event: (arg0: string, arg1: any | null) => void;
             'notify::channel': (pspec: GObject.ParamSpec) => void;
@@ -2368,7 +2514,13 @@ export namespace SpiceClientGLib {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get channel(): PortChannel;
+        /**
+         * @read-only
+         */
         get ready(): boolean;
 
         /**
@@ -2489,11 +2641,13 @@ export namespace SpiceClientGLib {
              * Notify when the recording should start, and provide audio format
              * characteristics.
              * @signal
+             * @run-first
              */
             'record-start': (arg0: number, arg1: number, arg2: number) => void;
             /**
              * Notify when the recording should stop.
              * @signal
+             * @run-first
              */
             'record-stop': () => void;
             'notify::mute': (pspec: GObject.ParamSpec) => void;
@@ -2598,17 +2752,20 @@ export namespace SpiceClientGLib {
             /**
              * The {@link SpiceClientGLib.Session.SignalSignatures.channel_destroy | SpiceClientGLib.Session::channel-destroy} signal is emitted each time a {@link SpiceClientGLib.Channel} is destroyed.
              * @signal
+             * @run-first
              */
             'channel-destroy': (arg0: Channel) => void;
             /**
              * The {@link SpiceClientGLib.Session.SignalSignatures.channel_new | SpiceClientGLib.Session::channel-new} signal is emitted each time a {@link SpiceClientGLib.Channel} is created.
              * @signal
+             * @run-first
              */
             'channel-new': (arg0: Channel) => void;
             /**
              * The {@link SpiceClientGLib.Session.SignalSignatures.disconnected | SpiceClientGLib.Session::disconnected} signal is emitted when all channels have been destroyed.
              * @signal
              * @since 0.35
+             * @run-first
              */
             disconnected: () => void;
             /**
@@ -2616,6 +2773,7 @@ export namespace SpiceClientGLib {
              *
              * Since 0.20
              * @signal
+             * @run-first
              */
             'mm-time-reset': () => void;
             'notify::ca': (pspec: GObject.ParamSpec) => void;
@@ -2883,16 +3041,19 @@ export namespace SpiceClientGLib {
         /**
          * {@link SpiceClientGLib.SessionMigration} bit field indicating if a migration is in
          * progress
+         * @read-only
          */
         get migration_state(): SessionMigration;
         /**
          * {@link SpiceClientGLib.SessionMigration} bit field indicating if a migration is in
          * progress
+         * @read-only
          */
         get migrationState(): SessionMigration;
         /**
          * Spice server name.
          * @since 0.11
+         * @read-only
          */
         get name(): string;
         /**
@@ -3037,6 +3198,7 @@ export namespace SpiceClientGLib {
         /**
          * Spice server uuid.
          * @since 0.11
+         * @read-only
          */
         get uuid(): any;
         /**
@@ -3224,24 +3386,28 @@ export namespace SpiceClientGLib {
              * The {@link SpiceClientGLib.SmartcardManager.SignalSignatures.card_inserted | SpiceClientGLib.SmartcardManager::card-inserted} signal is emitted whenever
              * a smartcard is inserted in a reader
              * @signal
+             * @run-first
              */
             'card-inserted': (arg0: VReader) => void;
             /**
              * The {@link SpiceClientGLib.SmartcardManager.SignalSignatures.card_removed | SpiceClientGLib.SmartcardManager::card-removed} signal is emitted whenever
              * a smartcard was removed from a reader.
              * @signal
+             * @run-first
              */
             'card-removed': (arg0: VReader) => void;
             /**
              * The {@link SpiceClientGLib.SmartcardManager.SignalSignatures.reader_added | SpiceClientGLib.SmartcardManager::reader-added} signal is emitted whenever
              * a new smartcard reader (software or hardware) has been plugged in.
              * @signal
+             * @run-first
              */
             'reader-added': (arg0: VReader) => void;
             /**
              * The {@link SpiceClientGLib.SmartcardManager.SignalSignatures.reader_removed | SpiceClientGLib.SmartcardManager::reader-removed} signal is emitted whenever
              * a smartcard reader (software or hardware) has been removed.
              * @signal
+             * @run-first
              */
             'reader-removed': (arg0: VReader) => void;
         }
@@ -3467,12 +3633,14 @@ export namespace SpiceClientGLib {
              * whenever the auto-connect property is true, and a newly plugged in
              * device could not be auto-connected.
              * @signal
+             * @run-first
              */
             'auto-connect-failed': (arg0: UsbDevice, arg1: GLib.Error) => void;
             /**
              * The {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.device_added | SpiceClientGLib.UsbDeviceManager::device-added} signal is emitted whenever
              * a new USB device has been plugged in.
              * @signal
+             * @run-first
              */
             'device-added': (arg0: UsbDevice) => void;
             /**
@@ -3480,12 +3648,14 @@ export namespace SpiceClientGLib {
              * error happens which causes a device to no longer be available to the
              * guest.
              * @signal
+             * @run-first
              */
             'device-error': (arg0: UsbDevice, arg1: GLib.Error) => void;
             /**
              * The {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.device_removed | SpiceClientGLib.UsbDeviceManager::device-removed} signal is emitted whenever
              * an USB device has been removed.
              * @signal
+             * @run-first
              */
             'device-removed': (arg0: UsbDevice) => void;
             'notify::auto-connect': (pspec: GObject.ParamSpec) => void;
@@ -3584,11 +3754,13 @@ export namespace SpiceClientGLib {
         /**
          * Get the number of available channels for redirecting USB devices.
          * @since 0.31
+         * @read-only
          */
         get free_channels(): number;
         /**
          * Get the number of available channels for redirecting USB devices.
          * @since 0.31
+         * @read-only
          */
         get freeChannels(): number;
         /**
@@ -3611,6 +3783,7 @@ export namespace SpiceClientGLib {
         set redirectOnConnect(val: string);
         /**
          * {@link SpiceClientGLib.Session} this {@link SpiceClientGLib.UsbDeviceManager} is associated with
+         * @construct-only
          */
         get session(): Session;
 

@@ -83,18 +83,33 @@ export namespace Vgda {
             ...args: GObject.GjsParameters<GProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Vda.Connection */
+        /**
+         * @read-only
+         * @category Inherited from Vda.Connection
+         */
         get status(): Vda.ConnectionStatus;
         /** @category Inherited from Vda.Connection */
         get parameters(): Vda.ConnectionParameters;
         set parameters(val: Vda.ConnectionParameters);
-        /** @category Inherited from Vda.Connection */
+        /**
+         * @read-only
+         * @category Inherited from Vda.Connection
+         */
         get is_opened(): boolean;
-        /** @category Inherited from Vda.Connection */
+        /**
+         * @read-only
+         * @category Inherited from Vda.Connection
+         */
         get isOpened(): boolean;
-        /** @category Inherited from Vda.Connection */
+        /**
+         * @read-only
+         * @category Inherited from Vda.Connection
+         */
         get connection_string(): string;
-        /** @category Inherited from Vda.Connection */
+        /**
+         * @read-only
+         * @category Inherited from Vda.Connection
+         */
         get connectionString(): string;
         close(): globalThis.Promise<void>;
         /**

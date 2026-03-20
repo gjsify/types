@@ -20,6 +20,9 @@ export namespace Libmsi {
      * Libmsi-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ColInfo {
         export const $gtype: GObject.GType<ColInfo>;
     }
@@ -83,6 +86,9 @@ export namespace Libmsi {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Property {
         export const $gtype: GObject.GType<Property>;
     }
@@ -113,6 +119,9 @@ export namespace Libmsi {
         SECURITY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PropertyType {
         export const $gtype: GObject.GType<PropertyType>;
     }
@@ -167,6 +176,9 @@ export namespace Libmsi {
     const NULL_INT: number;
     function db_error_quark(): GLib.Quark;
     function result_error_quark(): GLib.Quark;
+    /**
+     * @gir-type Flags
+     */
     export namespace DbFlags {
         export const $gtype: GObject.GType<DbFlags>;
     }
@@ -206,8 +218,17 @@ export namespace Libmsi {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get flags(): DbFlags;
+        /**
+         * @construct-only
+         */
         get outpath(): string;
+        /**
+         * @construct-only
+         */
         get path(): string;
 
         /**
@@ -327,7 +348,13 @@ export namespace Libmsi {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get database(): Database;
+        /**
+         * @construct-only
+         */
         get query(): string;
 
         /**
@@ -420,6 +447,9 @@ export namespace Libmsi {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get count(): number;
 
         /**
@@ -552,8 +582,17 @@ export namespace Libmsi {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get database(): Database;
+        /**
+         * @construct-only
+         */
         get update_count(): number;
+        /**
+         * @construct-only
+         */
         get updateCount(): number;
 
         /**

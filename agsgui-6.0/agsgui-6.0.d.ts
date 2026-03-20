@@ -2860,6 +2860,7 @@ export namespace AgsGui {
              * The ::value-changed signal notifies adjustment value changed.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'value-changed': () => void;
             'notify::adjustment': (pspec: GObject.ParamSpec) => void;
@@ -5155,6 +5156,7 @@ export namespace AgsGui {
              * The ::response signal notifies about window interaction.
              * @signal
              * @since 6.6.0
+             * @run-last
              */
             response: (arg0: number) => void;
             'notify::file-widget': (pspec: GObject.ParamSpec) => void;
@@ -5366,6 +5368,7 @@ export namespace AgsGui {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -5374,6 +5377,7 @@ export namespace AgsGui {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -5413,21 +5417,25 @@ export namespace AgsGui {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -5646,6 +5654,7 @@ export namespace AgsGui {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -5665,16 +5674,19 @@ export namespace AgsGui {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -8366,12 +8378,14 @@ export namespace AgsGui {
              * The ::create-dir signal notifies about creating directory.
              * @signal
              * @since 6.6.0
+             * @run-last
              */
             'create-dir': (arg0: string) => void;
             /**
              * The ::refresh signal notifies about filesystem change.
              * @signal
              * @since 6.6.0
+             * @run-last
              */
             refresh: () => void;
             'notify::app-generic-path': (pspec: GObject.ParamSpec) => void;
@@ -9332,18 +9346,21 @@ export namespace AgsGui {
              * The ::clicked signal notifies about widget clicked.
              * @signal
              * @since 6.6.0
+             * @run-last
              */
             clicked: () => void;
             /**
              * The ::copy-event signal notifies about widget copy_event.
              * @signal
              * @since 6.6.0
+             * @run-last
              */
             'copy-event': () => IconLink;
             /**
              * The ::delete-event signal notifies about widget delete_event.
              * @signal
              * @since 6.6.0
+             * @run-last
              */
             'delete-event': () => void;
             'notify::action': (pspec: GObject.ParamSpec) => void;
@@ -10995,6 +11012,7 @@ export namespace AgsGui {
              * The ::response signal notifies adjustment value changed.
              * @signal
              * @since 6.6.0
+             * @run-last
              */
             response: (arg0: number) => void;
             'notify::application': (pspec: GObject.ParamSpec) => void;
@@ -11243,6 +11261,7 @@ export namespace AgsGui {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -11251,6 +11270,7 @@ export namespace AgsGui {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -11290,21 +11310,25 @@ export namespace AgsGui {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -11523,6 +11547,7 @@ export namespace AgsGui {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -11542,16 +11567,19 @@ export namespace AgsGui {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -15828,6 +15856,7 @@ export namespace AgsGui {
              * The ::value-changed signal notifies about modified default value.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'value-changed': (arg0: number) => void;
             'notify::data-format': (pspec: GObject.ParamSpec) => void;
@@ -16816,12 +16845,14 @@ export namespace AgsGui {
              * The ::child-height-request
              * @signal
              * @since 4.0.0
+             * @run-last
              */
             'child-height-request': (arg0: GObject.Object, arg1: number) => void;
             /**
              * The ::child-width-request
              * @signal
              * @since 4.0.0
+             * @run-last
              */
             'child-width-request': (arg0: GObject.Object, arg1: number) => void;
             'notify::baseline-child': (pspec: GObject.ParamSpec) => void;
@@ -18086,18 +18117,21 @@ export namespace AgsGui {
              * The ::key-clicked signal notifies about key clicked.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'key-clicked': (arg0: string, arg1: number) => void;
             /**
              * The ::key-pressed signal notifies about key pressed.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'key-pressed': (arg0: string, arg1: number) => void;
             /**
              * The ::key-released signal notifies about key released.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'key-released': (arg0: string, arg1: number) => void;
             'notify::base-key-code': (pspec: GObject.ParamSpec) => void;
@@ -20212,6 +20246,7 @@ export namespace AgsGui {
              * The ::value-changed signal notifies about modified default value.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'value-changed': (arg0: number) => void;
             'notify::control-name': (pspec: GObject.ParamSpec) => void;
@@ -21193,12 +21228,14 @@ export namespace AgsGui {
              * The ::child-height-request
              * @signal
              * @since 4.0.0
+             * @run-last
              */
             'child-height-request': (arg0: GObject.Object, arg1: number) => void;
             /**
              * The ::child-width-request
              * @signal
              * @since 4.0.0
+             * @run-last
              */
             'child-width-request': (arg0: GObject.Object, arg1: number) => void;
             'notify::baseline-child': (pspec: GObject.ParamSpec) => void;
@@ -23585,6 +23622,7 @@ export namespace AgsGui {
              * The ::value-changed signal notifies about modified default value.
              * @signal
              * @since 5.1.0
+             * @run-last
              */
             'value-changed': (arg0: number) => void;
             'notify::control-name': (pspec: GObject.ParamSpec) => void;

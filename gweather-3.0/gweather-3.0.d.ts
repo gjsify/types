@@ -29,6 +29,9 @@ export namespace GWeather {
      * GWeather-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConditionPhenomenon {
         export const $gtype: GObject.GType<ConditionPhenomenon>;
     }
@@ -72,6 +75,9 @@ export namespace GWeather {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConditionQualifier {
         export const $gtype: GObject.GType<ConditionQualifier>;
     }
@@ -157,6 +163,9 @@ export namespace GWeather {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DistanceUnit {
         export const $gtype: GObject.GType<DistanceUnit>;
     }
@@ -189,6 +198,9 @@ export namespace GWeather {
         MILES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocationLevel {
         export const $gtype: GObject.GType<LocationLevel>;
     }
@@ -251,6 +263,9 @@ export namespace GWeather {
         NAMED_TIMEZONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PressureUnit {
         export const $gtype: GObject.GType<PressureUnit>;
     }
@@ -296,6 +311,9 @@ export namespace GWeather {
         ATM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Sky {
         export const $gtype: GObject.GType<Sky>;
     }
@@ -338,6 +356,9 @@ export namespace GWeather {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SpeedUnit {
         export const $gtype: GObject.GType<SpeedUnit>;
     }
@@ -378,6 +399,9 @@ export namespace GWeather {
         BFT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TemperatureUnit {
         export const $gtype: GObject.GType<TemperatureUnit>;
     }
@@ -410,6 +434,9 @@ export namespace GWeather {
         FAHRENHEIT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindDirection {
         export const $gtype: GObject.GType<WindDirection>;
     }
@@ -570,6 +597,9 @@ export namespace GWeather {
     interface FilterFunc {
         (location: Location): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace FormatOptions {
         export const $gtype: GObject.GType<FormatOptions>;
     }
@@ -596,6 +626,9 @@ export namespace GWeather {
         NO_CAPITALIZATION,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace Provider {
         export const $gtype: GObject.GType<Provider>;
     }
@@ -642,6 +675,7 @@ export namespace GWeather {
              * data from upstream services, and after every successful call
              * to `gweather_info_update`().
              * @signal
+             * @run-first
              */
             updated: () => void;
             'notify::application-id': (pspec: GObject.ParamSpec) => void;
@@ -1058,8 +1092,17 @@ export namespace GWeather {
 
         get location(): Location;
         set location(val: Location);
+        /**
+         * @construct-only
+         */
         get show_named_timezones(): boolean;
+        /**
+         * @construct-only
+         */
         get showNamedTimezones(): boolean;
+        /**
+         * @construct-only
+         */
         set top(val: Location);
 
         /**
@@ -1153,9 +1196,15 @@ export namespace GWeather {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -1469,6 +1518,7 @@ export namespace GWeather {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -1476,6 +1526,7 @@ export namespace GWeather {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -1597,6 +1648,7 @@ export namespace GWeather {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -5728,6 +5780,9 @@ export namespace GWeather {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set top(val: Location);
         get tzid(): string;
         set tzid(val: string);
@@ -5818,9 +5873,15 @@ export namespace GWeather {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -6134,6 +6195,7 @@ export namespace GWeather {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -6141,6 +6203,7 @@ export namespace GWeather {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -6262,6 +6325,7 @@ export namespace GWeather {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;

@@ -34,6 +34,9 @@ export namespace GstCuda {
         D3D11_RESOURCE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CudaMemoryAllocMethod {
         export const $gtype: GObject.GType<CudaMemoryAllocMethod>;
     }
@@ -461,26 +464,36 @@ export namespace GstCuda {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get cuda_device_id(): number;
+        /**
+         * @construct-only
+         */
         get cudaDeviceId(): number;
         /**
          * OS handle supportability in virtual memory management
          * @since 1.24
+         * @read-only
          */
         get os_handle(): boolean;
         /**
          * OS handle supportability in virtual memory management
          * @since 1.24
+         * @read-only
          */
         get osHandle(): boolean;
         /**
          * Virtual memory management supportability
          * @since 1.24
+         * @read-only
          */
         get virtual_memory(): boolean;
         /**
          * Virtual memory management supportability
          * @since 1.24
+         * @read-only
          */
         get virtualMemory(): boolean;
 

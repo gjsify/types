@@ -514,6 +514,7 @@ export namespace Nice {
              * This signal is fired whenever a stream has finished gathering its
              * candidates after a call to `nice_agent_gather_candidates()`
              * @signal
+             * @run-last
              */
             'candidate-gathering-done': (arg0: number) => void;
             /**
@@ -522,12 +523,14 @@ export namespace Nice {
              *
              * ![State transition diagram](states.png)
              * @signal
+             * @run-last
              */
             'component-state-changed': (arg0: number, arg1: number, arg2: number) => void;
             /**
              * This signal is fired when we received our first binding request from
              * the peer.
              * @signal
+             * @run-last
              */
             'initial-binding-request-received': (arg0: number) => void;
             /**
@@ -539,6 +542,7 @@ export namespace Nice {
              * {@link Nice.Agent.SignalSignatures.new_candidate_full | Nice.Agent::new-candidate-full}
              * @signal
              * @deprecated since 0.1.8: Use {@link Nice.Agent.SignalSignatures.new_candidate_full | Nice.Agent::new-candidate-full}
+             * @run-last
              */
             'new-candidate': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -550,6 +554,7 @@ export namespace Nice {
              * {@link Nice.Agent.SignalSignatures.new_candidate | Nice.Agent::new-candidate}
              * @signal
              * @since 0.1.8
+             * @run-last
              */
             'new-candidate-full': (arg0: Candidate) => void;
             /**
@@ -562,6 +567,7 @@ export namespace Nice {
              * See also: {@link Nice.Agent.SignalSignatures.new_remote_candidate_full | Nice.Agent::new-remote-candidate-full}
              * @signal
              * @deprecated since 0.1.8: Use {@link Nice.Agent.SignalSignatures.new_remote_candidate_full | Nice.Agent::new-remote-candidate-full}
+             * @run-last
              */
             'new-remote-candidate': (arg0: number, arg1: number, arg2: string) => void;
             /**
@@ -573,6 +579,7 @@ export namespace Nice {
              * See also: {@link Nice.Agent.SignalSignatures.new_remote_candidate | Nice.Agent::new-remote-candidate}
              * @signal
              * @since 0.1.8
+             * @run-last
              */
             'new-remote-candidate-full': (arg0: Candidate) => void;
             /**
@@ -584,6 +591,7 @@ export namespace Nice {
              * See also: {@link Nice.Agent.SignalSignatures.new_selected_pair_full | Nice.Agent::new-selected-pair-full}
              * @signal
              * @deprecated since 0.1.8: Use {@link Nice.Agent.SignalSignatures.new_selected_pair_full | Nice.Agent::new-selected-pair-full}
+             * @run-last
              */
             'new-selected-pair': (arg0: number, arg1: number, arg2: string, arg3: string) => void;
             /**
@@ -594,6 +602,7 @@ export namespace Nice {
              * See also: {@link Nice.Agent.SignalSignatures.new_selected_pair | Nice.Agent::new-selected-pair}
              * @signal
              * @since 0.1.8
+             * @run-last
              */
             'new-selected-pair-full': (arg0: number, arg1: number, arg2: Candidate, arg3: Candidate) => void;
             /**
@@ -604,6 +613,7 @@ export namespace Nice {
              * is established.
              * @signal
              * @since 0.0.11
+             * @run-last
              */
             'reliable-transport-writable': (arg0: number, arg1: number) => void;
             /**
@@ -611,6 +621,7 @@ export namespace Nice {
              * `agent`.
              * @signal
              * @since 0.1.5
+             * @run-last
              */
             'streams-removed': (arg0: number[]) => void;
             'notify::bytestream-tcp': (pspec: GObject.ParamSpec) => void;
@@ -733,6 +744,7 @@ export namespace Nice {
          * bytestream mode will be supported.
          * </para>
          * @since 0.1.8
+         * @read-only
          */
         get bytestream_tcp(): boolean;
         /**
@@ -756,12 +768,14 @@ export namespace Nice {
          * bytestream mode will be supported.
          * </para>
          * @since 0.1.8
+         * @read-only
          */
         get bytestreamTcp(): boolean;
         /**
          * The Nice agent can work in various compatibility modes depending on
          * what the application/peer needs.
          * <para> See also: {@link Nice.Compatibility}</para>
+         * @construct-only
          */
         get compatibility(): number;
         /**
@@ -774,6 +788,7 @@ export namespace Nice {
          * Setting this property to `true` implies that 'keepalive-conncheck' should
          * be `true` as well.
          * @since 0.1.19
+         * @construct-only
          */
         get consent_freshness(): boolean;
         /**
@@ -786,6 +801,7 @@ export namespace Nice {
          * Setting this property to `true` implies that 'keepalive-conncheck' should
          * be `true` as well.
          * @since 0.1.19
+         * @construct-only
          */
         get consentFreshness(): boolean;
         /**
@@ -820,7 +836,13 @@ export namespace Nice {
          */
         get forceRelay(): boolean;
         set forceRelay(val: boolean);
+        /**
+         * @construct-only
+         */
         get full_mode(): boolean;
+        /**
+         * @construct-only
+         */
         get fullMode(): boolean;
         /**
          * Whether the agent should use ICE-TCP when gathering candidates.
@@ -1021,11 +1043,13 @@ export namespace Nice {
         /**
          * A GLib main context is needed for all timeouts used by libnice.
          * This is a property being set by the `nice_agent_new()` call.
+         * @construct-only
          */
         get main_context(): any;
         /**
          * A GLib main context is needed for all timeouts used by libnice.
          * This is a property being set by the `nice_agent_new()` call.
+         * @construct-only
          */
         get mainContext(): any;
         get max_connectivity_checks(): number;
@@ -1096,6 +1120,7 @@ export namespace Nice {
          * Whether the agent is providing a reliable transport of messages (through
          * ICE-TCP or PseudoTCP over ICE-UDP)
          * @since 0.0.11
+         * @construct-only
          */
         get reliable(): boolean;
         /**
@@ -2012,6 +2037,9 @@ export namespace Nice {
         set ackDelay(val: number);
         get callbacks(): any;
         set callbacks(val: any);
+        /**
+         * @construct-only
+         */
         get conversation(): number;
         get no_delay(): boolean;
         set no_delay(val: boolean);
@@ -2025,6 +2053,9 @@ export namespace Nice {
         set snd_buf(val: number);
         get sndBuf(): number;
         set sndBuf(val: number);
+        /**
+         * @read-only
+         */
         get state(): number;
         /**
          * Whether to support the FIN–ACK extension to the pseudo-TCP protocol for
@@ -2036,6 +2067,7 @@ export namespace Nice {
          *
          * Support is enabled by default.
          * @since 0.1.8
+         * @construct-only
          */
         get support_fin_ack(): boolean;
         /**
@@ -2048,6 +2080,7 @@ export namespace Nice {
          *
          * Support is enabled by default.
          * @since 0.1.8
+         * @construct-only
          */
         get supportFinAck(): boolean;
 

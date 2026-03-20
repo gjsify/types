@@ -21,6 +21,9 @@ export namespace GstRtp {
      * GstRtp-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTCPFBType {
         export const $gtype: GObject.GType<RTCPFBType>;
     }
@@ -87,6 +90,9 @@ export namespace GstRtp {
         PSFB_TYPE_VBCN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTCPSDESType {
         export const $gtype: GObject.GType<RTCPSDESType>;
     }
@@ -166,6 +172,9 @@ export namespace GstRtp {
         MID,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTCPType {
         export const $gtype: GObject.GType<RTCPType>;
     }
@@ -213,6 +222,9 @@ export namespace GstRtp {
         XR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTCPXRType {
         export const $gtype: GObject.GType<RTCPXRType>;
     }
@@ -384,6 +396,9 @@ export namespace GstRtp {
         static H263: number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTPProfile {
         export const $gtype: GObject.GType<RTPProfile>;
     }
@@ -819,6 +834,9 @@ export namespace GstRtp {
     function rtp_payload_info_for_pt(payload_type: number): RTPPayloadInfo | null;
     function rtp_source_meta_api_get_type(): GObject.GType;
     function rtp_source_meta_get_info(): Gst.MetaInfo;
+    /**
+     * @gir-type Flags
+     */
     export namespace RTPBufferFlags {
         export const $gtype: GObject.GType<RTPBufferFlags>;
     }
@@ -851,6 +869,9 @@ export namespace GstRtp {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RTPBufferMapFlags {
         export const $gtype: GObject.GType<RTPBufferMapFlags>;
     }
@@ -873,6 +894,9 @@ export namespace GstRtp {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RTPHeaderExtensionDirection {
         export const $gtype: GObject.GType<RTPHeaderExtensionDirection>;
     }
@@ -907,6 +931,9 @@ export namespace GstRtp {
         INHERITED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RTPHeaderExtensionFlags {
         export const $gtype: GObject.GType<RTPHeaderExtensionFlags>;
     }
@@ -1119,12 +1146,16 @@ export namespace GstRtp {
              * incoming RTP packets.
              * @signal
              * @since 1.20
+             * @action
+             * @run-last
              */
             'add-extension': (arg0: RTPHeaderExtension) => void;
             /**
              * Clear all RTP header extensions used by this depayloader.
              * @signal
              * @since 1.20
+             * @action
+             * @run-last
              */
             'clear-extensions': () => void;
             /**
@@ -1132,6 +1163,7 @@ export namespace GstRtp {
              * necessary attributes as required by the extension implementation.
              * @signal
              * @since 1.20
+             * @run-last
              */
             'request-extension': (arg0: number, arg1: string | null) => RTPHeaderExtension | null;
             'notify::auto-header-extension': (pspec: GObject.ParamSpec) => void;
@@ -1229,6 +1261,7 @@ export namespace GstRtp {
          *      last PTS
          *   * `seqnum`: #G_TYPE_UINT, the last seen seqnum
          *   * `timestamp`: #G_TYPE_UINT, the last seen RTP timestamp
+         * @read-only
          */
         get stats(): Gst.Structure;
 
@@ -1342,12 +1375,16 @@ export namespace GstRtp {
              * outgoing RTP packets.
              * @signal
              * @since 1.20
+             * @action
+             * @run-last
              */
             'add-extension': (arg0: RTPHeaderExtension) => void;
             /**
              * Clear all RTP header extensions used by this payloader.
              * @signal
              * @since 1.20
+             * @action
+             * @run-last
              */
             'clear-extensions': () => void;
             /**
@@ -1355,6 +1392,7 @@ export namespace GstRtp {
              * necessary attributes as required by the extension implementation.
              * @signal
              * @since 1.20
+             * @run-last
              */
             'request-extension': (arg0: number, arg1: string) => RTPHeaderExtension | null;
             'notify::auto-header-extension': (pspec: GObject.ParamSpec) => void;
@@ -1542,6 +1580,9 @@ export namespace GstRtp {
          */
         get scaleRtptime(): boolean;
         set scaleRtptime(val: boolean);
+        /**
+         * @read-only
+         */
         get seqnum(): number;
         get seqnum_offset(): number;
         set seqnum_offset(val: number);
@@ -1578,8 +1619,12 @@ export namespace GstRtp {
          *   * `pt` :#G_TYPE_UINT, The Payload type in use, same as {@link GstRtp.RTPBasePayload.pt}
          *   * `seqnum-offset` :#G_TYPE_UINT, The current offset added to the seqnum
          *   * `timestamp-offset` :#G_TYPE_UINT, The current offset added to the timestamp
+         * @read-only
          */
         get stats(): Gst.Structure;
+        /**
+         * @read-only
+         */
         get timestamp(): number;
         get timestamp_offset(): number;
         set timestamp_offset(val: number);

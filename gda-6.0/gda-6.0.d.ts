@@ -2542,6 +2542,7 @@ export namespace Gda {
             /**
              * Gets emitted whenever a {@link Gda.Statement} in the `batch` object changes
              * @signal
+             * @run-first
              */
             changed: (arg0: GObject.Object) => void;
         }
@@ -2669,6 +2670,9 @@ export namespace Gda {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get connection(): Connection;
 
         /**
@@ -2753,11 +2757,13 @@ export namespace Gda {
             /**
              * Gets emitted whenever `column`'s type has been changed
              * @signal
+             * @run-last
              */
             'g-type-changed': (arg0: GObject.GType, arg1: GObject.GType) => void;
             /**
              * Gets emitted whenever `column`'s name has been changed
              * @signal
+             * @run-last
              */
             'name-changed': (arg0: string) => void;
             'notify::desc': (pspec: GObject.ParamSpec) => void;
@@ -2930,21 +2936,25 @@ export namespace Gda {
             /**
              * Gets emitted whenever a new DSN has been defined
              * @signal
+             * @run-first
              */
             'dsn-added': (arg0: any | null) => void;
             /**
              * Gets emitted whenever a DSN's definition has been changed
              * @signal
+             * @run-first
              */
             'dsn-changed': (arg0: any | null) => void;
             /**
              * Gets emitted whenever a DSN has been removed
              * @signal
+             * @run-first
              */
             'dsn-removed': (arg0: any | null) => void;
             /**
              * Gets emitted whenever a DSN is about to be removed
              * @signal
+             * @run-first
              */
             'dsn-to-be-removed': (arg0: any | null) => void;
             'notify::system-filename': (pspec: GObject.ParamSpec) => void;
@@ -3154,22 +3164,26 @@ export namespace Gda {
             /**
              * Gets emitted when the connection to the database has been closed
              * @signal
+             * @run-last
              */
             closed: () => void;
             /**
              * Gets emitted when the DSN used by `cnc` has been changed
              * @signal
+             * @run-last
              */
             'dsn-changed': () => void;
             /**
              * Gets emitted whenever a connection event occurs. Check the nature of `event` to
              * see if it's an error or a simple notification
              * @signal
+             * @run-last
              */
             error: (arg0: ConnectionEvent) => void;
             /**
              * Gets emitted when the connection has been opened to the database
              * @signal
+             * @run-first
              */
             opened: () => void;
             /**
@@ -3177,12 +3191,14 @@ export namespace Gda {
              * a statement)
              * @signal
              * @since 6.0
+             * @run-last
              */
             'status-changed': (arg0: ConnectionStatus) => void;
             /**
              * Gets emitted when the transaction status of `cnc` has changed (a transaction has been
              * started, rolled back, a savepoint added,...)
              * @signal
+             * @run-last
              */
             'transaction-status-changed': () => void;
             'notify::auth-string': (pspec: GObject.ParamSpec) => void;
@@ -4874,6 +4890,9 @@ export namespace Gda {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get model(): DataModel;
 
         /**
@@ -5858,6 +5877,7 @@ export namespace Gda {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'diff-computed': (arg0: any | null) => boolean | void;
             'notify::new-model': (pspec: GObject.ParamSpec) => void;
@@ -7007,6 +7027,9 @@ export namespace Gda {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get basedir(): string;
 
         /**
@@ -8009,28 +8032,34 @@ export namespace Gda {
 
         /**
          * Data to import, as a string.
+         * @construct-only
          */
         get data_string(): string;
         /**
          * Data to import, as a string.
+         * @construct-only
          */
         get dataString(): string;
         /**
          * Name of the file to import.
+         * @construct-only
          */
         get filename(): string;
         /**
          * Data model options.
+         * @construct-only
          */
         get options(): Set;
         /**
          * Defines if the data model will be accessed randomly or through a cursor. If set to `false`,
          * access will have to be done using a cursor.
+         * @construct-only
          */
         get random_access(): boolean;
         /**
          * Defines if the data model will be accessed randomly or through a cursor. If set to `false`,
          * access will have to be done using a cursor.
+         * @construct-only
          */
         get randomAccess(): boolean;
         /**
@@ -8043,10 +8072,12 @@ export namespace Gda {
         set strict(val: boolean);
         /**
          * Data to import, as a pointer to an XML node (a #xmlNodePtr).
+         * @construct-only
          */
         get xml_node(): any;
         /**
          * Data to import, as a pointer to an XML node (a #xmlNodePtr).
+         * @construct-only
          */
         get xmlNode(): any;
 
@@ -9119,11 +9150,13 @@ export namespace Gda {
              * Gets emitted when `iter` has reached the end of available data (which means the previous
              * row it was on was the last one).
              * @signal
+             * @run-first
              */
             'end-of-data': () => void;
             /**
              * Gets emitted when the row `iter` is currently pointing has changed
              * @signal
+             * @run-first
              */
             'row-changed': (arg0: number) => void;
             'notify::current-row': (pspec: GObject.ParamSpec) => void;
@@ -9390,6 +9423,7 @@ export namespace Gda {
              * Emmited when the data model has been updated due to parameters changes
              * in statement
              * @signal
+             * @run-last
              */
             updated: () => void;
             'notify::valid': (pspec: GObject.ParamSpec) => void;
@@ -9410,6 +9444,9 @@ export namespace Gda {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get valid(): boolean;
 
         /**
@@ -11417,33 +11454,39 @@ export namespace Gda {
             /**
              * Gets emitted when `proxy`'s filter has been changed
              * @signal
+             * @run-first
              */
             'filter-changed': () => void;
             /**
              * Gets emitted when `proxy` has committed a row change to the proxied data model.
              * @signal
+             * @run-first
              */
             'row-changes-applied': (arg0: number, arg1: number) => void;
             /**
              * Gets emitted whenever a row has been marked to be deleted, or has been unmarked to be deleted
              * @signal
+             * @run-first
              */
             'row-delete-changed': (arg0: number, arg1: boolean) => void;
             /**
              * Gets emitted whenever `proxy`'s sample size has been changed. `sample_start` and `sample_end` are
              * in reference to the proxied data model.
              * @signal
+             * @run-first
              */
             'sample-changed': (arg0: number, arg1: number) => void;
             /**
              * Gets emitted whenever `proxy`'s sample size has been changed
              * @signal
+             * @run-first
              */
             'sample-size-changed': (arg0: number) => void;
             /**
              * Gets emitted when `proxy` is about to commit a row change to the proxied data model. If any
              * callback returns a non `null` value, then the change commit fails with the returned {@link GLib.Error}
              * @signal
+             * @run-last
              */
             'validate-row-changes': (arg0: number, arg1: number) => GLib.Error;
             'notify::cache-changes': (pspec: GObject.ParamSpec) => void;
@@ -12755,12 +12798,21 @@ export namespace Gda {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get connection(): Connection;
         get delete_stmt(): Statement;
         set delete_stmt(val: Statement);
         get deleteStmt(): Statement;
         set deleteStmt(val: Statement);
+        /**
+         * @construct-only
+         */
         get exec_params(): Set;
+        /**
+         * @construct-only
+         */
         get execParams(): Set;
         /**
          * This property stores the execution delay which has been necessary to obtain the data
@@ -12778,13 +12830,25 @@ export namespace Gda {
         set insert_stmt(val: Statement);
         get insertStmt(): Statement;
         set insertStmt(val: Statement);
+        /**
+         * @construct-only
+         */
         get model_usage(): number;
+        /**
+         * @construct-only
+         */
         get modelUsage(): number;
         get prepared_stmt(): PStmt;
         set prepared_stmt(val: PStmt);
         get preparedStmt(): PStmt;
         set preparedStmt(val: PStmt);
+        /**
+         * @read-only
+         */
         get select_stmt(): Statement;
+        /**
+         * @read-only
+         */
         get selectStmt(): Statement;
         get store_all_rows(): boolean;
         set store_all_rows(val: boolean);
@@ -22232,22 +22296,26 @@ export namespace Gda {
             /**
              * Gets emitted when `holder`'s value has changed
              * @signal
+             * @run-first
              */
             changed: () => void;
             /**
              * Gets emitted when the data model in which `holder`'s values should be has changed
              * @signal
+             * @run-first
              */
             'source-changed': () => void;
             /**
              * Gets emitted when `holder` is set to its default value
              * @signal
+             * @run-first
              */
             'to-default': () => void;
             /**
              * Gets emitted when `holder` is going to change its value. One can connect to
              * this signal to control which values `holder` can have (for example to implement some business rules)
              * @signal
+             * @run-last
              */
             'validate-change': (arg0: GObject.Value) => GLib.Error;
             'notify::description': (pspec: GObject.ParamSpec) => void;
@@ -23135,12 +23203,14 @@ export namespace Gda {
             /**
              * This signal is emitted when the `store`'s contents have changed (the changes are in the `changes` list)
              * @signal
+             * @run-first
              */
             'meta-changed': (arg0: MetaStoreChange[]) => void;
             /**
              * This signal is emitted when the `store`'s contents have been reset completely and when
              * no detailed changes are available
              * @signal
+             * @run-first
              */
             'meta-reset': () => void;
             /**
@@ -23148,6 +23218,7 @@ export namespace Gda {
              * deleting data is done automatically). This signal is used for internal purposes by the {@link Gda.Connection}
              * object.
              * @signal
+             * @run-last
              */
             'suggest-update': (arg0: MetaContext) => GLib.Error;
             'notify::catalog': (pspec: GObject.ParamSpec) => void;
@@ -23175,10 +23246,25 @@ export namespace Gda {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set catalog(val: string);
+        /**
+         * @construct-only
+         */
         get cnc(): Connection;
+        /**
+         * @construct-only
+         */
         set cnc_string(val: string);
+        /**
+         * @construct-only
+         */
         set cncString(val: string);
+        /**
+         * @construct-only
+         */
         set schema(val: string);
 
         /**
@@ -23533,8 +23619,17 @@ export namespace Gda {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get features(): number;
+        /**
+         * @construct-only
+         */
         get meta_store(): MetaStore;
+        /**
+         * @construct-only
+         */
         get metaStore(): MetaStore;
 
         /**
@@ -23845,6 +23940,9 @@ export namespace Gda {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get statement(): Statement;
 
         /**
@@ -23942,10 +24040,25 @@ export namespace Gda {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get model(): DataModel;
+        /**
+         * @construct-only
+         */
         get model_row(): number;
+        /**
+         * @construct-only
+         */
         get modelRow(): number;
+        /**
+         * @construct-only
+         */
         get nb_values(): number;
+        /**
+         * @construct-only
+         */
         get nbValues(): number;
 
         /**
@@ -24040,11 +24153,13 @@ export namespace Gda {
             /**
              * Gets emitted whenever a new sequence item (from a sequence template) has been added
              * @signal
+             * @run-first
              */
             'sequence-item-added': (arg0: string, arg1: number) => void;
             /**
              * Gets emitted whenever a sequence item is about to be removed
              * @signal
+             * @run-first
              */
             'sequence-item-remove': (arg0: string, arg1: number) => void;
             'notify::connection': (pspec: GObject.ParamSpec) => void;
@@ -24076,13 +24191,37 @@ export namespace Gda {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get connection(): Connection;
+        /**
+         * @construct-only
+         */
         get op_type(): number;
+        /**
+         * @construct-only
+         */
         get opType(): number;
+        /**
+         * @construct-only
+         */
         get provider(): ServerProvider;
+        /**
+         * @construct-only
+         */
         set spec_filename(val: string);
+        /**
+         * @construct-only
+         */
         set specFilename(val: string);
+        /**
+         * @construct-only
+         */
         set spec_resource(val: string);
+        /**
+         * @construct-only
+         */
         set specResource(val: string);
 
         /**
@@ -25132,10 +25271,12 @@ export namespace Gda {
             /**
              * Gets emitted when an attribute for any of the {@link Gda.Holder} objects managed by `set` has changed
              * @signal
+             * @run-first
              */
             'holder-attr-changed': (arg0: Holder, arg1: string, arg2: GObject.Value) => void;
             /**
              * @signal
+             * @run-first
              */
             'holder-changed': (arg0: Holder) => void;
             /**
@@ -25143,29 +25284,34 @@ export namespace Gda {
              * it was #GDA_TYPE_NULL
              * @signal
              * @since 4.2
+             * @run-first
              */
             'holder-type-set': (arg0: Holder) => void;
             /**
              * Gets emitted when `set`'s public data ({@link Gda.SetNode}, {@link Gda.SetGroup} or {@link Gda.SetSource} values) have changed
              * @signal
+             * @run-first
              */
             'public-data-changed': () => void;
             /**
              * Gets emitted when the data model in `source` has changed
              * @signal
              * @since 4.2
+             * @run-first
              */
             'source-model-changed': (arg0: any | null) => void;
             /**
              * Gets emitted when a {@link Gda.Holder}'s in `set` is going to change its value. One can connect to
              * this signal to control which values `holder` can have (for example to implement some business rules)
              * @signal
+             * @run-last
              */
             'validate-holder-change': (arg0: Holder, arg1: GObject.Value) => GLib.Error;
             /**
              * Gets emitted when `gda_set_is_valid()` is called, use
              * this signal to control which combination of values `set`'s holder can have (for example to implement some business rules)
              * @signal
+             * @run-last
              */
             'validate-set': () => GLib.Error;
             'notify::description': (pspec: GObject.ParamSpec) => void;
@@ -25197,6 +25343,9 @@ export namespace Gda {
 
         get description(): string;
         set description(val: string);
+        /**
+         * @construct-only
+         */
         set holders(val: any);
         get id(): string;
         set id(val: string);
@@ -25857,10 +26006,25 @@ export namespace Gda {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get column_error(): number;
+        /**
+         * @read-only
+         */
         get columnError(): number;
+        /**
+         * @write-only
+         */
         set debug(val: boolean);
+        /**
+         * @read-only
+         */
         get line_error(): number;
+        /**
+         * @read-only
+         */
         get lineError(): number;
         get mode(): number;
         set mode(val: number);
@@ -26458,11 +26622,13 @@ export namespace Gda {
              * Gets emitted whenever the structure and contents
              * of `stmt` have been verified (emitted after `gda_statement_check_validity()`).
              * @signal
+             * @run-first
              */
             checked: (arg0: Connection, arg1: boolean) => void;
             /**
              * Gets emitted whenever the `stmt` has changed
              * @signal
+             * @run-first
              */
             reset: () => void;
             'notify::structure': (pspec: GObject.ParamSpec) => void;
@@ -26736,12 +26902,14 @@ export namespace Gda {
              * Gets emitted when a `node` has changed in `tree`
              * @signal
              * @since 4.2
+             * @run-last
              */
             'node-changed': (arg0: TreeNode) => void;
             /**
              * Gets emitted when a `node` has been removed from `tree`
              * @signal
              * @since 4.2
+             * @run-last
              */
             'node-deleted': (arg0: string) => void;
             /**
@@ -26749,12 +26917,14 @@ export namespace Gda {
              * does not have a ny children anymore when it had some
              * @signal
              * @since 4.2
+             * @run-last
              */
             'node-has-child-toggled': (arg0: TreeNode) => void;
             /**
              * Gets emitted when a `node` has been inserted in `tree`
              * @signal
              * @since 4.2
+             * @run-last
              */
             'node-inserted': (arg0: TreeNode) => void;
             'notify::is-list': (pspec: GObject.ParamSpec) => void;
@@ -26778,10 +26948,12 @@ export namespace Gda {
 
         /**
          * Tells if the GdaTree is a list or a tree.
+         * @read-only
          */
         get is_list(): boolean;
         /**
          * Tells if the GdaTree is a list or a tree.
+         * @read-only
          */
         get isList(): boolean;
 
@@ -27088,6 +27260,7 @@ export namespace Gda {
         /**
          * Defines the {@link Gda.Connection} to display information for. Necessary upon construction unless
          * the {@link Gda.TreeMgrColumns.meta_store} property is specified instead.
+         * @construct-only
          */
         get connection(): Connection;
         /**
@@ -27095,6 +27268,7 @@ export namespace Gda {
          * the {@link Gda.TreeMgrColumns.connection} property is specified instead. This property has
          * priority over the GdaTreeMgrColumns:connection property.
          * @since 4.2.4
+         * @construct-only
          */
         get meta_store(): MetaStore;
         /**
@@ -27102,18 +27276,22 @@ export namespace Gda {
          * the {@link Gda.TreeMgrColumns.connection} property is specified instead. This property has
          * priority over the GdaTreeMgrColumns:connection property.
          * @since 4.2.4
+         * @construct-only
          */
         get metaStore(): MetaStore;
         /**
          * If no set, then the table name will be fetched from the parent node using the "schema" attribute
+         * @construct-only
          */
         set schema(val: string);
         /**
          * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
+         * @construct-only
          */
         set table_name(val: string);
         /**
          * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
+         * @construct-only
          */
         set tableName(val: string);
 
@@ -27179,6 +27357,9 @@ export namespace Gda {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set label(val: string);
 
         /**
@@ -27249,6 +27430,7 @@ export namespace Gda {
         /**
          * Defines the {@link Gda.Connection} to display information for. Necessary upon construction unless
          * the `GdaTreeMgrSchema:meta-store` property is specified instead.
+         * @construct-only
          */
         get connection(): Connection;
         /**
@@ -27256,6 +27438,7 @@ export namespace Gda {
          * the `GdaTreeMgrSchema:connection` property is specified instead. This property has
          * priority over the GdaTreeMgrSchema:connection property.
          * @since 4.2.4
+         * @construct-only
          */
         get meta_store(): MetaStore;
         /**
@@ -27263,6 +27446,7 @@ export namespace Gda {
          * the `GdaTreeMgrSchema:connection` property is specified instead. This property has
          * priority over the GdaTreeMgrSchema:connection property.
          * @since 4.2.4
+         * @construct-only
          */
         get metaStore(): MetaStore;
 
@@ -27332,8 +27516,17 @@ export namespace Gda {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get connection(): Connection;
+        /**
+         * @construct-only
+         */
         get params(): Set;
+        /**
+         * @construct-only
+         */
         get statement(): Statement;
 
         /**
@@ -27406,6 +27599,7 @@ export namespace Gda {
         /**
          * Defines the {@link Gda.Connection} to display information for. Necessary upon construction unless
          * the {@link Gda.TreeMgrTables.meta_store} property is specified instead.
+         * @construct-only
          */
         get connection(): Connection;
         /**
@@ -27413,6 +27607,7 @@ export namespace Gda {
          * the {@link Gda.TreeMgrTables.connection} property is specified instead. This property has
          * priority over the GdaTreeMgrTables:connection property.
          * @since 4.2.4
+         * @construct-only
          */
         get meta_store(): MetaStore;
         /**
@@ -27420,12 +27615,14 @@ export namespace Gda {
          * the {@link Gda.TreeMgrTables.connection} property is specified instead. This property has
          * priority over the GdaTreeMgrTables:connection property.
          * @since 4.2.4
+         * @construct-only
          */
         get metaStore(): MetaStore;
         /**
          * If no set, then the table name will be fetched from the parent node using the "schema" attribute. If not
          * found that way, then the list of visible tables (tables which can be identified without having to specify
          * a schema) will be used
+         * @construct-only
          */
         set schema(val: string);
 
@@ -27475,12 +27672,14 @@ export namespace Gda {
              * Gets emitted when a `node` has changed
              * @signal
              * @since 4.2
+             * @run-last
              */
             'node-changed': (arg0: TreeNode) => void;
             /**
              * Gets emitted when a `node` has been removed
              * @signal
              * @since 4.2
+             * @run-last
              */
             'node-deleted': (arg0: string) => void;
             /**
@@ -27488,12 +27687,14 @@ export namespace Gda {
              * does not have a ny children anymore when it had some
              * @signal
              * @since 4.2
+             * @run-last
              */
             'node-has-child-toggled': (arg0: TreeNode) => void;
             /**
              * Gets emitted when a `node` has been inserted
              * @signal
              * @since 4.2
+             * @run-last
              */
             'node-inserted': (arg0: TreeNode) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -27724,9 +27925,21 @@ export namespace Gda {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get format_id(): number;
+        /**
+         * @construct-only
+         */
         get formatId(): number;
+        /**
+         * @construct-only
+         */
         get transaction_id(): string;
+        /**
+         * @construct-only
+         */
         get transactionId(): string;
 
         /**
@@ -32121,6 +32334,9 @@ export namespace Gda {
     interface ProviderMeta extends GObject.Object, ProviderMeta.Interface {
         // Properties
 
+        /**
+         * @construct-only
+         */
         get connection(): Connection;
 
         // Methods

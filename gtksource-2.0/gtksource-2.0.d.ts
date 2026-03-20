@@ -255,24 +255,29 @@ export namespace GtkSource {
              * if `state` is #GTK_SOURCE_BRACKET_MATCH_FOUND.
              * @signal
              * @since 2.12
+             * @run-last
              */
             'bracket-matched': (arg0: Gtk.TextIter, arg1: unknown) => void;
             /**
              * @signal
+             * @run-last
              */
             'highlight-updated': (arg0: Gtk.TextIter, arg1: Gtk.TextIter) => void;
             /**
              * @signal
+             * @run-last
              */
             redo: () => void;
             /**
              * The ::source_mark_updated signal is emitted each time
              * a mark is added to, moved or removed from the `buffer`.
              * @signal
+             * @run-last
              */
             'source-mark-updated': (arg0: Gtk.TextMark) => void;
             /**
              * @signal
+             * @run-last
              */
             undo: () => void;
             'notify::can-redo': (pspec: GObject.ParamSpec) => void;
@@ -320,9 +325,21 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get can_redo(): boolean;
+        /**
+         * @read-only
+         */
         get canRedo(): boolean;
+        /**
+         * @read-only
+         */
         get can_undo(): boolean;
+        /**
+         * @read-only
+         */
         get canUndo(): boolean;
         /**
          * Whether to highlight matching brackets in the buffer.
@@ -678,12 +695,16 @@ export namespace GtkSource {
              * `g_signal_emit_by_name` if they need to control the proposal activation
              * programmatically.
              * @signal
+             * @action
+             * @run-last
              */
             'activate-proposal': () => void;
             /**
              * Emitted when the completion window is hidden. The default handler
              * will actually hide the window.
              * @signal
+             * @action
+             * @run-last
              */
             hide: () => void;
             /**
@@ -694,6 +715,8 @@ export namespace GtkSource {
              * `g_signal_emit_by_name` if they need to control the cursor
              * programmatically.
              * @signal
+             * @action
+             * @run-last
              */
             'move-cursor': (arg0: Gtk.ScrollStep, arg1: number) => void;
             /**
@@ -705,18 +728,24 @@ export namespace GtkSource {
              * `g_signal_emit_by_name` if they need to control the page selection
              * programmatically.
              * @signal
+             * @action
+             * @run-last
              */
             'move-page': (arg0: Gtk.ScrollStep, arg1: number) => void;
             /**
              * Emitted just before starting to populate the completion with providers.
              * You can use this signal to add additional attributes in the context.
              * @signal
+             * @action
+             * @run-last
              */
             'populate-context': (arg0: CompletionContext) => void;
             /**
              * Emitted when the completion window is shown. The default handler
              * will actually show the window.
              * @signal
+             * @action
+             * @run-last
              */
             show: () => void;
             'notify::accelerators': (pspec: GObject.ParamSpec) => void;
@@ -850,6 +879,7 @@ export namespace GtkSource {
         set showIcons(val: boolean);
         /**
          * The {@link GtkSource.View} bound to the completion object.
+         * @construct-only
          */
         get view(): View;
 
@@ -991,6 +1021,8 @@ export namespace GtkSource {
              * Providers adding proposals asynchronously should connect to this signal
              * to know when to cancel running proposal queries.
              * @signal
+             * @action
+             * @run-last
              */
             cancelled: () => void;
             'notify::completion': (pspec: GObject.ParamSpec) => void;
@@ -1015,6 +1047,7 @@ export namespace GtkSource {
 
         /**
          * The {@link GtkSource.Completion} associated with the context.
+         * @construct-only
          */
         get completion(): Completion;
         /**
@@ -1086,6 +1119,8 @@ export namespace GtkSource {
         interface SignalSignatures extends Gtk.Window.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'before-show': () => void;
             'notify::max-height': (pspec: GObject.ParamSpec) => void;
@@ -2392,12 +2427,14 @@ export namespace GtkSource {
              * a button press on the cell). The signal is only emitted for cells
              * that have the #activatable property set to `true`.
              * @signal
+             * @run-last
              */
             'cell-activated': (arg0: Gtk.CellRenderer, arg1: Gtk.TextIter, arg2: Gdk.Event) => void;
             /**
              * Emitted when a tooltip is requested for a specific cell. Signal
              * handlers can return `true` to notify the tooltip has been handled.
              * @signal
+             * @run-last
              */
             'query-tooltip': (arg0: Gtk.CellRenderer, arg1: Gtk.TextIter, arg2: Gtk.Tooltip) => boolean | void;
             'notify::view': (pspec: GObject.ParamSpec) => void;
@@ -2423,14 +2460,17 @@ export namespace GtkSource {
 
         /**
          * The {@link GtkSource.View} of the gutter
+         * @construct-only
          */
         get view(): View;
         /**
          * The text window type on which the window is placed
+         * @construct-only
          */
         get window_type(): Gtk.TextWindowType;
         /**
          * The text window type on which the window is placed
+         * @construct-only
          */
         get windowType(): Gtk.TextWindowType;
 
@@ -2565,9 +2605,21 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get hidden(): boolean;
+        /**
+         * @read-only
+         */
         get id(): string;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get section(): string;
 
         /**
@@ -2674,7 +2726,13 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get language_ids(): string[];
+        /**
+         * @read-only
+         */
         get languageIds(): string[];
         get search_path(): string[];
         set search_path(val: string[]);
@@ -2820,6 +2878,7 @@ export namespace GtkSource {
         /**
          * The category of the {@link GtkSource.Mark}, classifies the mark and controls
          * which pixbuf is used and with which priority it is drawn.
+         * @construct-only
          */
         get category(): string;
 
@@ -2956,6 +3015,7 @@ export namespace GtkSource {
         /**
          * The GtkSourceBuffer object to print.
          * @since 2.2
+         * @construct-only
          */
         get buffer(): Buffer;
         /**
@@ -3064,12 +3124,14 @@ export namespace GtkSource {
          * The number of pages in the document or <code>-1</code> if the
          * document has not been completely paginated.
          * @since 2.2
+         * @read-only
          */
         get n_pages(): number;
         /**
          * The number of pages in the document or <code>-1</code> if the
          * document has not been completely paginated.
          * @since 2.2
+         * @read-only
          */
         get nPages(): number;
         /**
@@ -3688,27 +3750,93 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get background(): string;
+        /**
+         * @construct-only
+         */
         get background_set(): boolean;
+        /**
+         * @construct-only
+         */
         get backgroundSet(): boolean;
+        /**
+         * @construct-only
+         */
         get bold(): boolean;
+        /**
+         * @construct-only
+         */
         get bold_set(): boolean;
+        /**
+         * @construct-only
+         */
         get boldSet(): boolean;
+        /**
+         * @construct-only
+         */
         get foreground(): string;
+        /**
+         * @construct-only
+         */
         get foreground_set(): boolean;
+        /**
+         * @construct-only
+         */
         get foregroundSet(): boolean;
+        /**
+         * @construct-only
+         */
         get italic(): boolean;
+        /**
+         * @construct-only
+         */
         get italic_set(): boolean;
+        /**
+         * @construct-only
+         */
         get italicSet(): boolean;
+        /**
+         * @construct-only
+         */
         get line_background(): string;
+        /**
+         * @construct-only
+         */
         get lineBackground(): string;
+        /**
+         * @construct-only
+         */
         get line_background_set(): boolean;
+        /**
+         * @construct-only
+         */
         get lineBackgroundSet(): boolean;
+        /**
+         * @construct-only
+         */
         get strikethrough(): boolean;
+        /**
+         * @construct-only
+         */
         get strikethrough_set(): boolean;
+        /**
+         * @construct-only
+         */
         get strikethroughSet(): boolean;
+        /**
+         * @construct-only
+         */
         get underline(): boolean;
+        /**
+         * @construct-only
+         */
         get underline_set(): boolean;
+        /**
+         * @construct-only
+         */
         get underlineSet(): boolean;
 
         /**
@@ -3775,18 +3903,24 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get description(): string;
         /**
          * Style scheme filename or NULL.
+         * @read-only
          */
         get filename(): string;
         /**
          * Style scheme id, a unique string used to identify the style scheme
          * in {@link GtkSource.StyleSchemeManager}.
+         * @construct-only
          */
         get id(): string;
         /**
          * Style scheme name, a translatable string to present to user.
+         * @read-only
          */
         get name(): string;
 
@@ -3879,7 +4013,13 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get scheme_ids(): string[];
+        /**
+         * @read-only
+         */
         get schemeIds(): string[];
         get search_path(): string[];
         set search_path(val: string[]);
@@ -3980,6 +4120,7 @@ export namespace GtkSource {
              * was a button press in the line marks gutter). You can use `iter` to
              * determine on which line the activation took place.
              * @signal
+             * @run-last
              */
             'line-mark-activated': (arg0: Gtk.TextIter, arg1: Gdk.Event) => void;
             /**
@@ -3990,6 +4131,8 @@ export namespace GtkSource {
              * `count` of -1 or 1 is valid.
              * @signal
              * @since 2.10
+             * @action
+             * @run-last
              */
             'move-lines': (arg0: boolean, arg1: number) => void;
             /**
@@ -3999,10 +4142,14 @@ export namespace GtkSource {
              * word by one word.
              * @signal
              * @since 3.0
+             * @action
+             * @run-last
              */
             'move-words': (arg0: number) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             redo: () => void;
             /**
@@ -4013,6 +4160,8 @@ export namespace GtkSource {
              * `g_signal_emit_by_name` if they need to control the default mode
              * completion activation.
              * @signal
+             * @action
+             * @run-last
              */
             'show-completion': () => void;
             /**
@@ -4023,10 +4172,13 @@ export namespace GtkSource {
              * home/end.
              * @signal
              * @since 3.0
+             * @run-last
              */
             'smart-home-end': (arg0: Gtk.TextIter, arg1: number) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             undo: () => void;
             'notify::auto-indent': (pspec: GObject.ParamSpec) => void;
@@ -4127,6 +4279,9 @@ export namespace GtkSource {
         set auto_indent(val: boolean);
         get autoIndent(): boolean;
         set autoIndent(val: boolean);
+        /**
+         * @read-only
+         */
         get completion(): Completion;
         get highlight_current_line(): boolean;
         set highlight_current_line(val: boolean);

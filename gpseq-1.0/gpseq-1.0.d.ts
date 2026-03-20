@@ -657,6 +657,9 @@ export namespace Gpseq {
     interface VoidTaskFunc {
         (): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace CollectorFeatures {
         export const $gtype: GObject.GType<CollectorFeatures>;
     }
@@ -699,11 +702,29 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -749,13 +770,25 @@ export namespace Gpseq {
             ...args: GObject.GjsParameters<ArraySpliterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get estimated_size(): number;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get estimatedSize(): number;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get is_size_known(): boolean;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get isSizeKnown(): boolean;
         get_element_type(): GObject.GType;
         try_split(): Spliterator;
@@ -1304,26 +1337,83 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get parent(): ForkJoinTask;
+        /**
+         * @read-only
+         */
         get root(): ForkJoinTask;
+        /**
+         * @read-only
+         */
         get is_root(): boolean;
+        /**
+         * @read-only
+         */
         get isRoot(): boolean;
+        /**
+         * @read-only
+         */
         get threshold(): number;
+        /**
+         * @read-only
+         */
         get max_depth(): number;
+        /**
+         * @read-only
+         */
         get maxDepth(): number;
         get depth(): number;
         set depth(val: number);
+        /**
+         * @read-only
+         */
         get executor(): Executor;
+        /**
+         * @read-only
+         */
         get promise(): Promise;
+        /**
+         * @read-only
+         */
         get shared_result(): ForkJoinTaskSharedResult;
+        /**
+         * @read-only
+         */
         get sharedResult(): ForkJoinTaskSharedResult;
+        /**
+         * @read-only
+         */
         get is_cancelled(): boolean;
+        /**
+         * @read-only
+         */
         get isCancelled(): boolean;
 
         /**
@@ -1389,7 +1479,10 @@ export namespace Gpseq {
         cancel(): void;
         get_is_cancelled(): boolean;
         compute(): void;
-        /** @category Inherited from Gpseq.Task */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Task
+         */
         get future(): Future;
         get_future(): Future;
         invoke(): void;
@@ -1940,11 +2033,29 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -1984,7 +2095,10 @@ export namespace Gpseq {
             ...args: GObject.GjsParameters<FuncTask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gpseq.Task */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Task
+         */
         get future(): Future;
         get_future(): Future;
         compute(): void;
@@ -2479,12 +2593,33 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get ready(): boolean;
 
         /**
@@ -3182,11 +3317,29 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -3234,13 +3387,25 @@ export namespace Gpseq {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get estimated_size(): number;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get estimatedSize(): number;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get is_size_known(): boolean;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get isSizeKnown(): boolean;
         get_element_type(): GObject.GType;
         try_split(): Spliterator;
@@ -3766,11 +3931,29 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -3824,13 +4007,25 @@ export namespace Gpseq {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get estimated_size(): number;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get estimatedSize(): number;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get is_size_known(): boolean;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get isSizeKnown(): boolean;
         get_element_type(): GObject.GType;
         try_split(): Spliterator;
@@ -4356,11 +4551,29 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -4406,13 +4619,25 @@ export namespace Gpseq {
             ...args: GObject.GjsParameters<ListSpliterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get estimated_size(): number;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get estimatedSize(): number;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get is_size_known(): boolean;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get isSizeKnown(): boolean;
         get_element_type(): GObject.GType;
         try_split(): Spliterator;
@@ -4944,16 +5169,49 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get value_type(): GObject.GType;
+        /**
+         * @read-only
+         */
         get valueType(): GObject.GType;
+        /**
+         * @read-only
+         */
         get value(): any;
+        /**
+         * @read-only
+         */
         get is_present(): boolean;
+        /**
+         * @read-only
+         */
         get isPresent(): boolean;
 
         /**
@@ -5128,19 +5386,61 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get element_type(): GObject.GType;
+        /**
+         * @read-only
+         */
         get elementType(): GObject.GType;
+        /**
+         * @read-only
+         */
         get task_env(): TaskEnv;
+        /**
+         * @read-only
+         */
         get taskEnv(): TaskEnv;
+        /**
+         * @read-only
+         */
         get is_closed(): boolean;
+        /**
+         * @read-only
+         */
         get isClosed(): boolean;
+        /**
+         * @read-only
+         */
         get is_parallel(): boolean;
+        /**
+         * @read-only
+         */
         get isParallel(): boolean;
 
         /**
@@ -5552,28 +5852,97 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get r_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get rType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get r_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get rDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get r_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get rDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get spliterator(): Spliterator;
+        /**
+         * @read-only
+         */
         get left_child(): SpliteratorTask;
+        /**
+         * @read-only
+         */
         get leftChild(): SpliteratorTask;
+        /**
+         * @read-only
+         */
         get right_child(): SpliteratorTask;
+        /**
+         * @read-only
+         */
         get rightChild(): SpliteratorTask;
+        /**
+         * @read-only
+         */
         get is_leaf(): boolean;
+        /**
+         * @read-only
+         */
         get isLeaf(): boolean;
+        /**
+         * @read-only
+         */
         get is_leftmost(): boolean;
+        /**
+         * @read-only
+         */
         get isLeftmost(): boolean;
+        /**
+         * @read-only
+         */
         get empty_result(): any;
+        /**
+         * @read-only
+         */
         get emptyResult(): any;
 
         /**
@@ -5686,12 +6055,33 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get size(): number;
 
         /**
@@ -6427,11 +6817,29 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -6479,13 +6887,25 @@ export namespace Gpseq {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get estimated_size(): number;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get estimatedSize(): number;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get is_size_known(): boolean;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get isSizeKnown(): boolean;
         get_element_type(): GObject.GType;
         try_split(): Spliterator;
@@ -7011,11 +7431,29 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -7061,13 +7499,25 @@ export namespace Gpseq {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get estimated_size(): number;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get estimatedSize(): number;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get is_size_known(): boolean;
-        /** @category Inherited from Gpseq.Spliterator */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Spliterator
+         */
         get isSizeKnown(): boolean;
         get_element_type(): GObject.GType;
         try_split(): Spliterator;
@@ -7584,6 +8034,9 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get executor(): Executor;
 
         /**
@@ -7802,18 +8255,41 @@ export namespace Gpseq {
         set maxThreads(val: number);
         /**
          * @since 0.2.0-alpha
+         * @read-only
          */
         get num_threads(): number;
         /**
          * @since 0.2.0-alpha
+         * @read-only
          */
         get numThreads(): number;
+        /**
+         * @read-only
+         */
         get factory(): ThreadFactory;
+        /**
+         * @read-only
+         */
         get is_terminating(): boolean;
+        /**
+         * @read-only
+         */
         get isTerminating(): boolean;
+        /**
+         * @read-only
+         */
         get is_terminated(): boolean;
+        /**
+         * @read-only
+         */
         get isTerminated(): boolean;
+        /**
+         * @read-only
+         */
         get is_terminating_started(): boolean;
+        /**
+         * @read-only
+         */
         get isTerminatingStarted(): boolean;
 
         /**
@@ -7879,7 +8355,10 @@ export namespace Gpseq {
          * @param end_time
          */
         wait_termination_until(end_time: number): void;
-        /** @category Inherited from Gpseq.Executor */
+        /**
+         * @read-only
+         * @category Inherited from Gpseq.Executor
+         */
         get parallels(): number;
         /**
          * @param task
@@ -8380,14 +8859,41 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get thread(): GLib.Thread;
+        /**
+         * @read-only
+         */
         get pool(): WorkerPool;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get is_started(): boolean;
+        /**
+         * @read-only
+         */
         get isStarted(): boolean;
+        /**
+         * @read-only
+         */
         get is_terminated(): boolean;
+        /**
+         * @read-only
+         */
         get isTerminated(): boolean;
+        /**
+         * @read-only
+         */
         get is_alive(): boolean;
+        /**
+         * @read-only
+         */
         get isAlive(): boolean;
 
         /**
@@ -8487,14 +8993,41 @@ export namespace Gpseq {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @read-only
+         */
         get value(): any;
+        /**
+         * @read-only
+         */
         get value_type(): GObject.GType;
+        /**
+         * @read-only
+         */
         get valueType(): GObject.GType;
 
         /**
@@ -8894,7 +9427,13 @@ export namespace Gpseq {
     interface ChannelBase extends GObject.Object, ChannelBase.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get capacity(): Optional;
+        /**
+         * @read-only
+         */
         get length(): number;
 
         // Methods
@@ -8962,6 +9501,9 @@ export namespace Gpseq {
     interface Collector extends GObject.Object, Collector.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get features(): CollectorFeatures;
 
         // Methods
@@ -9024,6 +9566,9 @@ export namespace Gpseq {
     interface Executor extends GObject.Object, Executor.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get parallels(): number;
 
         // Methods
@@ -9434,9 +9979,21 @@ export namespace Gpseq {
     interface Spliterator extends GObject.Object, Spliterator.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get estimated_size(): number;
+        /**
+         * @read-only
+         */
         get estimatedSize(): number;
+        /**
+         * @read-only
+         */
         get is_size_known(): boolean;
+        /**
+         * @read-only
+         */
         get isSizeKnown(): boolean;
 
         // Methods
@@ -9541,6 +10098,9 @@ export namespace Gpseq {
     interface Task extends GObject.Object, Task.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get future(): Future;
 
         // Methods

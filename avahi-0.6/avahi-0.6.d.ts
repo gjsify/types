@@ -19,6 +19,9 @@ export namespace Avahi {
      * Avahi-0.6
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BrowserEvent {
         export const $gtype: GObject.GType<BrowserEvent>;
     }
@@ -34,6 +37,9 @@ export namespace Avahi {
         GA_BROWSER_FAILURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClientFlags {
         export const $gtype: GObject.GType<ClientFlags>;
     }
@@ -47,6 +53,9 @@ export namespace Avahi {
         GA_CLIENT_FLAG_NO_FAIL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClientState {
         export const $gtype: GObject.GType<ClientState>;
     }
@@ -63,6 +72,9 @@ export namespace Avahi {
         GA_CLIENT_STATE_CONNECTING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EntryGroupState {
         export const $gtype: GObject.GType<EntryGroupState>;
     }
@@ -78,6 +90,9 @@ export namespace Avahi {
         GA_ENTRY_GROUP_STATE_FAILURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LookupFlags {
         export const $gtype: GObject.GType<LookupFlags>;
     }
@@ -93,6 +108,9 @@ export namespace Avahi {
         GA_LOOKUP_NO_ADDRESS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LookupResultFlags {
         export const $gtype: GObject.GType<LookupResultFlags>;
     }
@@ -109,6 +127,9 @@ export namespace Avahi {
         GA_LOOKUP_RESULT_STATIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Protocol {
         export const $gtype: GObject.GType<Protocol>;
     }
@@ -122,6 +143,9 @@ export namespace Avahi {
         GA_PROTOCOL_UNSPEC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ResolverEvent {
         export const $gtype: GObject.GType<ResolverEvent>;
     }
@@ -140,16 +164,22 @@ export namespace Avahi {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-changed': (arg0: ClientState) => void;
             'notify::flags': (pspec: GObject.ParamSpec) => void;
             'notify::state': (pspec: GObject.ParamSpec) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-changed::flags': (arg0: ClientState) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-changed::state': (arg0: ClientState) => void;
         }
@@ -170,7 +200,13 @@ export namespace Avahi {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get flags(): ClientFlags;
+        /**
+         * @read-only
+         */
         get state(): ClientState;
 
         /**
@@ -225,11 +261,15 @@ export namespace Avahi {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-changed': (arg0: EntryGroupState) => void;
             'notify::state': (pspec: GObject.ParamSpec) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-changed::state': (arg0: EntryGroupState) => void;
         }
@@ -249,6 +289,9 @@ export namespace Avahi {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get state(): EntryGroupState;
 
         /**
@@ -342,18 +385,22 @@ export namespace Avahi {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'all-for-now': () => void;
             /**
              * @signal
+             * @run-last
              */
             'cache-exhausted': () => void;
             /**
              * @signal
+             * @run-last
              */
             failure: (arg0: any | null) => void;
             /**
              * @signal
+             * @run-last
              */
             'new-record': (
                 arg0: number,
@@ -367,6 +414,7 @@ export namespace Avahi {
             ) => void;
             /**
              * @signal
+             * @run-last
              */
             'removed-record': (
                 arg0: number,
@@ -479,18 +527,22 @@ export namespace Avahi {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'all-for-now': () => void;
             /**
              * @signal
+             * @run-last
              */
             'cache-exhausted': () => void;
             /**
              * @signal
+             * @run-last
              */
             failure: (arg0: any | null) => void;
             /**
              * @signal
+             * @run-last
              */
             'new-service': (
                 arg0: number,
@@ -502,6 +554,7 @@ export namespace Avahi {
             ) => void;
             /**
              * @signal
+             * @run-last
              */
             'removed-service': (
                 arg0: number,
@@ -607,10 +660,12 @@ export namespace Avahi {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             failure: (arg0: any | null) => void;
             /**
              * @signal
+             * @run-last
              */
             found: (
                 arg0: number,

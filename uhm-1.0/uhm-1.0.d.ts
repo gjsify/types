@@ -230,6 +230,7 @@ export namespace Uhm {
              * this signal is emitted wins.
              * @signal
              * @since 1.0.0
+             * @run-last
              */
             'compare-messages': (arg0: Message, arg1: Message) => boolean | void;
             /**
@@ -240,6 +241,7 @@ export namespace Uhm {
              * Signal handlers should return `true` if they have handled the request and set an appropriate response; and `false` otherwise.
              * @signal
              * @since 0.1.0
+             * @run-last
              */
             'handle-message': (arg0: Message) => boolean | void;
             'notify::address': (pspec: GObject.ParamSpec) => void;
@@ -285,6 +287,7 @@ export namespace Uhm {
          * This should not normally need to be passed into client code under test, unless the code references IP addresses specifically. The mock server
          * runs a DNS resolver which automatically redirects client requests for known domain names to this address ({@link Uhm.Server.resolver}).
          * @since 0.1.0
+         * @read-only
          */
         get address(): string;
         /**
@@ -324,6 +327,7 @@ export namespace Uhm {
          * It is intended that this port be passed into the client code under test, to substitute for the default HTTPS port (443) which it would otherwise
          * use.
          * @since 0.1.0
+         * @read-only
          */
         get port(): number;
         /**
@@ -334,6 +338,7 @@ export namespace Uhm {
          * to the resolver will be rejected by the mock server. The set of domain names in the resolver will be reset when `uhm_server_stop()` is
          * called.
          * @since 0.1.0
+         * @read-only
          */
         get resolver(): Resolver;
         /**

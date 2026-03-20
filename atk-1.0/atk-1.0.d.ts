@@ -18,6 +18,9 @@ export namespace Atk {
      * Atk-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CoordType {
         export const $gtype: GObject.GType<CoordType>;
     }
@@ -44,6 +47,9 @@ export namespace Atk {
         PARENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace KeyEventType {
         export const $gtype: GObject.GType<KeyEventType>;
     }
@@ -67,6 +73,9 @@ export namespace Atk {
         LAST_DEFINED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Layer {
         export const $gtype: GObject.GType<Layer>;
     }
@@ -114,6 +123,9 @@ export namespace Atk {
         WINDOW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Live {
         export const $gtype: GObject.GType<Live>;
     }
@@ -141,6 +153,9 @@ export namespace Atk {
         ASSERTIVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RelationType {
         export const $gtype: GObject.GType<RelationType>;
     }
@@ -269,6 +284,9 @@ export namespace Atk {
         LAST_DEFINED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Role {
         export const $gtype: GObject.GType<Role>;
     }
@@ -881,6 +899,9 @@ export namespace Atk {
         PUSH_BUTTON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScrollType {
         export const $gtype: GObject.GType<ScrollType>;
     }
@@ -929,6 +950,9 @@ export namespace Atk {
         ANYWHERE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StateType {
         export const $gtype: GObject.GType<StateType>;
     }
@@ -1187,6 +1211,9 @@ export namespace Atk {
         LAST_DEFINED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextAttribute {
         export const $gtype: GObject.GType<TextAttribute>;
     }
@@ -1318,6 +1345,9 @@ export namespace Atk {
         LAST_DEFINED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextBoundary {
         export const $gtype: GObject.GType<TextBoundary>;
     }
@@ -1366,6 +1396,9 @@ export namespace Atk {
         LINE_END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextClipType {
         export const $gtype: GObject.GType<TextClipType>;
     }
@@ -1393,6 +1426,9 @@ export namespace Atk {
         BOTH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextGranularity {
         export const $gtype: GObject.GType<TextGranularity>;
     }
@@ -1434,6 +1470,9 @@ export namespace Atk {
         PARAGRAPH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ValueType {
         export const $gtype: GObject.GType<ValueType>;
     }
@@ -1788,6 +1827,9 @@ export namespace Atk {
     interface PropertyChangeHandler {
         (obj: Object, vals: PropertyValues): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace HyperlinkStateFlags {
         export const $gtype: GObject.GType<HyperlinkStateFlags>;
     }
@@ -1901,6 +1943,7 @@ export namespace Atk {
             /**
              * The signal link-activated is emitted when a link is activated.
              * @signal
+             * @run-last
              */
             'link-activated': () => void;
             'notify::end-index': (pspec: GObject.ParamSpec) => void;
@@ -1939,21 +1982,41 @@ export namespace Atk {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get end_index(): number;
+        /**
+         * @read-only
+         */
         get endIndex(): number;
+        /**
+         * @read-only
+         */
         get number_of_anchors(): number;
+        /**
+         * @read-only
+         */
         get numberOfAnchors(): number;
         /**
          * Selected link
          * @deprecated since 1.8: Please use ATK_STATE_FOCUSABLE for all links, and ATK_STATE_FOCUSED for focused links.
+         * @read-only
          */
         get selected_link(): boolean;
         /**
          * Selected link
          * @deprecated since 1.8: Please use ATK_STATE_FOCUSABLE for all links, and ATK_STATE_FOCUSED for focused links.
+         * @read-only
          */
         get selectedLink(): boolean;
+        /**
+         * @read-only
+         */
         get start_index(): number;
+        /**
+         * @read-only
+         */
         get startIndex(): number;
 
         /**
@@ -2928,13 +2991,25 @@ export namespace Atk {
             ...args: GObject.GjsParameters<NoOpObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Atk.Object */
+        /**
+         * @read-only
+         * @category Inherited from Atk.Object
+         */
         get accessible_component_layer(): number;
-        /** @category Inherited from Atk.Object */
+        /**
+         * @read-only
+         * @category Inherited from Atk.Object
+         */
         get accessibleComponentLayer(): number;
-        /** @category Inherited from Atk.Object */
+        /**
+         * @read-only
+         * @category Inherited from Atk.Object
+         */
         get accessible_component_mdi_zorder(): number;
-        /** @category Inherited from Atk.Object */
+        /**
+         * @read-only
+         * @category Inherited from Atk.Object
+         */
         get accessibleComponentMdiZorder(): number;
         /** @category Inherited from Atk.Object */
         get accessible_description(): string;
@@ -2948,9 +3023,15 @@ export namespace Atk {
         /** @category Inherited from Atk.Object */
         get accessibleHelpText(): string;
         set accessibleHelpText(val: string);
-        /** @category Inherited from Atk.Object */
+        /**
+         * @read-only
+         * @category Inherited from Atk.Object
+         */
         get accessible_hypertext_nlinks(): number;
-        /** @category Inherited from Atk.Object */
+        /**
+         * @read-only
+         * @category Inherited from Atk.Object
+         */
         get accessibleHypertextNlinks(): number;
         /** @category Inherited from Atk.Object */
         get accessible_id(): string;
@@ -5876,6 +5957,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed': (arg0: Object) => void;
             /**
@@ -5885,6 +5968,7 @@ export namespace Atk {
              * Depcrecated (2.50): Use AtkObject::notification instead.
              * @signal
              * @since 2.46
+             * @run-last
              */
             announcement: (arg0: string) => void;
             /**
@@ -5892,6 +5976,7 @@ export namespace Atk {
              * attributes changes.
              * @signal
              * @since 2.52
+             * @run-last
              */
             'attribute-changed': (arg0: string, arg1: string) => void;
             /**
@@ -5899,6 +5984,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed': (arg0: number, arg1: Object) => void;
             /**
@@ -5906,6 +5993,7 @@ export namespace Atk {
              * focus.
              * @signal
              * @deprecated since 2.9.4: Use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} signal instead.
+             * @run-last
              */
             'focus-event': (arg0: boolean) => void;
             /**
@@ -5913,6 +6001,7 @@ export namespace Atk {
              * be read by a screen reader.
              * @signal
              * @since 2.50
+             * @run-last
              */
             notification: (arg0: string, arg1: number) => void;
             /**
@@ -5930,6 +6019,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change': (arg0: PropertyValues) => void;
             /**
@@ -5937,12 +6028,15 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change': (arg0: string, arg1: boolean) => void;
             /**
              * The "visible-data-changed" signal is emitted when the visual
              * appearance of the object changed.
              * @signal
+             * @run-last
              */
             'visible-data-changed': () => void;
             'notify::accessible-component-layer': (pspec: GObject.ParamSpec) => void;
@@ -5968,6 +6062,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-component-layer': (arg0: Object) => void;
             /**
@@ -5976,6 +6072,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-component-mdi-zorder': (arg0: Object) => void;
             /**
@@ -5984,6 +6082,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-description': (arg0: Object) => void;
             /**
@@ -5992,6 +6092,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-help-text': (arg0: Object) => void;
             /**
@@ -6000,6 +6102,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-hypertext-nlinks': (arg0: Object) => void;
             /**
@@ -6008,6 +6112,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-id': (arg0: Object) => void;
             /**
@@ -6016,6 +6122,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-name': (arg0: Object) => void;
             /**
@@ -6024,6 +6132,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-parent': (arg0: Object) => void;
             /**
@@ -6032,6 +6142,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-role': (arg0: Object) => void;
             /**
@@ -6040,6 +6152,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-table-caption': (arg0: Object) => void;
             /**
@@ -6048,6 +6162,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-table-caption-object': (arg0: Object) => void;
             /**
@@ -6056,6 +6172,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-table-column-description': (arg0: Object) => void;
             /**
@@ -6064,6 +6182,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-table-column-header': (arg0: Object) => void;
             /**
@@ -6072,6 +6192,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-table-row-description': (arg0: Object) => void;
             /**
@@ -6080,6 +6202,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-table-row-header': (arg0: Object) => void;
             /**
@@ -6088,6 +6212,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-table-summary': (arg0: Object) => void;
             /**
@@ -6096,6 +6222,8 @@ export namespace Atk {
              * object in the object changes. For instance, a table will emit the
              * signal when the cell in the table which has focus changes.
              * @signal
+             * @detailed
+             * @run-last
              */
             'active-descendant-changed::accessible-value': (arg0: Object) => void;
             /**
@@ -6103,6 +6231,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-component-layer': (arg0: number, arg1: Object) => void;
             /**
@@ -6110,6 +6240,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-component-mdi-zorder': (arg0: number, arg1: Object) => void;
             /**
@@ -6117,6 +6249,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-description': (arg0: number, arg1: Object) => void;
             /**
@@ -6124,6 +6258,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-help-text': (arg0: number, arg1: Object) => void;
             /**
@@ -6131,6 +6267,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-hypertext-nlinks': (arg0: number, arg1: Object) => void;
             /**
@@ -6138,6 +6276,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-id': (arg0: number, arg1: Object) => void;
             /**
@@ -6145,6 +6285,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-name': (arg0: number, arg1: Object) => void;
             /**
@@ -6152,6 +6294,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-parent': (arg0: number, arg1: Object) => void;
             /**
@@ -6159,6 +6303,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-role': (arg0: number, arg1: Object) => void;
             /**
@@ -6166,6 +6312,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-table-caption': (arg0: number, arg1: Object) => void;
             /**
@@ -6173,6 +6321,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-table-caption-object': (arg0: number, arg1: Object) => void;
             /**
@@ -6180,6 +6330,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-table-column-description': (arg0: number, arg1: Object) => void;
             /**
@@ -6187,6 +6339,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-table-column-header': (arg0: number, arg1: Object) => void;
             /**
@@ -6194,6 +6348,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-table-row-description': (arg0: number, arg1: Object) => void;
             /**
@@ -6201,6 +6357,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-table-row-header': (arg0: number, arg1: Object) => void;
             /**
@@ -6208,6 +6366,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-table-summary': (arg0: number, arg1: Object) => void;
             /**
@@ -6215,6 +6375,8 @@ export namespace Atk {
              * removed from an object. It supports two details: "add" and
              * "remove"
              * @signal
+             * @detailed
+             * @run-last
              */
             'children-changed::accessible-value': (arg0: number, arg1: Object) => void;
             /**
@@ -6232,6 +6394,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-component-layer': (arg0: PropertyValues) => void;
             /**
@@ -6249,6 +6413,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-component-mdi-zorder': (arg0: PropertyValues) => void;
             /**
@@ -6266,6 +6432,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-description': (arg0: PropertyValues) => void;
             /**
@@ -6283,6 +6451,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-help-text': (arg0: PropertyValues) => void;
             /**
@@ -6300,6 +6470,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-hypertext-nlinks': (arg0: PropertyValues) => void;
             /**
@@ -6317,6 +6489,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-id': (arg0: PropertyValues) => void;
             /**
@@ -6334,6 +6508,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-name': (arg0: PropertyValues) => void;
             /**
@@ -6351,6 +6527,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-parent': (arg0: PropertyValues) => void;
             /**
@@ -6368,6 +6546,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-role': (arg0: PropertyValues) => void;
             /**
@@ -6385,6 +6565,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-table-caption': (arg0: PropertyValues) => void;
             /**
@@ -6402,6 +6584,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-table-caption-object': (arg0: PropertyValues) => void;
             /**
@@ -6419,6 +6603,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-table-column-description': (arg0: PropertyValues) => void;
             /**
@@ -6436,6 +6622,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-table-column-header': (arg0: PropertyValues) => void;
             /**
@@ -6453,6 +6641,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-table-row-description': (arg0: PropertyValues) => void;
             /**
@@ -6470,6 +6660,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-table-row-header': (arg0: PropertyValues) => void;
             /**
@@ -6487,6 +6679,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-table-summary': (arg0: PropertyValues) => void;
             /**
@@ -6504,6 +6698,8 @@ export namespace Atk {
              * implementation of `atk_add_global_event_listener()` because GObject
              * notify doesn't support emission hooks.
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-change::accessible-value': (arg0: PropertyValues) => void;
             /**
@@ -6511,6 +6707,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-component-layer': (arg0: string, arg1: boolean) => void;
             /**
@@ -6518,6 +6716,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-component-mdi-zorder': (arg0: string, arg1: boolean) => void;
             /**
@@ -6525,6 +6725,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-description': (arg0: string, arg1: boolean) => void;
             /**
@@ -6532,6 +6734,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-help-text': (arg0: string, arg1: boolean) => void;
             /**
@@ -6539,6 +6743,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-hypertext-nlinks': (arg0: string, arg1: boolean) => void;
             /**
@@ -6546,6 +6752,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-id': (arg0: string, arg1: boolean) => void;
             /**
@@ -6553,6 +6761,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-name': (arg0: string, arg1: boolean) => void;
             /**
@@ -6560,6 +6770,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-parent': (arg0: string, arg1: boolean) => void;
             /**
@@ -6567,6 +6779,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-role': (arg0: string, arg1: boolean) => void;
             /**
@@ -6574,6 +6788,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-table-caption': (arg0: string, arg1: boolean) => void;
             /**
@@ -6581,6 +6797,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-table-caption-object': (arg0: string, arg1: boolean) => void;
             /**
@@ -6588,6 +6806,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-table-column-description': (arg0: string, arg1: boolean) => void;
             /**
@@ -6595,6 +6815,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-table-column-header': (arg0: string, arg1: boolean) => void;
             /**
@@ -6602,6 +6824,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-table-row-description': (arg0: string, arg1: boolean) => void;
             /**
@@ -6609,6 +6833,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-table-row-header': (arg0: string, arg1: boolean) => void;
             /**
@@ -6616,6 +6842,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-table-summary': (arg0: string, arg1: boolean) => void;
             /**
@@ -6623,6 +6851,8 @@ export namespace Atk {
              * changes.  The detail value identifies the state type which has
              * changed.
              * @signal
+             * @detailed
+             * @run-last
              */
             'state-change::accessible-value': (arg0: string, arg1: boolean) => void;
         }
@@ -6697,9 +6927,21 @@ export namespace Atk {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get accessible_component_layer(): number;
+        /**
+         * @read-only
+         */
         get accessibleComponentLayer(): number;
+        /**
+         * @read-only
+         */
         get accessible_component_mdi_zorder(): number;
+        /**
+         * @read-only
+         */
         get accessibleComponentMdiZorder(): number;
         get accessible_description(): string;
         set accessible_description(val: string);
@@ -6709,7 +6951,13 @@ export namespace Atk {
         set accessible_help_text(val: string);
         get accessibleHelpText(): string;
         set accessibleHelpText(val: string);
+        /**
+         * @read-only
+         */
         get accessible_hypertext_nlinks(): number;
+        /**
+         * @read-only
+         */
         get accessibleHypertextNlinks(): number;
         get accessible_id(): string;
         set accessible_id(val: string);

@@ -320,12 +320,14 @@ export namespace GnomeBluetooth {
              * The {@link GnomeBluetooth.Chooser.SignalSignatures.selected_device_activated | GnomeBluetooth.Chooser::selected-device-activated} signal is launched when a
              * device is double-clicked in the chooser.
              * @signal
+             * @run-last
              */
             'selected-device-activated': (arg0: string) => void;
             /**
              * The {@link GnomeBluetooth.Chooser.SignalSignatures.selected_device_changed | GnomeBluetooth.Chooser::selected-device-changed} signal is launched when the
              * selected device is changed, it will be `null` if a device was unselected.
              * @signal
+             * @run-last
              */
             'selected-device-changed': (arg0: string) => void;
             'notify::device-selected': (pspec: GObject.ParamSpec) => void;
@@ -431,13 +433,25 @@ export namespace GnomeBluetooth {
         set device_selected(val: string);
         get deviceSelected(): string;
         set deviceSelected(val: string);
+        /**
+         * @write-only
+         */
         set device_service_filter(val: string);
+        /**
+         * @write-only
+         */
         set deviceServiceFilter(val: string);
         get device_type_filter(): number;
         set device_type_filter(val: number);
         get deviceTypeFilter(): number;
         set deviceTypeFilter(val: number);
+        /**
+         * @construct-only
+         */
         get has_internal_device_filter(): boolean;
+        /**
+         * @construct-only
+         */
         get hasInternalDeviceFilter(): boolean;
         get show_connected(): boolean;
         set show_connected(val: boolean);
@@ -1050,6 +1064,7 @@ export namespace GnomeBluetooth {
              * a device. This signal allows you to change the configuration and filtering
              * of the tree from its defaults.
              * @signal
+             * @run-last
              */
             'chooser-created': (arg0: GObject.Object) => void;
             'notify::device': (pspec: GObject.ParamSpec) => void;
@@ -1148,12 +1163,14 @@ export namespace GnomeBluetooth {
          * `true` if there is a powered Bluetooth adapter available.
          *
          * See also: `bluetooth_chooser_button_available()`
+         * @read-only
          */
         get is_available(): boolean;
         /**
          * `true` if there is a powered Bluetooth adapter available.
          *
          * See also: `bluetooth_chooser_button_available()`
+         * @read-only
          */
         get isAvailable(): boolean;
 
@@ -1298,9 +1315,15 @@ export namespace GnomeBluetooth {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -1614,6 +1637,7 @@ export namespace GnomeBluetooth {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -1621,6 +1645,7 @@ export namespace GnomeBluetooth {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -1742,6 +1767,7 @@ export namespace GnomeBluetooth {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -5991,6 +6017,7 @@ export namespace GnomeBluetooth {
              * a device. This signal allows you to change the configuration and filtering
              * of the tree from its defaults.
              * @signal
+             * @run-last
              */
             'chooser-created': (arg0: GObject.Object) => void;
             'notify::chooser': (pspec: GObject.ParamSpec) => void;
@@ -6068,6 +6095,7 @@ export namespace GnomeBluetooth {
 
         /**
          * The {@link GnomeBluetooth.Chooser} used in the widget
+         * @read-only
          */
         get chooser(): Chooser;
         /**
@@ -6596,6 +6624,7 @@ export namespace GnomeBluetooth {
              * The {@link GnomeBluetooth.Client.SignalSignatures.device_removed | GnomeBluetooth.Client::device-removed} signal is launched when a
              * device gets removed from the model.
              * @signal
+             * @run-last
              */
             'device-removed': (arg0: string) => void;
             'notify::default-adapter': (pspec: GObject.ParamSpec) => void;
@@ -6633,10 +6662,12 @@ export namespace GnomeBluetooth {
 
         /**
          * The D-Bus path of the default Bluetooth adapter or `null`.
+         * @read-only
          */
         get default_adapter(): string;
         /**
          * The D-Bus path of the default Bluetooth adapter or `null`.
+         * @read-only
          */
         get defaultAdapter(): string;
         /**
@@ -6661,18 +6692,22 @@ export namespace GnomeBluetooth {
         set defaultAdapterDiscovering(val: boolean);
         /**
          * The name of the default Bluetooth adapter or `null`.
+         * @read-only
          */
         get default_adapter_name(): string;
         /**
          * The name of the default Bluetooth adapter or `null`.
+         * @read-only
          */
         get defaultAdapterName(): string;
         /**
          * `true` if the default Bluetooth adapter is powered.
+         * @read-only
          */
         get default_adapter_powered(): boolean;
         /**
          * `true` if the default Bluetooth adapter is powered.
+         * @read-only
          */
         get defaultAdapterPowered(): boolean;
 
@@ -6873,7 +6908,13 @@ export namespace GnomeBluetooth {
 
         // Properties
 
+        /**
+         * @write-only
+         */
         set device_service_filter(val: string);
+        /**
+         * @write-only
+         */
         set deviceServiceFilter(val: string);
         get device_type_filter(): number;
         set device_type_filter(val: number);
@@ -7416,12 +7457,14 @@ export namespace GnomeBluetooth {
              * The {@link GnomeBluetooth.Chooser.SignalSignatures.adapter_status_changed | GnomeBluetooth.Chooser::adapter-status-changed} signal is launched when the status
              * of the adapter changes (powered, available, etc.).
              * @signal
+             * @run-last
              */
             'adapter-status-changed': () => void;
             /**
              * The {@link GnomeBluetooth.Chooser.SignalSignatures.panel_changed | GnomeBluetooth.Chooser::panel-changed} signal is launched when a
              * link to another settings panel is clicked.
              * @signal
+             * @run-last
              */
             'panel-changed': (arg0: string) => void;
             'notify::baseline-position': (pspec: GObject.ParamSpec) => void;

@@ -28,6 +28,9 @@ export namespace Gsk {
      * Gsk-4.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BlendMode {
         export const $gtype: GObject.GType<BlendMode>;
     }
@@ -112,6 +115,9 @@ export namespace Gsk {
         LUMINOSITY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Corner {
         export const $gtype: GObject.GType<Corner>;
     }
@@ -139,6 +145,9 @@ export namespace Gsk {
         BOTTOM_LEFT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FillRule {
         export const $gtype: GObject.GType<FillRule>;
     }
@@ -177,6 +186,9 @@ export namespace Gsk {
         EVEN_ODD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GLUniformType {
         export const $gtype: GObject.GType<GLUniformType>;
     }
@@ -224,6 +236,9 @@ export namespace Gsk {
         VEC4,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LineCap {
         export const $gtype: GObject.GType<LineCap>;
     }
@@ -264,6 +279,9 @@ export namespace Gsk {
         SQUARE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LineJoin {
         export const $gtype: GObject.GType<LineJoin>;
     }
@@ -302,6 +320,9 @@ export namespace Gsk {
         BEVEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MaskMode {
         export const $gtype: GObject.GType<MaskMode>;
     }
@@ -332,6 +353,9 @@ export namespace Gsk {
         INVERTED_LUMINANCE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PathDirection {
         export const $gtype: GObject.GType<PathDirection>;
     }
@@ -373,6 +397,9 @@ export namespace Gsk {
         FROM_END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PathOperation {
         export const $gtype: GObject.GType<PathOperation>;
     }
@@ -419,6 +446,9 @@ export namespace Gsk {
         CONIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RenderNodeType {
         export const $gtype: GObject.GType<RenderNodeType>;
     }
@@ -554,6 +584,9 @@ export namespace Gsk {
         SUBSURFACE_NODE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScalingFilter {
         export const $gtype: GObject.GType<ScalingFilter>;
     }
@@ -618,6 +651,9 @@ export namespace Gsk {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransformCategory {
         export const $gtype: GObject.GType<TransformCategory>;
     }
@@ -775,6 +811,9 @@ export namespace Gsk {
     interface PathForeachFunc {
         (op: PathOperation, pts: Graphene.Point, n_pts: number, weight: number): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace PathForeachFlags {
         export const $gtype: GObject.GType<PathForeachFlags>;
     }
@@ -1825,10 +1864,12 @@ export namespace Gsk {
          *
          * If the shader source is not coming from a resource, this
          * will be `null`.
+         * @construct-only
          */
         get resource(): string;
         /**
          * The source code for the shader, as a {@link GLib.Bytes}.
+         * @construct-only
          */
         get source(): GLib.Bytes;
 
@@ -2742,10 +2783,12 @@ export namespace Gsk {
 
         /**
          * Whether the renderer has been associated with a surface or draw context.
+         * @read-only
          */
         get realized(): boolean;
         /**
          * The surface associated with renderer.
+         * @read-only
          */
         get surface(): Gdk.Surface;
 

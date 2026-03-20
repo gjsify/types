@@ -18,6 +18,9 @@ export namespace Skk {
      * Skk-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace KanaMode {
         export const $gtype: GObject.GType<KanaMode>;
     }
@@ -31,6 +34,9 @@ export namespace Skk {
         HANKAKU_KATAKANA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PeriodStyle {
         export const $gtype: GObject.GType<PeriodStyle>;
     }
@@ -45,6 +51,9 @@ export namespace Skk {
         EN_JA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputMode {
         export const $gtype: GObject.GType<InputMode>;
     }
@@ -2185,6 +2194,9 @@ export namespace Skk {
     interface GetTime {
         (): number;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }
@@ -2250,6 +2262,9 @@ export namespace Skk {
         set periodStyle(val: PeriodStyle);
         get output(): string;
         set output(val: string);
+        /**
+         * @read-only
+         */
         get preedit(): string;
 
         /**
@@ -2349,7 +2364,13 @@ export namespace Skk {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only(): boolean;
+        /**
+         * @read-only
+         */
         get readOnly(): boolean;
 
         /**
@@ -3036,6 +3057,9 @@ export namespace Skk {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get candidates(): CandidateList;
         get input_mode(): InputMode;
         set input_mode(val: InputMode);
@@ -3057,7 +3081,13 @@ export namespace Skk {
         set typing_rule(val: Rule);
         get typingRule(): Rule;
         set typingRule(val: Rule);
+        /**
+         * @read-only
+         */
         get key_event_filter(): KeyEventFilter;
+        /**
+         * @read-only
+         */
         get keyEventFilter(): KeyEventFilter;
         get preedit(): string;
         set preedit(val: string);
@@ -3307,8 +3337,17 @@ export namespace Skk {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get cursor_pos(): number;
+        /**
+         * @read-only
+         */
         get cursorPos(): number;
+        /**
+         * @read-only
+         */
         get size(): number;
         get page_start(): number;
         set page_start(val: number);
@@ -3318,7 +3357,13 @@ export namespace Skk {
         set page_size(val: number);
         get pageSize(): number;
         set pageSize(val: number);
+        /**
+         * @read-only
+         */
         get page_visible(): boolean;
+        /**
+         * @read-only
+         */
         get pageVisible(): boolean;
 
         /**

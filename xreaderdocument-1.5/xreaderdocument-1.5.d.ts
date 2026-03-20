@@ -29,6 +29,9 @@ export namespace XreaderDocument {
      * XreaderDocument-1.5
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotationTextIcon {
         export const $gtype: GObject.GType<AnnotationTextIcon>;
     }
@@ -49,6 +52,9 @@ export namespace XreaderDocument {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotationTextMarkupType {
         export const $gtype: GObject.GType<AnnotationTextMarkupType>;
     }
@@ -63,6 +69,9 @@ export namespace XreaderDocument {
         SQUIGGLY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotationType {
         export const $gtype: GObject.GType<AnnotationType>;
     }
@@ -77,6 +86,9 @@ export namespace XreaderDocument {
         TEXT_MARKUP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CompressionType {
         export const $gtype: GObject.GType<CompressionType>;
     }
@@ -112,6 +124,9 @@ export namespace XreaderDocument {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DocumentLayout {
         export const $gtype: GObject.GType<DocumentLayout>;
     }
@@ -128,6 +143,9 @@ export namespace XreaderDocument {
         TWO_PAGE_RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DocumentMode {
         export const $gtype: GObject.GType<DocumentMode>;
     }
@@ -144,6 +162,9 @@ export namespace XreaderDocument {
         PRESENTATION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FileExporterFormat {
         export const $gtype: GObject.GType<FileExporterFormat>;
     }
@@ -157,6 +178,9 @@ export namespace XreaderDocument {
         PDF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormFieldButtonType {
         export const $gtype: GObject.GType<FormFieldButtonType>;
     }
@@ -170,6 +194,9 @@ export namespace XreaderDocument {
         RADIO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormFieldChoiceType {
         export const $gtype: GObject.GType<FormFieldChoiceType>;
     }
@@ -182,6 +209,9 @@ export namespace XreaderDocument {
         LIST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormFieldTextType {
         export const $gtype: GObject.GType<FormFieldTextType>;
     }
@@ -195,6 +225,9 @@ export namespace XreaderDocument {
         FILE_SELECT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LinkActionType {
         export const $gtype: GObject.GType<LinkActionType>;
     }
@@ -211,6 +244,9 @@ export namespace XreaderDocument {
         LAYERS_STATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LinkDestType {
         export const $gtype: GObject.GType<LinkDestType>;
     }
@@ -231,6 +267,9 @@ export namespace XreaderDocument {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SelectionStyle {
         export const $gtype: GObject.GType<SelectionStyle>;
     }
@@ -244,6 +283,9 @@ export namespace XreaderDocument {
         LINE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransitionEffectAlignment {
         export const $gtype: GObject.GType<TransitionEffectAlignment>;
     }
@@ -256,6 +298,9 @@ export namespace XreaderDocument {
         VERTICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransitionEffectDirection {
         export const $gtype: GObject.GType<TransitionEffectDirection>;
     }
@@ -268,6 +313,9 @@ export namespace XreaderDocument {
         OUTWARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransitionEffectType {
         export const $gtype: GObject.GType<TransitionEffectType>;
     }
@@ -404,6 +452,9 @@ export namespace XreaderDocument {
      * @returns `true` on success, or `false` on error with `error` filled in
      */
     function xfer_uri_simple(from: string, to: string): boolean;
+    /**
+     * @gir-type Flags
+     */
     export namespace AnnotationsSaveMask {
         export const $gtype: GObject.GType<AnnotationsSaveMask>;
     }
@@ -427,6 +478,9 @@ export namespace XreaderDocument {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DocumentInfoFields {
         export const $gtype: GObject.GType<DocumentInfoFields>;
     }
@@ -455,6 +509,9 @@ export namespace XreaderDocument {
         LICENSE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DocumentPermissions {
         export const $gtype: GObject.GType<DocumentPermissions>;
     }
@@ -470,6 +527,9 @@ export namespace XreaderDocument {
         FULL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DocumentUIHints {
         export const $gtype: GObject.GType<DocumentUIHints>;
     }
@@ -487,6 +547,9 @@ export namespace XreaderDocument {
         DIRECTION_RTL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FileExporterCapabilities {
         export const $gtype: GObject.GType<FileExporterCapabilities>;
     }
@@ -558,6 +621,9 @@ export namespace XreaderDocument {
         set modified(val: string);
         get name(): string;
         set name(val: string);
+        /**
+         * @construct-only
+         */
         set page(val: Page);
         /**
          * The colour of the annotation as a {@link Gdk.RGBA}.
@@ -848,7 +914,10 @@ export namespace XreaderDocument {
         /** @category Inherited from XreaderDocument.Annotation */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from XreaderDocument.Annotation */
+        /**
+         * @construct-only
+         * @category Inherited from XreaderDocument.Annotation
+         */
         set page(val: Page);
         /**
          * The colour of the annotation as a {@link Gdk.RGBA}.
@@ -1135,7 +1204,10 @@ export namespace XreaderDocument {
         /** @category Inherited from XreaderDocument.Annotation */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from XreaderDocument.Annotation */
+        /**
+         * @construct-only
+         * @category Inherited from XreaderDocument.Annotation
+         */
         set page(val: Page);
         /**
          * The colour of the annotation as a {@link Gdk.RGBA}.
@@ -1418,7 +1490,10 @@ export namespace XreaderDocument {
         /** @category Inherited from XreaderDocument.Annotation */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from XreaderDocument.Annotation */
+        /**
+         * @construct-only
+         * @category Inherited from XreaderDocument.Annotation
+         */
         set page(val: Page);
         /**
          * The colour of the annotation as a {@link Gdk.RGBA}.
@@ -1591,11 +1666,29 @@ export namespace XreaderDocument {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set ctime(val: GObject.GType);
+        /**
+         * @construct-only
+         */
         set data(val: any);
+        /**
+         * @construct-only
+         */
         set description(val: string);
+        /**
+         * @construct-only
+         */
         set mtime(val: GObject.GType);
+        /**
+         * @construct-only
+         */
         set name(val: string);
+        /**
+         * @construct-only
+         */
         set size(val: number);
 
         /**
@@ -2432,7 +2525,13 @@ export namespace XreaderDocument {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get action(): LinkAction;
+        /**
+         * @construct-only
+         */
         get title(): string;
 
         /**
@@ -2518,17 +2617,53 @@ export namespace XreaderDocument {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get dest(): LinkDest;
+        /**
+         * @construct-only
+         */
         get filename(): string;
+        /**
+         * @construct-only
+         */
         get hide_list(): any;
+        /**
+         * @construct-only
+         */
         get hideList(): any;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get params(): string;
+        /**
+         * @construct-only
+         */
         get show_list(): any;
+        /**
+         * @construct-only
+         */
         get showList(): any;
+        /**
+         * @construct-only
+         */
         get toggle_list(): any;
+        /**
+         * @construct-only
+         */
         get toggleList(): any;
+        /**
+         * @construct-only
+         */
         get type(): LinkActionType;
+        /**
+         * @construct-only
+         */
         get uri(): string;
 
         /**
@@ -2630,16 +2765,49 @@ export namespace XreaderDocument {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get bottom(): number;
+        /**
+         * @construct-only
+         */
         get change(): number;
+        /**
+         * @construct-only
+         */
         get left(): number;
+        /**
+         * @construct-only
+         */
         get named(): string;
+        /**
+         * @construct-only
+         */
         get page(): number;
+        /**
+         * @construct-only
+         */
         get page_label(): string;
+        /**
+         * @construct-only
+         */
         get pageLabel(): string;
+        /**
+         * @construct-only
+         */
         get right(): number;
+        /**
+         * @construct-only
+         */
         get top(): number;
+        /**
+         * @construct-only
+         */
         get type(): LinkDestType;
+        /**
+         * @construct-only
+         */
         get zoom(): number;
 
         /**

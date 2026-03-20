@@ -38,6 +38,9 @@ export namespace Malcontent {
         ALLOWLIST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AppFilterOarsValue {
         export const $gtype: GObject.GType<AppFilterOarsValue>;
     }
@@ -158,6 +161,9 @@ export namespace Malcontent {
      * @since 0.7.0
      */
     function session_limits_deserialize(variant: GLib.Variant, user_id: number): SessionLimits;
+    /**
+     * @gir-type Flags
+     */
     export namespace ManagerGetValueFlags {
         export const $gtype: GObject.GType<ManagerGetValueFlags>;
     }
@@ -180,6 +186,9 @@ export namespace Malcontent {
         INTERACTIVE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ManagerSetValueFlags {
         export const $gtype: GObject.GType<ManagerSetValueFlags>;
     }
@@ -211,6 +220,7 @@ export namespace Malcontent {
              * the {@link Malcontent.Manager} instance.
              * @signal
              * @since 0.3.0
+             * @run-last
              */
             'app-filter-changed': (arg0: number) => void;
             'notify::connection': (pspec: GObject.ParamSpec) => void;
@@ -239,6 +249,7 @@ export namespace Malcontent {
          * mostly for testing purposes, or to allow an existing connection to be
          * re-used.
          * @since 0.3.0
+         * @construct-only
          */
         get connection(): Gio.DBusConnection;
 

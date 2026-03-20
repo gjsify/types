@@ -58,6 +58,9 @@ export namespace GES {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Edge {
         export const $gtype: GObject.GType<Edge>;
     }
@@ -95,6 +98,9 @@ export namespace GES {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EditMode {
         export const $gtype: GObject.GType<EditMode>;
     }
@@ -380,6 +386,9 @@ export namespace GES {
         INVALID_EFFECT_BIN_DESCRIPTION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextHAlign {
         export const $gtype: GObject.GType<TextHAlign>;
     }
@@ -408,6 +417,9 @@ export namespace GES {
         ABSOLUTE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextVAlign {
         export const $gtype: GObject.GType<TextVAlign>;
     }
@@ -440,6 +452,9 @@ export namespace GES {
         ABSOLUTE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoStandardTransitionType {
         export const $gtype: GObject.GType<VideoStandardTransitionType>;
     }
@@ -743,6 +758,9 @@ export namespace GES {
         FADE_IN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VideoTestPattern {
         export const $gtype: GObject.GType<VideoTestPattern>;
     }
@@ -1052,6 +1070,9 @@ export namespace GES {
     interface MetaForeachFunc {
         (container: MetaContainer, key: string, value: GObject.Value | any): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace MarkerFlags {
         export const $gtype: GObject.GType<MarkerFlags>;
     }
@@ -1071,6 +1092,9 @@ export namespace GES {
         SNAPPABLE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MetaFlag {
         export const $gtype: GObject.GType<MetaFlag>;
     }
@@ -1093,6 +1117,9 @@ export namespace GES {
         READWRITE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PipelineFlags {
         export const $gtype: GObject.GType<PipelineFlags>;
     }
@@ -1133,6 +1160,9 @@ export namespace GES {
         SMART_RENDER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TrackType {
         export const $gtype: GObject.GType<TrackType>;
     }
@@ -1300,10 +1330,12 @@ export namespace GES {
 
         /**
          * The {@link GES.Extractable} object type that can be extracted from the asset.
+         * @construct-only
          */
         get extractable_type(): GObject.GType;
         /**
          * The {@link GES.Extractable} object type that can be extracted from the asset.
+         * @construct-only
          */
         get extractableType(): GObject.GType;
         /**
@@ -1316,6 +1348,7 @@ export namespace GES {
          * {@link GES.Asset.extractable_type}, but you should check the documentation
          * of the extractable type to see whether they differ from the
          * default behaviour.
+         * @construct-only
          */
         get id(): string;
         /**
@@ -1341,6 +1374,7 @@ export namespace GES {
          * Note that the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} for this property is emitted after
          * the {@link GES.Asset.proxy} {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} for the corresponding (if any)
          * asset it is now the proxy of/no longer the proxy of.
+         * @read-only
          */
         get proxy_target(): Asset;
         /**
@@ -1356,6 +1390,7 @@ export namespace GES {
          * Note that the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} for this property is emitted after
          * the {@link GES.Asset.proxy} {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} for the corresponding (if any)
          * asset it is now the proxy of/no longer the proxy of.
+         * @read-only
          */
         get proxyTarget(): Asset;
 
@@ -5275,6 +5310,7 @@ export namespace GES {
 
         /**
          * The location of the file/resource to use.
+         * @construct-only
          */
         get uri(): string;
 
@@ -7772,6 +7808,7 @@ export namespace GES {
          * variables, its {@link GES.TimelineElement.duration} will be set to the new
          * limit.
          * @since 1.18
+         * @read-only
          */
         get duration_limit(): number;
         /**
@@ -7790,6 +7827,7 @@ export namespace GES {
          * variables, its {@link GES.TimelineElement.duration} will be set to the new
          * limit.
          * @since 1.18
+         * @read-only
          */
         get durationLimit(): number;
         /**
@@ -7798,6 +7836,7 @@ export namespace GES {
          * If you want to connect to this property's {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal,
          * you should connect to it with `g_signal_connect_after()` since the
          * signal emission may be stopped internally.
+         * @read-only
          */
         get layer(): Layer;
         /**
@@ -10020,11 +10059,13 @@ export namespace GES {
              * you should connect with `g_signal_connect_after()` since the signal
              * may be stopped internally.
              * @signal
+             * @run-first
              */
             'child-added': (arg0: TimelineElement) => void;
             /**
              * Will be emitted after a child is removed from the container.
              * @signal
+             * @run-last
              */
             'child-removed': (arg0: TimelineElement) => void;
             'notify::height': (pspec: GObject.ParamSpec) => void;
@@ -10068,6 +10109,7 @@ export namespace GES {
          * values, which is the number of integers that lie between (inclusive)
          * the minimum and maximum priorities found amongst the container's
          * children (maximum - minimum + 1).
+         * @read-only
          */
         get height(): number;
 
@@ -11143,6 +11185,7 @@ export namespace GES {
             /**
              * @signal
              * @since 1.24
+             * @run-last
              */
             discovered: (arg0: GstPbutils.DiscovererInfo, arg1: GLib.Error | null) => void;
             /**
@@ -11151,12 +11194,14 @@ export namespace GES {
              * discovery.
              * @signal
              * @since 1.24
+             * @run-last
              */
             'load-serialized-info': (arg0: string) => GstPbutils.DiscovererInfo | null;
             /**
              * Allows to setup the source element before the discoverer runs.
              * @signal
              * @since 1.24
+             * @run-last
              */
             'source-setup': (arg0: Gst.Element) => void;
             'notify::timeout': (pspec: GObject.ParamSpec) => void;
@@ -11317,6 +11362,7 @@ export namespace GES {
          * pipeline description.
          *
          * Example: "videobalance saturation=1.5 hue=+0.5"
+         * @construct-only
          */
         get bin_description(): string;
         /**
@@ -11324,6 +11370,7 @@ export namespace GES {
          * pipeline description.
          *
          * Example: "videobalance saturation=1.5 hue=+0.5"
+         * @construct-only
          */
         get binDescription(): string;
 
@@ -12590,6 +12637,7 @@ export namespace GES {
          * pipeline description. This should be used for test purposes.
          *
          * Example: "audiopanorama panorama=1.0"
+         * @construct-only
          */
         get audio_bin_description(): string;
         /**
@@ -12597,6 +12645,7 @@ export namespace GES {
          * pipeline description. This should be used for test purposes.
          *
          * Example: "audiopanorama panorama=1.0"
+         * @construct-only
          */
         get audioBinDescription(): string;
         /**
@@ -12604,6 +12653,7 @@ export namespace GES {
          * pipeline description. This should be used for test purposes.
          *
          * Example: "videobalance saturation=1.5 hue=+0.5"
+         * @construct-only
          */
         get video_bin_description(): string;
         /**
@@ -12611,6 +12661,7 @@ export namespace GES {
          * pipeline description. This should be used for test purposes.
          *
          * Example: "videobalance saturation=1.5 hue=+0.5"
+         * @construct-only
          */
         get videoBinDescription(): string;
 
@@ -13943,6 +13994,7 @@ export namespace GES {
 
         /**
          * The location of the file/resource to use.
+         * @construct-only
          */
         get uri(): string;
 
@@ -14440,16 +14492,19 @@ export namespace GES {
              * for some {@link GES.Track}. See `ges_layer_set_active_for_tracks()`.
              * @signal
              * @since 1.18
+             * @run-first
              */
             'active-changed': (arg0: boolean, arg1: Track[]) => void;
             /**
              * Will be emitted after the clip is added to the layer.
              * @signal
+             * @run-first
              */
             'clip-added': (arg0: Clip) => void;
             /**
              * Will be emitted after the clip is removed from the layer.
              * @signal
+             * @run-first
              */
             'clip-removed': (arg0: Clip) => void;
             'notify::auto-transition': (pspec: GObject.ParamSpec) => void;
@@ -15637,6 +15692,7 @@ export namespace GES {
         /**
          * Current position (in nanoseconds) of the {@link GES.Marker}
          * @since 1.18
+         * @read-only
          */
         get position(): number;
 
@@ -16504,18 +16560,21 @@ export namespace GES {
              * Will be emitted after the marker was added to the marker-list.
              * @signal
              * @since 1.18
+             * @run-first
              */
             'marker-added': (arg0: number, arg1: Marker) => void;
             /**
              * Will be emitted after the marker was moved to.
              * @signal
              * @since 1.18
+             * @run-first
              */
             'marker-moved': (arg0: number, arg1: number, arg2: Marker) => void;
             /**
              * Will be emitted after the marker was removed the marker-list.
              * @signal
              * @since 1.18
+             * @run-first
              */
             'marker-removed': (arg0: Marker) => void;
             'notify::flags': (pspec: GObject.ParamSpec) => void;
@@ -16668,6 +16727,7 @@ export namespace GES {
          * multifile:///home/you/image\%03d.jpg
          *
          * multifile://20:50@/home/you/sequence/\%04d.png
+         * @construct-only
          */
         get uri(): string;
 
@@ -19654,20 +19714,24 @@ export namespace GES {
         interface SignalSignatures extends Asset.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'asset-added': (arg0: Asset) => void;
             /**
              * @signal
              * @since 1.8
+             * @run-last
              */
             'asset-loading': (arg0: Asset) => void;
             /**
              * @signal
+             * @run-last
              */
             'asset-removed': (arg0: Asset) => void;
             /**
              * @signal
              * @since 1.18
+             * @run-last
              */
             'error-loading': (arg0: Timeline, arg1: GLib.Error) => void;
             /**
@@ -19675,15 +19739,18 @@ export namespace GES {
              * missing GStreamer plugins, the error will be set to #GST_CORE_ERROR
              * #GST_CORE_ERROR_MISSING_PLUGIN
              * @signal
+             * @run-last
              */
             'error-loading-asset': (arg0: GLib.Error, arg1: string, arg2: GObject.GType) => void;
             /**
              * @signal
+             * @run-first
              */
             loaded: (arg0: Timeline) => void;
             /**
              * @signal
              * @since 1.18
+             * @run-first
              */
             loading: (arg0: Timeline) => void;
             /**
@@ -19705,6 +19772,7 @@ export namespace GES {
              * }
              * ```
              * @signal
+             * @run-last
              */
             'missing-uri': (arg0: GLib.Error, arg1: Asset) => string | null;
             'notify::uri': (pspec: GObject.ParamSpec) => void;
@@ -19773,6 +19841,9 @@ export namespace GES {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get uri(): string;
 
         /**
@@ -24691,6 +24762,7 @@ export namespace GES {
              * `ges_timeline_commit_sync()` if you do not want to have to connect
              * to this signal.
              * @signal
+             * @run-last
              */
             commited: () => void;
             /**
@@ -24703,6 +24775,7 @@ export namespace GES {
              * project's {@link GES.Project.SignalSignatures.loaded | GES.Project::loaded} signal if you want to know which groups
              * were created for the timeline.
              * @signal
+             * @run-first
              */
             'group-added': (arg0: Group) => void;
             /**
@@ -24713,6 +24786,7 @@ export namespace GES {
              * Note that if a group is emptied, then it will no longer belong to the
              * timeline, but this signal will **not** be emitted in such a case.
              * @signal
+             * @run-first
              */
             'group-removed': (arg0: Group, arg1: Container[]) => void;
             /**
@@ -24723,11 +24797,13 @@ export namespace GES {
              * project's {@link GES.Project.SignalSignatures.loaded | GES.Project::loaded} signal if you want to know which
              * layers were created for the timeline.
              * @signal
+             * @run-first
              */
             'layer-added': (arg0: Layer) => void;
             /**
              * Will be emitted after the layer is removed from the timeline.
              * @signal
+             * @run-first
              */
             'layer-removed': (arg0: Layer) => void;
             /**
@@ -24735,6 +24811,7 @@ export namespace GES {
              * allows `track_element` to be added to a single {@link GES.Track}.
              * @signal
              * @since 1.18
+             * @run-last
              */
             'select-element-track': (arg0: Clip, arg1: TrackElement) => Track | null;
             /**
@@ -24790,6 +24867,7 @@ export namespace GES {
              * of its contained {@link GES.Track}. The timeline will set the {@link GLib.DestroyNotify}
              * free function on the {@link GLib.PtrArray} to dereference the elements.
              * @signal
+             * @run-last
              */
             'select-tracks-for-object': (arg0: Clip, arg1: TrackElement) => Track[];
             /**
@@ -24799,6 +24877,7 @@ export namespace GES {
              * not have created a new snapping event), or because the timeline has
              * been committed.
              * @signal
+             * @run-last
              */
             'snapping-ended': (arg0: TrackElement, arg1: TrackElement, arg2: number) => void;
             /**
@@ -24812,6 +24891,7 @@ export namespace GES {
              * Note that only up to one snapping-started signal will be emitted per
              * element edit within a timeline.
              * @signal
+             * @run-last
              */
             'snapping-started': (arg0: TrackElement, arg1: TrackElement, arg2: number) => void;
             /**
@@ -24822,11 +24902,13 @@ export namespace GES {
              * project's {@link GES.Project.SignalSignatures.loaded | GES.Project::loaded} signal if you want to know which
              * tracks were created for the timeline.
              * @signal
+             * @run-first
              */
             'track-added': (arg0: Track) => void;
             /**
              * Will be emitted after the track is removed from the timeline.
              * @signal
+             * @run-first
              */
             'track-removed': (arg0: Track) => void;
             'notify::auto-transition': (pspec: GObject.ParamSpec) => void;
@@ -24987,6 +25069,7 @@ export namespace GES {
          * The current duration (in nanoseconds) of the timeline. A timeline
          * 'starts' at time 0, so this is the maximum end time of all of its
          * {@link GES.TimelineElement}-s.
+         * @read-only
          */
         get duration(): number;
         /**
@@ -26326,6 +26409,7 @@ export namespace GES {
              * `ges_timeline_element_list_children_properties()` to list these.
              * @signal
              * @since 1.18
+             * @run-first
              */
             'child-property-added': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
             /**
@@ -26333,6 +26417,7 @@ export namespace GES {
              * `ges_timeline_element_remove_child_property()`.
              * @signal
              * @since 1.18
+             * @run-first
              */
             'child-property-removed': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
             /**
@@ -26341,6 +26426,8 @@ export namespace GES {
              * Note that unlike {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}, a child property name can not be
              * used as a signal detail.
              * @signal
+             * @detailed
+             * @run-first
              */
             'deep-notify': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
             'notify::duration': (pspec: GObject.ParamSpec) => void;
@@ -26358,6 +26445,8 @@ export namespace GES {
              * Note that unlike {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}, a child property name can not be
              * used as a signal detail.
              * @signal
+             * @detailed
+             * @run-first
              */
             'deep-notify::duration': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
             /**
@@ -26366,6 +26455,8 @@ export namespace GES {
              * Note that unlike {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}, a child property name can not be
              * used as a signal detail.
              * @signal
+             * @detailed
+             * @run-first
              */
             'deep-notify::in-point': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
             /**
@@ -26374,6 +26465,8 @@ export namespace GES {
              * Note that unlike {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}, a child property name can not be
              * used as a signal detail.
              * @signal
+             * @detailed
+             * @run-first
              */
             'deep-notify::max-duration': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
             /**
@@ -26382,6 +26475,8 @@ export namespace GES {
              * Note that unlike {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}, a child property name can not be
              * used as a signal detail.
              * @signal
+             * @detailed
+             * @run-first
              */
             'deep-notify::name': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
             /**
@@ -26390,6 +26485,8 @@ export namespace GES {
              * Note that unlike {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}, a child property name can not be
              * used as a signal detail.
              * @signal
+             * @detailed
+             * @run-first
              */
             'deep-notify::parent': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
             /**
@@ -26398,6 +26495,8 @@ export namespace GES {
              * Note that unlike {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}, a child property name can not be
              * used as a signal detail.
              * @signal
+             * @detailed
+             * @run-first
              */
             'deep-notify::priority': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
             /**
@@ -26406,6 +26505,8 @@ export namespace GES {
              * Note that unlike {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}, a child property name can not be
              * used as a signal detail.
              * @signal
+             * @detailed
+             * @run-first
              */
             'deep-notify::serialize': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
             /**
@@ -26414,6 +26515,8 @@ export namespace GES {
              * Note that unlike {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}, a child property name can not be
              * used as a signal detail.
              * @signal
+             * @detailed
+             * @run-first
              */
             'deep-notify::start': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
             /**
@@ -26422,6 +26525,8 @@ export namespace GES {
              * Note that unlike {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}, a child property name can not be
              * used as a signal detail.
              * @signal
+             * @detailed
+             * @run-first
              */
             'deep-notify::timeline': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
         }
@@ -29481,16 +29586,19 @@ export namespace GES {
              * this will be emitted whenever the underlying #nlecomposition has been
              * committed (see #nlecomposition::commited).
              * @signal
+             * @run-last
              */
             commited: () => void;
             /**
              * Will be emitted after a track element is added to the track.
              * @signal
+             * @run-first
              */
             'track-element-added': (arg0: TrackElement) => void;
             /**
              * Will be emitted after a track element is removed from the track.
              * @signal
+             * @run-first
              */
             'track-element-removed': (arg0: TrackElement) => void;
             'notify::caps': (pspec: GObject.ParamSpec) => void;
@@ -29565,12 +29673,14 @@ export namespace GES {
          * this.
          *
          * Default value: #GST_CAPS_ANY.
+         * @construct-only
          */
         get caps(): Gst.Caps;
         /**
          * Current duration of the track
          *
          * Default value: O
+         * @read-only
          */
         get duration(): number;
         /**
@@ -29621,6 +29731,7 @@ export namespace GES {
          *
          * Once a track has been added to a {@link GES.Timeline}, you should not change
          * this.
+         * @construct-only
          */
         get track_type(): TrackType;
         /**
@@ -29630,6 +29741,7 @@ export namespace GES {
          *
          * Once a track has been added to a {@link GES.Timeline}, you should not change
          * this.
+         * @construct-only
          */
         get trackType(): TrackType;
 
@@ -30714,12 +30826,14 @@ export namespace GES {
              * This is emitted when a control binding is added to a child property
              * of the track element.
              * @signal
+             * @run-first
              */
             'control-binding-added': (arg0: Gst.ControlBinding) => void;
             /**
              * This is emitted when a control binding is removed from a child
              * property of the track element.
              * @signal
+             * @run-first
              */
             'control-binding-removed': (arg0: Gst.ControlBinding) => void;
             'notify::active': (pspec: GObject.ParamSpec) => void;
@@ -30904,6 +31018,7 @@ export namespace GES {
         /**
          * The track that this element belongs to, or `null` if it does not
          * belong to a track.
+         * @read-only
          */
         get track(): Track;
         /**
@@ -34399,6 +34514,7 @@ export namespace GES {
         set supportedFormats(val: TrackType);
         /**
          * The location of the file/resource to use.
+         * @construct-only
          */
         get uri(): string;
 
@@ -34955,11 +35071,13 @@ export namespace GES {
         /**
          * The duration (in nanoseconds) of the media file
          * @since 1.18
+         * @read-only
          */
         get is_nested_timeline(): boolean;
         /**
          * The duration (in nanoseconds) of the media file
          * @since 1.18
+         * @read-only
          */
         get isNestedTimeline(): boolean;
 
@@ -39084,6 +39202,7 @@ export namespace GES {
 
         /**
          * The location of the file/resource to use.
+         * @construct-only
          */
         get uri(): string;
 

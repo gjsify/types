@@ -19,6 +19,9 @@ export namespace LibvirtGConfig {
      * LibvirtGConfig-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainChannelTargetType {
         export const $gtype: GObject.GType<DomainChannelTargetType>;
     }
@@ -32,6 +35,9 @@ export namespace LibvirtGConfig {
         SPICEPORT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainClockOffset {
         export const $gtype: GObject.GType<DomainClockOffset>;
     }
@@ -46,6 +52,9 @@ export namespace LibvirtGConfig {
         VARIABLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainConsoleTargetType {
         export const $gtype: GObject.GType<DomainConsoleTargetType>;
     }
@@ -62,6 +71,9 @@ export namespace LibvirtGConfig {
         OPENVZ,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainControllerUsbModel {
         export const $gtype: GObject.GType<DomainControllerUsbModel>;
     }
@@ -82,6 +94,9 @@ export namespace LibvirtGConfig {
         QEMU_XHCI,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainCpuFeaturePolicy {
         export const $gtype: GObject.GType<DomainCpuFeaturePolicy>;
     }
@@ -97,6 +112,9 @@ export namespace LibvirtGConfig {
         FORBID,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainCpuMatchPolicy {
         export const $gtype: GObject.GType<DomainCpuMatchPolicy>;
     }
@@ -110,6 +128,9 @@ export namespace LibvirtGConfig {
         STRICT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainCpuMode {
         export const $gtype: GObject.GType<DomainCpuMode>;
     }
@@ -123,6 +144,9 @@ export namespace LibvirtGConfig {
         HOST_PASSTHROUGH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainDiskBus {
         export const $gtype: GObject.GType<DomainDiskBus>;
     }
@@ -141,6 +165,9 @@ export namespace LibvirtGConfig {
         SATA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainDiskCacheType {
         export const $gtype: GObject.GType<DomainDiskCacheType>;
     }
@@ -157,6 +184,9 @@ export namespace LibvirtGConfig {
         UNSAFE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainDiskDriverDiscard {
         export const $gtype: GObject.GType<DomainDiskDriverDiscard>;
     }
@@ -169,6 +199,9 @@ export namespace LibvirtGConfig {
         IGNORE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainDiskDriverErrorPolicy {
         export const $gtype: GObject.GType<DomainDiskDriverErrorPolicy>;
     }
@@ -183,6 +216,9 @@ export namespace LibvirtGConfig {
         ENOSPACE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainDiskDriverIoPolicy {
         export const $gtype: GObject.GType<DomainDiskDriverIoPolicy>;
     }
@@ -195,6 +231,9 @@ export namespace LibvirtGConfig {
         NATIVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainDiskFormat {
         export const $gtype: GObject.GType<DomainDiskFormat>;
     }
@@ -219,6 +258,9 @@ export namespace LibvirtGConfig {
         VHD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainDiskGuestDeviceType {
         export const $gtype: GObject.GType<DomainDiskGuestDeviceType>;
     }
@@ -232,6 +274,9 @@ export namespace LibvirtGConfig {
         CDROM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainDiskSnapshotType {
         export const $gtype: GObject.GType<DomainDiskSnapshotType>;
     }
@@ -245,6 +290,9 @@ export namespace LibvirtGConfig {
         EXTERNAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainDiskStartupPolicy {
         export const $gtype: GObject.GType<DomainDiskStartupPolicy>;
     }
@@ -258,6 +306,9 @@ export namespace LibvirtGConfig {
         OPTIONAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainDiskType {
         export const $gtype: GObject.GType<DomainDiskType>;
     }
@@ -272,6 +323,9 @@ export namespace LibvirtGConfig {
         NETWORK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainFilesysAccessType {
         export const $gtype: GObject.GType<DomainFilesysAccessType>;
     }
@@ -285,6 +339,9 @@ export namespace LibvirtGConfig {
         SQUASH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainFilesysDriverType {
         export const $gtype: GObject.GType<DomainFilesysDriverType>;
     }
@@ -301,6 +358,9 @@ export namespace LibvirtGConfig {
         PLOOP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainFilesysType {
         export const $gtype: GObject.GType<DomainFilesysType>;
     }
@@ -317,6 +377,9 @@ export namespace LibvirtGConfig {
         BIND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainGraphicsSpiceImageCompression {
         export const $gtype: GObject.GType<DomainGraphicsSpiceImageCompression>;
     }
@@ -333,6 +396,9 @@ export namespace LibvirtGConfig {
         OFF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainInputBus {
         export const $gtype: GObject.GType<DomainInputBus>;
     }
@@ -346,6 +412,9 @@ export namespace LibvirtGConfig {
         XEN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainInputDeviceType {
         export const $gtype: GObject.GType<DomainInputDeviceType>;
     }
@@ -359,6 +428,9 @@ export namespace LibvirtGConfig {
         KEYBOARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainInterfaceLinkState {
         export const $gtype: GObject.GType<DomainInterfaceLinkState>;
     }
@@ -372,6 +444,9 @@ export namespace LibvirtGConfig {
         DOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainLifecycleAction {
         export const $gtype: GObject.GType<DomainLifecycleAction>;
     }
@@ -388,6 +463,9 @@ export namespace LibvirtGConfig {
         COREDUMP_RESTART,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainLifecycleEvent {
         export const $gtype: GObject.GType<DomainLifecycleEvent>;
     }
@@ -401,6 +479,9 @@ export namespace LibvirtGConfig {
         ON_CRASH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainMemballoonModel {
         export const $gtype: GObject.GType<DomainMemballoonModel>;
     }
@@ -413,6 +494,9 @@ export namespace LibvirtGConfig {
         VIRTIO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainOsBootDevice {
         export const $gtype: GObject.GType<DomainOsBootDevice>;
     }
@@ -427,6 +511,9 @@ export namespace LibvirtGConfig {
         NETWORK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainOsFirmware {
         export const $gtype: GObject.GType<DomainOsFirmware>;
     }
@@ -439,6 +526,9 @@ export namespace LibvirtGConfig {
         EFI,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainOsSmBiosMode {
         export const $gtype: GObject.GType<DomainOsSmBiosMode>;
     }
@@ -452,6 +542,9 @@ export namespace LibvirtGConfig {
         SYSINFO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainOsType {
         export const $gtype: GObject.GType<DomainOsType>;
     }
@@ -467,6 +560,9 @@ export namespace LibvirtGConfig {
         UML,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainRedirdevBus {
         export const $gtype: GObject.GType<DomainRedirdevBus>;
     }
@@ -478,6 +574,9 @@ export namespace LibvirtGConfig {
         USB,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainSeclabelType {
         export const $gtype: GObject.GType<DomainSeclabelType>;
     }
@@ -490,6 +589,9 @@ export namespace LibvirtGConfig {
         STATIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainSnapshotDomainState {
         export const $gtype: GObject.GType<DomainSnapshotDomainState>;
     }
@@ -509,6 +611,9 @@ export namespace LibvirtGConfig {
         DISK_SNAPSHOT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainSnapshotMemoryState {
         export const $gtype: GObject.GType<DomainSnapshotMemoryState>;
     }
@@ -522,6 +627,9 @@ export namespace LibvirtGConfig {
         EXTERNAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainSoundModel {
         export const $gtype: GObject.GType<DomainSoundModel>;
     }
@@ -538,6 +646,9 @@ export namespace LibvirtGConfig {
         ICH9,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainTimerTickPolicy {
         export const $gtype: GObject.GType<DomainTimerTickPolicy>;
     }
@@ -552,6 +663,9 @@ export namespace LibvirtGConfig {
         DISCARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainVideoModel {
         export const $gtype: GObject.GType<DomainVideoModel>;
     }
@@ -570,6 +684,9 @@ export namespace LibvirtGConfig {
         BOCHS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainVirtType {
         export const $gtype: GObject.GType<DomainVirtType>;
     }
@@ -595,6 +712,9 @@ export namespace LibvirtGConfig {
         PHYP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StoragePoolType {
         export const $gtype: GObject.GType<StoragePoolType>;
     }
@@ -621,6 +741,9 @@ export namespace LibvirtGConfig {
      * @param argv pointer to application's argv
      */
     function init_check(argv?: string[] | null): [boolean, string[] | null];
+    /**
+     * @gir-type Flags
+     */
     export namespace StorageVolTargetFeatures {
         export const $gtype: GObject.GType<StorageVolTargetFeatures>;
     }
@@ -6272,7 +6395,13 @@ export namespace LibvirtGConfig {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get node(): any;
+        /**
+         * @construct-only
+         */
         get schema(): string;
 
         /**

@@ -166,18 +166,22 @@ export namespace SugarExt {
              * may decide to end the session without giving applications a
              * chance to object.
              * @signal
+             * @run-last
              */
             quit: () => void;
             /**
              * @signal
+             * @run-last
              */
             'quit-cancelled': () => void;
             /**
              * @signal
+             * @run-last
              */
             'quit-requested': () => void;
             /**
              * @signal
+             * @run-last
              */
             'save-state': (arg0: any | null) => void;
         }
@@ -626,10 +630,14 @@ export namespace SugarExt {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'key-pressed': (arg0: number, arg1: number, arg2: number) => boolean | void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'key-released': (arg0: number, arg1: number, arg2: number) => boolean | void;
         }
@@ -726,6 +734,7 @@ export namespace SugarExt {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'shutdown-completed': () => void;
         }

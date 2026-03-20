@@ -20,6 +20,9 @@ export namespace GstBase {
      * GstBase-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AggregatorStartTimeSelection {
         export const $gtype: GObject.GType<AggregatorStartTimeSelection>;
     }
@@ -951,6 +954,7 @@ export namespace GstBase {
              * `gst_aggregator_peek_next_sample()` at that point.
              * @signal
              * @since 1.18
+             * @run-first
              */
             'samples-selected': (
                 arg0: Gst.Segment,
@@ -1482,6 +1486,7 @@ export namespace GstBase {
         interface SignalSignatures extends Gst.Pad.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'buffer-consumed': (arg0: Gst.Buffer) => void;
             'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
@@ -2333,12 +2338,14 @@ export namespace GstBase {
          * The last buffer that arrived in the sink and was used for preroll or for
          * rendering. This property can be used to generate thumbnails. This property
          * can be `null` when the sink has not yet received a buffer.
+         * @read-only
          */
         get last_sample(): Gst.Sample;
         /**
          * The last buffer that arrived in the sink and was used for preroll or for
          * rendering. This property can be used to generate thumbnails. This property
          * can be `null` when the sink has not yet received a buffer.
+         * @read-only
          */
         get lastSample(): Gst.Sample;
         /**
@@ -2401,6 +2408,7 @@ export namespace GstBase {
          * - "dropped" G_TYPE_UINT64   Number of dropped frames
          * - "rendered" G_TYPE_UINT64   Number of rendered frames
          * @since 1.18
+         * @read-only
          */
         get stats(): Gst.Structure;
         get sync(): boolean;
@@ -4347,6 +4355,7 @@ export namespace GstBase {
              * size) is lower than the boundary values which can be set through the GObject
              * properties.
              * @signal
+             * @run-first
              */
             empty: () => void;
             /**
@@ -4355,6 +4364,7 @@ export namespace GstBase {
              * size) is higher than the boundary values which can be set through the GObject
              * properties.
              * @signal
+             * @run-first
              */
             full: () => void;
             'notify::current-level-bytes': (pspec: GObject.ParamSpec) => void;
@@ -4385,11 +4395,29 @@ export namespace GstBase {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get current_level_bytes(): number;
+        /**
+         * @read-only
+         */
         get currentLevelBytes(): number;
+        /**
+         * @read-only
+         */
         get current_level_time(): number;
+        /**
+         * @read-only
+         */
         get currentLevelTime(): number;
+        /**
+         * @read-only
+         */
         get current_level_visible(): number;
+        /**
+         * @read-only
+         */
         get currentLevelVisible(): number;
 
         /**

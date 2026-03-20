@@ -20,6 +20,9 @@ export namespace Tracker {
      * Tracker-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeserializeFlags {
         export const $gtype: GObject.GType<DeserializeFlags>;
     }
@@ -35,6 +38,9 @@ export namespace Tracker {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NotifierEventType {
         export const $gtype: GObject.GType<NotifierEventType>;
     }
@@ -58,6 +64,9 @@ export namespace Tracker {
         UPDATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RdfFormat {
         export const $gtype: GObject.GType<RdfFormat>;
     }
@@ -89,6 +98,9 @@ export namespace Tracker {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SerializeFlags {
         export const $gtype: GObject.GType<SerializeFlags>;
     }
@@ -362,6 +374,9 @@ export namespace Tracker {
      * @returns A newly generated UUID URN.
      */
     function sparql_get_uuid_urn(): string;
+    /**
+     * @gir-type Flags
+     */
     export namespace SparqlConnectionFlags {
         export const $gtype: GObject.GType<SparqlConnectionFlags>;
     }
@@ -443,6 +458,7 @@ export namespace Tracker {
 
         /**
          * The {@link SparqlConnection} the batch belongs to.
+         * @construct-only
          */
         get connection(): SparqlConnection;
 
@@ -694,10 +710,12 @@ export namespace Tracker {
         set readonly(val: boolean);
         /**
          * The {@link SparqlConnection} being proxied by this endpoint.
+         * @construct-only
          */
         get sparql_connection(): SparqlConnection;
         /**
          * The {@link SparqlConnection} being proxied by this endpoint.
+         * @construct-only
          */
         get sparqlConnection(): SparqlConnection;
 
@@ -888,18 +906,22 @@ export namespace Tracker {
 
         /**
          * The {@link Gio.DBusConnection} where the connection is proxied through.
+         * @construct-only
          */
         get dbus_connection(): Gio.DBusConnection;
         /**
          * The {@link Gio.DBusConnection} where the connection is proxied through.
+         * @construct-only
          */
         get dbusConnection(): Gio.DBusConnection;
         /**
          * The DBus object path that this endpoint manages.
+         * @construct-only
          */
         get object_path(): string;
         /**
          * The DBus object path that this endpoint manages.
+         * @construct-only
          */
         get objectPath(): string;
 
@@ -1563,18 +1585,22 @@ export namespace Tracker {
 
         /**
          * {@link Gio.TlsCertificate} to encrypt the communication.
+         * @construct-only
          */
         get http_certificate(): Gio.TlsCertificate;
         /**
          * {@link Gio.TlsCertificate} to encrypt the communication.
+         * @construct-only
          */
         get httpCertificate(): Gio.TlsCertificate;
         /**
          * HTTP port used to listen requests.
+         * @construct-only
          */
         get http_port(): number;
         /**
          * HTTP port used to listen requests.
+         * @construct-only
          */
         get httpPort(): number;
 
@@ -2346,6 +2372,7 @@ export namespace Tracker {
 
         /**
          * SPARQL connection to listen to.
+         * @construct-only
          */
         get connection(): SparqlConnection;
 
@@ -3803,14 +3830,17 @@ export namespace Tracker {
 
         /**
          * The {@link SparqlConnection} used to retrieve the results.
+         * @construct-only
          */
         get connection(): SparqlConnection;
         /**
          * Number of columns available in the result set.
+         * @read-only
          */
         get n_columns(): number;
         /**
          * Number of columns available in the result set.
+         * @read-only
          */
         get nColumns(): number;
 
@@ -4082,10 +4112,12 @@ export namespace Tracker {
 
         /**
          * The {@link SparqlConnection} the statement was created for.
+         * @construct-only
          */
         get connection(): SparqlConnection;
         /**
          * SPARQL query stored in this statement.
+         * @construct-only
          */
         get sparql(): string;
 

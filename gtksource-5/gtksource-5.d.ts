@@ -30,6 +30,9 @@ export namespace GtkSource {
      * GtkSource-5
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotationStyle {
         export const $gtype: GObject.GType<AnnotationStyle>;
     }
@@ -57,6 +60,9 @@ export namespace GtkSource {
         ACCENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BackgroundPatternType {
         export const $gtype: GObject.GType<BackgroundPatternType>;
     }
@@ -75,6 +81,9 @@ export namespace GtkSource {
         GRID,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BracketMatchType {
         export const $gtype: GObject.GType<BracketMatchType>;
     }
@@ -102,6 +111,9 @@ export namespace GtkSource {
         FOUND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ChangeCaseType {
         export const $gtype: GObject.GType<ChangeCaseType>;
     }
@@ -128,6 +140,9 @@ export namespace GtkSource {
         TITLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CompletionActivation {
         export const $gtype: GObject.GType<CompletionActivation>;
     }
@@ -141,6 +156,9 @@ export namespace GtkSource {
         USER_REQUESTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CompletionColumn {
         export const $gtype: GObject.GType<CompletionColumn>;
     }
@@ -157,6 +175,9 @@ export namespace GtkSource {
         DETAILS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CompressionType {
         export const $gtype: GObject.GType<CompressionType>;
     }
@@ -237,6 +258,9 @@ export namespace GtkSource {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GutterRendererAlignmentMode {
         export const $gtype: GObject.GType<GutterRendererAlignmentMode>;
     }
@@ -261,6 +285,9 @@ export namespace GtkSource {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NewlineType {
         export const $gtype: GObject.GType<NewlineType>;
     }
@@ -284,6 +311,9 @@ export namespace GtkSource {
         CR_LF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SmartHomeEndType {
         export const $gtype: GObject.GType<SmartHomeEndType>;
     }
@@ -315,6 +345,9 @@ export namespace GtkSource {
         ALWAYS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ViewGutterPosition {
         export const $gtype: GObject.GType<ViewGutterPosition>;
     }
@@ -513,6 +546,9 @@ export namespace GtkSource {
     interface SchedulerCallback {
         (deadline: number): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace FileSaverFlags {
         export const $gtype: GObject.GType<FileSaverFlags>;
     }
@@ -540,6 +576,9 @@ export namespace GtkSource {
         CREATE_BACKUP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SortFlags {
         export const $gtype: GObject.GType<SortFlags>;
     }
@@ -572,6 +611,9 @@ export namespace GtkSource {
         FILENAME,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SpaceLocationFlags {
         export const $gtype: GObject.GType<SpaceLocationFlags>;
     }
@@ -607,6 +649,9 @@ export namespace GtkSource {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SpaceTypeFlags {
         export const $gtype: GObject.GType<SpaceTypeFlags>;
     }
@@ -681,6 +726,7 @@ export namespace GtkSource {
         /**
          * The text description displayed at {@link Annotation.line}
          * @since 5.18
+         * @read-only
          */
         get description(): string;
         /**
@@ -688,16 +734,19 @@ export namespace GtkSource {
          *
          * It will be displayed before the text description
          * @since 5.18
+         * @read-only
          */
         get icon(): Gio.Icon;
         /**
          * The line where to display the annotation
          * @since 5.18
+         * @read-only
          */
         get line(): number;
         /**
          * The style of the annotation
          * @since 5.18
+         * @read-only
          */
         get style(): AnnotationStyle;
 
@@ -770,6 +819,7 @@ export namespace GtkSource {
             /**
              * @signal
              * @since 5.18
+             * @run-last
              */
             changed: () => void;
         }
@@ -924,6 +974,7 @@ export namespace GtkSource {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
         }
@@ -1009,11 +1060,13 @@ export namespace GtkSource {
              *
              * A use-case for this signal is to show messages in a {@link Gtk.Statusbar}.
              * @signal
+             * @run-last
              */
             'bracket-matched': (arg0: Gtk.TextIter | null, arg1: BracketMatchType) => void;
             /**
              * The "cursor-moved" signal is emitted when then insertion mark has moved.
              * @signal
+             * @run-last
              */
             'cursor-moved': () => void;
             /**
@@ -1021,12 +1074,14 @@ export namespace GtkSource {
              * highlighting and [context classes](./class.Buffer.html#context-classes) are updated in a
              * certain region of the `buffer`.
              * @signal
+             * @run-last
              */
             'highlight-updated': (arg0: Gtk.TextIter, arg1: Gtk.TextIter) => void;
             /**
              * The ::source-mark-updated signal is emitted each time
              * a mark is added to, moved or removed from the `buffer`.
              * @signal
+             * @run-last
              */
             'source-mark-updated': (arg0: Gtk.TextMark) => void;
             'notify::highlight-matching-brackets': (pspec: GObject.ParamSpec) => void;
@@ -1179,6 +1234,7 @@ export namespace GtkSource {
          * Applications may want to use this setting to avoid doing work
          * while the buffer is loading such as spellchecking.
          * @since 5.10
+         * @read-only
          */
         get loading(): boolean;
         /**
@@ -1522,24 +1578,30 @@ export namespace GtkSource {
              * The "hide" signal is emitted when the completion window should
              * be hidden.
              * @signal
+             * @action
+             * @run-last
              */
             hide: () => void;
             /**
              * The "provided-added" signal is emitted when a new provider is
              * added to the completion.
              * @signal
+             * @run-last
              */
             'provider-added': (arg0: CompletionProvider) => void;
             /**
              * The "provided-removed" signal is emitted when a provider has
              * been removed from the completion.
              * @signal
+             * @run-last
              */
             'provider-removed': (arg0: CompletionProvider) => void;
             /**
              * The "show" signal is emitted when the completion window should
              * be shown.
              * @signal
+             * @action
+             * @run-last
              */
             show: () => void;
             'notify::buffer': (pspec: GObject.ParamSpec) => void;
@@ -1606,6 +1668,7 @@ export namespace GtkSource {
         /**
          * The {@link Gtk.TextBuffer} for the {@link GtkSource.Completion.view}.
          * This is a convenience property for providers.
+         * @read-only
          */
         get buffer(): Gtk.TextView;
         /**
@@ -1657,6 +1720,7 @@ export namespace GtkSource {
         /**
          * The "view" property is the {@link Gtk.TextView} for which this {@link GtkSource.Completion}
          * is providing completion features.
+         * @construct-only
          */
         get view(): View;
 
@@ -1851,6 +1915,9 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get column(): CompletionColumn;
         get markup(): string;
         set markup(val: string);
@@ -2695,6 +2762,7 @@ export namespace GtkSource {
              * be used to create a "top results" provider.
              * @signal
              * @since 5.6
+             * @run-last
              */
             'provider-model-changed': (arg0: CompletionProvider, arg1: Gio.ListModel | null) => void;
             'notify::busy': (pspec: GObject.ParamSpec) => void;
@@ -2742,10 +2810,12 @@ export namespace GtkSource {
         /**
          * The "busy" property is `true` while the completion context is
          * populating completion proposals.
+         * @read-only
          */
         get busy(): boolean;
         /**
          * The "completion" is the {@link GtkSource.Completion} that was used to create the context.
+         * @construct-only
          */
         get completion(): Completion;
         /**
@@ -2753,6 +2823,7 @@ export namespace GtkSource {
          *
          * It will be notified when the first result is added or the last
          * result is removed.
+         * @read-only
          */
         get empty(): boolean;
 
@@ -5115,15 +5186,18 @@ export namespace GtkSource {
 
         /**
          * The compression type.
+         * @read-only
          */
         get compression_type(): CompressionType;
         /**
          * The compression type.
+         * @read-only
          */
         get compressionType(): CompressionType;
         /**
          * The character encoding, initially `null`. After a successful file
          * loading or saving operation, the encoding is non-`null`.
+         * @read-only
          */
         get encoding(): Encoding;
         /**
@@ -5133,20 +5207,24 @@ export namespace GtkSource {
         set location(val: Gio.File);
         /**
          * The line ending type.
+         * @read-only
          */
         get newline_type(): NewlineType;
         /**
          * The line ending type.
+         * @read-only
          */
         get newlineType(): NewlineType;
         /**
          * Whether the file is read-only or not. The value of this property is
          * not updated automatically (there is no file monitors).
+         * @read-only
          */
         get read_only(): boolean;
         /**
          * Whether the file is read-only or not. The value of this property is
          * not updated automatically (there is no file monitors).
+         * @read-only
          */
         get readOnly(): boolean;
 
@@ -5309,27 +5387,32 @@ export namespace GtkSource {
         /**
          * The {@link GtkSource.Buffer} to load the contents into. The
          * {@link GtkSource.FileLoader} object has a weak reference to the buffer.
+         * @construct-only
          */
         get buffer(): Buffer;
         /**
          * The {@link GtkSource.File}. The {@link GtkSource.FileLoader} object has a weak
          * reference to the file.
+         * @construct-only
          */
         get file(): File;
         /**
          * The {@link Gio.InputStream} to load. Useful for reading stdin. If this property
          * is set, the {@link GtkSource.FileLoader.location} property is ignored.
+         * @construct-only
          */
         get input_stream(): Gio.InputStream;
         /**
          * The {@link Gio.InputStream} to load. Useful for reading stdin. If this property
          * is set, the {@link GtkSource.FileLoader.location} property is ignored.
+         * @construct-only
          */
         get inputStream(): Gio.InputStream;
         /**
          * The {@link Gio.File} to load. If the {@link GtkSource.FileLoader.input_stream} is
          * `null`, by default the location is taken from the {@link GtkSource.File} at
          * construction time.
+         * @construct-only
          */
         get location(): Gio.File;
 
@@ -5528,6 +5611,7 @@ export namespace GtkSource {
         /**
          * The {@link GtkSource.Buffer} to save. The {@link GtkSource.FileSaver} object has a
          * weak reference to the buffer.
+         * @construct-only
          */
         get buffer(): Buffer;
         /**
@@ -5548,6 +5632,7 @@ export namespace GtkSource {
         /**
          * The {@link GtkSource.File}. The {@link GtkSource.FileSaver} object has a weak
          * reference to the file.
+         * @construct-only
          */
         get file(): File;
         /**
@@ -5558,6 +5643,7 @@ export namespace GtkSource {
         /**
          * The {@link Gio.File} where to save the buffer. By default the location is taken
          * from the {@link GtkSource.File} at construction time.
+         * @construct-only
          */
         get location(): Gio.File;
         /**
@@ -5812,14 +5898,17 @@ export namespace GtkSource {
 
         /**
          * The {@link GtkSource.View} of the gutter.
+         * @construct-only
          */
         get view(): View;
         /**
          * The text window type on which the window is placed.
+         * @construct-only
          */
         get window_type(): Gtk.TextWindowType;
         /**
          * The text window type on which the window is placed.
+         * @construct-only
          */
         get windowType(): Gtk.TextWindowType;
 
@@ -6834,6 +6923,7 @@ export namespace GtkSource {
             /**
              * The signal is emitted when the renderer is activated.
              * @signal
+             * @run-last
              */
             activate: (
                 arg0: Gtk.TextIter,
@@ -6845,10 +6935,12 @@ export namespace GtkSource {
             /**
              * The signal is emitted when the renderer can possibly be activated.
              * @signal
+             * @run-last
              */
             'query-activatable': (arg0: Gtk.TextIter, arg1: Gdk.Rectangle) => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             'query-data': (arg0: GObject.Object, arg1: number) => void;
             'notify::alignment-mode': (pspec: GObject.ParamSpec) => void;
@@ -6975,10 +7067,12 @@ export namespace GtkSource {
          * Contains information about the lines to be rendered.
          *
          * It should be used by {@link GtkSource.GutterRenderer} implementations from {@link Gtk.Widget.snapshot}.
+         * @read-only
          */
         get lines(): GutterLines;
         /**
          * The view on which the renderer is placed.
+         * @read-only
          */
         get view(): Gtk.TextView;
         /**
@@ -10293,9 +10387,21 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get hidden(): boolean;
+        /**
+         * @read-only
+         */
         get id(): string;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get section(): string;
 
         /**
@@ -10444,7 +10550,13 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get language_ids(): string[];
+        /**
+         * @read-only
+         */
         get languageIds(): string[];
         get search_path(): string[];
         set search_path(val: string[]);
@@ -11285,6 +11397,7 @@ export namespace GtkSource {
         /**
          * The category of the {@link GtkSource.Mark}, classifies the mark and controls
          * which pixbuf is used and with which priority it is drawn.
+         * @construct-only
          */
         get category(): string;
 
@@ -11367,12 +11480,14 @@ export namespace GtkSource {
              * The code should connect to this signal to provide a tooltip for given
              * `mark`. The tooltip can contain a markup.
              * @signal
+             * @run-last
              */
             'query-tooltip-markup': (arg0: Mark) => string;
             /**
              * The code should connect to this signal to provide a tooltip for given
              * `mark`. The tooltip should be just a plain text.
              * @signal
+             * @run-last
              */
             'query-tooltip-text': (arg0: Mark) => string;
             'notify::background': (pspec: GObject.ParamSpec) => void;
@@ -11670,6 +11785,7 @@ export namespace GtkSource {
         set bodyFontName(val: string);
         /**
          * The {@link Buffer} object to print.
+         * @construct-only
          */
         get buffer(): Buffer;
         /**
@@ -11769,11 +11885,13 @@ export namespace GtkSource {
         /**
          * The number of pages in the document or <code>-1</code> if the
          * document has not been completely paginated.
+         * @read-only
          */
         get n_pages(): number;
         /**
          * The number of pages in the document or <code>-1</code> if the
          * document has not been completely paginated.
+         * @read-only
          */
         get nPages(): number;
         /**
@@ -12455,6 +12573,7 @@ export namespace GtkSource {
         /**
          * The {@link Gtk.TextBuffer}. The {@link GtkSource.Region} has a weak reference to the
          * buffer.
+         * @construct-only
          */
         get buffer(): Gtk.TextBuffer;
 
@@ -12663,6 +12782,7 @@ export namespace GtkSource {
 
         /**
          * The {@link Buffer} associated to the search context.
+         * @construct-only
          */
         get buffer(): Buffer;
         /**
@@ -12684,12 +12804,14 @@ export namespace GtkSource {
          * The total number of search occurrences. If the search is disabled,
          * the value is 0. If the buffer is not already fully scanned, the value
          * is -1.
+         * @read-only
          */
         get occurrences_count(): number;
         /**
          * The total number of search occurrences. If the search is disabled,
          * the value is 0. If the buffer is not already fully scanned, the value
          * is -1.
+         * @read-only
          */
         get occurrencesCount(): number;
         /**
@@ -12698,6 +12820,7 @@ export namespace GtkSource {
          * `null`.
          *
          * Free with {@link GLib.Error.free}.
+         * @read-only
          */
         get regex_error(): GLib.Error;
         /**
@@ -12706,12 +12829,14 @@ export namespace GtkSource {
          * `null`.
          *
          * Free with {@link GLib.Error.free}.
+         * @read-only
          */
         get regexError(): GLib.Error;
         /**
          * The {@link SearchSettings} associated to the search context.
          *
          * This property is construct-only since version 4.0.
+         * @construct-only
          */
         get settings(): SearchSettings;
 
@@ -13287,10 +13412,19 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get buffer(): Gtk.TextBuffer;
         get description(): string;
         set description(val: string);
+        /**
+         * @read-only
+         */
         get focus_position(): number;
+        /**
+         * @read-only
+         */
         get focusPosition(): number;
         get language_id(): string;
         set language_id(val: string);
@@ -13635,6 +13769,7 @@ export namespace GtkSource {
              * caused a variable or other dynamic data within the context
              * to have changed.
              * @signal
+             * @run-first
              */
             changed: () => void;
         }
@@ -14200,38 +14335,137 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get background(): string;
+        /**
+         * @construct-only
+         */
         get background_set(): boolean;
+        /**
+         * @construct-only
+         */
         get backgroundSet(): boolean;
+        /**
+         * @construct-only
+         */
         get bold(): boolean;
+        /**
+         * @construct-only
+         */
         get bold_set(): boolean;
+        /**
+         * @construct-only
+         */
         get boldSet(): boolean;
+        /**
+         * @construct-only
+         */
         get foreground(): string;
+        /**
+         * @construct-only
+         */
         get foreground_set(): boolean;
+        /**
+         * @construct-only
+         */
         get foregroundSet(): boolean;
+        /**
+         * @construct-only
+         */
         get italic(): boolean;
+        /**
+         * @construct-only
+         */
         get italic_set(): boolean;
+        /**
+         * @construct-only
+         */
         get italicSet(): boolean;
+        /**
+         * @construct-only
+         */
         get line_background(): string;
+        /**
+         * @construct-only
+         */
         get lineBackground(): string;
+        /**
+         * @construct-only
+         */
         get line_background_set(): boolean;
+        /**
+         * @construct-only
+         */
         get lineBackgroundSet(): boolean;
+        /**
+         * @construct-only
+         */
         get pango_underline(): Pango.Underline;
+        /**
+         * @construct-only
+         */
         get pangoUnderline(): Pango.Underline;
+        /**
+         * @construct-only
+         */
         get scale(): string;
+        /**
+         * @construct-only
+         */
         get scale_set(): boolean;
+        /**
+         * @construct-only
+         */
         get scaleSet(): boolean;
+        /**
+         * @construct-only
+         */
         get strikethrough(): boolean;
+        /**
+         * @construct-only
+         */
         get strikethrough_set(): boolean;
+        /**
+         * @construct-only
+         */
         get strikethroughSet(): boolean;
+        /**
+         * @construct-only
+         */
         get underline_color(): string;
+        /**
+         * @construct-only
+         */
         get underlineColor(): string;
+        /**
+         * @construct-only
+         */
         get underline_color_set(): boolean;
+        /**
+         * @construct-only
+         */
         get underlineColorSet(): boolean;
+        /**
+         * @construct-only
+         */
         get underline_set(): boolean;
+        /**
+         * @construct-only
+         */
         get underlineSet(): boolean;
+        /**
+         * @construct-only
+         */
         get weight(): Pango.Weight;
+        /**
+         * @construct-only
+         */
         get weight_set(): boolean;
+        /**
+         * @construct-only
+         */
         get weightSet(): boolean;
 
         /**
@@ -14333,19 +14567,23 @@ export namespace GtkSource {
 
         /**
          * Style scheme description, a translatable string to present to the user.
+         * @read-only
          */
         get description(): string;
         /**
          * Style scheme filename or `null`.
+         * @read-only
          */
         get filename(): string;
         /**
          * Style scheme id, a unique string used to identify the style scheme
          * in {@link StyleSchemeManager}.
+         * @construct-only
          */
         get id(): string;
         /**
          * Style scheme name, a translatable string to present to the user.
+         * @read-only
          */
         get name(): string;
 
@@ -14627,6 +14865,7 @@ export namespace GtkSource {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -14635,6 +14874,7 @@ export namespace GtkSource {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -14674,21 +14914,25 @@ export namespace GtkSource {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -14907,6 +15151,7 @@ export namespace GtkSource {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -14926,16 +15171,19 @@ export namespace GtkSource {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -18643,7 +18891,13 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get scheme_ids(): string[];
+        /**
+         * @read-only
+         */
         get schemeIds(): string[];
         get search_path(): string[];
         set search_path(val: string[]);
@@ -18757,6 +19011,7 @@ export namespace GtkSource {
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             activate: () => void;
             'notify::scheme': (pspec: GObject.ParamSpec) => void;
@@ -18833,6 +19088,9 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get scheme(): StyleScheme;
         get selected(): boolean;
         set selected(val: boolean);
@@ -18976,6 +19234,7 @@ export namespace GtkSource {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -18984,6 +19243,7 @@ export namespace GtkSource {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -19023,21 +19283,25 @@ export namespace GtkSource {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -19256,6 +19520,7 @@ export namespace GtkSource {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -19275,16 +19540,19 @@ export namespace GtkSource {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -22531,16 +22799,22 @@ export namespace GtkSource {
             /**
              * Keybinding signal to change case of the text at the current cursor position.
              * @signal
+             * @action
+             * @run-last
              */
             'change-case': (arg0: ChangeCaseType) => void;
             /**
              * Keybinding signal to edit a number at the current cursor position.
              * @signal
+             * @action
+             * @run-last
              */
             'change-number': (arg0: number) => void;
             /**
              * Keybinding signal to join the lines currently selected.
              * @signal
+             * @action
+             * @run-last
              */
             'join-lines': () => void;
             /**
@@ -22549,6 +22823,7 @@ export namespace GtkSource {
              *
              * You can use `iter` to determine on which line the activation took place.
              * @signal
+             * @run-last
              */
             'line-mark-activated': (arg0: Gtk.TextIter, arg1: number, arg2: Gdk.ModifierType, arg3: number) => void;
             /**
@@ -22557,11 +22832,15 @@ export namespace GtkSource {
              * The default binding key is Alt+Up/Down arrow. And moves the currently selected lines,
              * or the current line up or down by one line.
              * @signal
+             * @action
+             * @run-last
              */
             'move-lines': (arg0: boolean) => void;
             /**
              * Keybinding signal to move the cursor to the matching bracket.
              * @signal
+             * @action
+             * @run-last
              */
             'move-to-matching-bracket': (arg0: boolean) => void;
             /**
@@ -22570,6 +22849,8 @@ export namespace GtkSource {
              * The default binding key is Alt+Left/Right Arrow and moves the current selection, or the current
              * word by one word.
              * @signal
+             * @action
+             * @run-last
              */
             'move-words': (arg0: number) => void;
             /**
@@ -22579,6 +22860,7 @@ export namespace GtkSource {
              *
              * `location` will be updated to point at the end of the snippet.
              * @signal
+             * @run-last
              */
             'push-snippet': (arg0: Snippet, arg1: Gtk.TextIter) => void;
             /**
@@ -22593,6 +22875,8 @@ export namespace GtkSource {
              * {@link GObject.signal_emit_by_name} if they need to activate the completion by
              * another means, for example with another key binding or a menu entry.
              * @signal
+             * @action
+             * @run-last
              */
             'show-completion': () => void;
             /**
@@ -22603,6 +22887,7 @@ export namespace GtkSource {
              * out whether the cursor was moved by a normal home/end or by a smart
              * home/end.
              * @signal
+             * @run-last
              */
             'smart-home-end': (arg0: Gtk.TextIter, arg1: number) => void;
             'notify::annotations': (pspec: GObject.ParamSpec) => void;
@@ -22807,6 +23092,7 @@ export namespace GtkSource {
         /**
          * The {@link Annotations} object associated with the view.
          * @since 5.18
+         * @read-only
          */
         get annotations(): Annotations;
         get auto_indent(): boolean;
@@ -22825,6 +23111,7 @@ export namespace GtkSource {
         set backgroundPattern(val: BackgroundPatternType);
         /**
          * The completion object associated with the view
+         * @read-only
          */
         get completion(): Completion;
         /**
@@ -22939,10 +23226,12 @@ export namespace GtkSource {
         set smartHomeEnd(val: SmartHomeEndType);
         /**
          * The {@link SpaceDrawer} object associated with the view.
+         * @read-only
          */
         get space_drawer(): SpaceDrawer;
         /**
          * The {@link SpaceDrawer} object associated with the view.
+         * @read-only
          */
         get spaceDrawer(): SpaceDrawer;
         /**
@@ -24024,6 +24313,7 @@ export namespace GtkSource {
              * `:edit` or `:e` commands.
              * @signal
              * @since 5.4
+             * @run-last
              */
             edit: (arg0: View, arg1: string | null) => void;
             /**
@@ -24034,6 +24324,7 @@ export namespace GtkSource {
              * `true` from this signal to indicate the command has been handled.
              * @signal
              * @since 5.4
+             * @run-last
              */
             'execute-command': (arg0: string) => boolean | void;
             /**
@@ -24041,6 +24332,7 @@ export namespace GtkSource {
              * `begin` and `end`.
              * @signal
              * @since 5.4
+             * @run-last
              */
             'format-text': (arg0: Gtk.TextIter, arg1: Gtk.TextIter) => void;
             /**
@@ -24050,6 +24342,7 @@ export namespace GtkSource {
              * This may be executed in relation to the user running the `:write` or `:w` commands.
              * @signal
              * @since 5.4
+             * @run-last
              */
             write: (arg0: View, arg1: string | null) => void;
             'notify::command-bar-text': (pspec: GObject.ParamSpec) => void;
@@ -24148,9 +24441,21 @@ export namespace GtkSource {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get command_bar_text(): string;
+        /**
+         * @read-only
+         */
         get commandBarText(): string;
+        /**
+         * @read-only
+         */
         get command_text(): string;
+        /**
+         * @read-only
+         */
         get commandText(): string;
 
         /**

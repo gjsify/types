@@ -250,6 +250,8 @@ export namespace Xfconf {
              * G_VALUE_TYPE(value) == G_TYPE_INVALID
              * </programlisting></informalexample>
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-changed': (arg0: string, arg1: GObject.Value) => void;
             'notify::channel-name': (pspec: GObject.ParamSpec) => void;
@@ -263,6 +265,8 @@ export namespace Xfconf {
              * G_VALUE_TYPE(value) == G_TYPE_INVALID
              * </programlisting></informalexample>
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-changed::channel-name': (arg0: string, arg1: GObject.Value) => void;
             /**
@@ -273,6 +277,8 @@ export namespace Xfconf {
              * G_VALUE_TYPE(value) == G_TYPE_INVALID
              * </programlisting></informalexample>
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-changed::is-singleton': (arg0: string, arg1: GObject.Value) => void;
             /**
@@ -283,6 +289,8 @@ export namespace Xfconf {
              * G_VALUE_TYPE(value) == G_TYPE_INVALID
              * </programlisting></informalexample>
              * @signal
+             * @detailed
+             * @run-last
              */
             'property-changed::property-base': (arg0: string, arg1: GObject.Value) => void;
         }
@@ -310,32 +318,38 @@ export namespace Xfconf {
 
         /**
          * The string identifier used for this channel.
+         * @construct-only
          */
         get channel_name(): string;
         /**
          * The string identifier used for this channel.
+         * @construct-only
          */
         get channelName(): string;
         /**
          * Identifies the instance of the class as a singleton instance
          * or not.  This is mainly used internally by {@link Xfconf.Channel}
          * but may be useful for API users.
+         * @construct-only
          */
         get is_singleton(): boolean;
         /**
          * Identifies the instance of the class as a singleton instance
          * or not.  This is mainly used internally by {@link Xfconf.Channel}
          * but may be useful for API users.
+         * @construct-only
          */
         get isSingleton(): boolean;
         /**
          * The string identifier used for the property base inside a channel.
          * This can be used to restrict a channel to a subset of properties.
+         * @construct-only
          */
         get property_base(): string;
         /**
          * The string identifier used for the property base inside a channel.
          * This can be used to restrict a channel to a subset of properties.
+         * @construct-only
          */
         get propertyBase(): string;
 

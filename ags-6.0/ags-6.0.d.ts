@@ -22,6 +22,9 @@ export namespace Ags {
      * Ags-6.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ByteOrder {
         export const $gtype: GObject.GType<ByteOrder>;
     }
@@ -81,6 +84,9 @@ export namespace Ags {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SeekType {
         export const $gtype: GObject.GType<SeekType>;
     }
@@ -114,6 +120,9 @@ export namespace Ags {
         EXPONENT_NOT_CONSTANT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SoundcardFormat {
         export const $gtype: GObject.GType<SoundcardFormat>;
     }
@@ -2411,6 +2420,9 @@ export namespace Ags {
     interface ReturnableThreadCallback {
         (returnable_thread: ReturnableThread, data?: any | null): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace ApplicationContextFlags {
         export const $gtype: GObject.GType<ApplicationContextFlags>;
     }
@@ -2442,6 +2454,9 @@ export namespace Ags {
         CONNECTED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FileFlags {
         export const $gtype: GObject.GType<FileFlags>;
     }
@@ -2478,6 +2493,9 @@ export namespace Ags {
         FILE_WRITE_EMBEDDED_AUDIO,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RegexUtilCompileFlags {
         export const $gtype: GObject.GType<RegexUtilCompileFlags>;
     }
@@ -2498,6 +2516,9 @@ export namespace Ags {
         REGEX_UTIL_NO_NEWLINE_MATCH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RegexUtilExecuteFlags {
         export const $gtype: GObject.GType<RegexUtilExecuteFlags>;
     }
@@ -2516,6 +2537,9 @@ export namespace Ags {
         REGEX_UTIL_START_END,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ReturnableThreadFlags {
         export const $gtype: GObject.GType<ReturnableThreadFlags>;
     }
@@ -2540,6 +2564,9 @@ export namespace Ags {
         RETURNABLE_THREAD_RUN_ONCE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SecurityContextMode {
         export const $gtype: GObject.GType<SecurityContextMode>;
     }
@@ -2571,6 +2598,9 @@ export namespace Ags {
         SECURITY_CONTEXT_ACCOUNT_WRITE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ServerFlags {
         export const $gtype: GObject.GType<ServerFlags>;
     }
@@ -2611,6 +2641,9 @@ export namespace Ags {
         SERVER_AUTO_START,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SoundcardCapability {
         export const $gtype: GObject.GType<SoundcardCapability>;
     }
@@ -2634,6 +2667,9 @@ export namespace Ags {
         SOUNDCARD_CAPABILITY_DUPLEX,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TaskCompletionFlags {
         export const $gtype: GObject.GType<TaskCompletionFlags>;
     }
@@ -2678,6 +2714,9 @@ export namespace Ags {
         CYCLIC,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ThreadApplicationContextFlags {
         export const $gtype: GObject.GType<ThreadApplicationContextFlags>;
     }
@@ -2694,6 +2733,9 @@ export namespace Ags {
         THREAD_APPLICATION_CONTEXT_SINGLE_THREAD,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ThreadFlags {
         export const $gtype: GObject.GType<ThreadFlags>;
     }
@@ -2734,6 +2776,9 @@ export namespace Ags {
         THREAD_TIME_ACCOUNTING,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ThreadPoolFlags {
         export const $gtype: GObject.GType<ThreadPoolFlags>;
     }
@@ -2754,6 +2799,9 @@ export namespace Ags {
         THREAD_POOL_RT_SETUP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ThreadStatusFlags {
         export const $gtype: GObject.GType<ThreadStatusFlags>;
     }
@@ -2818,6 +2866,9 @@ export namespace Ags {
         THREAD_STATUS_SYNCED_FREQ,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ThreadSyncTicFlags {
         export const $gtype: GObject.GType<ThreadSyncTicFlags>;
     }
@@ -2902,6 +2953,9 @@ export namespace Ags {
         THREAD_SYNC_TIC_DONE_8,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TimestampFlags {
         export const $gtype: GObject.GType<TimestampFlags>;
     }
@@ -2926,6 +2980,9 @@ export namespace Ags {
         TIMESTAMP_OUTDATED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TurtleFlags {
         export const $gtype: GObject.GType<TurtleFlags>;
     }
@@ -2942,6 +2999,9 @@ export namespace Ags {
         TURTLE_TOLOWER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WorkerThreadStatusFlags {
         export const $gtype: GObject.GType<WorkerThreadStatusFlags>;
     }
@@ -2977,6 +3037,7 @@ export namespace Ags {
              * The ::load-config notifies to load configuration.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'load-config': () => void;
             /**
@@ -2984,12 +3045,14 @@ export namespace Ags {
              * your application context.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             prepare: () => void;
             /**
              * The ::quit notifies to load configuration.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             quit: () => void;
             /**
@@ -2997,6 +3060,7 @@ export namespace Ags {
              * your types.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'register-types': () => void;
             /**
@@ -3004,6 +3068,7 @@ export namespace Ags {
              * your application context.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             setup: () => void;
             'notify::config': (pspec: GObject.ParamSpec) => void;
@@ -4168,18 +4233,21 @@ export namespace Ags {
              * The ::get-value signal notifies about value been getting.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'get-value': (arg0: string, arg1: string) => string;
             /**
              * The ::load-defaults signal notifies about loading defaults
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'load-defaults': () => void;
             /**
              * The ::set-value signal notifies about value been setting.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'set-value': (arg0: string, arg1: string, arg2: string) => void;
         }
@@ -4447,6 +4515,7 @@ export namespace Ags {
              * The ::convert signal notifies about converted value.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             convert: (arg0: number, arg1: boolean) => number;
             'notify::description': (pspec: GObject.ParamSpec) => void;
@@ -5080,18 +5149,21 @@ export namespace Ags {
              * Open `file` with appropriate filename.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             open: (arg0: any | null) => void;
             /**
              * Open `file` from a buffer containing the file.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'open-from-data': (arg0: string, arg1: number, arg2: any | null) => void;
             /**
              * Read a XML document from disk with specified filename.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             read: () => void;
             /**
@@ -5099,26 +5171,31 @@ export namespace Ags {
              * instances refering to.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'read-resolve': () => void;
             /**
              * Hook after reading XML document to update or start the application.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'read-start': () => void;
             /**
              * @signal
+             * @run-last
              */
             'rw-open': (arg0: boolean, arg1: any | null) => void;
             /**
              * Write XML Document to disk.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             write: () => void;
             /**
              * @signal
+             * @run-last
              */
             'write-concurrent': () => void;
             /**
@@ -5126,6 +5203,7 @@ export namespace Ags {
              * before writing to disk.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'write-resolve': () => void;
             'notify::audio-encoding': (pspec: GObject.ParamSpec) => void;
@@ -5531,6 +5609,7 @@ export namespace Ags {
              * Signal ::resolved to notify about resolved :reference.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             resolved: () => void;
             'notify::file': (pspec: GObject.ParamSpec) => void;
@@ -5650,6 +5729,7 @@ export namespace Ags {
              * Signal ::start to notify about start :reference.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             start: () => void;
             'notify::file': (pspec: GObject.ParamSpec) => void;
@@ -6400,6 +6480,7 @@ export namespace Ags {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             resolve: () => void;
             'notify::file': (pspec: GObject.ParamSpec) => void;
@@ -6514,6 +6595,7 @@ export namespace Ags {
              * Do a request on the front controller.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'do-request': (
                 arg0: GObject.Object,
@@ -8081,18 +8163,21 @@ export namespace Ags {
              * The ::get-value signal notifies about value been getting.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'get-value': (arg0: string, arg1: string) => string;
             /**
              * The ::load-defaults signal notifies about loading defaults
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'load-defaults': () => void;
             /**
              * The ::set-value signal notifies about value been setting.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'set-value': (arg0: string, arg1: string, arg2: string) => void;
         }
@@ -8300,6 +8385,7 @@ export namespace Ags {
              * a context safe wrapper.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'safe-run': () => void;
             'notify::thread-pool': (pspec: GObject.ParamSpec) => void;
@@ -9119,18 +9205,21 @@ export namespace Ags {
              * The ::listen signal is emited during listen of server.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             listen: () => boolean | void;
             /**
              * The ::start signal is emitted as the server starts.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             start: () => void;
             /**
              * The ::stop signal is emitted as the server stops.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             stop: () => void;
             'notify::controller': (pspec: GObject.ParamSpec) => void;
@@ -10779,21 +10868,25 @@ export namespace Ags {
         /**
          * The column count of the term table.
          * @since 3.9.3
+         * @read-only
          */
         get column_count(): number;
         /**
          * The column count of the term table.
          * @since 3.9.3
+         * @read-only
          */
         get columnCount(): number;
         /**
          * The row count of the term table.
          * @since 3.9.3
+         * @read-only
          */
         get row_count(): number;
         /**
          * The row count of the term table.
          * @since 3.9.3
+         * @read-only
          */
         get rowCount(): number;
         /**
@@ -10972,16 +11065,19 @@ export namespace Ags {
         /**
          * The assigned exponent.
          * @since 3.2.0
+         * @read-only
          */
         get exponent(): any;
         /**
          * Exponent value.
          * @since 3.2.0
+         * @read-only
          */
         get exponent_value(): any;
         /**
          * Exponent value.
          * @since 3.2.0
+         * @read-only
          */
         get exponentValue(): any;
         /**
@@ -11163,11 +11259,13 @@ export namespace Ags {
         /**
          * The polynomial count of the term table.
          * @since 3.9.3
+         * @read-only
          */
         get polynomial_count(): number;
         /**
          * The polynomial count of the term table.
          * @since 3.9.3
+         * @read-only
          */
         get polynomialCount(): number;
         /**
@@ -11265,12 +11363,14 @@ export namespace Ags {
              * The ::failure signal is emited if ::launch fails
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             failure: (arg0: any | null) => void;
             /**
              * The ::launch signal is emited in a thread safe context
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             launch: () => void;
             'notify::task-launcher': (pspec: GObject.ParamSpec) => void;
@@ -11399,6 +11499,7 @@ export namespace Ags {
              * The ::complete signal is emited as a task was finished
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             complete: () => void;
             'notify::task': (pspec: GObject.ParamSpec) => void;
@@ -12082,6 +12183,7 @@ export namespace Ags {
              * The ::run signal is invoked to run {@link Ags.TaskLauncher.task}
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             run: () => void;
         }
@@ -12767,24 +12869,28 @@ export namespace Ags {
              * The ::clock() signal is invoked every thread tic.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             clock: () => number;
             /**
              * The ::run() signal is invoked during run loop.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             run: () => void;
             /**
              * The ::start() signal is invoked as thread started.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             start: () => void;
             /**
              * The ::stop() signal is invoked as `thread` stopped.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             stop: () => void;
             'notify::delay': (pspec: GObject.ParamSpec) => void;
@@ -14475,6 +14581,7 @@ export namespace Ags {
              * The ::start() signal is invoked in order to started the pool.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             start: () => void;
             'notify::max-threads': (pspec: GObject.ParamSpec) => void;
@@ -15233,6 +15340,7 @@ export namespace Ags {
              * might be synchronized using a conditional lock.
              * @signal
              * @since 3.0.0
+             * @run-last
              */
             'do-poll': () => void;
             'notify::delay': (pspec: GObject.ParamSpec) => void;

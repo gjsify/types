@@ -25,6 +25,9 @@ export namespace Vda {
      * Vda-1
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MoveDirection {
         export const $gtype: GObject.GType<MoveDirection>;
     }
@@ -217,6 +220,9 @@ export namespace Vda {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionStatus {
         export const $gtype: GObject.GType<ConnectionStatus>;
     }
@@ -234,6 +240,9 @@ export namespace Vda {
         CONNECTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SqlExpressionOperatorType {
         export const $gtype: GObject.GType<SqlExpressionOperatorType>;
     }
@@ -287,6 +296,9 @@ export namespace Vda {
         ILIKE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RoleGrant {
         export const $gtype: GObject.GType<RoleGrant>;
     }
@@ -363,7 +375,10 @@ export namespace Vda {
             ...args: GObject.GjsParameters<AffectedRows.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Vda.SqlAffectedRows */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlAffectedRows
+         */
         get number(): number;
         get_number(): number;
         /**
@@ -896,7 +911,10 @@ export namespace Vda {
             ...args: GObject.GjsParameters<CommandDelete.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Vda.SqlCommand */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlCommand
+         */
         get connection(): Connection;
         /** @category Inherited from Vda.SqlCommandTableRelated */
         get table(): string;
@@ -904,9 +922,15 @@ export namespace Vda {
         /** @category Inherited from Vda.SqlCommandTableRelated */
         get allias(): string;
         set allias(val: string);
-        /** @category Inherited from Vda.SqlCommandConditional */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlCommandConditional
+         */
         get condition(): SqlExpression;
-        /** @category Inherited from Vda.SqlCommandParametrized */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlCommandParametrized
+         */
         get parameters(): SqlParameters;
         get_connection(): Connection;
         /**
@@ -2035,7 +2059,10 @@ export namespace Vda {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Vda.SqlCommand */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlCommand
+         */
         get connection(): Connection;
         /** @category Inherited from Vda.SqlCommandTableRelated */
         get table(): string;
@@ -2043,11 +2070,20 @@ export namespace Vda {
         /** @category Inherited from Vda.SqlCommandTableRelated */
         get allias(): string;
         set allias(val: string);
-        /** @category Inherited from Vda.SqlCommandModification */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlCommandModification
+         */
         get fields(): HashModel;
-        /** @category Inherited from Vda.SqlCommandModification */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlCommandModification
+         */
         get values(): HashModel;
-        /** @category Inherited from Vda.SqlCommandParametrized */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlCommandParametrized
+         */
         get parameters(): SqlParameters;
         get_connection(): Connection;
         /**
@@ -2669,15 +2705,30 @@ export namespace Vda {
             ...args: GObject.GjsParameters<CommandSelect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Vda.SqlCommand */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlCommand
+         */
         get connection(): Connection;
-        /** @category Inherited from Vda.SqlCommandConditional */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlCommandConditional
+         */
         get condition(): SqlExpression;
-        /** @category Inherited from Vda.SqlCommandParametrized */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlCommandParametrized
+         */
         get parameters(): SqlParameters;
-        /** @category Inherited from Vda.SqlCommandSelect */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlCommandSelect
+         */
         get fields(): HashModel;
-        /** @category Inherited from Vda.SqlCommandSelect */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlCommandSelect
+         */
         get tables(): HashModel;
         get_connection(): Connection;
         /**
@@ -3288,7 +3339,10 @@ export namespace Vda {
             ...args: GObject.GjsParameters<CommandUpdate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Vda.SqlCommandConditional */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlCommandConditional
+         */
         get condition(): SqlExpression;
         get_condition(): SqlExpression;
         /**
@@ -5541,9 +5595,15 @@ export namespace Vda {
             ...args: GObject.GjsParameters<ExpressionOperator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Vda.SqlExpressionOperator */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlExpressionOperator
+         */
         get operator_type(): SqlExpressionOperatorType;
-        /** @category Inherited from Vda.SqlExpressionOperator */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlExpressionOperator
+         */
         get operatorType(): SqlExpressionOperatorType;
         /**
          * @param name
@@ -35436,9 +35496,15 @@ export namespace Vda {
          * @param value
          */
         set_message(value: string): void;
-        /** @category Inherited from Vda.Query */
+        /**
+         * @read-only
+         * @category Inherited from Vda.Query
+         */
         get sql(): string;
-        /** @category Inherited from Vda.Query */
+        /**
+         * @read-only
+         * @category Inherited from Vda.Query
+         */
         get connection(): Connection;
         /**
          * @param cancellable
@@ -36019,9 +36085,15 @@ export namespace Vda {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Vda.PreparedQuery */
+        /**
+         * @read-only
+         * @category Inherited from Vda.PreparedQuery
+         */
         get name(): string;
-        /** @category Inherited from Vda.PreparedQuery */
+        /**
+         * @read-only
+         * @category Inherited from Vda.PreparedQuery
+         */
         get parameters(): SqlParameters;
         get_name(): string;
         get_parameters(): SqlParameters;
@@ -38754,7 +38826,10 @@ export namespace Vda {
         to_string(): string;
         to_string_quoted(): string;
         to_sql_expression(): string;
-        /** @category Inherited from Vda.SqlValue */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlValue
+         */
         get name(): string;
         get_name(): string;
         /**
@@ -40272,7 +40347,10 @@ export namespace Vda {
             ...args: GObject.GjsParameters<ValueXml.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Vda.SqlValueXml */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlValueXml
+         */
         get document(): GXml.DomDocument;
         get_document(): GXml.DomDocument;
         /**
@@ -40784,7 +40862,10 @@ export namespace Vda {
             ...args: GObject.GjsParameters<ValueJson.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Vda.SqlValueJson */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlValueJson
+         */
         get document(): Json.Node;
         get_document(): Json.Node;
         /**
@@ -43309,7 +43390,10 @@ export namespace Vda {
             ...args: GObject.GjsParameters<ValueInteger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Vda.SqlValue */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlValue
+         */
         get name(): string;
         /**
          * @param str
@@ -45887,7 +45971,10 @@ export namespace Vda {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Vda.SqlValue */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlValue
+         */
         get name(): string;
         /**
          * @param str
@@ -53678,7 +53765,10 @@ export namespace Vda {
             ...args: GObject.GjsParameters<ValueBinary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Vda.SqlValueBinary */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlValueBinary
+         */
         get size(): number;
         get_bytes(): GLib.Bytes;
         get_out_stream(): Gio.OutputStream;
@@ -54227,7 +54317,10 @@ export namespace Vda {
          * @param value
          */
         set_parameters(value: SqlParameters): void;
-        /** @category Inherited from Vda.SqlValue */
+        /**
+         * @read-only
+         * @category Inherited from Vda.SqlValue
+         */
         get name(): string;
         /** @category Inherited from Vda.SqlValueMathExp */
         get math(): GCalc.MathEquationManager;
@@ -56583,8 +56676,17 @@ export namespace Vda {
     interface ColumnModel extends GObject.Object, ColumnModel.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get data_type(): GObject.GType;
+        /**
+         * @read-only
+         */
         get dataType(): GObject.GType;
 
         // Methods
@@ -56713,12 +56815,27 @@ export namespace Vda {
     interface Connection extends GObject.Object, Connection.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get status(): ConnectionStatus;
         get parameters(): ConnectionParameters;
         set parameters(val: ConnectionParameters);
+        /**
+         * @read-only
+         */
         get is_opened(): boolean;
+        /**
+         * @read-only
+         */
         get isOpened(): boolean;
+        /**
+         * @read-only
+         */
         get connection_string(): string;
+        /**
+         * @read-only
+         */
         get connectionString(): string;
 
         // Methods
@@ -57459,12 +57576,33 @@ export namespace Vda {
         set database_connection(val: Connection);
         get databaseConnection(): Connection;
         set databaseConnection(val: Connection);
+        /**
+         * @read-only
+         */
         get parent_property(): string;
+        /**
+         * @read-only
+         */
         get parentProperty(): string;
+        /**
+         * @read-only
+         */
         get parent(): DataObject;
+        /**
+         * @read-only
+         */
         get object_type(): GObject.GType;
+        /**
+         * @read-only
+         */
         get objectType(): GObject.GType;
+        /**
+         * @read-only
+         */
         get ref_field(): string;
+        /**
+         * @read-only
+         */
         get refField(): string;
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
@@ -57599,8 +57737,17 @@ export namespace Vda {
     interface Inserted extends GObject.Object, Inserted.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get number(): number;
+        /**
+         * @read-only
+         */
         get last_inserted(): RowModel;
+        /**
+         * @read-only
+         */
         get lastInserted(): RowModel;
 
         // Methods
@@ -57644,6 +57791,9 @@ export namespace Vda {
     interface ParsedQuery extends GObject.Object, ParsedQuery.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get command(): SqlCommand;
 
         // Methods
@@ -57691,7 +57841,13 @@ export namespace Vda {
     interface PreparedQuery extends GObject.Object, PreparedQuery.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get parameters(): SqlParameters;
 
         // Methods
@@ -57765,7 +57921,13 @@ export namespace Vda {
     interface Query extends GObject.Object, Query.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get sql(): string;
+        /**
+         * @read-only
+         */
         get connection(): Connection;
 
         // Methods
@@ -57910,6 +58072,9 @@ export namespace Vda {
     interface Role extends GObject.Object, Role.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get connection(): Connection;
 
         // Methods
@@ -58052,7 +58217,13 @@ export namespace Vda {
     interface RowModel extends GObject.Object, RowModel.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get n_columns(): number;
+        /**
+         * @read-only
+         */
         get nColumns(): number;
 
         // Methods
@@ -58119,6 +58290,9 @@ export namespace Vda {
     interface SqlAffectedRows extends GObject.Object, SqlAffectedRows.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get number(): number;
 
         // Methods
@@ -58161,6 +58335,9 @@ export namespace Vda {
     interface SqlCommand extends GObject.Object, SqlCommand.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get connection(): Connection;
 
         // Methods
@@ -58203,6 +58380,9 @@ export namespace Vda {
     interface SqlCommandConditional extends GObject.Object, SqlCommandConditional.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get condition(): SqlExpression;
 
         // Methods
@@ -58387,7 +58567,13 @@ export namespace Vda {
     interface SqlCommandModification extends GObject.Object, SqlCommandModification.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get fields(): HashModel;
+        /**
+         * @read-only
+         */
         get values(): HashModel;
 
         // Methods
@@ -58455,6 +58641,9 @@ export namespace Vda {
     interface SqlCommandParametrized extends GObject.Object, SqlCommandParametrized.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get parameters(): SqlParameters;
 
         // Methods
@@ -58541,7 +58730,13 @@ export namespace Vda {
     interface SqlCommandSelect extends GObject.Object, SqlCommandSelect.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get fields(): HashModel;
+        /**
+         * @read-only
+         */
         get tables(): HashModel;
 
         // Methods
@@ -59122,7 +59317,13 @@ export namespace Vda {
     interface SqlExpressionOperator extends GObject.Object, SqlExpressionOperator.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get operator_type(): SqlExpressionOperatorType;
+        /**
+         * @read-only
+         */
         get operatorType(): SqlExpressionOperatorType;
 
         // Methods
@@ -60778,6 +60979,9 @@ export namespace Vda {
     interface SqlValue extends GObject.Object, SqlValue.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get name(): string;
 
         // Methods
@@ -60915,6 +61119,9 @@ export namespace Vda {
     interface SqlValueXml extends GObject.Object, SqlValueXml.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get document(): GXml.DomDocument;
 
         // Methods
@@ -60957,6 +61164,9 @@ export namespace Vda {
     interface SqlValueJson extends GObject.Object, SqlValueJson.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get document(): Json.Node;
 
         // Methods
@@ -61651,6 +61861,9 @@ export namespace Vda {
     interface SqlValueBinary extends GObject.Object, SqlValueBinary.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
 
         // Methods
@@ -61715,6 +61928,9 @@ export namespace Vda {
     interface SqlValueBlob extends GObject.Object, SqlValueBlob.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get connection(): Connection;
 
         // Methods
@@ -61770,6 +61986,9 @@ export namespace Vda {
     interface SqlValueBlobOid extends GObject.Object, SqlValueBlobOid.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get identification(): number;
 
         // Methods

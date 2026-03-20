@@ -60,6 +60,7 @@ export namespace GtkSpell {
              * The ::language-changed signal is emitted when the user selects
              * a new spelling language from the context menu.
              * @signal
+             * @run-last
              */
             'language-changed': (arg0: string) => void;
             'notify::decode-language-codes': (pspec: GObject.ParamSpec) => void;

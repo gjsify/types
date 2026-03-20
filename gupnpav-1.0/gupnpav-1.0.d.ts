@@ -124,6 +124,9 @@ export namespace GUPnPAV {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SearchCriteriaOp {
         export const $gtype: GObject.GType<SearchCriteriaOp>;
     }
@@ -200,6 +203,9 @@ export namespace GUPnPAV {
      */
     function format_date_time_for_didl_lite(date_time: GLib.DateTime, date_only: boolean): string;
     function protocol_error_quark(): GLib.Quark;
+    /**
+     * @gir-type Flags
+     */
     export namespace DLNAConversion {
         export const $gtype: GObject.GType<DLNAConversion>;
     }
@@ -219,6 +225,9 @@ export namespace GUPnPAV {
         TRANSCODED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DLNAFlags {
         export const $gtype: GObject.GType<DLNAFlags>;
     }
@@ -304,6 +313,9 @@ export namespace GUPnPAV {
         LOP_CLEARTEXT_BYTESEEK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DLNAOperation {
         export const $gtype: GObject.GType<DLNAOperation>;
     }
@@ -327,6 +339,9 @@ export namespace GUPnPAV {
         TIMESEEK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace OCMFlags {
         export const $gtype: GObject.GType<OCMFlags>;
     }
@@ -718,10 +733,12 @@ export namespace GUPnPAV {
         set role(val: string);
         /**
          * The pointer to object node in XML document.
+         * @construct-only
          */
         get xml_node(): any;
         /**
          * The pointer to object node in XML document.
+         * @construct-only
          */
         get xmlNode(): any;
 
@@ -849,10 +866,12 @@ export namespace GUPnPAV {
         set includeDerived(val: boolean);
         /**
          * The pointer to desc node in XML document.
+         * @construct-only
          */
         get xml_node(): any;
         /**
          * The pointer to desc node in XML document.
+         * @construct-only
          */
         get xmlNode(): any;
 
@@ -997,10 +1016,12 @@ export namespace GUPnPAV {
         set nameSpace(val: string);
         /**
          * The pointer to desc node in XML document.
+         * @construct-only
          */
         get xml_node(): any;
         /**
          * The pointer to desc node in XML document.
+         * @construct-only
          */
         get xmlNode(): any;
 
@@ -1326,11 +1347,13 @@ export namespace GUPnPAV {
         /**
          * Pointer to the DublinCore namespace registered with the XML document
          * containing this object.
+         * @construct-only
          */
         get dc_namespace(): any;
         /**
          * Pointer to the DublinCore namespace registered with the XML document
          * containing this object.
+         * @construct-only
          */
         get dcNamespace(): any;
         /**
@@ -1351,11 +1374,13 @@ export namespace GUPnPAV {
         /**
          * Pointer to the DLNA metadata namespace registered with the XML
          * document containing this object.
+         * @construct-only
          */
         get dlna_namespace(): any;
         /**
          * Pointer to the DLNA metadata namespace registered with the XML
          * document containing this object.
+         * @construct-only
          */
         get dlnaNamespace(): any;
         /**
@@ -1381,11 +1406,13 @@ export namespace GUPnPAV {
         /**
          * Pointer to the PV metadata namespace registered with the XML
          * document containing this object.
+         * @construct-only
          */
         get pv_namespace(): any;
         /**
          * Pointer to the PV metadata namespace registered with the XML
          * document containing this object.
+         * @construct-only
          */
         get pvNamespace(): any;
         /**
@@ -1431,11 +1458,13 @@ export namespace GUPnPAV {
         /**
          * Pointer to the UPnP namespace registered with the XML document
          * containing this object.
+         * @construct-only
          */
         get upnp_namespace(): any;
         /**
          * Pointer to the UPnP namespace registered with the XML document
          * containing this object.
+         * @construct-only
          */
         get upnpNamespace(): any;
         /**
@@ -1450,10 +1479,12 @@ export namespace GUPnPAV {
         set writeStatus(val: string);
         /**
          * The pointer to object node in XML document.
+         * @construct-only
          */
         get xml_node(): any;
         /**
          * The pointer to object node in XML document.
+         * @construct-only
          */
         get xmlNode(): any;
 
@@ -1845,18 +1876,21 @@ export namespace GUPnPAV {
              * The ::container-available signal is emitted each time a container is
              * found in the DIDL-Lite XML being parsed.
              * @signal
+             * @run-last
              */
             'container-available': (arg0: DIDLLiteContainer) => void;
             /**
              * The ::item-available signal is emitted each time an item is found in
              * the DIDL-Lite XML being parsed.
              * @signal
+             * @run-last
              */
             'item-available': (arg0: DIDLLiteItem) => void;
             /**
              * The ::object-available signal is emitted each time an object is
              * found in the DIDL-Lite XML being parsed.
              * @signal
+             * @run-last
              */
             'object-available': (arg0: DIDLLiteObject) => void;
         }
@@ -2059,11 +2093,13 @@ export namespace GUPnPAV {
         /**
          * Pointer to the DLNA metadata namespace registered with the
          * resource object.
+         * @construct-only
          */
         get dlna_namespace(): any;
         /**
          * Pointer to the DLNA metadata namespace registered with the
          * resource object.
+         * @construct-only
          */
         get dlnaNamespace(): any;
         /**
@@ -2104,11 +2140,13 @@ export namespace GUPnPAV {
         /**
          * Pointer to the PV metadata namespace registered with the
          * resource object.
+         * @construct-only
          */
         get pv_namespace(): any;
         /**
          * Pointer to the PV metadata namespace registered with the
          * resource object.
+         * @construct-only
          */
         get pvNamespace(): any;
         /**
@@ -2177,10 +2215,12 @@ export namespace GUPnPAV {
         set width(val: number);
         /**
          * The pointer to res node in XML document.
+         * @construct-only
          */
         get xml_node(): any;
         /**
          * The pointer to res node in XML document.
+         * @construct-only
          */
         get xmlNode(): any;
 
@@ -2489,14 +2529,17 @@ export namespace GUPnPAV {
 
         /**
          * The language the DIDL-Lite fragment is in.
+         * @construct-only
          */
         get language(): string;
         /**
          * The pointer to root node in XML document.
+         * @read-only
          */
         get xml_node(): any;
         /**
          * The pointer to root node in XML document.
+         * @read-only
          */
         get xmlNode(): any;
 
@@ -2609,18 +2652,22 @@ export namespace GUPnPAV {
 
         /**
          * The name of this feature.
+         * @construct-only
          */
         get name(): string;
         /**
          * The object IDs related to this feature.
+         * @construct-only
          */
         get object_ids(): string;
         /**
          * The object IDs related to this feature.
+         * @construct-only
          */
         get objectIds(): string;
         /**
          * The version of this feature.
+         * @construct-only
          */
         get version(): string;
 
@@ -2833,10 +2880,12 @@ export namespace GUPnPAV {
          * Block of data to parse a collection from. If data is set upon
          * construction it will override the other properties and create a
          * unmutable collection parsed from data.
+         * @construct-only
          */
         set data(val: string);
         /**
          * Whether this media collation is modifyable or not.
+         * @read-only
          */
         get mutable(): boolean;
         /**
@@ -3179,30 +3228,35 @@ export namespace GUPnPAV {
              * The ::begin_parens signal is emitted to mark the beginning of a
              * parenthetical expression.
              * @signal
+             * @run-last
              */
             'begin-parens': () => void;
             /**
              * The ::conjuction signal is emitted whenever a conjuction marker
              * &lpar;and&rpar; is parsed.
              * @signal
+             * @run-last
              */
             conjunction: () => void;
             /**
              * The ::disjuction signal is emitted whenever a disjuction marker
              * &lpar;or&rpar is parsed.
              * @signal
+             * @run-last
              */
             disjunction: () => void;
             /**
              * The ::end_parens signal is emitted to mark the end of a parenthetical
              * expression.
              * @signal
+             * @run-last
              */
             'end-parens': () => void;
             /**
              * The ::expression signal is emitted whenever an expression is parsed.
              * Set `error` and return `false` if an error occurred.
              * @signal
+             * @run-last
              */
             expression: (arg0: string, arg1: SearchCriteriaOp, arg2: string, arg3: any | null) => boolean | void;
         }

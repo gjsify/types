@@ -18,6 +18,9 @@ export namespace GUdev {
      * GUdev-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceType {
         export const $gtype: GObject.GType<DeviceType>;
     }
@@ -58,6 +61,7 @@ export namespace GUdev {
              * <link linkend="g-main-context-push-thread-default">thread-default main loop</link>
              * of the thread that `client` was created in.
              * @signal
+             * @run-last
              */
             uevent: (arg0: string, arg1: Device) => void;
             'notify::subsystems': (pspec: GObject.ParamSpec) => void;
@@ -110,6 +114,7 @@ export namespace GUdev {
          * If this property is `null`, then no events will be reported. If
          * it's the empty array, events from all subsystems will be
          * reported.
+         * @construct-only
          */
         get subsystems(): string[];
 
@@ -631,6 +636,7 @@ export namespace GUdev {
         /**
          * The {@link GUdev.Client} to enumerate devices from.
          * @since 165
+         * @construct-only
          */
         get client(): Client;
 

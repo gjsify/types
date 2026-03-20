@@ -31,6 +31,9 @@ export namespace Workbench {
      * Workbench-0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RequestState {
         export const $gtype: GObject.GType<RequestState>;
     }
@@ -64,6 +67,7 @@ export namespace Workbench {
              * (both synchronous and asynchronous), with a request object that allows
              * handlers to negotiate the completion of asynchronous requests manually.
              * @signal
+             * @run-last
              */
             'completion-request': (arg0: CompletionRequest) => void;
         }
@@ -924,29 +928,38 @@ export namespace Workbench {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get cancellable(): Gio.Cancellable;
         /**
          * The {@link GtkSource.CompletionContext} of the request.
+         * @construct-only
          */
         get context(): GtkSource.CompletionContext;
         /**
          * The {@link GtkSource.CompletionProposal} type.
+         * @read-only
          */
         get item_type(): GObject.GType;
         /**
          * The {@link GtkSource.CompletionProposal} type.
+         * @read-only
          */
         get itemType(): GObject.GType;
         /**
          * The current number of proposals.
+         * @read-only
          */
         get n_items(): number;
         /**
          * The current number of proposals.
+         * @read-only
          */
         get nItems(): number;
         /**
          * The {@link GtkSource.CompletionProvider} of the request.
+         * @construct-only
          */
         get provider(): GtkSource.CompletionProvider;
         /**
@@ -957,6 +970,7 @@ export namespace Workbench {
          *
          * If a handler does not change the state, the value is guaranteed to change
          * to `WORKBENCH_REQUEST_STATE_CANCELLED` before finalization.
+         * @read-only
          */
         get state(): RequestState;
 
@@ -1771,6 +1785,7 @@ export namespace Workbench {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -1779,6 +1794,7 @@ export namespace Workbench {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -1818,21 +1834,25 @@ export namespace Workbench {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -2051,6 +2071,7 @@ export namespace Workbench {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -2070,16 +2091,19 @@ export namespace Workbench {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;

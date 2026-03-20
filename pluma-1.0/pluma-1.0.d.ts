@@ -30,6 +30,9 @@ export namespace Pluma {
      * Pluma-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DocumentNewlineType {
         export const $gtype: GObject.GType<DocumentNewlineType>;
     }
@@ -43,6 +46,9 @@ export namespace Pluma {
         CR_LF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TabState {
         export const $gtype: GObject.GType<TabState>;
     }
@@ -367,6 +373,9 @@ export namespace Pluma {
     interface MessageTypeForeach {
         (key: string, type: GObject.GType, required: boolean): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace DebugSection {
         export const $gtype: GObject.GType<DebugSection>;
     }
@@ -393,6 +402,9 @@ export namespace Pluma {
         DEBUG_SAVER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DocumentSaveFlags {
         export const $gtype: GObject.GType<DocumentSaveFlags>;
     }
@@ -415,6 +427,9 @@ export namespace Pluma {
         PRESERVE_BACKUP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace LockdownMask {
         export const $gtype: GObject.GType<LockdownMask>;
     }
@@ -430,6 +445,9 @@ export namespace Pluma {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SearchFlags {
         export const $gtype: GObject.GType<SearchFlags>;
     }
@@ -445,6 +463,9 @@ export namespace Pluma {
         MATCH_REGEX,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WindowState {
         export const $gtype: GObject.GType<WindowState>;
     }
@@ -482,6 +503,9 @@ export namespace Pluma {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get lockdown(): LockdownMask;
 
         /**
@@ -573,36 +597,44 @@ export namespace Pluma {
         interface SignalSignatures extends GtkSource.Buffer.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'cursor-moved': () => void;
             /**
              * The "load" signal is emitted when a document is loaded.
              * @signal
+             * @run-last
              */
             load: (arg0: string, arg1: Encoding, arg2: number, arg3: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             loaded: (arg0: any | null) => void;
             /**
              * @signal
+             * @run-last
              */
             loading: (arg0: number, arg1: number) => void;
             /**
              * The "save" signal is emitted when the document is saved.
              * @signal
+             * @run-last
              */
             save: (arg0: string, arg1: Encoding, arg2: DocumentSaveFlags) => void;
             /**
              * @signal
+             * @run-last
              */
             saved: (arg0: any | null) => void;
             /**
              * @signal
+             * @run-last
              */
             saving: (arg0: number, arg1: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'search-highlight-updated': (arg0: Gtk.TextIter, arg1: Gtk.TextIter) => void;
             'notify::can-search-again': (pspec: GObject.ParamSpec) => void;
@@ -660,7 +692,13 @@ export namespace Pluma {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get can_search_again(): boolean;
+        /**
+         * @read-only
+         */
         get canSearchAgain(): boolean;
         get content_type(): string;
         set content_type(val: string);
@@ -670,8 +708,17 @@ export namespace Pluma {
         set enable_search_highlighting(val: boolean);
         get enableSearchHighlighting(): boolean;
         set enableSearchHighlighting(val: boolean);
+        /**
+         * @read-only
+         */
         get encoding(): Encoding;
+        /**
+         * @read-only
+         */
         get mime_type(): string;
+        /**
+         * @read-only
+         */
         get mimeType(): string;
         /**
          * The :newline-type property determines what is considered
@@ -685,10 +732,19 @@ export namespace Pluma {
          */
         get newlineType(): DocumentNewlineType;
         set newlineType(val: DocumentNewlineType);
+        /**
+         * @read-only
+         */
         get read_only(): boolean;
+        /**
+         * @read-only
+         */
         get readOnly(): boolean;
         get shortname(): string;
         set shortname(val: string);
+        /**
+         * @read-only
+         */
         get uri(): string;
 
         /**
@@ -1115,9 +1171,15 @@ export namespace Pluma {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -1431,6 +1493,7 @@ export namespace Pluma {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -1438,6 +1501,7 @@ export namespace Pluma {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -1559,6 +1623,7 @@ export namespace Pluma {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -5837,10 +5902,20 @@ export namespace Pluma {
 
         /**
          * The messages method.
+         * @read-only
          */
         get method(): string;
+        /**
+         * @read-only
+         */
         get object_path(): string;
+        /**
+         * @read-only
+         */
         get objectPath(): string;
+        /**
+         * @construct-only
+         */
         get type(): MessageType;
 
         /**
@@ -5938,18 +6013,21 @@ export namespace Pluma {
              * (for instance to automatically dispatch all messages over DBus).
              * 2
              * @signal
+             * @run-last
              */
             dispatch: (arg0: Message) => void;
             /**
              * The "registered" signal is emitted when a message has been registered
              * on the bus.
              * @signal
+             * @run-last
              */
             registered: (arg0: MessageType) => void;
             /**
              * The "unregistered" signal is emitted when a message has been
              * unregistered from the bus.
              * @signal
+             * @run-last
              */
             unregistered: (arg0: MessageType) => void;
         }
@@ -6144,22 +6222,27 @@ export namespace Pluma {
         interface SignalSignatures extends Gtk.Notebook.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'tab-added': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-last
              */
             'tab-close-request': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'tab-detached': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'tab-removed': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'tabs-reordered': () => void;
             'notify::enable-popup': (pspec: GObject.ParamSpec) => void;
@@ -6810,18 +6893,24 @@ export namespace Pluma {
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             close: () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'focus-document': () => void;
             /**
              * @signal
+             * @run-first
              */
             'item-added': (arg0: Gtk.Widget) => void;
             /**
              * @signal
+             * @run-first
              */
             'item-removed': (arg0: Gtk.Widget) => void;
             'notify::panel-orientation': (pspec: GObject.ParamSpec) => void;
@@ -6894,7 +6983,13 @@ export namespace Pluma {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get panel_orientation(): Gtk.Orientation;
+        /**
+         * @construct-only
+         */
         get panelOrientation(): Gtk.Orientation;
 
         /**
@@ -7543,7 +7638,13 @@ export namespace Pluma {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set has_cancel_button(val: boolean);
+        /**
+         * @construct-only
+         */
         set hasCancelButton(val: boolean);
 
         /**
@@ -8064,6 +8165,7 @@ export namespace Pluma {
         interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: (arg0: Gtk.MenuItem) => void;
             'notify::label': (pspec: GObject.ParamSpec) => void;
@@ -9322,7 +9424,13 @@ export namespace Pluma {
         set autosave_interval(val: number);
         get autosaveInterval(): number;
         set autosaveInterval(val: number);
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get state(): TabState;
 
         /**
@@ -9896,18 +10004,26 @@ export namespace Pluma {
         interface SignalSignatures extends GtkSource.View.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'drop-uris': (arg0: string[]) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'reset-searched-text': () => boolean | void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'start-interactive-goto-line': () => boolean | void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'start-interactive-search': () => boolean | void;
             'notify::auto-indent': (pspec: GObject.ParamSpec) => void;
@@ -10556,22 +10672,27 @@ export namespace Pluma {
         interface SignalSignatures extends Gtk.Window.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'active-tab-changed': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'active-tab-state-changed': () => void;
             /**
              * @signal
+             * @run-first
              */
             'tab-added': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'tab-removed': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'tabs-reordered': () => void;
             'notify::state': (pspec: GObject.ParamSpec) => void;
@@ -10668,6 +10789,9 @@ export namespace Pluma {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get state(): WindowState;
 
         /**
@@ -11594,6 +11718,7 @@ export namespace Pluma {
         /**
          * The app property contains the pluma app for this
          * {@link Pluma.AppActivatable} instance.
+         * @construct-only
          */
         get app(): App;
 
@@ -11653,6 +11778,7 @@ export namespace Pluma {
         /**
          * The window property contains the pluma window for this
          * {@link Pluma.ViewActivatable} instance.
+         * @construct-only
          */
         get view(): View;
 
@@ -11718,6 +11844,7 @@ export namespace Pluma {
         /**
          * The window property contains the pluma window for this
          * {@link Pluma.WindowActivatable} instance.
+         * @construct-only
          */
         get window(): Window;
 

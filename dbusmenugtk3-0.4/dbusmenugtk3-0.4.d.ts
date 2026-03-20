@@ -294,9 +294,21 @@ export namespace DbusmenuGtk3 {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get dbus_name(): string;
+        /**
+         * @construct-only
+         */
         get dbusName(): string;
+        /**
+         * @construct-only
+         */
         get dbus_object(): string;
+        /**
+         * @construct-only
+         */
         get dbusObject(): string;
 
         /**

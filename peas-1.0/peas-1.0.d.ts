@@ -78,6 +78,7 @@ export namespace Peas {
              * plugin is loaded (the most common case), you should use
              * {@link GObject.signal_connect_after}.
              * @signal
+             * @run-last
              */
             'load-plugin': (arg0: PluginInfo) => void;
             /**
@@ -89,6 +90,7 @@ export namespace Peas {
              * some action after the plugin is unloaded (the most common case), you should
              * use {@link GObject.signal_connect_after}.
              * @signal
+             * @run-last
              */
             'unload-plugin': (arg0: PluginInfo) => void;
             'notify::loaded-plugins': (pspec: GObject.ParamSpec) => void;
@@ -165,6 +167,7 @@ export namespace Peas {
          *
          * See {@link Engine.new_with_nonglobal_loaders} for more information.
          * @since 1.14
+         * @construct-only
          */
         get nonglobal_loaders(): boolean;
         /**
@@ -172,6 +175,7 @@ export namespace Peas {
          *
          * See {@link Engine.new_with_nonglobal_loaders} for more information.
          * @since 1.14
+         * @construct-only
          */
         get nonglobalLoaders(): boolean;
         /**
@@ -180,6 +184,7 @@ export namespace Peas {
          * This will be modified when {@link Engine.rescan_plugins} is called.
          *
          * Note: the list belongs to the engine and should not be modified or freed.
+         * @read-only
          */
         get plugin_list(): any;
         /**
@@ -188,6 +193,7 @@ export namespace Peas {
          * This will be modified when {@link Engine.rescan_plugins} is called.
          *
          * Note: the list belongs to the engine and should not be modified or freed.
+         * @read-only
          */
         get pluginList(): any;
 
@@ -443,6 +449,7 @@ export namespace Peas {
          *
          * Note: This is the same path as that returned by
          * {@link PluginInfo.get_data_dir}.
+         * @read-only
          */
         get data_dir(): string;
         /**
@@ -451,14 +458,17 @@ export namespace Peas {
          *
          * Note: This is the same path as that returned by
          * {@link PluginInfo.get_data_dir}.
+         * @read-only
          */
         get dataDir(): string;
         /**
          * The {@link PluginInfo} related to the current plugin.
+         * @construct-only
          */
         get plugin_info(): PluginInfo;
         /**
          * The {@link PluginInfo} related to the current plugin.
+         * @construct-only
          */
         get pluginInfo(): PluginInfo;
 
@@ -527,6 +537,7 @@ export namespace Peas {
              * from plugins that were already loaded when the {@link Peas.ExtensionSet} instance
              * was created. You should set those up by yourself.
              * @signal
+             * @run-last
              */
             'extension-added': (arg0: PluginInfo, arg1: GObject.Object) => void;
             /**
@@ -541,6 +552,7 @@ export namespace Peas {
              * {@link Extension} instances still available when the {@link Peas.ExtensionSet}
              * instance is destroyed. You should clean those up by yourself.
              * @signal
+             * @run-last
              */
             'extension-removed': (arg0: PluginInfo, arg1: GObject.Object) => void;
             'notify::construct-properties': (pspec: GObject.ParamSpec) => void;
@@ -570,10 +582,25 @@ export namespace Peas {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set construct_properties(val: any);
+        /**
+         * @construct-only
+         */
         set constructProperties(val: any);
+        /**
+         * @construct-only
+         */
         get engine(): Engine;
+        /**
+         * @construct-only
+         */
         get extension_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get extensionType(): GObject.GType;
 
         /**
@@ -1240,18 +1267,35 @@ export namespace Peas {
          * Whether the module is loaded with local linkage, i.e. #G_MODULE_BIND_LOCAL.
          *
          * Since 1.14
+         * @construct-only
          */
         get local_linkage(): boolean;
         /**
          * Whether the module is loaded with local linkage, i.e. #G_MODULE_BIND_LOCAL.
          *
          * Since 1.14
+         * @construct-only
          */
         get localLinkage(): boolean;
+        /**
+         * @construct-only
+         */
         get module_name(): string;
+        /**
+         * @construct-only
+         */
         get moduleName(): string;
+        /**
+         * @construct-only
+         */
         get path(): string;
+        /**
+         * @construct-only
+         */
         get resident(): boolean;
+        /**
+         * @construct-only
+         */
         get symbol(): string;
 
         /**
@@ -2109,6 +2153,7 @@ export namespace Peas {
          *
          * For example a toplevel window in a typical windowed application. It is set
          * at construction time and won't change.
+         * @construct-only
          */
         get object(): GObject.Object;
 

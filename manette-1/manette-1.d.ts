@@ -20,6 +20,9 @@ export namespace Manette {
      * Manette-1
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Axis {
         export const $gtype: GObject.GType<Axis>;
     }
@@ -57,6 +60,9 @@ export namespace Manette {
         RIGHT_TRIGGER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Button {
         export const $gtype: GObject.GType<Button>;
     }
@@ -183,6 +189,9 @@ export namespace Manette {
         TOUCHPAD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceType {
         export const $gtype: GObject.GType<DeviceType>;
     }
@@ -263,41 +272,49 @@ export namespace Manette {
             /**
              * Emitted when value of `axis` changes.
              * @signal
+             * @run-last
              */
             'absolute-axis-changed': (arg0: Axis, arg1: number) => void;
             /**
              * Emitted when `button` is pressed.
              * @signal
+             * @run-last
              */
             'button-pressed': (arg0: Button) => void;
             /**
              * Emitted when `button` is released.
              * @signal
+             * @run-last
              */
             'button-released': (arg0: Button) => void;
             /**
              * Emitted when the device is disconnected.
              * @signal
+             * @run-last
              */
             disconnected: () => void;
             /**
              * Emitted when an unmapped absolute axis' value changes.
              * @signal
+             * @run-last
              */
             'unmapped-absolute-axis-changed': (arg0: number, arg1: number) => void;
             /**
              * Emitted when an unmapped button is pressed.
              * @signal
+             * @run-last
              */
             'unmapped-button-pressed': (arg0: number) => void;
             /**
              * Emitted when an unmapped button is released.
              * @signal
+             * @run-last
              */
             'unmapped-button-released': (arg0: number) => void;
             /**
              * Emitted when an unmapped hat axis' value changes.
              * @signal
+             * @run-last
              */
             'unmapped-hat-axis-changed': (arg0: number, arg1: number) => void;
         }
@@ -452,11 +469,13 @@ export namespace Manette {
             /**
              * Emitted when `device` is connected.
              * @signal
+             * @run-last
              */
             'device-connected': (arg0: Device) => void;
             /**
              * Emitted when `device` is disconnected.
              * @signal
+             * @run-last
              */
             'device-disconnected': (arg0: Device) => void;
         }

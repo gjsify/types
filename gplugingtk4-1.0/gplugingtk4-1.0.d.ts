@@ -94,6 +94,7 @@ export namespace GPluginGtk4 {
              * Emitted when the plugin page enable switch is toggled.
              * @signal
              * @since 0.39
+             * @run-last
              */
             'plugin-state-set': (arg0: boolean) => void;
             'notify::plugin': (pspec: GObject.ParamSpec) => void;
@@ -730,6 +731,7 @@ export namespace GPluginGtk4 {
              * Emitted when the plugin row enable switch is toggled.
              * @signal
              * @since 0.38
+             * @run-last
              */
             'plugin-state-set': (arg0: boolean) => void;
             'notify::plugin': (pspec: GObject.ParamSpec) => void;
@@ -945,6 +947,7 @@ export namespace GPluginGtk4 {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -953,6 +956,7 @@ export namespace GPluginGtk4 {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -992,21 +996,25 @@ export namespace GPluginGtk4 {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -1225,6 +1233,7 @@ export namespace GPluginGtk4 {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -1244,16 +1253,19 @@ export namespace GPluginGtk4 {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;

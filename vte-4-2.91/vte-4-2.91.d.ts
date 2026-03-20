@@ -30,6 +30,9 @@ export namespace Vte {
      * Vte-4-2.91
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Align {
         export const $gtype: GObject.GType<Align>;
     }
@@ -55,6 +58,9 @@ export namespace Vte {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CursorBlinkMode {
         export const $gtype: GObject.GType<CursorBlinkMode>;
     }
@@ -79,6 +85,9 @@ export namespace Vte {
         OFF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CursorShape {
         export const $gtype: GObject.GType<CursorShape>;
     }
@@ -104,6 +113,9 @@ export namespace Vte {
         UNDERLINE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EraseBinding {
         export const $gtype: GObject.GType<EraseBinding>;
     }
@@ -137,6 +149,9 @@ export namespace Vte {
         TTY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Format {
         export const $gtype: GObject.GType<Format>;
     }
@@ -218,6 +233,9 @@ export namespace Vte {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextBlinkMode {
         export const $gtype: GObject.GType<TextBlinkMode>;
     }
@@ -247,6 +265,9 @@ export namespace Vte {
         ALWAYS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WriteFlags {
         export const $gtype: GObject.GType<WriteFlags>;
     }
@@ -427,6 +448,9 @@ export namespace Vte {
         FLAGS_MASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PtyFlags {
         export const $gtype: GObject.GType<PtyFlags>;
     }
@@ -496,10 +520,12 @@ export namespace Vte {
 
         /**
          * The file descriptor of the PTY master.
+         * @construct-only
          */
         get fd(): number;
         /**
          * Flags.
+         * @construct-only
          */
         get flags(): PtyFlags;
 
@@ -1202,6 +1228,7 @@ export namespace Vte {
              * This signal is emitted when the a child sends a bell request to the
              * terminal.
              * @signal
+             * @run-last
              */
             bell: () => void;
             /**
@@ -1210,56 +1237,67 @@ export namespace Vte {
              *
              * Note that this signal should rather be called "cell-size-changed".
              * @signal
+             * @run-last
              */
             'char-size-changed': (arg0: number, arg1: number) => void;
             /**
              * This signal is emitted when the terminal detects that a child
              * watched using `vte_terminal_watch_child()` has exited.
              * @signal
+             * @run-last
              */
             'child-exited': (arg0: number) => void;
             /**
              * Emitted whenever the terminal receives input from the user and
              * prepares to send it to the child process.
              * @signal
+             * @run-last
              */
             commit: (arg0: string, arg1: number) => void;
             /**
              * Emitted whenever the visible appearance of the terminal has changed.
              * Used primarily by `VteTerminalAccessible`.
              * @signal
+             * @run-last
              */
             'contents-changed': () => void;
             /**
              * Emitted whenever `vte_terminal_copy_clipboard()` is called.
              * @signal
+             * @action
+             * @run-last
              */
             'copy-clipboard': () => void;
             /**
              * Emitted when the current directory URI is modified.
              * @signal
+             * @run-last
              */
             'current-directory-uri-changed': () => void;
             /**
              * Emitted when the current file URI is modified.
              * @signal
+             * @run-last
              */
             'current-file-uri-changed': () => void;
             /**
              * Emitted whenever the cursor moves to a new character cell.  Used
              * primarily by `VteTerminalAccessible`.
              * @signal
+             * @run-last
              */
             'cursor-moved': () => void;
             /**
              * Emitted when the user hits the '-' key while holding the Control key.
              * @signal
+             * @run-last
              */
             'decrease-font-size': () => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'deiconify-window': () => void;
             /**
@@ -1267,6 +1305,7 @@ export namespace Vte {
              *
              * Note: support for non-UTF-8 is deprecated.
              * @signal
+             * @run-last
              */
             'encoding-changed': () => void;
             /**
@@ -1274,6 +1313,7 @@ export namespace Vte {
              * is running in the terminal.  This signal is frequently (but not
              * always) emitted with a {@link Vte.Terminal.SignalSignatures.child_exited | Vte.Terminal::child-exited} signal.
              * @signal
+             * @run-last
              */
             eof: () => void;
             /**
@@ -1286,78 +1326,93 @@ export namespace Vte {
              * same hyperlink. This might change in a future VTE version without notice.
              * @signal
              * @since 0.50
+             * @run-last
              */
             'hyperlink-hover-uri-changed': (arg0: string, arg1: Gdk.Rectangle) => void;
             /**
              * @signal
              * @deprecated since 0.54: This signal is never emitted.
+             * @run-last
              */
             'icon-title-changed': () => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'iconify-window': () => void;
             /**
              * Emitted when the user hits the '+' key while holding the Control key.
              * @signal
+             * @run-last
              */
             'increase-font-size': () => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'lower-window': () => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'maximize-window': () => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'move-window': (arg0: number, arg1: number) => void;
             /**
              * Emitted whenever `vte_terminal_paste_clipboard()` is called.
              * @signal
+             * @action
+             * @run-last
              */
             'paste-clipboard': () => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'raise-window': () => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'refresh-window': () => void;
             /**
              * Emitted at the child application's request.
              * @signal
+             * @run-last
              */
             'resize-window': (arg0: number, arg1: number) => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'restore-window': () => void;
             /**
              * Emitted whenever the contents of terminal's selection changes.
              * @signal
+             * @run-last
              */
             'selection-changed': () => void;
             /**
              * Emitted when the {@link Vte.Terminal.window_title} property is modified.
              * @signal
+             * @run-last
              */
             'window-title-changed': () => void;
             'notify::allow-bold': (pspec: GObject.ParamSpec) => void;
@@ -1641,18 +1696,22 @@ export namespace Vte {
         set cjkAmbiguousWidth(val: number);
         /**
          * The current directory URI, or `null` if unset.
+         * @read-only
          */
         get current_directory_uri(): string;
         /**
          * The current directory URI, or `null` if unset.
+         * @read-only
          */
         get currentDirectoryUri(): string;
         /**
          * The current file URI, or `null` if unset.
+         * @read-only
          */
         get current_file_uri(): string;
         /**
          * The current file URI, or `null` if unset.
+         * @read-only
          */
         get currentFileUri(): string;
         /**
@@ -1769,19 +1828,23 @@ export namespace Vte {
         /**
          * The currently hovered hyperlink URI, or `null` if unset.
          * @since 0.50
+         * @read-only
          */
         get hyperlink_hover_uri(): string;
         /**
          * The currently hovered hyperlink URI, or `null` if unset.
          * @since 0.50
+         * @read-only
          */
         get hyperlinkHoverUri(): string;
         /**
          * @deprecated since 0.54: This property is always `null`.
+         * @read-only
          */
         get icon_title(): string;
         /**
          * @deprecated since 0.54: This property is always `null`.
+         * @read-only
          */
         get iconTitle(): string;
         /**
@@ -1907,10 +1970,12 @@ export namespace Vte {
         set textBlinkMode(val: TextBlinkMode);
         /**
          * The terminal's title.
+         * @read-only
          */
         get window_title(): string;
         /**
          * The terminal's title.
+         * @read-only
          */
         get windowTitle(): string;
         /**
@@ -1920,6 +1985,7 @@ export namespace Vte {
          *
          * If `null`, a built-in set is used.
          * @since 0.40
+         * @read-only
          */
         get word_char_exceptions(): string;
         /**
@@ -1929,6 +1995,7 @@ export namespace Vte {
          *
          * If `null`, a built-in set is used.
          * @since 0.40
+         * @read-only
          */
         get wordCharExceptions(): string;
         /**

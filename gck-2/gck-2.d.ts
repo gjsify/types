@@ -20,6 +20,9 @@ export namespace Gck {
      * Gck-2
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BuilderFlags {
         export const $gtype: GObject.GType<BuilderFlags>;
     }
@@ -303,6 +306,9 @@ export namespace Gck {
     interface Allocator {
         (data: any | null, length: number): any | null;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace SessionOptions {
         export const $gtype: GObject.GType<SessionOptions>;
     }
@@ -330,6 +336,9 @@ export namespace Gck {
         AUTHENTICATE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace UriFlags {
         export const $gtype: GObject.GType<UriFlags>;
     }
@@ -584,6 +593,7 @@ export namespace Gck {
          * The raw PKCS&num;11 function list for the module.
          *
          * This points to a CK_FUNCTION_LIST structure.
+         * @construct-only
          */
         get functions(): any;
         /**
@@ -591,6 +601,7 @@ export namespace Gck {
          *
          * This may be set to NULL if this object was created from an already
          * initialized module via the `gck_module_new()` function.
+         * @construct-only
          */
         get path(): string;
 
@@ -745,10 +756,12 @@ export namespace Gck {
 
         /**
          * The raw PKCS11 handle for this object.
+         * @construct-only
          */
         get handle(): number;
         /**
          * The GckModule that this object belongs to.
+         * @construct-only
          */
         get module(): Module;
         /**
@@ -757,6 +770,7 @@ export namespace Gck {
          *
          * If this is NULL then a new session is opened for each operation,
          * such as `gck_object_get()`, `gck_object_set()` or `gck_object_destroy()`.
+         * @construct-only
          */
         get session(): Session;
 
@@ -1293,15 +1307,18 @@ export namespace Gck {
         /**
          * The PKCS#11 key that the password is being requested for. If this
          * is set then the GckPassword:token property will be `null`
+         * @construct-only
          */
         get key(): Object;
         /**
          * The PKCS#11 module that is requesting the password
+         * @read-only
          */
         get module(): Module;
         /**
          * The PKCS#11 token the password is for, if this is set then
          * the GckPassword:object property will be `null`
+         * @construct-only
          */
         get token(): Slot;
 
@@ -1371,6 +1388,7 @@ export namespace Gck {
              *
              * If no signal handler claims the handle, then it is closed.
              * @signal
+             * @run-last
              */
             'discard-handle': (arg0: number) => boolean | void;
             'notify::app-data': (pspec: GObject.ParamSpec) => void;
@@ -1412,14 +1430,17 @@ export namespace Gck {
 
         /**
          * Raw PKCS#11 application data used to open the PKCS#11 session.
+         * @construct-only
          */
         set app_data(val: any);
         /**
          * Raw PKCS#11 application data used to open the PKCS#11 session.
+         * @construct-only
          */
         set appData(val: any);
         /**
          * The raw CK_SESSION_HANDLE handle of this session.
+         * @construct-only
          */
         get handle(): number;
         /**
@@ -1431,22 +1452,27 @@ export namespace Gck {
         set interaction(val: Gio.TlsInteraction);
         /**
          * The GckModule that this session is opened on.
+         * @read-only
          */
         get module(): Module;
         /**
          * Raw PKCS#11 flags used to open the PKCS#11 session.
+         * @construct-only
          */
         set opening_flags(val: number);
         /**
          * Raw PKCS#11 flags used to open the PKCS#11 session.
+         * @construct-only
          */
         set openingFlags(val: number);
         /**
          * The options this session was opened with.
+         * @construct-only
          */
         get options(): SessionOptions;
         /**
          * The GckSlot this session is opened on.
+         * @construct-only
          */
         get slot(): Slot;
 
@@ -3467,10 +3493,12 @@ export namespace Gck {
 
         /**
          * The raw CK_SLOT_ID handle of this slot.
+         * @construct-only
          */
         get handle(): number;
         /**
          * The PKCS11 object that this slot is a part of.
+         * @construct-only
          */
         get module(): Module;
 

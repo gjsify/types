@@ -21,6 +21,9 @@ export namespace GstTag {
      * GstTag-0.10
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DemuxResult {
         export const $gtype: GObject.GType<DemuxResult>;
     }
@@ -36,6 +39,9 @@ export namespace GstTag {
         OK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ImageType {
         export const $gtype: GObject.GType<ImageType>;
     }

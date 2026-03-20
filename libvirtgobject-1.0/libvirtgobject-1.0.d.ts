@@ -23,6 +23,9 @@ export namespace LibvirtGObject {
      * LibvirtGObject-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainDeleteFlags {
         export const $gtype: GObject.GType<DomainDeleteFlags>;
     }
@@ -48,6 +51,9 @@ export namespace LibvirtGObject {
         KEEP_NVRAM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainRebootFlags {
         export const $gtype: GObject.GType<DomainRebootFlags>;
     }
@@ -70,6 +76,9 @@ export namespace LibvirtGObject {
         GUEST_AGENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainShutdownFlags {
         export const $gtype: GObject.GType<DomainShutdownFlags>;
     }
@@ -92,6 +101,9 @@ export namespace LibvirtGObject {
         GUEST_AGENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainSnapshotCreateFlags {
         export const $gtype: GObject.GType<DomainSnapshotCreateFlags>;
     }
@@ -139,6 +151,9 @@ export namespace LibvirtGObject {
         ATOMIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainSnapshotDeleteFlags {
         export const $gtype: GObject.GType<DomainSnapshotDeleteFlags>;
     }
@@ -161,6 +176,9 @@ export namespace LibvirtGObject {
         CHILDREN_ONLY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainSnapshotListFlags {
         export const $gtype: GObject.GType<DomainSnapshotListFlags>;
     }
@@ -221,6 +239,9 @@ export namespace LibvirtGObject {
         EXTERNAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainSnapshotRevertFlags {
         export const $gtype: GObject.GType<DomainSnapshotRevertFlags>;
     }
@@ -243,6 +264,9 @@ export namespace LibvirtGObject {
         FORCE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainState {
         export const $gtype: GObject.GType<DomainState>;
     }
@@ -261,6 +285,9 @@ export namespace LibvirtGObject {
         PMSUSPENDED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainUpdateDeviceFlags {
         export const $gtype: GObject.GType<DomainUpdateDeviceFlags>;
     }
@@ -283,6 +310,9 @@ export namespace LibvirtGObject {
         CONFIG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DomainXMLFlags {
         export const $gtype: GObject.GType<DomainXMLFlags>;
     }
@@ -309,6 +339,9 @@ export namespace LibvirtGObject {
         UPDATE_CPU,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IPAddrType {
         export const $gtype: GObject.GType<IPAddrType>;
     }
@@ -327,6 +360,9 @@ export namespace LibvirtGObject {
         IPV6,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StoragePoolState {
         export const $gtype: GObject.GType<StoragePoolState>;
     }
@@ -342,6 +378,9 @@ export namespace LibvirtGObject {
         INACCESSIBLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StorageVolResizeFlags {
         export const $gtype: GObject.GType<StorageVolResizeFlags>;
     }
@@ -369,6 +408,9 @@ export namespace LibvirtGObject {
         SHRINK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StorageVolType {
         export const $gtype: GObject.GType<StorageVolType>;
     }
@@ -452,6 +494,9 @@ export namespace LibvirtGObject {
      * @gir-type Alias
      */
     type StreamHandle = object | null;
+    /**
+     * @gir-type Flags
+     */
     export namespace DomainStartFlags {
         export const $gtype: GObject.GType<DomainStartFlags>;
     }
@@ -467,6 +512,9 @@ export namespace LibvirtGObject {
         FORCE_BOOT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StreamIOCondition {
         export const $gtype: GObject.GType<StreamIOCondition>;
     }
@@ -486,18 +534,22 @@ export namespace LibvirtGObject {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'connection-closed': () => void;
             /**
              * @signal
+             * @run-first
              */
             'connection-opened': () => void;
             /**
              * @signal
+             * @run-first
              */
             'domain-added': (arg0: Domain) => void;
             /**
              * @signal
+             * @run-first
              */
             'domain-removed': (arg0: Domain) => void;
             'notify::handle': (pspec: GObject.ParamSpec) => void;
@@ -520,7 +572,13 @@ export namespace LibvirtGObject {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): ConnectionHandle;
+        /**
+         * @construct-only
+         */
         get uri(): string;
 
         /**
@@ -1036,68 +1094,99 @@ export namespace LibvirtGObject {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             pmsuspended: () => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             resumed: () => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             started: () => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             stopped: () => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             suspended: () => void;
             /**
              * @signal
+             * @run-last
              */
             updated: () => void;
             'notify::handle': (pspec: GObject.ParamSpec) => void;
             'notify::persistent': (pspec: GObject.ParamSpec) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'pmsuspended::handle': () => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'pmsuspended::persistent': () => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'resumed::handle': () => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'resumed::persistent': () => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'started::handle': () => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'started::persistent': () => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'stopped::handle': () => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'stopped::persistent': () => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'suspended::handle': () => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'suspended::persistent': () => void;
         }
@@ -1118,7 +1207,13 @@ export namespace LibvirtGObject {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): DomainHandle;
+        /**
+         * @read-only
+         */
         get persistent(): boolean;
 
         /**
@@ -1685,7 +1780,13 @@ export namespace LibvirtGObject {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get config(): LibvirtGConfig.DomainDevice;
+        /**
+         * @construct-only
+         */
         get domain(): Domain;
 
         /**
@@ -1894,6 +1995,9 @@ export namespace LibvirtGObject {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): DomainSnapshotHandle;
 
         /**
@@ -2045,6 +2149,9 @@ export namespace LibvirtGObject {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): InterfaceHandle;
 
         /**
@@ -2099,10 +2206,12 @@ export namespace LibvirtGObject {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'connection-added': (arg0: Connection) => void;
             /**
              * @signal
+             * @run-first
              */
             'connection-removed': (arg0: Connection) => void;
         }
@@ -2211,6 +2320,9 @@ export namespace LibvirtGObject {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): NetworkHandle;
 
         /**
@@ -2302,6 +2414,9 @@ export namespace LibvirtGObject {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): any;
 
         /**
@@ -2401,6 +2516,9 @@ export namespace LibvirtGObject {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): NetworkFilterHandle;
 
         /**
@@ -2471,6 +2589,9 @@ export namespace LibvirtGObject {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): NodeDeviceHandle;
 
         /**
@@ -2540,6 +2661,9 @@ export namespace LibvirtGObject {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): SecretHandle;
 
         /**
@@ -2610,6 +2734,9 @@ export namespace LibvirtGObject {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): StoragePoolHandle;
 
         /**
@@ -2894,7 +3021,13 @@ export namespace LibvirtGObject {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): StorageVolHandle;
+        /**
+         * @construct-only
+         */
         get pool(): StoragePool;
 
         /**
@@ -3001,6 +3134,9 @@ export namespace LibvirtGObject {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): StreamHandle;
 
         /**

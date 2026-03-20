@@ -247,6 +247,7 @@ export namespace InputPad {
         interface SignalSignatures extends Gtk.Application.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             activated: () => void;
             'notify::active-window': (pspec: GObject.ParamSpec) => void;
@@ -780,6 +781,7 @@ export namespace InputPad {
         interface SignalSignatures extends Gtk.Button.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'pressed-repeat': () => void;
             'notify::always-show-image': (pspec: GObject.ParamSpec) => void;
@@ -1055,9 +1057,15 @@ export namespace InputPad {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -1371,6 +1379,7 @@ export namespace InputPad {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -1378,6 +1387,7 @@ export namespace InputPad {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -1499,6 +1509,7 @@ export namespace InputPad {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -5889,9 +5900,15 @@ export namespace InputPad {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -6205,6 +6222,7 @@ export namespace InputPad {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -6212,6 +6230,7 @@ export namespace InputPad {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -6333,6 +6352,7 @@ export namespace InputPad {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -10588,10 +10608,12 @@ export namespace InputPad {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'create-keyboard-layout': (arg0: Gtk.Widget, arg1: GtkWindow) => void;
             /**
              * @signal
+             * @run-last
              */
             'destroy-keyboard-layout': (arg0: Gtk.Widget, arg1: GtkWindow) => void;
         }
@@ -11342,26 +11364,32 @@ export namespace InputPad {
         interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'button-pressed': (arg0: string, arg1: number, arg2: number, arg3: number, arg4: number) => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             'char-button-sensitive': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'group-appended': (arg0: string, arg1: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'group-changed': (arg0: string, arg1: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'keyboard-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'reorder-button-pressed': () => void;
             'notify::show-menubar': (pspec: GObject.ParamSpec) => void;

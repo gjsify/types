@@ -85,7 +85,13 @@ export namespace RygelRendererGst {
 
         get playbin(): Gst.Element;
         set playbin(val: Gst.Element);
+        /**
+         * @read-only
+         */
         get supported_profiles(): RygelCore.DLNAProfile[];
+        /**
+         * @read-only
+         */
         get supportedProfiles(): RygelCore.DLNAProfile[];
 
         /**
@@ -138,9 +144,15 @@ export namespace RygelRendererGst {
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get playbackState(): string;
         set playbackState(val: string);
-        /** @category Inherited from RygelRenderer.MediaPlayer */
+        /**
+         * @read-only
+         * @category Inherited from RygelRenderer.MediaPlayer
+         */
         get allowed_playback_speeds(): string[];
-        /** @category Inherited from RygelRenderer.MediaPlayer */
+        /**
+         * @read-only
+         * @category Inherited from RygelRenderer.MediaPlayer
+         */
         get allowedPlaybackSpeeds(): string[];
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get playback_speed(): string;
@@ -154,9 +166,15 @@ export namespace RygelRendererGst {
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get volume(): number;
         set volume(val: number);
-        /** @category Inherited from RygelRenderer.MediaPlayer */
+        /**
+         * @read-only
+         * @category Inherited from RygelRenderer.MediaPlayer
+         */
         get duration(): number;
-        /** @category Inherited from RygelRenderer.MediaPlayer */
+        /**
+         * @read-only
+         * @category Inherited from RygelRenderer.MediaPlayer
+         */
         get size(): number;
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get metadata(): string;
@@ -167,13 +185,25 @@ export namespace RygelRendererGst {
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get mimeType(): string;
         set mimeType(val: string);
-        /** @category Inherited from RygelRenderer.MediaPlayer */
+        /**
+         * @read-only
+         * @category Inherited from RygelRenderer.MediaPlayer
+         */
         get can_seek(): boolean;
-        /** @category Inherited from RygelRenderer.MediaPlayer */
+        /**
+         * @read-only
+         * @category Inherited from RygelRenderer.MediaPlayer
+         */
         get canSeek(): boolean;
-        /** @category Inherited from RygelRenderer.MediaPlayer */
+        /**
+         * @read-only
+         * @category Inherited from RygelRenderer.MediaPlayer
+         */
         get can_seek_bytes(): boolean;
-        /** @category Inherited from RygelRenderer.MediaPlayer */
+        /**
+         * @read-only
+         * @category Inherited from RygelRenderer.MediaPlayer
+         */
         get canSeekBytes(): boolean;
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get content_features(): string;
@@ -181,11 +211,20 @@ export namespace RygelRendererGst {
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get contentFeatures(): string;
         set contentFeatures(val: string);
-        /** @category Inherited from RygelRenderer.MediaPlayer */
+        /**
+         * @read-only
+         * @category Inherited from RygelRenderer.MediaPlayer
+         */
         get position(): number;
-        /** @category Inherited from RygelRenderer.MediaPlayer */
+        /**
+         * @read-only
+         * @category Inherited from RygelRenderer.MediaPlayer
+         */
         get byte_position(): number;
-        /** @category Inherited from RygelRenderer.MediaPlayer */
+        /**
+         * @read-only
+         * @category Inherited from RygelRenderer.MediaPlayer
+         */
         get bytePosition(): number;
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get user_agent(): string;

@@ -195,6 +195,9 @@ export namespace GSignond {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PluginState {
         export const $gtype: GObject.GType<PluginState>;
     }
@@ -428,6 +431,9 @@ export namespace GSignond {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get config(): Config;
 
         /**
@@ -1151,6 +1157,9 @@ export namespace GSignond {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get config(): Config;
 
         /**
@@ -1822,6 +1831,9 @@ export namespace GSignond {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get config(): Config;
 
         /**
@@ -2173,11 +2185,13 @@ export namespace GSignond {
          * This property holds a list of authentication mechanisms that the plugin
          * implements, all specified within the authentication method. For example,
          * OAuth plugin could implement "oauth1" and "oauth2" mechanisms.
+         * @read-only
          */
         get mechanisms(): string[];
         /**
          * This property holds a plugin type, or authentication method it implements
          * (for example "oauth" or "sasl").
+         * @read-only
          */
         get type(): string;
 

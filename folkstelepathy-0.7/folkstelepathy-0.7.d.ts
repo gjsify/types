@@ -59,6 +59,9 @@ export namespace FolksTelepathy {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get account(): TelepathyGLib.Account;
 
         /**
@@ -198,6 +201,9 @@ export namespace FolksTelepathy {
         set is_in_contact_list(val: boolean);
         get isInContactList(): boolean;
         set isInContactList(val: boolean);
+        /**
+         * @construct-only
+         */
         get contact(): TelepathyGLib.Contact;
 
         /**
@@ -283,21 +289,45 @@ export namespace FolksTelepathy {
         /** @category Inherited from Folks.GroupDetails */
         get groups(): Gee.Set;
         set groups(val: Gee.Set);
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get im_interaction_count(): number;
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get imInteractionCount(): number;
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get last_im_interaction_datetime(): GLib.DateTime;
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get lastImInteractionDatetime(): GLib.DateTime;
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get call_interaction_count(): number;
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get callInteractionCount(): number;
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get last_call_interaction_datetime(): GLib.DateTime;
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get lastCallInteractionDatetime(): GLib.DateTime;
         /** @category Inherited from Folks.ImDetails */
         get im_addresses(): Gee.MultiMap;

@@ -21,6 +21,9 @@ export namespace Camel {
      * Camel-1.2
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AuthenticationResult {
         export const $gtype: GObject.GType<AuthenticationResult>;
     }
@@ -113,6 +116,9 @@ export namespace Camel {
         NEED_PUBLIC_KEY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CompareType {
         export const $gtype: GObject.GType<CompareType>;
     }
@@ -322,6 +328,9 @@ export namespace Camel {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FetchHeadersType {
         export const $gtype: GObject.GType<FetchHeadersType>;
     }
@@ -346,6 +355,9 @@ export namespace Camel {
         ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FetchType {
         export const $gtype: GObject.GType<FetchType>;
     }
@@ -415,6 +427,9 @@ export namespace Camel {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GpgTrust {
         export const $gtype: GObject.GType<GpgTrust>;
     }
@@ -480,6 +495,9 @@ export namespace Camel {
         GROUP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace JunkStatus {
         export const $gtype: GObject.GType<JunkStatus>;
     }
@@ -538,6 +556,9 @@ export namespace Camel {
         MASK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MimeFilterBasicType {
         export const $gtype: GObject.GType<MimeFilterBasicType>;
     }
@@ -555,6 +576,9 @@ export namespace Camel {
         UU_DEC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MimeFilterCRLFDirection {
         export const $gtype: GObject.GType<MimeFilterCRLFDirection>;
     }
@@ -567,6 +591,9 @@ export namespace Camel {
         DECODE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MimeFilterCRLFMode {
         export const $gtype: GObject.GType<MimeFilterCRLFMode>;
     }
@@ -579,6 +606,9 @@ export namespace Camel {
         ONLY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MimeFilterGZipMode {
         export const $gtype: GObject.GType<MimeFilterGZipMode>;
     }
@@ -591,6 +621,9 @@ export namespace Camel {
         UNZIP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MimeFilterYencDirection {
         export const $gtype: GObject.GType<MimeFilterYencDirection>;
     }
@@ -625,6 +658,9 @@ export namespace Camel {
         MESSAGE_END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NetworkSecurityMethod {
         export const $gtype: GObject.GType<NetworkSecurityMethod>;
     }
@@ -650,6 +686,9 @@ export namespace Camel {
         STARTTLS_ON_STANDARD_PORT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ProviderConfType {
         export const $gtype: GObject.GType<ProviderConfType>;
     }
@@ -671,6 +710,9 @@ export namespace Camel {
         ADVANCED_SECTION_START,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ProviderType {
         export const $gtype: GObject.GType<ProviderType>;
     }
@@ -683,6 +725,9 @@ export namespace Camel {
         TRANSPORT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SExpResultType {
         export const $gtype: GObject.GType<SExpResultType>;
     }
@@ -719,6 +764,9 @@ export namespace Camel {
         UNDEFINED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SExpTermType {
         export const $gtype: GObject.GType<SExpTermType>;
     }
@@ -767,6 +815,9 @@ export namespace Camel {
         ENVELOPED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SaslAnonTraceType {
         export const $gtype: GObject.GType<SaslAnonTraceType>;
     }
@@ -780,6 +831,9 @@ export namespace Camel {
         EMPTY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ServiceConnectionStatus {
         export const $gtype: GObject.GType<ServiceConnectionStatus>;
     }
@@ -846,6 +900,9 @@ export namespace Camel {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SessionAlertType {
         export const $gtype: GObject.GType<SessionAlertType>;
     }
@@ -859,6 +916,9 @@ export namespace Camel {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SortType {
         export const $gtype: GObject.GType<SortType>;
     }
@@ -916,6 +976,9 @@ export namespace Camel {
         MODE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ThreeState {
         export const $gtype: GObject.GType<ThreeState>;
     }
@@ -940,6 +1003,9 @@ export namespace Camel {
         INCONSISTENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TimeUnit {
         export const $gtype: GObject.GType<TimeUnit>;
     }
@@ -969,6 +1035,9 @@ export namespace Camel {
         YEARS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransferEncoding {
         export const $gtype: GObject.GType<TransferEncoding>;
     }
@@ -2765,6 +2834,9 @@ export namespace Camel {
         DETACHED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FolderFlags {
         export const $gtype: GObject.GType<FolderFlags>;
     }
@@ -2781,6 +2853,9 @@ export namespace Camel {
         FILTER_JUNK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FolderInfoFlags {
         export const $gtype: GObject.GType<FolderInfoFlags>;
     }
@@ -2921,6 +2996,9 @@ export namespace Camel {
         IN_MEMORY_ONLY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MessageFlags {
         export const $gtype: GObject.GType<MessageFlags>;
     }
@@ -2945,6 +3023,9 @@ export namespace Camel {
         USER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MimeFilterCanonFlags {
         export const $gtype: GObject.GType<MimeFilterCanonFlags>;
     }
@@ -2958,6 +3039,9 @@ export namespace Camel {
         STRIP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MimeFilterEnrichedFlags {
         export const $gtype: GObject.GType<MimeFilterEnrichedFlags>;
     }
@@ -2970,6 +3054,9 @@ export namespace Camel {
         IS_RICHTEXT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MimeFilterToHTMLFlags {
         export const $gtype: GObject.GType<MimeFilterToHTMLFlags>;
     }
@@ -3053,6 +3140,9 @@ export namespace Camel {
         PARAM_PERSISTENT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ProviderFlags {
         export const $gtype: GObject.GType<ProviderFlags>;
     }
@@ -3146,6 +3236,9 @@ export namespace Camel {
         PATH_IS_ABSOLUTE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RecipientCertificateFlags {
         export const $gtype: GObject.GType<RecipientCertificateFlags>;
     }
@@ -3178,6 +3271,9 @@ export namespace Camel {
         CRLS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StoreFlags {
         export const $gtype: GObject.GType<StoreFlags>;
     }
@@ -3198,6 +3294,9 @@ export namespace Camel {
         IS_BUILTIN,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StoreGetFolderFlags {
         export const $gtype: GObject.GType<StoreGetFolderFlags>;
     }
@@ -3230,6 +3329,9 @@ export namespace Camel {
         PRIVATE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StoreGetFolderInfoFlags {
         export const $gtype: GObject.GType<StoreGetFolderInfoFlags>;
     }
@@ -3260,6 +3362,9 @@ export namespace Camel {
         REFRESH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StoreInfoFlags {
         export const $gtype: GObject.GType<StoreInfoFlags>;
     }
@@ -3296,6 +3401,9 @@ export namespace Camel {
         FLAGGED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StorePermissionFlags {
         export const $gtype: GObject.GType<StorePermissionFlags>;
     }
@@ -3308,6 +3416,9 @@ export namespace Camel {
         WRITE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace URLFlags {
         export const $gtype: GObject.GType<URLFlags>;
     }
@@ -3776,6 +3887,9 @@ export namespace Camel {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get session(): Session;
 
         /**
@@ -5616,6 +5730,9 @@ export namespace Camel {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get filter(): MimeFilter;
 
         /**
@@ -5688,6 +5805,9 @@ export namespace Camel {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get filter(): MimeFilter;
 
         /**
@@ -5742,14 +5862,17 @@ export namespace Camel {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             changed: (arg0: FolderChangeInfo) => void;
             /**
              * @signal
+             * @run-first
              */
             deleted: () => void;
             /**
              * @signal
+             * @run-first
              */
             renamed: (arg0: string) => void;
             'notify::description': (pspec: GObject.ParamSpec) => void;
@@ -5841,10 +5964,12 @@ export namespace Camel {
         set markSeenTimeout(val: number);
         /**
          * The {@link Camel.Store} to which the folder belongs.
+         * @construct-only
          */
         get parent_store(): Store;
         /**
          * The {@link Camel.Store} to which the folder belongs.
+         * @construct-only
          */
         get parentStore(): Store;
 
@@ -7323,6 +7448,7 @@ export namespace Camel {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             changed: () => void;
             'notify::deleted-count': (pspec: GObject.ParamSpec) => void;
@@ -7363,54 +7489,67 @@ export namespace Camel {
 
         /**
          * How many deleted infos is saved in a summary.
+         * @read-only
          */
         get deleted_count(): number;
         /**
          * How many deleted infos is saved in a summary.
+         * @read-only
          */
         get deletedCount(): number;
         /**
          * The {@link Camel.Folder} to which the folder summary belongs.
+         * @construct-only
          */
         get folder(): Folder;
         /**
          * How many junk infos is saved in a summary.
+         * @read-only
          */
         get junk_count(): number;
         /**
          * How many junk infos is saved in a summary.
+         * @read-only
          */
         get junkCount(): number;
         /**
          * How many junk and not deleted infos is saved in a summary.
+         * @read-only
          */
         get junk_not_deleted_count(): number;
         /**
          * How many junk and not deleted infos is saved in a summary.
+         * @read-only
          */
         get junkNotDeletedCount(): number;
         /**
          * How many infos is saved in a summary.
+         * @read-only
          */
         get saved_count(): number;
         /**
          * How many infos is saved in a summary.
+         * @read-only
          */
         get savedCount(): number;
         /**
          * How many unread infos is saved in a summary.
+         * @read-only
          */
         get unread_count(): number;
         /**
          * How many unread infos is saved in a summary.
+         * @read-only
          */
         get unreadCount(): number;
         /**
          * How many visible (not deleted and not junk) infos is saved in a summary.
+         * @read-only
          */
         get visible_count(): number;
         /**
          * How many visible (not deleted and not junk) infos is saved in a summary.
+         * @read-only
          */
         get visibleCount(): number;
 
@@ -9164,6 +9303,7 @@ export namespace Camel {
          * being already 'folder-flagged'. It can be used to recognize changes
          * on the 'folder-flagged' flag during the time.
          * @since 3.24
+         * @read-only
          */
         get folder_flagged_stamp(): number;
         /**
@@ -9172,6 +9312,7 @@ export namespace Camel {
          * being already 'folder-flagged'. It can be used to recognize changes
          * on the 'folder-flagged' flag during the time.
          * @since 3.24
+         * @read-only
          */
         get folderFlaggedStamp(): number;
         /**
@@ -9236,6 +9377,7 @@ export namespace Camel {
          * The {@link Camel.FolderSummary} to which the message info belongs, or `null`.
          * It can be set only during construction of the object.
          * @since 3.24
+         * @construct-only
          */
         get summary(): FolderSummary;
         /**
@@ -13108,6 +13250,9 @@ export namespace Camel {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get online(): boolean;
 
         /**
@@ -13706,18 +13851,22 @@ export namespace Camel {
         interface SignalSignatures extends Gio.Cancellable.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'pop-message': () => void;
             /**
              * @signal
+             * @run-last
              */
             progress: (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'push-message': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             status: (arg0: string, arg1: number) => void;
         }
@@ -14119,9 +14268,21 @@ export namespace Camel {
 
         get authenticated(): boolean;
         set authenticated(val: boolean);
+        /**
+         * @construct-only
+         */
         get mechanism(): string;
+        /**
+         * @construct-only
+         */
         get service(): Service;
+        /**
+         * @construct-only
+         */
         get service_name(): string;
+        /**
+         * @construct-only
+         */
         get serviceName(): string;
 
         /**
@@ -15152,7 +15313,13 @@ export namespace Camel {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get connection_status(): ServiceConnectionStatus;
+        /**
+         * @read-only
+         */
         get connectionStatus(): ServiceConnectionStatus;
         get display_name(): string;
         set display_name(val: string);
@@ -15160,14 +15327,23 @@ export namespace Camel {
         set displayName(val: string);
         get password(): string;
         set password(val: string);
+        /**
+         * @construct-only
+         */
         get provider(): Provider;
         get proxy_resolver(): Gio.ProxyResolver;
         set proxy_resolver(val: Gio.ProxyResolver);
         get proxyResolver(): Gio.ProxyResolver;
         set proxyResolver(val: Gio.ProxyResolver);
+        /**
+         * @construct-only
+         */
         get session(): Session;
         get settings(): Settings;
         set settings(val: Settings);
+        /**
+         * @construct-only
+         */
         get uid(): string;
 
         /**
@@ -16295,10 +16471,12 @@ export namespace Camel {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'job-finished': (arg0: Gio.Cancellable | null, arg1: GLib.Error) => void;
             /**
              * @signal
+             * @run-last
              */
             'job-started': (arg0: Gio.Cancellable | null) => void;
             /**
@@ -16306,6 +16484,7 @@ export namespace Camel {
              * message from `service` to a user interface.  The `type` hints at the
              * severity of the alert message.
              * @signal
+             * @run-last
              */
             'user-alert': (arg0: Service, arg1: SessionAlertType, arg2: string) => void;
             'notify::junk-filter': (pspec: GObject.ParamSpec) => void;
@@ -16345,7 +16524,13 @@ export namespace Camel {
         set junk_filter(val: JunkFilter);
         get junkFilter(): JunkFilter;
         set junkFilter(val: JunkFilter);
+        /**
+         * @read-only
+         */
         get main_context(): GLib.MainContext;
+        /**
+         * @read-only
+         */
         get mainContext(): GLib.MainContext;
         get network_monitor(): Gio.NetworkMonitor;
         set network_monitor(val: Gio.NetworkMonitor);
@@ -17245,10 +17430,12 @@ export namespace Camel {
         interface SignalSignatures extends Service.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'folder-created': (arg0: FolderInfo) => void;
             /**
              * @signal
+             * @run-first
              */
             'folder-deleted': (arg0: FolderInfo) => void;
             /**
@@ -17266,14 +17453,17 @@ export namespace Camel {
              * of folders previously hidden from view, or that alters whether
              * to augment the `store` with virtual Junk and Trash folders.
              * @signal
+             * @run-first
              */
             'folder-info-stale': () => void;
             /**
              * @signal
+             * @run-first
              */
             'folder-opened': (arg0: Folder) => void;
             /**
              * @signal
+             * @run-first
              */
             'folder-renamed': (arg0: string, arg1: FolderInfo) => void;
             'notify::connection-status': (pspec: GObject.ParamSpec) => void;
@@ -29399,7 +29589,13 @@ export namespace Camel {
 
         get connectable(): Gio.SocketConnectable;
         set connectable(val: Gio.SocketConnectable);
+        /**
+         * @read-only
+         */
         get host_reachable(): boolean;
+        /**
+         * @read-only
+         */
         get hostReachable(): boolean;
 
         // Methods

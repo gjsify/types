@@ -20,6 +20,9 @@ export namespace GdkPixbuf {
      * GdkPixbuf-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Colorspace {
         export const $gtype: GObject.GType<Colorspace>;
     }
@@ -38,6 +41,9 @@ export namespace GdkPixbuf {
         RGB,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InterpType {
         export const $gtype: GObject.GType<InterpType>;
     }
@@ -90,6 +96,9 @@ export namespace GdkPixbuf {
         HYPER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PixbufAlphaMode {
         export const $gtype: GObject.GType<PixbufAlphaMode>;
     }
@@ -176,6 +185,9 @@ export namespace GdkPixbuf {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PixbufRotation {
         export const $gtype: GObject.GType<PixbufRotation>;
     }
@@ -515,48 +527,63 @@ export namespace GdkPixbuf {
          * The number of bits per sample.
          *
          * Currently only 8 bit per sample are supported.
+         * @construct-only
          */
         get bits_per_sample(): number;
         /**
          * The number of bits per sample.
          *
          * Currently only 8 bit per sample are supported.
+         * @construct-only
          */
         get bitsPerSample(): number;
         /**
          * The color space of the pixbuf.
          *
          * Currently, only `GDK_COLORSPACE_RGB` is supported.
+         * @construct-only
          */
         get colorspace(): Colorspace;
         /**
          * Whether the pixbuf has an alpha channel.
+         * @construct-only
          */
         get has_alpha(): boolean;
         /**
          * Whether the pixbuf has an alpha channel.
+         * @construct-only
          */
         get hasAlpha(): boolean;
         /**
          * The number of rows of the pixbuf.
+         * @construct-only
          */
         get height(): number;
         /**
          * The number of samples per pixel.
          *
          * Currently, only 3 or 4 samples per pixel are supported.
+         * @construct-only
          */
         get n_channels(): number;
         /**
          * The number of samples per pixel.
          *
          * Currently, only 3 or 4 samples per pixel are supported.
+         * @construct-only
          */
         get nChannels(): number;
+        /**
+         * @construct-only
+         */
         get pixel_bytes(): GLib.Bytes;
+        /**
+         * @construct-only
+         */
         get pixelBytes(): GLib.Bytes;
         /**
          * A pointer to the pixel data of the pixbuf.
+         * @construct-only
          */
         get pixels(): any;
         /**
@@ -565,10 +592,12 @@ export namespace GdkPixbuf {
          *
          * This number must (obviously) be at least as large as the
          * width of the pixbuf.
+         * @construct-only
          */
         get rowstride(): number;
         /**
          * The number of columns of the pixbuf.
+         * @construct-only
          */
         get width(): number;
 
@@ -2378,6 +2407,7 @@ export namespace GdkPixbuf {
              * `gdk_pixbuf_loader_get_pixbuf()` to fetch the partially-loaded
              * pixbuf.
              * @signal
+             * @run-last
              */
             'area-prepared': () => void;
             /**
@@ -2390,6 +2420,7 @@ export namespace GdkPixbuf {
              * Applications can use this signal to know when to repaint
              * areas of an image that is being loaded.
              * @signal
+             * @run-last
              */
             'area-updated': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
             /**
@@ -2399,6 +2430,7 @@ export namespace GdkPixbuf {
              * notification when an image loader is closed by the code that
              * drives it.
              * @signal
+             * @run-last
              */
             closed: () => void;
             /**
@@ -2410,6 +2442,7 @@ export namespace GdkPixbuf {
              * to this signal to set the desired size to which the image
              * should be scaled.
              * @signal
+             * @run-last
              */
             'size-prepared': (arg0: number, arg1: number) => void;
         }

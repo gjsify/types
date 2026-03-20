@@ -32,6 +32,9 @@ export namespace WebKit2WebExtension {
      * WebKit2WebExtension-5.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConsoleMessageLevel {
         export const $gtype: GObject.GType<ConsoleMessageLevel>;
     }
@@ -64,6 +67,9 @@ export namespace WebKit2WebExtension {
         DEBUG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConsoleMessageSource {
         export const $gtype: GObject.GType<ConsoleMessageSource>;
     }
@@ -292,6 +298,9 @@ export namespace WebKit2WebExtension {
         CUSTOM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormSubmissionStep {
         export const $gtype: GObject.GType<FormSubmissionStep>;
     }
@@ -1071,14 +1080,41 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get local_name(): string;
+        /**
+         * @read-only
+         */
         get localName(): string;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get namespace_uri(): string;
+        /**
+         * @read-only
+         */
         get namespaceUri(): string;
+        /**
+         * @read-only
+         */
         get owner_element(): DOMElement;
+        /**
+         * @read-only
+         */
         get ownerElement(): DOMElement;
+        /**
+         * @read-only
+         */
         get prefix(): string;
+        /**
+         * @read-only
+         */
         get specified(): boolean;
         get value(): string;
         set value(val: string);
@@ -1674,6 +1710,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
 
         /**
@@ -2284,10 +2323,25 @@ export namespace WebKit2WebExtension {
         set css_text(val: string);
         get cssText(): string;
         set cssText(val: string);
+        /**
+         * @read-only
+         */
         get parent_rule(): DOMCSSRule;
+        /**
+         * @read-only
+         */
         get parentRule(): DOMCSSRule;
+        /**
+         * @read-only
+         */
         get parent_style_sheet(): DOMCSSStyleSheet;
+        /**
+         * @read-only
+         */
         get parentStyleSheet(): DOMCSSStyleSheet;
+        /**
+         * @read-only
+         */
         get type(): number;
 
         /**
@@ -2372,6 +2426,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
 
         /**
@@ -2455,8 +2512,17 @@ export namespace WebKit2WebExtension {
         set css_text(val: string);
         get cssText(): string;
         set cssText(val: string);
+        /**
+         * @read-only
+         */
         get length(): number;
+        /**
+         * @read-only
+         */
         get parent_rule(): DOMCSSRule;
+        /**
+         * @read-only
+         */
         get parentRule(): DOMCSSRule;
 
         /**
@@ -2593,10 +2659,25 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get css_rules(): DOMCSSRuleList;
+        /**
+         * @read-only
+         */
         get cssRules(): DOMCSSRuleList;
+        /**
+         * @read-only
+         */
         get owner_rule(): DOMCSSRule;
+        /**
+         * @read-only
+         */
         get ownerRule(): DOMCSSRule;
+        /**
+         * @read-only
+         */
         get rules(): DOMCSSRuleList;
 
         /**
@@ -2702,7 +2783,13 @@ export namespace WebKit2WebExtension {
         set css_text(val: string);
         get cssText(): string;
         set cssText(val: string);
+        /**
+         * @read-only
+         */
         get css_value_type(): number;
+        /**
+         * @read-only
+         */
         get cssValueType(): number;
 
         /**
@@ -2796,6 +2883,9 @@ export namespace WebKit2WebExtension {
 
         get data(): string;
         set data(val: string);
+        /**
+         * @read-only
+         */
         get length(): number;
 
         /**
@@ -3389,11 +3479,29 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get bottom(): number;
+        /**
+         * @read-only
+         */
         get height(): number;
+        /**
+         * @read-only
+         */
         get left(): number;
+        /**
+         * @read-only
+         */
         get right(): number;
+        /**
+         * @read-only
+         */
         get top(): number;
+        /**
+         * @read-only
+         */
         get width(): number;
 
         /**
@@ -3488,6 +3596,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
 
         /**
@@ -4215,26 +4326,89 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get anchor_node(): DOMNode;
+        /**
+         * @read-only
+         */
         get anchorNode(): DOMNode;
+        /**
+         * @read-only
+         */
         get anchor_offset(): number;
+        /**
+         * @read-only
+         */
         get anchorOffset(): number;
+        /**
+         * @read-only
+         */
         get base_node(): DOMNode;
+        /**
+         * @read-only
+         */
         get baseNode(): DOMNode;
+        /**
+         * @read-only
+         */
         get base_offset(): number;
+        /**
+         * @read-only
+         */
         get baseOffset(): number;
+        /**
+         * @read-only
+         */
         get extent_node(): DOMNode;
+        /**
+         * @read-only
+         */
         get extentNode(): DOMNode;
+        /**
+         * @read-only
+         */
         get extent_offset(): number;
+        /**
+         * @read-only
+         */
         get extentOffset(): number;
+        /**
+         * @read-only
+         */
         get focus_node(): DOMNode;
+        /**
+         * @read-only
+         */
         get focusNode(): DOMNode;
+        /**
+         * @read-only
+         */
         get focus_offset(): number;
+        /**
+         * @read-only
+         */
         get focusOffset(): number;
+        /**
+         * @read-only
+         */
         get is_collapsed(): boolean;
+        /**
+         * @read-only
+         */
         get isCollapsed(): boolean;
+        /**
+         * @read-only
+         */
         get range_count(): number;
+        /**
+         * @read-only
+         */
         get rangeCount(): number;
+        /**
+         * @read-only
+         */
         get type(): string;
 
         /**
@@ -4397,6 +4571,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
         get value(): string;
         set value(val: string);
@@ -4568,53 +4745,173 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get closed(): boolean;
         get default_status(): string;
         set default_status(val: string);
         get defaultStatus(): string;
         set defaultStatus(val: string);
+        /**
+         * @read-only
+         */
         get device_pixel_ratio(): number;
+        /**
+         * @read-only
+         */
         get devicePixelRatio(): number;
+        /**
+         * @read-only
+         */
         get document(): DOMDocument;
+        /**
+         * @read-only
+         */
         get frame_element(): DOMElement;
+        /**
+         * @read-only
+         */
         get frameElement(): DOMElement;
+        /**
+         * @read-only
+         */
         get frames(): DOMDOMWindow;
+        /**
+         * @read-only
+         */
         get inner_height(): number;
+        /**
+         * @read-only
+         */
         get innerHeight(): number;
+        /**
+         * @read-only
+         */
         get inner_width(): number;
+        /**
+         * @read-only
+         */
         get innerWidth(): number;
+        /**
+         * @read-only
+         */
         get length(): number;
         get name(): string;
         set name(val: string);
+        /**
+         * @read-only
+         */
         get offscreen_buffering(): boolean;
+        /**
+         * @read-only
+         */
         get offscreenBuffering(): boolean;
+        /**
+         * @read-only
+         */
         get opener(): DOMDOMWindow;
+        /**
+         * @read-only
+         */
         get orientation(): number;
+        /**
+         * @read-only
+         */
         get outer_height(): number;
+        /**
+         * @read-only
+         */
         get outerHeight(): number;
+        /**
+         * @read-only
+         */
         get outer_width(): number;
+        /**
+         * @read-only
+         */
         get outerWidth(): number;
+        /**
+         * @read-only
+         */
         get page_x_offset(): number;
+        /**
+         * @read-only
+         */
         get pageXOffset(): number;
+        /**
+         * @read-only
+         */
         get page_y_offset(): number;
+        /**
+         * @read-only
+         */
         get pageYOffset(): number;
+        /**
+         * @read-only
+         */
         get parent(): DOMDOMWindow;
+        /**
+         * @read-only
+         */
         get screen_left(): number;
+        /**
+         * @read-only
+         */
         get screenLeft(): number;
+        /**
+         * @read-only
+         */
         get screen_top(): number;
+        /**
+         * @read-only
+         */
         get screenTop(): number;
+        /**
+         * @read-only
+         */
         get screen_x(): number;
+        /**
+         * @read-only
+         */
         get screenX(): number;
+        /**
+         * @read-only
+         */
         get screen_y(): number;
+        /**
+         * @read-only
+         */
         get screenY(): number;
+        /**
+         * @read-only
+         */
         get scroll_x(): number;
+        /**
+         * @read-only
+         */
         get scrollX(): number;
+        /**
+         * @read-only
+         */
         get scroll_y(): number;
+        /**
+         * @read-only
+         */
         get scrollY(): number;
+        /**
+         * @read-only
+         */
         get self(): DOMDOMWindow;
         get status(): string;
         set status(val: string);
+        /**
+         * @read-only
+         */
         get top(): DOMDOMWindow;
+        /**
+         * @read-only
+         */
         get window(): DOMDOMWindow;
 
         /**
@@ -5528,27 +5825,81 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get active_element(): DOMElement;
+        /**
+         * @read-only
+         */
         get activeElement(): DOMElement;
+        /**
+         * @read-only
+         */
         get anchors(): DOMHTMLCollection;
+        /**
+         * @read-only
+         */
         get applets(): DOMHTMLCollection;
+        /**
+         * @read-only
+         */
         get body(): DOMHTMLElement;
+        /**
+         * @read-only
+         */
         get character_set(): string;
+        /**
+         * @read-only
+         */
         get characterSet(): string;
         get charset(): string;
         set charset(val: string);
+        /**
+         * @read-only
+         */
         get child_element_count(): number;
+        /**
+         * @read-only
+         */
         get childElementCount(): number;
+        /**
+         * @read-only
+         */
         get children(): DOMHTMLCollection;
+        /**
+         * @read-only
+         */
         get compat_mode(): string;
+        /**
+         * @read-only
+         */
         get compatMode(): string;
+        /**
+         * @read-only
+         */
         get content_type(): string;
+        /**
+         * @read-only
+         */
         get contentType(): string;
         get cookie(): string;
         set cookie(val: string);
+        /**
+         * @read-only
+         */
         get current_script(): DOMHTMLScriptElement;
+        /**
+         * @read-only
+         */
         get currentScript(): DOMHTMLScriptElement;
+        /**
+         * @read-only
+         */
         get default_view(): DOMDOMWindow;
+        /**
+         * @read-only
+         */
         get defaultView(): DOMDOMWindow;
         get design_mode(): string;
         set design_mode(val: string);
@@ -5556,63 +5907,207 @@ export namespace WebKit2WebExtension {
         set designMode(val: string);
         get dir(): string;
         set dir(val: string);
+        /**
+         * @read-only
+         */
         get doctype(): DOMDocumentType;
+        /**
+         * @read-only
+         */
         get document_element(): DOMElement;
+        /**
+         * @read-only
+         */
         get documentElement(): DOMElement;
         get document_uri(): string;
         set document_uri(val: string);
         get documentUri(): string;
         set documentUri(val: string);
+        /**
+         * @read-only
+         */
         get domain(): string;
+        /**
+         * @read-only
+         */
         get embeds(): DOMHTMLCollection;
+        /**
+         * @read-only
+         */
         get first_element_child(): DOMElement;
+        /**
+         * @read-only
+         */
         get firstElementChild(): DOMElement;
+        /**
+         * @read-only
+         */
         get forms(): DOMHTMLCollection;
+        /**
+         * @read-only
+         */
         get head(): DOMHTMLHeadElement;
+        /**
+         * @read-only
+         */
         get hidden(): boolean;
+        /**
+         * @read-only
+         */
         get images(): DOMHTMLCollection;
+        /**
+         * @read-only
+         */
         get implementation(): DOMDOMImplementation;
+        /**
+         * @read-only
+         */
         get input_encoding(): string;
+        /**
+         * @read-only
+         */
         get inputEncoding(): string;
+        /**
+         * @read-only
+         */
         get last_element_child(): DOMElement;
+        /**
+         * @read-only
+         */
         get lastElementChild(): DOMElement;
+        /**
+         * @read-only
+         */
         get last_modified(): string;
+        /**
+         * @read-only
+         */
         get lastModified(): string;
+        /**
+         * @read-only
+         */
         get links(): DOMHTMLCollection;
+        /**
+         * @read-only
+         */
         get origin(): string;
+        /**
+         * @read-only
+         */
         get plugins(): DOMHTMLCollection;
+        /**
+         * @read-only
+         */
         get pointer_lock_element(): DOMElement;
+        /**
+         * @read-only
+         */
         get pointerLockElement(): DOMElement;
+        /**
+         * @read-only
+         */
         get preferred_stylesheet_set(): string;
+        /**
+         * @read-only
+         */
         get preferredStylesheetSet(): string;
+        /**
+         * @read-only
+         */
         get ready_state(): string;
+        /**
+         * @read-only
+         */
         get readyState(): string;
+        /**
+         * @read-only
+         */
         get referrer(): string;
+        /**
+         * @read-only
+         */
         get scripts(): DOMHTMLCollection;
+        /**
+         * @read-only
+         */
         get scrolling_element(): DOMElement;
+        /**
+         * @read-only
+         */
         get scrollingElement(): DOMElement;
         get selected_stylesheet_set(): string;
         set selected_stylesheet_set(val: string);
         get selectedStylesheetSet(): string;
         set selectedStylesheetSet(val: string);
+        /**
+         * @read-only
+         */
         get style_sheets(): DOMStyleSheetList;
+        /**
+         * @read-only
+         */
         get styleSheets(): DOMStyleSheetList;
         get title(): string;
         set title(val: string);
+        /**
+         * @read-only
+         */
         get url(): string;
+        /**
+         * @read-only
+         */
         get visibility_state(): string;
+        /**
+         * @read-only
+         */
         get visibilityState(): string;
+        /**
+         * @read-only
+         */
         get webkit_current_full_screen_element(): DOMElement;
+        /**
+         * @read-only
+         */
         get webkitCurrentFullScreenElement(): DOMElement;
+        /**
+         * @read-only
+         */
         get webkit_full_screen_keyboard_input_allowed(): boolean;
+        /**
+         * @read-only
+         */
         get webkitFullScreenKeyboardInputAllowed(): boolean;
+        /**
+         * @read-only
+         */
         get webkit_fullscreen_element(): DOMElement;
+        /**
+         * @read-only
+         */
         get webkitFullscreenElement(): DOMElement;
+        /**
+         * @read-only
+         */
         get webkit_fullscreen_enabled(): boolean;
+        /**
+         * @read-only
+         */
         get webkitFullscreenEnabled(): boolean;
+        /**
+         * @read-only
+         */
         get webkit_is_full_screen(): boolean;
+        /**
+         * @read-only
+         */
         get webkitIsFullScreen(): boolean;
+        /**
+         * @read-only
+         */
         get xml_encoding(): string;
+        /**
+         * @read-only
+         */
         get xmlEncoding(): string;
         get xml_standalone(): boolean;
         set xml_standalone(val: boolean);
@@ -6693,12 +7188,33 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get child_element_count(): number;
+        /**
+         * @read-only
+         */
         get childElementCount(): number;
+        /**
+         * @read-only
+         */
         get children(): DOMHTMLCollection;
+        /**
+         * @read-only
+         */
         get first_element_child(): DOMElement;
+        /**
+         * @read-only
+         */
         get firstElementChild(): DOMElement;
+        /**
+         * @read-only
+         */
         get last_element_child(): DOMElement;
+        /**
+         * @read-only
+         */
         get lastElementChild(): DOMElement;
 
         /**
@@ -7319,14 +7835,41 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get entities(): DOMNamedNodeMap;
+        /**
+         * @read-only
+         */
         get internal_subset(): string;
+        /**
+         * @read-only
+         */
         get internalSubset(): string;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get notations(): DOMNamedNodeMap;
+        /**
+         * @read-only
+         */
         get public_id(): string;
+        /**
+         * @read-only
+         */
         get publicId(): string;
+        /**
+         * @read-only
+         */
         get system_id(): string;
+        /**
+         * @read-only
+         */
         get systemId(): string;
 
         /**
@@ -8011,25 +8554,73 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get attributes(): DOMNamedNodeMap;
+        /**
+         * @read-only
+         */
         get child_element_count(): number;
+        /**
+         * @read-only
+         */
         get childElementCount(): number;
+        /**
+         * @read-only
+         */
         get children(): DOMHTMLCollection;
+        /**
+         * @read-only
+         */
         get class_list(): DOMDOMTokenList;
+        /**
+         * @read-only
+         */
         get classList(): DOMDOMTokenList;
         get class_name(): string;
         set class_name(val: string);
         get className(): string;
         set className(val: string);
+        /**
+         * @read-only
+         */
         get client_height(): number;
+        /**
+         * @read-only
+         */
         get clientHeight(): number;
+        /**
+         * @read-only
+         */
         get client_left(): number;
+        /**
+         * @read-only
+         */
         get clientLeft(): number;
+        /**
+         * @read-only
+         */
         get client_top(): number;
+        /**
+         * @read-only
+         */
         get clientTop(): number;
+        /**
+         * @read-only
+         */
         get client_width(): number;
+        /**
+         * @read-only
+         */
         get clientWidth(): number;
+        /**
+         * @read-only
+         */
         get first_element_child(): DOMElement;
+        /**
+         * @read-only
+         */
         get firstElementChild(): DOMElement;
         get id(): string;
         set id(val: string);
@@ -8037,32 +8628,101 @@ export namespace WebKit2WebExtension {
         set inner_html(val: string);
         get innerHtml(): string;
         set innerHtml(val: string);
+        /**
+         * @read-only
+         */
         get last_element_child(): DOMElement;
+        /**
+         * @read-only
+         */
         get lastElementChild(): DOMElement;
+        /**
+         * @read-only
+         */
         get local_name(): string;
+        /**
+         * @read-only
+         */
         get localName(): string;
+        /**
+         * @read-only
+         */
         get namespace_uri(): string;
+        /**
+         * @read-only
+         */
         get namespaceUri(): string;
+        /**
+         * @read-only
+         */
         get next_element_sibling(): DOMElement;
+        /**
+         * @read-only
+         */
         get nextElementSibling(): DOMElement;
+        /**
+         * @read-only
+         */
         get offset_height(): number;
+        /**
+         * @read-only
+         */
         get offsetHeight(): number;
+        /**
+         * @read-only
+         */
         get offset_left(): number;
+        /**
+         * @read-only
+         */
         get offsetLeft(): number;
+        /**
+         * @read-only
+         */
         get offset_parent(): DOMElement;
+        /**
+         * @read-only
+         */
         get offsetParent(): DOMElement;
+        /**
+         * @read-only
+         */
         get offset_top(): number;
+        /**
+         * @read-only
+         */
         get offsetTop(): number;
+        /**
+         * @read-only
+         */
         get offset_width(): number;
+        /**
+         * @read-only
+         */
         get offsetWidth(): number;
         get outer_html(): string;
         set outer_html(val: string);
         get outerHtml(): string;
         set outerHtml(val: string);
+        /**
+         * @read-only
+         */
         get prefix(): string;
+        /**
+         * @read-only
+         */
         get previous_element_sibling(): DOMElement;
+        /**
+         * @read-only
+         */
         get previousElementSibling(): DOMElement;
+        /**
+         * @read-only
+         */
         get scroll_height(): number;
+        /**
+         * @read-only
+         */
         get scrollHeight(): number;
         get scroll_left(): number;
         set scroll_left(val: number);
@@ -8072,12 +8732,33 @@ export namespace WebKit2WebExtension {
         set scroll_top(val: number);
         get scrollTop(): number;
         set scrollTop(val: number);
+        /**
+         * @read-only
+         */
         get scroll_width(): number;
+        /**
+         * @read-only
+         */
         get scrollWidth(): number;
+        /**
+         * @read-only
+         */
         get style(): DOMCSSStyleDeclaration;
+        /**
+         * @read-only
+         */
         get tag_name(): string;
+        /**
+         * @read-only
+         */
         get tagName(): string;
+        /**
+         * @read-only
+         */
         get webkit_region_overset(): string;
+        /**
+         * @read-only
+         */
         get webkitRegionOverset(): string;
 
         /**
@@ -9573,25 +10254,61 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get bubbles(): boolean;
         get cancel_bubble(): boolean;
         set cancel_bubble(val: boolean);
         get cancelBubble(): boolean;
         set cancelBubble(val: boolean);
+        /**
+         * @read-only
+         */
         get cancelable(): boolean;
+        /**
+         * @read-only
+         */
         get current_target(): DOMEventTarget;
+        /**
+         * @read-only
+         */
         get currentTarget(): DOMEventTarget;
+        /**
+         * @read-only
+         */
         get event_phase(): number;
+        /**
+         * @read-only
+         */
         get eventPhase(): number;
         get return_value(): boolean;
         set return_value(val: boolean);
         get returnValue(): boolean;
         set returnValue(val: boolean);
+        /**
+         * @read-only
+         */
         get src_element(): DOMEventTarget;
+        /**
+         * @read-only
+         */
         get srcElement(): DOMEventTarget;
+        /**
+         * @read-only
+         */
         get target(): DOMEventTarget;
+        /**
+         * @read-only
+         */
         get time_stamp(): number;
+        /**
+         * @read-only
+         */
         get timeStamp(): number;
+        /**
+         * @read-only
+         */
         get type(): string;
 
         /**
@@ -9713,6 +10430,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get name(): string;
 
         /**
@@ -9781,6 +10501,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
 
         /**
@@ -14564,6 +15287,9 @@ export namespace WebKit2WebExtension {
         set autofocus(val: boolean);
         get disabled(): boolean;
         set disabled(val: boolean);
+        /**
+         * @read-only
+         */
         get form(): DOMHTMLFormElement;
         get name(): string;
         set name(val: string);
@@ -14571,7 +15297,13 @@ export namespace WebKit2WebExtension {
         set type(val: string);
         get value(): string;
         set value(val: string);
+        /**
+         * @read-only
+         */
         get will_validate(): boolean;
+        /**
+         * @read-only
+         */
         get willValidate(): boolean;
 
         /**
@@ -15729,6 +16461,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
 
         /**
@@ -17647,6 +18382,9 @@ export namespace WebKit2WebExtension {
         set fg_color(val: string);
         get fgColor(): string;
         set fgColor(val: string);
+        /**
+         * @read-only
+         */
         get height(): number;
         get link_color(): string;
         set link_color(val: string);
@@ -17656,6 +18394,9 @@ export namespace WebKit2WebExtension {
         set vlink_color(val: string);
         get vlinkColor(): string;
         set vlinkColor(val: string);
+        /**
+         * @read-only
+         */
         get width(): number;
 
         /**
@@ -18347,7 +19088,13 @@ export namespace WebKit2WebExtension {
         set inner_text(val: string);
         get innerText(): string;
         set innerText(val: string);
+        /**
+         * @read-only
+         */
         get is_content_editable(): boolean;
+        /**
+         * @read-only
+         */
         get isContentEditable(): boolean;
         get lang(): string;
         set lang(val: string);
@@ -19708,6 +20455,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get form(): DOMHTMLFormElement;
 
         /**
@@ -20912,11 +21662,17 @@ export namespace WebKit2WebExtension {
         set acceptCharset(val: string);
         get action(): string;
         set action(val: string);
+        /**
+         * @read-only
+         */
         get elements(): DOMHTMLCollection;
         get encoding(): string;
         set encoding(val: string);
         get enctype(): string;
         set enctype(val: string);
+        /**
+         * @read-only
+         */
         get length(): number;
         get method(): string;
         set method(val: string);
@@ -21589,14 +22345,29 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get content_document(): DOMDocument;
+        /**
+         * @read-only
+         */
         get contentDocument(): DOMDocument;
+        /**
+         * @read-only
+         */
         get content_window(): DOMDOMWindow;
+        /**
+         * @read-only
+         */
         get contentWindow(): DOMDOMWindow;
         get frame_border(): string;
         set frame_border(val: string);
         get frameBorder(): string;
         set frameBorder(val: string);
+        /**
+         * @read-only
+         */
         get height(): number;
         get long_desc(): string;
         set long_desc(val: string);
@@ -21620,6 +22391,9 @@ export namespace WebKit2WebExtension {
         set scrolling(val: string);
         get src(): string;
         set src(val: string);
+        /**
+         * @read-only
+         */
         get width(): number;
 
         /**
@@ -25258,9 +26032,21 @@ export namespace WebKit2WebExtension {
 
         get align(): string;
         set align(val: string);
+        /**
+         * @read-only
+         */
         get content_document(): DOMDocument;
+        /**
+         * @read-only
+         */
         get contentDocument(): DOMDocument;
+        /**
+         * @read-only
+         */
         get content_window(): DOMDOMWindow;
+        /**
+         * @read-only
+         */
         get contentWindow(): DOMDOMWindow;
         get frame_border(): string;
         set frame_border(val: string);
@@ -25993,6 +26779,9 @@ export namespace WebKit2WebExtension {
         set alt(val: string);
         get border(): string;
         set border(val: string);
+        /**
+         * @read-only
+         */
         get complete(): boolean;
         get height(): number;
         set height(val: number);
@@ -26010,9 +26799,21 @@ export namespace WebKit2WebExtension {
         set lowsrc(val: string);
         get name(): string;
         set name(val: string);
+        /**
+         * @read-only
+         */
         get natural_height(): number;
+        /**
+         * @read-only
+         */
         get naturalHeight(): number;
+        /**
+         * @read-only
+         */
         get natural_width(): number;
+        /**
+         * @read-only
+         */
         get naturalWidth(): number;
         get src(): string;
         set src(val: string);
@@ -26024,7 +26825,13 @@ export namespace WebKit2WebExtension {
         set vspace(val: number);
         get width(): number;
         set width(val: number);
+        /**
+         * @read-only
+         */
         get x(): number;
+        /**
+         * @read-only
+         */
         get y(): number;
 
         /**
@@ -26796,7 +27603,13 @@ export namespace WebKit2WebExtension {
         set defaultValue(val: string);
         get disabled(): boolean;
         set disabled(val: boolean);
+        /**
+         * @read-only
+         */
         get files(): DOMFileList;
+        /**
+         * @read-only
+         */
         get form(): DOMHTMLFormElement;
         get height(): number;
         set height(val: number);
@@ -26828,7 +27641,13 @@ export namespace WebKit2WebExtension {
         set value(val: string);
         get width(): number;
         set width(val: number);
+        /**
+         * @read-only
+         */
         get will_validate(): boolean;
+        /**
+         * @read-only
+         */
         get willValidate(): boolean;
 
         /**
@@ -28202,6 +29021,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get form(): DOMHTMLFormElement;
         get html_for(): string;
         set html_for(val: string);
@@ -28795,6 +29617,9 @@ export namespace WebKit2WebExtension {
 
         get align(): string;
         set align(val: string);
+        /**
+         * @read-only
+         */
         get form(): DOMHTMLFormElement;
 
         /**
@@ -29414,7 +30239,13 @@ export namespace WebKit2WebExtension {
         set rel(val: string);
         get rev(): string;
         set rev(val: string);
+        /**
+         * @read-only
+         */
         get sheet(): DOMStyleSheet;
+        /**
+         * @read-only
+         */
         get sizes(): DOMDOMTokenList;
         get target(): string;
         set target(val: string);
@@ -30076,6 +30907,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get areas(): DOMHTMLCollection;
         get name(): string;
         set name(val: string);
@@ -33683,12 +34517,21 @@ export namespace WebKit2WebExtension {
         set code_type(val: string);
         get codeType(): string;
         set codeType(val: string);
+        /**
+         * @read-only
+         */
         get content_document(): DOMDocument;
+        /**
+         * @read-only
+         */
         get contentDocument(): DOMDocument;
         get data(): string;
         set data(val: string);
         get declare(): boolean;
         set declare(val: boolean);
+        /**
+         * @read-only
+         */
         get form(): DOMHTMLFormElement;
         get height(): string;
         set height(val: string);
@@ -35015,12 +35858,21 @@ export namespace WebKit2WebExtension {
         set defaultSelected(val: boolean);
         get disabled(): boolean;
         set disabled(val: boolean);
+        /**
+         * @read-only
+         */
         get form(): DOMHTMLFormElement;
+        /**
+         * @read-only
+         */
         get index(): number;
         get label(): string;
         set label(val: string);
         get selected(): boolean;
         set selected(val: boolean);
+        /**
+         * @read-only
+         */
         get text(): string;
         get value(): string;
         set value(val: string);
@@ -35593,6 +36445,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
         get selected_index(): number;
         set selected_index(val: number);
@@ -38800,6 +39655,9 @@ export namespace WebKit2WebExtension {
         set autofocus(val: boolean);
         get disabled(): boolean;
         set disabled(val: boolean);
+        /**
+         * @read-only
+         */
         get form(): DOMHTMLFormElement;
         get length(): number;
         set length(val: number);
@@ -38807,6 +39665,9 @@ export namespace WebKit2WebExtension {
         set multiple(val: boolean);
         get name(): string;
         set name(val: string);
+        /**
+         * @read-only
+         */
         get options(): DOMHTMLOptionsCollection;
         get selected_index(): number;
         set selected_index(val: number);
@@ -38814,10 +39675,19 @@ export namespace WebKit2WebExtension {
         set selectedIndex(val: number);
         get size(): number;
         set size(val: number);
+        /**
+         * @read-only
+         */
         get type(): string;
         get value(): string;
         set value(val: string);
+        /**
+         * @read-only
+         */
         get will_validate(): boolean;
+        /**
+         * @read-only
+         */
         get willValidate(): boolean;
 
         /**
@@ -39505,6 +40375,9 @@ export namespace WebKit2WebExtension {
         set disabled(val: boolean);
         get media(): string;
         set media(val: string);
+        /**
+         * @read-only
+         */
         get sheet(): DOMStyleSheet;
         get type(): string;
         set type(val: string);
@@ -40735,7 +41608,13 @@ export namespace WebKit2WebExtension {
         set bg_color(val: string);
         get bgColor(): string;
         set bgColor(val: string);
+        /**
+         * @read-only
+         */
         get cell_index(): number;
+        /**
+         * @read-only
+         */
         get cellIndex(): number;
         get ch(): string;
         set ch(val: string);
@@ -42141,6 +43020,9 @@ export namespace WebKit2WebExtension {
         set bgColor(val: string);
         get border(): string;
         set border(val: string);
+        /**
+         * @read-only
+         */
         get caption(): DOMHTMLTableCaptionElement;
         get cell_padding(): string;
         set cell_padding(val: string);
@@ -42150,16 +43032,37 @@ export namespace WebKit2WebExtension {
         set cell_spacing(val: string);
         get cellSpacing(): string;
         set cellSpacing(val: string);
+        /**
+         * @read-only
+         */
         get rows(): DOMHTMLCollection;
         get rules(): string;
         set rules(val: string);
         get summary(): string;
         set summary(val: string);
+        /**
+         * @read-only
+         */
         get t_bodies(): DOMHTMLCollection;
+        /**
+         * @read-only
+         */
         get tBodies(): DOMHTMLCollection;
+        /**
+         * @read-only
+         */
         get t_foot(): DOMHTMLTableSectionElement;
+        /**
+         * @read-only
+         */
         get tFoot(): DOMHTMLTableSectionElement;
+        /**
+         * @read-only
+         */
         get t_head(): DOMHTMLTableSectionElement;
+        /**
+         * @read-only
+         */
         get tHead(): DOMHTMLTableSectionElement;
         get width(): string;
         set width(val: string);
@@ -42880,6 +43783,9 @@ export namespace WebKit2WebExtension {
         set bg_color(val: string);
         get bgColor(): string;
         set bgColor(val: string);
+        /**
+         * @read-only
+         */
         get cells(): DOMHTMLCollection;
         get ch(): string;
         set ch(val: string);
@@ -42887,9 +43793,21 @@ export namespace WebKit2WebExtension {
         set ch_off(val: string);
         get chOff(): string;
         set chOff(val: string);
+        /**
+         * @read-only
+         */
         get row_index(): number;
+        /**
+         * @read-only
+         */
         get rowIndex(): number;
+        /**
+         * @read-only
+         */
         get section_row_index(): number;
+        /**
+         * @read-only
+         */
         get sectionRowIndex(): number;
         get v_align(): string;
         set v_align(val: string);
@@ -43546,6 +44464,9 @@ export namespace WebKit2WebExtension {
         set ch_off(val: string);
         get chOff(): string;
         set chOff(val: string);
+        /**
+         * @read-only
+         */
         get rows(): DOMHTMLCollection;
         get v_align(): string;
         set v_align(val: string);
@@ -44207,6 +45128,9 @@ export namespace WebKit2WebExtension {
         set defaultValue(val: string);
         get disabled(): boolean;
         set disabled(val: boolean);
+        /**
+         * @read-only
+         */
         get form(): DOMHTMLFormElement;
         get name(): string;
         set name(val: string);
@@ -44224,10 +45148,19 @@ export namespace WebKit2WebExtension {
         set selection_start(val: number);
         get selectionStart(): number;
         set selectionStart(val: number);
+        /**
+         * @read-only
+         */
         get type(): string;
         get value(): string;
         set value(val: string);
+        /**
+         * @read-only
+         */
         get will_validate(): boolean;
+        /**
+         * @read-only
+         */
         get willValidate(): boolean;
 
         /**
@@ -46059,19 +46992,61 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get alt_graph_key(): boolean;
+        /**
+         * @read-only
+         */
         get altGraphKey(): boolean;
+        /**
+         * @read-only
+         */
         get alt_key(): boolean;
+        /**
+         * @read-only
+         */
         get altKey(): boolean;
+        /**
+         * @read-only
+         */
         get ctrl_key(): boolean;
+        /**
+         * @read-only
+         */
         get ctrlKey(): boolean;
+        /**
+         * @read-only
+         */
         get key_identifier(): string;
+        /**
+         * @read-only
+         */
         get keyIdentifier(): string;
+        /**
+         * @read-only
+         */
         get key_location(): number;
+        /**
+         * @read-only
+         */
         get keyLocation(): number;
+        /**
+         * @read-only
+         */
         get meta_key(): boolean;
+        /**
+         * @read-only
+         */
         get metaKey(): boolean;
+        /**
+         * @read-only
+         */
         get shift_key(): boolean;
+        /**
+         * @read-only
+         */
         get shiftKey(): boolean;
 
         /**
@@ -46198,6 +47173,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
         get media_text(): string;
         set media_text(val: string);
@@ -46352,34 +47330,121 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get alt_key(): boolean;
+        /**
+         * @read-only
+         */
         get altKey(): boolean;
+        /**
+         * @read-only
+         */
         get button(): number;
+        /**
+         * @read-only
+         */
         get client_x(): number;
+        /**
+         * @read-only
+         */
         get clientX(): number;
+        /**
+         * @read-only
+         */
         get client_y(): number;
+        /**
+         * @read-only
+         */
         get clientY(): number;
+        /**
+         * @read-only
+         */
         get ctrl_key(): boolean;
+        /**
+         * @read-only
+         */
         get ctrlKey(): boolean;
+        /**
+         * @read-only
+         */
         get from_element(): DOMNode;
+        /**
+         * @read-only
+         */
         get fromElement(): DOMNode;
+        /**
+         * @read-only
+         */
         get meta_key(): boolean;
+        /**
+         * @read-only
+         */
         get metaKey(): boolean;
+        /**
+         * @read-only
+         */
         get offset_x(): number;
+        /**
+         * @read-only
+         */
         get offsetX(): number;
+        /**
+         * @read-only
+         */
         get offset_y(): number;
+        /**
+         * @read-only
+         */
         get offsetY(): number;
+        /**
+         * @read-only
+         */
         get related_target(): DOMEventTarget;
+        /**
+         * @read-only
+         */
         get relatedTarget(): DOMEventTarget;
+        /**
+         * @read-only
+         */
         get screen_x(): number;
+        /**
+         * @read-only
+         */
         get screenX(): number;
+        /**
+         * @read-only
+         */
         get screen_y(): number;
+        /**
+         * @read-only
+         */
         get screenY(): number;
+        /**
+         * @read-only
+         */
         get shift_key(): boolean;
+        /**
+         * @read-only
+         */
         get shiftKey(): boolean;
+        /**
+         * @read-only
+         */
         get to_element(): DOMNode;
+        /**
+         * @read-only
+         */
         get toElement(): DOMNode;
+        /**
+         * @read-only
+         */
         get x(): number;
+        /**
+         * @read-only
+         */
         get y(): number;
 
         /**
@@ -46542,6 +47607,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
 
         /**
@@ -46684,31 +47752,97 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get base_uri(): string;
+        /**
+         * @read-only
+         */
         get baseUri(): string;
+        /**
+         * @read-only
+         */
         get child_nodes(): DOMNodeList;
+        /**
+         * @read-only
+         */
         get childNodes(): DOMNodeList;
+        /**
+         * @read-only
+         */
         get first_child(): DOMNode;
+        /**
+         * @read-only
+         */
         get firstChild(): DOMNode;
+        /**
+         * @read-only
+         */
         get last_child(): DOMNode;
+        /**
+         * @read-only
+         */
         get lastChild(): DOMNode;
+        /**
+         * @read-only
+         */
         get next_sibling(): DOMNode;
+        /**
+         * @read-only
+         */
         get nextSibling(): DOMNode;
+        /**
+         * @read-only
+         */
         get node_name(): string;
+        /**
+         * @read-only
+         */
         get nodeName(): string;
+        /**
+         * @read-only
+         */
         get node_type(): number;
+        /**
+         * @read-only
+         */
         get nodeType(): number;
         get node_value(): string;
         set node_value(val: string);
         get nodeValue(): string;
         set nodeValue(val: string);
+        /**
+         * @read-only
+         */
         get owner_document(): DOMDocument;
+        /**
+         * @read-only
+         */
         get ownerDocument(): DOMDocument;
+        /**
+         * @read-only
+         */
         get parent_element(): DOMElement;
+        /**
+         * @read-only
+         */
         get parentElement(): DOMElement;
+        /**
+         * @read-only
+         */
         get parent_node(): DOMNode;
+        /**
+         * @read-only
+         */
         get parentNode(): DOMNode;
+        /**
+         * @read-only
+         */
         get previous_sibling(): DOMNode;
+        /**
+         * @read-only
+         */
         get previousSibling(): DOMNode;
         get text_content(): string;
         set text_content(val: string);
@@ -47447,13 +48581,37 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get filter(): DOMNodeFilter;
+        /**
+         * @read-only
+         */
         get pointer_before_reference_node(): boolean;
+        /**
+         * @read-only
+         */
         get pointerBeforeReferenceNode(): boolean;
+        /**
+         * @read-only
+         */
         get reference_node(): DOMNode;
+        /**
+         * @read-only
+         */
         get referenceNode(): DOMNode;
+        /**
+         * @read-only
+         */
         get root(): DOMNode;
+        /**
+         * @read-only
+         */
         get what_to_show(): number;
+        /**
+         * @read-only
+         */
         get whatToShow(): number;
 
         /**
@@ -47552,6 +48710,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
 
         /**
@@ -47625,7 +48786,13 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set core_object(val: any);
+        /**
+         * @construct-only
+         */
         set coreObject(val: any);
 
         /**
@@ -47708,7 +48875,13 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get sheet(): DOMStyleSheet;
+        /**
+         * @read-only
+         */
         get target(): string;
 
         /**
@@ -48259,17 +49432,53 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get collapsed(): boolean;
+        /**
+         * @read-only
+         */
         get common_ancestor_container(): DOMNode;
+        /**
+         * @read-only
+         */
         get commonAncestorContainer(): DOMNode;
+        /**
+         * @read-only
+         */
         get end_container(): DOMNode;
+        /**
+         * @read-only
+         */
         get endContainer(): DOMNode;
+        /**
+         * @read-only
+         */
         get end_offset(): number;
+        /**
+         * @read-only
+         */
         get endOffset(): number;
+        /**
+         * @read-only
+         */
         get start_container(): DOMNode;
+        /**
+         * @read-only
+         */
         get startContainer(): DOMNode;
+        /**
+         * @read-only
+         */
         get start_offset(): number;
+        /**
+         * @read-only
+         */
         get startOffset(): number;
+        /**
+         * @read-only
+         */
         get text(): string;
 
         /**
@@ -48479,13 +49688,37 @@ export namespace WebKit2WebExtension {
 
         get disabled(): boolean;
         set disabled(val: boolean);
+        /**
+         * @read-only
+         */
         get href(): string;
+        /**
+         * @read-only
+         */
         get media(): DOMMediaList;
+        /**
+         * @read-only
+         */
         get owner_node(): DOMNode;
+        /**
+         * @read-only
+         */
         get ownerNode(): DOMNode;
+        /**
+         * @read-only
+         */
         get parent_style_sheet(): DOMStyleSheet;
+        /**
+         * @read-only
+         */
         get parentStyleSheet(): DOMStyleSheet;
+        /**
+         * @read-only
+         */
         get title(): string;
+        /**
+         * @read-only
+         */
         get type(): string;
 
         /**
@@ -48582,6 +49815,9 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
 
         /**
@@ -48671,7 +49907,13 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get whole_text(): string;
+        /**
+         * @read-only
+         */
         get wholeText(): string;
 
         /**
@@ -49217,11 +50459,29 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get current_node(): DOMNode;
+        /**
+         * @read-only
+         */
         get currentNode(): DOMNode;
+        /**
+         * @read-only
+         */
         get filter(): DOMNodeFilter;
+        /**
+         * @read-only
+         */
         get root(): DOMNode;
+        /**
+         * @read-only
+         */
         get what_to_show(): number;
+        /**
+         * @read-only
+         */
         get whatToShow(): number;
 
         /**
@@ -49369,19 +50629,61 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get char_code(): number;
+        /**
+         * @read-only
+         */
         get charCode(): number;
+        /**
+         * @read-only
+         */
         get detail(): number;
+        /**
+         * @read-only
+         */
         get key_code(): number;
+        /**
+         * @read-only
+         */
         get keyCode(): number;
+        /**
+         * @read-only
+         */
         get layer_x(): number;
+        /**
+         * @read-only
+         */
         get layerX(): number;
+        /**
+         * @read-only
+         */
         get layer_y(): number;
+        /**
+         * @read-only
+         */
         get layerY(): number;
+        /**
+         * @read-only
+         */
         get page_x(): number;
+        /**
+         * @read-only
+         */
         get pageX(): number;
+        /**
+         * @read-only
+         */
         get page_y(): number;
+        /**
+         * @read-only
+         */
         get pageY(): number;
+        /**
+         * @read-only
+         */
         get view(): DOMDOMWindow;
 
         /**
@@ -49527,11 +50829,29 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get wheel_delta(): number;
+        /**
+         * @read-only
+         */
         get wheelDelta(): number;
+        /**
+         * @read-only
+         */
         get wheel_delta_x(): number;
+        /**
+         * @read-only
+         */
         get wheelDeltaX(): number;
+        /**
+         * @read-only
+         */
         get wheel_delta_y(): number;
+        /**
+         * @read-only
+         */
         get wheelDeltaY(): number;
 
         /**
@@ -49717,19 +51037,61 @@ export namespace WebKit2WebExtension {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get boolean_value(): boolean;
+        /**
+         * @read-only
+         */
         get booleanValue(): boolean;
+        /**
+         * @read-only
+         */
         get invalid_iterator_state(): boolean;
+        /**
+         * @read-only
+         */
         get invalidIteratorState(): boolean;
+        /**
+         * @read-only
+         */
         get number_value(): number;
+        /**
+         * @read-only
+         */
         get numberValue(): number;
+        /**
+         * @read-only
+         */
         get result_type(): number;
+        /**
+         * @read-only
+         */
         get resultType(): number;
+        /**
+         * @read-only
+         */
         get single_node_value(): DOMNode;
+        /**
+         * @read-only
+         */
         get singleNodeValue(): DOMNode;
+        /**
+         * @read-only
+         */
         get snapshot_length(): number;
+        /**
+         * @read-only
+         */
         get snapshotLength(): number;
+        /**
+         * @read-only
+         */
         get string_value(): string;
+        /**
+         * @read-only
+         */
         get stringValue(): string;
 
         /**
@@ -49972,56 +51334,67 @@ export namespace WebKit2WebExtension {
         /**
          * Bitmask of {@link WebKit2WebExtension.HitTestResultContext} flags representing
          * the context of the {@link WebKit2WebExtension.HitTestResult}.
+         * @construct-only
          */
         get context(): number;
         /**
          * The URI of the image if flag {@link WebKit2WebExtension.HitTestResultContext.IMAGE}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
+         * @construct-only
          */
         get image_uri(): string;
         /**
          * The URI of the image if flag {@link WebKit2WebExtension.HitTestResultContext.IMAGE}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
+         * @construct-only
          */
         get imageUri(): string;
         /**
          * The label of the link if flag {@link WebKit2WebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
+         * @construct-only
          */
         get link_label(): string;
         /**
          * The label of the link if flag {@link WebKit2WebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
+         * @construct-only
          */
         get linkLabel(): string;
         /**
          * The title of the link if flag {@link WebKit2WebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
+         * @construct-only
          */
         get link_title(): string;
         /**
          * The title of the link if flag {@link WebKit2WebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
+         * @construct-only
          */
         get linkTitle(): string;
         /**
          * The URI of the link if flag {@link WebKit2WebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
+         * @construct-only
          */
         get link_uri(): string;
         /**
          * The URI of the link if flag {@link WebKit2WebExtension.HitTestResultContext.LINK}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
+         * @construct-only
          */
         get linkUri(): string;
         /**
          * The URI of the media if flag {@link WebKit2WebExtension.HitTestResultContext.MEDIA}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
+         * @construct-only
          */
         get media_uri(): string;
         /**
          * The URI of the media if flag {@link WebKit2WebExtension.HitTestResultContext.MEDIA}
          * is present in {@link WebKit2WebExtension.HitTestResult.context}
+         * @construct-only
          */
         get mediaUri(): string;
 
@@ -50142,6 +51515,7 @@ export namespace WebKit2WebExtension {
              * `webkit_frame_get_js_context_for_script_world()`.
              * @signal
              * @since 2.2
+             * @run-last
              */
             'window-object-cleared': (arg0: WebPage, arg1: Frame) => void;
         }
@@ -50353,48 +51727,59 @@ export namespace WebKit2WebExtension {
 
         /**
          * The expected content length of the response.
+         * @read-only
          */
         get content_length(): number;
         /**
          * The expected content length of the response.
+         * @read-only
          */
         get contentLength(): number;
         /**
          * The HTTP headers of the response, or `null` if the response is not an HTTP response.
          * @since 2.6
+         * @read-only
          */
         get http_headers(): Soup.MessageHeaders;
         /**
          * The HTTP headers of the response, or `null` if the response is not an HTTP response.
          * @since 2.6
+         * @read-only
          */
         get httpHeaders(): Soup.MessageHeaders;
         /**
          * The MIME type of the response.
+         * @read-only
          */
         get mime_type(): string;
         /**
          * The MIME type of the response.
+         * @read-only
          */
         get mimeType(): string;
         /**
          * The status code of the response as returned by the server.
+         * @read-only
          */
         get status_code(): number;
         /**
          * The status code of the response as returned by the server.
+         * @read-only
          */
         get statusCode(): number;
         /**
          * The suggested filename for the URI response.
+         * @read-only
          */
         get suggested_filename(): string;
         /**
          * The suggested filename for the URI response.
+         * @read-only
          */
         get suggestedFilename(): string;
         /**
          * The URI for which the response was made.
+         * @read-only
          */
         get uri(): string;
 
@@ -50517,16 +51902,19 @@ export namespace WebKit2WebExtension {
         /**
          * The UNIX file descriptors of the user message.
          * @since 2.28
+         * @construct-only
          */
         get fd_list(): Gio.UnixFDList;
         /**
          * The UNIX file descriptors of the user message.
          * @since 2.28
+         * @construct-only
          */
         get fdList(): Gio.UnixFDList;
         /**
          * The name of the user message.
          * @since 2.28
+         * @construct-only
          */
         get name(): string;
         /**
@@ -50534,6 +51922,7 @@ export namespace WebKit2WebExtension {
          * if the message doesn't include parameters. Note that only complete types are
          * allowed.
          * @since 2.28
+         * @construct-only
          */
         get parameters(): GLib.Variant;
 
@@ -50625,6 +52014,7 @@ export namespace WebKit2WebExtension {
              * selection.
              * @signal
              * @since 2.10
+             * @run-last
              */
             'selection-changed': () => void;
         }
@@ -50699,6 +52089,7 @@ export namespace WebKit2WebExtension {
              * This signal is emitted when a new {@link WebKit2WebExtension.WebPage} is created in
              * the Web Process.
              * @signal
+             * @run-last
              */
             'page-created': (arg0: WebPage) => void;
             /**
@@ -50708,6 +52099,7 @@ export namespace WebKit2WebExtension {
              * replied to. Calling `webkit_user_message_send_reply()` will do nothing.
              * @signal
              * @since 2.28
+             * @run-last
              */
             'user-message-received': (arg0: UserMessage) => void;
         }
@@ -50923,6 +52315,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * The {@link WebKit2WebExtension.DOMNode}
+         * @construct-only
          */
         get node(): DOMNode;
 
@@ -50981,6 +52374,7 @@ export namespace WebKit2WebExtension {
              * The `console_message` contains information of the message.
              * @signal
              * @since 2.12
+             * @run-last
              */
             'console-message-sent': (arg0: ConsoleMessage) => void;
             /**
@@ -50994,6 +52388,7 @@ export namespace WebKit2WebExtension {
              * signal instead.
              * @signal
              * @since 2.8
+             * @run-last
              */
             'context-menu': (arg0: ContextMenu, arg1: WebHitTestResult) => boolean | void;
             /**
@@ -51003,6 +52398,7 @@ export namespace WebKit2WebExtension {
              * You can wait for this signal to get the DOM document with
              * `webkit_web_page_get_dom_document()`.
              * @signal
+             * @run-last
              */
             'document-loaded': () => void;
             /**
@@ -51018,6 +52414,7 @@ export namespace WebKit2WebExtension {
              * @signal
              * @since 2.16
              * @deprecated since 2.26: , use {@link WebKit2WebExtension.WebPage.SignalSignatures.form_controls_associated_for_frame | WebKit2WebExtension.WebPage::form-controls-associated-for-frame} instead.
+             * @run-last
              */
             'form-controls-associated': (arg0: DOMElement[]) => void;
             /**
@@ -51032,6 +52429,7 @@ export namespace WebKit2WebExtension {
              * keep them alive after the signal handler returns.
              * @signal
              * @since 2.26
+             * @run-last
              */
             'form-controls-associated-for-frame': (arg0: DOMElement[], arg1: Frame) => void;
             /**
@@ -51050,6 +52448,7 @@ export namespace WebKit2WebExtension {
              * {@link Soup.MessageHeaders} will be taken into account when the request
              * is sent over the network.
              * @signal
+             * @run-last
              */
             'send-request': (arg0: URIRequest, arg1: URIResponse) => boolean | void;
             /**
@@ -51063,6 +52462,7 @@ export namespace WebKit2WebExtension {
              * finish with error {@link WebKit2WebExtension.UserMessageError.USER_MESSAGE_UNHANDLED_MESSAGE}.
              * @signal
              * @since 2.28
+             * @run-last
              */
             'user-message-received': (arg0: UserMessage) => boolean | void;
             /**
@@ -51095,6 +52495,7 @@ export namespace WebKit2WebExtension {
              * emitted.
              * @signal
              * @since 2.20
+             * @run-last
              */
             'will-submit-form': (
                 arg0: DOMElement,
@@ -51125,6 +52526,7 @@ export namespace WebKit2WebExtension {
 
         /**
          * The current active URI of the {@link WebKit2WebExtension.WebPage}.
+         * @read-only
          */
         get uri(): string;
 

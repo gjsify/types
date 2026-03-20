@@ -35,6 +35,8 @@ export namespace GstInsertBin {
              *
              * Same as `gst_insert_bin_append()`
              * @signal
+             * @action
+             * @run-last
              */
             append: (arg0: Gst.Element, arg1: any | null, arg2: any | null) => void;
             /**
@@ -44,6 +46,8 @@ export namespace GstInsertBin {
              *
              * Same as `gst_insert_bin_insert_after()`
              * @signal
+             * @action
+             * @run-last
              */
             'insert-after': (arg0: Gst.Element, arg1: Gst.Element, arg2: any | null, arg3: any | null) => void;
             /**
@@ -52,6 +56,8 @@ export namespace GstInsertBin {
              *
              * Same as `gst_insert_bin_insert_before()`
              * @signal
+             * @action
+             * @run-last
              */
             'insert-before': (arg0: Gst.Element, arg1: Gst.Element, arg2: any | null, arg3: any | null) => void;
             /**
@@ -60,6 +66,8 @@ export namespace GstInsertBin {
              *
              * Same as `gst_insert_bin_prepend()`
              * @signal
+             * @action
+             * @run-last
              */
             prepend: (arg0: Gst.Element, arg1: any | null, arg2: any | null) => void;
             /**
@@ -67,6 +75,8 @@ export namespace GstInsertBin {
              *
              * Same as `gst_insert_bin_remove()`
              * @signal
+             * @action
+             * @run-last
              */
             remove: (arg0: Gst.Element, arg1: any | null, arg2: any | null) => void;
             'notify::async-handling': (pspec: GObject.ParamSpec) => void;

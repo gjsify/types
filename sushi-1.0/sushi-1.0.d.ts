@@ -45,6 +45,9 @@ export namespace Sushi {
      * Sushi-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SoundPlayerState {
         export const $gtype: GObject.GType<SoundPlayerState>;
     }
@@ -93,6 +96,9 @@ export namespace Sushi {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get cover(): GdkPixbuf.Pixbuf;
         get taglist(): Gst.TagList;
         set taglist(val: Gst.TagList);
@@ -168,13 +174,31 @@ export namespace Sushi {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get content_type(): string;
+        /**
+         * @read-only
+         */
         get contentType(): string;
         get file(): Gio.File;
         set file(val: Gio.File);
+        /**
+         * @read-only
+         */
         get icon(): GdkPixbuf.Pixbuf;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get size(): string;
+        /**
+         * @read-only
+         */
         get time(): string;
 
         /**
@@ -231,6 +255,7 @@ export namespace Sushi {
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             loaded: () => void;
             'notify::uri': (pspec: GObject.ParamSpec) => void;
@@ -811,6 +836,9 @@ export namespace Sushi {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get document(): EvinceDocument.Document;
         get uri(): string;
         set uri(val: string);
@@ -890,12 +918,21 @@ export namespace Sushi {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get duration(): number;
         get playing(): boolean;
         set playing(val: boolean);
         get progress(): number;
         set progress(val: number);
+        /**
+         * @read-only
+         */
         get state(): SoundPlayerState;
+        /**
+         * @read-only
+         */
         get taglist(): Gst.TagList;
         get uri(): string;
         set uri(val: string);
@@ -942,6 +979,7 @@ export namespace Sushi {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             loaded: (arg0: GtkSource.Buffer) => void;
             'notify::uri': (pspec: GObject.ParamSpec) => void;

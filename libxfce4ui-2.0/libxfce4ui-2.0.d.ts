@@ -89,6 +89,9 @@ export namespace Libxfce4ui {
         LOWEST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SMClientRestartStyle {
         export const $gtype: GObject.GType<SMClientRestartStyle>;
     }
@@ -112,6 +115,9 @@ export namespace Libxfce4ui {
         IMMEDIATELY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SMClientShutdownHint {
         export const $gtype: GObject.GType<SMClientShutdownHint>;
     }
@@ -140,6 +146,9 @@ export namespace Libxfce4ui {
         REBOOT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SmCLientErrorEnum {
         export const $gtype: GObject.GType<SmCLientErrorEnum>;
     }
@@ -811,6 +820,7 @@ export namespace Libxfce4ui {
              * filename.
              * @signal
              * @since 4.16
+             * @run-last
              */
             'text-invalid': () => void;
             /**
@@ -819,6 +829,7 @@ export namespace Libxfce4ui {
              * filename.
              * @signal
              * @since 4.16
+             * @run-last
              */
             'text-valid': () => void;
             'notify::max-text-length': (pspec: GObject.ParamSpec) => void;
@@ -899,12 +910,14 @@ export namespace Libxfce4ui {
          * The maximum permitted length of a filename. A value of -1
          * indicates no maximum length.
          * @since 4.16
+         * @construct-only
          */
         set max_text_length(val: number);
         /**
          * The maximum permitted length of a filename. A value of -1
          * indicates no maximum length.
          * @since 4.16
+         * @construct-only
          */
         set maxTextLength(val: number);
         /**
@@ -912,6 +925,7 @@ export namespace Libxfce4ui {
          * displayed in the GtkEntry. A NULL value indicates no original
          * filename.
          * @since 4.16
+         * @construct-only
          */
         set original_filename(val: string);
         /**
@@ -919,6 +933,7 @@ export namespace Libxfce4ui {
          * displayed in the GtkEntry. A NULL value indicates no original
          * filename.
          * @since 4.16
+         * @construct-only
          */
         set originalFilename(val: string);
 
@@ -1475,12 +1490,14 @@ export namespace Libxfce4ui {
              * signal, {@link Libxfce4ui.SMClient} will call <function>exit(3)</function> with
              * an exit code of zero on behalf of the application.
              * @signal
+             * @run-last
              */
             quit: () => void;
             /**
              * Informs the application that it will not need to quit.  In most cases,
              * quit-cancelled will be emitted a short time after quit-requested.
              * @signal
+             * @run-last
              */
             'quit-cancelled': () => void;
             /**
@@ -1496,6 +1513,7 @@ export namespace Libxfce4ui {
              * return `true` from the handler.  If the application is satisfied
              * with possibly needing to quit soon, the handler should return `false`.
              * @signal
+             * @run-last
              */
             'quit-requested': () => boolean | void;
             /**
@@ -1512,6 +1530,7 @@ export namespace Libxfce4ui {
              * possible, and MUST NOT interact with the user as a part of saving
              * state.
              * @signal
+             * @run-last
              */
             'save-state': () => void;
             /**
@@ -1521,6 +1540,7 @@ export namespace Libxfce4ui {
              * positions.  Most applications should not need to connect to this
              * signal.
              * @signal
+             * @run-last
              */
             'save-state-extended': () => void;
             'notify::argc': (pspec: GObject.ParamSpec) => void;
@@ -1563,9 +1583,21 @@ export namespace Libxfce4ui {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set argc(val: number);
+        /**
+         * @construct-only
+         */
         set argv(val: string[]);
+        /**
+         * @construct-only
+         */
         get client_id(): string;
+        /**
+         * @construct-only
+         */
         get clientId(): string;
         get current_directory(): string;
         set current_directory(val: string);
@@ -1585,6 +1617,9 @@ export namespace Libxfce4ui {
         set restart_style(val: SMClientRestartStyle);
         get restartStyle(): SMClientRestartStyle;
         set restartStyle(val: SMClientRestartStyle);
+        /**
+         * @read-only
+         */
         get resumed(): boolean;
 
         /**

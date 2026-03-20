@@ -5882,6 +5882,7 @@ export namespace AppStreamGlib {
              * the store.
              * @signal
              * @since 0.6.5
+             * @run-last
              */
             'app-added': (arg0: App) => void;
             /**
@@ -5889,6 +5890,7 @@ export namespace AppStreamGlib {
              * in the store.
              * @signal
              * @since 0.6.5
+             * @run-last
              */
             'app-changed': (arg0: App) => void;
             /**
@@ -5896,6 +5898,7 @@ export namespace AppStreamGlib {
              * from the store.
              * @signal
              * @since 0.6.5
+             * @run-last
              */
             'app-removed': (arg0: App) => void;
             /**
@@ -5903,6 +5906,7 @@ export namespace AppStreamGlib {
              * or removed from the store.
              * @signal
              * @since 0.1.2
+             * @run-last
              */
             changed: () => void;
         }

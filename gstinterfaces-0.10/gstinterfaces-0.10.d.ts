@@ -21,6 +21,9 @@ export namespace GstInterfaces {
      * GstInterfaces-0.10
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ColorBalanceType {
         export const $gtype: GObject.GType<ColorBalanceType>;
     }
@@ -37,6 +40,9 @@ export namespace GstInterfaces {
         SOFTWARE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MixerMessageType {
         export const $gtype: GObject.GType<MixerMessageType>;
     }
@@ -56,6 +62,9 @@ export namespace GstInterfaces {
         MIXER_CHANGED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MixerType {
         export const $gtype: GObject.GType<MixerType>;
     }
@@ -68,6 +77,9 @@ export namespace GstInterfaces {
         SOFTWARE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NavigationCommand {
         export const $gtype: GObject.GType<NavigationCommand>;
     }
@@ -105,6 +117,9 @@ export namespace GstInterfaces {
         NEXT_ANGLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NavigationEventType {
         export const $gtype: GObject.GType<NavigationEventType>;
     }
@@ -125,6 +140,9 @@ export namespace GstInterfaces {
         COMMAND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NavigationMessageType {
         export const $gtype: GObject.GType<NavigationMessageType>;
     }
@@ -142,6 +160,9 @@ export namespace GstInterfaces {
         ANGLES_CHANGED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NavigationQueryType {
         export const $gtype: GObject.GType<NavigationQueryType>;
     }
@@ -155,6 +176,9 @@ export namespace GstInterfaces {
         ANGLES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StreamVolumeFormat {
         export const $gtype: GObject.GType<StreamVolumeFormat>;
     }
@@ -470,6 +494,9 @@ export namespace GstInterfaces {
         to: StreamVolumeFormat | null,
         val: number,
     ): number;
+    /**
+     * @gir-type Flags
+     */
     export namespace MixerFlags {
         export const $gtype: GObject.GType<MixerFlags>;
     }
@@ -487,6 +514,9 @@ export namespace GstInterfaces {
         GROUPING,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MixerTrackFlags {
         export const $gtype: GObject.GType<MixerTrackFlags>;
     }
@@ -509,6 +539,9 @@ export namespace GstInterfaces {
         WRITEONLY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TunerChannelFlags {
         export const $gtype: GObject.GType<TunerChannelFlags>;
     }
@@ -692,16 +725,49 @@ export namespace GstInterfaces {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get flags(): number;
+        /**
+         * @construct-only
+         */
         get index(): number;
+        /**
+         * @read-only
+         */
         get label(): string;
+        /**
+         * @read-only
+         */
         get max_volume(): number;
+        /**
+         * @read-only
+         */
         get maxVolume(): number;
+        /**
+         * @read-only
+         */
         get min_volume(): number;
+        /**
+         * @read-only
+         */
         get minVolume(): number;
+        /**
+         * @read-only
+         */
         get num_channels(): number;
+        /**
+         * @read-only
+         */
         get numChannels(): number;
+        /**
+         * @construct-only
+         */
         get untranslated_label(): string;
+        /**
+         * @construct-only
+         */
         get untranslatedLabel(): string;
 
         /**

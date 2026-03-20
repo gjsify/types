@@ -113,38 +113,45 @@ export namespace AppIndicator3 {
             /**
              * Signaled when we connect to a watcher, or when it drops away.
              * @signal
+             * @run-last
              */
             'connection-changed': (arg0: boolean) => void;
             /**
              * Emitted when {@link AppIndicator3.Indicator.attention_icon_name} is changed
              * @signal
+             * @run-last
              */
             'new-attention-icon': () => void;
             /**
              * when {@link AppIndicator3.Indicator.icon_name} is changed
              * @signal
+             * @run-last
              */
             'new-icon': () => void;
             /**
              * Signaled when there is a new icon set for the
              * object.
              * @signal
+             * @run-last
              */
             'new-icon-theme-path': (arg0: string) => void;
             /**
              * Emitted when either {@link AppIndicator3.Indicator.label} or {@link AppIndicator3.Indicator.label_guide} are
              * changed.
              * @signal
+             * @run-last
              */
             'new-label': (arg0: string, arg1: string) => void;
             /**
              * Emitted when {@link AppIndicator3.Indicator.status} is changed
              * @signal
+             * @run-last
              */
             'new-status': (arg0: string) => void;
             /**
              * Signaled when the {@link AppIndicator3.Indicator} receives a scroll event.
              * @signal
+             * @run-last
              */
             'scroll-event': (arg0: number, arg1: Gdk.ScrollDirection) => void;
             'notify::attention-icon-desc': (pspec: GObject.ParamSpec) => void;
@@ -229,11 +236,13 @@ export namespace AppIndicator3 {
         /**
          * The type of indicator that this represents.  Please don't use 'Other'.
          * Defaults to 'ApplicationStatus'.
+         * @construct-only
          */
         get category(): string;
         /**
          * Pretty simple, `true` if we have a reasonable expectation of being
          * displayed through this object. You should hide your TrayIcon if so.
+         * @read-only
          */
         get connected(): boolean;
         /**
@@ -271,6 +280,7 @@ export namespace AppIndicator3 {
         /**
          * The ID for this indicator, which should be unique, but used consistently
          * by this program and its indicator.
+         * @construct-only
          */
         get id(): string;
         /**

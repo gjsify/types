@@ -51,6 +51,9 @@ export namespace ECalendar {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CalClientSourceTypeEnum {
         export const $gtype: GObject.GType<CalClientSourceTypeEnum>;
     }
@@ -183,6 +186,9 @@ export namespace ECalendar {
         NOT_SUPPORTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CalSetModeStatusEnum {
         export const $gtype: GObject.GType<CalSetModeStatusEnum>;
     }
@@ -206,6 +212,9 @@ export namespace ECalendar {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CalSourceTypeEnum {
         export const $gtype: GObject.GType<CalSourceTypeEnum>;
     }
@@ -220,6 +229,9 @@ export namespace ECalendar {
         INVALID,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CalendarStatus {
         export const $gtype: GObject.GType<CalendarStatus>;
     }
@@ -251,6 +263,9 @@ export namespace ECalendar {
         NOT_SUPPORTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DataCalCallStatus {
         export const $gtype: GObject.GType<DataCalCallStatus>;
     }
@@ -297,6 +312,9 @@ export namespace ECalendar {
     interface CalRecurInstanceFn {
         (comp: CalComponent, instance_start: number, instance_end: number, data: any): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace CalChangeType {
         export const $gtype: GObject.GType<CalChangeType>;
     }
@@ -331,6 +349,9 @@ export namespace ECalendar {
         NYMODE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DataCalObjModType {
         export const $gtype: GObject.GType<DataCalObjModType>;
     }
@@ -347,6 +368,9 @@ export namespace ECalendar {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DataCalObjType {
         export const $gtype: GObject.GType<DataCalObjType>;
     }
@@ -368,22 +392,27 @@ export namespace ECalendar {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'backend-died': () => void;
             /**
              * @signal
+             * @run-first
              */
             'backend-error': (arg0: string) => void;
             /**
              * @signal
+             * @run-first
              */
             'cal-opened': (arg0: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'cal-opened-ex': (arg0: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'cal-set-mode': (arg0: CalSetModeStatusEnum, arg1: unknown) => void;
         }
@@ -715,6 +744,7 @@ export namespace ECalendar {
         interface SignalSignatures extends EDataServer.Client.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'free-busy-data': (arg0: any) => void;
             'notify::capabilities': (pspec: GObject.ParamSpec) => void;
@@ -1329,22 +1359,27 @@ export namespace ECalendar {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             complete: (arg0: GLib.Error) => void;
             /**
              * @signal
+             * @run-first
              */
             'objects-added': (arg0: number[]) => void;
             /**
              * @signal
+             * @run-first
              */
             'objects-modified': (arg0: number[]) => void;
             /**
              * @signal
+             * @run-first
              */
             'objects-removed': (arg0: CalComponentId[]) => void;
             /**
              * @signal
+             * @run-first
              */
             progress: (arg0: number, arg1: string) => void;
             'notify::client': (pspec: GObject.ParamSpec) => void;
@@ -1370,7 +1405,13 @@ export namespace ECalendar {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get client(): CalClient;
+        /**
+         * @construct-only
+         */
         get view(): any;
 
         /**
@@ -2096,26 +2137,32 @@ export namespace ECalendar {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'objects-added': (arg0: number[]) => void;
             /**
              * @signal
+             * @run-first
              */
             'objects-modified': (arg0: number[]) => void;
             /**
              * @signal
+             * @run-first
              */
             'objects-removed': (arg0: CalComponentId[]) => void;
             /**
              * @signal
+             * @run-first
              */
             'view-complete': (arg0: number, arg1: string) => void;
             /**
              * @signal
+             * @run-first
              */
             'view-done': (arg0: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'view-progress': (arg0: string, arg1: number) => void;
             'notify::client': (pspec: GObject.ParamSpec) => void;
@@ -2138,7 +2185,13 @@ export namespace ECalendar {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get client(): Cal;
+        /**
+         * @construct-only
+         */
         get view(): any;
 
         /**

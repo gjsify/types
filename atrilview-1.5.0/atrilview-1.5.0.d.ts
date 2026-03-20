@@ -30,6 +30,9 @@ export namespace AtrilView {
      * AtrilView-1.5.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace JobPriority {
         export const $gtype: GObject.GType<JobPriority>;
     }
@@ -45,6 +48,9 @@ export namespace AtrilView {
         N_PRIORITIES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace JobRunMode {
         export const $gtype: GObject.GType<JobRunMode>;
     }
@@ -57,6 +63,9 @@ export namespace AtrilView {
         MAIN_LOOP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PageLayout {
         export const $gtype: GObject.GType<PageLayout>;
     }
@@ -70,6 +79,9 @@ export namespace AtrilView {
         AUTOMATIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SizingMode {
         export const $gtype: GObject.GType<SizingMode>;
     }
@@ -108,6 +120,9 @@ export namespace AtrilView {
      * @param screen
      */
     function stock_icons_set_screen(screen: Gdk.Screen): void;
+    /**
+     * @gir-type Flags
+     */
     export namespace JobPageDataFlags {
         export const $gtype: GObject.GType<JobPageDataFlags>;
     }
@@ -134,6 +149,7 @@ export namespace AtrilView {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'page-changed': (arg0: number, arg1: number) => void;
             'notify::continuous': (pspec: GObject.ParamSpec) => void;
@@ -334,10 +350,12 @@ export namespace AtrilView {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             cancelled: () => void;
             /**
              * @signal
+             * @run-first
              */
             finished: () => void;
         }
@@ -632,6 +650,7 @@ export namespace AtrilView {
         interface SignalSignatures extends Job.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             updated: (arg0: number) => void;
         }
@@ -724,6 +743,7 @@ export namespace AtrilView {
         interface SignalSignatures extends Job.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             updated: (arg0: number) => void;
         }
@@ -1324,14 +1344,17 @@ export namespace AtrilView {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'begin-print': () => void;
             /**
              * @signal
+             * @run-last
              */
             done: (arg0: Gtk.PrintOperationResult) => void;
             /**
              * @signal
+             * @run-last
              */
             'status-changed': () => void;
             'notify::document': (pspec: GObject.ParamSpec) => void;
@@ -1352,6 +1375,9 @@ export namespace AtrilView {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set document(val: AtrilDocument.Document);
 
         /**
@@ -1446,46 +1472,67 @@ export namespace AtrilView {
         interface SignalSignatures extends Gtk.Container.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'annot-added': (arg0: AtrilDocument.Annotation) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'annot-removed': (arg0: AtrilDocument.Annotation) => void;
             /**
              * @signal
+             * @run-last
              */
             'cursor-moved': (arg0: number, arg1: number) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'external-link': (arg0: GObject.Object) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'handle-link': (arg0: GObject.Object) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'layers-changed': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'move-cursor': (arg0: Gtk.MovementStep, arg1: number, arg2: boolean) => boolean | void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             popup: (arg0: any | null) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             scroll: (arg0: Gtk.ScrollType, arg1: Gtk.Orientation) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'selection-changed': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'sync-source': (arg0: any | null) => void;
             'notify::is-loading': (pspec: GObject.ParamSpec) => void;
@@ -1558,7 +1605,13 @@ export namespace AtrilView {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get is_loading(): boolean;
+        /**
+         * @read-only
+         */
         get isLoading(): boolean;
 
         /**
@@ -2264,14 +2317,20 @@ export namespace AtrilView {
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'change-page': (arg0: Gtk.ScrollType) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'external-link': (arg0: GObject.Object) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             finished: () => void;
             'notify::current-page': (pspec: GObject.ParamSpec) => void;
@@ -2340,10 +2399,25 @@ export namespace AtrilView {
 
         // Properties
 
+        /**
+         * @write-only
+         */
         set current_page(val: number);
+        /**
+         * @write-only
+         */
         set currentPage(val: number);
+        /**
+         * @construct-only
+         */
         set document(val: AtrilDocument.Document);
+        /**
+         * @construct-only
+         */
         set inverted_colors(val: boolean);
+        /**
+         * @construct-only
+         */
         set invertedColors(val: boolean);
         get rotation(): number;
         set rotation(val: number);

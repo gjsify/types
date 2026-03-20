@@ -192,9 +192,21 @@ export namespace GdkX11 {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get display(): Gdk.Display;
+        /**
+         * @construct-only
+         */
         get major(): number;
+        /**
+         * @construct-only
+         */
         get minor(): number;
+        /**
+         * @construct-only
+         */
         get opcode(): number;
 
         /**
@@ -276,7 +288,13 @@ export namespace GdkX11 {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get device_id(): number;
+        /**
+         * @construct-only
+         */
         get deviceId(): number;
 
         /**
@@ -336,6 +354,7 @@ export namespace GdkX11 {
              * XGetEventData() has been already called on the event, and
              * XFreeEventData() will be called afterwards.
              * @signal
+             * @run-last
              */
             xevent: (arg0: any | null) => boolean | void;
             'notify::composited': (pspec: GObject.ParamSpec) => void;
@@ -820,6 +839,7 @@ export namespace GdkX11 {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'window-manager-changed': () => void;
         }

@@ -25,6 +25,9 @@ export namespace GstClapper {
      * GstClapper-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClapperColorBalanceType {
         export const $gtype: GObject.GType<ClapperColorBalanceType>;
     }
@@ -79,6 +82,9 @@ export namespace GstClapper {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClapperSeekMode {
         export const $gtype: GObject.GType<ClapperSeekMode>;
     }
@@ -127,6 +133,9 @@ export namespace GstClapper {
         PNG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClapperState {
         export const $gtype: GObject.GType<ClapperState>;
     }
@@ -183,50 +192,62 @@ export namespace GstClapper {
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'audio-decoder-changed': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             buffering: (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'duration-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'end-of-stream': () => void;
             /**
              * @signal
+             * @run-last
              */
             error: (arg0: GLib.Error) => void;
             /**
              * @signal
+             * @run-last
              */
             'media-info-updated': (arg0: ClapperMediaInfo) => void;
             /**
              * @signal
+             * @run-last
              */
             'position-updated': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'state-changed': (arg0: ClapperState) => void;
             /**
              * @signal
+             * @run-last
              */
             'uri-loaded': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'video-decoder-changed': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'video-dimensions-changed': (arg0: number, arg1: number) => void;
             /**
              * @signal
+             * @run-last
              */
             warning: (arg0: GLib.Error) => void;
             'notify::audio-video-offset': (pspec: GObject.ParamSpec) => void;
@@ -310,19 +331,55 @@ export namespace GstClapper {
         set audio_video_offset(val: number);
         get audioVideoOffset(): number;
         set audioVideoOffset(val: number);
+        /**
+         * @read-only
+         */
         get current_audio_track(): ClapperAudioInfo;
+        /**
+         * @read-only
+         */
         get currentAudioTrack(): ClapperAudioInfo;
+        /**
+         * @read-only
+         */
         get current_subtitle_track(): ClapperSubtitleInfo;
+        /**
+         * @read-only
+         */
         get currentSubtitleTrack(): ClapperSubtitleInfo;
+        /**
+         * @read-only
+         */
         get current_video_track(): ClapperVideoInfo;
+        /**
+         * @read-only
+         */
         get currentVideoTrack(): ClapperVideoInfo;
+        /**
+         * @read-only
+         */
         get duration(): number;
+        /**
+         * @read-only
+         */
         get media_info(): ClapperMediaInfo;
+        /**
+         * @read-only
+         */
         get mediaInfo(): ClapperMediaInfo;
+        /**
+         * @construct-only
+         */
         get mpris(): ClapperMpris;
         get mute(): boolean;
         set mute(val: boolean);
+        /**
+         * @read-only
+         */
         get pipeline(): Gst.Element;
+        /**
+         * @read-only
+         */
         get position(): number;
         get rate(): number;
         set rate(val: number);
@@ -330,8 +387,17 @@ export namespace GstClapper {
         set seek_mode(val: ClapperSeekMode);
         get seekMode(): ClapperSeekMode;
         set seekMode(val: ClapperSeekMode);
+        /**
+         * @construct-only
+         */
         set signal_dispatcher(val: ClapperSignalDispatcher);
+        /**
+         * @construct-only
+         */
         set signalDispatcher(val: ClapperSignalDispatcher);
+        /**
+         * @read-only
+         */
         get state(): ClapperState;
         get subtitle_video_offset(): number;
         set subtitle_video_offset(val: number);
@@ -341,9 +407,21 @@ export namespace GstClapper {
         set suburi(val: string);
         get uri(): string;
         set uri(val: string);
+        /**
+         * @construct-only
+         */
         set use_pipewire(val: boolean);
+        /**
+         * @construct-only
+         */
         set usePipewire(val: boolean);
+        /**
+         * @construct-only
+         */
         set use_playbin3(val: boolean);
+        /**
+         * @construct-only
+         */
         set usePlaybin3(val: boolean);
         get video_multiview_flags(): GstVideo.VideoMultiviewFlags;
         set video_multiview_flags(val: GstVideo.VideoMultiviewFlags);
@@ -353,7 +431,13 @@ export namespace GstClapper {
         set video_multiview_mode(val: GstVideo.VideoMultiviewFramePacking);
         get videoMultiviewMode(): GstVideo.VideoMultiviewFramePacking;
         set videoMultiviewMode(val: GstVideo.VideoMultiviewFramePacking);
+        /**
+         * @construct-only
+         */
         set video_renderer(val: ClapperVideoRenderer);
+        /**
+         * @construct-only
+         */
         set videoRenderer(val: ClapperVideoRenderer);
         get volume(): number;
         set volume(val: number);
@@ -769,7 +853,13 @@ export namespace GstClapper {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get application_context(): GLib.MainContext;
+        /**
+         * @construct-only
+         */
         get applicationContext(): GLib.MainContext;
 
         /**
@@ -1301,7 +1391,13 @@ export namespace GstClapper {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get video_sink(): Gst.Element;
+        /**
+         * @read-only
+         */
         get videoSink(): Gst.Element;
 
         /**
@@ -1504,14 +1600,41 @@ export namespace GstClapper {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get default_art_url(): string;
+        /**
+         * @construct-only
+         */
         get defaultArtUrl(): string;
+        /**
+         * @construct-only
+         */
         get desktop_entry(): string;
+        /**
+         * @construct-only
+         */
         get desktopEntry(): string;
+        /**
+         * @construct-only
+         */
         get id_path(): string;
+        /**
+         * @construct-only
+         */
         get idPath(): string;
+        /**
+         * @construct-only
+         */
         get identity(): string;
+        /**
+         * @construct-only
+         */
         get own_name(): string;
+        /**
+         * @construct-only
+         */
         get ownName(): string;
         get volume(): number;
         set volume(val: number);

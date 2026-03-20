@@ -46,10 +46,14 @@ export namespace AnacondaWidgets {
         interface SignalSignatures extends BaseWindow.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-FIRST
              */
             'continue-clicked': () => void;
             /**
              * @signal
+             * @action
+             * @run-FIRST
              */
             'quit-clicked': () => void;
             'notify::continue-button': (pspec: GObject.ParamSpec) => void;
@@ -640,10 +644,14 @@ export namespace AnacondaWidgets {
         interface SignalSignatures extends Gtk.Bin.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-FIRST
              */
             'help-button-clicked': () => void;
             /**
              * @signal
+             * @action
+             * @run-FIRST
              */
             'info-bar-clicked': () => void;
             'notify::distribution': (pspec: GObject.ParamSpec) => void;
@@ -2469,6 +2477,9 @@ export namespace AnacondaWidgets {
         set label_width(val: number);
         get labelWidth(): number;
         set labelWidth(val: number);
+        /**
+         * @read-only
+         */
         get layout(): string;
 
         /**
@@ -2974,6 +2985,7 @@ export namespace AnacondaWidgets {
         interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
             /**
              * @signal
+             * @run-LAST
              */
             'chosen-changed': () => void;
             'notify::mountpoint': (pspec: GObject.ParamSpec) => void;
@@ -4141,6 +4153,8 @@ export namespace AnacondaWidgets {
         interface SignalSignatures extends BaseWindow.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-FIRST
              */
             'button-clicked': () => void;
             'notify::distribution': (pspec: GObject.ParamSpec) => void;
@@ -4772,9 +4786,21 @@ export namespace AnacondaWidgets {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get continue_button(): Gtk.Button;
+        /**
+         * @read-only
+         */
         get continueButton(): Gtk.Button;
+        /**
+         * @read-only
+         */
         get quit_button(): Gtk.Button;
+        /**
+         * @read-only
+         */
         get quitButton(): Gtk.Button;
 
         /**

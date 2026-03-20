@@ -47,6 +47,9 @@ export namespace Zpj {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SkydriveEntryType {
         export const $gtype: GObject.GType<SkydriveEntryType>;
     }
@@ -154,8 +157,17 @@ export namespace Zpj {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get scope(): string;
+        /**
+         * @construct-only
+         */
         get service_name(): string;
+        /**
+         * @construct-only
+         */
         get serviceName(): string;
 
         /**
@@ -1341,20 +1353,65 @@ export namespace Zpj {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get created_time(): GLib.DateTime;
+        /**
+         * @read-only
+         */
         get createdTime(): GLib.DateTime;
+        /**
+         * @read-only
+         */
         get description(): string;
+        /**
+         * @read-only
+         */
         get from_id(): string;
+        /**
+         * @read-only
+         */
         get fromId(): string;
+        /**
+         * @read-only
+         */
         get from_name(): string;
+        /**
+         * @read-only
+         */
         get fromName(): string;
+        /**
+         * @read-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         set json(val: Json.Node);
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get parent_id(): string;
+        /**
+         * @read-only
+         */
         get parentId(): string;
+        /**
+         * @read-only
+         */
         get type(): SkydriveEntryType;
+        /**
+         * @read-only
+         */
         get updated_time(): GLib.DateTime;
+        /**
+         * @read-only
+         */
         get updatedTime(): GLib.DateTime;
 
         /**
@@ -1503,6 +1560,9 @@ export namespace Zpj {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
 
         /**
@@ -1729,9 +1789,21 @@ export namespace Zpj {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get bitrate(): number;
+        /**
+         * @read-only
+         */
         get duration(): number;
+        /**
+         * @read-only
+         */
         get height(): number;
+        /**
+         * @read-only
+         */
         get width(): number;
 
         /**

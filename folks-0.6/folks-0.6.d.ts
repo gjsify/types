@@ -21,6 +21,9 @@ export namespace Folks {
      * Folks-0.6
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Gender {
         export const $gtype: GObject.GType<Gender>;
     }
@@ -34,6 +37,9 @@ export namespace Folks {
         FEMALE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TrustLevel {
         export const $gtype: GObject.GType<TrustLevel>;
     }
@@ -46,6 +52,9 @@ export namespace Folks {
         PERSONAS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PersonaStoreTrust {
         export const $gtype: GObject.GType<PersonaStoreTrust>;
     }
@@ -59,6 +68,9 @@ export namespace Folks {
         FULL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PersonaDetail {
         export const $gtype: GObject.GType<PersonaDetail>;
     }
@@ -95,6 +107,9 @@ export namespace Folks {
         EXTENDED_INFO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MatchResult {
         export const $gtype: GObject.GType<MatchResult>;
     }
@@ -113,6 +128,9 @@ export namespace Folks {
         MAX,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PresenceType {
         export const $gtype: GObject.GType<PresenceType>;
     }
@@ -132,6 +150,9 @@ export namespace Folks {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MaybeBool {
         export const $gtype: GObject.GType<MaybeBool>;
     }
@@ -222,6 +243,9 @@ export namespace Folks {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GroupDetailsChangeReason {
         export const $gtype: GObject.GType<GroupDetailsChangeReason>;
     }
@@ -281,15 +305,39 @@ export namespace Folks {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get t_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get tType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get t_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get tDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get t_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get tDestroyFunc(): GLib.DestroyNotify;
         get value(): any;
         set value(val: any);
+        /**
+         * @read-only
+         */
         get value_type(): GObject.GType;
+        /**
+         * @read-only
+         */
         get valueType(): GObject.GType;
         get id(): string;
         set id(val: string);
@@ -771,12 +819,33 @@ export namespace Folks {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get is_prepared(): boolean;
+        /**
+         * @read-only
+         */
         get isPrepared(): boolean;
+        /**
+         * @read-only
+         */
         get is_quiescent(): boolean;
+        /**
+         * @read-only
+         */
         get isQuiescent(): boolean;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get persona_stores(): Gee.Map;
+        /**
+         * @read-only
+         */
         get personaStores(): Gee.Map;
 
         /**
@@ -1253,13 +1322,37 @@ export namespace Folks {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get is_prepared(): boolean;
+        /**
+         * @read-only
+         */
         get isPrepared(): boolean;
+        /**
+         * @read-only
+         */
         get is_quiescent(): boolean;
+        /**
+         * @read-only
+         */
         get isQuiescent(): boolean;
+        /**
+         * @read-only
+         */
         get primary_store(): PersonaStore;
+        /**
+         * @read-only
+         */
         get primaryStore(): PersonaStore;
+        /**
+         * @construct-only
+         */
         get backend_store(): BackendStore;
+        /**
+         * @construct-only
+         */
         get backendStore(): BackendStore;
         get individuals(): Gee.Map;
         set individuals(val: Gee.Map);
@@ -1653,7 +1746,13 @@ export namespace Folks {
         set isUser(val: boolean);
         get id(): string;
         set id(val: string);
+        /**
+         * @read-only
+         */
         get display_name(): string;
+        /**
+         * @read-only
+         */
         get displayName(): string;
         get personas(): Gee.Set;
         set personas(val: Gee.Set);
@@ -1754,21 +1853,45 @@ export namespace Folks {
         /** @category Inherited from Folks.ImDetails */
         get imAddresses(): Gee.MultiMap;
         set imAddresses(val: Gee.MultiMap);
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get im_interaction_count(): number;
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get imInteractionCount(): number;
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get last_im_interaction_datetime(): GLib.DateTime;
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get lastImInteractionDatetime(): GLib.DateTime;
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get call_interaction_count(): number;
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get callInteractionCount(): number;
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get last_call_interaction_datetime(): GLib.DateTime;
-        /** @category Inherited from Folks.InteractionDetails */
+        /**
+         * @read-only
+         * @category Inherited from Folks.InteractionDetails
+         */
         get lastCallInteractionDatetime(): GLib.DateTime;
         /** @category Inherited from Folks.LocalIdDetails */
         get local_ids(): Gee.Set;
@@ -3714,14 +3837,41 @@ export namespace Folks {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get t_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get tType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get t_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get tDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get t_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get tDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get type_id(): string;
+        /**
+         * @construct-only
+         */
         get typeId(): string;
+        /**
+         * @construct-only
+         */
         get id(): string;
 
         /**
@@ -3938,35 +4088,81 @@ export namespace Folks {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get type_id(): string;
+        /**
+         * @read-only
+         */
         get typeId(): string;
+        /**
+         * @construct-only
+         */
         get display_name(): string;
+        /**
+         * @construct-only
+         */
         get displayName(): string;
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @read-only
+         */
         get personas(): Gee.Map;
+        /**
+         * @read-only
+         */
         get can_add_personas(): MaybeBool;
+        /**
+         * @read-only
+         */
         get canAddPersonas(): MaybeBool;
         /**
          * @deprecated since 0.6.3.1
+         * @read-only
          */
         get can_alias_personas(): MaybeBool;
         /**
          * @deprecated since 0.6.3.1
+         * @read-only
          */
         get canAliasPersonas(): MaybeBool;
         /**
          * @deprecated since 0.6.3.1
+         * @read-only
          */
         get can_group_personas(): MaybeBool;
         /**
          * @deprecated since 0.6.3.1
+         * @read-only
          */
         get canGroupPersonas(): MaybeBool;
+        /**
+         * @read-only
+         */
         get can_remove_personas(): MaybeBool;
+        /**
+         * @read-only
+         */
         get canRemovePersonas(): MaybeBool;
+        /**
+         * @read-only
+         */
         get is_prepared(): boolean;
+        /**
+         * @read-only
+         */
         get isPrepared(): boolean;
+        /**
+         * @read-only
+         */
         get is_quiescent(): boolean;
+        /**
+         * @read-only
+         */
         get isQuiescent(): boolean;
         /**
          * @deprecated since 0.6.3
@@ -3982,7 +4178,13 @@ export namespace Folks {
         set trust_level(val: PersonaStoreTrust);
         get trustLevel(): PersonaStoreTrust;
         set trustLevel(val: PersonaStoreTrust);
+        /**
+         * @read-only
+         */
         get always_writeable_properties(): string[];
+        /**
+         * @read-only
+         */
         get alwaysWriteableProperties(): string[];
         get is_primary_store(): boolean;
         set is_primary_store(val: boolean);
@@ -4274,18 +4476,51 @@ export namespace Folks {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get iid(): string;
+        /**
+         * @construct-only
+         */
         get uid(): string;
+        /**
+         * @construct-only
+         */
         get display_id(): string;
+        /**
+         * @construct-only
+         */
         get displayId(): string;
+        /**
+         * @construct-only
+         */
         get is_user(): boolean;
+        /**
+         * @construct-only
+         */
         get isUser(): boolean;
+        /**
+         * @construct-only
+         */
         get store(): PersonaStore;
         get individual(): Individual;
         set individual(val: Individual);
+        /**
+         * @read-only
+         */
         get linkable_properties(): string[];
+        /**
+         * @read-only
+         */
         get linkableProperties(): string[];
+        /**
+         * @read-only
+         */
         get writeable_properties(): string[];
+        /**
+         * @read-only
+         */
         get writeableProperties(): string[];
 
         /**
@@ -4760,7 +4995,13 @@ export namespace Folks {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get match_fields(): string[];
+        /**
+         * @construct-only
+         */
         get matchFields(): string[];
 
         /**
@@ -5035,13 +5276,31 @@ export namespace Folks {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get aggregator(): IndividualAggregator;
         get query(): Query;
         set query(val: Query);
+        /**
+         * @read-only
+         */
         get individuals(): Gee.SortedSet;
+        /**
+         * @read-only
+         */
         get is_prepared(): boolean;
+        /**
+         * @read-only
+         */
         get isPrepared(): boolean;
+        /**
+         * @read-only
+         */
         get is_quiescent(): boolean;
+        /**
+         * @read-only
+         */
         get isQuiescent(): boolean;
 
         /**
@@ -6910,13 +7169,37 @@ export namespace Folks {
     interface InteractionDetails extends GObject.Object, InteractionDetails.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get im_interaction_count(): number;
+        /**
+         * @read-only
+         */
         get imInteractionCount(): number;
+        /**
+         * @read-only
+         */
         get last_im_interaction_datetime(): GLib.DateTime;
+        /**
+         * @read-only
+         */
         get lastImInteractionDatetime(): GLib.DateTime;
+        /**
+         * @read-only
+         */
         get call_interaction_count(): number;
+        /**
+         * @read-only
+         */
         get callInteractionCount(): number;
+        /**
+         * @read-only
+         */
         get last_call_interaction_datetime(): GLib.DateTime;
+        /**
+         * @read-only
+         */
         get lastCallInteractionDatetime(): GLib.DateTime;
 
         // Methods

@@ -22,6 +22,9 @@ export namespace Cogl {
      * Cogl-16
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AttributeType {
         export const $gtype: GObject.GType<AttributeType>;
     }
@@ -55,6 +58,9 @@ export namespace Cogl {
         FLOAT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BufferBindTarget {
         export const $gtype: GObject.GType<BufferBindTarget>;
     }
@@ -70,6 +76,9 @@ export namespace Cogl {
         COUNT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BufferUpdateHint {
         export const $gtype: GObject.GType<BufferUpdateHint>;
     }
@@ -95,6 +104,9 @@ export namespace Cogl {
         STREAM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DepthTestFunction {
         export const $gtype: GObject.GType<DepthTestFunction>;
     }
@@ -234,6 +246,9 @@ export namespace Cogl {
         OGL_FEATURE_ID_SYNC_FD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FilterReturn {
         export const $gtype: GObject.GType<FilterReturn>;
     }
@@ -312,6 +327,9 @@ export namespace Cogl {
         PURGED_CONTEXT_RESET,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IndicesType {
         export const $gtype: GObject.GType<IndicesType>;
     }
@@ -501,6 +519,9 @@ export namespace Cogl {
         AUTOMATIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PixelFormat {
         export const $gtype: GObject.GType<PixelFormat>;
     }
@@ -732,6 +753,9 @@ export namespace Cogl {
         DEPTH_24_STENCIL_8,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RendererError {
         export const $gtype: GObject.GType<RendererError>;
     }
@@ -766,6 +790,9 @@ export namespace Cogl {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ShaderType {
         export const $gtype: GObject.GType<ShaderType>;
     }
@@ -1045,6 +1072,9 @@ export namespace Cogl {
         TEXTURE_LOOKUP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SystemError {
         export const $gtype: GObject.GType<SystemError>;
     }
@@ -1129,6 +1159,9 @@ export namespace Cogl {
         TYPE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VerticesMode {
         export const $gtype: GObject.GType<VerticesMode>;
     }
@@ -1168,6 +1201,9 @@ export namespace Cogl {
         TRIANGLE_FAN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Winding {
         export const $gtype: GObject.GType<Winding>;
     }
@@ -1189,6 +1225,9 @@ export namespace Cogl {
         COUNTER_CLOCKWISE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WinsysFeature {
         export const $gtype: GObject.GType<WinsysFeature>;
     }
@@ -1494,6 +1533,9 @@ export namespace Cogl {
         DISABLE_MIGRATION,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BufferAccess {
         export const $gtype: GObject.GType<BufferAccess>;
     }
@@ -1518,6 +1560,9 @@ export namespace Cogl {
         READ_WRITE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BufferBit {
         export const $gtype: GObject.GType<BufferBit>;
     }
@@ -1541,6 +1586,9 @@ export namespace Cogl {
         STENCIL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BufferMapHint {
         export const $gtype: GObject.GType<BufferMapHint>;
     }
@@ -1584,6 +1632,9 @@ export namespace Cogl {
         NO_GET_DATA,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ReadPixelsFlags {
         export const $gtype: GObject.GType<ReadPixelsFlags>;
     }
@@ -2029,11 +2080,29 @@ export namespace Cogl {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set context(val: Context);
+        /**
+         * @construct-only
+         */
         set default_target(val: BufferBindTarget);
+        /**
+         * @construct-only
+         */
         set defaultTarget(val: BufferBindTarget);
+        /**
+         * @construct-only
+         */
         set size(val: number);
+        /**
+         * @write-only
+         */
         set update_hint(val: BufferUpdateHint);
+        /**
+         * @write-only
+         */
         set updateHint(val: BufferUpdateHint);
 
         /**
@@ -2574,6 +2643,7 @@ export namespace Cogl {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             destroy: () => void;
             'notify::context': (pspec: GObject.ParamSpec) => void;
@@ -2601,8 +2671,17 @@ export namespace Cogl {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get context(): Context;
+        /**
+         * @construct-only
+         */
         get driver_config(): any;
+        /**
+         * @construct-only
+         */
         get driverConfig(): any;
         get height(): number;
         set height(val: number);
@@ -5222,6 +5301,7 @@ export namespace Cogl {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'scanout-failed': (arg0: Onscreen) => void;
         }
@@ -5870,10 +5950,25 @@ export namespace Cogl {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set context(val: Context);
+        /**
+         * @construct-only
+         */
         set format(val: PixelFormat);
+        /**
+         * @construct-only
+         */
         set height(val: number);
+        /**
+         * @construct-only
+         */
         set loader(val: any);
+        /**
+         * @construct-only
+         */
         set width(val: number);
 
         /**

@@ -29,6 +29,9 @@ export namespace MatePanelApplet {
      * MatePanelApplet-4.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AppletBackgroundType {
         export const $gtype: GObject.GType<AppletBackgroundType>;
     }
@@ -42,6 +45,9 @@ export namespace MatePanelApplet {
         PIXMAP_BACKGROUND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AppletOrient {
         export const $gtype: GObject.GType<AppletOrient>;
     }
@@ -63,6 +69,9 @@ export namespace MatePanelApplet {
     interface AppletFactoryCallback {
         (applet: Applet, iid: string): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace AppletFlags {
         export const $gtype: GObject.GType<AppletFlags>;
     }
@@ -82,18 +91,23 @@ export namespace MatePanelApplet {
         interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'change-background': (arg0: AppletBackgroundType, arg1: Gdk.RGBA, arg2: cairo.Pattern) => void;
             /**
              * @signal
+             * @run-last
              */
             'change-orient': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'change-size': (arg0: number) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'move-focus-out-of-applet': (arg0: Gtk.DirectionType) => void;
             'notify::background': (pspec: GObject.ParamSpec) => void;
@@ -190,10 +204,19 @@ export namespace MatePanelApplet {
 
         get background(): string;
         set background(val: string);
+        /**
+         * @construct-only
+         */
         get closure(): any;
+        /**
+         * @construct-only
+         */
         get connection(): Gio.DBusConnection;
         get flags(): number;
         set flags(val: number);
+        /**
+         * @construct-only
+         */
         get id(): string;
         get locked(): boolean;
         set locked(val: boolean);
@@ -203,7 +226,13 @@ export namespace MatePanelApplet {
         set lockedDown(val: boolean);
         get orient(): number;
         set orient(val: number);
+        /**
+         * @construct-only
+         */
         get out_of_process(): boolean;
+        /**
+         * @construct-only
+         */
         get outOfProcess(): boolean;
         get prefs_path(): string;
         set prefs_path(val: string);

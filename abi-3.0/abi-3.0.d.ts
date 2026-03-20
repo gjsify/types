@@ -76,6 +76,7 @@ export namespace Abi {
         interface SignalSignatures extends Gtk.Button.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             selected: (arg0: number, arg1: number) => void;
             'notify::always-show-image': (pspec: GObject.ParamSpec) => void;
@@ -331,9 +332,15 @@ export namespace Abi {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -647,6 +654,7 @@ export namespace Abi {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -654,6 +662,7 @@ export namespace Abi {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -775,6 +784,7 @@ export namespace Abi {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -5021,122 +5031,152 @@ export namespace Abi {
         interface SignalSignatures extends Gtk.Bin.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             bold: (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             bottomline: (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'can-redo': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'can-undo': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'center-align': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
              * @signal
+             * @run-last
              */
             color: (arg0: number, arg1: number, arg2: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'current-page': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'enter-selection': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'font-family': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'font-size': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'image-selected': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'is-dirty': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             italic: (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'justify-align': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'leave-selection': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'left-align': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'line-through': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             overline: (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'page-count': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'right-align': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'selection-cleared': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'style-name': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             subscript: (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             superscript: (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'table-state': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'text-selected': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             topline: (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             underline: (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             zoom: (arg0: number) => void;
             'notify::content': (pspec: GObject.ParamSpec) => void;
@@ -5229,15 +5269,33 @@ export namespace Abi {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get content(): string;
+        /**
+         * @read-only
+         */
         get content_length(): number;
+        /**
+         * @read-only
+         */
         get contentLength(): number;
         get cursor_on(): boolean;
         set cursor_on(val: boolean);
         get cursorOn(): boolean;
         set cursorOn(val: boolean);
+        /**
+         * @read-only
+         */
         get selection(): string;
+        /**
+         * @read-only
+         */
         get selection_length(): number;
+        /**
+         * @read-only
+         */
         get selectionLength(): number;
         get shadow_type(): number;
         set shadow_type(val: number);

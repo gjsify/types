@@ -95,6 +95,7 @@ export namespace EDataCal {
              * Emitted when a client destroys its {@link ECal.Client} for `backend`
              * @signal
              * @since 3.10
+             * @run-last
              */
             closed: (arg0: string) => void;
             /**
@@ -103,6 +104,7 @@ export namespace EDataCal {
              * tasks such as synchronizing data to permanent storage.
              * @signal
              * @since 3.10
+             * @run-last
              */
             shutdown: () => void;
             'notify::cache-dir': (pspec: GObject.ParamSpec) => void;
@@ -144,9 +146,21 @@ export namespace EDataCal {
         set cache_dir(val: string);
         get cacheDir(): string;
         set cacheDir(val: string);
+        /**
+         * @construct-only
+         */
         get kind(): number;
+        /**
+         * @read-only
+         */
         get proxy_resolver(): Gio.ProxyResolver;
+        /**
+         * @read-only
+         */
         get proxyResolver(): Gio.ProxyResolver;
+        /**
+         * @construct-only
+         */
         get registry(): EDataServer.SourceRegistry;
         get writable(): boolean;
         set writable(val: boolean);
@@ -3132,6 +3146,8 @@ export namespace EDataCal {
         interface SignalSignatures extends EBackend.Cache.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'dup-component-revision': (arg0: ICalGLib.Component) => string;
             /**
@@ -3141,6 +3157,8 @@ export namespace EDataCal {
              * ICalTimezone will not be freed.
              * @signal
              * @since 3.30
+             * @action
+             * @run-last
              */
             'get-timezone': (arg0: string) => ICalGLib.Timezone;
         }
@@ -4120,6 +4138,7 @@ export namespace EDataCal {
         interface SignalSignatures extends CalBackendSync.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'refresh-completed': () => void;
             /**
@@ -4129,6 +4148,7 @@ export namespace EDataCal {
              * a dedicated thread, thus it doesn't block the main thread.
              * @signal
              * @since 3.26
+             * @run-last
              */
             'source-changed': () => void;
             'notify::cache': (pspec: GObject.ParamSpec) => void;
@@ -5365,9 +5385,21 @@ export namespace EDataCal {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get backend(): CalBackend;
+        /**
+         * @construct-only
+         */
         get connection(): Gio.DBusConnection;
+        /**
+         * @construct-only
+         */
         get object_path(): string;
+        /**
+         * @construct-only
+         */
         get objectPath(): string;
 
         /**
@@ -6721,10 +6753,25 @@ export namespace EDataCal {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get backend(): CalBackend;
+        /**
+         * @construct-only
+         */
         get connection(): Gio.DBusConnection;
+        /**
+         * @construct-only
+         */
         get object_path(): string;
+        /**
+         * @construct-only
+         */
         get objectPath(): string;
+        /**
+         * @construct-only
+         */
         get sexp(): CalBackendSExp;
 
         /**

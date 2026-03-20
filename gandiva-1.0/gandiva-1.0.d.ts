@@ -21,6 +21,9 @@ export namespace Gandiva {
      * Gandiva-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ResultNullableType {
         export const $gtype: GObject.GType<ResultNullableType>;
     }
@@ -407,10 +410,25 @@ export namespace Gandiva {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set expression(val: any);
+        /**
+         * @construct-only
+         */
         get result_field(): Arrow.Field;
+        /**
+         * @construct-only
+         */
         get resultField(): Arrow.Field;
+        /**
+         * @construct-only
+         */
         get root_node(): Node;
+        /**
+         * @construct-only
+         */
         get rootNode(): Node;
 
         /**
@@ -482,6 +500,9 @@ export namespace Gandiva {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get field(): Arrow.Field;
 
         /**
@@ -610,6 +631,9 @@ export namespace Gandiva {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
 
         /**
@@ -746,7 +770,13 @@ export namespace Gandiva {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set function_signature(val: any);
+        /**
+         * @construct-only
+         */
         set functionSignature(val: any);
 
         /**
@@ -846,11 +876,29 @@ export namespace Gandiva {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get condition_node(): Node;
+        /**
+         * @construct-only
+         */
         get conditionNode(): Node;
+        /**
+         * @construct-only
+         */
         get else_node(): Node;
+        /**
+         * @construct-only
+         */
         get elseNode(): Node;
+        /**
+         * @construct-only
+         */
         get then_node(): Node;
+        /**
+         * @construct-only
+         */
         get thenNode(): Node;
 
         /**
@@ -1225,7 +1273,13 @@ export namespace Gandiva {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set native_function(val: any);
+        /**
+         * @construct-only
+         */
         set nativeFunction(val: any);
 
         /**
@@ -1321,8 +1375,17 @@ export namespace Gandiva {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set node(val: any);
+        /**
+         * @construct-only
+         */
         get return_type(): Arrow.DataType;
+        /**
+         * @construct-only
+         */
         get returnType(): Arrow.DataType;
 
         /**
@@ -1504,6 +1567,9 @@ export namespace Gandiva {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set projector(val: any);
 
         /**

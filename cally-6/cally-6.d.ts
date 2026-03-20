@@ -4110,13 +4110,25 @@ export namespace Cally {
             ...args: GObject.GjsParameters<Stage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Atk.Object */
+        /**
+         * @read-only
+         * @category Inherited from Atk.Object
+         */
         get accessible_component_layer(): number;
-        /** @category Inherited from Atk.Object */
+        /**
+         * @read-only
+         * @category Inherited from Atk.Object
+         */
         get accessibleComponentLayer(): number;
-        /** @category Inherited from Atk.Object */
+        /**
+         * @read-only
+         * @category Inherited from Atk.Object
+         */
         get accessible_component_mdi_zorder(): number;
-        /** @category Inherited from Atk.Object */
+        /**
+         * @read-only
+         * @category Inherited from Atk.Object
+         */
         get accessibleComponentMdiZorder(): number;
         /** @category Inherited from Atk.Object */
         get accessible_description(): string;
@@ -4130,9 +4142,15 @@ export namespace Cally {
         /** @category Inherited from Atk.Object */
         get accessibleHelpText(): string;
         set accessibleHelpText(val: string);
-        /** @category Inherited from Atk.Object */
+        /**
+         * @read-only
+         * @category Inherited from Atk.Object
+         */
         get accessible_hypertext_nlinks(): number;
-        /** @category Inherited from Atk.Object */
+        /**
+         * @read-only
+         * @category Inherited from Atk.Object
+         */
         get accessibleHypertextNlinks(): number;
         /** @category Inherited from Atk.Object */
         get accessible_id(): string;

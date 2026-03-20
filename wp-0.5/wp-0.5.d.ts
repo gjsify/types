@@ -20,6 +20,9 @@ export namespace Wp {
      * Wp-0.5
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConstraintType {
         export const $gtype: GObject.GType<ConstraintType>;
     }
@@ -34,6 +37,9 @@ export namespace Wp {
         G_PROPERTY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConstraintVerb {
         export const $gtype: GObject.GType<ConstraintVerb>;
     }
@@ -51,6 +57,9 @@ export namespace Wp {
         IS_ABSENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Direction {
         export const $gtype: GObject.GType<Direction>;
     }
@@ -63,6 +72,9 @@ export namespace Wp {
         OUTPUT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LibraryErrorEnum {
         export const $gtype: GObject.GType<LibraryErrorEnum>;
     }
@@ -77,6 +89,9 @@ export namespace Wp {
         SERVICE_UNAVAILABLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LinkState {
         export const $gtype: GObject.GType<LinkState>;
     }
@@ -94,6 +109,9 @@ export namespace Wp {
         ACTIVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NodeState {
         export const $gtype: GObject.GType<NodeState>;
     }
@@ -109,6 +127,9 @@ export namespace Wp {
         RUNNING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingsSpecType {
         export const $gtype: GObject.GType<SettingsSpecType>;
     }
@@ -126,6 +147,9 @@ export namespace Wp {
         OBJECT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SiAdapterPortsState {
         export const $gtype: GObject.GType<SiAdapterPortsState>;
     }
@@ -139,6 +163,9 @@ export namespace Wp {
         CONFIGURED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransitionStep {
         export const $gtype: GObject.GType<TransitionStep>;
     }
@@ -439,6 +466,9 @@ export namespace Wp {
     interface SettingsChangedCallback {
         (obj: Settings, setting: string, value: SpaJson): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace BaseDirsFlags {
         export const $gtype: GObject.GType<BaseDirsFlags>;
     }
@@ -464,6 +494,9 @@ export namespace Wp {
         MODULE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace CoreFeatures {
         export const $gtype: GObject.GType<CoreFeatures>;
     }
@@ -476,6 +509,9 @@ export namespace Wp {
         COMPONENTS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace InitFlags {
         export const $gtype: GObject.GType<InitFlags>;
     }
@@ -491,6 +527,9 @@ export namespace Wp {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace InterestMatch {
         export const $gtype: GObject.GType<InterestMatch>;
     }
@@ -507,6 +546,9 @@ export namespace Wp {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace InterestMatchFlags {
         export const $gtype: GObject.GType<InterestMatchFlags>;
     }
@@ -519,6 +561,9 @@ export namespace Wp {
         CHECK_ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace LogTopicFlags {
         export const $gtype: GObject.GType<LogTopicFlags>;
     }
@@ -532,6 +577,9 @@ export namespace Wp {
         FLAG_INITIALIZED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MetadataFeatures {
         export const $gtype: GObject.GType<MetadataFeatures>;
     }
@@ -543,6 +591,9 @@ export namespace Wp {
         DATA,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace NodeFeatures {
         export const $gtype: GObject.GType<NodeFeatures>;
     }
@@ -554,6 +605,9 @@ export namespace Wp {
         PORTS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PluginFeatures {
         export const $gtype: GObject.GType<PluginFeatures>;
     }
@@ -565,6 +619,9 @@ export namespace Wp {
         ENABLED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ProxyFeatures {
         export const $gtype: GObject.GType<ProxyFeatures>;
     }
@@ -584,6 +641,9 @@ export namespace Wp {
         PIPEWIRE_OBJECT_FEATURES_ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SessionItemFeatures {
         export const $gtype: GObject.GType<SessionItemFeatures>;
     }
@@ -596,6 +656,9 @@ export namespace Wp {
         EXPORTED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SettingsFeatures {
         export const $gtype: GObject.GType<SettingsFeatures>;
     }
@@ -607,6 +670,9 @@ export namespace Wp {
         LOADED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SpaDeviceFeatures {
         export const $gtype: GObject.GType<SpaDeviceFeatures>;
     }
@@ -648,9 +714,21 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set execute_step(val: GObject.Closure);
+        /**
+         * @construct-only
+         */
         set executeStep(val: GObject.Closure);
+        /**
+         * @construct-only
+         */
         set get_next_step(val: GObject.Closure);
+        /**
+         * @construct-only
+         */
         set getNextStep(val: GObject.Closure);
 
         /**
@@ -780,23 +858,50 @@ export namespace Wp {
          * @param updates updates to apply to the properties of `self`; this does not need to include properties that have not changed
          */
         update_properties(updates: Properties): void;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get native_info(): any;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get nativeInfo(): any;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get param_info(): GLib.Variant;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get paramInfo(): GLib.Variant;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get properties(): Properties;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get bound_id(): number;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get boundId(): number;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get pw_proxy(): any;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get pwProxy(): any;
         /**
          * Enumerate object parameters.
@@ -1069,7 +1174,13 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get properties(): Properties;
 
         /**
@@ -1158,10 +1269,12 @@ export namespace Wp {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             connected: () => void;
             /**
              * @signal
+             * @run-last
              */
             disconnected: () => void;
             'notify::conf': (pspec: GObject.ParamSpec) => void;
@@ -1209,13 +1322,37 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get conf(): Conf;
+        /**
+         * @construct-only
+         */
         get g_main_context(): GLib.MainContext;
+        /**
+         * @construct-only
+         */
         get gMainContext(): GLib.MainContext;
+        /**
+         * @construct-only
+         */
         get properties(): Properties;
+        /**
+         * @construct-only
+         */
         get pw_context(): any;
+        /**
+         * @construct-only
+         */
         get pwContext(): any;
+        /**
+         * @read-only
+         */
         get pw_core(): any;
+        /**
+         * @read-only
+         */
         get pwCore(): any;
 
         /**
@@ -1633,23 +1770,50 @@ export namespace Wp {
             ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get native_info(): any;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get nativeInfo(): any;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get param_info(): GLib.Variant;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get paramInfo(): GLib.Variant;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get properties(): Properties;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get bound_id(): number;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get boundId(): number;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get pw_proxy(): any;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get pwProxy(): any;
         /**
          * Enumerate object parameters.
@@ -2015,11 +2179,29 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get dispatcher(): EventDispatcher;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get runs_after_hooks(): string[];
+        /**
+         * @construct-only
+         */
         get runsAfterHooks(): string[];
+        /**
+         * @construct-only
+         */
         get runs_before_hooks(): string[];
+        /**
+         * @construct-only
+         */
         get runsBeforeHooks(): string[];
 
         /**
@@ -2189,23 +2371,50 @@ export namespace Wp {
             ...args: GObject.GjsParameters<Factory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get native_info(): any;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get nativeInfo(): any;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get param_info(): GLib.Variant;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get paramInfo(): GLib.Variant;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get properties(): Properties;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get bound_id(): number;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get boundId(): number;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get pw_proxy(): any;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get pwProxy(): any;
         /**
          * Enumerate object parameters.
@@ -3060,10 +3269,25 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set factory_name(val: string);
+        /**
+         * @construct-only
+         */
         set factoryName(val: string);
+        /**
+         * @construct-only
+         */
         get global_properties(): Properties;
+        /**
+         * @construct-only
+         */
         get globalProperties(): Properties;
+        /**
+         * @read-only
+         */
         get permissions(): number;
 
         /**
@@ -3167,7 +3391,13 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get properties(): Properties;
 
         /**
@@ -3243,12 +3473,27 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get arguments(): string;
+        /**
+         * @construct-only
+         */
         get core(): any;
+        /**
+         * @construct-only
+         */
         get name(): string;
         get properties(): Properties;
         set properties(val: Properties);
+        /**
+         * @read-only
+         */
         get pw_impl_module(): any;
+        /**
+         * @read-only
+         */
         get pwImplModule(): any;
 
         /**
@@ -3336,7 +3581,13 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get pw_impl_node(): any;
+        /**
+         * @construct-only
+         */
         get pwImplNode(): any;
 
         /**
@@ -3378,23 +3629,50 @@ export namespace Wp {
             ...args: GObject.GjsParameters<ImplNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get native_info(): any;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get nativeInfo(): any;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get param_info(): GLib.Variant;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get paramInfo(): GLib.Variant;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get properties(): Properties;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get bound_id(): number;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get boundId(): number;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get pw_proxy(): any;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get pwProxy(): any;
         /**
          * Enumerate object parameters.
@@ -3713,6 +3991,7 @@ export namespace Wp {
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'state-changed': (arg0: LinkState, arg1: LinkState) => void;
             'notify::state': (pspec: GObject.ParamSpec) => void;
@@ -3747,6 +4026,9 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get state(): LinkState;
 
         /**
@@ -3801,23 +4083,50 @@ export namespace Wp {
          * @returns the current state of the link
          */
         get_state(): [LinkState, string];
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get native_info(): any;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get nativeInfo(): any;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get param_info(): GLib.Variant;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get paramInfo(): GLib.Variant;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get properties(): Properties;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get bound_id(): number;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get boundId(): number;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get pw_proxy(): any;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get pwProxy(): any;
         /**
          * Enumerate object parameters.
@@ -4071,6 +4380,7 @@ export namespace Wp {
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: (arg0: number, arg1: string, arg2: string, arg3: string) => void;
             'notify::factory-name': (pspec: GObject.ParamSpec) => void;
@@ -4176,10 +4486,12 @@ export namespace Wp {
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'ports-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'state-changed': (arg0: NodeState, arg1: NodeState) => void;
             'notify::max-input-ports': (pspec: GObject.ParamSpec) => void;
@@ -4226,14 +4538,41 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get max_input_ports(): number;
+        /**
+         * @read-only
+         */
         get maxInputPorts(): number;
+        /**
+         * @read-only
+         */
         get max_output_ports(): number;
+        /**
+         * @read-only
+         */
         get maxOutputPorts(): number;
+        /**
+         * @read-only
+         */
         get n_input_ports(): number;
+        /**
+         * @read-only
+         */
         get nInputPorts(): number;
+        /**
+         * @read-only
+         */
         get n_output_ports(): number;
+        /**
+         * @read-only
+         */
         get nOutputPorts(): number;
+        /**
+         * @read-only
+         */
         get state(): NodeState;
 
         /**
@@ -4340,23 +4679,50 @@ export namespace Wp {
          * @param command the command
          */
         send_command(command: string): void;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get native_info(): any;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get nativeInfo(): any;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get param_info(): GLib.Variant;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get paramInfo(): GLib.Variant;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get properties(): Properties;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get bound_id(): number;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get boundId(): number;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get pw_proxy(): any;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get pwProxy(): any;
         /**
          * Enumerate object parameters.
@@ -4635,11 +5001,29 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get active_features(): number;
+        /**
+         * @read-only
+         */
         get activeFeatures(): number;
+        /**
+         * @construct-only
+         */
         get core(): Core;
+        /**
+         * @read-only
+         */
         get id(): number;
+        /**
+         * @read-only
+         */
         get supported_features(): number;
+        /**
+         * @read-only
+         */
         get supportedFeatures(): number;
 
         /**
@@ -4828,18 +5212,22 @@ export namespace Wp {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             installed: () => void;
             /**
              * @signal
+             * @run-first
              */
             'object-added': (arg0: GObject.Object) => void;
             /**
              * @signal
+             * @run-first
              */
             'object-removed': (arg0: GObject.Object) => void;
             /**
              * @signal
+             * @run-first
              */
             'objects-changed': () => void;
             'notify::core': (pspec: GObject.ParamSpec) => void;
@@ -4869,6 +5257,9 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get core(): Core;
 
         /**
@@ -4988,6 +5379,9 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
 
         /**
@@ -5132,23 +5526,50 @@ export namespace Wp {
          * @returns the current direction of the port
          */
         get_direction(): Direction;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get native_info(): any;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get nativeInfo(): any;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get param_info(): GLib.Variant;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get paramInfo(): GLib.Variant;
-        /** @category Inherited from Wp.PipewireObject */
+        /**
+         * @read-only
+         * @category Inherited from Wp.PipewireObject
+         */
         get properties(): Properties;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get bound_id(): number;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get boundId(): number;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get pw_proxy(): any;
-        /** @category Inherited from Wp.Proxy */
+        /**
+         * @read-only
+         * @category Inherited from Wp.Proxy
+         */
         get pwProxy(): any;
         /**
          * Enumerate object parameters.
@@ -5402,18 +5823,22 @@ export namespace Wp {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             bound: (arg0: number) => void;
             /**
              * @signal
+             * @run-first
              */
             error: (arg0: number, arg1: number, arg2: string) => void;
             /**
              * @signal
+             * @run-first
              */
             'pw-proxy-created': (arg0: any | null) => void;
             /**
              * @signal
+             * @run-first
              */
             'pw-proxy-destroyed': () => void;
             'notify::bound-id': (pspec: GObject.ParamSpec) => void;
@@ -5444,9 +5869,21 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get bound_id(): number;
+        /**
+         * @read-only
+         */
         get boundId(): number;
+        /**
+         * @read-only
+         */
         get pw_proxy(): any;
+        /**
+         * @read-only
+         */
         get pwProxy(): any;
 
         /**
@@ -5567,6 +6004,9 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get properties(): Properties;
 
         /**
@@ -5757,7 +6197,13 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get metadata_name(): string;
+        /**
+         * @construct-only
+         */
         get metadataName(): string;
 
         /**
@@ -5931,6 +6377,9 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
 
         /**
@@ -6030,6 +6479,9 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set closure(val: GObject.Closure);
 
         /**
@@ -6076,10 +6528,12 @@ export namespace Wp {
         interface SignalSignatures extends Proxy.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'create-object': (arg0: number, arg1: string, arg2: string, arg3: Properties) => void;
             /**
              * @signal
+             * @run-first
              */
             'object-removed': (arg0: number) => void;
             'notify::properties': (pspec: GObject.ParamSpec) => void;
@@ -6112,8 +6566,17 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get properties(): Properties;
+        /**
+         * @construct-only
+         */
         get spa_device_handle(): any;
+        /**
+         * @construct-only
+         */
         get spaDeviceHandle(): any;
 
         /**
@@ -6292,6 +6755,9 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
         get timeout(): number;
         set timeout(val: number);
@@ -6400,6 +6866,9 @@ export namespace Wp {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get completed(): boolean;
 
         /**
@@ -8822,10 +9291,25 @@ export namespace Wp {
     interface PipewireObject extends Proxy, PipewireObject.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get native_info(): any;
+        /**
+         * @read-only
+         */
         get nativeInfo(): any;
+        /**
+         * @read-only
+         */
         get param_info(): GLib.Variant;
+        /**
+         * @read-only
+         */
         get paramInfo(): GLib.Variant;
+        /**
+         * @read-only
+         */
         get properties(): Properties;
 
         // Methods

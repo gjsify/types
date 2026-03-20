@@ -23,6 +23,9 @@ export namespace GstVulkan {
      * GstVulkan-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VulkanBarrierFlags {
         export const $gtype: GObject.GType<VulkanBarrierFlags>;
     }
@@ -34,6 +37,9 @@ export namespace GstVulkan {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VulkanBarrierType {
         export const $gtype: GObject.GType<VulkanBarrierType>;
     }
@@ -81,6 +87,9 @@ export namespace GstVulkan {
         ): [Vulkan.Result, GLib.Error | null];
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VulkanFormatScaling {
         export const $gtype: GObject.GType<VulkanFormatScaling>;
     }
@@ -98,6 +107,9 @@ export namespace GstVulkan {
         SRGB,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VulkanHandleType {
         export const $gtype: GObject.GType<VulkanHandleType>;
     }
@@ -513,6 +525,9 @@ export namespace GstVulkan {
     interface VulkanTrashNotify {
         (device: VulkanDevice): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace VulkanDisplayType {
         export const $gtype: GObject.GType<VulkanDisplayType>;
     }
@@ -549,6 +564,9 @@ export namespace GstVulkan {
         ANY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VulkanFormatFlags {
         export const $gtype: GObject.GType<VulkanFormatFlags>;
     }
@@ -953,8 +971,17 @@ export namespace GstVulkan {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get instance(): VulkanInstance;
+        /**
+         * @construct-only
+         */
         get physical_device(): VulkanPhysicalDevice;
+        /**
+         * @construct-only
+         */
         get physicalDevice(): VulkanPhysicalDevice;
 
         /**
@@ -1575,6 +1602,7 @@ export namespace GstVulkan {
              * It can be called from any thread.
              * @signal
              * @since 1.18
+             * @run-last
              */
             'create-device': () => VulkanDevice;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -1757,9 +1785,21 @@ export namespace GstVulkan {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get device_index(): number;
+        /**
+         * @construct-only
+         */
         get deviceIndex(): number;
+        /**
+         * @construct-only
+         */
         get instance(): VulkanInstance;
+        /**
+         * @read-only
+         */
         get name(): string;
 
         /**
@@ -2254,26 +2294,31 @@ export namespace GstVulkan {
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             close: () => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             draw: () => void;
             /**
              * Will be emitted when a key event is received by the {@link GstVulkan.VulkanWindow}.
              * @signal
              * @since 1.18
+             * @run-last
              */
             'key-event': (arg0: string, arg1: string) => void;
             /**
              * Will be emitted when a mouse event is received by the {@link GstVulkan.VulkanWindow}.
              * @signal
              * @since 1.18
+             * @run-last
              */
             'mouse-event': (arg0: string, arg1: number, arg2: number, arg3: number) => void;
             /**
              * @signal
+             * @run-last
              */
             resize: (arg0: number, arg1: number) => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;
@@ -2298,6 +2343,9 @@ export namespace GstVulkan {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get display(): VulkanDisplay;
 
         /**

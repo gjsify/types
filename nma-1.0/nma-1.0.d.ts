@@ -173,7 +173,13 @@ export namespace NMA {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @write-only
+         */
         set text(val: string);
 
         /**
@@ -820,6 +826,7 @@ export namespace NMA {
              * to fail.
              * @signal
              * @since 1.8.0
+             * @run-last
              */
             'cert-password-validate': () => GLib.Error;
             /**
@@ -829,6 +836,7 @@ export namespace NMA {
              * to fail.
              * @signal
              * @since 1.8.0
+             * @run-last
              */
             'cert-validate': () => GLib.Error;
             /**
@@ -836,6 +844,7 @@ export namespace NMA {
              * a key or associated passwords.
              * @signal
              * @since 1.8.0
+             * @run-last
              */
             changed: () => void;
             /**
@@ -845,6 +854,7 @@ export namespace NMA {
              * to fail.
              * @signal
              * @since 1.8.0
+             * @run-last
              */
             'key-password-validate': () => GLib.Error;
             /**
@@ -854,6 +864,7 @@ export namespace NMA {
              * to fail.
              * @signal
              * @since 1.8.0
+             * @run-last
              */
             'key-validate': () => GLib.Error;
             'notify::flags': (pspec: GObject.ParamSpec) => void;
@@ -929,7 +940,13 @@ export namespace NMA {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set flags(val: number);
+        /**
+         * @construct-only
+         */
         set title(val: string);
 
         /**
@@ -1622,9 +1639,21 @@ export namespace NMA {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get country_codes(): string;
+        /**
+         * @construct-only
+         */
         get countryCodes(): string;
+        /**
+         * @construct-only
+         */
         get service_providers(): string;
+        /**
+         * @construct-only
+         */
         get serviceProviders(): string;
 
         /**

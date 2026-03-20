@@ -385,30 +385,63 @@ export namespace FolksDummy {
         /** @category Inherited from Folks.WebServiceDetails */
         get webServiceAddresses(): Gee.MultiMap;
         set webServiceAddresses(val: Gee.MultiMap);
-        /** @category Inherited from Folks.Persona */
+        /**
+         * @construct-only
+         * @category Inherited from Folks.Persona
+         */
         get iid(): string;
-        /** @category Inherited from Folks.Persona */
+        /**
+         * @construct-only
+         * @category Inherited from Folks.Persona
+         */
         get uid(): string;
-        /** @category Inherited from Folks.Persona */
+        /**
+         * @construct-only
+         * @category Inherited from Folks.Persona
+         */
         get display_id(): string;
-        /** @category Inherited from Folks.Persona */
+        /**
+         * @construct-only
+         * @category Inherited from Folks.Persona
+         */
         get displayId(): string;
-        /** @category Inherited from Folks.Persona */
+        /**
+         * @construct-only
+         * @category Inherited from Folks.Persona
+         */
         get is_user(): boolean;
-        /** @category Inherited from Folks.Persona */
+        /**
+         * @construct-only
+         * @category Inherited from Folks.Persona
+         */
         get isUser(): boolean;
-        /** @category Inherited from Folks.Persona */
+        /**
+         * @construct-only
+         * @category Inherited from Folks.Persona
+         */
         get store(): Folks.PersonaStore;
         /** @category Inherited from Folks.Persona */
         get individual(): Folks.Individual;
         set individual(val: Folks.Individual);
-        /** @category Inherited from Folks.Persona */
+        /**
+         * @read-only
+         * @category Inherited from Folks.Persona
+         */
         get linkable_properties(): string[];
-        /** @category Inherited from Folks.Persona */
+        /**
+         * @read-only
+         * @category Inherited from Folks.Persona
+         */
         get linkableProperties(): string[];
-        /** @category Inherited from Folks.Persona */
+        /**
+         * @read-only
+         * @category Inherited from Folks.Persona
+         */
         get writeable_properties(): string[];
-        /** @category Inherited from Folks.Persona */
+        /**
+         * @read-only
+         * @category Inherited from Folks.Persona
+         */
         get writeableProperties(): string[];
         /**
          * @param anti_links

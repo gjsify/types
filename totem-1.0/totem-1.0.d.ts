@@ -30,6 +30,9 @@ export namespace Totem {
      * Totem-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RemoteCommand {
         export const $gtype: GObject.GType<RemoteCommand>;
     }
@@ -153,6 +156,9 @@ export namespace Totem {
         TOGGLE_ASPECT_RATIO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RemoteSetting {
         export const $gtype: GObject.GType<RemoteSetting>;
     }
@@ -302,34 +308,40 @@ export namespace Totem {
             /**
              * The {@link Totem.Object.SignalSignatures.file_closed | Totem.Object::file-closed} signal is emitted when Totem closes a stream.
              * @signal
+             * @run-last
              */
             'file-closed': () => void;
             /**
              * The {@link Totem.Object.SignalSignatures.file_has_played | Totem.Object::file-has-played} signal is emitted when a new stream has started playing in Totem.
              * @signal
+             * @run-last
              */
             'file-has-played': (arg0: string) => void;
             /**
              * The {@link Totem.Object.SignalSignatures.file_opened | Totem.Object::file-opened} signal is emitted when a new stream is opened by Totem.
              * @signal
+             * @run-last
              */
             'file-opened': (arg0: string) => void;
             /**
              * The {@link Totem.Object.SignalSignatures.get_text_subtitle | Totem.Object::get-text-subtitle} signal is emitted before opening a stream, so that plugins
              * have the opportunity to detect or download text subtitles for the stream if necessary.
              * @signal
+             * @run-last
              */
             'get-text-subtitle': (arg0: string) => string;
             /**
              * The {@link Totem.Object.SignalSignatures.get_user_agent | Totem.Object::get-user-agent} signal is emitted before opening a stream, so that plugins
              * have the opportunity to return the user-agent to be set.
              * @signal
+             * @run-last
              */
             'get-user-agent': (arg0: string) => string;
             /**
              * The {@link Totem.Object.SignalSignatures.metadata_updated | Totem.Object::metadata-updated} signal is emitted when the metadata of a stream is updated, typically
              * when it's being loaded.
              * @signal
+             * @run-last
              */
             'metadata-updated': (arg0: string, arg1: string, arg2: string, arg3: number) => void;
             'notify::current-content-type': (pspec: GObject.ParamSpec) => void;
@@ -390,62 +402,77 @@ export namespace Totem {
 
         /**
          * The content-type of the current stream.
+         * @read-only
          */
         get current_content_type(): string;
         /**
          * The content-type of the current stream.
+         * @read-only
          */
         get currentContentType(): string;
         /**
          * The display name of the current stream.
+         * @read-only
          */
         get current_display_name(): string;
         /**
          * The display name of the current stream.
+         * @read-only
          */
         get currentDisplayName(): string;
         /**
          * The MRL of the current stream.
+         * @read-only
          */
         get current_mrl(): string;
         /**
          * The MRL of the current stream.
+         * @read-only
          */
         get currentMrl(): string;
         /**
          * The player's position (time) in the current stream, in milliseconds.
+         * @read-only
          */
         get current_time(): number;
         /**
          * The player's position (time) in the current stream, in milliseconds.
+         * @read-only
          */
         get currentTime(): number;
         /**
          * If `true`, Totem is in fullscreen mode.
+         * @read-only
          */
         get fullscreen(): boolean;
         /**
          * The name of the current main page (usually "grilo", or "player").
+         * @read-only
          */
         get main_page(): string;
         /**
          * The name of the current main page (usually "grilo", or "player").
+         * @read-only
          */
         get mainPage(): string;
         /**
          * If `true`, Totem is playing an audio or video file.
+         * @read-only
          */
         get playing(): boolean;
         /**
          * If `true`, the current stream is seekable.
+         * @read-only
          */
         get seekable(): boolean;
         /**
          * The length of the current stream, in milliseconds.
+         * @read-only
          */
         get stream_length(): number;
         /**
          * The length of the current stream, in milliseconds.
+         * @read-only
          */
         get streamLength(): number;
 

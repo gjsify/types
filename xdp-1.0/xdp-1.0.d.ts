@@ -20,6 +20,9 @@ export namespace Xdp {
      * Xdp-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ButtonState {
         export const $gtype: GObject.GType<ButtonState>;
     }
@@ -40,6 +43,9 @@ export namespace Xdp {
         PRESSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CameraFlags {
         export const $gtype: GObject.GType<CameraFlags>;
     }
@@ -51,6 +57,9 @@ export namespace Xdp {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DiscreteAxis {
         export const $gtype: GObject.GType<DiscreteAxis>;
     }
@@ -71,6 +80,9 @@ export namespace Xdp {
         VERTICAL_SCROLL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EmailFlags {
         export const $gtype: GObject.GType<EmailFlags>;
     }
@@ -82,6 +94,9 @@ export namespace Xdp {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace KeyState {
         export const $gtype: GObject.GType<KeyState>;
     }
@@ -102,6 +117,9 @@ export namespace Xdp {
         PRESSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocationAccuracy {
         export const $gtype: GObject.GType<LocationAccuracy>;
     }
@@ -138,6 +156,9 @@ export namespace Xdp {
         EXACT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocationMonitorFlags {
         export const $gtype: GObject.GType<LocationMonitorFlags>;
     }
@@ -149,6 +170,9 @@ export namespace Xdp {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LoginSessionState {
         export const $gtype: GObject.GType<LoginSessionState>;
     }
@@ -175,6 +199,9 @@ export namespace Xdp {
         ENDING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NotificationFlags {
         export const $gtype: GObject.GType<NotificationFlags>;
     }
@@ -186,6 +213,9 @@ export namespace Xdp {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PersistMode {
         export const $gtype: GObject.GType<PersistMode>;
     }
@@ -209,6 +239,9 @@ export namespace Xdp {
         PERSISTENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PrintFlags {
         export const $gtype: GObject.GType<PrintFlags>;
     }
@@ -220,6 +253,9 @@ export namespace Xdp {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SaveFileFlags {
         export const $gtype: GObject.GType<SaveFileFlags>;
     }
@@ -231,6 +267,9 @@ export namespace Xdp {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SessionMonitorFlags {
         export const $gtype: GObject.GType<SessionMonitorFlags>;
     }
@@ -242,6 +281,9 @@ export namespace Xdp {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SessionState {
         export const $gtype: GObject.GType<SessionState>;
     }
@@ -265,6 +307,9 @@ export namespace Xdp {
         CLOSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SessionType {
         export const $gtype: GObject.GType<SessionType>;
     }
@@ -284,6 +329,9 @@ export namespace Xdp {
         REMOTE_DESKTOP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UpdateInstallFlags {
         export const $gtype: GObject.GType<UpdateInstallFlags>;
     }
@@ -295,6 +343,9 @@ export namespace Xdp {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UpdateMonitorFlags {
         export const $gtype: GObject.GType<UpdateMonitorFlags>;
     }
@@ -306,6 +357,9 @@ export namespace Xdp {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UpdateStatus {
         export const $gtype: GObject.GType<UpdateStatus>;
     }
@@ -335,6 +389,9 @@ export namespace Xdp {
         FAILED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UserInformationFlags {
         export const $gtype: GObject.GType<UserInformationFlags>;
     }
@@ -347,6 +404,9 @@ export namespace Xdp {
     }
 
     const WALLPAPER_TARGET_BOTH: number;
+    /**
+     * @gir-type Flags
+     */
     export namespace BackgroundFlags {
         export const $gtype: GObject.GType<BackgroundFlags>;
     }
@@ -370,6 +430,9 @@ export namespace Xdp {
         ACTIVATABLE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace CursorMode {
         export const $gtype: GObject.GType<CursorMode>;
     }
@@ -393,6 +456,9 @@ export namespace Xdp {
         METADATA,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DeviceType {
         export const $gtype: GObject.GType<DeviceType>;
     }
@@ -420,6 +486,9 @@ export namespace Xdp {
         TOUCHSCREEN,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace InhibitFlags {
         export const $gtype: GObject.GType<InhibitFlags>;
     }
@@ -447,6 +516,9 @@ export namespace Xdp {
         IDLE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace LauncherType {
         export const $gtype: GObject.GType<LauncherType>;
     }
@@ -466,6 +538,9 @@ export namespace Xdp {
         WEBAPP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace OpenFileFlags {
         export const $gtype: GObject.GType<OpenFileFlags>;
     }
@@ -485,6 +560,9 @@ export namespace Xdp {
         MULTIPLE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace OpenUriFlags {
         export const $gtype: GObject.GType<OpenUriFlags>;
     }
@@ -508,6 +586,9 @@ export namespace Xdp {
         WRITABLE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace OutputType {
         export const $gtype: GObject.GType<OutputType>;
     }
@@ -535,6 +616,9 @@ export namespace Xdp {
         VIRTUAL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RemoteDesktopFlags {
         export const $gtype: GObject.GType<RemoteDesktopFlags>;
     }
@@ -554,6 +638,9 @@ export namespace Xdp {
         MULTIPLE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ScreencastFlags {
         export const $gtype: GObject.GType<ScreencastFlags>;
     }
@@ -573,6 +660,9 @@ export namespace Xdp {
         MULTIPLE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ScreenshotFlags {
         export const $gtype: GObject.GType<ScreenshotFlags>;
     }
@@ -585,6 +675,9 @@ export namespace Xdp {
         INTERACTIVE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SpawnFlags {
         export const $gtype: GObject.GType<SpawnFlags>;
     }
@@ -621,6 +714,9 @@ export namespace Xdp {
         WATCH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WallpaperFlags {
         export const $gtype: GObject.GType<WallpaperFlags>;
     }
@@ -654,6 +750,7 @@ export namespace Xdp {
             /**
              * Emitted when location monitoring is enabled and the location changes.
              * @signal
+             * @run-first
              */
             'location-updated': (
                 arg0: number,
@@ -669,6 +766,7 @@ export namespace Xdp {
             /**
              * Emitted when a non-exported action is activated on a notification.
              * @signal
+             * @run-first
              */
             'notification-action-invoked': (arg0: string, arg1: string, arg2: GLib.Variant | null) => void;
             /**
@@ -676,11 +774,13 @@ export namespace Xdp {
              * enabled and the state of the login session changes or
              * the screensaver is activated or deactivated.
              * @signal
+             * @run-first
              */
             'session-state-changed': (arg0: boolean, arg1: LoginSessionState) => void;
             /**
              * Emitted when a process that was spawned with {@link Portal.spawn} exits.
              * @signal
+             * @run-first
              */
             'spawn-exited': (arg0: number, arg1: number) => void;
             /**
@@ -690,6 +790,7 @@ export namespace Xdp {
              * It is only sent once with the same information, but it can be sent many
              * times if new updates appear.
              * @signal
+             * @run-first
              */
             'update-available': (arg0: string, arg1: string, arg2: string) => void;
             /**
@@ -700,6 +801,7 @@ export namespace Xdp {
              * operation in the update, we're also guaranteed to send exactly one signal
              * with `progress` 100.
              * @signal
+             * @run-first
              */
             'update-progress': (
                 arg0: number,
@@ -3434,6 +3536,7 @@ export namespace Xdp {
             /**
              * Emitted when a session is closed externally.
              * @signal
+             * @run-cleanup
              */
             closed: () => void;
         }

@@ -50,6 +50,9 @@ export namespace Gly {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MemoryFormat {
         export const $gtype: GObject.GType<MemoryFormat>;
     }
@@ -154,6 +157,9 @@ export namespace Gly {
         G16,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SandboxSelector {
         export const $gtype: GObject.GType<SandboxSelector>;
     }
@@ -219,6 +225,9 @@ export namespace Gly {
     interface LoaderGetMimeTypesDoneFunc {
         (mime_types: string[], data?: any | null): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace MemoryFormatSelection {
         export const $gtype: GObject.GType<MemoryFormatSelection>;
     }
@@ -388,7 +397,13 @@ export namespace Gly {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get mime_type(): string;
+        /**
+         * @construct-only
+         */
         get mimeType(): string;
         get sandbox_selector(): SandboxSelector;
         set sandbox_selector(val: SandboxSelector);
@@ -543,6 +558,9 @@ export namespace Gly {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get data(): GLib.Bytes;
 
         /**
@@ -721,9 +739,21 @@ export namespace Gly {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get scale_height(): number;
+        /**
+         * @read-only
+         */
         get scaleHeight(): number;
+        /**
+         * @read-only
+         */
         get scale_width(): number;
+        /**
+         * @read-only
+         */
         get scaleWidth(): number;
 
         /**
@@ -1023,9 +1053,15 @@ export namespace Gly {
         set apply_transformation(val: boolean);
         get applyTransformation(): boolean;
         set applyTransformation(val: boolean);
+        /**
+         * @construct-only
+         */
         get bytes(): GLib.Bytes;
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
         get memory_format_selection(): MemoryFormatSelection;
         set memory_format_selection(val: MemoryFormatSelection);
@@ -1035,6 +1071,9 @@ export namespace Gly {
         set sandbox_selector(val: SandboxSelector);
         get sandboxSelector(): SandboxSelector;
         set sandboxSelector(val: SandboxSelector);
+        /**
+         * @construct-only
+         */
         get stream(): Gio.InputStream;
 
         /**

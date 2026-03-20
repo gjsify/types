@@ -43,6 +43,9 @@ export namespace NemoPreview {
      * NemoPreview-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SoundPlayerState {
         export const $gtype: GObject.GType<SoundPlayerState>;
     }
@@ -89,6 +92,9 @@ export namespace NemoPreview {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get cover(): GdkPixbuf.Pixbuf;
 
         /**
@@ -165,15 +171,39 @@ export namespace NemoPreview {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get content_type(): string;
+        /**
+         * @read-only
+         */
         get contentType(): string;
         get file(): Gio.File;
         set file(val: Gio.File);
+        /**
+         * @read-only
+         */
         get file_type(): Gio.FileType;
+        /**
+         * @read-only
+         */
         get fileType(): Gio.FileType;
+        /**
+         * @read-only
+         */
         get icon(): GdkPixbuf.Pixbuf;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get size(): string;
+        /**
+         * @read-only
+         */
         get time(): string;
 
         /**
@@ -231,10 +261,12 @@ export namespace NemoPreview {
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             error: (arg0: string) => void;
             /**
              * @signal
+             * @run-first
              */
             loaded: () => void;
             'notify::uri': (pspec: GObject.ParamSpec) => void;
@@ -819,6 +851,9 @@ export namespace NemoPreview {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get document(): XreaderDocument.Document;
         get uri(): string;
         set uri(val: string);
@@ -896,11 +931,17 @@ export namespace NemoPreview {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get duration(): number;
         get playing(): boolean;
         set playing(val: boolean);
         get progress(): number;
         set progress(val: number);
+        /**
+         * @read-only
+         */
         get state(): SoundPlayerState;
         get uri(): string;
         set uri(val: string);
@@ -947,6 +988,7 @@ export namespace NemoPreview {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             loaded: (arg0: GtkSource.Buffer) => void;
             'notify::uri': (pspec: GObject.ParamSpec) => void;

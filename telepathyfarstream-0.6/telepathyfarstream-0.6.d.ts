@@ -31,6 +31,7 @@ export namespace TelepathyFarstream {
              * it has been closed by the connection manager or because we had a locally
              * generated error.
              * @signal
+             * @run-last
              */
             closed: () => void;
             /**
@@ -40,23 +41,27 @@ export namespace TelepathyFarstream {
              * made to connect {@link TelepathyFarstream.Content.SignalSignatures.src_pad_added | TelepathyFarstream.Content::src-pad-added} as well
              * as the {@link TelepathyFarstream.Content.SignalSignatures.start_sending | TelepathyFarstream.Content::start-sending} and {@link TelepathyFarstream.Content.SignalSignatures.stop_sending | TelepathyFarstream.Content::stop-sending} signals.
              * @signal
+             * @run-last
              */
             'content-added': (arg0: Content) => void;
             /**
              * Tells the application that a content is being removed.
              * @signal
+             * @run-last
              */
             'content-removed': (arg0: Content) => void;
             /**
              * When this signal is emitted, the conference should be added to the
              * application's pipeline.
              * @signal
+             * @run-last
              */
             'fs-conference-added': (arg0: Farstream.Conference) => void;
             /**
              * When this signal is emitted, the conference should be remove from the
              * application's pipeline.
              * @signal
+             * @run-last
              */
             'fs-conference-removed': (arg0: Farstream.Conference) => void;
             'notify::channel': (pspec: GObject.ParamSpec) => void;
@@ -84,10 +89,25 @@ export namespace TelepathyFarstream {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get channel(): TelepathyGLib.Channel;
+        /**
+         * @read-only
+         */
         get fs_conferences(): any[];
+        /**
+         * @read-only
+         */
         get fsConferences(): any[];
+        /**
+         * @read-only
+         */
         get object_path(): string;
+        /**
+         * @read-only
+         */
         get objectPath(): string;
 
         /**
@@ -812,6 +832,7 @@ export namespace TelepathyFarstream {
              * This signal requests that the source be restarted so that the caps can
              * be renegotiated with a new resolutions and framerate.
              * @signal
+             * @run-last
              */
             'restart-source': () => void;
             /**
@@ -820,6 +841,7 @@ export namespace TelepathyFarstream {
              * the relevant data. When the callback returns from this signal, data will
              * start flowing through the pad, so the application MUST connect a sink.
              * @signal
+             * @run-last
              */
             'src-pad-added': (arg0: number, arg1: Farstream.Stream, arg2: Gst.Pad, arg3: Farstream.Codec) => void;
             /**
@@ -831,6 +853,7 @@ export namespace TelepathyFarstream {
              * signal has succeeded. It will not be emitted right after
              *  {@link TelepathyFarstream.Content.SignalSignatures.src_pad_added | TelepathyFarstream.Content::src-pad-added}.
              * @signal
+             * @run-last
              */
             'start-receiving': (arg0: any, arg1: number) => boolean | void;
             /**
@@ -839,18 +862,21 @@ export namespace TelepathyFarstream {
              * microphone or play back a file. The application should start
              * sending data on the {@link TelepathyFarstream.Content.sink_pad}
              * @signal
+             * @run-last
              */
             'start-sending': () => boolean | void;
             /**
              * This signal is emitted when the connection manager wants to tell the
              * application that it is now allowed to stop receiving.
              * @signal
+             * @run-last
              */
             'stop-receiving': (arg0: any, arg1: number) => void;
             /**
              * This signal is emitted when the connection manager ask to stop
              * sending media
              * @signal
+             * @run-last
              */
             'stop-sending': () => void;
             'notify::fs-conference': (pspec: GObject.ParamSpec) => void;
@@ -888,17 +914,53 @@ export namespace TelepathyFarstream {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get fs_conference(): Farstream.Conference;
+        /**
+         * @read-only
+         */
         get fsConference(): Farstream.Conference;
+        /**
+         * @read-only
+         */
         get fs_session(): Farstream.Session;
+        /**
+         * @read-only
+         */
         get fsSession(): Farstream.Session;
+        /**
+         * @read-only
+         */
         get media_type(): Farstream.MediaType;
+        /**
+         * @read-only
+         */
         get mediaType(): Farstream.MediaType;
+        /**
+         * @read-only
+         */
         get object_path(): string;
+        /**
+         * @read-only
+         */
         get objectPath(): string;
+        /**
+         * @read-only
+         */
         get sink_pad(): Gst.Pad;
+        /**
+         * @read-only
+         */
         get sinkPad(): Gst.Pad;
+        /**
+         * @read-only
+         */
         get tf_channel(): Channel;
+        /**
+         * @read-only
+         */
         get tfChannel(): Channel;
 
         /**

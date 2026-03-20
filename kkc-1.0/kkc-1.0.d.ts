@@ -22,6 +22,9 @@ export namespace Kkc {
      * Kkc-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace KanaMode {
         export const $gtype: GObject.GType<KanaMode>;
     }
@@ -37,6 +40,9 @@ export namespace Kkc {
         WIDE_LATIN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PunctuationStyle {
         export const $gtype: GObject.GType<PunctuationStyle>;
     }
@@ -51,6 +57,9 @@ export namespace Kkc {
         EN_JA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DictionaryCallbackReturn {
         export const $gtype: GObject.GType<DictionaryCallbackReturn>;
     }
@@ -63,6 +72,9 @@ export namespace Kkc {
         REMOVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputMode {
         export const $gtype: GObject.GType<InputMode>;
     }
@@ -2249,6 +2261,9 @@ export namespace Kkc {
     interface GetTime {
         (): number;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }
@@ -3202,7 +3217,13 @@ export namespace Kkc {
 
         get metadata(): LanguageModelMetadata;
         set metadata(val: LanguageModelMetadata);
+        /**
+         * @read-only
+         */
         get bos(): LanguageModelEntry;
+        /**
+         * @read-only
+         */
         get eos(): LanguageModelEntry;
 
         /**
@@ -3922,9 +3943,15 @@ export namespace Kkc {
         /** @category Inherited from Kkc.LanguageModel */
         get metadata(): LanguageModelMetadata;
         set metadata(val: LanguageModelMetadata);
-        /** @category Inherited from Kkc.LanguageModel */
+        /**
+         * @read-only
+         * @category Inherited from Kkc.LanguageModel
+         */
         get bos(): LanguageModelEntry;
-        /** @category Inherited from Kkc.LanguageModel */
+        /**
+         * @read-only
+         * @category Inherited from Kkc.LanguageModel
+         */
         get eos(): LanguageModelEntry;
         /**
          * @param entry
@@ -4215,7 +4242,13 @@ export namespace Kkc {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get min_cost(): number;
+        /**
+         * @read-only
+         */
         get minCost(): number;
 
         /**
@@ -4269,9 +4302,15 @@ export namespace Kkc {
         /** @category Inherited from Kkc.LanguageModel */
         get metadata(): LanguageModelMetadata;
         set metadata(val: LanguageModelMetadata);
-        /** @category Inherited from Kkc.LanguageModel */
+        /**
+         * @read-only
+         * @category Inherited from Kkc.LanguageModel
+         */
         get bos(): LanguageModelEntry;
-        /** @category Inherited from Kkc.LanguageModel */
+        /**
+         * @read-only
+         * @category Inherited from Kkc.LanguageModel
+         */
         get eos(): LanguageModelEntry;
         /**
          * @param entry
@@ -4662,6 +4701,9 @@ export namespace Kkc {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get model(): BigramLanguageModel;
 
         /**
@@ -4835,6 +4877,9 @@ export namespace Kkc {
         set cursor_pos(val: number);
         get cursorPos(): number;
         set cursorPos(val: number);
+        /**
+         * @read-only
+         */
         get size(): number;
 
         /**
@@ -5040,6 +5085,9 @@ export namespace Kkc {
         set cursor_pos(val: number);
         get cursorPos(): number;
         set cursorPos(val: number);
+        /**
+         * @read-only
+         */
         get size(): number;
         get page_start(): number;
         set page_start(val: number);
@@ -5051,7 +5099,13 @@ export namespace Kkc {
         set pageSize(val: number);
         get round(): boolean;
         set round(val: boolean);
+        /**
+         * @read-only
+         */
         get page_visible(): boolean;
+        /**
+         * @read-only
+         */
         get pageVisible(): boolean;
 
         /**
@@ -5633,6 +5687,9 @@ export namespace Kkc {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
 
         /**
@@ -5762,10 +5819,25 @@ export namespace Kkc {
         set auto_correct(val: boolean);
         get autoCorrect(): boolean;
         set autoCorrect(val: boolean);
+        /**
+         * @read-only
+         */
         get pending_output(): string;
+        /**
+         * @read-only
+         */
         get pendingOutput(): string;
+        /**
+         * @read-only
+         */
         get pending_input(): string;
+        /**
+         * @read-only
+         */
         get pendingInput(): string;
+        /**
+         * @read-only
+         */
         get produced(): RomKanaCharacterList;
 
         /**
@@ -6694,12 +6766,33 @@ export namespace Kkc {
 
         get dictionaries(): DictionaryList;
         set dictionaries(val: DictionaryList);
+        /**
+         * @read-only
+         */
         get candidates(): CandidateList;
+        /**
+         * @read-only
+         */
         get segments(): SegmentList;
+        /**
+         * @read-only
+         */
         get input(): string;
+        /**
+         * @read-only
+         */
         get input_cursor_pos(): number;
+        /**
+         * @read-only
+         */
         get inputCursorPos(): number;
+        /**
+         * @read-only
+         */
         get input_cursor_width(): number;
+        /**
+         * @read-only
+         */
         get inputCursorWidth(): number;
         get input_mode(): InputMode;
         set input_mode(val: InputMode);
@@ -6717,7 +6810,13 @@ export namespace Kkc {
         set typing_rule(val: Rule);
         get typingRule(): Rule;
         set typingRule(val: Rule);
+        /**
+         * @read-only
+         */
         get key_event_filter(): KeyEventFilter;
+        /**
+         * @read-only
+         */
         get keyEventFilter(): KeyEventFilter;
 
         /**
@@ -9623,6 +9722,9 @@ export namespace Kkc {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
 
         /**
@@ -9726,15 +9828,45 @@ export namespace Kkc {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get cursor_pos(): number;
+        /**
+         * @read-only
+         */
         get cursorPos(): number;
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get page_start(): number;
+        /**
+         * @read-only
+         */
         get pageStart(): number;
+        /**
+         * @read-only
+         */
         get page_size(): number;
+        /**
+         * @read-only
+         */
         get pageSize(): number;
+        /**
+         * @read-only
+         */
         get round(): boolean;
+        /**
+         * @read-only
+         */
         get page_visible(): boolean;
+        /**
+         * @read-only
+         */
         get pageVisible(): boolean;
 
         /**
@@ -9829,8 +9961,17 @@ export namespace Kkc {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get cursor_pos(): number;
+        /**
+         * @read-only
+         */
         get cursorPos(): number;
+        /**
+         * @read-only
+         */
         get size(): number;
 
         /**
@@ -9920,8 +10061,17 @@ export namespace Kkc {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get input(): string;
+        /**
+         * @read-only
+         */
         get input_cursor_pos(): number;
+        /**
+         * @read-only
+         */
         get inputCursorPos(): number;
         get input_mode(): number;
         set input_mode(val: number);

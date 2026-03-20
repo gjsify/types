@@ -193,6 +193,9 @@ export namespace gSignon {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SessionDataUiPolicy {
         export const $gtype: GObject.GType<SessionDataUiPolicy>;
     }
@@ -357,6 +360,9 @@ export namespace gSignon {
     interface QueryMethodsCb {
         (auth_service: AuthService, methods: string[], error: GLib.Error): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace IdentityType {
         export const $gtype: GObject.GType<IdentityType>;
     }
@@ -495,6 +501,8 @@ export namespace gSignon {
              * Emitted when the state of the {@link gSignon.AuthSession} changes. The state change
              * is initiated by `GSignondPlugin` via `GSignondPlugin::status-changed` signal.
              * @signal
+             * @action
+             * @run-last
              */
             'state-changed': (arg0: number, arg1: string) => void;
             'notify::identity': (pspec: GObject.ParamSpec) => void;
@@ -516,6 +524,9 @@ export namespace gSignon {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get identity(): Identity;
 
         /**
@@ -681,11 +692,13 @@ export namespace gSignon {
             /**
              * Emitted when the identity was removed (deleted).
              * @signal
+             * @run-last
              */
             removed: () => void;
             /**
              * Emitted when the identity was signed out.
              * @signal
+             * @run-last
              */
             signout: () => void;
             'notify::app-ctx': (pspec: GObject.ParamSpec) => void;

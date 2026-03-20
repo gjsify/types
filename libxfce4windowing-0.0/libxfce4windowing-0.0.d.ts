@@ -47,6 +47,9 @@ export namespace Libxfce4windowing {
         PAGER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Direction {
         export const $gtype: GObject.GType<Direction>;
     }
@@ -99,6 +102,9 @@ export namespace Libxfce4windowing {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowType {
         export const $gtype: GObject.GType<WindowType>;
     }
@@ -263,6 +269,9 @@ export namespace Libxfce4windowing {
     interface SetLayoutFunc {
         (group: WorkspaceGroup, rows: number, columns: number): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace WindowCapabilities {
         export const $gtype: GObject.GType<WindowCapabilities>;
     }
@@ -344,6 +353,9 @@ export namespace Libxfce4windowing {
         CAN_CHANGE_WORKSPACE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WindowState {
         export const $gtype: GObject.GType<WindowState>;
     }
@@ -404,6 +416,9 @@ export namespace Libxfce4windowing {
         URGENT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WorkspaceCapabilities {
         export const $gtype: GObject.GType<WorkspaceCapabilities>;
     }
@@ -428,6 +443,9 @@ export namespace Libxfce4windowing {
         REMOVE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WorkspaceGroupCapabilities {
         export const $gtype: GObject.GType<WorkspaceGroupCapabilities>;
     }
@@ -460,6 +478,9 @@ export namespace Libxfce4windowing {
         SET_LAYOUT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WorkspaceState {
         export const $gtype: GObject.GType<WorkspaceState>;
     }
@@ -499,6 +520,7 @@ export namespace Libxfce4windowing {
             /**
              * Emitted when `app`'s icon changes.
              * @signal
+             * @run-last
              */
             'icon-changed': () => void;
             'notify::class-id': (pspec: GObject.ParamSpec) => void;
@@ -531,27 +553,33 @@ export namespace Libxfce4windowing {
         /**
          * The application class id.
          * @since 4.19.3
+         * @read-only
          */
         get class_id(): string;
         /**
          * The application class id.
          * @since 4.19.3
+         * @read-only
          */
         get classId(): string;
         /**
          * The {@link Gio.Icon} that represents this application.
+         * @read-only
          */
         get gicon(): Gio.Icon;
         /**
          * The list of {@link Libxfce4windowing.ApplicationInstance} belonging to the application.
+         * @read-only
          */
         get instances(): any;
         /**
          * The application name.
+         * @read-only
          */
         get name(): string;
         /**
          * The list of {@link Libxfce4windowing.Window} belonging to the application.
+         * @read-only
          */
         get windows(): any;
 
@@ -675,7 +703,13 @@ export namespace Libxfce4windowing {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get app_id(): string;
+        /**
+         * @construct-only
+         */
         get appId(): string;
 
         /**
@@ -830,16 +864,19 @@ export namespace Libxfce4windowing {
         emit(signal: string, ...args: any[]): void;
         /**
          * The currently-active window.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Screen
          */
         get active_window(): Window;
         /**
          * The currently-active window.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Screen
          */
         get activeWindow(): Window;
         /**
          * The {@link Gdk.Screen} instance used to construct this {@link Libxfce4windowing.Screen}.
+         * @construct-only
          * @category Inherited from Libxfce4windowing.Screen
          */
         get screen(): Gdk.Screen;
@@ -858,12 +895,14 @@ export namespace Libxfce4windowing {
         /**
          * The {@link Libxfce4windowing.WorkspaceManager} that manages and describes workspace groups
          * and workspaces on this screen instance.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Screen
          */
         get workspace_manager(): WorkspaceManager;
         /**
          * The {@link Libxfce4windowing.WorkspaceManager} that manages and describes workspace groups
          * and workspaces on this screen instance.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Screen
          */
         get workspaceManager(): WorkspaceManager;
@@ -1416,16 +1455,19 @@ export namespace Libxfce4windowing {
         emit(signal: string, ...args: any[]): void;
         /**
          * The currently-active window.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Screen
          */
         get active_window(): Window;
         /**
          * The currently-active window.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Screen
          */
         get activeWindow(): Window;
         /**
          * The {@link Gdk.Screen} instance used to construct this {@link Libxfce4windowing.Screen}.
+         * @construct-only
          * @category Inherited from Libxfce4windowing.Screen
          */
         get screen(): Gdk.Screen;
@@ -1444,12 +1486,14 @@ export namespace Libxfce4windowing {
         /**
          * The {@link Libxfce4windowing.WorkspaceManager} that manages and describes workspace groups
          * and workspaces on this screen instance.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Screen
          */
         get workspace_manager(): WorkspaceManager;
         /**
          * The {@link Libxfce4windowing.WorkspaceManager} that manages and describes workspace groups
          * and workspaces on this screen instance.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Screen
          */
         get workspaceManager(): WorkspaceManager;
@@ -1951,47 +1995,56 @@ export namespace Libxfce4windowing {
             /**
              * Emitted when `window`'s capabilities change.
              * @signal
+             * @run-last
              */
             'capabilities-changed': (arg0: WindowCapabilities, arg1: WindowCapabilities) => void;
             /**
              * Emitted when at least one of the `window`'s class ids changes.
              * @signal
              * @since 4.19.3
+             * @run-last
              */
             'class-changed': () => void;
             /**
              * Emitted when `window` is closed.
              * @signal
+             * @run-last
              */
             closed: () => void;
             /**
              * Emitted when `window`'s position or size changes.
              * @signal
+             * @run-last
              */
             'geometry-changed': () => void;
             /**
              * Emitted when `window`'s icon changes.
              * @signal
+             * @run-last
              */
             'icon-changed': () => void;
             /**
              * Emitted when `window`'s name/title changes.
              * @signal
+             * @run-last
              */
             'name-changed': () => void;
             /**
              * Emitted when `window`'s state changes.
              * @signal
+             * @run-last
              */
             'state-changed': (arg0: WindowState, arg1: WindowState) => void;
             /**
              * Emitted when `window`'s type changes.
              * @signal
+             * @run-last
              */
             'type-changed': (arg0: WindowType) => void;
             /**
              * Emitted when `window` is moved to a different worksapce.
              * @signal
+             * @run-last
              */
             'workspace-changed': () => void;
             'notify::application': (pspec: GObject.ParamSpec) => void;
@@ -2033,46 +2086,59 @@ export namespace Libxfce4windowing {
 
         /**
          * The {@link Libxfce4windowing.Application} that owns this window.
+         * @read-only
          */
         get application(): Application;
         /**
          * The window's capabilities bitfield.
+         * @read-only
          */
         get capabilities(): WindowCapabilities;
         /**
          * The window's class ids.
          * @since 4.19.3
+         * @read-only
          */
         get class_ids(): string[];
         /**
          * The window's class ids.
          * @since 4.19.3
+         * @read-only
          */
         get classIds(): string[];
         /**
          * The {@link Gio.Icon} that represents this window.
+         * @read-only
          */
         get gicon(): Gio.Icon;
         /**
          * The list of monitors (if any) that the window is displayed on.
+         * @read-only
          */
         get monitors(): any;
         /**
          * The window's name or title.
+         * @read-only
          */
         get name(): string;
         /**
          * The {@link Libxfce4windowing.Screen} instances that owns this window.
+         * @construct-only
          */
         get screen(): Screen;
         /**
          * The window's state bitfield.
+         * @read-only
          */
         get state(): WindowState;
         /**
          * The window's type or function.
+         * @read-only
          */
         get type(): WindowType;
+        /**
+         * @read-only
+         */
         get workspace(): Workspace;
 
         /**
@@ -2306,6 +2372,9 @@ export namespace Libxfce4windowing {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): any;
 
         /**
@@ -2435,7 +2504,13 @@ export namespace Libxfce4windowing {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get wnck_object(): GObject.Object;
+        /**
+         * @construct-only
+         */
         get wnckObject(): GObject.Object;
 
         /**
@@ -3219,31 +3294,37 @@ export namespace Libxfce4windowing {
         set capabilities(val: WorkspaceCapabilities);
         /**
          * The {@link Libxfce4windowing.WorkspaceGroup} that this workspace is a member of, if any.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get group(): WorkspaceGroup;
         /**
          * The opaque ID of this workspace.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get id(): string;
         /**
          * The y-coordinate of the workspace on a 2D grid.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get layout_column(): number;
         /**
          * The y-coordinate of the workspace on a 2D grid.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get layoutColumn(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get layout_row(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get layoutRow(): number;
@@ -3255,6 +3336,7 @@ export namespace Libxfce4windowing {
         set name(val: string);
         /**
          * The ordinal number of this workspace.
+         * @construct-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get number(): number;
@@ -3896,37 +3978,44 @@ export namespace Libxfce4windowing {
         emit(signal: string, ...args: any[]): void;
         /**
          * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
+         * @read-only
          * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get active_workspace(): Workspace;
         /**
          * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
+         * @read-only
          * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get activeWorkspace(): Workspace;
         /**
          * The list of {@link Gdk.Monitor} this {@link Libxfce4windowing.WorkspaceGroup} is displayed on.
+         * @read-only
          * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get monitors(): any;
         /**
          * The {@link Gdk.Screen} used when creating the {@link Libxfce4windowing.Screen} that owns this
          * {@link Libxfce4windowing.WorkspaceGroup}.
+         * @construct-only
          * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get screen(): Gdk.Screen;
         /**
          * The {@link Libxfce4windowing.WorkspaceManager} instance that manages this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @construct-only
          * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get workspace_manager(): WorkspaceManager;
         /**
          * The {@link Libxfce4windowing.WorkspaceManager} instance that manages this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @construct-only
          * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get workspaceManager(): WorkspaceManager;
         /**
          * The list of {@link Libxfce4windowing.Workspace} in this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @read-only
          * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get workspaces(): any;
@@ -4449,6 +4538,7 @@ export namespace Libxfce4windowing {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             destroyed: () => void;
             'notify::active-workspace': (pspec: GObject.ParamSpec) => void;
@@ -4508,37 +4598,44 @@ export namespace Libxfce4windowing {
         emit(signal: string, ...args: any[]): void;
         /**
          * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
+         * @read-only
          * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get active_workspace(): Workspace;
         /**
          * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
+         * @read-only
          * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get activeWorkspace(): Workspace;
         /**
          * The list of {@link Gdk.Monitor} this {@link Libxfce4windowing.WorkspaceGroup} is displayed on.
+         * @read-only
          * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get monitors(): any;
         /**
          * The {@link Gdk.Screen} used when creating the {@link Libxfce4windowing.Screen} that owns this
          * {@link Libxfce4windowing.WorkspaceGroup}.
+         * @construct-only
          * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get screen(): Gdk.Screen;
         /**
          * The {@link Libxfce4windowing.WorkspaceManager} instance that manages this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @construct-only
          * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get workspace_manager(): WorkspaceManager;
         /**
          * The {@link Libxfce4windowing.WorkspaceManager} instance that manages this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @construct-only
          * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get workspaceManager(): WorkspaceManager;
         /**
          * The list of {@link Libxfce4windowing.Workspace} in this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @read-only
          * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get workspaces(): any;
@@ -5113,6 +5210,7 @@ export namespace Libxfce4windowing {
         /**
          * The {@link Gdk.Screen} instance used to construct the {@link Libxfce4windowing.Screen} that owns this
          * workspace manager.
+         * @construct-only
          * @category Inherited from Libxfce4windowing.WorkspaceManager
          */
         get screen(): Gdk.Screen;
@@ -5603,9 +5701,21 @@ export namespace Libxfce4windowing {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get wl_manager(): any;
+        /**
+         * @construct-only
+         */
         get wlManager(): any;
+        /**
+         * @construct-only
+         */
         get wl_registry(): any;
+        /**
+         * @construct-only
+         */
         get wlRegistry(): any;
 
         /**
@@ -5648,6 +5758,7 @@ export namespace Libxfce4windowing {
         /**
          * The {@link Gdk.Screen} instance used to construct the {@link Libxfce4windowing.Screen} that owns this
          * workspace manager.
+         * @construct-only
          * @category Inherited from Libxfce4windowing.WorkspaceManager
          */
         get screen(): Gdk.Screen;
@@ -6169,6 +6280,7 @@ export namespace Libxfce4windowing {
         /**
          * The {@link Gdk.Screen} instance used to construct the {@link Libxfce4windowing.Screen} that owns this
          * workspace manager.
+         * @construct-only
          * @category Inherited from Libxfce4windowing.WorkspaceManager
          */
         get screen(): Gdk.Screen;
@@ -6638,6 +6750,7 @@ export namespace Libxfce4windowing {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             destroyed: () => void;
             'notify::handle': (pspec: GObject.ParamSpec) => void;
@@ -6666,6 +6779,9 @@ export namespace Libxfce4windowing {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): any;
 
         /**
@@ -6711,31 +6827,37 @@ export namespace Libxfce4windowing {
         set capabilities(val: WorkspaceCapabilities);
         /**
          * The {@link Libxfce4windowing.WorkspaceGroup} that this workspace is a member of, if any.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get group(): WorkspaceGroup;
         /**
          * The opaque ID of this workspace.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get id(): string;
         /**
          * The y-coordinate of the workspace on a 2D grid.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get layout_column(): number;
         /**
          * The y-coordinate of the workspace on a 2D grid.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get layoutColumn(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get layout_row(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get layoutRow(): number;
@@ -6747,6 +6869,7 @@ export namespace Libxfce4windowing {
         set name(val: string);
         /**
          * The ordinal number of this workspace.
+         * @construct-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get number(): number;
@@ -7370,31 +7493,37 @@ export namespace Libxfce4windowing {
         set capabilities(val: WorkspaceCapabilities);
         /**
          * The {@link Libxfce4windowing.WorkspaceGroup} that this workspace is a member of, if any.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get group(): WorkspaceGroup;
         /**
          * The opaque ID of this workspace.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get id(): string;
         /**
          * The y-coordinate of the workspace on a 2D grid.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get layout_column(): number;
         /**
          * The y-coordinate of the workspace on a 2D grid.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get layoutColumn(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get layout_row(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
+         * @read-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get layoutRow(): number;
@@ -7406,6 +7535,7 @@ export namespace Libxfce4windowing {
         set name(val: string);
         /**
          * The ordinal number of this workspace.
+         * @construct-only
          * @category Inherited from Libxfce4windowing.Workspace
          */
         get number(): number;
@@ -8229,14 +8359,17 @@ export namespace Libxfce4windowing {
 
         /**
          * The currently-active window.
+         * @read-only
          */
         get active_window(): Window;
         /**
          * The currently-active window.
+         * @read-only
          */
         get activeWindow(): Window;
         /**
          * The {@link Gdk.Screen} instance used to construct this {@link Libxfce4windowing.Screen}.
+         * @construct-only
          */
         get screen(): Gdk.Screen;
         /**
@@ -8252,11 +8385,13 @@ export namespace Libxfce4windowing {
         /**
          * The {@link Libxfce4windowing.WorkspaceManager} that manages and describes workspace groups
          * and workspaces on this screen instance.
+         * @read-only
          */
         get workspace_manager(): WorkspaceManager;
         /**
          * The {@link Libxfce4windowing.WorkspaceManager} that manages and describes workspace groups
          * and workspaces on this screen instance.
+         * @read-only
          */
         get workspaceManager(): WorkspaceManager;
 
@@ -8343,26 +8478,32 @@ export namespace Libxfce4windowing {
         set capabilities(val: WorkspaceCapabilities);
         /**
          * The {@link Libxfce4windowing.WorkspaceGroup} that this workspace is a member of, if any.
+         * @read-only
          */
         get group(): WorkspaceGroup;
         /**
          * The opaque ID of this workspace.
+         * @read-only
          */
         get id(): string;
         /**
          * The y-coordinate of the workspace on a 2D grid.
+         * @read-only
          */
         get layout_column(): number;
         /**
          * The y-coordinate of the workspace on a 2D grid.
+         * @read-only
          */
         get layoutColumn(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
+         * @read-only
          */
         get layout_row(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
+         * @read-only
          */
         get layoutRow(): number;
         /**
@@ -8372,6 +8513,7 @@ export namespace Libxfce4windowing {
         set name(val: string);
         /**
          * The ordinal number of this workspace.
+         * @construct-only
          */
         get number(): number;
         /**
@@ -8510,31 +8652,38 @@ export namespace Libxfce4windowing {
 
         /**
          * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
+         * @read-only
          */
         get active_workspace(): Workspace;
         /**
          * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
+         * @read-only
          */
         get activeWorkspace(): Workspace;
         /**
          * The list of {@link Gdk.Monitor} this {@link Libxfce4windowing.WorkspaceGroup} is displayed on.
+         * @read-only
          */
         get monitors(): any;
         /**
          * The {@link Gdk.Screen} used when creating the {@link Libxfce4windowing.Screen} that owns this
          * {@link Libxfce4windowing.WorkspaceGroup}.
+         * @construct-only
          */
         get screen(): Gdk.Screen;
         /**
          * The {@link Libxfce4windowing.WorkspaceManager} instance that manages this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @construct-only
          */
         get workspace_manager(): WorkspaceManager;
         /**
          * The {@link Libxfce4windowing.WorkspaceManager} instance that manages this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @construct-only
          */
         get workspaceManager(): WorkspaceManager;
         /**
          * The list of {@link Libxfce4windowing.Workspace} in this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @read-only
          */
         get workspaces(): any;
 
@@ -8630,6 +8779,7 @@ export namespace Libxfce4windowing {
         /**
          * The {@link Gdk.Screen} instance used to construct the {@link Libxfce4windowing.Screen} that owns this
          * workspace manager.
+         * @construct-only
          */
         get screen(): Gdk.Screen;
 

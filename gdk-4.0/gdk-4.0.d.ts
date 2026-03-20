@@ -26,6 +26,9 @@ export namespace Gdk {
      * Gdk-4.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AxisUse {
         export const $gtype: GObject.GType<AxisUse>;
     }
@@ -93,6 +96,9 @@ export namespace Gdk {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CicpRange {
         export const $gtype: GObject.GType<CicpRange>;
     }
@@ -118,6 +124,9 @@ export namespace Gdk {
         FULL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CrossingMode {
         export const $gtype: GObject.GType<CrossingMode>;
     }
@@ -170,6 +179,9 @@ export namespace Gdk {
         DEVICE_SWITCH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DevicePadFeature {
         export const $gtype: GObject.GType<DevicePadFeature>;
     }
@@ -193,6 +205,9 @@ export namespace Gdk {
         STRIP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceToolType {
         export const $gtype: GObject.GType<DeviceToolType>;
     }
@@ -273,6 +288,9 @@ export namespace Gdk {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DragCancelReason {
         export const $gtype: GObject.GType<DragCancelReason>;
     }
@@ -296,6 +314,9 @@ export namespace Gdk {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EventType {
         export const $gtype: GObject.GType<EventType>;
     }
@@ -435,6 +456,9 @@ export namespace Gdk {
         EVENT_LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FullscreenMode {
         export const $gtype: GObject.GType<FullscreenMode>;
     }
@@ -496,6 +520,9 @@ export namespace Gdk {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Gravity {
         export const $gtype: GObject.GType<Gravity>;
     }
@@ -548,6 +575,9 @@ export namespace Gdk {
         STATIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputSource {
         export const $gtype: GObject.GType<InputSource>;
     }
@@ -591,6 +621,9 @@ export namespace Gdk {
         TABLET_PAD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace KeyMatch {
         export const $gtype: GObject.GType<KeyMatch>;
     }
@@ -617,6 +650,9 @@ export namespace Gdk {
         EXACT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MemoryFormat {
         export const $gtype: GObject.GType<MemoryFormat>;
     }
@@ -1119,6 +1155,9 @@ export namespace Gdk {
         N_FORMATS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NotifyType {
         export const $gtype: GObject.GType<NotifyType>;
     }
@@ -1164,6 +1203,9 @@ export namespace Gdk {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScrollDirection {
         export const $gtype: GObject.GType<ScrollDirection>;
     }
@@ -1196,6 +1238,9 @@ export namespace Gdk {
         SMOOTH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScrollUnit {
         export const $gtype: GObject.GType<ScrollUnit>;
     }
@@ -1232,6 +1277,9 @@ export namespace Gdk {
         SURFACE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SubpixelLayout {
         export const $gtype: GObject.GType<SubpixelLayout>;
     }
@@ -1268,6 +1316,9 @@ export namespace Gdk {
         VERTICAL_BGR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SurfaceEdge {
         export const $gtype: GObject.GType<SurfaceEdge>;
     }
@@ -1350,6 +1401,9 @@ export namespace Gdk {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TitlebarGesture {
         export const $gtype: GObject.GType<TitlebarGesture>;
     }
@@ -1375,6 +1429,9 @@ export namespace Gdk {
         MIDDLE_CLICK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TouchpadGesturePhase {
         export const $gtype: GObject.GType<TouchpadGesturePhase>;
     }
@@ -4506,6 +4563,9 @@ export namespace Gdk {
     interface CursorGetTextureCallback {
         (cursor: Cursor, cursor_size: number, scale: number, data?: any | null): Texture | null;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace AnchorHints {
         export const $gtype: GObject.GType<AnchorHints>;
     }
@@ -4567,6 +4627,9 @@ export namespace Gdk {
         RESIZE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace AxisFlags {
         export const $gtype: GObject.GType<AxisFlags>;
     }
@@ -4622,6 +4685,9 @@ export namespace Gdk {
         SLIDER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DragAction {
         export const $gtype: GObject.GType<DragAction>;
     }
@@ -4653,6 +4719,9 @@ export namespace Gdk {
         ASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FrameClockPhase {
         export const $gtype: GObject.GType<FrameClockPhase>;
     }
@@ -4698,6 +4767,9 @@ export namespace Gdk {
         AFTER_PAINT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GLAPI {
         export const $gtype: GObject.GType<GLAPI>;
     }
@@ -4718,6 +4790,9 @@ export namespace Gdk {
         GLES,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }
@@ -4792,6 +4867,9 @@ export namespace Gdk {
         META_MASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PaintableFlags {
         export const $gtype: GObject.GType<PaintableFlags>;
     }
@@ -4817,6 +4895,9 @@ export namespace Gdk {
         CONTENTS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SeatCapabilities {
         export const $gtype: GObject.GType<SeatCapabilities>;
     }
@@ -4860,6 +4941,9 @@ export namespace Gdk {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ToplevelCapabilities {
         export const $gtype: GObject.GType<ToplevelCapabilities>;
     }
@@ -4909,6 +4993,9 @@ export namespace Gdk {
         LOWER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ToplevelState {
         export const $gtype: GObject.GType<ToplevelState>;
     }
@@ -5036,6 +5123,7 @@ export namespace Gdk {
 
         /**
          * The display that the {@link Gdk.AppLaunchContext} is on.
+         * @construct-only
          */
         get display(): Display;
 
@@ -5514,6 +5602,7 @@ export namespace Gdk {
             /**
              * Emitted when the clipboard changes ownership.
              * @signal
+             * @run-last
              */
             changed: () => void;
             'notify::content': (pspec: GObject.ParamSpec) => void;
@@ -5559,18 +5648,22 @@ export namespace Gdk {
         /**
          * The {@link Gdk.ContentProvider} or `null` if the clipboard is empty or contents are
          * provided otherwise.
+         * @read-only
          */
         get content(): ContentProvider;
         /**
          * The {@link Gdk.Display} that the clipboard belongs to.
+         * @construct-only
          */
         get display(): Display;
         /**
          * The possible formats that the clipboard can provide its data in.
+         * @read-only
          */
         get formats(): ContentFormats;
         /**
          * `true` if the contents of the clipboard are owned by this process.
+         * @read-only
          */
         get local(): boolean;
 
@@ -6565,6 +6658,7 @@ export namespace Gdk {
             /**
              * Emitted whenever the content provided by this provider has changed.
              * @signal
+             * @run-last
              */
             'content-changed': () => void;
             'notify::formats': (pspec: GObject.ParamSpec) => void;
@@ -6599,14 +6693,17 @@ export namespace Gdk {
 
         /**
          * The possible formats that the provider can provide its data in.
+         * @read-only
          */
         get formats(): ContentFormats;
         /**
          * The subset of formats that clipboard managers should store this provider's data in.
+         * @read-only
          */
         get storable_formats(): ContentFormats;
         /**
          * The subset of formats that clipboard managers should store this provider's data in.
+         * @read-only
          */
         get storableFormats(): ContentFormats;
 
@@ -7578,34 +7675,41 @@ export namespace Gdk {
 
         /**
          * Cursor to fall back to if this cursor cannot be displayed.
+         * @construct-only
          */
         get fallback(): Cursor;
         /**
          * X position of the cursor hotspot in the cursor image.
+         * @construct-only
          */
         get hotspot_x(): number;
         /**
          * X position of the cursor hotspot in the cursor image.
+         * @construct-only
          */
         get hotspotX(): number;
         /**
          * Y position of the cursor hotspot in the cursor image.
+         * @construct-only
          */
         get hotspot_y(): number;
         /**
          * Y position of the cursor hotspot in the cursor image.
+         * @construct-only
          */
         get hotspotY(): number;
         /**
          * Name of this this cursor.
          *
          * The name will be `null` if the cursor was created from a texture.
+         * @construct-only
          */
         get name(): string;
         /**
          * The texture displayed by this cursor.
          *
          * The texture will be `null` if the cursor was created from a name.
+         * @construct-only
          */
         get texture(): Texture;
 
@@ -7803,11 +7907,13 @@ export namespace Gdk {
              * that case the logical device will change to reflect the axes
              * and keys on the new physical device.
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
              * Emitted on pen/eraser devices whenever tools enter or leave proximity.
              * @signal
+             * @run-last
              */
             'tool-changed': (arg0: DeviceTool) => void;
             'notify::active-layout-index': (pspec: GObject.ParamSpec) => void;
@@ -7885,6 +7991,7 @@ export namespace Gdk {
          *
          * This is only relevant for keyboard devices.
          * @since 4.18
+         * @read-only
          */
         get active_layout_index(): number;
         /**
@@ -7894,48 +8001,57 @@ export namespace Gdk {
          *
          * This is only relevant for keyboard devices.
          * @since 4.18
+         * @read-only
          */
         get activeLayoutIndex(): number;
         /**
          * Whether Caps Lock is on.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get caps_lock_state(): boolean;
         /**
          * Whether Caps Lock is on.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get capsLockState(): boolean;
         /**
          * The direction of the current layout.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get direction(): Pango.Direction;
         /**
          * The {@link Gdk.Display} the {@link Gdk.Device} pertains to.
+         * @construct-only
          */
         get display(): Display;
         /**
          * Whether the device has both right-to-left and left-to-right layouts.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get has_bidi_layouts(): boolean;
         /**
          * Whether the device has both right-to-left and left-to-right layouts.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get hasBidiLayouts(): boolean;
         /**
          * Whether the device is represented by a cursor on the screen.
+         * @construct-only
          */
         get has_cursor(): boolean;
         /**
          * Whether the device is represented by a cursor on the screen.
+         * @construct-only
          */
         get hasCursor(): boolean;
         /**
@@ -7943,6 +8059,7 @@ export namespace Gdk {
          *
          * This is only relevant for keyboard devices.
          * @since 4.18
+         * @read-only
          */
         get layout_names(): string[];
         /**
@@ -7950,42 +8067,50 @@ export namespace Gdk {
          *
          * This is only relevant for keyboard devices.
          * @since 4.18
+         * @read-only
          */
         get layoutNames(): string[];
         /**
          * The current modifier state of the device.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get modifier_state(): ModifierType;
         /**
          * The current modifier state of the device.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get modifierState(): ModifierType;
         /**
          * Number of axes in the device.
+         * @read-only
          */
         get n_axes(): number;
         /**
          * Number of axes in the device.
+         * @read-only
          */
         get nAxes(): number;
         /**
          * The device name.
+         * @construct-only
          */
         get name(): string;
         /**
          * Whether Num Lock is on.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get num_lock_state(): boolean;
         /**
          * Whether Num Lock is on.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get numLockState(): boolean;
         /**
@@ -7993,6 +8118,7 @@ export namespace Gdk {
          *
          * Will be 0 if the device is not a touch device or if the number
          * of touches is unknown.
+         * @construct-only
          */
         get num_touches(): number;
         /**
@@ -8000,30 +8126,35 @@ export namespace Gdk {
          *
          * Will be 0 if the device is not a touch device or if the number
          * of touches is unknown.
+         * @construct-only
          */
         get numTouches(): number;
         /**
          * Product ID of this device.
          *
          * See {@link Gdk.Device.get_product_id}.
+         * @construct-only
          */
         get product_id(): string;
         /**
          * Product ID of this device.
          *
          * See {@link Gdk.Device.get_product_id}.
+         * @construct-only
          */
         get productId(): string;
         /**
          * Whether Scroll Lock is on.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get scroll_lock_state(): boolean;
         /**
          * Whether Scroll Lock is on.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get scrollLockState(): boolean;
         /**
@@ -8033,22 +8164,26 @@ export namespace Gdk {
         set seat(val: Seat);
         /**
          * Source type for the device.
+         * @construct-only
          */
         get source(): InputSource;
         /**
          * The {@link Gdk.DeviceTool} that is currently used with this device.
+         * @read-only
          */
         get tool(): DeviceTool;
         /**
          * Vendor ID of this device.
          *
          * See {@link Gdk.Device.get_vendor_id}.
+         * @construct-only
          */
         get vendor_id(): string;
         /**
          * Vendor ID of this device.
          *
          * See {@link Gdk.Device.get_vendor_id}.
+         * @construct-only
          */
         get vendorId(): string;
 
@@ -8275,26 +8410,32 @@ export namespace Gdk {
 
         /**
          * The axes of the tool.
+         * @construct-only
          */
         get axes(): AxisFlags;
         /**
          * The hardware ID of the tool.
+         * @construct-only
          */
         get hardware_id(): number;
         /**
          * The hardware ID of the tool.
+         * @construct-only
          */
         get hardwareId(): number;
         /**
          * The serial number of the tool.
+         * @construct-only
          */
         get serial(): number;
         /**
          * The type of the tool.
+         * @construct-only
          */
         get tool_type(): DeviceToolType;
         /**
          * The type of the tool.
+         * @construct-only
          */
         get toolType(): DeviceToolType;
 
@@ -8377,26 +8518,31 @@ export namespace Gdk {
             /**
              * Emitted when the connection to the windowing system for `display` is closed.
              * @signal
+             * @run-last
              */
             closed: (arg0: boolean) => void;
             /**
              * Emitted when the connection to the windowing system for `display` is opened.
              * @signal
+             * @run-last
              */
             opened: () => void;
             /**
              * Emitted whenever a new seat is made known to the windowing system.
              * @signal
+             * @run-last
              */
             'seat-added': (arg0: Seat) => void;
             /**
              * Emitted whenever a seat is removed by the windowing system.
              * @signal
+             * @run-last
              */
             'seat-removed': (arg0: Seat) => void;
             /**
              * Emitted whenever a setting changes its value.
              * @signal
+             * @run-last
              */
             'setting-changed': (arg0: string) => void;
             'notify::composited': (pspec: GObject.ParamSpec) => void;
@@ -8444,38 +8590,46 @@ export namespace Gdk {
 
         /**
          * `true` if the display properly composites the alpha channel.
+         * @read-only
          */
         get composited(): boolean;
         /**
          * The dma-buf formats that are supported on this display
          * @since 4.14
+         * @read-only
          */
         get dmabuf_formats(): DmabufFormats;
         /**
          * The dma-buf formats that are supported on this display
          * @since 4.14
+         * @read-only
          */
         get dmabufFormats(): DmabufFormats;
         /**
          * `true` if the display supports input shapes.
+         * @read-only
          */
         get input_shapes(): boolean;
         /**
          * `true` if the display supports input shapes.
+         * @read-only
          */
         get inputShapes(): boolean;
         /**
          * `true` if the display supports an alpha channel.
+         * @read-only
          */
         get rgba(): boolean;
         /**
          * `true` if the display supports extensible frames.
          * @since 4.14
+         * @read-only
          */
         get shadow_width(): boolean;
         /**
          * `true` if the display supports extensible frames.
          * @since 4.14
+         * @read-only
          */
         get shadowWidth(): boolean;
 
@@ -8830,6 +8984,7 @@ export namespace Gdk {
             /**
              * Emitted when a display is opened.
              * @signal
+             * @run-last
              */
             'display-opened': (arg0: Display) => void;
             'notify::default-display': (pspec: GObject.ParamSpec) => void;
@@ -10287,6 +10442,7 @@ export namespace Gdk {
             /**
              * Emitted when the drag operation is cancelled.
              * @signal
+             * @run-last
              */
             cancel: (arg0: DragCancelReason) => void;
             /**
@@ -10294,11 +10450,13 @@ export namespace Gdk {
              *
              * The drag object can now free all miscellaneous data.
              * @signal
+             * @run-last
              */
             'dnd-finished': () => void;
             /**
              * Emitted when the drop operation is performed on an accepting client.
              * @signal
+             * @run-last
              */
             'drop-performed': () => void;
             'notify::actions': (pspec: GObject.ParamSpec) => void;
@@ -10349,18 +10507,22 @@ export namespace Gdk {
         set actions(val: DragAction);
         /**
          * The {@link Gdk.ContentProvider}.
+         * @construct-only
          */
         get content(): ContentProvider;
         /**
          * The {@link Gdk.Device} that is performing the drag.
+         * @construct-only
          */
         get device(): Device;
         /**
          * The {@link Gdk.Display} that the drag belongs to.
+         * @read-only
          */
         get display(): Display;
         /**
          * The possible formats that the drag can provide its data in.
+         * @construct-only
          */
         get formats(): ContentFormats;
         /**
@@ -10375,6 +10537,7 @@ export namespace Gdk {
         set selectedAction(val: DragAction);
         /**
          * The surface where the drag originates.
+         * @construct-only
          */
         get surface(): Surface;
 
@@ -10555,10 +10718,12 @@ export namespace Gdk {
 
         /**
          * The {@link Gdk.Display} used to create the {@link Gdk.DrawContext}.
+         * @construct-only
          */
         get display(): Display;
         /**
          * The {@link Gdk.Surface} the context is bound to.
+         * @construct-only
          */
         get surface(): Surface;
 
@@ -10719,26 +10884,32 @@ export namespace Gdk {
 
         /**
          * The possible actions for this drop
+         * @construct-only
          */
         get actions(): DragAction;
         /**
          * The {@link Gdk.Device} performing the drop
+         * @construct-only
          */
         get device(): Device;
         /**
          * The {@link Gdk.Display} that the drop belongs to.
+         * @read-only
          */
         get display(): Display;
         /**
          * The {@link Gdk.Drag} that initiated this drop
+         * @construct-only
          */
         get drag(): Drag;
         /**
          * The possible formats that the drop can provide its data in.
+         * @construct-only
          */
         get formats(): ContentFormats;
         /**
          * The {@link Gdk.Surface} the drop happens on
+         * @construct-only
          */
         get surface(): Surface;
 
@@ -11232,6 +11403,7 @@ export namespace Gdk {
              *
              * Applications should generally not handle this signal.
              * @signal
+             * @run-last
              */
             'after-paint': () => void;
             /**
@@ -11239,6 +11411,7 @@ export namespace Gdk {
              *
              * Applications should generally not handle this signal.
              * @signal
+             * @run-last
              */
             'before-paint': () => void;
             /**
@@ -11247,6 +11420,7 @@ export namespace Gdk {
              *
              * Applications should not handle this signal.
              * @signal
+             * @run-last
              */
             'flush-events': () => void;
             /**
@@ -11256,6 +11430,7 @@ export namespace Gdk {
              * Any work to update sizes and positions of application elements
              * should be performed. GTK normally handles this internally.
              * @signal
+             * @run-last
              */
             layout: () => void;
             /**
@@ -11267,6 +11442,7 @@ export namespace Gdk {
              * [GtkWidget::snapshot](../gtk4/signal.Widget.snapshot.html) signals
              * by GTK.
              * @signal
+             * @run-last
              */
             paint: () => void;
             /**
@@ -11275,6 +11451,7 @@ export namespace Gdk {
              * This signal is handled internally by GTK to resume normal
              * event processing. Applications should not handle this signal.
              * @signal
+             * @run-last
              */
             'resume-events': () => void;
             /**
@@ -11286,6 +11463,7 @@ export namespace Gdk {
              * [gtk_widget_add_tick_callback()](../gtk4/method.Widget.add_tick_callback.html)
              * as a more convenient interface.
              * @signal
+             * @run-last
              */
             update: () => void;
         }
@@ -11558,6 +11736,7 @@ export namespace Gdk {
         /**
          * The API currently in use.
          * @since 4.6
+         * @read-only
          */
         get api(): GLAPI;
         /**
@@ -11566,6 +11745,7 @@ export namespace Gdk {
          * As many contexts can share data now and no single shared context exists
          * anymore, this function has been deprecated and now always returns `null`.
          * @deprecated since 4.4: Use {@link Gdk.GLContext.is_shared} to check if contexts   can be shared.
+         * @construct-only
          */
         get shared_context(): GLContext;
         /**
@@ -11574,6 +11754,7 @@ export namespace Gdk {
          * As many contexts can share data now and no single shared context exists
          * anymore, this function has been deprecated and now always returns `null`.
          * @deprecated since 4.4: Use {@link Gdk.GLContext.is_shared} to check if contexts   can be shared.
+         * @construct-only
          */
         get sharedContext(): GLContext;
 
@@ -14368,6 +14549,7 @@ export namespace Gdk {
             /**
              * Emitted when the output represented by `monitor` gets disconnected.
              * @signal
+             * @run-first
              */
             invalidate: () => void;
             'notify::connector': (pspec: GObject.ParamSpec) => void;
@@ -14425,48 +14607,59 @@ export namespace Gdk {
 
         /**
          * The connector name.
+         * @read-only
          */
         get connector(): string;
         /**
          * A short description of the monitor, meant for display to the user.
          * @since 4.10
+         * @read-only
          */
         get description(): string;
         /**
          * The {@link Gdk.Display} of the monitor.
+         * @construct-only
          */
         get display(): Display;
         /**
          * The geometry of the monitor.
+         * @read-only
          */
         get geometry(): Rectangle;
         /**
          * The height of the monitor, in millimeters.
+         * @read-only
          */
         get height_mm(): number;
         /**
          * The height of the monitor, in millimeters.
+         * @read-only
          */
         get heightMm(): number;
         /**
          * The manufacturer name.
+         * @read-only
          */
         get manufacturer(): string;
         /**
          * The model name.
+         * @read-only
          */
         get model(): string;
         /**
          * The refresh rate, in milli-Hertz.
+         * @read-only
          */
         get refresh_rate(): number;
         /**
          * The refresh rate, in milli-Hertz.
+         * @read-only
          */
         get refreshRate(): number;
         /**
          * The scale of the monitor.
          * @since 4.14
+         * @read-only
          */
         get scale(): number;
         /**
@@ -14474,6 +14667,7 @@ export namespace Gdk {
          *
          * The scale factor is the next larger integer,
          * compared to {@link Gdk.Surface.scale}.
+         * @read-only
          */
         get scale_factor(): number;
         /**
@@ -14481,26 +14675,32 @@ export namespace Gdk {
          *
          * The scale factor is the next larger integer,
          * compared to {@link Gdk.Surface.scale}.
+         * @read-only
          */
         get scaleFactor(): number;
         /**
          * The subpixel layout.
+         * @read-only
          */
         get subpixel_layout(): SubpixelLayout;
         /**
          * The subpixel layout.
+         * @read-only
          */
         get subpixelLayout(): SubpixelLayout;
         /**
          * Whether the object is still valid.
+         * @read-only
          */
         get valid(): boolean;
         /**
          * The width of the monitor, in millimeters.
+         * @read-only
          */
         get width_mm(): number;
         /**
          * The width of the monitor, in millimeters.
+         * @read-only
          */
         get widthMm(): number;
 
@@ -14859,11 +15059,13 @@ export namespace Gdk {
             /**
              * Emitted when a new input device is related to this seat.
              * @signal
+             * @run-last
              */
             'device-added': (arg0: Device) => void;
             /**
              * Emitted when an input device is removed (e.g. unplugged).
              * @signal
+             * @run-last
              */
             'device-removed': (arg0: Device) => void;
             /**
@@ -14875,11 +15077,13 @@ export namespace Gdk {
              *
              * A same tool may be used by several devices.
              * @signal
+             * @run-last
              */
             'tool-added': (arg0: DeviceTool) => void;
             /**
              * Emitted whenever a tool is no longer known to this `seat`.
              * @signal
+             * @run-last
              */
             'tool-removed': (arg0: DeviceTool) => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;
@@ -14903,6 +15107,7 @@ export namespace Gdk {
 
         /**
          * {@link Gdk.Display} of this seat.
+         * @construct-only
          */
         get display(): Display;
 
@@ -15038,11 +15243,13 @@ export namespace Gdk {
             /**
              * Emitted when `surface` starts being present on the monitor.
              * @signal
+             * @run-first
              */
             'enter-monitor': (arg0: Monitor) => void;
             /**
              * Emitted when GDK receives an input event for `surface`.
              * @signal
+             * @run-last
              */
             event: (arg0: Event) => boolean | void;
             /**
@@ -15052,16 +15259,19 @@ export namespace Gdk {
              * Surface size is reported in ”application pixels”, not
              * ”device pixels” (see `gdk_surface_get_scale_factor()`).
              * @signal
+             * @run-first
              */
             layout: (arg0: number, arg1: number) => void;
             /**
              * Emitted when `surface` stops being present on the monitor.
              * @signal
+             * @run-first
              */
             'leave-monitor': (arg0: Monitor) => void;
             /**
              * Emitted when part of the surface needs to be redrawn.
              * @signal
+             * @run-last
              */
             render: (arg0: cairo.Region) => boolean | void;
             'notify::cursor': (pspec: GObject.ParamSpec) => void;
@@ -15114,27 +15324,33 @@ export namespace Gdk {
         set cursor(val: Cursor);
         /**
          * The {@link Gdk.Display} connection of the surface.
+         * @construct-only
          */
         get display(): Display;
         /**
          * The {@link Gdk.FrameClock} of the surface.
+         * @construct-only
          */
         get frame_clock(): FrameClock;
         /**
          * The {@link Gdk.FrameClock} of the surface.
+         * @construct-only
          */
         get frameClock(): FrameClock;
         /**
          * The height of the surface, in pixels.
+         * @read-only
          */
         get height(): number;
         /**
          * Whether the surface is mapped.
+         * @read-only
          */
         get mapped(): boolean;
         /**
          * The scale of the surface.
          * @since 4.12
+         * @read-only
          */
         get scale(): number;
         /**
@@ -15142,6 +15358,7 @@ export namespace Gdk {
          *
          * The scale factor is the next larger integer,
          * compared to {@link Gdk.Surface.scale}.
+         * @read-only
          */
         get scale_factor(): number;
         /**
@@ -15149,10 +15366,12 @@ export namespace Gdk {
          *
          * The scale factor is the next larger integer,
          * compared to {@link Gdk.Surface.scale}.
+         * @read-only
          */
         get scaleFactor(): number;
         /**
          * The width of the surface in pixels.
+         * @read-only
          */
         get width(): number;
 
@@ -15520,19 +15739,23 @@ export namespace Gdk {
         /**
          * The color state of the texture.
          * @since 4.16
+         * @construct-only
          */
         get color_state(): ColorState;
         /**
          * The color state of the texture.
          * @since 4.16
+         * @construct-only
          */
         get colorState(): ColorState;
         /**
          * The height of the texture, in pixels.
+         * @construct-only
          */
         get height(): number;
         /**
          * The width of the texture, in pixels.
+         * @construct-only
          */
         get width(): number;
 
@@ -16618,6 +16841,7 @@ export namespace Gdk {
              * Usually this means that the swapchain had to be recreated,
              * for example in response to a change of the surface size.
              * @signal
+             * @run-last
              */
             'images-updated': () => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;
@@ -18917,10 +19141,12 @@ export namespace Gdk {
 
         /**
          * Whether to hide on outside clicks.
+         * @construct-only
          */
         get autohide(): boolean;
         /**
          * The parent surface.
+         * @construct-only
          */
         get parent(): Surface;
 
@@ -19032,6 +19258,7 @@ export namespace Gdk {
         /**
          * The capabilities that are available for this toplevel.
          * @since 4.20
+         * @read-only
          */
         get capabilities(): ToplevelCapabilities;
         /**
@@ -19086,10 +19313,12 @@ export namespace Gdk {
         set modal(val: boolean);
         /**
          * Whether the surface should inhibit keyboard shortcuts.
+         * @read-only
          */
         get shortcuts_inhibited(): boolean;
         /**
          * Whether the surface should inhibit keyboard shortcuts.
+         * @read-only
          */
         get shortcutsInhibited(): boolean;
         /**
@@ -19110,6 +19339,7 @@ export namespace Gdk {
         set startupId(val: string);
         /**
          * The state of the toplevel.
+         * @read-only
          */
         get state(): ToplevelState;
         /**

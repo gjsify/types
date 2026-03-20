@@ -957,9 +957,15 @@ export namespace Gd {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -1273,6 +1279,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -1280,6 +1287,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -1401,6 +1409,7 @@ export namespace Gd {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -5875,9 +5884,15 @@ export namespace Gd {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -6191,6 +6206,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -6198,6 +6214,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -6319,6 +6336,7 @@ export namespace Gd {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -10853,9 +10871,15 @@ export namespace Gd {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -11169,6 +11193,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -11176,6 +11201,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -11297,6 +11323,7 @@ export namespace Gd {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -15957,9 +15984,15 @@ export namespace Gd {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -16273,6 +16306,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -16280,6 +16314,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -16401,6 +16436,7 @@ export namespace Gd {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -20804,9 +20840,15 @@ export namespace Gd {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -21120,6 +21162,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -21127,6 +21170,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -21248,6 +21292,7 @@ export namespace Gd {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -25781,9 +25826,15 @@ export namespace Gd {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -26097,6 +26148,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -26104,6 +26156,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -26225,6 +26278,7 @@ export namespace Gd {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -30584,9 +30638,15 @@ export namespace Gd {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -30900,6 +30960,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -30907,6 +30968,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -31028,6 +31090,7 @@ export namespace Gd {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -35216,14 +35279,17 @@ export namespace Gd {
         interface SignalSignatures extends Gtk.ScrolledWindow.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'item-activated': (arg0: string, arg1: Gtk.TreePath) => void;
             /**
              * @signal
+             * @run-last
              */
             'selection-mode-request': () => void;
             /**
              * @signal
+             * @run-last
              */
             'view-selection-changed': () => void;
             'notify::model': (pspec: GObject.ParamSpec) => void;
@@ -35908,7 +35974,13 @@ export namespace Gd {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get child_revealed(): boolean;
+        /**
+         * @read-only
+         */
         get childRevealed(): boolean;
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
@@ -37792,10 +37864,14 @@ export namespace Gd {
         interface SignalSignatures extends Gtk.SearchEntry.SignalSignatures {
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked': (arg0: TaggedEntryTag) => void;
             'notify::tag-close-visible': (pspec: GObject.ParamSpec) => void;
@@ -37891,730 +37967,1094 @@ export namespace Gd {
             'notify::window': (pspec: GObject.ParamSpec) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::tag-close-visible': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::activates-default': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::attributes': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::buffer': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::caps-lock-warning': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::completion': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::cursor-position': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::editable': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::enable-emoji-completion': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::has-frame': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::im-module': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::inner-border': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::input-hints': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::input-purpose': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::invisible-char': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::invisible-char-set': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::max-length': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::max-width-chars': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::overwrite-mode': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::placeholder-text': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::populate-all': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::primary-icon-activatable': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::primary-icon-gicon': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::primary-icon-name': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::primary-icon-pixbuf': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::primary-icon-sensitive': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::primary-icon-stock': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::primary-icon-storage-type': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::primary-icon-tooltip-markup': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::primary-icon-tooltip-text': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::progress-fraction': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::progress-pulse-step': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::scroll-offset': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::secondary-icon-activatable': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::secondary-icon-gicon': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::secondary-icon-name': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::secondary-icon-pixbuf': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::secondary-icon-sensitive': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::secondary-icon-stock': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::secondary-icon-storage-type': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::secondary-icon-tooltip-markup': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::secondary-icon-tooltip-text': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::selection-bound': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::shadow-type': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::show-emoji-icon': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::tabs': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::text': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::text-length': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::truncate-multiline': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::visibility': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::width-chars': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::xalign': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::app-paintable': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::can-default': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::can-focus': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::composite-child': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::double-buffered': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::events': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::expand': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::focus-on-click': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::halign': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::has-default': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::has-focus': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::has-tooltip': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::height-request': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::hexpand': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::hexpand-set': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::is-focus': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::margin': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::margin-bottom': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::margin-end': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::margin-left': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::margin-right': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::margin-start': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::margin-top': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::name': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::no-show-all': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::opacity': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::parent': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::receives-default': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::scale-factor': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::sensitive': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::style': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::tooltip-markup': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::tooltip-text': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::valign': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::vexpand': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::vexpand-set': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::visible': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::width-request': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-button-clicked::window': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::tag-close-visible': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::activates-default': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::attributes': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::buffer': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::caps-lock-warning': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::completion': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::cursor-position': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::editable': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::enable-emoji-completion': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::has-frame': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::im-module': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::inner-border': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::input-hints': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::input-purpose': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::invisible-char': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::invisible-char-set': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::max-length': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::max-width-chars': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::overwrite-mode': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::placeholder-text': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::populate-all': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::primary-icon-activatable': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::primary-icon-gicon': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::primary-icon-name': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::primary-icon-pixbuf': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::primary-icon-sensitive': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::primary-icon-stock': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::primary-icon-storage-type': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::primary-icon-tooltip-markup': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::primary-icon-tooltip-text': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::progress-fraction': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::progress-pulse-step': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::scroll-offset': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::secondary-icon-activatable': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::secondary-icon-gicon': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::secondary-icon-name': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::secondary-icon-pixbuf': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::secondary-icon-sensitive': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::secondary-icon-stock': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::secondary-icon-storage-type': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::secondary-icon-tooltip-markup': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::secondary-icon-tooltip-text': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::selection-bound': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::shadow-type': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::show-emoji-icon': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::tabs': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::text': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::text-length': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::truncate-multiline': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::visibility': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::width-chars': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::xalign': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::app-paintable': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::can-default': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::can-focus': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::composite-child': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::double-buffered': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::events': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::expand': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::focus-on-click': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::halign': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::has-default': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::has-focus': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::has-tooltip': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::height-request': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::hexpand': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::hexpand-set': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::is-focus': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::margin': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::margin-bottom': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::margin-end': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::margin-left': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::margin-right': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::margin-start': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::margin-top': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::name': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::no-show-all': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::opacity': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::parent': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::receives-default': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::scale-factor': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::sensitive': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::style': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::tooltip-markup': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::tooltip-text': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::valign': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::vexpand': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::vexpand-set': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::visible': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::width-request': (arg0: TaggedEntryTag) => void;
             /**
              * @signal
+             * @detailed
+             * @run-first
              */
             'tag-clicked::window': (arg0: TaggedEntryTag) => void;
         }
@@ -38644,7 +39084,13 @@ export namespace Gd {
 
         // Properties
 
+        /**
+         * @write-only
+         */
         set tag_close_visible(val: boolean);
+        /**
+         * @write-only
+         */
         set tagCloseVisible(val: boolean);
 
         /**
@@ -38723,9 +39169,15 @@ export namespace Gd {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -39039,6 +39491,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -39046,6 +39499,7 @@ export namespace Gd {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -39167,6 +39621,7 @@ export namespace Gd {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;

@@ -20,6 +20,9 @@ export namespace Dex {
      * Dex-1
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BlockKind {
         export const $gtype: GObject.GType<BlockKind>;
     }
@@ -58,6 +61,9 @@ export namespace Dex {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FutureStatus {
         export const $gtype: GObject.GType<FutureStatus>;
     }

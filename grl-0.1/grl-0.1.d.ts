@@ -69,6 +69,9 @@ export namespace Grl {
         FULL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MediaSourceChangeType {
         export const $gtype: GObject.GType<MediaSourceChangeType>;
     }
@@ -1825,6 +1828,8 @@ export namespace Grl {
              * location_unknown as `TRUE`.
              * @signal
              * @since 0.1.9
+             * @action
+             * @run-first
              */
             'content-changed': (arg0: any[], arg1: MediaSourceChangeType, arg2: boolean) => void;
             'notify::auto-split-threshold': (pspec: GObject.ParamSpec) => void;
@@ -2905,11 +2910,15 @@ export namespace Grl {
             /**
              * Signals that a plugin has been added to the registry.
              * @signal
+             * @action
+             * @run-first
              */
             'source-added': (arg0: MediaPlugin) => void;
             /**
              * Signals that a plugin has been removed from the registry.
              * @signal
+             * @action
+             * @run-first
              */
             'source-removed': (arg0: MediaPlugin) => void;
         }

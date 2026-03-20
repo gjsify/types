@@ -39,6 +39,9 @@ export namespace St {
      * St-13
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BackgroundSize {
         export const $gtype: GObject.GType<BackgroundSize>;
     }
@@ -53,6 +56,9 @@ export namespace St {
         FIXED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClipboardType {
         export const $gtype: GObject.GType<ClipboardType>;
     }
@@ -65,6 +71,9 @@ export namespace St {
         CLIPBOARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Corner {
         export const $gtype: GObject.GType<Corner>;
     }
@@ -92,6 +101,9 @@ export namespace St {
         BOTTOMLEFT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DirectionType {
         export const $gtype: GObject.GType<DirectionType>;
     }
@@ -127,6 +139,9 @@ export namespace St {
         RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GradientType {
         export const $gtype: GObject.GType<GradientType>;
     }
@@ -154,6 +169,9 @@ export namespace St {
         RADIAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IconStyle {
         export const $gtype: GObject.GType<IconStyle>;
     }
@@ -206,6 +224,9 @@ export namespace St {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PolicyType {
         export const $gtype: GObject.GType<PolicyType>;
     }
@@ -220,6 +241,9 @@ export namespace St {
         EXTERNAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Side {
         export const $gtype: GObject.GType<Side>;
     }
@@ -247,6 +271,9 @@ export namespace St {
         LEFT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SystemColorScheme {
         export const $gtype: GObject.GType<SystemColorScheme>;
     }
@@ -260,6 +287,9 @@ export namespace St {
         PREFER_LIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextAlign {
         export const $gtype: GObject.GType<TextAlign>;
     }
@@ -284,6 +314,9 @@ export namespace St {
         JUSTIFY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextureCachePolicy {
         export const $gtype: GObject.GType<TextureCachePolicy>;
     }
@@ -323,6 +356,9 @@ export namespace St {
     interface EntryCursorFunc {
         (entry: Entry, use_ibeam: boolean, data?: any | null): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace ButtonMask {
         export const $gtype: GObject.GType<ButtonMask>;
     }
@@ -346,6 +382,9 @@ export namespace St {
         THREE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace IconLookupFlags {
         export const $gtype: GObject.GType<IconLookupFlags>;
     }
@@ -400,6 +439,9 @@ export namespace St {
         DIR_RTL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TextDecoration {
         export const $gtype: GObject.GType<TextDecoration>;
     }
@@ -434,6 +476,7 @@ export namespace St {
              * Emitted when any of the adjustment properties have changed, except for
              * {@link St.Adjustment.value}.
              * @signal
+             * @run-last
              */
             changed: () => void;
             'notify::actor': (pspec: GObject.ParamSpec) => void;
@@ -2968,6 +3011,7 @@ export namespace St {
              * Emitted when the user activates the button, either with a mouse press and
              * release or with the keyboard.
              * @signal
+             * @run-last
              */
             clicked: (arg0: number) => void;
             'notify::button-mask': (pspec: GObject.ParamSpec) => void;
@@ -3128,6 +3172,7 @@ export namespace St {
         /**
          * In contrast to {@link St.Button.checked}, this property indicates whether the
          * {@link St.Button} is being actively pressed, rather than just in the "on" state.
+         * @read-only
          */
         get pressed(): boolean;
         /**
@@ -3990,6 +4035,7 @@ export namespace St {
         interface SignalSignatures extends Widget.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             repaint: () => void;
             'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
@@ -4805,11 +4851,13 @@ export namespace St {
             /**
              * Emitted when the primary icon is clicked.
              * @signal
+             * @run-last
              */
             'primary-icon-clicked': () => void;
             /**
              * Emitted when the secondary icon is clicked.
              * @signal
+             * @run-last
              */
             'secondary-icon-clicked': () => void;
             'notify::clutter-text': (pspec: GObject.ParamSpec) => void;
@@ -4942,10 +4990,12 @@ export namespace St {
 
         /**
          * The internal {@link Clutter.Text} actor supporting the {@link St.Entry}.
+         * @read-only
          */
         get clutter_text(): Clutter.Text;
         /**
          * The internal {@link Clutter.Text} actor supporting the {@link St.Entry}.
+         * @read-only
          */
         get clutterText(): Clutter.Text;
         /**
@@ -5885,6 +5935,7 @@ export namespace St {
              * `self`. Right now we only care about doubles, so the value is
              * directly returned by the signal.
              * @signal
+             * @run-last
              */
             'get-current-value': () => number;
             /**
@@ -5892,6 +5943,7 @@ export namespace St {
              * `self`. Right now we only care about doubles, so the value is
              * directly returned by the signal.
              * @signal
+             * @run-last
              */
             'get-maximum-value': () => number;
             /**
@@ -5899,6 +5951,7 @@ export namespace St {
              * `self`. Right now we only care about doubles, so the value is
              * directly returned by the signal.
              * @signal
+             * @run-last
              */
             'get-minimum-increment': () => number;
             /**
@@ -5906,6 +5959,7 @@ export namespace St {
              * `self`. Right now we only care about doubles, so the value is
              * directly returned by the signal.
              * @signal
+             * @run-last
              */
             'get-minimum-value': () => number;
             /**
@@ -5913,6 +5967,7 @@ export namespace St {
              * `self`. Right now we only care about doubles, so the value is
              * directly returned by the signal.
              * @signal
+             * @run-last
              */
             'set-current-value': (arg0: number) => void;
             'notify::accessible-component-layer': (pspec: GObject.ParamSpec) => void;
@@ -7699,6 +7754,7 @@ export namespace St {
              * that a change has occurred in the contents of the current
              * icon theme.
              * @signal
+             * @run-last
              */
             changed: () => void;
         }
@@ -8044,9 +8100,21 @@ export namespace St {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get preferred_height(): number;
+        /**
+         * @construct-only
+         */
         get preferredHeight(): number;
+        /**
+         * @construct-only
+         */
         get preferred_width(): number;
+        /**
+         * @construct-only
+         */
         get preferredWidth(): number;
 
         /**
@@ -8880,10 +8948,12 @@ export namespace St {
 
         /**
          * The internal {@link Clutter.Text} actor supporting the label
+         * @read-only
          */
         get clutter_text(): Clutter.Text;
         /**
          * The internal {@link Clutter.Text} actor supporting the label
+         * @read-only
          */
         get clutterText(): Clutter.Text;
         /**
@@ -10406,11 +10476,13 @@ export namespace St {
             /**
              * Emitted when the {@link St.ScrollBar} begins scrolling.
              * @signal
+             * @run-last
              */
             'scroll-start': () => void;
             /**
              * Emitted when the {@link St.ScrollBar} finishes scrolling.
              * @signal
+             * @run-last
              */
             'scroll-stop': () => void;
             'notify::adjustment': (pspec: GObject.ParamSpec) => void;
@@ -11362,6 +11434,7 @@ export namespace St {
         set enableMouseScrolling(val: boolean);
         /**
          * The horizontal {@link St.ScrollBar} for the {@link St.ScrollView}.
+         * @read-only
          */
         get hscroll(): ScrollBar;
         /**
@@ -11376,10 +11449,12 @@ export namespace St {
         set hscrollbarPolicy(val: PolicyType);
         /**
          * Whether the horizontal {@link St.ScrollBar} is visible.
+         * @read-only
          */
         get hscrollbar_visible(): boolean;
         /**
          * Whether the horizontal {@link St.ScrollBar} is visible.
+         * @read-only
          */
         get hscrollbarVisible(): boolean;
         /**
@@ -11394,6 +11469,7 @@ export namespace St {
         set overlayScrollbars(val: boolean);
         /**
          * The vertical {@link St.ScrollBar} for the {@link St.ScrollView}.
+         * @read-only
          */
         get vscroll(): ScrollBar;
         /**
@@ -11408,10 +11484,12 @@ export namespace St {
         set vscrollbarPolicy(val: PolicyType);
         /**
          * Whether the vertical {@link St.ScrollBar} is visible.
+         * @read-only
          */
         get vscrollbar_visible(): boolean;
         /**
          * Whether the vertical {@link St.ScrollBar} is visible.
+         * @read-only
          */
         get vscrollbarVisible(): boolean;
 
@@ -12291,76 +12369,94 @@ export namespace St {
 
         /**
          * The preferred color-scheme
+         * @read-only
          */
         get color_scheme(): SystemColorScheme;
         /**
          * The preferred color-scheme
+         * @read-only
          */
         get colorScheme(): SystemColorScheme;
         /**
          * Whether password showing can be locked down
+         * @read-only
          */
         get disable_show_password(): boolean;
         /**
          * Whether password showing can be locked down
+         * @read-only
          */
         get disableShowPassword(): boolean;
         /**
          * The threshold before a drag operation begins.
+         * @read-only
          */
         get drag_threshold(): number;
         /**
          * The threshold before a drag operation begins.
+         * @read-only
          */
         get dragThreshold(): number;
         /**
          * Whether animations are enabled.
+         * @read-only
          */
         get enable_animations(): boolean;
         /**
          * Whether animations are enabled.
+         * @read-only
          */
         get enableAnimations(): boolean;
         /**
          * The current font name.
+         * @read-only
          */
         get font_name(): string;
         /**
          * The current font name.
+         * @read-only
          */
         get fontName(): string;
         /**
          * The current GTK icon theme
+         * @read-only
          */
         get gtk_icon_theme(): string;
         /**
          * The current GTK icon theme
+         * @read-only
          */
         get gtkIconTheme(): string;
         /**
          * Whether the accessibility high contrast mode is enabled.
+         * @read-only
          */
         get high_contrast(): boolean;
         /**
          * Whether the accessibility high contrast mode is enabled.
+         * @read-only
          */
         get highContrast(): boolean;
         /**
          * Whether the accessibility magnifier is active.
+         * @read-only
          */
         get magnifier_active(): boolean;
         /**
          * Whether the accessibility magnifier is active.
+         * @read-only
          */
         get magnifierActive(): boolean;
         /**
          * Whether pasting from the `PRIMARY` selection is supported (eg. middle-click
          * paste).
+         * @read-only
          */
         get primary_paste(): boolean;
         /**
          * Whether pasting from the `PRIMARY` selection is supported (eg. middle-click
          * paste).
+         * @read-only
          */
         get primaryPaste(): boolean;
         /**
@@ -12429,11 +12525,13 @@ export namespace St {
             /**
              * Emitted when the icon theme is changed.
              * @signal
+             * @run-last
              */
             'icon-theme-changed': () => void;
             /**
              * Emitted when the source file of a texture is changed.
              * @signal
+             * @run-last
              */
             'texture-file-changed': (arg0: Gio.File) => void;
         }
@@ -12588,6 +12686,7 @@ export namespace St {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'custom-stylesheets-changed': () => void;
             'notify::application-stylesheet': (pspec: GObject.ParamSpec) => void;
@@ -12618,31 +12717,37 @@ export namespace St {
         /**
          * The highest priority stylesheet, representing application-specific
          * styling; this is associated with the CSS "author" stylesheet.
+         * @construct-only
          */
         get application_stylesheet(): Gio.File;
         /**
          * The highest priority stylesheet, representing application-specific
          * styling; this is associated with the CSS "author" stylesheet.
+         * @construct-only
          */
         get applicationStylesheet(): Gio.File;
         /**
          * The lowest priority stylesheet, representing global default
          * styling; this is associated with the CSS "user agent" stylesheet.
+         * @construct-only
          */
         get default_stylesheet(): Gio.File;
         /**
          * The lowest priority stylesheet, representing global default
          * styling; this is associated with the CSS "user agent" stylesheet.
+         * @construct-only
          */
         get defaultStylesheet(): Gio.File;
         /**
          * The second priority stylesheet, representing theme-specific styling;
          * this is associated with the CSS "user" stylesheet.
+         * @construct-only
          */
         get theme_stylesheet(): Gio.File;
         /**
          * The second priority stylesheet, representing theme-specific styling;
          * this is associated with the CSS "user" stylesheet.
+         * @construct-only
          */
         get themeStylesheet(): Gio.File;
 
@@ -12716,6 +12821,7 @@ export namespace St {
              * Emitted when the icon theme, font, resolution, scale factor or the current
              * theme's custom stylesheets change.
              * @signal
+             * @run-last
              */
             changed: () => void;
             'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
@@ -14299,12 +14405,14 @@ export namespace St {
             /**
              * Emitted when the user has requested a context menu (eg, via a keybinding)
              * @signal
+             * @run-last
              */
             'popup-menu': () => void;
             /**
              * Emitted when the style information that the widget derives from the
              * theme changes
              * @signal
+             * @run-last
              */
             'style-changed': () => void;
             'notify::accessible-name': (pspec: GObject.ParamSpec) => void;

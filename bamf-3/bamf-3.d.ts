@@ -474,11 +474,29 @@ export namespace Bamf {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get desktop_id(): string;
+        /**
+         * @read-only
+         */
         get desktopId(): string;
+        /**
+         * @read-only
+         */
         get is_foreground_tab(): boolean;
+        /**
+         * @read-only
+         */
         get isForegroundTab(): boolean;
+        /**
+         * @read-only
+         */
         get location(): string;
+        /**
+         * @read-only
+         */
         get xid(): number;
 
         /**
@@ -576,22 +594,27 @@ export namespace Bamf {
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'active-changed': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-first
              */
             'child-added': (arg0: View) => void;
             /**
              * @signal
+             * @run-first
              */
             'child-moved': (arg0: View) => void;
             /**
              * @signal
+             * @run-first
              */
             'child-removed': (arg0: View) => void;
             /**
              * @signal
+             * @run-last
              */
             closed: () => void;
             /**
@@ -604,18 +627,22 @@ export namespace Bamf {
             'name-changed': (arg0: string, arg1: string) => void;
             /**
              * @signal
+             * @run-first
              */
             'running-changed': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-first
              */
             'starting-changed': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-first
              */
             'urgent-changed': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-first
              */
             'user-visible-changed': (arg0: boolean) => void;
             'notify::active': (pspec: GObject.ParamSpec) => void;
@@ -647,12 +674,33 @@ export namespace Bamf {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get active(): boolean;
+        /**
+         * @read-only
+         */
         get path(): string;
+        /**
+         * @read-only
+         */
         get running(): boolean;
+        /**
+         * @read-only
+         */
         get starting(): boolean;
+        /**
+         * @read-only
+         */
         get urgent(): boolean;
+        /**
+         * @read-only
+         */
         get user_visible(): boolean;
+        /**
+         * @read-only
+         */
         get userVisible(): boolean;
 
         /**
@@ -876,10 +924,12 @@ export namespace Bamf {
         interface SignalSignatures extends View.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'maximized-changed': (arg0: number, arg1: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'monitor-changed': (arg0: number, arg1: number) => void;
             'notify::active': (pspec: GObject.ParamSpec) => void;

@@ -26,41 +26,49 @@ export namespace Fcitx {
             /**
              * Emit when input method is closed
              * @signal
+             * @run-last
              */
             'close-im': () => void;
             /**
              * Emit when input method commit one string
              * @signal
+             * @run-last
              */
             'commit-string': (arg0: string) => void;
             /**
              * Emit when connected to fcitx and created ic
              * @signal
+             * @run-last
              */
             connected: () => void;
             /**
              * Emit when input method need to delete surrounding text
              * @signal
+             * @run-last
              */
             'delete-surrounding-text': (arg0: number, arg1: number) => void;
             /**
              * Emit when disconnected from fcitx
              * @signal
+             * @run-last
              */
             disconnected: () => void;
             /**
              * Emit when input method is enabled
              * @signal
+             * @run-last
              */
             'enable-im': () => void;
             /**
              * Emit when input method ask for forward a key
              * @signal
+             * @run-last
              */
             'forward-key': (arg0: number, arg1: number, arg2: number) => void;
             /**
              * Emit when input method need to update client side ui
              * @signal
+             * @run-last
              */
             'update-client-side-ui': (
                 arg0: string,
@@ -73,6 +81,7 @@ export namespace Fcitx {
             /**
              * Emit when input method need to delete surrounding text
              * @signal
+             * @run-last
              */
             'update-formatted-preedit': (arg0: PreeditItem[], arg1: number) => void;
             'notify::connection': (pspec: GObject.ParamSpec) => void;
@@ -94,6 +103,9 @@ export namespace Fcitx {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set connection(val: Connection);
 
         /**
@@ -271,11 +283,13 @@ export namespace Fcitx {
             /**
              * Emit when connected to fcitx and created ic
              * @signal
+             * @run-last
              */
             connected: () => void;
             /**
              * Emit when disconnected from fcitx
              * @signal
+             * @run-last
              */
             disconnected: () => void;
         }
@@ -350,6 +364,7 @@ export namespace Fcitx {
             /**
              * Emit when input method list changed
              * @signal
+             * @run-last
              */
             'imlist-changed': () => void;
             'notify::current-im': (pspec: GObject.ParamSpec) => void;

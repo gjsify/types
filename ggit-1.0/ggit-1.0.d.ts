@@ -20,6 +20,9 @@ export namespace Ggit {
      * Ggit-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BranchType {
         export const $gtype: GObject.GType<BranchType>;
     }
@@ -39,6 +42,9 @@ export namespace Ggit {
         REMOTE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CloneLocal {
         export const $gtype: GObject.GType<CloneLocal>;
     }
@@ -53,6 +59,9 @@ export namespace Ggit {
         NO_LINKS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConfigLevel {
         export const $gtype: GObject.GType<ConfigLevel>;
     }
@@ -94,6 +103,9 @@ export namespace Ggit {
         HIGHEST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeltaType {
         export const $gtype: GObject.GType<DeltaType>;
     }
@@ -140,6 +152,9 @@ export namespace Ggit {
         CONFLICTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DiffBinaryType {
         export const $gtype: GObject.GType<DiffBinaryType>;
     }
@@ -157,6 +172,9 @@ export namespace Ggit {
         DELTA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DiffFormatType {
         export const $gtype: GObject.GType<DiffFormatType>;
     }
@@ -188,6 +206,9 @@ export namespace Ggit {
         NAME_STATUS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DiffLineType {
         export const $gtype: GObject.GType<DiffLineType>;
     }
@@ -239,6 +260,9 @@ export namespace Ggit {
         BINARY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Direction {
         export const $gtype: GObject.GType<Direction>;
     }
@@ -303,6 +327,9 @@ export namespace Ggit {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FileMode {
         export const $gtype: GObject.GType<FileMode>;
     }
@@ -319,6 +346,9 @@ export namespace Ggit {
         COMMIT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MergeFileFavor {
         export const $gtype: GObject.GType<MergeFileFavor>;
     }
@@ -333,6 +363,9 @@ export namespace Ggit {
         UNION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PackbuilderStage {
         export const $gtype: GObject.GType<PackbuilderStage>;
     }
@@ -352,6 +385,9 @@ export namespace Ggit {
         DELTAFICATION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ProxyType {
         export const $gtype: GObject.GType<ProxyType>;
     }
@@ -375,6 +411,9 @@ export namespace Ggit {
         SPECIFIED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RebaseOperationType {
         export const $gtype: GObject.GType<RebaseOperationType>;
     }
@@ -417,6 +456,9 @@ export namespace Ggit {
         EXEC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RefType {
         export const $gtype: GObject.GType<RefType>;
     }
@@ -444,6 +486,9 @@ export namespace Ggit {
         LISTALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RemoteCompletionType {
         export const $gtype: GObject.GType<RemoteCompletionType>;
     }
@@ -467,6 +512,9 @@ export namespace Ggit {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RemoteDownloadTagsType {
         export const $gtype: GObject.GType<RemoteDownloadTagsType>;
     }
@@ -497,6 +545,9 @@ export namespace Ggit {
         ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ResetType {
         export const $gtype: GObject.GType<ResetType>;
     }
@@ -521,6 +572,9 @@ export namespace Ggit {
         HARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StatusShow {
         export const $gtype: GObject.GType<StatusShow>;
     }
@@ -546,6 +600,9 @@ export namespace Ggit {
         WORKDIR_ONLY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SubmoduleIgnore {
         export const $gtype: GObject.GType<SubmoduleIgnore>;
     }
@@ -577,6 +634,9 @@ export namespace Ggit {
         ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SubmoduleRecurse {
         export const $gtype: GObject.GType<SubmoduleRecurse>;
     }
@@ -602,6 +662,9 @@ export namespace Ggit {
         ONDEMAND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SubmoduleUpdate {
         export const $gtype: GObject.GType<SubmoduleUpdate>;
     }
@@ -636,6 +699,9 @@ export namespace Ggit {
         DEFAULT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TreeWalkMode {
         export const $gtype: GObject.GType<TreeWalkMode>;
     }
@@ -827,6 +893,9 @@ export namespace Ggit {
     interface TreeWalkCallback {
         (root: string, entry: TreeEntry): number;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace AttributeCheckFlags {
         export const $gtype: GObject.GType<AttributeCheckFlags>;
     }
@@ -856,6 +925,9 @@ export namespace Ggit {
         NO_SYSTEM,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BlameFlags {
         export const $gtype: GObject.GType<BlameFlags>;
     }
@@ -875,6 +947,9 @@ export namespace Ggit {
         TRACK_COPIES_SAME_FILE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace CheckoutNotifyFlags {
         export const $gtype: GObject.GType<CheckoutNotifyFlags>;
     }
@@ -892,6 +967,9 @@ export namespace Ggit {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace CheckoutStrategy {
         export const $gtype: GObject.GType<CheckoutStrategy>;
     }
@@ -924,6 +1002,9 @@ export namespace Ggit {
         UPDATE_SUBMODULES_IF_CHANGED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace CreateFlags {
         export const $gtype: GObject.GType<CreateFlags>;
     }
@@ -943,6 +1024,9 @@ export namespace Ggit {
         FORCE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace Credtype {
         export const $gtype: GObject.GType<Credtype>;
     }
@@ -958,6 +1042,9 @@ export namespace Ggit {
         SSH_INTERACTIVE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DiffFindFlags {
         export const $gtype: GObject.GType<DiffFindFlags>;
     }
@@ -984,6 +1071,9 @@ export namespace Ggit {
         FIND_REMOVE_UNMODIFIED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DiffFlag {
         export const $gtype: GObject.GType<DiffFlag>;
     }
@@ -1007,6 +1097,9 @@ export namespace Ggit {
         VALID_ID,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DiffFormatEmailFlags {
         export const $gtype: GObject.GType<DiffFormatEmailFlags>;
     }
@@ -1019,6 +1112,9 @@ export namespace Ggit {
         EXCLUDE_SUBJECT_PATCH_MARKER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DiffOption {
         export const $gtype: GObject.GType<DiffOption>;
     }
@@ -1132,6 +1228,9 @@ export namespace Ggit {
         SHOW_BINARY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FeatureFlags {
         export const $gtype: GObject.GType<FeatureFlags>;
     }
@@ -1145,6 +1244,9 @@ export namespace Ggit {
         SSH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MergeFileFlags {
         export const $gtype: GObject.GType<MergeFileFlags>;
     }
@@ -1173,6 +1275,9 @@ export namespace Ggit {
         DIFF_MINIMAL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MergeFlags {
         export const $gtype: GObject.GType<MergeFlags>;
     }
@@ -1206,6 +1311,9 @@ export namespace Ggit {
         NO_RECURSIVE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SortMode {
         export const $gtype: GObject.GType<SortMode>;
     }
@@ -1241,6 +1349,9 @@ export namespace Ggit {
         REVERSE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StashFlags {
         export const $gtype: GObject.GType<StashFlags>;
     }
@@ -1271,6 +1382,9 @@ export namespace Ggit {
         INCLUDE_IGNORED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StatusFlags {
         export const $gtype: GObject.GType<StatusFlags>;
     }
@@ -1320,6 +1434,9 @@ export namespace Ggit {
         CONFLICTED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StatusOption {
         export const $gtype: GObject.GType<StatusOption>;
     }
@@ -1359,6 +1476,9 @@ export namespace Ggit {
         DEFAULT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SubmoduleStatus {
         export const $gtype: GObject.GType<SubmoduleStatus>;
     }
@@ -1572,6 +1692,9 @@ export namespace Ggit {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set repository(val: Repository);
 
         /**
@@ -2404,7 +2527,13 @@ export namespace Ggit {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get commit(): Commit;
+        /**
+         * @read-only
+         */
         get size(): number;
 
         /**
@@ -2743,7 +2872,13 @@ export namespace Ggit {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get password(): string;
+        /**
+         * @construct-only
+         */
         get username(): string;
 
         /**
@@ -3348,6 +3483,9 @@ export namespace Ggit {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get username(): string;
 
         /**
@@ -3959,6 +4097,9 @@ export namespace Ggit {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get username(): string;
 
         /**
@@ -4568,6 +4709,9 @@ export namespace Ggit {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get repository(): Repository;
 
         /**
@@ -5262,6 +5406,9 @@ export namespace Ggit {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
 
         /**
@@ -6050,6 +6197,9 @@ export namespace Ggit {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set native(val: any);
 
         /**
@@ -6950,18 +7100,22 @@ export namespace Ggit {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             completion: (arg0: RemoteCompletionType) => void;
             /**
              * @signal
+             * @run-last
              */
             progress: (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'transfer-progress': (arg0: TransferProgress) => void;
             /**
              * @signal
+             * @run-last
              */
             'update-tips': (arg0: string, arg1: OId, arg2: OId) => void;
         }
@@ -7085,14 +7239,38 @@ export namespace Ggit {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get clone_options(): CloneOptions;
+        /**
+         * @construct-only
+         */
         get cloneOptions(): CloneOptions;
+        /**
+         * @read-only
+         */
         get head(): Ref;
+        /**
+         * @construct-only
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         init: boolean | any;
+        /**
+         * @construct-only
+         */
         get is_bare(): boolean;
+        /**
+         * @construct-only
+         */
         get isBare(): boolean;
+        /**
+         * @construct-only
+         */
         get location(): Gio.File;
+        /**
+         * @construct-only
+         */
         get url(): string;
         get workdir(): Gio.File;
         set workdir(val: Gio.File);
@@ -9220,6 +9398,9 @@ export namespace Ggit {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get encoding(): string;
 
         /**

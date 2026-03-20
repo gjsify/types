@@ -780,6 +780,9 @@ export namespace OSTree {
         NO_CLEAN,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SysrootUpgraderFlags {
         export const $gtype: GObject.GType<SysrootUpgraderFlags>;
     }
@@ -809,6 +812,7 @@ export namespace OSTree {
             /**
              * Emitted when `self` has been changed.
              * @signal
+             * @run-last
              */
             changed: () => void;
         }
@@ -1026,6 +1030,9 @@ export namespace OSTree {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get checksum(): any;
 
         /**
@@ -2012,6 +2019,7 @@ export namespace OSTree {
              * thread-default at the point when `ostree_repo_pull_with_options()`
              * is called.
              * @signal
+             * @run-last
              */
             'gpg-verify-result': (arg0: string, arg1: GpgVerifyResult) => void;
             'notify::path': (pspec: GObject.ParamSpec) => void;
@@ -2038,10 +2046,25 @@ export namespace OSTree {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get path(): Gio.File;
+        /**
+         * @construct-only
+         */
         get remotes_config_dir(): string;
+        /**
+         * @construct-only
+         */
         get remotesConfigDir(): string;
+        /**
+         * @construct-only
+         */
         get sysroot_path(): Gio.File;
+        /**
+         * @construct-only
+         */
         get sysrootPath(): Gio.File;
 
         /**
@@ -8885,6 +8908,9 @@ export namespace OSTree {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get path(): Gio.File;
 
         /**
@@ -9534,6 +9560,9 @@ export namespace OSTree {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get path(): Gio.File;
 
         /**
@@ -9863,8 +9892,17 @@ export namespace OSTree {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get flags(): SysrootUpgraderFlags;
+        /**
+         * @construct-only
+         */
         get osname(): string;
+        /**
+         * @construct-only
+         */
         get sysroot(): Sysroot;
 
         /**

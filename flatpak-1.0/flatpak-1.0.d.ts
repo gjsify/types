@@ -194,6 +194,9 @@ export namespace Flatpak {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RefKind {
         export const $gtype: GObject.GType<RefKind>;
     }
@@ -213,6 +216,9 @@ export namespace Flatpak {
         RUNTIME,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RemoteType {
         export const $gtype: GObject.GType<RemoteType>;
     }
@@ -236,6 +242,9 @@ export namespace Flatpak {
         LAN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StorageType {
         export const $gtype: GObject.GType<StorageType>;
     }
@@ -268,6 +277,9 @@ export namespace Flatpak {
         NETWORK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransactionOperationType {
         export const $gtype: GObject.GType<TransactionOperationType>;
     }
@@ -299,6 +311,9 @@ export namespace Flatpak {
         LAST_TYPE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransactionRemoteReason {
         export const $gtype: GObject.GType<TransactionRemoteReason>;
     }
@@ -363,6 +378,9 @@ export namespace Flatpak {
     interface ProgressCallback {
         (status: string, progress: number, estimating: boolean): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace InstallFlags {
         export const $gtype: GObject.GType<InstallFlags>;
     }
@@ -396,6 +414,9 @@ export namespace Flatpak {
         NO_TRIGGERS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace LaunchFlags {
         export const $gtype: GObject.GType<LaunchFlags>;
     }
@@ -416,6 +437,9 @@ export namespace Flatpak {
         DO_NOT_REAP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace QueryFlags {
         export const $gtype: GObject.GType<QueryFlags>;
     }
@@ -447,6 +471,9 @@ export namespace Flatpak {
         ALL_ARCHES,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TransactionErrorDetails {
         export const $gtype: GObject.GType<TransactionErrorDetails>;
     }
@@ -462,6 +489,9 @@ export namespace Flatpak {
         FATAL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TransactionResult {
         export const $gtype: GObject.GType<TransactionResult>;
     }
@@ -477,6 +507,9 @@ export namespace Flatpak {
         CHANGE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace UninstallFlags {
         export const $gtype: GObject.GType<UninstallFlags>;
     }
@@ -503,6 +536,9 @@ export namespace Flatpak {
         NO_TRIGGERS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace UpdateFlags {
         export const $gtype: GObject.GType<UpdateFlags>;
     }
@@ -569,6 +605,7 @@ export namespace Flatpak {
 
         /**
          * The bundle file that this ref refers to.
+         * @construct-only
          */
         get file(): Gio.File;
 
@@ -1572,25 +1609,73 @@ export namespace Flatpak {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get appdata_content_rating(): GLib.HashTable<any, any>;
+        /**
+         * @construct-only
+         */
         get appdataContentRating(): GLib.HashTable<any, any>;
+        /**
+         * @construct-only
+         */
         get appdata_content_rating_type(): string;
+        /**
+         * @construct-only
+         */
         get appdataContentRatingType(): string;
+        /**
+         * @construct-only
+         */
         get appdata_license(): string;
+        /**
+         * @construct-only
+         */
         get appdataLicense(): string;
+        /**
+         * @construct-only
+         */
         get appdata_name(): string;
+        /**
+         * @construct-only
+         */
         get appdataName(): string;
+        /**
+         * @construct-only
+         */
         get appdata_summary(): string;
+        /**
+         * @construct-only
+         */
         get appdataSummary(): string;
+        /**
+         * @construct-only
+         */
         get appdata_version(): string;
+        /**
+         * @construct-only
+         */
         get appdataVersion(): string;
         get deploy_dir(): string;
         set deploy_dir(val: string);
         get deployDir(): string;
         set deployDir(val: string);
+        /**
+         * @construct-only
+         */
         get end_of_life(): string;
+        /**
+         * @construct-only
+         */
         get endOfLife(): string;
+        /**
+         * @construct-only
+         */
         get end_of_life_rebase(): string;
+        /**
+         * @construct-only
+         */
         get endOfLifeRebase(): string;
         get installed_size(): number;
         set installed_size(val: number);
@@ -1906,12 +1991,33 @@ export namespace Flatpak {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get arch(): string;
+        /**
+         * @construct-only
+         */
         get branch(): string;
+        /**
+         * @construct-only
+         */
         get collection_id(): string;
+        /**
+         * @construct-only
+         */
         get collectionId(): string;
+        /**
+         * @construct-only
+         */
         get commit(): string;
+        /**
+         * @construct-only
+         */
         get kind(): RefKind;
+        /**
+         * @construct-only
+         */
         get name(): string;
 
         /**
@@ -2041,12 +2147,33 @@ export namespace Flatpak {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get should_autoprune(): boolean;
+        /**
+         * @construct-only
+         */
         get shouldAutoprune(): boolean;
+        /**
+         * @construct-only
+         */
         get should_delete(): boolean;
+        /**
+         * @construct-only
+         */
         get shouldDelete(): boolean;
+        /**
+         * @construct-only
+         */
         get should_download(): boolean;
+        /**
+         * @construct-only
+         */
         get shouldDownload(): boolean;
+        /**
+         * @construct-only
+         */
         get subpaths(): string[];
 
         /**
@@ -2133,6 +2260,7 @@ export namespace Flatpak {
          * `FLATPAK_REMOTE_TYPE_USB`). Dynamic remotes may be added and removed over
          * time.
          * @since 0.9.8
+         * @construct-only
          */
         get type(): RemoteType;
 
@@ -2467,16 +2595,49 @@ export namespace Flatpak {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get download_size(): number;
+        /**
+         * @construct-only
+         */
         get downloadSize(): number;
+        /**
+         * @construct-only
+         */
         get end_of_life(): string;
+        /**
+         * @construct-only
+         */
         get endOfLife(): string;
+        /**
+         * @construct-only
+         */
         get end_of_life_rebase(): string;
+        /**
+         * @construct-only
+         */
         get endOfLifeRebase(): string;
+        /**
+         * @construct-only
+         */
         get installed_size(): number;
+        /**
+         * @construct-only
+         */
         get installedSize(): number;
+        /**
+         * @construct-only
+         */
         get metadata(): GLib.Bytes;
+        /**
+         * @construct-only
+         */
         get remote_name(): string;
+        /**
+         * @construct-only
+         */
         get remoteName(): string;
 
         /**
@@ -2559,6 +2720,7 @@ export namespace Flatpak {
              * it is required or recommended that a new remote is added, for the reason
              * described in `reason`.
              * @signal
+             * @run-last
              */
             'add-new-remote': (
                 arg0: TransactionRemoteReason,
@@ -2579,18 +2741,21 @@ export namespace Flatpak {
              * optional).
              * @signal
              * @since 1.5.2
+             * @run-last
              */
             'basic-auth-start': (arg0: string, arg1: string, arg2: GLib.Variant, arg3: number) => boolean | void;
             /**
              * The ::choose-remote-for-ref signal gets emitted when a
              * remote needs to be selected during the execution of the transaction.
              * @signal
+             * @run-last
              */
             'choose-remote-for-ref': (arg0: string, arg1: string, arg2: string[]) => number;
             /**
              * The ::end-of-lifed signal gets emitted when a ref is found to
              * be marked as end-of-life during the execution of the transaction.
              * @signal
+             * @run-last
              */
             'end-of-lifed': (arg0: string, arg1: string, arg2: string) => void;
             /**
@@ -2605,6 +2770,7 @@ export namespace Flatpak {
              * and return `true`. Otherwise `false` may be returned.
              * @signal
              * @since 1.3.2
+             * @run-last
              */
             'end-of-lifed-with-rebase': (
                 arg0: string,
@@ -2625,24 +2791,28 @@ export namespace Flatpak {
              * the signal handler fails the transaction will error out.
              * @signal
              * @since 1.8.0
+             * @run-last
              */
             'install-authenticator': (arg0: string, arg1: string) => void;
             /**
              * The ::new-operation signal gets emitted during the execution of
              * the transaction when a new operation is beginning.
              * @signal
+             * @run-last
              */
             'new-operation': (arg0: TransactionOperation, arg1: TransactionProgress) => void;
             /**
              * The ::operation-done signal gets emitted during the execution of
              * the transaction when an operation is finished.
              * @signal
+             * @run-last
              */
             'operation-done': (arg0: TransactionOperation, arg1: string | null, arg2: TransactionResult) => void;
             /**
              * The ::operation-error signal gets emitted when an error occurs during the
              * execution of the transaction.
              * @signal
+             * @run-last
              */
             'operation-error': (
                 arg0: TransactionOperation,
@@ -2655,6 +2825,7 @@ export namespace Flatpak {
              * At this point `flatpak_transaction_get_operations()` will return all the operations
              * that will be executed as part of the transaction.
              * @signal
+             * @run-last
              */
             ready: () => boolean | void;
             /**
@@ -2671,6 +2842,7 @@ export namespace Flatpak {
              * will require authentication.
              * @signal
              * @since 1.9.1
+             * @run-last
              */
             'ready-pre-auth': () => boolean | void;
             /**
@@ -2679,6 +2851,7 @@ export namespace Flatpak {
              * you for were showing a web-browser window it can now be closed.
              * @signal
              * @since 1.5.1
+             * @run-last
              */
             'webflow-done': (arg0: GLib.Variant, arg1: number) => void;
             /**
@@ -2699,6 +2872,7 @@ export namespace Flatpak {
              * like e.g. closing the browser window.
              * @signal
              * @since 1.5.1
+             * @run-last
              */
             'webflow-start': (arg0: string, arg1: string, arg2: GLib.Variant, arg3: number) => boolean | void;
             'notify::installation': (pspec: GObject.ParamSpec) => void;
@@ -2724,6 +2898,7 @@ export namespace Flatpak {
 
         /**
          * The installation that the transaction operates on.
+         * @construct-only
          */
         get installation(): Installation;
         /**
@@ -3971,6 +4146,7 @@ export namespace Flatpak {
             /**
              * Emitted when some detail of the progress object changes, you can call the various methods to get the current status.
              * @signal
+             * @run-last
              */
             changed: () => void;
         }

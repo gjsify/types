@@ -20,6 +20,9 @@ export namespace Geoclue {
      * Geoclue-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AccuracyLevel {
         export const $gtype: GObject.GType<AccuracyLevel>;
     }
@@ -75,6 +78,9 @@ export namespace Geoclue {
      * @returns The last property id.
      */
     function manager_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    /**
+     * @gir-type Flags
+     */
     export namespace ClientProxyCreateFlags {
         export const $gtype: GObject.GType<ClientProxyCreateFlags>;
     }
@@ -5810,23 +5816,28 @@ export namespace Geoclue {
 
         /**
          * The requested maximum accuracy level.
+         * @construct-only
          */
         set accuracy_level(val: AccuracyLevel);
         /**
          * The requested maximum accuracy level.
+         * @construct-only
          */
         set accuracyLevel(val: AccuracyLevel);
         /**
          * The client proxy. This is `null` if `simple` is not using a client proxy
          * (i-e when inside the Flatpak sandbox).
+         * @read-only
          */
         get client(): ClientProxy;
         /**
          * The Desktop ID of the application.
+         * @construct-only
          */
         set desktop_id(val: string);
         /**
          * The Desktop ID of the application.
+         * @construct-only
          */
         set desktopId(val: string);
         /**
@@ -5835,6 +5846,7 @@ export namespace Geoclue {
          * below the threshold, it won't emit the LocationUpdated signal.
          *
          * When set to 0 (default), it always emits the signal.
+         * @construct-only
          */
         get distance_threshold(): number;
         /**
@@ -5843,10 +5855,12 @@ export namespace Geoclue {
          * below the threshold, it won't emit the LocationUpdated signal.
          *
          * When set to 0 (default), it always emits the signal.
+         * @construct-only
          */
         get distanceThreshold(): number;
         /**
          * The current location.
+         * @read-only
          */
         get location(): LocationProxy;
         /**
@@ -5855,6 +5869,7 @@ export namespace Geoclue {
          * below the threshold, it won't emit the LocationUpdated signal.
          *
          * When set to 0 (default), it always emits the signal.
+         * @construct-only
          */
         get time_threshold(): number;
         /**
@@ -5863,6 +5878,7 @@ export namespace Geoclue {
          * below the threshold, it won't emit the LocationUpdated signal.
          *
          * When set to 0 (default), it always emits the signal.
+         * @construct-only
          */
         get timeThreshold(): number;
 

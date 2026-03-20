@@ -21,6 +21,9 @@ export namespace ArrowDataset {
      * ArrowDataset-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SegmentEncoding {
         export const $gtype: GObject.GType<SegmentEncoding>;
     }
@@ -118,6 +121,9 @@ export namespace ArrowDataset {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set dataset(val: any);
 
         /**
@@ -194,7 +200,13 @@ export namespace ArrowDataset {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set dataset_factory(val: any);
+        /**
+         * @construct-only
+         */
         set datasetFactory(val: any);
 
         /**
@@ -327,6 +339,9 @@ export namespace ArrowDataset {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set format(val: any);
 
         /**
@@ -427,21 +442,25 @@ export namespace ArrowDataset {
         /**
          * File system of the dataset.
          * @since 5.0.0
+         * @construct-only
          */
         get file_system(): Arrow.FileSystem;
         /**
          * File system of the dataset.
          * @since 5.0.0
+         * @construct-only
          */
         get fileSystem(): Arrow.FileSystem;
         /**
          * Format of the dataset.
          * @since 5.0.0
+         * @construct-only
          */
         get format(): FileFormat;
         /**
          * Partitioning of the dataset.
          * @since 6.0.0
+         * @construct-only
          */
         get partitioning(): Partitioning;
 
@@ -523,16 +542,19 @@ export namespace ArrowDataset {
         /**
          * File system passed to {@link ArrowDataset.FileSystemDataset}.
          * @since 5.0.0
+         * @read-only
          */
         get file_system(): Arrow.FileSystem;
         /**
          * File system passed to {@link ArrowDataset.FileSystemDataset}.
          * @since 5.0.0
+         * @read-only
          */
         get fileSystem(): Arrow.FileSystem;
         /**
          * Format passed to {@link ArrowDataset.FileSystemDataset}.
          * @since 5.0.0
+         * @construct-only
          */
         get format(): FileFormat;
         /**
@@ -760,6 +782,9 @@ export namespace ArrowDataset {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set options(val: any);
 
         /**
@@ -820,6 +845,9 @@ export namespace ArrowDataset {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set writer(val: any);
 
         /**
@@ -897,6 +925,9 @@ export namespace ArrowDataset {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set fragment(val: any);
 
         /**
@@ -1181,6 +1212,9 @@ export namespace ArrowDataset {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set partitioning(val: any);
 
         /**
@@ -1361,6 +1395,9 @@ export namespace ArrowDataset {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set scanner(val: any);
 
         /**
@@ -1429,7 +1466,13 @@ export namespace ArrowDataset {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set scanner_builder(val: any);
+        /**
+         * @construct-only
+         */
         set scannerBuilder(val: any);
 
         /**

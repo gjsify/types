@@ -138,6 +138,9 @@ export namespace Grl {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MediaSerializeType {
         export const $gtype: GObject.GType<MediaSerializeType>;
     }
@@ -195,6 +198,9 @@ export namespace Grl {
         HIGHEST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceChangeType {
         export const $gtype: GObject.GType<SourceChangeType>;
     }
@@ -618,6 +624,9 @@ export namespace Grl {
     interface SourceStoreCb {
         (source: Source, media: Media, failed_keys: KeyID[], error?: GLib.Error | null): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace MediaType {
         export const $gtype: GObject.GType<MediaType>;
     }
@@ -648,6 +657,9 @@ export namespace Grl {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ResolutionFlags {
         export const $gtype: GObject.GType<ResolutionFlags>;
     }
@@ -675,6 +687,9 @@ export namespace Grl {
         FAST_ONLY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SupportedOps {
         export const $gtype: GObject.GType<SupportedOps>;
     }
@@ -732,6 +747,9 @@ export namespace Grl {
         NOTIFY_CHANGE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TypeFilter {
         export const $gtype: GObject.GType<TypeFilter>;
     }
@@ -763,6 +781,9 @@ export namespace Grl {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WriteFlags {
         export const $gtype: GObject.GType<WriteFlags>;
     }
@@ -2787,6 +2808,7 @@ export namespace Grl {
         /**
          * `TRUE` if plugin is loaded.
          * @since 0.2.0
+         * @read-only
          */
         get loaded(): boolean;
 
@@ -2935,18 +2957,24 @@ export namespace Grl {
              * Signals that a new metadata key has been registered.
              * @signal
              * @since 0.2.10
+             * @action
+             * @run-first
              */
             'metadata-key-added': (arg0: string) => void;
             /**
              * Signals that a source has been added to the registry.
              * @signal
              * @since 0.2.0
+             * @action
+             * @run-first
              */
             'source-added': (arg0: Source) => void;
             /**
              * Signals that a source has been removed from the registry.
              * @signal
              * @since 0.2.0
+             * @action
+             * @run-first
              */
             'source-removed': (arg0: Source) => void;
         }
@@ -3423,6 +3451,8 @@ export namespace Grl {
              * location_unknown as `TRUE`.
              * @signal
              * @since 0.2.0
+             * @action
+             * @run-first
              */
             'content-changed': (arg0: Media[], arg1: SourceChangeType, arg2: boolean) => void;
             'notify::auto-split-threshold': (pspec: GObject.ParamSpec) => void;

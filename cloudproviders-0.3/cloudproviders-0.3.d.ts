@@ -96,14 +96,41 @@ export namespace CloudProviders {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get action_group(): Gio.ActionGroup;
+        /**
+         * @read-only
+         */
         get actionGroup(): Gio.ActionGroup;
+        /**
+         * @read-only
+         */
         get icon(): Gio.Icon;
+        /**
+         * @read-only
+         */
         get menu_model(): Gio.MenuModel;
+        /**
+         * @read-only
+         */
         get menuModel(): Gio.MenuModel;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get path(): string;
+        /**
+         * @read-only
+         */
         get status_details(): string;
+        /**
+         * @read-only
+         */
         get statusDetails(): string;
 
         /**
@@ -227,7 +254,13 @@ export namespace CloudProviders {
         set action_group(val: Gio.ActionGroup);
         get actionGroup(): Gio.ActionGroup;
         set actionGroup(val: Gio.ActionGroup);
+        /**
+         * @construct-only
+         */
         get bus_name(): string;
+        /**
+         * @construct-only
+         */
         get busName(): string;
         get icon(): Gio.Icon;
         set icon(val: Gio.Icon);
@@ -239,6 +272,9 @@ export namespace CloudProviders {
         set name(val: string);
         get path(): string;
         set path(val: string);
+        /**
+         * @construct-only
+         */
         get provider(): ProviderExporter;
         get status_details(): string;
         set status_details(val: string);
@@ -326,6 +362,7 @@ export namespace CloudProviders {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'providers-changed': () => void;
         }
@@ -5665,10 +5702,12 @@ export namespace CloudProviders {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'accounts-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             removed: () => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -5692,6 +5731,9 @@ export namespace CloudProviders {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get name(): string;
 
         /**
@@ -5773,10 +5815,25 @@ export namespace CloudProviders {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get bus(): Gio.DBusConnection;
+        /**
+         * @construct-only
+         */
         get bus_name(): string;
+        /**
+         * @construct-only
+         */
         get busName(): string;
+        /**
+         * @construct-only
+         */
         get bus_path(): string;
+        /**
+         * @construct-only
+         */
         get busPath(): string;
         get name(): string;
         set name(val: string);

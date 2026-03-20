@@ -1917,10 +1917,12 @@ export namespace ColorHug {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'device-failed': (arg0: GObject.Object, arg1: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'progress-changed': (arg0: number) => void;
         }

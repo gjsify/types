@@ -2944,6 +2944,9 @@ export namespace GObject {
      * @gir-type Alias
      */
     type VariantType = object | null;
+    /**
+     * @gir-type Flags
+     */
     export namespace BindingFlags {
         export const $gtype: GType<BindingFlags>;
     }
@@ -3007,6 +3010,9 @@ export namespace GObject {
         SWAPPED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace IOCondition {
         export const $gtype: GType<IOCondition>;
     }
@@ -3394,11 +3400,13 @@ export namespace GObject {
         /**
          * Flags to be used to control the {@link GObject.Binding}
          * @since 2.26
+         * @construct-only
          */
         get flags(): BindingFlags;
         /**
          * The {@link GObject.Object} that should be used as the source of the binding
          * @since 2.26
+         * @construct-only
          */
         get source(): Object;
         /**
@@ -3408,6 +3416,7 @@ export namespace GObject {
          * This should be in [canonical form][canonical-parameter-names] to get the
          * best performance.
          * @since 2.26
+         * @construct-only
          */
         get source_property(): string;
         /**
@@ -3417,11 +3426,13 @@ export namespace GObject {
          * This should be in [canonical form][canonical-parameter-names] to get the
          * best performance.
          * @since 2.26
+         * @construct-only
          */
         get sourceProperty(): string;
         /**
          * The {@link GObject.Object} that should be used as the target of the binding
          * @since 2.26
+         * @construct-only
          */
         get target(): Object;
         /**
@@ -3431,6 +3442,7 @@ export namespace GObject {
          * This should be in [canonical form][canonical-parameter-names] to get the
          * best performance.
          * @since 2.26
+         * @construct-only
          */
         get target_property(): string;
         /**
@@ -3440,6 +3452,7 @@ export namespace GObject {
          * This should be in [canonical form][canonical-parameter-names] to get the
          * best performance.
          * @since 2.26
+         * @construct-only
          */
         get targetProperty(): string;
 
@@ -3799,6 +3812,9 @@ export namespace GObject {
              * [canonical parameter names][class@GObject.ParamSpec#parameter-names] as
              * detail strings for the notify signal.
              * @signal
+             * @detailed
+             * @action
+             * @run-first
              */
             notify: (arg0: ParamSpec) => void;
         }
@@ -4912,6 +4928,7 @@ export namespace GObject {
              * receiving the {@link GObject.Object} without a data-race.
              * @signal
              * @since 2.72
+             * @run-last
              */
             bind: (arg0: Object) => void;
             /**
@@ -4922,6 +4939,7 @@ export namespace GObject {
              * non-`null`.
              * @signal
              * @since 2.72
+             * @run-last
              */
             unbind: () => void;
             'notify::target': (pspec: ParamSpec) => void;
@@ -4974,11 +4992,13 @@ export namespace GObject {
         /**
          * The {@link GObject.GType} of the target property.
          * @since 2.72
+         * @construct-only
          */
         get target_type(): GType;
         /**
          * The {@link GObject.GType} of the target property.
          * @since 2.72
+         * @construct-only
          */
         get targetType(): GType;
 

@@ -171,10 +171,25 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get active_cameras(): CameraList;
+        /**
+         * @read-only
+         */
         get activeCameras(): CameraList;
+        /**
+         * @read-only
+         */
         get preferences(): Preferences;
+        /**
+         * @read-only
+         */
         get supported_cameras(): CameraList;
+        /**
+         * @read-only
+         */
         get supportedCameras(): CameraList;
 
         /**
@@ -693,34 +708,42 @@ export namespace Entangle {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'camera-closed': () => void;
             /**
              * @signal
+             * @run-first
              */
             'camera-controls-changed': () => void;
             /**
              * @signal
+             * @run-first
              */
             'camera-file-added': (arg0: CameraFile) => void;
             /**
              * @signal
+             * @run-first
              */
             'camera-file-captured': (arg0: CameraFile) => void;
             /**
              * @signal
+             * @run-first
              */
             'camera-file-deleted': (arg0: CameraFile) => void;
             /**
              * @signal
+             * @run-first
              */
             'camera-file-downloaded': (arg0: CameraFile) => void;
             /**
              * @signal
+             * @run-first
              */
             'camera-file-previewed': (arg0: CameraFile) => void;
             /**
              * @signal
+             * @run-first
              */
             'camera-opened': () => void;
             'notify::driver': (pspec: GObject.ParamSpec) => void;
@@ -765,21 +788,63 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get driver(): string;
+        /**
+         * @construct-only
+         */
         get has_capture(): boolean;
+        /**
+         * @construct-only
+         */
         get hasCapture(): boolean;
+        /**
+         * @construct-only
+         */
         get has_preview(): boolean;
+        /**
+         * @construct-only
+         */
         get hasPreview(): boolean;
+        /**
+         * @construct-only
+         */
         get has_settings(): boolean;
+        /**
+         * @construct-only
+         */
         get hasSettings(): boolean;
+        /**
+         * @construct-only
+         */
         get has_viewfinder(): boolean;
+        /**
+         * @construct-only
+         */
         get hasViewfinder(): boolean;
+        /**
+         * @read-only
+         */
         get manual(): string;
+        /**
+         * @construct-only
+         */
         get model(): string;
+        /**
+         * @construct-only
+         */
         get port(): string;
         get progress(): Progress;
         set progress(val: Progress);
+        /**
+         * @construct-only
+         */
         get serial(): string;
+        /**
+         * @read-only
+         */
         get summary(): string;
 
         /**
@@ -1859,10 +1924,12 @@ export namespace Entangle {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'camera-capture-begin': () => void;
             /**
              * @signal
+             * @run-first
              */
             'camera-capture-end': () => void;
             'notify::camera': (pspec: GObject.ParamSpec) => void;
@@ -2041,9 +2108,15 @@ export namespace Entangle {
 
         get data(): Uint8Array;
         set data(val: Uint8Array);
+        /**
+         * @construct-only
+         */
         get folder(): string;
         get mimetype(): string;
         set mimetype(val: string);
+        /**
+         * @construct-only
+         */
         get name(): string;
 
         /**
@@ -2154,10 +2227,12 @@ export namespace Entangle {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'camera-added': (arg0: Camera) => void;
             /**
              * @signal
+             * @run-first
              */
             'camera-removed': (arg0: Camera) => void;
             'notify::active': (pspec: GObject.ParamSpec) => void;
@@ -2181,8 +2256,17 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get active(): boolean;
+        /**
+         * @read-only
+         */
         get device_manager(): DeviceManager;
+        /**
+         * @read-only
+         */
         get deviceManager(): DeviceManager;
 
         /**
@@ -2271,6 +2355,7 @@ export namespace Entangle {
         interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             closed: () => void;
             'notify::camera': (pspec: GObject.ParamSpec) => void;
@@ -3465,10 +3550,12 @@ export namespace Entangle {
         interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'picker-connect': (arg0: GObject.Object) => void;
             /**
              * @signal
+             * @run-first
              */
             'picker-refresh': () => void;
             'notify::cameras': (pspec: GObject.ParamSpec) => void;
@@ -4776,7 +4863,13 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get data(): Uint8Array;
+        /**
+         * @construct-only
+         */
         get filename(): string;
 
         /**
@@ -4868,9 +4961,21 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get dst_profile(): ColourProfile;
+        /**
+         * @construct-only
+         */
         get dstProfile(): ColourProfile;
+        /**
+         * @construct-only
+         */
         get src_profile(): ColourProfile;
+        /**
+         * @construct-only
+         */
         get srcProfile(): ColourProfile;
 
         /**
@@ -4957,11 +5062,29 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get dirty(): boolean;
+        /**
+         * @construct-only
+         */
         get id(): number;
+        /**
+         * @construct-only
+         */
         get info(): string;
+        /**
+         * @construct-only
+         */
         get label(): string;
+        /**
+         * @construct-only
+         */
         get path(): string;
+        /**
+         * @construct-only
+         */
         get readonly(): boolean;
 
         /**
@@ -5399,10 +5522,25 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get camera(): Camera;
+        /**
+         * @construct-only
+         */
         get camera_prefs(): CameraPreferences;
+        /**
+         * @construct-only
+         */
         get cameraPrefs(): CameraPreferences;
+        /**
+         * @read-only
+         */
         get has_controls(): boolean;
+        /**
+         * @read-only
+         */
         get hasControls(): boolean;
 
         /**
@@ -5941,11 +6079,29 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get range_max(): number;
+        /**
+         * @construct-only
+         */
         get rangeMax(): number;
+        /**
+         * @construct-only
+         */
         get range_min(): number;
+        /**
+         * @construct-only
+         */
         get rangeMin(): number;
+        /**
+         * @construct-only
+         */
         get range_step(): number;
+        /**
+         * @construct-only
+         */
         get rangeStep(): number;
         get value(): number;
         set value(val: number);
@@ -6150,10 +6306,12 @@ export namespace Entangle {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'device-added': (arg0: string) => void;
             /**
              * @signal
+             * @run-first
              */
             'device-removed': (arg0: string) => void;
         }
@@ -8192,7 +8350,13 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get embedded_preview(): boolean;
+        /**
+         * @construct-only
+         */
         get embeddedPreview(): boolean;
 
         /**
@@ -8273,6 +8437,9 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get filename(): string;
         get metadata(): GExiv2.Metadata;
         set metadata(val: GExiv2.Metadata);
@@ -8350,6 +8517,7 @@ export namespace Entangle {
         interface SignalSignatures extends Gtk.Window.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'popup-close': () => void;
             'notify::media': (pspec: GObject.ParamSpec) => void;
@@ -9572,18 +9740,22 @@ export namespace Entangle {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'metadata-loaded': (arg0: Image) => void;
             /**
              * @signal
+             * @run-first
              */
             'metadata-unloaded': (arg0: Image) => void;
             /**
              * @signal
+             * @run-first
              */
             'pixbuf-loaded': (arg0: Image) => void;
             /**
              * @signal
+             * @run-first
              */
             'pixbuf-unloaded': (arg0: Image) => void;
             'notify::colour-transform': (pspec: GObject.ParamSpec) => void;
@@ -9614,8 +9786,17 @@ export namespace Entangle {
         set colour_transform(val: ColourProfileTransform);
         get colourTransform(): ColourProfileTransform;
         set colourTransform(val: ColourProfileTransform);
+        /**
+         * @construct-only
+         */
         get with_metadata(): boolean;
+        /**
+         * @construct-only
+         */
         get withMetadata(): boolean;
+        /**
+         * @construct-only
+         */
         get workers(): number;
 
         /**
@@ -11701,10 +11882,12 @@ export namespace Entangle {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'session-media-added': (arg0: Media) => void;
             /**
              * @signal
+             * @run-first
              */
             'session-media-removed': (arg0: Media) => void;
             'notify::directory': (pspec: GObject.ParamSpec) => void;
@@ -11728,8 +11911,17 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get directory(): string;
+        /**
+         * @construct-only
+         */
         get filename_pattern(): string;
+        /**
+         * @construct-only
+         */
         get filenamePattern(): string;
 
         /**
@@ -11814,6 +12006,7 @@ export namespace Entangle {
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'selection-changed': () => void;
             'notify::session': (pspec: GObject.ParamSpec) => void;
@@ -12570,7 +12763,13 @@ export namespace Entangle {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get height(): number;
+        /**
+         * @construct-only
+         */
         get width(): number;
 
         /**

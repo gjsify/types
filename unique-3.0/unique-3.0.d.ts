@@ -29,6 +29,9 @@ export namespace Unique {
      * Unique-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Command {
         export const $gtype: GObject.GType<Command>;
     }
@@ -47,6 +50,9 @@ export namespace Unique {
         CLOSE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Response {
         export const $gtype: GObject.GType<Response>;
     }
@@ -80,6 +86,7 @@ export namespace Unique {
              * emission chain will continue until another handler will return another
              * response code.
              * @signal
+             * @run-last
              */
             'message-received': (arg0: number, arg1: MessageData, arg2: number) => Response;
             'notify::is-running': (pspec: GObject.ParamSpec) => void;
@@ -113,15 +120,18 @@ export namespace Unique {
 
         /**
          * Whether another instance of the application is running.
+         * @read-only
          */
         get is_running(): boolean;
         /**
          * Whether another instance of the application is running.
+         * @read-only
          */
         get isRunning(): boolean;
         /**
          * The unique name of the application. It must be in form of
          * a domain-like string, like <literal>org.gnome.MyApplication</literal>.
+         * @construct-only
          */
         get name(): string;
         /**
@@ -133,12 +143,14 @@ export namespace Unique {
          * The startup notification id, needed to complete the startup
          * notification sequence. If not set, a default id will be
          * automatically given.
+         * @construct-only
          */
         get startup_id(): string;
         /**
          * The startup notification id, needed to complete the startup
          * notification sequence. If not set, a default id will be
          * automatically given.
+         * @construct-only
          */
         get startupId(): string;
 

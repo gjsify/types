@@ -37,6 +37,9 @@ export namespace Meta {
      * Meta-4
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ButtonFunction {
         export const $gtype: GObject.GType<ButtonFunction>;
     }
@@ -70,6 +73,9 @@ export namespace Meta {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CloseDialogResponse {
         export const $gtype: GObject.GType<CloseDialogResponse>;
     }
@@ -82,6 +88,9 @@ export namespace Meta {
         FORCE_CLOSE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CompEffect {
         export const $gtype: GObject.GType<CompEffect>;
     }
@@ -120,6 +129,9 @@ export namespace Meta {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Cursor {
         export const $gtype: GObject.GType<Cursor>;
     }
@@ -204,6 +216,9 @@ export namespace Meta {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DisplayCorner {
         export const $gtype: GObject.GType<DisplayCorner>;
     }
@@ -230,6 +245,9 @@ export namespace Meta {
         BOTTOMRIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DisplayDirection {
         export const $gtype: GObject.GType<DisplayDirection>;
     }
@@ -256,6 +274,9 @@ export namespace Meta {
         RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EdgeType {
         export const $gtype: GObject.GType<EdgeType>;
     }
@@ -278,6 +299,9 @@ export namespace Meta {
         SCREEN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ExitCode {
         export const $gtype: GObject.GType<ExitCode>;
     }
@@ -296,6 +320,9 @@ export namespace Meta {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FrameType {
         export const $gtype: GObject.GType<FrameType>;
     }
@@ -338,6 +365,9 @@ export namespace Meta {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GrabOp {
         export const $gtype: GObject.GType<GrabOp>;
     }
@@ -435,6 +465,9 @@ export namespace Meta {
         KEYBOARD_RESIZING_W,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InhibitShortcutsDialogResponse {
         export const $gtype: GObject.GType<InhibitShortcutsDialogResponse>;
     }
@@ -447,6 +480,9 @@ export namespace Meta {
         DENY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace KeyBindingAction {
         export const $gtype: GObject.GType<KeyBindingAction>;
     }
@@ -816,6 +852,9 @@ export namespace Meta {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LaterType {
         export const $gtype: GObject.GType<LaterType>;
     }
@@ -852,6 +891,9 @@ export namespace Meta {
         IDLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocaleDirection {
         export const $gtype: GObject.GType<LocaleDirection>;
     }
@@ -864,6 +906,9 @@ export namespace Meta {
         RTL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MonitorSwitchConfigType {
         export const $gtype: GObject.GType<MonitorSwitchConfigType>;
     }
@@ -879,6 +924,9 @@ export namespace Meta {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MotionDirection {
         export const $gtype: GObject.GType<MotionDirection>;
     }
@@ -921,6 +969,9 @@ export namespace Meta {
         DOWN_RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PadActionType {
         export const $gtype: GObject.GType<PadActionType>;
     }
@@ -934,6 +985,9 @@ export namespace Meta {
         STRIP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Preference {
         export const $gtype: GObject.GType<Preference>;
     }
@@ -1076,6 +1130,9 @@ export namespace Meta {
         DRAG_THRESHOLD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ShadowMode {
         export const $gtype: GObject.GType<ShadowMode>;
     }
@@ -1089,6 +1146,9 @@ export namespace Meta {
         FORCED_ON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Side {
         export const $gtype: GObject.GType<Side>;
     }
@@ -1115,6 +1175,9 @@ export namespace Meta {
         BOTTOM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SizeChange {
         export const $gtype: GObject.GType<SizeChange>;
     }
@@ -1129,6 +1192,9 @@ export namespace Meta {
         UNFULLSCREEN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StackLayer {
         export const $gtype: GObject.GType<StackLayer>;
     }
@@ -1169,6 +1235,9 @@ export namespace Meta {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TabList {
         export const $gtype: GObject.GType<TabList>;
     }
@@ -1195,6 +1264,9 @@ export namespace Meta {
         NORMAL_ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TabShowType {
         export const $gtype: GObject.GType<TabShowType>;
     }
@@ -1213,6 +1285,9 @@ export namespace Meta {
         INSTANTLY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowClientType {
         export const $gtype: GObject.GType<WindowClientType>;
     }
@@ -1231,6 +1306,9 @@ export namespace Meta {
         X11,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowMenuType {
         export const $gtype: GObject.GType<WindowMenuType>;
     }
@@ -1250,6 +1328,9 @@ export namespace Meta {
         APP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowType {
         export const $gtype: GObject.GType<WindowType>;
     }
@@ -1634,6 +1715,9 @@ export namespace Meta {
     interface WindowForeachFunc {
         (window: Window): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace BarrierDirection {
         export const $gtype: GObject.GType<BarrierDirection>;
     }
@@ -1660,6 +1744,9 @@ export namespace Meta {
         NEGATIVE_Y,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DebugTopic {
         export const $gtype: GObject.GType<DebugTopic>;
     }
@@ -1763,6 +1850,9 @@ export namespace Meta {
         DBUS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace Direction {
         export const $gtype: GObject.GType<Direction>;
     }
@@ -1805,6 +1895,9 @@ export namespace Meta {
         VERTICAL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FrameFlags {
         export const $gtype: GObject.GType<FrameFlags>;
     }
@@ -1879,6 +1972,9 @@ export namespace Meta {
         TILED_RIGHT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace KeyBindingFlags {
         export const $gtype: GObject.GType<KeyBindingFlags>;
     }
@@ -1910,6 +2006,9 @@ export namespace Meta {
         IGNORE_AUTOREPEAT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MaximizeFlags {
         export const $gtype: GObject.GType<MaximizeFlags>;
     }
@@ -1932,6 +2031,9 @@ export namespace Meta {
         BOTH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ModalOptions {
         export const $gtype: GObject.GType<ModalOptions>;
     }
@@ -1953,6 +2055,9 @@ export namespace Meta {
         KEYBOARD_ALREADY_GRABBED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VirtualModifier {
         export const $gtype: GObject.GType<VirtualModifier>;
     }
@@ -2008,18 +2113,22 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'keymap-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'keymap-layout-group-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'last-device-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'lid-is-closed-changed': (arg0: boolean) => void;
         }
@@ -2643,6 +2752,7 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
             'notify::meta-display': (pspec: GObject.ParamSpec) => void;
@@ -2667,7 +2777,13 @@ export namespace Meta {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get meta_display(): Display;
+        /**
+         * @construct-only
+         */
         get metaDisplay(): Display;
 
         /**
@@ -2896,8 +3012,17 @@ export namespace Meta {
         set gradient_max_darkness(val: number);
         get gradientMaxDarkness(): number;
         set gradientMaxDarkness(val: number);
+        /**
+         * @construct-only
+         */
         get meta_display(): Display;
+        /**
+         * @construct-only
+         */
         get metaDisplay(): Display;
+        /**
+         * @construct-only
+         */
         get monitor(): number;
         get vignette(): boolean;
         set vignette(val: boolean);
@@ -4958,6 +5083,7 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             loaded: () => void;
         }
@@ -5118,12 +5244,14 @@ export namespace Meta {
              * When a pointer barrier is hit, this will trigger. This
              * requires an XI2-enabled server.
              * @signal
+             * @run-first
              */
             hit: (arg0: BarrierEvent) => void;
             /**
              * When a pointer barrier hitbox was left, this will trigger.
              * This requires an XI2-enabled server.
              * @signal
+             * @run-first
              */
             left: (arg0: BarrierEvent) => void;
             'notify::directions': (pspec: GObject.ParamSpec) => void;
@@ -5156,11 +5284,29 @@ export namespace Meta {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get directions(): BarrierDirection;
+        /**
+         * @construct-only
+         */
         get display(): Display;
+        /**
+         * @construct-only
+         */
         get x1(): number;
+        /**
+         * @construct-only
+         */
         get x2(): number;
+        /**
+         * @construct-only
+         */
         get y1(): number;
+        /**
+         * @construct-only
+         */
         get y2(): number;
 
         /**
@@ -5218,10 +5364,12 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'cursor-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'cursor-moved': (arg0: number, arg1: number) => void;
         }
@@ -5302,44 +5450,54 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'accelerator-activated': (arg0: number, arg1: number, arg2: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'cursor-updated': () => void;
             /**
              * @signal
+             * @run-last
              */
             'gl-video-memory-purged': () => void;
             /**
              * @signal
+             * @run-last
              */
             'grab-op-begin': (arg0: Display, arg1: Window, arg2: GrabOp) => void;
             /**
              * @signal
+             * @run-last
              */
             'grab-op-end': (arg0: Display, arg1: Window, arg2: GrabOp) => void;
             /**
              * @signal
+             * @run-last
              */
             'in-fullscreen-changed': () => void;
             /**
              * The ::modifiers-accelerator-activated signal will be emitted when
              * a special modifiers-only keybinding is activated.
              * @signal
+             * @run-last
              */
             'modifiers-accelerator-activated': () => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             'overlay-key': () => void;
             /**
              * @signal
+             * @run-last
              */
             'pad-mode-switch': (arg0: Clutter.InputDevice, arg1: number, arg2: number) => void;
             /**
              * @signal
+             * @run-last
              */
             restacked: () => void;
             /**
@@ -5349,15 +5507,18 @@ export namespace Meta {
              * internally or by the embedding compositor. See also
              * ::show-restart-message.
              * @signal
+             * @run-last
              */
             restart: () => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             'show-osd': (arg0: number, arg1: string, arg2: string) => void;
             /**
              * Requests the pad button mapping OSD to be shown.
              * @signal
+             * @run-last
              */
             'show-pad-osd': (
                 arg0: Clutter.InputDevice,
@@ -5368,6 +5529,7 @@ export namespace Meta {
             ) => Clutter.Actor | null;
             /**
              * @signal
+             * @run-last
              */
             'show-resize-popup': (arg0: boolean, arg1: Rectangle, arg2: number, arg3: number) => boolean | void;
             /**
@@ -5382,42 +5544,52 @@ export namespace Meta {
              * On case of failure to restart, this signal will be emitted again
              * with `null` for `message`.
              * @signal
+             * @run-last
              */
             'show-restart-message': (arg0: string | null) => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             'showing-desktop-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'window-created': (arg0: Window) => void;
             /**
              * @signal
+             * @run-last
              */
             'window-demands-attention': (arg0: Window) => void;
             /**
              * @signal
+             * @run-last
              */
             'window-entered-monitor': (arg0: number, arg1: Window) => void;
             /**
              * @signal
+             * @run-last
              */
             'window-left-monitor': (arg0: number, arg1: Window) => void;
             /**
              * @signal
+             * @run-last
              */
             'window-marked-urgent': (arg0: Window) => void;
             /**
              * @signal
+             * @run-last
              */
             'workareas-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'x11-display-closing': () => void;
             /**
              * @signal
+             * @run-last
              */
             'x11-display-opened': () => void;
             'notify::focus-window': (pspec: GObject.ParamSpec) => void;
@@ -5439,7 +5611,13 @@ export namespace Meta {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get focus_window(): Window;
+        /**
+         * @read-only
+         */
         get focusWindow(): Window;
 
         /**
@@ -5760,14 +5938,17 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'dnd-enter': () => void;
             /**
              * @signal
+             * @run-last
              */
             'dnd-leave': () => void;
             /**
              * @signal
+             * @run-last
              */
             'dnd-position-change': (arg0: number, arg1: number) => void;
         }
@@ -5842,7 +6023,13 @@ export namespace Meta {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get device_id(): number;
+        /**
+         * @construct-only
+         */
         get deviceId(): number;
 
         /**
@@ -5940,6 +6127,9 @@ export namespace Meta {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get display(): Display;
         get timestamp(): number;
         set timestamp(val: number);
@@ -5999,18 +6189,22 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'confirm-display-change': () => void;
             /**
              * @signal
+             * @run-last
              */
             'monitors-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'monitors-changed-internal': () => void;
             /**
              * @signal
+             * @run-last
              */
             'power-save-mode-changed': () => void;
             'notify::backend': (pspec: GObject.ParamSpec) => void;
@@ -6031,6 +6225,9 @@ export namespace Meta {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get backend(): Backend;
 
         /**
@@ -6339,6 +6536,7 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'new-handle': (arg0: RemoteAccessHandle) => void;
         }
@@ -6398,6 +6596,7 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             stopped: () => void;
         }
@@ -6470,6 +6669,7 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
         }
@@ -6573,6 +6773,7 @@ export namespace Meta {
         interface SignalSignatures extends Clutter.Actor.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'size-changed': () => void;
             'notify::actions': (pspec: GObject.ParamSpec) => void;
@@ -7749,6 +7950,7 @@ export namespace Meta {
         interface SignalSignatures extends Clutter.Stage.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'actors-painted': () => void;
             'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
@@ -8366,6 +8568,7 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: (arg0: any | null) => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;
@@ -8386,6 +8589,9 @@ export namespace Meta {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get display(): Display;
 
         /**
@@ -8440,6 +8646,7 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             complete: () => void;
             'notify::application-id': (pspec: GObject.ParamSpec) => void;
@@ -8474,14 +8681,41 @@ export namespace Meta {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get application_id(): string;
+        /**
+         * @construct-only
+         */
         get applicationId(): string;
+        /**
+         * @construct-only
+         */
         get icon_name(): string;
+        /**
+         * @construct-only
+         */
         get iconName(): string;
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get timestamp(): number;
+        /**
+         * @construct-only
+         */
         get wmclass(): string;
+        /**
+         * @construct-only
+         */
         get workspace(): number;
 
         /**
@@ -8538,6 +8772,7 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             focus: () => void;
             /**
@@ -8546,15 +8781,18 @@ export namespace Meta {
              * position of the toplevel window has changed, or when
              * the position of the client window has changed.
              * @signal
+             * @run-last
              */
             'position-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             raised: () => void;
             /**
              * This is emitted after a window has been shown.
              * @signal
+             * @run-last
              */
             shown: () => void;
             /**
@@ -8563,14 +8801,17 @@ export namespace Meta {
              * size of the toplevel window has changed, or when the
              * size of the client window has changed.
              * @signal
+             * @run-last
              */
             'size-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             unmanaged: () => void;
             /**
              * @signal
+             * @run-last
              */
             'workspace-changed': () => void;
             'notify::above': (pspec: GObject.ParamSpec) => void;
@@ -8656,47 +8897,173 @@ export namespace Meta {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get above(): boolean;
+        /**
+         * @read-only
+         */
         get appears_focused(): boolean;
+        /**
+         * @read-only
+         */
         get appearsFocused(): boolean;
+        /**
+         * @read-only
+         */
         get decorated(): boolean;
+        /**
+         * @read-only
+         */
         get demands_attention(): boolean;
+        /**
+         * @read-only
+         */
         get demandsAttention(): boolean;
+        /**
+         * @read-only
+         */
         get fullscreen(): boolean;
+        /**
+         * @read-only
+         */
         get gtk_app_menu_object_path(): string;
+        /**
+         * @read-only
+         */
         get gtkAppMenuObjectPath(): string;
+        /**
+         * @read-only
+         */
         get gtk_application_id(): string;
+        /**
+         * @read-only
+         */
         get gtkApplicationId(): string;
+        /**
+         * @read-only
+         */
         get gtk_application_object_path(): string;
+        /**
+         * @read-only
+         */
         get gtkApplicationObjectPath(): string;
+        /**
+         * @read-only
+         */
         get gtk_menubar_object_path(): string;
+        /**
+         * @read-only
+         */
         get gtkMenubarObjectPath(): string;
+        /**
+         * @read-only
+         */
         get gtk_unique_bus_name(): string;
+        /**
+         * @read-only
+         */
         get gtkUniqueBusName(): string;
+        /**
+         * @read-only
+         */
         get gtk_window_object_path(): string;
+        /**
+         * @read-only
+         */
         get gtkWindowObjectPath(): string;
+        /**
+         * @read-only
+         */
         get icon(): any;
+        /**
+         * @read-only
+         */
         get maximized_horizontally(): boolean;
+        /**
+         * @read-only
+         */
         get maximizedHorizontally(): boolean;
+        /**
+         * @read-only
+         */
         get maximized_vertically(): boolean;
+        /**
+         * @read-only
+         */
         get maximizedVertically(): boolean;
+        /**
+         * @read-only
+         */
         get mini_icon(): any;
+        /**
+         * @read-only
+         */
         get miniIcon(): any;
+        /**
+         * @read-only
+         */
         get minimized(): boolean;
+        /**
+         * @read-only
+         */
         get mutter_hints(): string;
+        /**
+         * @read-only
+         */
         get mutterHints(): string;
+        /**
+         * @read-only
+         */
         get on_all_workspaces(): boolean;
+        /**
+         * @read-only
+         */
         get onAllWorkspaces(): boolean;
+        /**
+         * @read-only
+         */
         get resizeable(): boolean;
+        /**
+         * @read-only
+         */
         get skip_taskbar(): boolean;
+        /**
+         * @read-only
+         */
         get skipTaskbar(): boolean;
+        /**
+         * @read-only
+         */
         get title(): string;
+        /**
+         * @read-only
+         */
         get urgent(): boolean;
+        /**
+         * @read-only
+         */
         get user_time(): number;
+        /**
+         * @read-only
+         */
         get userTime(): number;
+        /**
+         * @read-only
+         */
         get window_type(): WindowType;
+        /**
+         * @read-only
+         */
         get windowType(): WindowType;
+        /**
+         * @read-only
+         */
         get wm_class(): string;
+        /**
+         * @read-only
+         */
         get wmClass(): string;
 
         /**
@@ -9168,6 +9535,7 @@ export namespace Meta {
              * The ::effects-completed signal will be emitted once all pending compositor
              * effects are completed.
              * @signal
+             * @run-last
              */
             'effects-completed': () => void;
             /**
@@ -9184,6 +9552,7 @@ export namespace Meta {
              * Connecting to an existing window that has already been drawn to
              * the screen is not useful.
              * @signal
+             * @run-last
              */
             'first-frame': () => void;
             'notify::meta-window': (pspec: GObject.ParamSpec) => void;
@@ -9302,7 +9671,13 @@ export namespace Meta {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get meta_window(): Window;
+        /**
+         * @construct-only
+         */
         get metaWindow(): Window;
         get shadow_class(): string;
         set shadow_class(val: string);
@@ -11355,10 +11730,12 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'window-added': (arg0: Window) => void;
             /**
              * @signal
+             * @run-last
              */
             'window-removed': (arg0: Window) => void;
             'notify::n-windows': (pspec: GObject.ParamSpec) => void;
@@ -11383,9 +11760,21 @@ export namespace Meta {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get n_windows(): number;
+        /**
+         * @read-only
+         */
         get nWindows(): number;
+        /**
+         * @read-only
+         */
         get workspace_index(): number;
+        /**
+         * @read-only
+         */
         get workspaceIndex(): number;
 
         /**
@@ -11491,22 +11880,27 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'active-workspace-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'showing-desktop-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'workspace-added': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'workspace-removed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'workspace-switched': (arg0: number, arg1: number, arg2: MotionDirection) => void;
             'notify::n-workspaces': (pspec: GObject.ParamSpec) => void;
@@ -11528,7 +11922,13 @@ export namespace Meta {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get n_workspaces(): number;
+        /**
+         * @read-only
+         */
         get nWorkspaces(): number;
 
         /**
@@ -12248,6 +12648,9 @@ export namespace Meta {
     interface CloseDialog extends GObject.Object, CloseDialog.Interface {
         // Properties
 
+        /**
+         * @construct-only
+         */
         get window(): Window;
 
         // Methods
@@ -12319,6 +12722,9 @@ export namespace Meta {
     interface InhibitShortcutsDialog extends GObject.Object, InhibitShortcutsDialog.Interface {
         // Properties
 
+        /**
+         * @construct-only
+         */
         get window(): Window;
 
         // Methods

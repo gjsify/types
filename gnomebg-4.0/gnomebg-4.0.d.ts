@@ -34,10 +34,12 @@ export namespace GnomeBG {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
              * @signal
+             * @run-last
              */
             transitioned: () => void;
         }
@@ -219,12 +221,33 @@ export namespace GnomeBG {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
+        /**
+         * @read-only
+         */
         get has_multiple_sizes(): boolean;
+        /**
+         * @read-only
+         */
         get hasMultipleSizes(): boolean;
+        /**
+         * @read-only
+         */
         get start_time(): number;
+        /**
+         * @read-only
+         */
         get startTime(): number;
+        /**
+         * @read-only
+         */
         get total_duration(): number;
+        /**
+         * @read-only
+         */
         get totalDuration(): number;
 
         /**

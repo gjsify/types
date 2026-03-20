@@ -43,6 +43,9 @@ export namespace TrackerMiner {
         PAUSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FilterPolicy {
         export const $gtype: GObject.GType<FilterPolicy>;
     }
@@ -55,6 +58,9 @@ export namespace TrackerMiner {
         ACCEPT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FilterType {
         export const $gtype: GObject.GType<FilterType>;
     }
@@ -122,6 +128,9 @@ export namespace TrackerMiner {
         MINER_FS_ERROR_INIT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NetworkType {
         export const $gtype: GObject.GType<NetworkType>;
     }
@@ -165,6 +174,9 @@ export namespace TrackerMiner {
      * @since 0.8.
      */
     const MINER_ERROR_DOMAIN: string;
+    /**
+     * @gir-type Flags
+     */
     export namespace DirectoryFlags {
         export const $gtype: GObject.GType<DirectoryFlags>;
     }
@@ -193,6 +205,7 @@ export namespace TrackerMiner {
              * for resources in the database.
              * @signal
              * @since 0.18.
+             * @run-last
              */
             finished: () => void;
             /**
@@ -201,6 +214,7 @@ export namespace TrackerMiner {
              * extended metadata extraction.
              * @signal
              * @since 0.18.
+             * @run-last
              */
             'items-available': () => void;
             'notify::class-names': (pspec: GObject.ParamSpec) => void;
@@ -247,9 +261,21 @@ export namespace TrackerMiner {
         set commit_batch_size(val: number);
         get commitBatchSize(): number;
         set commitBatchSize(val: number);
+        /**
+         * @construct-only
+         */
         get data_source(): string;
+        /**
+         * @construct-only
+         */
         get dataSource(): string;
+        /**
+         * @write-only
+         */
         set priority_rdf_types(val: string[]);
+        /**
+         * @write-only
+         */
         set priorityRdfTypes(val: string[]);
 
         /**
@@ -1474,6 +1500,7 @@ export namespace TrackerMiner {
              * those may be triggered through `tracker_indexing_tree_notify_update()`.
              * @signal
              * @since 1.10
+             * @run-last
              */
             'child-updated': (arg0: Gio.File, arg1: Gio.File) => void;
             /**
@@ -1484,6 +1511,7 @@ export namespace TrackerMiner {
              * called.
              * @signal
              * @since 0.14.0
+             * @run-last
              */
             'directory-added': (arg0: Gio.File) => void;
             /**
@@ -1494,6 +1522,7 @@ export namespace TrackerMiner {
              * called.
              * @signal
              * @since 0.14.0
+             * @run-last
              */
             'directory-removed': (arg0: Gio.File) => void;
             /**
@@ -1503,6 +1532,7 @@ export namespace TrackerMiner {
              * requested through `tracker_indexing_tree_notify_update()`.
              * @signal
              * @since 0.14.0
+             * @run-last
              */
             'directory-updated': (arg0: Gio.File) => void;
             'notify::filter-hidden': (pspec: GObject.ParamSpec) => void;
@@ -1531,6 +1561,9 @@ export namespace TrackerMiner {
         set filter_hidden(val: boolean);
         get filterHidden(): boolean;
         set filterHidden(val: boolean);
+        /**
+         * @construct-only
+         */
         get root(): Gio.File;
 
         /**
@@ -1766,6 +1799,7 @@ export namespace TrackerMiner {
              * through `tracker_miner_ignore_next_update()`.
              * @signal
              * @since 0.8
+             * @run-last
              */
             'ignore-next-update': (arg0: string[]) => void;
             /**
@@ -1775,6 +1809,7 @@ export namespace TrackerMiner {
              * external (through DBus, see `TrackerMinerManager`).
              * @signal
              * @since 0.8
+             * @run-last
              */
             paused: () => void;
             /**
@@ -1786,6 +1821,7 @@ export namespace TrackerMiner {
              * value cannot be estimated, and -1 if its not applicable.
              * @signal
              * @since 0.12
+             * @run-last
              */
             progress: (arg0: string, arg1: number, arg2: number) => void;
             /**
@@ -1794,6 +1830,7 @@ export namespace TrackerMiner {
              * `tracker_miner_resume()` and `TrackerMinerManager`.
              * @signal
              * @since 0.8
+             * @run-last
              */
             resumed: () => void;
             /**
@@ -1802,6 +1839,7 @@ export namespace TrackerMiner {
              * `tracker_miner_start()`.
              * @signal
              * @since 0.8
+             * @run-last
              */
             started: () => void;
             /**
@@ -1810,6 +1848,7 @@ export namespace TrackerMiner {
              * `tracker_miner_stop()`.
              * @signal
              * @since 0.8
+             * @run-last
              */
             stopped: () => void;
             'notify::introspection-handler': (pspec: GObject.ParamSpec) => void;
@@ -1852,6 +1891,9 @@ export namespace TrackerMiner {
         set introspection_xml(val: string);
         get introspectionXml(): string;
         set introspectionXml(val: string);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get progress(): number;
         set progress(val: number);
@@ -2549,6 +2591,7 @@ export namespace TrackerMiner {
              * all pending processing.
              * @signal
              * @since 0.8
+             * @run-last
              */
             finished: (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number) => void;
             /**
@@ -2560,6 +2603,7 @@ export namespace TrackerMiner {
              * processed.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'finished-root': (arg0: Gio.File) => void;
             /**
@@ -2571,6 +2615,7 @@ export namespace TrackerMiner {
              * @signal
              * @since 0.8
              * @deprecated since 0.12
+             * @run-last
              */
             'ignore-next-update-file': (
                 arg0: Gio.File,
@@ -2592,6 +2637,7 @@ export namespace TrackerMiner {
              * the SPARQL updates and continue processing other files.
              * @signal
              * @since 0.8
+             * @run-last
              */
             'process-file': (
                 arg0: Gio.File,
@@ -2614,6 +2660,7 @@ export namespace TrackerMiner {
              * the SPARQL updates and continue processing other files.
              * @signal
              * @since 0.10
+             * @run-last
              */
             'process-file-attributes': (
                 arg0: Gio.File,
@@ -2641,6 +2688,7 @@ export namespace TrackerMiner {
              * to the affected URIs.
              * @signal
              * @since 1.8
+             * @run-last
              */
             'remove-file': (arg0: Gio.File, arg1: boolean, arg2: Tracker.SparqlBuilder) => boolean | void;
             /**
@@ -2648,6 +2696,7 @@ export namespace TrackerMiner {
              * back
              * @signal
              * @since 0.10.20
+             * @run-last
              */
             'writeback-file': (
                 arg0: Gio.File,
@@ -2697,7 +2746,13 @@ export namespace TrackerMiner {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get data_provider(): DataProvider;
+        /**
+         * @construct-only
+         */
         get dataProvider(): DataProvider;
         get initial_crawling(): boolean;
         set initial_crawling(val: boolean);
@@ -2715,6 +2770,9 @@ export namespace TrackerMiner {
         set processing_pool_wait_limit(val: number);
         get processingPoolWaitLimit(): number;
         set processingPoolWaitLimit(val: number);
+        /**
+         * @construct-only
+         */
         get root(): Gio.File;
         get throttle(): number;
         set throttle(val: number);
@@ -3602,6 +3660,7 @@ export namespace TrackerMiner {
              * {@link TrackerMiner.Miner} should resume indexing or not upon ::connected.
              * @signal
              * @since 0.18.0
+             * @run-last
              */
             connected: (arg0: NetworkType) => boolean | void;
             /**
@@ -3609,6 +3668,7 @@ export namespace TrackerMiner {
              * network becomes disconnected.
              * @signal
              * @since 0.18.0
+             * @run-last
              */
             disconnected: () => void;
             'notify::network-type': (pspec: GObject.ParamSpec) => void;
@@ -3637,7 +3697,13 @@ export namespace TrackerMiner {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get network_type(): NetworkType;
+        /**
+         * @read-only
+         */
         get networkType(): NetworkType;
 
         /**

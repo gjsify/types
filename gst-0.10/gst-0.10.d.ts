@@ -20,6 +20,9 @@ export namespace Gst {
      * Gst-0.10
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ActivateMode {
         export const $gtype: GObject.GType<ActivateMode>;
     }
@@ -36,6 +39,9 @@ export namespace Gst {
         PULL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BufferListItem {
         export const $gtype: GObject.GType<BufferListItem>;
     }
@@ -51,6 +57,9 @@ export namespace Gst {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BufferingMode {
         export const $gtype: GObject.GType<BufferingMode>;
     }
@@ -66,6 +75,9 @@ export namespace Gst {
         LIVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BusSyncReply {
         export const $gtype: GObject.GType<BusSyncReply>;
     }
@@ -80,6 +92,9 @@ export namespace Gst {
         ASYNC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClockEntryType {
         export const $gtype: GObject.GType<ClockEntryType>;
     }
@@ -93,6 +108,9 @@ export namespace Gst {
         PERIODIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClockReturn {
         export const $gtype: GObject.GType<ClockReturn>;
     }
@@ -111,6 +129,9 @@ export namespace Gst {
         UNSUPPORTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClockType {
         export const $gtype: GObject.GType<ClockType>;
     }
@@ -124,6 +145,9 @@ export namespace Gst {
         MONOTONIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CoreError {
         export const $gtype: GObject.GType<CoreError>;
     }
@@ -150,6 +174,9 @@ export namespace Gst {
         NUM_ERRORS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DebugColorFlags {
         export const $gtype: GObject.GType<DebugColorFlags>;
     }
@@ -180,6 +207,9 @@ export namespace Gst {
         UNDERLINE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DebugLevel {
         export const $gtype: GObject.GType<DebugLevel>;
     }
@@ -202,6 +232,9 @@ export namespace Gst {
         COUNT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EventType {
         export const $gtype: GObject.GType<EventType>;
     }
@@ -236,6 +269,9 @@ export namespace Gst {
         CUSTOM_BOTH_OOB,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FlowReturn {
         export const $gtype: GObject.GType<FlowReturn>;
     }
@@ -274,6 +310,9 @@ export namespace Gst {
         CUSTOM_ERROR_2,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Format {
         export const $gtype: GObject.GType<Format>;
     }
@@ -291,6 +330,9 @@ export namespace Gst {
         PERCENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IndexCertainty {
         export const $gtype: GObject.GType<IndexCertainty>;
     }
@@ -305,6 +347,9 @@ export namespace Gst {
         FUZZY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IndexEntryType {
         export const $gtype: GObject.GType<IndexEntryType>;
     }
@@ -320,6 +365,9 @@ export namespace Gst {
         FORMAT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IndexLookupMethod {
         export const $gtype: GObject.GType<IndexLookupMethod>;
     }
@@ -334,6 +382,9 @@ export namespace Gst {
         AFTER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IndexResolverMethod {
         export const $gtype: GObject.GType<IndexResolverMethod>;
     }
@@ -348,6 +399,9 @@ export namespace Gst {
         PATH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IteratorItem {
         export const $gtype: GObject.GType<IteratorItem>;
     }
@@ -362,6 +416,9 @@ export namespace Gst {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IteratorResult {
         export const $gtype: GObject.GType<IteratorResult>;
     }
@@ -377,6 +434,9 @@ export namespace Gst {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LibraryError {
         export const $gtype: GObject.GType<LibraryError>;
     }
@@ -396,6 +456,9 @@ export namespace Gst {
         NUM_ERRORS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PadDirection {
         export const $gtype: GObject.GType<PadDirection>;
     }
@@ -410,6 +473,9 @@ export namespace Gst {
         SINK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PadLinkReturn {
         export const $gtype: GObject.GType<PadLinkReturn>;
     }
@@ -428,6 +494,9 @@ export namespace Gst {
         REFUSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PadPresence {
         export const $gtype: GObject.GType<PadPresence>;
     }
@@ -442,6 +511,9 @@ export namespace Gst {
         REQUEST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ParseError {
         export const $gtype: GObject.GType<ParseError>;
     }
@@ -460,6 +532,9 @@ export namespace Gst {
         EMPTY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PluginError {
         export const $gtype: GObject.GType<PluginError>;
     }
@@ -474,6 +549,9 @@ export namespace Gst {
         NAME_MISMATCH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace QueryType {
         export const $gtype: GObject.GType<QueryType>;
     }
@@ -498,6 +576,9 @@ export namespace Gst {
         URI,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Rank {
         export const $gtype: GObject.GType<Rank>;
     }
@@ -517,6 +598,9 @@ export namespace Gst {
         PRIMARY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ResourceError {
         export const $gtype: GObject.GType<ResourceError>;
     }
@@ -545,6 +629,9 @@ export namespace Gst {
         NUM_ERRORS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SearchMode {
         export const $gtype: GObject.GType<SearchMode>;
     }
@@ -560,6 +647,9 @@ export namespace Gst {
         AFTER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SeekType {
         export const $gtype: GObject.GType<SeekType>;
     }
@@ -578,6 +668,9 @@ export namespace Gst {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace State {
         export const $gtype: GObject.GType<State>;
     }
@@ -595,6 +688,9 @@ export namespace Gst {
         PLAYING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StateChange {
         export const $gtype: GObject.GType<StateChange>;
     }
@@ -614,6 +710,9 @@ export namespace Gst {
         READY_TO_NULL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StateChangeReturn {
         export const $gtype: GObject.GType<StateChangeReturn>;
     }
@@ -629,6 +728,9 @@ export namespace Gst {
         NO_PREROLL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StreamError {
         export const $gtype: GObject.GType<StreamError>;
     }
@@ -656,6 +758,9 @@ export namespace Gst {
         NUM_ERRORS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StreamStatusType {
         export const $gtype: GObject.GType<StreamStatusType>;
     }
@@ -676,6 +781,9 @@ export namespace Gst {
         STOP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StructureChangeType {
         export const $gtype: GObject.GType<StructureChangeType>;
     }
@@ -690,6 +798,9 @@ export namespace Gst {
         UNLINK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TagFlag {
         export const $gtype: GObject.GType<TagFlag>;
     }
@@ -706,6 +817,9 @@ export namespace Gst {
         COUNT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TagMergeMode {
         export const $gtype: GObject.GType<TagMergeMode>;
     }
@@ -788,6 +902,9 @@ export namespace Gst {
         COUNT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TaskState {
         export const $gtype: GObject.GType<TaskState>;
     }
@@ -802,6 +919,9 @@ export namespace Gst {
         PAUSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TypeFindProbability {
         export const $gtype: GObject.GType<TypeFindProbability>;
     }
@@ -819,6 +939,9 @@ export namespace Gst {
         MAXIMUM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace URIType {
         export const $gtype: GObject.GType<URIType>;
     }
@@ -2260,6 +2383,9 @@ export namespace Gst {
      * @gir-type Alias
      */
     type TagList = unknown;
+    /**
+     * @gir-type Flags
+     */
     export namespace AllocTraceFlags {
         export const $gtype: GObject.GType<AllocTraceFlags>;
     }
@@ -2273,6 +2399,9 @@ export namespace Gst {
         MEM_LIVE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace AssocFlags {
         export const $gtype: GObject.GType<AssocFlags>;
     }
@@ -2297,6 +2426,9 @@ export namespace Gst {
         FLAG_LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BinFlags {
         export const $gtype: GObject.GType<BinFlags>;
     }
@@ -2311,6 +2443,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BufferCopyFlags {
         export const $gtype: GObject.GType<BufferCopyFlags>;
     }
@@ -2327,6 +2462,9 @@ export namespace Gst {
         CAPS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BufferFlag {
         export const $gtype: GObject.GType<BufferFlag>;
     }
@@ -2348,6 +2486,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BusFlags {
         export const $gtype: GObject.GType<BusFlags>;
     }
@@ -2361,6 +2502,9 @@ export namespace Gst {
         FLAG_LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace CapsFlags {
         export const $gtype: GObject.GType<CapsFlags>;
     }
@@ -2373,6 +2517,9 @@ export namespace Gst {
         ANY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ClockFlags {
         export const $gtype: GObject.GType<ClockFlags>;
     }
@@ -2391,6 +2538,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DebugGraphDetails {
         export const $gtype: GObject.GType<DebugGraphDetails>;
     }
@@ -2409,6 +2559,9 @@ export namespace Gst {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ElementFlags {
         export const $gtype: GObject.GType<ElementFlags>;
     }
@@ -2424,6 +2577,9 @@ export namespace Gst {
         FLAG_LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace EventTypeFlags {
         export const $gtype: GObject.GType<EventTypeFlags>;
     }
@@ -2440,6 +2596,9 @@ export namespace Gst {
         SERIALIZED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace IndexFlags {
         export const $gtype: GObject.GType<IndexFlags>;
     }
@@ -2454,6 +2613,9 @@ export namespace Gst {
         FLAG_LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MessageType {
         export const $gtype: GObject.GType<MessageType>;
     }
@@ -2492,6 +2654,9 @@ export namespace Gst {
         ANY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MiniObjectFlags {
         export const $gtype: GObject.GType<MiniObjectFlags>;
     }
@@ -2505,6 +2670,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ObjectFlags {
         export const $gtype: GObject.GType<ObjectFlags>;
     }
@@ -2519,6 +2687,9 @@ export namespace Gst {
         FLAG_LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PadFlags {
         export const $gtype: GObject.GType<PadFlags>;
     }
@@ -2536,6 +2707,9 @@ export namespace Gst {
         FLAG_LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PadLinkCheck {
         export const $gtype: GObject.GType<PadLinkCheck>;
     }
@@ -2560,6 +2734,9 @@ export namespace Gst {
         CAPS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PadTemplateFlags {
         export const $gtype: GObject.GType<PadTemplateFlags>;
     }
@@ -2573,6 +2750,9 @@ export namespace Gst {
         FLAG_LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ParseFlags {
         export const $gtype: GObject.GType<ParseFlags>;
     }
@@ -2587,6 +2767,9 @@ export namespace Gst {
         FATAL_ERRORS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PipelineFlags {
         export const $gtype: GObject.GType<PipelineFlags>;
     }
@@ -2600,6 +2783,9 @@ export namespace Gst {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PluginDependencyFlags {
         export const $gtype: GObject.GType<PluginDependencyFlags>;
     }
@@ -2616,6 +2802,9 @@ export namespace Gst {
         FILE_NAME_IS_SUFFIX,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PluginFlags {
         export const $gtype: GObject.GType<PluginFlags>;
     }
@@ -2629,6 +2818,9 @@ export namespace Gst {
         BLACKLISTED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SeekFlags {
         export const $gtype: GObject.GType<SeekFlags>;
     }
@@ -2829,7 +3021,13 @@ export namespace Gst {
         set enable_last_buffer(val: boolean);
         get enableLastBuffer(): boolean;
         set enableLastBuffer(val: boolean);
+        /**
+         * @read-only
+         */
         get last_buffer(): Buffer;
+        /**
+         * @read-only
+         */
         get lastBuffer(): Buffer;
         get max_lateness(): number;
         set max_lateness(val: number);
@@ -4397,11 +4595,29 @@ export namespace Gst {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get current_level_bytes(): number;
+        /**
+         * @read-only
+         */
         get currentLevelBytes(): number;
+        /**
+         * @read-only
+         */
         get current_level_time(): number;
+        /**
+         * @read-only
+         */
         get currentLevelTime(): number;
+        /**
+         * @read-only
+         */
         get current_level_visible(): number;
+        /**
+         * @read-only
+         */
         get currentLevelVisible(): number;
 
         /**
@@ -6138,7 +6354,13 @@ export namespace Gst {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get caps(): Caps;
+        /**
+         * @construct-only
+         */
         get direction(): PadDirection;
         get template(): PadTemplate;
         set template(val: PadTemplate);
@@ -6582,10 +6804,25 @@ export namespace Gst {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get caps(): Caps;
+        /**
+         * @construct-only
+         */
         get direction(): PadDirection;
+        /**
+         * @construct-only
+         */
         get name_template(): string;
+        /**
+         * @construct-only
+         */
         get nameTemplate(): string;
+        /**
+         * @construct-only
+         */
         get presence(): PadPresence;
 
         /**

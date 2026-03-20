@@ -37,6 +37,9 @@ export namespace ClutterGst {
      * ClutterGst-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BufferingMode {
         export const $gtype: GObject.GType<BufferingMode>;
     }
@@ -118,6 +121,9 @@ export namespace ClutterGst {
         entries: GLib.OptionEntry,
         translation_domain: string,
     ): [Clutter.InitError, string[] | null];
+    /**
+     * @gir-type Flags
+     */
     export namespace SeekFlags {
         export const $gtype: GObject.GType<SeekFlags>;
     }
@@ -747,22 +753,29 @@ export namespace ClutterGst {
             /**
              * The ::photo-saved signal is emitted when a photo was saved to disk.
              * @signal
+             * @action
+             * @run-last
              */
             'photo-saved': () => void;
             /**
              * The ::photo-taken signal is emitted when a photo was taken.
              * @signal
+             * @action
+             * @run-last
              */
             'photo-taken': (arg0: GdkPixbuf.Pixbuf) => void;
             /**
              * The ::ready-for-capture signal is emitted whenever the value of
              * clutter_gst_camera_is_ready_for_capture changes.
              * @signal
+             * @run-last
              */
             'ready-for-capture': (arg0: boolean) => void;
             /**
              * The ::video-saved signal is emitted when a video was saved to disk.
              * @signal
+             * @action
+             * @run-last
              */
             'video-saved': () => void;
             'notify::device': (pspec: GObject.ParamSpec) => void;
@@ -1093,6 +1106,7 @@ export namespace ClutterGst {
         /**
          * Whether the {@link ClutterGst.Player} is in idle mode.
          * @since 1.4
+         * @read-only
          * @category Inherited from ClutterGst.Player
          */
         get idle(): boolean;
@@ -1680,6 +1694,7 @@ export namespace ClutterGst {
              * The ::capture-resolution-changed signal is emitted whenever the value of
              * clutter_gst_camera_device_get_capture_resolution changes.
              * @signal
+             * @run-last
              */
             'capture-resolution-changed': (arg0: number, arg1: number) => void;
             'notify::element-factory': (pspec: GObject.ParamSpec) => void;
@@ -1711,18 +1726,22 @@ export namespace ClutterGst {
 
         /**
          * The GstElementFactory for this device.
+         * @construct-only
          */
         get element_factory(): Gst.ElementFactory;
         /**
          * The GstElementFactory for this device.
+         * @construct-only
          */
         get elementFactory(): Gst.ElementFactory;
         /**
          * The device name.
+         * @construct-only
          */
         get name(): string;
         /**
          * The device node.
+         * @construct-only
          */
         get node(): string;
 
@@ -1807,12 +1826,14 @@ export namespace ClutterGst {
              * The ::camera-added signal is emitted whenever a new camera device
              * is available.
              * @signal
+             * @run-last
              */
             'camera-added': (arg0: CameraDevice) => void;
             /**
              * The ::camera-removed signal is emitted whenever a camera device
              * is unplugged/removed from the system.
              * @signal
+             * @run-last
              */
             'camera-removed': (arg0: CameraDevice) => void;
         }
@@ -1893,6 +1914,7 @@ export namespace ClutterGst {
             /**
              * The ::size-change signal is emitted each time the video size changes.
              * @signal
+             * @run-last
              */
             'size-change': (arg0: number, arg1: number) => void;
             'notify::frame': (pspec: GObject.ParamSpec) => void;
@@ -3165,6 +3187,7 @@ export namespace ClutterGst {
              * decide whether it should continue buffering in download-buffering mode.
              * @signal
              * @since 1.4
+             * @run-last
              */
             'should-buffer': (arg0: Gst.Query) => boolean | void;
             'notify::audio-stream': (pspec: GObject.ParamSpec) => void;
@@ -3245,43 +3268,52 @@ export namespace ClutterGst {
         /**
          * List of audio streams available on the current media.
          * @since 1.4
+         * @read-only
          */
         get audio_streams(): any;
         /**
          * List of audio streams available on the current media.
          * @since 1.4
+         * @read-only
          */
         get audioStreams(): any;
         /**
          * The fill level of the buffer for the current stream,
          * as a value between 0.0 and 1.0.
+         * @read-only
          */
         get buffer_fill(): number;
         /**
          * The fill level of the buffer for the current stream,
          * as a value between 0.0 and 1.0.
+         * @read-only
          */
         get bufferFill(): number;
         /**
          * Whether the current stream is seekable.
+         * @read-only
          */
         get can_seek(): boolean;
         /**
          * Whether the current stream is seekable.
+         * @read-only
          */
         get canSeek(): boolean;
         /**
          * The duration of the current stream, in seconds
+         * @read-only
          */
         get duration(): number;
         /**
          * Whether or not the stream is being seeked.
          * @since 1.6
+         * @read-only
          */
         get in_seek(): boolean;
         /**
          * Whether or not the stream is being seeked.
          * @since 1.6
+         * @read-only
          */
         get inSeek(): boolean;
         /**
@@ -3331,11 +3363,13 @@ export namespace ClutterGst {
         /**
          * List of subtitle tracks available.
          * @since 1.4
+         * @read-only
          */
         get subtitle_tracks(): any;
         /**
          * List of subtitle tracks available.
          * @since 1.4
+         * @read-only
          */
         get subtitleTracks(): any;
         /**
@@ -3602,6 +3636,7 @@ export namespace ClutterGst {
         /**
          * Whether the {@link ClutterGst.Player} is in idle mode.
          * @since 1.4
+         * @read-only
          * @category Inherited from ClutterGst.Player
          */
         get idle(): boolean;
@@ -4194,6 +4229,7 @@ export namespace ClutterGst {
              * `clutter_gst_video_sink_attach_frame()` to attach the textures.
              * @signal
              * @since 3.0
+             * @run-last
              */
             'new-frame': () => void;
             /**
@@ -4204,6 +4240,7 @@ export namespace ClutterGst {
              * suitable for rendering overlays on a video frame.
              * @signal
              * @since 3.0
+             * @run-last
              */
             'new-overlays': () => void;
             /**
@@ -4221,6 +4258,7 @@ export namespace ClutterGst {
              * could also create its pipeline in the handler for that.
              * @signal
              * @since 3.0
+             * @run-last
              */
             'pipeline-ready': () => void;
             'notify::update-priority': (pspec: GObject.ParamSpec) => void;
@@ -5307,6 +5345,7 @@ export namespace ClutterGst {
         /**
          * Whether the {@link ClutterGst.Player} is in idle mode.
          * @since 1.4
+         * @read-only
          */
         get idle(): boolean;
         /**

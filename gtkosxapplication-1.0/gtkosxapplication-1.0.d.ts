@@ -48,22 +48,27 @@ export namespace GtkosxApplication {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @action
              */
             NSApplicationBlockTermination: () => boolean | void;
             /**
              * @signal
+             * @action
              */
             NSApplicationDidBecomeActive: () => void;
             /**
              * @signal
+             * @action
              */
             NSApplicationOpenFile: (arg0: string) => boolean | void;
             /**
              * @signal
+             * @action
              */
             NSApplicationWillResignActive: () => void;
             /**
              * @signal
+             * @action
              */
             NSApplicationWillTerminate: () => void;
         }

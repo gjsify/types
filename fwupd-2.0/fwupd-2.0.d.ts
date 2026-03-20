@@ -1018,6 +1018,7 @@ export namespace Fwupd {
              * changed, for instance when a device has been added or removed.
              * @signal
              * @since 0.7.0
+             * @run-last
              */
             changed: () => void;
             /**
@@ -1025,6 +1026,7 @@ export namespace Fwupd {
              * added.
              * @signal
              * @since 0.7.1
+             * @run-last
              */
             'device-added': (arg0: Device) => void;
             /**
@@ -1032,6 +1034,7 @@ export namespace Fwupd {
              * changed in some way, e.g. the version number is updated.
              * @signal
              * @since 0.7.1
+             * @run-last
              */
             'device-changed': (arg0: Device) => void;
             /**
@@ -1039,10 +1042,12 @@ export namespace Fwupd {
              * removed.
              * @signal
              * @since 0.7.1
+             * @run-last
              */
             'device-removed': (arg0: Device) => void;
             /**
              * @signal
+             * @run-last
              */
             'status-changed': (arg0: number) => void;
             'notify::daemon-version': (pspec: GObject.ParamSpec) => void;
@@ -1087,46 +1092,55 @@ export namespace Fwupd {
         /**
          * The daemon version number.
          * @since 0.9.6
+         * @read-only
          */
         get daemon_version(): string;
         /**
          * The daemon version number.
          * @since 0.9.6
+         * @read-only
          */
         get daemonVersion(): string;
         /**
          * The host machine-id string
          * @since 1.3.2
+         * @read-only
          */
         get host_machine_id(): string;
         /**
          * The host machine-id string
          * @since 1.3.2
+         * @read-only
          */
         get hostMachineId(): string;
         /**
          * The host product string
          * @since 1.3.1
+         * @read-only
          */
         get host_product(): string;
         /**
          * The host product string
          * @since 1.3.1
+         * @read-only
          */
         get hostProduct(): string;
         /**
          * The host machine-id string
          * @since 1.5.0
+         * @read-only
          */
         get host_security_id(): string;
         /**
          * The host machine-id string
          * @since 1.5.0
+         * @read-only
          */
         get hostSecurityId(): string;
         /**
          * If the daemon is running in an interactive terminal
          * @since 1.3.4
+         * @read-only
          */
         get interactive(): boolean;
         /**
@@ -1138,11 +1152,13 @@ export namespace Fwupd {
         /**
          * The libsoup session, now unused.
          * @since 1.4.5
+         * @read-only
          */
         get soup_session(): GObject.Object;
         /**
          * The libsoup session, now unused.
          * @since 1.4.5
+         * @read-only
          */
         get soupSession(): GObject.Object;
         /**
@@ -1154,6 +1170,7 @@ export namespace Fwupd {
         /**
          * If the daemon is tainted by 3rd party code.
          * @since 1.2.4
+         * @read-only
          */
         get tainted(): boolean;
 

@@ -895,60 +895,70 @@ export namespace Colord {
              * The ::changed signal is emitted when properties may have changed.
              * @signal
              * @since 0.1.0
+             * @run-last
              */
             changed: () => void;
             /**
              * The ::device-added signal is emitted when a device is added.
              * @signal
              * @since 0.1.0
+             * @run-last
              */
             'device-added': (arg0: Device) => void;
             /**
              * The ::device-changed signal is emitted when a device is changed.
              * @signal
              * @since 0.1.2
+             * @run-last
              */
             'device-changed': (arg0: Device) => void;
             /**
              * The ::device-removed signal is emitted when a device is removed.
              * @signal
              * @since 0.1.0
+             * @run-last
              */
             'device-removed': (arg0: Device) => void;
             /**
              * The ::profile-added signal is emitted when a profile is added.
              * @signal
              * @since 0.1.2
+             * @run-last
              */
             'profile-added': (arg0: Profile) => void;
             /**
              * The ::profile-changed signal is emitted when a profile is changed.
              * @signal
              * @since 0.1.2
+             * @run-last
              */
             'profile-changed': (arg0: Profile) => void;
             /**
              * The ::profile-added signal is emitted when a profile is removed.
              * @signal
              * @since 0.1.2
+             * @run-last
              */
             'profile-removed': (arg0: Profile) => void;
             /**
              * The ::sensor-added signal is emitted when a sensor is added.
              * @signal
              * @since 0.1.6
+             * @run-last
              */
             'sensor-added': (arg0: Sensor) => void;
             /**
              * The ::sensor-changed signal is emitted when a sensor is changed.
              * @signal
              * @since 0.1.6
+             * @run-last
              */
             'sensor-changed': (arg0: Sensor) => void;
             /**
              * The ::sensor-added signal is emitted when a sensor is removed.
              * @signal
              * @since 0.1.6
+             * @run-last
              */
             'sensor-removed': (arg0: Sensor) => void;
             'notify::connected': (pspec: GObject.ParamSpec) => void;
@@ -981,36 +991,43 @@ export namespace Colord {
         /**
          * The if the object path has been connected as is valid for use.
          * @since 0.1.9
+         * @read-only
          */
         get connected(): string;
         /**
          * The daemon version.
          * @since 0.1.0
+         * @read-only
          */
         get daemon_version(): string;
         /**
          * The daemon version.
          * @since 0.1.0
+         * @read-only
          */
         get daemonVersion(): string;
         /**
          * The system model.
          * @since 1.0.2
+         * @read-only
          */
         get system_model(): string;
         /**
          * The system model.
          * @since 1.0.2
+         * @read-only
          */
         get systemModel(): string;
         /**
          * The system vendor.
          * @since 1.0.2
+         * @read-only
          */
         get system_vendor(): string;
         /**
          * The system vendor.
          * @since 1.0.2
+         * @read-only
          */
         get systemVendor(): string;
 
@@ -2005,6 +2022,7 @@ export namespace Colord {
              * The ::changed signal is emitted when the device data has changed.
              * @signal
              * @since 0.1.0
+             * @run-last
              */
             changed: () => void;
             'notify::colorspace': (pspec: GObject.ParamSpec) => void;
@@ -2064,56 +2082,67 @@ export namespace Colord {
         /**
          * The device colorspace, e.g. {@link Colord.Colorspace.RGB}.
          * @since 0.1.1
+         * @read-only
          */
         get colorspace(): number;
         /**
          * The if the object path has been connected as is valid for use.
          * @since 0.1.9
+         * @read-only
          */
         get connected(): string;
         /**
          * The time the device was created.
          * @since 0.1.0
+         * @read-only
          */
         get created(): number;
         /**
          * If the device is embedded in the device and cannot be removed.
          * @since 0.1.27
+         * @read-only
          */
         get embedded(): string;
         /**
          * The device enabled state.
          * @since 0.1.26
+         * @read-only
          */
         get enabled(): boolean;
         /**
          * The device format.
          * @since 0.1.9
+         * @read-only
          */
         get format(): string;
         /**
          * The device ID.
          * @since 0.1.0
+         * @read-only
          */
         get id(): string;
         /**
          * The device kind, e.g. {@link Colord.DeviceKind.DISPLAY}.
          * @since 0.1.0
+         * @read-only
          */
         get kind(): number;
         /**
          * The device colorspace, e.g. {@link Colord.DeviceMode.VIRTUAL}.
          * @since 0.1.2
+         * @read-only
          */
         get mode(): number;
         /**
          * The device model.
          * @since 0.1.0
+         * @read-only
          */
         get model(): string;
         /**
          * The last time the device was modified.
          * @since 0.1.1
+         * @read-only
          */
         get modified(): number;
         /**
@@ -2131,28 +2160,39 @@ export namespace Colord {
         /**
          * The device owner, e.g. 500.
          * @since 0.1.13
+         * @read-only
          */
         get owner(): number;
+        /**
+         * @read-only
+         */
         get profiling_inhibitors(): string[];
+        /**
+         * @read-only
+         */
         get profilingInhibitors(): string[];
         /**
          * The device scope, e.g. {@link Colord.ObjectScope.TEMP}.
          * @since 0.1.10
+         * @read-only
          */
         get scope(): number;
         /**
          * The device seat identifier.
          * @since 0.1.24
+         * @read-only
          */
         get seat(): string;
         /**
          * The device serial number.
          * @since 0.1.1
+         * @read-only
          */
         get serial(): string;
         /**
          * The device vendor.
          * @since 0.1.1
+         * @read-only
          */
         get vendor(): string;
 
@@ -3080,21 +3120,51 @@ export namespace Colord {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get blue(): ColorXYZ;
+        /**
+         * @read-only
+         */
         get can_delete(): boolean;
+        /**
+         * @read-only
+         */
         get canDelete(): boolean;
+        /**
+         * @read-only
+         */
         get checksum(): string;
         get colorspace(): number;
         set colorspace(val: number);
+        /**
+         * @read-only
+         */
         get filename(): string;
+        /**
+         * @read-only
+         */
         get green(): ColorXYZ;
         get kind(): number;
         set kind(val: number);
+        /**
+         * @read-only
+         */
         get red(): ColorXYZ;
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get temperature(): number;
         get version(): number;
         set version(val: number);
+        /**
+         * @read-only
+         */
         get white(): ColorXYZ;
 
         /**
@@ -3552,6 +3622,7 @@ export namespace Colord {
         /**
          * The instrument that created the results, e.g. "huey"
          * @since 0.1.20
+         * @read-only
          */
         get instrument(): string;
         /**
@@ -3563,26 +3634,31 @@ export namespace Colord {
         /**
          * If the results file is normalized.
          * @since 0.1.20
+         * @read-only
          */
         get normalized(): boolean;
         /**
          * The framework that created the results, e.g. "cd-self-test"
          * @since 0.1.20
+         * @read-only
          */
         get originator(): string;
         /**
          * The reference that created the results, e.g. "colormunki"
          * @since 0.1.20
+         * @read-only
          */
         get reference(): string;
         /**
          * If the results file is spectral.
          * @since 0.1.20
+         * @read-only
          */
         get spectral(): boolean;
         /**
          * The file title, e.g. "Factor calibration".
          * @since 0.1.20
+         * @read-only
          */
         get title(): string;
 
@@ -3820,6 +3896,7 @@ export namespace Colord {
              * The ::changed signal is emitted when the profile data has changed.
              * @signal
              * @since 0.1.0
+             * @run-last
              */
             changed: () => void;
             'notify::colorspace': (pspec: GObject.ParamSpec) => void;
@@ -3874,56 +3951,67 @@ export namespace Colord {
         /**
          * The profile colorspace.
          * @since 0.1.2
+         * @read-only
          */
         get colorspace(): string;
         /**
          * The if the object path has been connected as is valid for use.
          * @since 0.1.9
+         * @read-only
          */
         get connected(): string;
         /**
          * When the profile was created.
          * @since 0.1.8
+         * @read-only
          */
         get created(): number;
         /**
          * The profile filename.
          * @since 0.1.0
+         * @read-only
          */
         get filename(): string;
         /**
          * The profile format.
          * @since 0.1.4
+         * @read-only
          */
         get format(): string;
         /**
          * If the profile has a VCGT table.
          * @since 0.1.2
+         * @read-only
          */
         get has_vcgt(): string;
         /**
          * If the profile has a VCGT table.
          * @since 0.1.2
+         * @read-only
          */
         get hasVcgt(): string;
         /**
          * The profile ID.
          * @since 0.1.0
+         * @read-only
          */
         get id(): string;
         /**
          * If the profile is installed system wide for all users.
          * @since 0.1.2
+         * @read-only
          */
         get is_system_wide(): string;
         /**
          * If the profile is installed system wide for all users.
          * @since 0.1.2
+         * @read-only
          */
         get isSystemWide(): string;
         /**
          * The profile kind.
          * @since 0.1.1
+         * @read-only
          */
         get kind(): string;
         /**
@@ -3941,26 +4029,31 @@ export namespace Colord {
         /**
          * The profile owner, e.g. %500.
          * @since 0.1.13
+         * @read-only
          */
         get owner(): number;
         /**
          * The profile qualifier.
          * @since 0.1.0
+         * @read-only
          */
         get qualifier(): string;
         /**
          * The profile scope, e.g. {@link Colord.ObjectScope.TEMP}.
          * @since 0.1.10
+         * @read-only
          */
         get scope(): number;
         /**
          * The profile title.
          * @since 0.1.0
+         * @read-only
          */
         get title(): string;
         /**
          * The profile warnings, e.g. "vcgt-non-monotonic".
          * @since 0.1.25
+         * @read-only
          */
         get warnings(): string[];
 
@@ -4313,6 +4406,7 @@ export namespace Colord {
              * The ::button-pressed signal is emitted when the button has been pressed.
              * @signal
              * @since 0.1.6
+             * @run-last
              */
             'button-pressed': () => void;
             'notify::connected': (pspec: GObject.ParamSpec) => void;
@@ -4359,41 +4453,49 @@ export namespace Colord {
         /**
          * The if the object path has been connected as is valid for use.
          * @since 0.1.9
+         * @read-only
          */
         get connected(): string;
         /**
          * If the sensor has a native driver.
          * @since 0.1.26
+         * @read-only
          */
         get embedded(): string;
         /**
          * The object ID of the remote object
          * @since 0.1.26
+         * @read-only
          */
         get id(): string;
         /**
          * The sensor kind.
          * @since 0.1.6
+         * @read-only
          */
         get kind(): string;
         /**
          * If the sensor is locked.
          * @since 0.1.6
+         * @read-only
          */
         get locked(): string;
         /**
          * The sensor mode.
          * @since 0.1.6
+         * @read-only
          */
         get mode(): string;
         /**
          * The sensor model.
          * @since 0.1.6
+         * @read-only
          */
         get model(): string;
         /**
          * If the sensor has a native driver.
          * @since 0.1.6
+         * @read-only
          */
         get native(): string;
         /**
@@ -4411,16 +4513,19 @@ export namespace Colord {
         /**
          * The sensor ID.
          * @since 0.1.6
+         * @read-only
          */
         get serial(): string;
         /**
          * The sensor state.
          * @since 0.1.6
+         * @read-only
          */
         get state(): string;
         /**
          * The sensor vendor.
          * @since 0.1.6
+         * @read-only
          */
         get vendor(): string;
 

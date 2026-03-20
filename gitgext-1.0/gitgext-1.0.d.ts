@@ -32,6 +32,9 @@ export namespace GitgExt {
      * GitgExt-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SelectionMode {
         export const $gtype: GObject.GType<SelectionMode>;
     }
@@ -62,6 +65,9 @@ export namespace GitgExt {
     interface RefNameEditingDone {
         (new_name: string, cancelled: boolean): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace ExternalChangeHint {
         export const $gtype: GObject.GType<ExternalChangeHint>;
     }
@@ -302,6 +308,9 @@ export namespace GitgExt {
         set objectPath(val: string);
         get method(): string;
         set method(val: string);
+        /**
+         * @read-only
+         */
         get id(): string;
 
         /**
@@ -1077,15 +1086,39 @@ export namespace GitgExt {
 
         get repository(): Gitg.Repository;
         set repository(val: Gitg.Repository);
+        /**
+         * @read-only
+         */
         get message_bus(): MessageBus;
+        /**
+         * @read-only
+         */
         get messageBus(): MessageBus;
+        /**
+         * @read-only
+         */
         get current_activity(): Activity;
+        /**
+         * @read-only
+         */
         get currentActivity(): Activity;
+        /**
+         * @read-only
+         */
         get environment(): Gee.Map;
+        /**
+         * @read-only
+         */
         get notifications(): Notifications;
         get busy(): boolean;
         set busy(val: boolean);
+        /**
+         * @read-only
+         */
         get remote_lookup(): RemoteLookup;
+        /**
+         * @read-only
+         */
         get remoteLookup(): RemoteLookup;
 
         // Methods
@@ -1414,6 +1447,9 @@ export namespace GitgExt {
     interface Notification extends GObject.Object, Notification.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get widget(): Gtk.Widget;
 
         // Methods
@@ -1518,9 +1554,21 @@ export namespace GitgExt {
     interface Preferences extends GObject.Object, Preferences.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get id(): string;
+        /**
+         * @read-only
+         */
         get display_name(): string;
+        /**
+         * @read-only
+         */
         get displayName(): string;
+        /**
+         * @read-only
+         */
         get widget(): Gtk.Widget;
 
         // Methods
@@ -1609,6 +1657,9 @@ export namespace GitgExt {
 
         get application(): Application;
         set application(val: Application);
+        /**
+         * @read-only
+         */
         get references(): Gee.List;
 
         // Methods
@@ -1830,9 +1881,21 @@ export namespace GitgExt {
         set search_visible(val: boolean);
         get searchVisible(): boolean;
         set searchVisible(val: boolean);
+        /**
+         * @read-only
+         */
         get search_available(): boolean;
+        /**
+         * @read-only
+         */
         get searchAvailable(): boolean;
+        /**
+         * @write-only
+         */
         set search_entry(val: Gtk.Entry);
+        /**
+         * @write-only
+         */
         set searchEntry(val: Gtk.Entry);
 
         // Methods
@@ -1917,11 +1980,29 @@ export namespace GitgExt {
         set selectable_mode(val: SelectionMode);
         get selectableMode(): SelectionMode;
         set selectableMode(val: SelectionMode);
+        /**
+         * @read-only
+         */
         get selectable_available(): boolean;
+        /**
+         * @read-only
+         */
         get selectableAvailable(): boolean;
+        /**
+         * @read-only
+         */
         get selectable_mode_tooltip(): string;
+        /**
+         * @read-only
+         */
         get selectableModeTooltip(): string;
+        /**
+         * @read-only
+         */
         get action_widget(): Gtk.Widget;
+        /**
+         * @read-only
+         */
         get actionWidget(): Gtk.Widget;
 
         // Methods
@@ -2023,9 +2104,21 @@ export namespace GitgExt {
 
         get application(): Application;
         set application(val: Application);
+        /**
+         * @read-only
+         */
         get id(): string;
+        /**
+         * @read-only
+         */
         get display_name(): string;
+        /**
+         * @read-only
+         */
         get displayName(): string;
+        /**
+         * @read-only
+         */
         get description(): string;
 
         // Methods

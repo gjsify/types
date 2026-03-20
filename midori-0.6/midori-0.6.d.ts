@@ -34,6 +34,9 @@ export namespace Midori {
      * Midori-0.6
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DebugFlags {
         export const $gtype: GObject.GType<DebugFlags>;
     }
@@ -46,6 +49,9 @@ export namespace Midori {
         HISTORY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StartupType {
         export const $gtype: GObject.GType<StartupType>;
     }
@@ -60,6 +66,9 @@ export namespace Midori {
         DELAYED_PAGES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ProxyType {
         export const $gtype: GObject.GType<ProxyType>;
     }
@@ -2000,8 +2009,17 @@ export namespace Midori {
         set first_use(val: boolean);
         get firstUse(): boolean;
         set firstUse(val: boolean);
+        /**
+         * @read-only
+         */
         get last_row_id(): number;
+        /**
+         * @read-only
+         */
         get lastRowId(): number;
+        /**
+         * @read-only
+         */
         get errmsg(): string;
 
         /**
@@ -3043,8 +3061,17 @@ export namespace Midori {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get content_type(): string;
+        /**
+         * @read-only
+         */
         get contentType(): string;
+        /**
+         * @read-only
+         */
         get icon(): Gio.Icon;
         get filename(): string;
         set filename(val: string);
@@ -3346,6 +3373,9 @@ export namespace Midori {
 
         // Properties
 
+        /**
+         * @write-only
+         */
         set surface(val: cairo.Surface);
         get uri(): string;
         set uri(val: string);
@@ -5365,6 +5395,9 @@ export namespace Midori {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get id(): string;
         get progress(): number;
         set progress(val: number);

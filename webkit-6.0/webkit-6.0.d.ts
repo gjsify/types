@@ -32,6 +32,9 @@ export namespace WebKit {
      * WebKit-6.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AuthenticationScheme {
         export const $gtype: GObject.GType<AuthenticationScheme>;
     }
@@ -84,6 +87,9 @@ export namespace WebKit {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AutomationBrowsingContextPresentation {
         export const $gtype: GObject.GType<AutomationBrowsingContextPresentation>;
     }
@@ -104,6 +110,9 @@ export namespace WebKit {
         TAB,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AutoplayPolicy {
         export const $gtype: GObject.GType<AutoplayPolicy>;
     }
@@ -129,6 +138,9 @@ export namespace WebKit {
         DENY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CacheModel {
         export const $gtype: GObject.GType<CacheModel>;
     }
@@ -158,6 +170,9 @@ export namespace WebKit {
         DOCUMENT_BROWSER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ContextMenuAction {
         export const $gtype: GObject.GType<ContextMenuAction>;
     }
@@ -358,6 +373,9 @@ export namespace WebKit {
         CUSTOM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CookieAcceptPolicy {
         export const $gtype: GObject.GType<CookieAcceptPolicy>;
     }
@@ -381,6 +399,9 @@ export namespace WebKit {
         NO_THIRD_PARTY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CookiePersistentStorage {
         export const $gtype: GObject.GType<CookiePersistentStorage>;
     }
@@ -402,6 +423,9 @@ export namespace WebKit {
         SQLITE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CredentialPersistence {
         export const $gtype: GObject.GType<CredentialPersistence>;
     }
@@ -494,6 +518,9 @@ export namespace WebKit {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FeatureStatus {
         export const $gtype: GObject.GType<FeatureStatus>;
     }
@@ -556,6 +583,9 @@ export namespace WebKit {
         MATURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace HardwareAccelerationPolicy {
         export const $gtype: GObject.GType<HardwareAccelerationPolicy>;
     }
@@ -576,6 +606,9 @@ export namespace WebKit {
         NEVER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputPurpose {
         export const $gtype: GObject.GType<InputPurpose>;
     }
@@ -616,6 +649,9 @@ export namespace WebKit {
         PASSWORD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InsecureContentEvent {
         export const $gtype: GObject.GType<InsecureContentEvent>;
     }
@@ -676,6 +712,9 @@ export namespace WebKit {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LoadEvent {
         export const $gtype: GObject.GType<LoadEvent>;
     }
@@ -712,6 +751,9 @@ export namespace WebKit {
         FINISHED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MediaCaptureState {
         export const $gtype: GObject.GType<MediaCaptureState>;
     }
@@ -762,6 +804,9 @@ export namespace WebKit {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NavigationType {
         export const $gtype: GObject.GType<NavigationType>;
     }
@@ -839,6 +884,9 @@ export namespace WebKit {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NetworkProxyMode {
         export const $gtype: GObject.GType<NetworkProxyMode>;
     }
@@ -863,6 +911,9 @@ export namespace WebKit {
         CUSTOM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PermissionState {
         export const $gtype: GObject.GType<PermissionState>;
     }
@@ -887,6 +938,9 @@ export namespace WebKit {
         PROMPT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PolicyDecisionType {
         export const $gtype: GObject.GType<PolicyDecisionType>;
     }
@@ -1006,6 +1060,9 @@ export namespace WebKit {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PrintOperationResponse {
         export const $gtype: GObject.GType<PrintOperationResponse>;
     }
@@ -1026,6 +1083,9 @@ export namespace WebKit {
         CANCEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SaveMode {
         export const $gtype: GObject.GType<SaveMode>;
     }
@@ -1042,6 +1102,9 @@ export namespace WebKit {
         MHTML,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScriptDialogType {
         export const $gtype: GObject.GType<ScriptDialogType>;
     }
@@ -1099,6 +1162,9 @@ export namespace WebKit {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SnapshotRegion {
         export const $gtype: GObject.GType<SnapshotRegion>;
     }
@@ -1120,6 +1186,9 @@ export namespace WebKit {
         FULL_DOCUMENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TLSErrorsPolicy {
         export const $gtype: GObject.GType<TLSErrorsPolicy>;
     }
@@ -1172,6 +1241,9 @@ export namespace WebKit {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UserContentInjectedFrames {
         export const $gtype: GObject.GType<UserContentInjectedFrames>;
     }
@@ -1222,6 +1294,9 @@ export namespace WebKit {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UserScriptInjectionTime {
         export const $gtype: GObject.GType<UserScriptInjectionTime>;
     }
@@ -1244,6 +1319,9 @@ export namespace WebKit {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UserStyleLevel {
         export const $gtype: GObject.GType<UserStyleLevel>;
     }
@@ -1305,6 +1383,9 @@ export namespace WebKit {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebExtensionMode {
         export const $gtype: GObject.GType<WebExtensionMode>;
     }
@@ -1330,6 +1411,9 @@ export namespace WebKit {
         MANIFESTV3,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebProcessTerminationReason {
         export const $gtype: GObject.GType<WebProcessTerminationReason>;
     }
@@ -1597,6 +1681,9 @@ export namespace WebKit {
     interface URISchemeRequestCallback {
         (request: URISchemeRequest): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace EditorTypingAttributes {
         export const $gtype: GObject.GType<EditorTypingAttributes>;
     }
@@ -1629,6 +1716,9 @@ export namespace WebKit {
         STRIKETHROUGH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FindOptions {
         export const $gtype: GObject.GType<FindOptions>;
     }
@@ -1668,6 +1758,9 @@ export namespace WebKit {
         WRAP_AROUND,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace HitTestResultContext {
         export const $gtype: GObject.GType<HitTestResultContext>;
     }
@@ -1707,6 +1800,9 @@ export namespace WebKit {
         SELECTION,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace InputHints {
         export const $gtype: GObject.GType<InputHints>;
     }
@@ -1747,6 +1843,9 @@ export namespace WebKit {
         INHIBIT_OSK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SnapshotOptions {
         export const $gtype: GObject.GType<SnapshotOptions>;
     }
@@ -1773,6 +1872,9 @@ export namespace WebKit {
         TRANSPARENT_BACKGROUND,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WebExtensionMatchPatternOptions {
         export const $gtype: GObject.GType<WebExtensionMatchPatternOptions>;
     }
@@ -1801,6 +1903,9 @@ export namespace WebKit {
         MATCH_BIDIRECTIONALLY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WebsiteDataTypes {
         export const $gtype: GObject.GType<WebsiteDataTypes>;
     }
@@ -1874,6 +1979,7 @@ export namespace WebKit {
              * this signal to save the credentials.
              * @signal
              * @since 2.30
+             * @run-last
              */
             authenticated: (arg0: Credential) => void;
             /**
@@ -1882,6 +1988,7 @@ export namespace WebKit {
              * dialog in case of page load failure for example.
              * @signal
              * @since 2.2
+             * @run-last
              */
             cancelled: () => void;
         }
@@ -2075,6 +2182,8 @@ export namespace WebKit {
              * or tab shouldn't be focused.
              * @signal
              * @since 2.18
+             * @detailed
+             * @run-last
              */
             'create-web-view': () => WebView;
             /**
@@ -2082,6 +2191,7 @@ export namespace WebKit {
              * It allows clients to perform any cleanup tasks before the session is destroyed.
              * @signal
              * @since 2.46
+             * @run-last
              */
             'will-close': () => void;
             'notify::id': (pspec: GObject.ParamSpec) => void;
@@ -2100,6 +2210,8 @@ export namespace WebKit {
              * or tab shouldn't be focused.
              * @signal
              * @since 2.18
+             * @detailed
+             * @run-last
              */
             'create-web-view::id': () => WebView;
         }
@@ -2131,6 +2243,7 @@ export namespace WebKit {
         /**
          * The session unique identifier.
          * @since 2.18
+         * @construct-only
          */
         get id(): string;
 
@@ -2208,6 +2321,7 @@ export namespace WebKit {
              * `null` when only the current item is updated. Items are only removed
              * when the list is cleared or the maximum items limit is reached.
              * @signal
+             * @run-last
              */
             changed: (arg0: BackForwardListItem | null, arg1: any | null) => void;
         }
@@ -2948,6 +3062,7 @@ export namespace WebKit {
              * color input element is removed from the DOM.
              * @signal
              * @since 2.8
+             * @run-last
              */
             finished: () => void;
             'notify::rgba': (pspec: GObject.ParamSpec) => void;
@@ -3352,6 +3467,7 @@ export namespace WebKit {
             /**
              * This signal is emitted when cookies are added, removed or modified.
              * @signal
+             * @run-last
              */
             changed: () => void;
         }
@@ -4248,6 +4364,7 @@ export namespace WebKit {
              * {@link WebKit.Download.SignalSignatures.received_data | WebKit.Download::received-data} to notify that destination file has been
              * created successfully at `destination`.
              * @signal
+             * @run-last
              */
             'created-destination': (arg0: string) => void;
             /**
@@ -4263,6 +4380,7 @@ export namespace WebKit {
              * In this case, the download will not proceed until the destination is set
              * or cancelled with `webkit_download_cancel()`.
              * @signal
+             * @run-last
              */
             'decide-destination': (arg0: string) => boolean | void;
             /**
@@ -4273,12 +4391,14 @@ export namespace WebKit {
              * {@link WebKit.DownloadError.CANCELLED_BY_USER}. The download operation finishes
              * after an error and {@link WebKit.Download.SignalSignatures.finished | WebKit.Download::finished} signal is emitted after this one.
              * @signal
+             * @run-last
              */
             failed: (arg0: GLib.Error) => void;
             /**
              * This signal is emitted when download finishes successfully or due to an error.
              * In case of errors {@link WebKit.Download.SignalSignatures.failed | WebKit.Download::failed} signal is emitted before this one.
              * @signal
+             * @run-last
              */
             finished: () => void;
             /**
@@ -4286,6 +4406,7 @@ export namespace WebKit {
              * every time new data has been written to the destination. It's
              * useful to know the progress of the download operation.
              * @signal
+             * @run-last
              */
             'received-data': (arg0: number) => void;
             'notify::allow-overwrite': (pspec: GObject.ParamSpec) => void;
@@ -4339,6 +4460,7 @@ export namespace WebKit {
         set allowOverwrite(val: boolean);
         /**
          * The local path to where the download will be saved.
+         * @read-only
          */
         get destination(): string;
         /**
@@ -4348,6 +4470,7 @@ export namespace WebKit {
          * a download.
          * If you need a more accurate progress information you can connect to
          * {@link WebKit.Download.SignalSignatures.received_data | WebKit.Download::received-data} signal to track the progress.
+         * @read-only
          */
         get estimated_progress(): number;
         /**
@@ -4357,10 +4480,12 @@ export namespace WebKit {
          * a download.
          * If you need a more accurate progress information you can connect to
          * {@link WebKit.Download.SignalSignatures.received_data | WebKit.Download::received-data} signal to track the progress.
+         * @read-only
          */
         get estimatedProgress(): number;
         /**
          * The {@link WebKit.URIResponse} associated with this download.
+         * @read-only
          */
         get response(): URIResponse;
 
@@ -4510,6 +4635,7 @@ export namespace WebKit {
              * Emitted when the `WebKitEdtorState` is changed.
              * @signal
              * @since 2.44
+             * @run-last
              */
             changed: () => void;
             'notify::typing-attributes': (pspec: GObject.ParamSpec) => void;
@@ -4541,12 +4667,14 @@ export namespace WebKit {
          * Bitmask of {@link WebKit.EditorTypingAttributes} flags.
          * See `webkit_editor_state_get_typing_attributes()` for more information.
          * @since 2.10
+         * @read-only
          */
         get typing_attributes(): number;
         /**
          * Bitmask of {@link WebKit.EditorTypingAttributes} flags.
          * See `webkit_editor_state_get_typing_attributes()` for more information.
          * @since 2.10
+         * @read-only
          */
         get typingAttributes(): number;
 
@@ -4636,6 +4764,7 @@ export namespace WebKit {
              * {@link WebKit.WebView} it's easier to use the {@link WebKit.WebView.favicon}
              * property. See `webkit_web_view_get_favicon()` for more details.
              * @signal
+             * @run-last
              */
             'favicon-changed': (arg0: string, arg1: string) => void;
         }
@@ -4822,18 +4951,21 @@ export namespace WebKit {
          * The filter currently associated with the request. See
          * `webkit_file_chooser_request_get_mime_types_filter()` for more
          * details.
+         * @read-only
          */
         get filter(): Gtk.FileFilter;
         /**
          * A `null`-terminated array of strings containing the list of MIME
          * types the file chooser dialog should handle. See
          * `webkit_file_chooser_request_get_mime_types()` for more details.
+         * @read-only
          */
         get mime_types(): string[];
         /**
          * A `null`-terminated array of strings containing the list of MIME
          * types the file chooser dialog should handle. See
          * `webkit_file_chooser_request_get_mime_types()` for more details.
+         * @read-only
          */
         get mimeTypes(): string[];
         /**
@@ -4841,6 +4973,7 @@ export namespace WebKit {
          * files. See
          * `webkit_file_chooser_request_get_select_multiple()` for
          * more details.
+         * @read-only
          */
         get select_multiple(): boolean;
         /**
@@ -4848,18 +4981,21 @@ export namespace WebKit {
          * files. See
          * `webkit_file_chooser_request_get_select_multiple()` for
          * more details.
+         * @read-only
          */
         get selectMultiple(): boolean;
         /**
          * A `null`-terminated array of strings containing the list of
          * selected files associated to the current request. See
          * `webkit_file_chooser_request_get_selected_files()` for more details.
+         * @read-only
          */
         get selected_files(): string[];
         /**
          * A `null`-terminated array of strings containing the list of
          * selected files associated to the current request. See
          * `webkit_file_chooser_request_get_selected_files()` for more details.
+         * @read-only
          */
         get selectedFiles(): string[];
 
@@ -4977,6 +5113,7 @@ export namespace WebKit {
              * counted the number of matches for a given text after a call
              * to `webkit_find_controller_count_matches()`.
              * @signal
+             * @run-last
              */
             'counted-matches': (arg0: number) => void;
             /**
@@ -4986,6 +5123,7 @@ export namespace WebKit {
              * `webkit_find_controller_search()`, `webkit_find_controller_search_next()`
              * or `webkit_find_controller_search_previous()`.
              * @signal
+             * @run-last
              */
             'failed-to-find-text': () => void;
             /**
@@ -4995,6 +5133,7 @@ export namespace WebKit {
              * `webkit_find_controller_search_next()` or
              * `webkit_find_controller_search_previous()`.
              * @signal
+             * @run-last
              */
             'found-text': (arg0: number) => void;
             'notify::max-match-count': (pspec: GObject.ParamSpec) => void;
@@ -5036,26 +5175,32 @@ export namespace WebKit {
 
         /**
          * The maximum number of matches to report for a given search.
+         * @read-only
          */
         get max_match_count(): number;
         /**
          * The maximum number of matches to report for a given search.
+         * @read-only
          */
         get maxMatchCount(): number;
         /**
          * The options to be used in the search operation.
+         * @read-only
          */
         get options(): FindOptions;
         /**
          * The current search text for this {@link WebKit.FindController}.
+         * @read-only
          */
         get text(): string;
         /**
          * The {@link WebKit.WebView} this controller is associated to.
+         * @construct-only
          */
         get web_view(): WebView;
         /**
          * The {@link WebKit.WebView} this controller is associated to.
+         * @construct-only
          */
         get webView(): WebView;
 
@@ -5295,6 +5440,7 @@ export namespace WebKit {
              * using GeoClue if available.
              * @signal
              * @since 2.26
+             * @run-last
              */
             start: () => boolean | void;
             /**
@@ -5302,6 +5448,7 @@ export namespace WebKit {
              * position updates anymore.
              * @signal
              * @since 2.26
+             * @run-last
              */
             stop: () => void;
             'notify::enable-high-accuracy': (pspec: GObject.ParamSpec) => void;
@@ -5337,6 +5484,7 @@ export namespace WebKit {
          * set to `true` when a {@link WebKit.GeolocationManager} needs to get accurate position updates.
          * You can connect to notify::enable-high-accuracy signal to monitor it.
          * @since 2.26
+         * @read-only
          */
         get enable_high_accuracy(): boolean;
         /**
@@ -5344,6 +5492,7 @@ export namespace WebKit {
          * set to `true` when a {@link WebKit.GeolocationManager} needs to get accurate position updates.
          * You can connect to notify::enable-high-accuracy signal to monitor it.
          * @since 2.26
+         * @read-only
          */
         get enableHighAccuracy(): boolean;
 
@@ -6006,56 +6155,67 @@ export namespace WebKit {
         /**
          * Bitmask of {@link WebKit.HitTestResultContext} flags representing
          * the context of the {@link WebKit.HitTestResult}.
+         * @construct-only
          */
         get context(): number;
         /**
          * The URI of the image if flag {@link WebKit.HitTestResultContext.IMAGE}
          * is present in {@link WebKit.HitTestResult.context}
+         * @construct-only
          */
         get image_uri(): string;
         /**
          * The URI of the image if flag {@link WebKit.HitTestResultContext.IMAGE}
          * is present in {@link WebKit.HitTestResult.context}
+         * @construct-only
          */
         get imageUri(): string;
         /**
          * The label of the link if flag {@link WebKit.HitTestResultContext.LINK}
          * is present in {@link WebKit.HitTestResult.context}
+         * @construct-only
          */
         get link_label(): string;
         /**
          * The label of the link if flag {@link WebKit.HitTestResultContext.LINK}
          * is present in {@link WebKit.HitTestResult.context}
+         * @construct-only
          */
         get linkLabel(): string;
         /**
          * The title of the link if flag {@link WebKit.HitTestResultContext.LINK}
          * is present in {@link WebKit.HitTestResult.context}
+         * @construct-only
          */
         get link_title(): string;
         /**
          * The title of the link if flag {@link WebKit.HitTestResultContext.LINK}
          * is present in {@link WebKit.HitTestResult.context}
+         * @construct-only
          */
         get linkTitle(): string;
         /**
          * The URI of the link if flag {@link WebKit.HitTestResultContext.LINK}
          * is present in {@link WebKit.HitTestResult.context}
+         * @construct-only
          */
         get link_uri(): string;
         /**
          * The URI of the link if flag {@link WebKit.HitTestResultContext.LINK}
          * is present in {@link WebKit.HitTestResult.context}
+         * @construct-only
          */
         get linkUri(): string;
         /**
          * The URI of the media if flag {@link WebKit.HitTestResultContext.MEDIA}
          * is present in {@link WebKit.HitTestResult.context}
+         * @construct-only
          */
         get media_uri(): string;
         /**
          * The URI of the media if flag {@link WebKit.HitTestResultContext.MEDIA}
          * is present in {@link WebKit.HitTestResult.context}
+         * @construct-only
          */
         get mediaUri(): string;
 
@@ -6174,6 +6334,7 @@ export namespace WebKit {
              * final result of preediting.
              * @signal
              * @since 2.28
+             * @run-last
              */
             committed: (arg0: string) => void;
             /**
@@ -6181,6 +6342,7 @@ export namespace WebKit {
              * If `offset` is a negative value, it means a position before the cursor.
              * @signal
              * @since 2.28
+             * @run-last
              */
             'delete-surrounding': (arg0: number, arg1: number) => void;
             /**
@@ -6189,18 +6351,21 @@ export namespace WebKit {
              * `webkit_input_method_context_get_preedit()` returns the empty string.
              * @signal
              * @since 2.28
+             * @run-last
              */
             'preedit-changed': () => void;
             /**
              * Emitted when a preediting sequence has been completed or canceled.
              * @signal
              * @since 2.28
+             * @run-last
              */
             'preedit-finished': () => void;
             /**
              * Emitted when a new preediting sequence starts.
              * @signal
              * @since 2.28
+             * @run-last
              */
             'preedit-started': () => void;
             'notify::input-hints': (pspec: GObject.ParamSpec) => void;
@@ -7025,11 +7190,13 @@ export namespace WebKit {
         /**
          * The {@link WebKit.NavigationAction} that triggered this policy decision.
          * @since 2.6
+         * @read-only
          */
         get navigation_action(): NavigationAction;
         /**
          * The {@link WebKit.NavigationAction} that triggered this policy decision.
          * @since 2.6
+         * @read-only
          */
         get navigationAction(): NavigationAction;
 
@@ -7087,6 +7254,7 @@ export namespace WebKit {
              * This signal is emitted when a new download request is made.
              * @signal
              * @since 2.40
+             * @run-last
              */
             'download-started': (arg0: Download) => void;
             'notify::cache-directory': (pspec: GObject.ParamSpec) => void;
@@ -7119,31 +7287,37 @@ export namespace WebKit {
         /**
          * The base caches directory used to create the {@link WebKit.WebsiteDataManager}. If `null`, a default location will be used.
          * @since 2.40
+         * @construct-only
          */
         set cache_directory(val: string);
         /**
          * The base caches directory used to create the {@link WebKit.WebsiteDataManager}. If `null`, a default location will be used.
          * @since 2.40
+         * @construct-only
          */
         set cacheDirectory(val: string);
         /**
          * The base data directory used to create the {@link WebKit.WebsiteDataManager}. If `null`, a default location will be used.
          * @since 2.40
+         * @construct-only
          */
         set data_directory(val: string);
         /**
          * The base data directory used to create the {@link WebKit.WebsiteDataManager}. If `null`, a default location will be used.
          * @since 2.40
+         * @construct-only
          */
         set dataDirectory(val: string);
         /**
          * Whether to create an ephermeral {@link WebKit.WebsiteDataManager} for the session.
          * @since 2.40
+         * @construct-only
          */
         get is_ephemeral(): boolean;
         /**
          * Whether to create an ephermeral {@link WebKit.WebsiteDataManager} for the session.
          * @since 2.40
+         * @construct-only
          */
         get isEphemeral(): boolean;
 
@@ -7357,6 +7531,7 @@ export namespace WebKit {
              * Emitted when a notification has been clicked. See `webkit_notification_clicked()`.
              * @signal
              * @since 2.12
+             * @run-last
              */
             clicked: () => void;
             /**
@@ -7366,6 +7541,7 @@ export namespace WebKit {
              * support for it.
              * @signal
              * @since 2.8
+             * @run-last
              */
             closed: () => void;
             'notify::body': (pspec: GObject.ParamSpec) => void;
@@ -7397,21 +7573,25 @@ export namespace WebKit {
         /**
          * The body for the notification.
          * @since 2.8
+         * @read-only
          */
         get body(): string;
         /**
          * The unique id for the notification.
          * @since 2.8
+         * @read-only
          */
         get id(): number;
         /**
          * The tag identifier for the notification.
          * @since 2.16
+         * @read-only
          */
         get tag(): string;
         /**
          * The title for the notification.
          * @since 2.8
+         * @read-only
          */
         get title(): string;
 
@@ -8025,6 +8205,7 @@ export namespace WebKit {
              * element is detached from the current page.
              * @signal
              * @since 2.18
+             * @run-last
              */
             close: () => void;
         }
@@ -8766,12 +8947,14 @@ export namespace WebKit {
              * `WEBKIT_PRINT_ERROR`, contains further details of the failure.
              * The {@link WebKit.PrintOperation.SignalSignatures.finished | WebKit.PrintOperation::finished} signal is emitted after this one.
              * @signal
+             * @run-last
              */
             failed: (arg0: GLib.Error) => void;
             /**
              * Emitted when the print operation has finished doing everything
              * required for printing.
              * @signal
+             * @run-last
              */
             finished: () => void;
             'notify::page-setup': (pspec: GObject.ParamSpec) => void;
@@ -8827,10 +9010,12 @@ export namespace WebKit {
         set printSettings(val: Gtk.PrintSettings);
         /**
          * The {@link WebKit.WebView} that will be printed.
+         * @construct-only
          */
         get web_view(): WebView;
         /**
          * The {@link WebKit.WebView} that will be printed.
+         * @construct-only
          */
         get webView(): WebView;
 
@@ -8980,11 +9165,13 @@ export namespace WebKit {
         /**
          * This property contains the {@link WebKit.URIRequest} associated with this
          * policy decision.
+         * @read-only
          */
         get request(): URIRequest;
         /**
          * This property contains the {@link WebKit.URIResponse} associated with this
          * policy decision.
+         * @read-only
          */
         get response(): URIResponse;
 
@@ -11149,48 +11336,59 @@ export namespace WebKit {
 
         /**
          * The expected content length of the response.
+         * @read-only
          */
         get content_length(): number;
         /**
          * The expected content length of the response.
+         * @read-only
          */
         get contentLength(): number;
         /**
          * The HTTP headers of the response, or `null` if the response is not an HTTP response.
          * @since 2.6
+         * @read-only
          */
         get http_headers(): Soup.MessageHeaders;
         /**
          * The HTTP headers of the response, or `null` if the response is not an HTTP response.
          * @since 2.6
+         * @read-only
          */
         get httpHeaders(): Soup.MessageHeaders;
         /**
          * The MIME type of the response.
+         * @read-only
          */
         get mime_type(): string;
         /**
          * The MIME type of the response.
+         * @read-only
          */
         get mimeType(): string;
         /**
          * The status code of the response as returned by the server.
+         * @read-only
          */
         get status_code(): number;
         /**
          * The status code of the response as returned by the server.
+         * @read-only
          */
         get statusCode(): number;
         /**
          * The suggested filename for the URI response.
+         * @read-only
          */
         get suggested_filename(): string;
         /**
          * The suggested filename for the URI response.
+         * @read-only
          */
         get suggestedFilename(): string;
         /**
          * The URI for which the response was made.
+         * @read-only
          */
         get uri(): string;
 
@@ -11431,16 +11629,19 @@ export namespace WebKit {
         /**
          * The input stream to read from.
          * @since 2.36
+         * @construct-only
          */
         set stream(val: Gio.InputStream);
         /**
          * The input stream length in bytes, `-1` for unknown length.
          * @since 2.36
+         * @construct-only
          */
         set stream_length(val: number);
         /**
          * The input stream length in bytes, `-1` for unknown length.
          * @since 2.36
+         * @construct-only
          */
         set streamLength(val: number);
 
@@ -11547,6 +11748,7 @@ export namespace WebKit {
          * The directory used for filter storage. This path is used as the base
          * directory where user content filters are stored on disk.
          * @since 2.24
+         * @construct-only
          */
         get path(): string;
 
@@ -11892,6 +12094,8 @@ export namespace WebKit {
              * `webkit_user_content_manager_register_script_message_handler()`
              * @signal
              * @since 2.8
+             * @detailed
+             * @run-last
              */
             'script-message-received': (arg0: JavaScriptCore.Value) => void;
             /**
@@ -11909,6 +12113,8 @@ export namespace WebKit {
              * `g_object_ref()` on the `reply` and returning `true`.
              * @signal
              * @since 2.40
+             * @detailed
+             * @run-last
              */
             'script-message-with-reply-received': (
                 arg0: JavaScriptCore.Value,
@@ -12157,21 +12363,25 @@ export namespace WebKit {
         /**
          * Whether the media device to which the permission was requested has a microphone or not.
          * @since 2.8
+         * @read-only
          */
         get is_for_audio_device(): boolean;
         /**
          * Whether the media device to which the permission was requested has a microphone or not.
          * @since 2.8
+         * @read-only
          */
         get isForAudioDevice(): boolean;
         /**
          * Whether the media device to which the permission was requested has a video capture capability or not.
          * @since 2.8
+         * @read-only
          */
         get is_for_video_device(): boolean;
         /**
          * Whether the media device to which the permission was requested has a video capture capability or not.
          * @since 2.8
+         * @read-only
          */
         get isForVideoDevice(): boolean;
 
@@ -12719,16 +12929,19 @@ export namespace WebKit {
         /**
          * The UNIX file descriptors of the user message.
          * @since 2.28
+         * @construct-only
          */
         get fd_list(): Gio.UnixFDList;
         /**
          * The UNIX file descriptors of the user message.
          * @since 2.28
+         * @construct-only
          */
         get fdList(): Gio.UnixFDList;
         /**
          * The name of the user message.
          * @since 2.28
+         * @construct-only
          */
         get name(): string;
         /**
@@ -12736,6 +12949,7 @@ export namespace WebKit {
          * if the message doesn't include parameters. Note that only complete types are
          * allowed.
          * @since 2.28
+         * @construct-only
          */
         get parameters(): GLib.Variant;
 
@@ -12820,6 +13034,7 @@ export namespace WebKit {
              * see `webkit_web_context_set_automation_allowed()` for more details.
              * @signal
              * @since 2.18
+             * @run-last
              */
             'automation-started': (arg0: AutomationSession) => void;
             /**
@@ -12833,6 +13048,7 @@ export namespace WebKit {
              * `webkit_web_context_initialize_notification_permissions()` again.
              * @signal
              * @since 2.16
+             * @run-last
              */
             'initialize-notification-permissions': () => void;
             /**
@@ -12842,6 +13058,7 @@ export namespace WebKit {
              * and `webkit_web_context_set_web_process_extensions_directory()`.
              * @signal
              * @since 2.4
+             * @run-last
              */
             'initialize-web-process-extensions': () => void;
             /**
@@ -12853,6 +13070,7 @@ export namespace WebKit {
              * `message` and returning `true`.
              * @signal
              * @since 2.28
+             * @run-last
              */
             'user-message-received': (arg0: UserMessage) => boolean | void;
             'notify::memory-pressure-settings': (pspec: GObject.ParamSpec) => void;
@@ -12905,11 +13123,13 @@ export namespace WebKit {
         /**
          * The {@link WebKit.MemoryPressureSettings} applied to the web processes created by this context.
          * @since 2.34
+         * @construct-only
          */
         set memory_pressure_settings(val: MemoryPressureSettings);
         /**
          * The {@link WebKit.MemoryPressureSettings} applied to the web processes created by this context.
          * @since 2.34
+         * @construct-only
          */
         set memoryPressureSettings(val: MemoryPressureSettings);
         /**
@@ -12922,6 +13142,7 @@ export namespace WebKit {
          * The expected values for this property are defined in the IANA timezone database. See this
          * wikipedia page for instance, https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.
          * @since 2.38
+         * @construct-only
          */
         get time_zone_override(): string;
         /**
@@ -12934,6 +13155,7 @@ export namespace WebKit {
          * The expected values for this property are defined in the IANA timezone database. See this
          * wikipedia page for instance, https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.
          * @since 2.38
+         * @construct-only
          */
         get timeZoneOverride(): string;
 
@@ -13236,6 +13458,7 @@ export namespace WebKit {
              * To prevent the inspector view from being attached you can connect to this
              * signal and simply return `true`.
              * @signal
+             * @run-last
              */
             attach: () => boolean | void;
             /**
@@ -13251,6 +13474,7 @@ export namespace WebKit {
              * calls `gtk_window_present()` on the current toplevel {@link Gtk.Window} of the
              * inspector view.
              * @signal
+             * @run-last
              */
             'bring-to-front': () => boolean | void;
             /**
@@ -13258,6 +13482,7 @@ export namespace WebKit {
              * inspector window, you should connect to this signal and destroy your
              * window.
              * @signal
+             * @run-last
              */
             closed: () => void;
             /**
@@ -13271,6 +13496,7 @@ export namespace WebKit {
              * To prevent the inspector view from being detached you can connect to this
              * signal and simply return `true`.
              * @signal
+             * @run-last
              */
             detach: () => boolean | void;
             /**
@@ -13284,6 +13510,7 @@ export namespace WebKit {
              * To prevent the inspector from being shown you can connect to this
              * signal and simply return `true`
              * @signal
+             * @run-last
              */
             'open-window': () => boolean | void;
             'notify::attached-height': (pspec: GObject.ParamSpec) => void;
@@ -13336,30 +13563,36 @@ export namespace WebKit {
 
         /**
          * The height that the inspector view should have when it is attached.
+         * @read-only
          */
         get attached_height(): number;
         /**
          * The height that the inspector view should have when it is attached.
+         * @read-only
          */
         get attachedHeight(): number;
         /**
          * Whether the `inspector` can be attached to the same window that contains
          * the inspected view.
          * @since 2.8
+         * @read-only
          */
         get can_attach(): boolean;
         /**
          * Whether the `inspector` can be attached to the same window that contains
          * the inspected view.
          * @since 2.8
+         * @read-only
          */
         get canAttach(): boolean;
         /**
          * The URI that is currently being inspected.
+         * @read-only
          */
         get inspected_uri(): string;
         /**
          * The URI that is currently being inspected.
+         * @read-only
          */
         get inspectedUri(): string;
 
@@ -13471,12 +13704,14 @@ export namespace WebKit {
              * This signal is emitted when an error occurs during the resource
              * load operation.
              * @signal
+             * @run-last
              */
             failed: (arg0: GLib.Error) => void;
             /**
              * This signal is emitted when a TLS error occurs during the resource load operation.
              * @signal
              * @since 2.8
+             * @run-last
              */
             'failed-with-tls-errors': (arg0: Gio.TlsCertificate, arg1: Gio.TlsCertificateFlags) => void;
             /**
@@ -13484,6 +13719,7 @@ export namespace WebKit {
              * or due to an error. In case of errors {@link WebKit.WebResource.SignalSignatures.failed | WebKit.WebResource::failed} signal
              * is emitted before this one.
              * @signal
+             * @run-last
              */
             finished: () => void;
             /**
@@ -13494,6 +13730,7 @@ export namespace WebKit {
              * `redirected_response` parameter containing the response
              * received by the server for the initial request.
              * @signal
+             * @run-last
              */
             'sent-request': (arg0: URIRequest, arg1: URIResponse) => void;
             'notify::response': (pspec: GObject.ParamSpec) => void;
@@ -13529,11 +13766,13 @@ export namespace WebKit {
 
         /**
          * The {@link WebKit.URIResponse} associated with this resource.
+         * @read-only
          */
         get response(): URIResponse;
         /**
          * The current active URI of the {@link WebKit.WebResource}.
          * See `webkit_web_resource_get_uri()` for more details.
+         * @read-only
          */
         get uri(): string;
 
@@ -13675,6 +13914,7 @@ export namespace WebKit {
              * dialog asynchronously for the user to interact with.
              * @signal
              * @since 2.2
+             * @run-last
              */
             authenticate: (arg0: AuthenticationRequest) => boolean | void;
             /**
@@ -13684,6 +13924,7 @@ export namespace WebKit {
              * It is the owner's responsibility to handle this signal to hide or
              * destroy the {@link WebKit.WebView}, if necessary.
              * @signal
+             * @run-last
              */
             close: () => void;
             /**
@@ -13721,12 +13962,14 @@ export namespace WebKit {
              * The proposed {@link WebKit.ContextMenu} passed in `context_menu` argument is only valid
              * during the signal emission.
              * @signal
+             * @run-last
              */
             'context-menu': (arg0: ContextMenu, arg1: HitTestResult) => boolean | void;
             /**
              * Emitted after {@link WebKit.WebView.SignalSignatures.context_menu | WebKit.WebView::context-menu} signal, if the context menu is shown,
              * to notify that the context menu is dismissed.
              * @signal
+             * @run-last
              */
             'context-menu-dismissed': () => void;
             /**
@@ -13746,6 +13989,7 @@ export namespace WebKit {
              * For creating views as response to automation tools requests, see the
              * {@link WebKit.AutomationSession.SignalSignatures.create_web_view | WebKit.AutomationSession::create-web-view} signal.
              * @signal
+             * @run-last
              */
             create: (arg0: NavigationAction) => Gtk.Widget;
             /**
@@ -13791,6 +14035,7 @@ export namespace WebKit {
              * default signal handler will simply call `webkit_policy_decision_use()`. Only the first
              * policy decision chosen for a given {@link WebKit.PolicyDecision} will have any affect.
              * @signal
+             * @run-last
              */
             'decide-policy': (arg0: PolicyDecision, arg1: PolicyDecisionType) => boolean | void;
             /**
@@ -13803,6 +14048,7 @@ export namespace WebKit {
              * (e.g. hide some widgets that would otherwise be part of the
              * full screen window).
              * @signal
+             * @run-last
              */
             'enter-fullscreen': () => boolean | void;
             /**
@@ -13811,6 +14057,7 @@ export namespace WebKit {
              * no longer emitted.
              * @signal
              * @deprecated since 2.46
+             * @run-last
              */
             'insecure-content-detected': (arg0: InsecureContentEvent) => void;
             /**
@@ -13819,6 +14066,7 @@ export namespace WebKit {
              * client code to restore widgets hidden during the
              * {@link WebKit.WebView.SignalSignatures.enter_fullscreen | WebKit.WebView::enter-fullscreen} stage for instance.
              * @signal
+             * @run-last
              */
             'leave-fullscreen': () => boolean | void;
             /**
@@ -13867,6 +14115,7 @@ export namespace WebKit {
              * }
              * ```
              * @signal
+             * @run-last
              */
             'load-changed': (arg0: LoadEvent) => void;
             /**
@@ -13881,6 +14130,7 @@ export namespace WebKit {
              * By default, if the signal is not handled, a stock error page will be displayed.
              * You need to handle the signal if you want to provide your own error page.
              * @signal
+             * @run-last
              */
             'load-failed': (arg0: LoadEvent, arg1: string, arg2: GLib.Error) => boolean | void;
             /**
@@ -13895,6 +14145,7 @@ export namespace WebKit {
              * will finish regardless of the returned value.
              * @signal
              * @since 2.6
+             * @run-last
              */
             'load-failed-with-tls-errors': (
                 arg0: string,
@@ -13911,6 +14162,7 @@ export namespace WebKit {
              * The signal is emitted again when the mouse is moved out of the
              * current element with a new `hit_test_result`.
              * @signal
+             * @run-last
              */
             'mouse-target-changed': (arg0: HitTestResult, arg1: number) => void;
             /**
@@ -13961,6 +14213,7 @@ export namespace WebKit {
              * documentation of classes implementing {@link WebKit.PermissionRequest} interface to know
              * their default action.
              * @signal
+             * @run-last
              */
             'permission-request': (arg0: PermissionRequest) => boolean | void;
             /**
@@ -13974,6 +14227,7 @@ export namespace WebKit {
              * You can connect to this signal and return `true` to cancel the print operation
              * or implement your own print dialog.
              * @signal
+             * @run-last
              */
             print: (arg0: PrintOperation) => boolean | void;
             /**
@@ -13986,6 +14240,7 @@ export namespace WebKit {
              * been handled, the query result will be set to `WEBKIT_QUERY_PERMISSION_PROMPT`.
              * @signal
              * @since 2.40
+             * @run-last
              */
             'query-permission-state': (arg0: PermissionStateQuery) => boolean | void;
             /**
@@ -13996,6 +14251,7 @@ export namespace WebKit {
              * should be displayed, is already set on the {@link WebKit.WindowProperties}
              * of `web_view`. See also `webkit_web_view_get_window_properties()`.
              * @signal
+             * @run-last
              */
             'ready-to-show': () => void;
             /**
@@ -14004,6 +14260,7 @@ export namespace WebKit {
              * You can monitor the load operation by connecting to the different signals
              * of `resource`.
              * @signal
+             * @run-last
              */
             'resource-load-started': (arg0: WebResource, arg1: URIRequest) => void;
             /**
@@ -14015,6 +14272,7 @@ export namespace WebKit {
              * main loop will be run to block user interaction in the parent
              * {@link WebKit.WebView} until the new dialog is closed.
              * @signal
+             * @run-last
              */
             'run-as-modal': () => void;
             /**
@@ -14033,6 +14291,7 @@ export namespace WebKit {
              * {@link Gtk.ColorChooser} for the user to interact with.
              * @signal
              * @since 2.8
+             * @run-last
              */
             'run-color-chooser': (arg0: ColorChooserRequest) => boolean | void;
             /**
@@ -14048,6 +14307,7 @@ export namespace WebKit {
              * The default signal handler will asynchronously run a regular
              * {@link Gtk.FileChooserDialog} for the user to interact with.
              * @signal
+             * @run-last
              */
             'run-file-chooser': (arg0: FileChooserRequest) => boolean | void;
             /**
@@ -14079,6 +14339,7 @@ export namespace WebKit {
              * If the last reference is removed on a {@link WebKit.ScriptDialog} and the dialog has not been
              * closed, `webkit_script_dialog_close()` will be called.
              * @signal
+             * @run-last
              */
             'script-dialog': (arg0: ScriptDialog) => boolean | void;
             /**
@@ -14090,6 +14351,7 @@ export namespace WebKit {
              * support for it.
              * @signal
              * @since 2.8
+             * @run-last
              */
             'show-notification': (arg0: Notification) => boolean | void;
             /**
@@ -14103,6 +14365,7 @@ export namespace WebKit {
              * The default signal handler will pop up a `GtkMenu`.
              * @signal
              * @since 2.18
+             * @run-last
              */
             'show-option-menu': (arg0: OptionMenu, arg1: Gdk.Rectangle) => boolean | void;
             /**
@@ -14118,6 +14381,7 @@ export namespace WebKit {
              * If the last reference is removed on a {@link WebKit.FormSubmissionRequest} and the
              * form has not been submitted, `webkit_form_submission_request_submit()` will be called.
              * @signal
+             * @run-last
              */
             'submit-form': (arg0: FormSubmissionRequest) => void;
             /**
@@ -14131,6 +14395,7 @@ export namespace WebKit {
              * finish with error {@link WebKit.UserMessageError.MESSAGE}.
              * @signal
              * @since 2.28
+             * @run-last
              */
             'user-message-received': (arg0: UserMessage) => boolean | void;
             /**
@@ -14138,6 +14403,7 @@ export namespace WebKit {
              * to `reason`.
              * @signal
              * @since 2.20
+             * @run-last
              */
             'web-process-terminated': (arg0: WebProcessTerminationReason) => void;
             'notify::automation-presentation-type': (pspec: GObject.ParamSpec) => void;
@@ -14282,6 +14548,7 @@ export namespace WebKit {
          * signal request. If the new WebView was added to a new tab of current browsing context window
          * {@link WebKit.AutomationBrowsingContextPresentation.TAB} should be used.
          * @since 2.28
+         * @construct-only
          */
         get automation_presentation_type(): AutomationBrowsingContextPresentation;
         /**
@@ -14290,6 +14557,7 @@ export namespace WebKit {
          * signal request. If the new WebView was added to a new tab of current browsing context window
          * {@link WebKit.AutomationBrowsingContextPresentation.TAB} should be used.
          * @since 2.28
+         * @construct-only
          */
         get automationPresentationType(): AutomationBrowsingContextPresentation;
         /**
@@ -14336,6 +14604,7 @@ export namespace WebKit {
          * Policies are additive so if a website sets its own policy it still applies
          * on top of the policy set here.
          * @since 2.38
+         * @construct-only
          */
         get default_content_security_policy(): string;
         /**
@@ -14350,6 +14619,7 @@ export namespace WebKit {
          * Policies are additive so if a website sets its own policy it still applies
          * on top of the policy set here.
          * @since 2.38
+         * @construct-only
          */
         get defaultContentSecurityPolicy(): string;
         /**
@@ -14399,6 +14669,7 @@ export namespace WebKit {
          * The value is an estimate based on the total number of bytes expected
          * to be received for a document, including all its possible subresources
          * and child documents.
+         * @read-only
          */
         get estimated_load_progress(): number;
         /**
@@ -14409,11 +14680,13 @@ export namespace WebKit {
          * The value is an estimate based on the total number of bytes expected
          * to be received for a document, including all its possible subresources
          * and child documents.
+         * @read-only
          */
         get estimatedLoadProgress(): number;
         /**
          * The favicon currently associated to the {@link WebKit.WebView}.
          * See `webkit_web_view_get_favicon()` for more details.
+         * @read-only
          */
         get favicon(): Gdk.Texture;
         /**
@@ -14428,6 +14701,7 @@ export namespace WebKit {
          * property. This is the recommended way when creating new views as a response to the {@link WebKit.WebView.SignalSignatures.create | WebKit.WebView::create}
          * signal. For example, as response to JavaScript `window.open()` calls during an automation session.
          * @since 2.18
+         * @construct-only
          */
         get is_controlled_by_automation(): boolean;
         /**
@@ -14442,6 +14716,7 @@ export namespace WebKit {
          * property. This is the recommended way when creating new views as a response to the {@link WebKit.WebView.SignalSignatures.create | WebKit.WebView::create}
          * signal. For example, as response to JavaScript `window.open()` calls during an automation session.
          * @since 2.18
+         * @construct-only
          */
         get isControlledByAutomation(): boolean;
         /**
@@ -14451,6 +14726,7 @@ export namespace WebKit {
          * at that point the active URI is the requested one.
          * When the load operation finishes the property is set to `false` before
          * {@link WebKit.WebView.SignalSignatures.load_changed | WebKit.WebView::load-changed} is emitted with {@link WebKit.LoadEvent.FINISHED}.
+         * @read-only
          */
         get is_loading(): boolean;
         /**
@@ -14460,6 +14736,7 @@ export namespace WebKit {
          * at that point the active URI is the requested one.
          * When the load operation finishes the property is set to `false` before
          * {@link WebKit.WebView.SignalSignatures.load_changed | WebKit.WebView::load-changed} is emitted with {@link WebKit.LoadEvent.FINISHED}.
+         * @read-only
          */
         get isLoading(): boolean;
         /**
@@ -14482,6 +14759,7 @@ export namespace WebKit {
          * kind of audio. When a page is no longer playing any kind of sound,
          * the property is set back to `false`.
          * @since 2.8
+         * @read-only
          */
         get is_playing_audio(): boolean;
         /**
@@ -14490,16 +14768,19 @@ export namespace WebKit {
          * kind of audio. When a page is no longer playing any kind of sound,
          * the property is set back to `false`.
          * @since 2.8
+         * @read-only
          */
         get isPlayingAudio(): boolean;
         /**
          * Whether the web process currently associated to the {@link WebKit.WebView} is responsive.
          * @since 2.34
+         * @read-only
          */
         get is_web_process_responsive(): boolean;
         /**
          * Whether the web process currently associated to the {@link WebKit.WebView} is responsive.
          * @since 2.34
+         * @read-only
          */
         get isWebProcessResponsive(): boolean;
         /**
@@ -14537,21 +14818,25 @@ export namespace WebKit {
         /**
          * The {@link WebKit.NetworkSession} of the view
          * @since 2.40
+         * @construct-only
          */
         get network_session(): NetworkSession;
         /**
          * The {@link WebKit.NetworkSession} of the view
          * @since 2.40
+         * @construct-only
          */
         get networkSession(): NetworkSession;
         /**
          * The identifier of the `WebKitWebPage` corresponding to the {@link WebKit.WebView}.
          * @since 2.28
+         * @read-only
          */
         get page_id(): number;
         /**
          * The identifier of the `WebKitWebPage` corresponding to the {@link WebKit.WebView}.
          * @since 2.28
+         * @read-only
          */
         get pageId(): number;
         /**
@@ -14559,6 +14844,7 @@ export namespace WebKit {
          * same web process and network session. This property is not readable
          * because the related web view is only valid during the object construction.
          * @since 2.4
+         * @construct-only
          */
         set related_view(val: WebView);
         /**
@@ -14566,49 +14852,59 @@ export namespace WebKit {
          * same web process and network session. This property is not readable
          * because the related web view is only valid during the object construction.
          * @since 2.4
+         * @construct-only
          */
         set relatedView(val: WebView);
         /**
          * The {@link WebKit.Settings} of the view.
          * @since 2.6
+         * @write-only
          */
         set settings(val: Settings);
         /**
          * The theme color of the WebView's current page.
          * @since 2.50
+         * @read-only
          */
         get theme_color(): Gdk.RGBA;
         /**
          * The theme color of the WebView's current page.
          * @since 2.50
+         * @read-only
          */
         get themeColor(): Gdk.RGBA;
         /**
          * The main frame document title of this {@link WebKit.WebView}. If
          * the title has not been received yet, it will be `null`.
+         * @read-only
          */
         get title(): string;
         /**
          * The current active URI of the {@link WebKit.WebView}.
          * See `webkit_web_view_get_uri()` for more details.
+         * @read-only
          */
         get uri(): string;
         /**
          * The {@link WebKit.UserContentManager} of the view.
          * @since 2.6
+         * @construct-only
          */
         get user_content_manager(): UserContentManager;
         /**
          * The {@link WebKit.UserContentManager} of the view.
          * @since 2.6
+         * @construct-only
          */
         get userContentManager(): UserContentManager;
         /**
          * The {@link WebKit.WebContext} of the view.
+         * @construct-only
          */
         get web_context(): WebContext;
         /**
          * The {@link WebKit.WebContext} of the view.
+         * @construct-only
          */
         get webContext(): WebContext;
         /**
@@ -14620,6 +14916,7 @@ export namespace WebKit {
          * In practice this limits the Content-Security-Policies that are allowed to be set. Some details can be found in
          * [Chrome's documentation](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/#content-security-policy).
          * @since 2.38
+         * @construct-only
          */
         get web_extension_mode(): WebExtensionMode;
         /**
@@ -14631,16 +14928,19 @@ export namespace WebKit {
          * In practice this limits the Content-Security-Policies that are allowed to be set. Some details can be found in
          * [Chrome's documentation](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/#content-security-policy).
          * @since 2.38
+         * @construct-only
          */
         get webExtensionMode(): WebExtensionMode;
         /**
          * The {@link WebKit.WebsitePolicies} for the view.
          * @since 2.30
+         * @construct-only
          */
         get website_policies(): WebsitePolicies;
         /**
          * The {@link WebKit.WebsitePolicies} for the view.
          * @since 2.30
+         * @construct-only
          */
         get websitePolicies(): WebsitePolicies;
         /**
@@ -18025,21 +18325,25 @@ export namespace WebKit {
         /**
          * The base directory for caches. If `null`, a default location will be used.
          * @since 2.10
+         * @construct-only
          */
         get base_cache_directory(): string;
         /**
          * The base directory for caches. If `null`, a default location will be used.
          * @since 2.10
+         * @construct-only
          */
         get baseCacheDirectory(): string;
         /**
          * The base directory for website data. If `null`, a default location will be used.
          * @since 2.10
+         * @construct-only
          */
         get base_data_directory(): string;
         /**
          * The base directory for website data. If `null`, a default location will be used.
          * @since 2.10
+         * @construct-only
          */
         get baseDataDirectory(): string;
         /**
@@ -18048,6 +18352,7 @@ export namespace WebKit {
          * storage. Note that if you create an ephemeral {@link WebKit.WebsiteDataManager} all other construction
          * parameters to configure data directories will be ignored.
          * @since 2.16
+         * @construct-only
          */
         get is_ephemeral(): boolean;
         /**
@@ -18056,6 +18361,7 @@ export namespace WebKit {
          * storage. Note that if you create an ephemeral {@link WebKit.WebsiteDataManager} all other construction
          * parameters to configure data directories will be ignored.
          * @since 2.16
+         * @construct-only
          */
         get isEphemeral(): boolean;
         /**
@@ -18064,6 +18370,7 @@ export namespace WebKit {
          * A value of 0.0 means that data storage is not allowed. A value of -1.0, which is the default,
          * means WebKit will use the default quota (1 GiB).
          * @since 2.42
+         * @construct-only
          */
         set origin_storage_ratio(val: number);
         /**
@@ -18072,6 +18379,7 @@ export namespace WebKit {
          * A value of 0.0 means that data storage is not allowed. A value of -1.0, which is the default,
          * means WebKit will use the default quota (1 GiB).
          * @since 2.42
+         * @construct-only
          */
         set originStorageRatio(val: number);
         /**
@@ -18080,6 +18388,7 @@ export namespace WebKit {
          * A value of 0.0 means that data storage is not allowed. A value of -1.0, which is the default,
          * means there's no limit for the total storage.
          * @since 2.42
+         * @construct-only
          */
         set total_storage_ratio(val: number);
         /**
@@ -18088,6 +18397,7 @@ export namespace WebKit {
          * A value of 0.0 means that data storage is not allowed. A value of -1.0, which is the default,
          * means there's no limit for the total storage.
          * @since 2.42
+         * @construct-only
          */
         set totalStorageRatio(val: number);
 
@@ -18407,6 +18717,7 @@ export namespace WebKit {
         /**
          * The {@link WebKit.AutoplayPolicy} of {@link WebKit.WebsitePolicies}.
          * @since 2.30
+         * @construct-only
          */
         get autoplay(): AutoplayPolicy;
 
@@ -18553,54 +18864,67 @@ export namespace WebKit {
 
         /**
          * Whether window will be displayed fullscreen.
+         * @construct-only
          */
         get fullscreen(): boolean;
         /**
          * The size and position of the window on the screen.
+         * @construct-only
          */
         get geometry(): Gdk.Rectangle;
         /**
          * Whether the locationbar should be visible for the window.
+         * @construct-only
          */
         get locationbar_visible(): boolean;
         /**
          * Whether the locationbar should be visible for the window.
+         * @construct-only
          */
         get locationbarVisible(): boolean;
         /**
          * Whether the menubar should be visible for the window.
+         * @construct-only
          */
         get menubar_visible(): boolean;
         /**
          * Whether the menubar should be visible for the window.
+         * @construct-only
          */
         get menubarVisible(): boolean;
         /**
          * Whether the window can be resized.
+         * @construct-only
          */
         get resizable(): boolean;
         /**
          * Whether the scrollbars should be visible for the window.
+         * @construct-only
          */
         get scrollbars_visible(): boolean;
         /**
          * Whether the scrollbars should be visible for the window.
+         * @construct-only
          */
         get scrollbarsVisible(): boolean;
         /**
          * Whether the statusbar should be visible for the window.
+         * @construct-only
          */
         get statusbar_visible(): boolean;
         /**
          * Whether the statusbar should be visible for the window.
+         * @construct-only
          */
         get statusbarVisible(): boolean;
         /**
          * Whether the toolbar should be visible for the window.
+         * @construct-only
          */
         get toolbar_visible(): boolean;
         /**
          * Whether the toolbar should be visible for the window.
+         * @construct-only
          */
         get toolbarVisible(): boolean;
 

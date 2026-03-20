@@ -19,6 +19,9 @@ export namespace Xkl {
      * Xkl-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EngineListenModes {
         export const $gtype: GObject.GType<EngineListenModes>;
     }
@@ -44,6 +47,9 @@ export namespace Xkl {
         MANAGE_LAYOUTS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EngineStateChange {
         export const $gtype: GObject.GType<EngineStateChange>;
     }
@@ -106,6 +112,9 @@ export namespace Xkl {
     interface TwoConfigItemsProcessFunc {
         (config: ConfigRegistry, item: ConfigItem, subitem: ConfigItem, data: any): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace EngineFeatures {
         export const $gtype: GObject.GType<EngineFeatures>;
     }
@@ -408,6 +417,9 @@ export namespace Xkl {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get engine(): Engine;
 
         /**
@@ -568,18 +580,22 @@ export namespace Xkl {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'X-config-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'X-new-device': () => void;
             /**
              * @signal
+             * @run-last
              */
             'X-state-changed': (arg0: EngineStateChange, arg1: number, arg2: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'new-toplevel-window': (arg0: number, arg1: number) => number;
             'notify::backend-name': (pspec: GObject.ParamSpec) => void;
@@ -619,18 +635,57 @@ export namespace Xkl {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get backendName(): string;
+        /**
+         * @read-only
+         */
         get default_group(): number;
+        /**
+         * @read-only
+         */
         get defaultGroup(): number;
+        /**
+         * @construct-only
+         */
         get display(): any;
+        /**
+         * @read-only
+         */
         get features(): EngineFeatures;
+        /**
+         * @read-only
+         */
         get indicators_handling(): boolean;
+        /**
+         * @read-only
+         */
         get indicatorsHandling(): boolean;
+        /**
+         * @read-only
+         */
         get max_num_groups(): number;
+        /**
+         * @read-only
+         */
         get maxNumGroups(): number;
+        /**
+         * @read-only
+         */
         get num_groups(): number;
+        /**
+         * @read-only
+         */
         get numGroups(): number;
+        /**
+         * @read-only
+         */
         get secondary_groups_mask(): number;
+        /**
+         * @read-only
+         */
         get secondaryGroupsMask(): number;
 
         /**

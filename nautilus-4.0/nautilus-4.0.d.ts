@@ -20,6 +20,9 @@ export namespace Nautilus {
      * Nautilus-4.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OperationResult {
         export const $gtype: GObject.GType<OperationResult>;
     }
@@ -137,7 +140,13 @@ export namespace Nautilus {
          */
         get attribute(): string;
         set attribute(val: string);
+        /**
+         * @read-only
+         */
         get attribute_q(): number;
+        /**
+         * @read-only
+         */
         get attributeQ(): number;
         /**
          * Actually meant to store the enum values of GtkSortType, but we don't want
@@ -163,6 +172,7 @@ export namespace Nautilus {
         set label(val: string);
         /**
          * The identifier for the column.
+         * @construct-only
          */
         get name(): string;
         /**
@@ -288,6 +298,7 @@ export namespace Nautilus {
             /**
              * Signals that the user has activated this menu item.
              * @signal
+             * @run-last
              */
             activate: () => void;
             'notify::icon': (pspec: GObject.ParamSpec) => void;
@@ -326,6 +337,9 @@ export namespace Nautilus {
         set label(val: string);
         get menu(): Menu;
         set menu(val: Menu);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get priority(): boolean;
         set priority(val: boolean);
@@ -423,7 +437,13 @@ export namespace Nautilus {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get value(): string;
 
         /**
@@ -499,6 +519,9 @@ export namespace Nautilus {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get model(): Gio.ListModel;
         get title(): string;
         set title(val: string);

@@ -21,6 +21,9 @@ export namespace Manette {
      * Manette-0.2
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceType {
         export const $gtype: GObject.GType<DeviceType>;
     }
@@ -43,6 +46,9 @@ export namespace Manette {
         STEAM_DECK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EventType {
         export const $gtype: GObject.GType<EventType>;
     }
@@ -138,31 +144,37 @@ export namespace Manette {
             /**
              * Emitted when an absolute axis' value changes.
              * @signal
+             * @run-last
              */
             'absolute-axis-event': (arg0: Event) => void;
             /**
              * Emitted when a button is pressed.
              * @signal
+             * @run-last
              */
             'button-press-event': (arg0: Event) => void;
             /**
              * Emitted when a button is released.
              * @signal
+             * @run-last
              */
             'button-release-event': (arg0: Event) => void;
             /**
              * Emitted when the device is disconnected.
              * @signal
+             * @run-last
              */
             disconnected: () => void;
             /**
              * Emitted for any kind of event before mapping it.
              * @signal
+             * @run-last
              */
             event: (arg0: Event) => void;
             /**
              * Emitted when a hat axis' value changes.
              * @signal
+             * @run-last
              */
             'hat-axis-event': (arg0: Event) => void;
         }
@@ -297,11 +309,13 @@ export namespace Manette {
             /**
              * Emitted when `device` is connected.
              * @signal
+             * @run-last
              */
             'device-connected': (arg0: Device) => void;
             /**
              * Emitted when `device` is disconnected.
              * @signal
+             * @run-last
              */
             'device-disconnected': (arg0: Device) => void;
         }

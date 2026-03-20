@@ -29,6 +29,9 @@ export namespace Caja {
      * Caja-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OperationResult {
         export const $gtype: GObject.GType<OperationResult>;
     }
@@ -145,12 +148,21 @@ export namespace Caja {
 
         get attribute(): string;
         set attribute(val: string);
+        /**
+         * @read-only
+         */
         get attribute_q(): number;
+        /**
+         * @read-only
+         */
         get attributeQ(): number;
         get description(): string;
         set description(val: string);
         get label(): string;
         set label(val: string);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get xalign(): number;
         set xalign(val: number);
@@ -264,6 +276,7 @@ export namespace Caja {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             activate: () => void;
             'notify::icon': (pspec: GObject.ParamSpec) => void;
@@ -302,6 +315,9 @@ export namespace Caja {
         set label(val: string);
         get menu(): Menu;
         set menu(val: Menu);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get priority(): boolean;
         set priority(val: boolean);
@@ -403,6 +419,9 @@ export namespace Caja {
 
         get label(): Gtk.Widget;
         set label(val: Gtk.Widget);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get page(): Gtk.Widget;
         set page(val: Gtk.Widget);

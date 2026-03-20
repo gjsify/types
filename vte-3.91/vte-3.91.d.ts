@@ -30,6 +30,9 @@ export namespace Vte {
      * Vte-3.91
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Align {
         export const $gtype: GObject.GType<Align>;
     }
@@ -55,6 +58,9 @@ export namespace Vte {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CursorBlinkMode {
         export const $gtype: GObject.GType<CursorBlinkMode>;
     }
@@ -79,6 +85,9 @@ export namespace Vte {
         OFF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CursorShape {
         export const $gtype: GObject.GType<CursorShape>;
     }
@@ -104,6 +113,9 @@ export namespace Vte {
         UNDERLINE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EraseBinding {
         export const $gtype: GObject.GType<EraseBinding>;
     }
@@ -137,6 +149,9 @@ export namespace Vte {
         TTY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Format {
         export const $gtype: GObject.GType<Format>;
     }
@@ -158,6 +173,9 @@ export namespace Vte {
         HTML,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ProgressHint {
         export const $gtype: GObject.GType<ProgressHint>;
     }
@@ -191,6 +209,9 @@ export namespace Vte {
         PAUSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PropertyId {
         export const $gtype: GObject.GType<PropertyId>;
     }
@@ -255,6 +276,9 @@ export namespace Vte {
         ICON_IMAGE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PropertyType {
         export const $gtype: GObject.GType<PropertyType>;
     }
@@ -375,6 +399,9 @@ export namespace Vte {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextBlinkMode {
         export const $gtype: GObject.GType<TextBlinkMode>;
     }
@@ -404,6 +431,9 @@ export namespace Vte {
         ALWAYS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WriteFlags {
         export const $gtype: GObject.GType<WriteFlags>;
     }
@@ -769,6 +799,9 @@ export namespace Vte {
         FLAGS_MASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PropertyFlags {
         export const $gtype: GObject.GType<PropertyFlags>;
     }
@@ -789,6 +822,9 @@ export namespace Vte {
         EPHEMERAL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PtyFlags {
         export const $gtype: GObject.GType<PtyFlags>;
     }
@@ -833,6 +869,9 @@ export namespace Vte {
         DEFAULT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace UuidFormat {
         export const $gtype: GObject.GType<UuidFormat>;
     }
@@ -872,10 +911,12 @@ export namespace Vte {
 
         /**
          * The file descriptor of the PTY master.
+         * @construct-only
          */
         get fd(): number;
         /**
          * Flags.
+         * @construct-only
          */
         get flags(): PtyFlags;
 
@@ -1634,6 +1675,7 @@ export namespace Vte {
              * This signal is emitted when the a child sends a bell request to the
              * terminal.
              * @signal
+             * @run-last
              */
             bell: () => void;
             /**
@@ -1642,58 +1684,69 @@ export namespace Vte {
              *
              * Note that this signal should rather be called "cell-size-changed".
              * @signal
+             * @run-last
              */
             'char-size-changed': (arg0: number, arg1: number) => void;
             /**
              * This signal is emitted when the terminal detects that a child
              * watched using `vte_terminal_watch_child()` has exited.
              * @signal
+             * @run-last
              */
             'child-exited': (arg0: number) => void;
             /**
              * Emitted whenever the terminal receives input from the user and
              * prepares to send it to the child process.
              * @signal
+             * @run-last
              */
             commit: (arg0: string, arg1: number) => void;
             /**
              * Emitted whenever the visible appearance of the terminal has changed.
              * Used primarily by `VteTerminalAccessible`.
              * @signal
+             * @run-last
              */
             'contents-changed': () => void;
             /**
              * Emitted whenever `vte_terminal_copy_clipboard()` is called.
              * @signal
+             * @action
+             * @run-last
              */
             'copy-clipboard': () => void;
             /**
              * Emitted when the current directory URI is modified.
              * @signal
              * @deprecated since 0.78: Use the {@link Vte.Terminal.termprop_changed} signal   for the `VTE_TERMPROP_CURRENT_DIRECTORY_URI` termprop.
+             * @run-last
              */
             'current-directory-uri-changed': () => void;
             /**
              * Emitted when the current file URI is modified.
              * @signal
              * @deprecated since 0.78: Use the {@link Vte.Terminal.termprop_changed} signal   for the `VTE_TERMPROP_CURRENT_FILE_URI` termprop.
+             * @run-last
              */
             'current-file-uri-changed': () => void;
             /**
              * Emitted whenever the cursor moves to a new character cell.  Used
              * primarily by `VteTerminalAccessible`.
              * @signal
+             * @run-last
              */
             'cursor-moved': () => void;
             /**
              * Emitted when the user hits the '-' key while holding the Control key.
              * @signal
+             * @run-last
              */
             'decrease-font-size': () => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'deiconify-window': () => void;
             /**
@@ -1701,6 +1754,7 @@ export namespace Vte {
              *
              * Note: support for non-UTF-8 is deprecated.
              * @signal
+             * @run-last
              */
             'encoding-changed': () => void;
             /**
@@ -1708,6 +1762,7 @@ export namespace Vte {
              * is running in the terminal.  This signal is frequently (but not
              * always) emitted with a {@link Vte.Terminal.SignalSignatures.child_exited | Vte.Terminal::child-exited} signal.
              * @signal
+             * @run-last
              */
             eof: () => void;
             /**
@@ -1720,73 +1775,87 @@ export namespace Vte {
              * same hyperlink. This might change in a future VTE version without notice.
              * @signal
              * @since 0.50
+             * @run-last
              */
             'hyperlink-hover-uri-changed': (arg0: string, arg1: Gdk.Rectangle) => void;
             /**
              * @signal
              * @deprecated since 0.54: This signal is never emitted.
+             * @run-last
              */
             'icon-title-changed': () => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'iconify-window': () => void;
             /**
              * Emitted when the user hits the '+' key while holding the Control key.
              * @signal
+             * @run-last
              */
             'increase-font-size': () => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'lower-window': () => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'maximize-window': () => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'move-window': (arg0: number, arg1: number) => void;
             /**
              * Emitted whenever `vte_terminal_paste_clipboard()` is called.
              * @signal
+             * @action
+             * @run-last
              */
             'paste-clipboard': () => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'raise-window': () => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'refresh-window': () => void;
             /**
              * Emitted at the child application's request.
              * @signal
+             * @run-last
              */
             'resize-window': (arg0: number, arg1: number) => void;
             /**
              * Never emitted.
              * @signal
              * @deprecated since 0.60
+             * @run-last
              */
             'restore-window': () => void;
             /**
              * Emitted whenever the contents of terminal's selection changes.
              * @signal
+             * @run-last
              */
             'selection-changed': () => void;
             /**
@@ -1804,6 +1873,7 @@ export namespace Vte {
              *
              * Also emitted with `null` context after the context menu has been dismissed.
              * @signal
+             * @run-last
              */
             'setup-context-menu': (arg0: EventContext | null) => void;
             /**
@@ -1820,6 +1890,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed': (arg0: string) => void;
             /**
@@ -1842,12 +1914,14 @@ export namespace Vte {
              * call *any* other API on `terminal`, including API of its parent classes.
              * @signal
              * @since 0.78
+             * @run-last
              */
             'termprops-changed': (arg0: number[]) => boolean | void;
             /**
              * Emitted when the {@link Vte.Terminal.window_title} property is modified.
              * @signal
              * @deprecated since 0.78: Use the {@link Vte.Terminal.termprop_changed} signal   for the `VTE_TERMPROP_XTERM_TITLE` termprop.
+             * @run-last
              */
             'window-title-changed': () => void;
             'notify::allow-bold': (pspec: GObject.ParamSpec) => void;
@@ -1947,6 +2021,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::allow-bold': (arg0: string) => void;
             /**
@@ -1963,6 +2039,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::allow-hyperlink': (arg0: string) => void;
             /**
@@ -1979,6 +2057,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::audible-bell': (arg0: string) => void;
             /**
@@ -1995,6 +2075,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::backspace-binding': (arg0: string) => void;
             /**
@@ -2011,6 +2093,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::bold-is-bright': (arg0: string) => void;
             /**
@@ -2027,6 +2111,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::cell-height-scale': (arg0: string) => void;
             /**
@@ -2043,6 +2129,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::cell-width-scale': (arg0: string) => void;
             /**
@@ -2059,6 +2147,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::cjk-ambiguous-width': (arg0: string) => void;
             /**
@@ -2075,6 +2165,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::context-menu': (arg0: string) => void;
             /**
@@ -2091,6 +2183,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::context-menu-model': (arg0: string) => void;
             /**
@@ -2107,6 +2201,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::current-directory-uri': (arg0: string) => void;
             /**
@@ -2123,6 +2219,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::current-file-uri': (arg0: string) => void;
             /**
@@ -2139,6 +2237,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::cursor-blink-mode': (arg0: string) => void;
             /**
@@ -2155,6 +2255,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::cursor-shape': (arg0: string) => void;
             /**
@@ -2171,6 +2273,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::delete-binding': (arg0: string) => void;
             /**
@@ -2187,6 +2291,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::enable-a11y': (arg0: string) => void;
             /**
@@ -2203,6 +2309,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::enable-bidi': (arg0: string) => void;
             /**
@@ -2219,6 +2327,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::enable-fallback-scrolling': (arg0: string) => void;
             /**
@@ -2235,6 +2345,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::enable-legacy-osc777': (arg0: string) => void;
             /**
@@ -2251,6 +2363,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::enable-shaping': (arg0: string) => void;
             /**
@@ -2267,6 +2381,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::enable-sixel': (arg0: string) => void;
             /**
@@ -2283,6 +2399,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::encoding': (arg0: string) => void;
             /**
@@ -2299,6 +2417,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::font-desc': (arg0: string) => void;
             /**
@@ -2315,6 +2435,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::font-options': (arg0: string) => void;
             /**
@@ -2331,6 +2453,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::font-scale': (arg0: string) => void;
             /**
@@ -2347,6 +2471,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::hyperlink-hover-uri': (arg0: string) => void;
             /**
@@ -2363,6 +2489,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::icon-title': (arg0: string) => void;
             /**
@@ -2379,6 +2507,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::input-enabled': (arg0: string) => void;
             /**
@@ -2395,6 +2525,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::pointer-autohide': (arg0: string) => void;
             /**
@@ -2411,6 +2543,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::pty': (arg0: string) => void;
             /**
@@ -2427,6 +2561,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::rewrap-on-resize': (arg0: string) => void;
             /**
@@ -2443,6 +2579,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::scroll-on-insert': (arg0: string) => void;
             /**
@@ -2459,6 +2597,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::scroll-on-keystroke': (arg0: string) => void;
             /**
@@ -2475,6 +2615,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::scroll-on-output': (arg0: string) => void;
             /**
@@ -2491,6 +2633,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::scroll-unit-is-pixels': (arg0: string) => void;
             /**
@@ -2507,6 +2651,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::scrollback-lines': (arg0: string) => void;
             /**
@@ -2523,6 +2669,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::text-blink-mode': (arg0: string) => void;
             /**
@@ -2539,6 +2687,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::window-title': (arg0: string) => void;
             /**
@@ -2555,6 +2705,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::word-char-exceptions': (arg0: string) => void;
             /**
@@ -2571,6 +2723,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::xalign': (arg0: string) => void;
             /**
@@ -2587,6 +2741,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::xfill': (arg0: string) => void;
             /**
@@ -2603,6 +2759,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::yalign': (arg0: string) => void;
             /**
@@ -2619,6 +2777,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::yfill': (arg0: string) => void;
             /**
@@ -2635,6 +2795,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::can-focus': (arg0: string) => void;
             /**
@@ -2651,6 +2813,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::can-target': (arg0: string) => void;
             /**
@@ -2667,6 +2831,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::css-classes': (arg0: string) => void;
             /**
@@ -2683,6 +2849,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::css-name': (arg0: string) => void;
             /**
@@ -2699,6 +2867,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::cursor': (arg0: string) => void;
             /**
@@ -2715,6 +2885,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::focus-on-click': (arg0: string) => void;
             /**
@@ -2731,6 +2903,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::focusable': (arg0: string) => void;
             /**
@@ -2747,6 +2921,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::halign': (arg0: string) => void;
             /**
@@ -2763,6 +2939,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::has-default': (arg0: string) => void;
             /**
@@ -2779,6 +2957,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::has-focus': (arg0: string) => void;
             /**
@@ -2795,6 +2975,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::has-tooltip': (arg0: string) => void;
             /**
@@ -2811,6 +2993,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::height-request': (arg0: string) => void;
             /**
@@ -2827,6 +3011,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::hexpand': (arg0: string) => void;
             /**
@@ -2843,6 +3029,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::hexpand-set': (arg0: string) => void;
             /**
@@ -2859,6 +3047,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::layout-manager': (arg0: string) => void;
             /**
@@ -2875,6 +3065,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::limit-events': (arg0: string) => void;
             /**
@@ -2891,6 +3083,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::margin-bottom': (arg0: string) => void;
             /**
@@ -2907,6 +3101,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::margin-end': (arg0: string) => void;
             /**
@@ -2923,6 +3119,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::margin-start': (arg0: string) => void;
             /**
@@ -2939,6 +3137,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::margin-top': (arg0: string) => void;
             /**
@@ -2955,6 +3155,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::name': (arg0: string) => void;
             /**
@@ -2971,6 +3173,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::opacity': (arg0: string) => void;
             /**
@@ -2987,6 +3191,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::overflow': (arg0: string) => void;
             /**
@@ -3003,6 +3209,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::parent': (arg0: string) => void;
             /**
@@ -3019,6 +3227,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::receives-default': (arg0: string) => void;
             /**
@@ -3035,6 +3245,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::root': (arg0: string) => void;
             /**
@@ -3051,6 +3263,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::scale-factor': (arg0: string) => void;
             /**
@@ -3067,6 +3281,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::sensitive': (arg0: string) => void;
             /**
@@ -3083,6 +3299,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::tooltip-markup': (arg0: string) => void;
             /**
@@ -3099,6 +3317,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::tooltip-text': (arg0: string) => void;
             /**
@@ -3115,6 +3335,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::valign': (arg0: string) => void;
             /**
@@ -3131,6 +3353,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::vexpand': (arg0: string) => void;
             /**
@@ -3147,6 +3371,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::vexpand-set': (arg0: string) => void;
             /**
@@ -3163,6 +3389,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::visible': (arg0: string) => void;
             /**
@@ -3179,6 +3407,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::width-request': (arg0: string) => void;
             /**
@@ -3195,6 +3425,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::accessible-role': (arg0: string) => void;
             /**
@@ -3211,6 +3443,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::hadjustment': (arg0: string) => void;
             /**
@@ -3227,6 +3461,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::hscroll-policy': (arg0: string) => void;
             /**
@@ -3243,6 +3479,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::vadjustment': (arg0: string) => void;
             /**
@@ -3259,6 +3497,8 @@ export namespace Vte {
              * termprop "name" has changed.
              * @signal
              * @since 0.78
+             * @detailed
+             * @run-last
              */
             'termprop-changed::vscroll-policy': (arg0: string) => void;
         }
@@ -3514,21 +3754,25 @@ export namespace Vte {
         /**
          * The current directory URI, or `null` if unset.
          * @deprecated since 0.78: Use the `VTE_TERMPROP_CURRENT_DIRECTORY_URI` termprop.
+         * @read-only
          */
         get current_directory_uri(): string;
         /**
          * The current directory URI, or `null` if unset.
          * @deprecated since 0.78: Use the `VTE_TERMPROP_CURRENT_DIRECTORY_URI` termprop.
+         * @read-only
          */
         get currentDirectoryUri(): string;
         /**
          * The current file URI, or `null` if unset.
          * @deprecated since 0.78: Use the `VTE_TERMPROP_CURRENT_FILE_URI` termprop.
+         * @read-only
          */
         get current_file_uri(): string;
         /**
          * The current file URI, or `null` if unset.
          * @deprecated since 0.78: Use the `VTE_TERMPROP_CURRENT_FILE_URI` termprop.
+         * @read-only
          */
         get currentFileUri(): string;
         /**
@@ -3693,19 +3937,23 @@ export namespace Vte {
         /**
          * The currently hovered hyperlink URI, or `null` if unset.
          * @since 0.50
+         * @read-only
          */
         get hyperlink_hover_uri(): string;
         /**
          * The currently hovered hyperlink URI, or `null` if unset.
          * @since 0.50
+         * @read-only
          */
         get hyperlinkHoverUri(): string;
         /**
          * @deprecated since 0.54: This property is always `null`.
+         * @read-only
          */
         get icon_title(): string;
         /**
          * @deprecated since 0.54: This property is always `null`.
+         * @read-only
          */
         get iconTitle(): string;
         /**
@@ -3846,11 +4094,13 @@ export namespace Vte {
         /**
          * The terminal's title.
          * @deprecated since 0.78: Use the `VTE_TERMPROP_XTERM_TITLE` termprop.
+         * @read-only
          */
         get window_title(): string;
         /**
          * The terminal's title.
          * @deprecated since 0.78: Use the `VTE_TERMPROP_XTERM_TITLE` termprop.
+         * @read-only
          */
         get windowTitle(): string;
         /**
@@ -3860,6 +4110,7 @@ export namespace Vte {
          *
          * If `null`, a built-in set is used.
          * @since 0.40
+         * @read-only
          */
         get word_char_exceptions(): string;
         /**
@@ -3869,6 +4120,7 @@ export namespace Vte {
          *
          * If `null`, a built-in set is used.
          * @since 0.40
+         * @read-only
          */
         get wordCharExceptions(): string;
         /**

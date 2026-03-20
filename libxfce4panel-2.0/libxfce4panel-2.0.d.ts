@@ -30,6 +30,9 @@ export namespace Libxfce4panel {
      * Libxfce4panel-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PanelPluginMode {
         export const $gtype: GObject.GType<PanelPluginMode>;
     }
@@ -104,6 +107,9 @@ export namespace Libxfce4panel {
         UNSHRINK_PLUGIN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScreenPosition {
         export const $gtype: GObject.GType<ScreenPosition>;
     }
@@ -337,6 +343,7 @@ export namespace Libxfce4panel {
              * Emitted when the arrow direction of the menu button changes.
              * This value also determines the direction of the popup menu.
              * @signal
+             * @run-last
              */
             'arrow-type-changed': (arg0: Gtk.ArrowType) => void;
             'notify::arrow-type': (pspec: GObject.ParamSpec) => void;
@@ -526,9 +533,15 @@ export namespace Libxfce4panel {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -842,6 +855,7 @@ export namespace Libxfce4panel {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -849,6 +863,7 @@ export namespace Libxfce4panel {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -970,6 +985,7 @@ export namespace Libxfce4panel {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -5816,6 +5832,7 @@ export namespace Libxfce4panel {
              *
              * See also: `xfce_panel_plugin_menu_show_about()`.
              * @signal
+             * @run-last
              */
             about: () => void;
             /**
@@ -5827,12 +5844,14 @@ export namespace Libxfce4panel {
              * See also: `xfce_panel_plugin_menu_show_configure()` and
              *           xfce_titled_dialog_new ().
              * @signal
+             * @run-last
              */
             'configure-plugin': () => void;
             /**
              * This signal is emmitted when the plugin is closing. Plugin
              * writers should use this signal to free any allocated resources.
              * @signal
+             * @run-last
              */
             'free-data': () => void;
             /**
@@ -5840,6 +5859,7 @@ export namespace Libxfce4panel {
              * the `plugin` is on changes.
              * @signal
              * @since 4.10
+             * @run-last
              */
             'mode-changed': (arg0: PanelPluginMode) => void;
             /**
@@ -5847,6 +5867,7 @@ export namespace Libxfce4panel {
              * the `plugin` is on changes.
              * @signal
              * @since 4.10
+             * @run-last
              */
             'nrows-changed': (arg0: number) => void;
             /**
@@ -5854,6 +5875,7 @@ export namespace Libxfce4panel {
              * the `plugin` is on changes. Plugins writers can for example use
              * this signal to change the order of widgets in the plugin.
              * @signal
+             * @run-last
              */
             'orientation-changed': (arg0: Gtk.Orientation) => void;
             /**
@@ -5861,6 +5883,7 @@ export namespace Libxfce4panel {
              * xfce4-panel --plugin-event=plugin-name:name:type:value. It can be
              * used for remote communication, like for example to popup a menu.
              * @signal
+             * @run-last
              */
             'remote-event': (arg0: string, arg1: GObject.Value) => boolean | void;
             /**
@@ -5876,6 +5899,7 @@ export namespace Libxfce4panel {
              * care of removing those settings.
              * @signal
              * @since 4.8
+             * @run-last
              */
             removed: () => void;
             /**
@@ -5886,6 +5910,7 @@ export namespace Libxfce4panel {
              *
              * See also: `xfce_panel_plugin_save_location()`.
              * @signal
+             * @run-last
              */
             save: () => void;
             /**
@@ -5893,6 +5918,7 @@ export namespace Libxfce4panel {
              * the `plugin` is on changes. Plugins writers can for example use
              * this signal to change the arrow direction of buttons.
              * @signal
+             * @run-last
              */
             'screen-position-changed': (arg0: ScreenPosition) => void;
             /**
@@ -5906,6 +5932,7 @@ export namespace Libxfce4panel {
              *
              * g_signal_connect (plugin, "size-changed", G_CALLBACK (gtk_true), NULL);
              * @signal
+             * @run-last
              */
             'size-changed': (arg0: number) => boolean | void;
             'notify::arguments': (pspec: GObject.ParamSpec) => void;
@@ -6013,6 +6040,7 @@ export namespace Libxfce4panel {
          * started with any arguments this value is `null`. Plugin writer can
          * use it to read the arguments array, but
          * `xfce_panel_plugin_get_arguments()` is recommended.
+         * @construct-only
          */
         get arguments(): string[];
         /**
@@ -6021,6 +6049,7 @@ export namespace Libxfce4panel {
          * it to read the plugin description, but `xfce_panel_plugin_get_comment()`
          * is recommended.
          * @since 4.8
+         * @construct-only
          */
         get comment(): string;
         /**
@@ -6042,6 +6071,7 @@ export namespace Libxfce4panel {
          * during plugin construction and can't be set twice. Plugin writer can use
          * it to read the plugin display name, but `xfce_panel_plugin_get_display_name()`
          * is recommended.
+         * @construct-only
          */
         get display_name(): string;
         /**
@@ -6049,6 +6079,7 @@ export namespace Libxfce4panel {
          * during plugin construction and can't be set twice. Plugin writer can use
          * it to read the plugin display name, but `xfce_panel_plugin_get_display_name()`
          * is recommended.
+         * @construct-only
          */
         get displayName(): string;
         /**
@@ -6062,17 +6093,20 @@ export namespace Libxfce4panel {
          * The icon-size in pixels of the {@link Libxfce4panel.PanelPlugin}. Plugin writers can use it to read the
          * plugin's icon size, but `xfce_panel_plugin_get_icon_size()` is recommended.
          * @since 4.14
+         * @read-only
          */
         get icon_size(): number;
         /**
          * The icon-size in pixels of the {@link Libxfce4panel.PanelPlugin}. Plugin writers can use it to read the
          * plugin's icon size, but `xfce_panel_plugin_get_icon_size()` is recommended.
          * @since 4.14
+         * @read-only
          */
         get iconSize(): number;
         /**
          * Display mode of the plugin.
          * @since 4.10
+         * @read-only
          */
         get mode(): PanelPluginMode;
         /**
@@ -6080,28 +6114,33 @@ export namespace Libxfce4panel {
          * writer can use it to read the plugin name, but
          * `xfce_panel_plugin_get_name()` is recommended since that returns
          * a const string.
+         * @construct-only
          */
         get name(): string;
         /**
          * Number of rows the plugin is embedded on.
          * @since 4.10
+         * @read-only
          */
         get nrows(): number;
         /**
          * The {@link Gtk.Orientation} of the {@link Libxfce4panel.PanelPlugin}. Plugin writer can use it to read the
          * plugin orientation, but `xfce_panel_plugin_get_orientation()` is recommended.
+         * @read-only
          */
         get orientation(): Gtk.Orientation;
         /**
          * The {@link Libxfce4panel.ScreenPosition} of the {@link Libxfce4panel.PanelPlugin}. Plugin writer can use it
          * to read the plugin's screen position, but `xfce_panel_plugin_get_screen_position()`
          * is recommended.
+         * @read-only
          */
         get screen_position(): ScreenPosition;
         /**
          * The {@link Libxfce4panel.ScreenPosition} of the {@link Libxfce4panel.PanelPlugin}. Plugin writer can use it
          * to read the plugin's screen position, but `xfce_panel_plugin_get_screen_position()`
          * is recommended.
+         * @read-only
          */
         get screenPosition(): ScreenPosition;
         /**
@@ -6115,6 +6154,7 @@ export namespace Libxfce4panel {
         /**
          * The size in pixels of the {@link Libxfce4panel.PanelPlugin}. Plugin writer can use it to read the
          * plugin size, but `xfce_panel_plugin_get_size()` is recommended.
+         * @read-only
          */
         get size(): number;
         /**
@@ -6125,7 +6165,13 @@ export namespace Libxfce4panel {
          */
         get small(): boolean;
         set small(val: boolean);
+        /**
+         * @construct-only
+         */
         get unique_id(): number;
+        /**
+         * @construct-only
+         */
         get uniqueId(): number;
 
         /**

@@ -33,6 +33,9 @@ export namespace CMenu {
     }
 
     const DESKTOPAPPINFO_FLATPAK_SUFFIX: string;
+    /**
+     * @gir-type Flags
+     */
     export namespace TreeFlags {
         export const $gtype: GObject.GType<TreeFlags>;
     }
@@ -1202,6 +1205,7 @@ export namespace CMenu {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
             'notify::flags': (pspec: GObject.ParamSpec) => void;
@@ -1230,28 +1234,33 @@ export namespace CMenu {
 
         /**
          * Flags controlling the content of the menu.
+         * @construct-only
          */
         get flags(): TreeFlags;
         /**
          * The name of the menu file; must be a basename or a relative path. The file
          * will be looked up in $XDG_CONFIG_DIRS/menus/. See the Desktop Menu
          * specification.
+         * @construct-only
          */
         get menu_basename(): string;
         /**
          * The name of the menu file; must be a basename or a relative path. The file
          * will be looked up in $XDG_CONFIG_DIRS/menus/. See the Desktop Menu
          * specification.
+         * @construct-only
          */
         get menuBasename(): string;
         /**
          * The full path of the menu file. If set, GMenuTree:menu-basename will get
          * ignored.
+         * @construct-only
          */
         get menu_path(): string;
         /**
          * The full path of the menu file. If set, GMenuTree:menu-basename will get
          * ignored.
+         * @construct-only
          */
         get menuPath(): string;
 

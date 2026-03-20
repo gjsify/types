@@ -61,6 +61,9 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get connection(): LibvirtGObject.Connection;
 
         /**
@@ -447,6 +450,9 @@ export namespace LibvirtSandbox {
         set kernrelease(val: string);
         get kmodpath(): string;
         set kmodpath(val: string);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get root(): string;
         set root(val: string);
@@ -464,6 +470,9 @@ export namespace LibvirtSandbox {
         set uid(val: number);
         get username(): string;
         set username(val: string);
+        /**
+         * @construct-only
+         */
         get uuid(): string;
 
         /**
@@ -900,9 +909,21 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get format(): LibvirtGConfig.DomainDiskFormat;
+        /**
+         * @construct-only
+         */
         get source(): string;
+        /**
+         * @construct-only
+         */
         get tag(): string;
+        /**
+         * @construct-only
+         */
         get type(): LibvirtGConfig.DomainDiskType;
 
         /**
@@ -1199,6 +1220,9 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get target(): string;
 
         /**
@@ -1476,6 +1500,9 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get format(): LibvirtGConfig.DomainDiskFormat;
 
         /**
@@ -1553,6 +1580,9 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get usage(): number;
 
         /**
@@ -1753,8 +1783,17 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get broadcast(): Gio.InetAddress;
+        /**
+         * @construct-only
+         */
         get prefix(): number;
+        /**
+         * @construct-only
+         */
         get primary(): Gio.InetAddress;
 
         /**
@@ -2028,8 +2067,17 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get gateway(): Gio.InetAddress;
+        /**
+         * @construct-only
+         */
         get prefix(): number;
+        /**
+         * @construct-only
+         */
         get target(): Gio.InetAddress;
 
         /**
@@ -2338,6 +2386,7 @@ export namespace LibvirtSandbox {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             closed: (arg0: boolean) => void;
             'notify::connection': (pspec: GObject.ParamSpec) => void;
@@ -2366,10 +2415,25 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get connection(): LibvirtGObject.Connection;
+        /**
+         * @construct-only
+         */
         get devname(): string;
+        /**
+         * @construct-only
+         */
         get direct(): boolean;
+        /**
+         * @construct-only
+         */
         get domain(): LibvirtGObject.Domain;
+        /**
+         * @construct-only
+         */
         get escape(): number;
 
         /**
@@ -2528,6 +2592,7 @@ export namespace LibvirtSandbox {
         interface SignalSignatures extends Console.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             exited: (arg0: number) => void;
             'notify::connection': (pspec: GObject.ParamSpec) => void;
@@ -2629,7 +2694,13 @@ export namespace LibvirtSandbox {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get config(): Config;
+        /**
+         * @construct-only
+         */
         get connection(): LibvirtGObject.Connection;
         get domain(): LibvirtGObject.Domain;
         set domain(val: LibvirtGObject.Domain);

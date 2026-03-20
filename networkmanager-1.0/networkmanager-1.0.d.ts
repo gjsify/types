@@ -591,6 +591,9 @@ export namespace NetworkManager {
         VETH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Setting8021xCKFormat {
         export const $gtype: GObject.GType<Setting8021xCKFormat>;
     }
@@ -621,6 +624,9 @@ export namespace NetworkManager {
         PKCS12,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Setting8021xCKScheme {
         export const $gtype: GObject.GType<Setting8021xCKScheme>;
     }
@@ -906,6 +912,9 @@ export namespace NetworkManager {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingCompareFlags {
         export const $gtype: GObject.GType<SettingCompareFlags>;
     }
@@ -1050,6 +1059,9 @@ export namespace NetworkManager {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingDcbFlags {
         export const $gtype: GObject.GType<SettingDcbFlags>;
     }
@@ -1079,6 +1091,9 @@ export namespace NetworkManager {
         WILLING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingDiffResult {
         export const $gtype: GObject.GType<SettingDiffResult>;
     }
@@ -1227,6 +1242,9 @@ export namespace NetworkManager {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingGsmNetworkBand {
         export const $gtype: GObject.GType<SettingGsmNetworkBand>;
     }
@@ -1300,6 +1318,9 @@ export namespace NetworkManager {
         U2600,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingGsmNetworkType {
         export const $gtype: GObject.GType<SettingGsmNetworkType>;
     }
@@ -1347,6 +1368,9 @@ export namespace NetworkManager {
         '4G',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingHashFlags {
         export const $gtype: GObject.GType<SettingHashFlags>;
     }
@@ -1449,6 +1473,9 @@ export namespace NetworkManager {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingIP6ConfigPrivacy {
         export const $gtype: GObject.GType<SettingIP6ConfigPrivacy>;
     }
@@ -1622,6 +1649,9 @@ export namespace NetworkManager {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingSecretFlags {
         export const $gtype: GObject.GType<SettingSecretFlags>;
     }
@@ -2044,6 +2074,9 @@ export namespace NetworkManager {
         CONNECTED_GLOBAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UtilsSecurityType {
         export const $gtype: GObject.GType<UtilsSecurityType>;
     }
@@ -2260,6 +2293,9 @@ export namespace NetworkManager {
         STOPPED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VlanFlags {
         export const $gtype: GObject.GType<VlanFlags>;
     }
@@ -2292,6 +2328,9 @@ export namespace NetworkManager {
         MVRP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VlanPriorityMap {
         export const $gtype: GObject.GType<VlanPriorityMap>;
     }
@@ -2312,6 +2351,9 @@ export namespace NetworkManager {
         EGRESS_MAP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WepKeyType {
         export const $gtype: GObject.GType<WepKeyType>;
     }
@@ -3645,18 +3687,21 @@ export namespace NetworkManager {
              * or when settings are added or removed.
              * @signal
              * @since 0.9.10
+             * @run-first
              */
             changed: () => void;
             /**
              * The ::secrets-cleared signal is emitted when the secrets of a connection
              * are cleared.
              * @signal
+             * @run-first
              */
             'secrets-cleared': () => void;
             /**
              * The ::secrets-updated signal is emitted when the secrets of a setting
              * have been changed.
              * @signal
+             * @run-first
              */
             'secrets-updated': (arg0: string) => void;
             'notify::path': (pspec: GObject.ParamSpec) => void;

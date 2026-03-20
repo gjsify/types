@@ -29,6 +29,9 @@ export namespace AtrilDocument {
      * AtrilDocument-1.5.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotationTextIcon {
         export const $gtype: GObject.GType<AnnotationTextIcon>;
     }
@@ -49,6 +52,9 @@ export namespace AtrilDocument {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotationType {
         export const $gtype: GObject.GType<AnnotationType>;
     }
@@ -62,6 +68,9 @@ export namespace AtrilDocument {
         ATTACHMENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CompressionType {
         export const $gtype: GObject.GType<CompressionType>;
     }
@@ -97,6 +106,9 @@ export namespace AtrilDocument {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DocumentLayout {
         export const $gtype: GObject.GType<DocumentLayout>;
     }
@@ -113,6 +125,9 @@ export namespace AtrilDocument {
         TWO_PAGE_RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DocumentMode {
         export const $gtype: GObject.GType<DocumentMode>;
     }
@@ -129,6 +144,9 @@ export namespace AtrilDocument {
         PRESENTATION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FileExporterFormat {
         export const $gtype: GObject.GType<FileExporterFormat>;
     }
@@ -142,6 +160,9 @@ export namespace AtrilDocument {
         PDF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormFieldButtonType {
         export const $gtype: GObject.GType<FormFieldButtonType>;
     }
@@ -155,6 +176,9 @@ export namespace AtrilDocument {
         RADIO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormFieldChoiceType {
         export const $gtype: GObject.GType<FormFieldChoiceType>;
     }
@@ -167,6 +191,9 @@ export namespace AtrilDocument {
         LIST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormFieldTextType {
         export const $gtype: GObject.GType<FormFieldTextType>;
     }
@@ -180,6 +207,9 @@ export namespace AtrilDocument {
         FILE_SELECT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LinkActionType {
         export const $gtype: GObject.GType<LinkActionType>;
     }
@@ -196,6 +226,9 @@ export namespace AtrilDocument {
         LAYERS_STATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LinkDestType {
         export const $gtype: GObject.GType<LinkDestType>;
     }
@@ -216,6 +249,9 @@ export namespace AtrilDocument {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SelectionStyle {
         export const $gtype: GObject.GType<SelectionStyle>;
     }
@@ -229,6 +265,9 @@ export namespace AtrilDocument {
         LINE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransitionEffectAlignment {
         export const $gtype: GObject.GType<TransitionEffectAlignment>;
     }
@@ -241,6 +280,9 @@ export namespace AtrilDocument {
         VERTICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransitionEffectDirection {
         export const $gtype: GObject.GType<TransitionEffectDirection>;
     }
@@ -253,6 +295,9 @@ export namespace AtrilDocument {
         OUTWARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransitionEffectType {
         export const $gtype: GObject.GType<TransitionEffectType>;
     }
@@ -389,6 +434,9 @@ export namespace AtrilDocument {
      * @returns `true` on success, or `false` on error with `error` filled in
      */
     function xfer_uri_simple(from: string, to: string): boolean;
+    /**
+     * @gir-type Flags
+     */
     export namespace AnnotationsSaveMask {
         export const $gtype: GObject.GType<AnnotationsSaveMask>;
     }
@@ -410,6 +458,9 @@ export namespace AtrilDocument {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DocumentInfoFields {
         export const $gtype: GObject.GType<DocumentInfoFields>;
     }
@@ -438,6 +489,9 @@ export namespace AtrilDocument {
         LICENSE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DocumentPermissions {
         export const $gtype: GObject.GType<DocumentPermissions>;
     }
@@ -453,6 +507,9 @@ export namespace AtrilDocument {
         FULL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DocumentUIHints {
         export const $gtype: GObject.GType<DocumentUIHints>;
     }
@@ -470,6 +527,9 @@ export namespace AtrilDocument {
         DIRECTION_RTL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FileExporterCapabilities {
         export const $gtype: GObject.GType<FileExporterCapabilities>;
     }
@@ -532,6 +592,9 @@ export namespace AtrilDocument {
         set modified(val: string);
         get name(): string;
         set name(val: string);
+        /**
+         * @construct-only
+         */
         set page(val: Page);
         /**
          * The colour of the annotation as a {@link Gdk.RGBA}.
@@ -796,7 +859,10 @@ export namespace AtrilDocument {
         /** @category Inherited from AtrilDocument.Annotation */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from AtrilDocument.Annotation */
+        /**
+         * @construct-only
+         * @category Inherited from AtrilDocument.Annotation
+         */
         set page(val: Page);
         /**
          * The colour of the annotation as a {@link Gdk.RGBA}.
@@ -1057,7 +1123,10 @@ export namespace AtrilDocument {
         /** @category Inherited from AtrilDocument.Annotation */
         get name(): string;
         set name(val: string);
-        /** @category Inherited from AtrilDocument.Annotation */
+        /**
+         * @construct-only
+         * @category Inherited from AtrilDocument.Annotation
+         */
         set page(val: Page);
         /**
          * The colour of the annotation as a {@link Gdk.RGBA}.
@@ -1220,11 +1289,29 @@ export namespace AtrilDocument {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set ctime(val: number);
+        /**
+         * @construct-only
+         */
         set data(val: any);
+        /**
+         * @construct-only
+         */
         set description(val: string);
+        /**
+         * @construct-only
+         */
         set mtime(val: number);
+        /**
+         * @construct-only
+         */
         set name(val: string);
+        /**
+         * @construct-only
+         */
         set size(val: number);
 
         /**
@@ -2077,7 +2164,13 @@ export namespace AtrilDocument {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get action(): any;
+        /**
+         * @construct-only
+         */
         get title(): string;
 
         /**
@@ -2163,17 +2256,53 @@ export namespace AtrilDocument {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get dest(): any;
+        /**
+         * @construct-only
+         */
         get filename(): string;
+        /**
+         * @construct-only
+         */
         get hide_list(): any;
+        /**
+         * @construct-only
+         */
         get hideList(): any;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get params(): string;
+        /**
+         * @construct-only
+         */
         get show_list(): any;
+        /**
+         * @construct-only
+         */
         get showList(): any;
+        /**
+         * @construct-only
+         */
         get toggle_list(): any;
+        /**
+         * @construct-only
+         */
         get toggleList(): any;
+        /**
+         * @construct-only
+         */
         get type(): LinkActionType;
+        /**
+         * @construct-only
+         */
         get uri(): string;
 
         /**
@@ -2271,16 +2400,49 @@ export namespace AtrilDocument {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get bottom(): number;
+        /**
+         * @construct-only
+         */
         get change(): number;
+        /**
+         * @construct-only
+         */
         get left(): number;
+        /**
+         * @construct-only
+         */
         get named(): string;
+        /**
+         * @construct-only
+         */
         get page(): number;
+        /**
+         * @construct-only
+         */
         get page_label(): string;
+        /**
+         * @construct-only
+         */
         get pageLabel(): string;
+        /**
+         * @construct-only
+         */
         get right(): number;
+        /**
+         * @construct-only
+         */
         get top(): number;
+        /**
+         * @construct-only
+         */
         get type(): LinkDestType;
+        /**
+         * @construct-only
+         */
         get zoom(): number;
 
         /**

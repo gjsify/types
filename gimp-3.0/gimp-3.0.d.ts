@@ -51,6 +51,9 @@ export namespace Gimp {
      * Gimp-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AddMaskType {
         export const $gtype: GObject.GType<AddMaskType>;
     }
@@ -106,6 +109,9 @@ export namespace Gimp {
         PARASITE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BrushApplicationMode {
         export const $gtype: GObject.GType<BrushApplicationMode>;
     }
@@ -125,6 +131,9 @@ export namespace Gimp {
         SOFT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BrushGeneratedShape {
         export const $gtype: GObject.GType<BrushGeneratedShape>;
     }
@@ -148,6 +157,9 @@ export namespace Gimp {
         DIAMOND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CapStyle {
         export const $gtype: GObject.GType<CapStyle>;
     }
@@ -171,6 +183,9 @@ export namespace Gimp {
         SQUARE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ChannelOps {
         export const $gtype: GObject.GType<ChannelOps>;
     }
@@ -198,6 +213,9 @@ export namespace Gimp {
         INTERSECT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ChannelType {
         export const $gtype: GObject.GType<ChannelType>;
     }
@@ -233,6 +251,9 @@ export namespace Gimp {
         ALPHA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CheckSize {
         export const $gtype: GObject.GType<CheckSize>;
     }
@@ -256,6 +277,9 @@ export namespace Gimp {
         LARGE_CHECKS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CheckType {
         export const $gtype: GObject.GType<CheckType>;
     }
@@ -295,6 +319,9 @@ export namespace Gimp {
         CUSTOM_CHECKS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CloneType {
         export const $gtype: GObject.GType<CloneType>;
     }
@@ -314,6 +341,9 @@ export namespace Gimp {
         PATTERN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ColorManagementMode {
         export const $gtype: GObject.GType<ColorManagementMode>;
     }
@@ -337,6 +367,9 @@ export namespace Gimp {
         SOFTPROOF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ColorRenderingIntent {
         export const $gtype: GObject.GType<ColorRenderingIntent>;
     }
@@ -364,6 +397,9 @@ export namespace Gimp {
         ABSOLUTE_COLORIMETRIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ColorTag {
         export const $gtype: GObject.GType<ColorTag>;
     }
@@ -434,6 +470,9 @@ export namespace Gimp {
         BLACK_POINT_COMPENSATION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ComponentType {
         export const $gtype: GObject.GType<ComponentType>;
     }
@@ -528,6 +567,9 @@ export namespace Gimp {
         DIR_LIST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConvertDitherType {
         export const $gtype: GObject.GType<ConvertDitherType>;
     }
@@ -555,6 +597,9 @@ export namespace Gimp {
         FIXED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConvertPaletteType {
         export const $gtype: GObject.GType<ConvertPaletteType>;
     }
@@ -582,6 +627,9 @@ export namespace Gimp {
         CUSTOM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConvolveType {
         export const $gtype: GObject.GType<ConvolveType>;
     }
@@ -656,6 +704,9 @@ export namespace Gimp {
         PPC_ALTIVEC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DesaturateMode {
         export const $gtype: GObject.GType<DesaturateMode>;
     }
@@ -687,6 +738,9 @@ export namespace Gimp {
         VALUE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DodgeBurnType {
         export const $gtype: GObject.GType<DodgeBurnType>;
     }
@@ -721,6 +775,9 @@ export namespace Gimp {
         EXPORT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FillType {
         export const $gtype: GObject.GType<FillType>;
     }
@@ -756,6 +813,9 @@ export namespace Gimp {
         PATTERN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ForegroundExtractMode {
         export const $gtype: GObject.GType<ForegroundExtractMode>;
     }
@@ -771,6 +831,9 @@ export namespace Gimp {
         MATTING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GradientBlendColorSpace {
         export const $gtype: GObject.GType<GradientBlendColorSpace>;
     }
@@ -795,6 +858,9 @@ export namespace Gimp {
         CIE_LAB,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GradientSegmentColor {
         export const $gtype: GObject.GType<GradientSegmentColor>;
     }
@@ -818,6 +884,9 @@ export namespace Gimp {
         HSV_CW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GradientSegmentType {
         export const $gtype: GObject.GType<GradientSegmentType>;
     }
@@ -853,6 +922,9 @@ export namespace Gimp {
         STEP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GradientType {
         export const $gtype: GObject.GType<GradientType>;
     }
@@ -908,6 +980,9 @@ export namespace Gimp {
         SPIRAL_ANTICLOCKWISE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GridStyle {
         export const $gtype: GObject.GType<GridStyle>;
     }
@@ -939,6 +1014,9 @@ export namespace Gimp {
         SOLID,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace HistogramChannel {
         export const $gtype: GObject.GType<HistogramChannel>;
     }
@@ -974,6 +1052,9 @@ export namespace Gimp {
         LUMINANCE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace HueRange {
         export const $gtype: GObject.GType<HueRange>;
     }
@@ -1013,6 +1094,9 @@ export namespace Gimp {
         MAGENTA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IconType {
         export const $gtype: GObject.GType<IconType>;
     }
@@ -1036,6 +1120,9 @@ export namespace Gimp {
         IMAGE_FILE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ImageBaseType {
         export const $gtype: GObject.GType<ImageBaseType>;
     }
@@ -1059,6 +1146,9 @@ export namespace Gimp {
         INDEXED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ImageType {
         export const $gtype: GObject.GType<ImageType>;
     }
@@ -1094,6 +1184,9 @@ export namespace Gimp {
         INDEXEDA_IMAGE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InkBlobType {
         export const $gtype: GObject.GType<InkBlobType>;
     }
@@ -1117,6 +1210,9 @@ export namespace Gimp {
         DIAMOND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InterpolationType {
         export const $gtype: GObject.GType<InterpolationType>;
     }
@@ -1148,6 +1244,9 @@ export namespace Gimp {
         LOHALO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace JoinStyle {
         export const $gtype: GObject.GType<JoinStyle>;
     }
@@ -1171,6 +1270,9 @@ export namespace Gimp {
         BEVEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LayerColorSpace {
         export const $gtype: GObject.GType<LayerColorSpace>;
     }
@@ -1194,6 +1296,9 @@ export namespace Gimp {
         RGB_PERCEPTUAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LayerCompositeMode {
         export const $gtype: GObject.GType<LayerCompositeMode>;
     }
@@ -1225,6 +1330,9 @@ export namespace Gimp {
         INTERSECTION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LayerMode {
         export const $gtype: GObject.GType<LayerMode>;
     }
@@ -1484,6 +1592,9 @@ export namespace Gimp {
         PASS_THROUGH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MaskApplyMode {
         export const $gtype: GObject.GType<MaskApplyMode>;
     }
@@ -1503,6 +1614,9 @@ export namespace Gimp {
         DISCARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MergeType {
         export const $gtype: GObject.GType<MergeType>;
     }
@@ -1530,6 +1644,9 @@ export namespace Gimp {
         FLATTEN_IMAGE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MessageHandlerType {
         export const $gtype: GObject.GType<MessageHandlerType>;
     }
@@ -1613,6 +1730,9 @@ export namespace Gimp {
         NOT_LOADED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OffsetType {
         export const $gtype: GObject.GType<OffsetType>;
     }
@@ -1636,6 +1756,9 @@ export namespace Gimp {
         WRAP_AROUND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OrientationType {
         export const $gtype: GObject.GType<OrientationType>;
     }
@@ -1659,6 +1782,9 @@ export namespace Gimp {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PDBErrorHandler {
         export const $gtype: GObject.GType<PDBErrorHandler>;
     }
@@ -1678,6 +1804,9 @@ export namespace Gimp {
         PLUGIN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PDBProcType {
         export const $gtype: GObject.GType<PDBProcType>;
     }
@@ -1705,6 +1834,9 @@ export namespace Gimp {
         TEMPORARY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PDBStatusType {
         export const $gtype: GObject.GType<PDBStatusType>;
     }
@@ -1736,6 +1868,9 @@ export namespace Gimp {
         CANCEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PaintApplicationMode {
         export const $gtype: GObject.GType<PaintApplicationMode>;
     }
@@ -1755,6 +1890,9 @@ export namespace Gimp {
         INCREMENTAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PathStrokeType {
         export const $gtype: GObject.GType<PathStrokeType>;
     }
@@ -1790,6 +1928,9 @@ export namespace Gimp {
         LARGE_CHECKS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Precision {
         export const $gtype: GObject.GType<Precision>;
     }
@@ -1904,6 +2045,9 @@ export namespace Gimp {
         DOUBLE_GAMMA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ProgressCommand {
         export const $gtype: GObject.GType<ProgressCommand>;
     }
@@ -1957,6 +2101,9 @@ export namespace Gimp {
         BEHIND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RepeatMode {
         export const $gtype: GObject.GType<RepeatMode>;
     }
@@ -1984,6 +2131,9 @@ export namespace Gimp {
         TRIANGULAR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RotationType {
         export const $gtype: GObject.GType<RotationType>;
     }
@@ -2007,6 +2157,9 @@ export namespace Gimp {
         DEGREES270,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RunMode {
         export const $gtype: GObject.GType<RunMode>;
     }
@@ -2030,6 +2183,9 @@ export namespace Gimp {
         WITH_LAST_VALS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SelectCriterion {
         export const $gtype: GObject.GType<SelectCriterion>;
     }
@@ -2085,6 +2241,9 @@ export namespace Gimp {
         ALPHA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SizeType {
         export const $gtype: GObject.GType<SizeType>;
     }
@@ -2104,6 +2263,9 @@ export namespace Gimp {
         POINTS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StackTraceMode {
         export const $gtype: GObject.GType<StackTraceMode>;
     }
@@ -2127,6 +2289,9 @@ export namespace Gimp {
         ALWAYS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StrokeMethod {
         export const $gtype: GObject.GType<StrokeMethod>;
     }
@@ -2146,6 +2311,9 @@ export namespace Gimp {
         PAINT_METHOD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextDirection {
         export const $gtype: GObject.GType<TextDirection>;
     }
@@ -2181,6 +2349,9 @@ export namespace Gimp {
         TTB_LTR_UPRIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextHintStyle {
         export const $gtype: GObject.GType<TextHintStyle>;
     }
@@ -2208,6 +2379,9 @@ export namespace Gimp {
         FULL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextJustification {
         export const $gtype: GObject.GType<TextJustification>;
     }
@@ -2235,6 +2409,9 @@ export namespace Gimp {
         FILL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransferMode {
         export const $gtype: GObject.GType<TransferMode>;
     }
@@ -2258,6 +2435,9 @@ export namespace Gimp {
         HIGHLIGHTS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransformDirection {
         export const $gtype: GObject.GType<TransformDirection>;
     }
@@ -2277,6 +2457,9 @@ export namespace Gimp {
         BACKWARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransformResize {
         export const $gtype: GObject.GType<TransformResize>;
     }
@@ -7483,6 +7666,9 @@ export namespace Gimp {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ProcedureSensitivityMask {
         export const $gtype: GObject.GType<ProcedureSensitivityMask>;
     }
@@ -8487,6 +8673,7 @@ export namespace Gimp {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'sensitivity-changed': (arg0: string) => void;
         }
@@ -9455,6 +9642,7 @@ export namespace Gimp {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             progress: (arg0: number) => void;
         }
@@ -9689,6 +9877,9 @@ export namespace Gimp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): number;
 
         /**
@@ -12688,6 +12879,9 @@ export namespace Gimp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): number;
 
         /**
@@ -14609,6 +14803,9 @@ export namespace Gimp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): number;
 
         /**
@@ -16219,7 +16416,13 @@ export namespace Gimp {
         set auto_load(val: boolean);
         get autoLoad(): boolean;
         set autoLoad(val: boolean);
+        /**
+         * @read-only
+         */
         get on_disk(): boolean;
+        /**
+         * @read-only
+         */
         get onDisk(): boolean;
 
         /**
@@ -19842,26 +20045,32 @@ export namespace Gimp {
 
         /**
          * The program name as usually found on argv[0]
+         * @construct-only
          */
         set program_name(val: string);
         /**
          * The program name as usually found on argv[0]
+         * @construct-only
          */
         set programName(val: string);
         /**
          * The {@link GLib.IOChannel} to read from GIMP
+         * @construct-only
          */
         get read_channel(): GLib.IOChannel;
         /**
          * The {@link GLib.IOChannel} to read from GIMP
+         * @construct-only
          */
         get readChannel(): GLib.IOChannel;
         /**
          * The {@link GLib.IOChannel} to write to GIMP
+         * @construct-only
          */
         get write_channel(): GLib.IOChannel;
         /**
          * The {@link GLib.IOChannel} to write to GIMP
+         * @construct-only
          */
         get writeChannel(): GLib.IOChannel;
 
@@ -20187,10 +20396,25 @@ export namespace Gimp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get plug_in(): PlugIn;
+        /**
+         * @construct-only
+         */
         get plugIn(): PlugIn;
+        /**
+         * @construct-only
+         */
         get procedure_type(): PDBProcType;
+        /**
+         * @construct-only
+         */
         get procedureType(): PDBProcType;
 
         /**
@@ -22108,6 +22332,9 @@ export namespace Gimp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get procedure(): Procedure;
 
         /**
@@ -22205,6 +22432,9 @@ export namespace Gimp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): number;
 
         /**
@@ -23519,11 +23749,29 @@ export namespace Gimp {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get abbreviation(): string;
+        /**
+         * @construct-only
+         */
         get digits(): number;
+        /**
+         * @construct-only
+         */
         get factor(): number;
+        /**
+         * @construct-only
+         */
         get id(): number;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get symbol(): string;
 
         /**

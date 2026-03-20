@@ -38,6 +38,7 @@ export namespace ZBar {
              * the symbol type and contained data are provided as separate
              * parameters
              * @signal
+             * @run-cleanup
              */
             decoded: (arg0: number, arg1: string) => void;
             /**
@@ -45,6 +46,7 @@ export namespace ZBar {
              * the symbol type name is prefixed to the data, separated by a
              * colon
              * @signal
+             * @run-cleanup
              */
             'decoded-text': (arg0: string) => void;
             'notify::video-device': (pspec: GObject.ParamSpec) => void;
@@ -123,7 +125,13 @@ export namespace ZBar {
         set video_enabled(val: boolean);
         get videoEnabled(): boolean;
         set videoEnabled(val: boolean);
+        /**
+         * @read-only
+         */
         get video_opened(): boolean;
+        /**
+         * @read-only
+         */
         get videoOpened(): boolean;
 
         /**

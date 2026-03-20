@@ -31,6 +31,9 @@ export namespace RygelServer {
      * RygelServer-2.6
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LogicalOperator {
         export const $gtype: GObject.GType<LogicalOperator>;
     }
@@ -43,6 +46,9 @@ export namespace RygelServer {
         OR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ObjectEventType {
         export const $gtype: GObject.GType<ObjectEventType>;
     }
@@ -56,6 +62,9 @@ export namespace RygelServer {
         DELETED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SerializerType {
         export const $gtype: GObject.GType<SerializerType>;
     }
@@ -1081,9 +1090,15 @@ export namespace RygelServer {
         /** @category Inherited from RygelServer.MediaContainer */
         get emptyChildCount(): number;
         set emptyChildCount(val: number);
-        /** @category Inherited from RygelServer.MediaContainer */
+        /**
+         * @read-only
+         * @category Inherited from RygelServer.MediaContainer
+         */
         get all_child_count(): number;
-        /** @category Inherited from RygelServer.MediaContainer */
+        /**
+         * @read-only
+         * @category Inherited from RygelServer.MediaContainer
+         */
         get allChildCount(): number;
         /** @category Inherited from RygelServer.MediaContainer */
         get create_mode_enabled(): boolean;
@@ -1845,7 +1860,13 @@ export namespace RygelServer {
         set empty_child_count(val: number);
         get emptyChildCount(): number;
         set emptyChildCount(val: number);
+        /**
+         * @read-only
+         */
         get all_child_count(): number;
+        /**
+         * @read-only
+         */
         get allChildCount(): number;
         get create_mode_enabled(): boolean;
         set create_mode_enabled(val: boolean);
@@ -2385,7 +2406,13 @@ export namespace RygelServer {
         set parentRef(val: MediaContainer);
         get title(): string;
         set title(val: string);
+        /**
+         * @read-only
+         */
         get ocm_flags(): GUPnPAV.OCMFlags;
+        /**
+         * @read-only
+         */
         get ocmFlags(): GUPnPAV.OCMFlags;
 
         /**
@@ -2993,9 +3020,21 @@ export namespace RygelServer {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get root_container(): MediaContainer;
+        /**
+         * @construct-only
+         */
         get rootContainer(): MediaContainer;
+        /**
+         * @read-only
+         */
         get search_caps(): string;
+        /**
+         * @read-only
+         */
         get searchCaps(): string;
         get upload_profiles(): RygelCore.DLNAProfile[];
         set upload_profiles(val: RygelCore.DLNAProfile[]);
@@ -3154,7 +3193,13 @@ export namespace RygelServer {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get root_container(): MediaContainer;
+        /**
+         * @construct-only
+         */
         get rootContainer(): MediaContainer;
 
         /**
@@ -4738,6 +4783,9 @@ export namespace RygelServer {
 
         get server(): Soup.Server;
         set server(val: Soup.Server);
+        /**
+         * @read-only
+         */
         get priority(): number;
 
         /**
@@ -6216,7 +6264,13 @@ export namespace RygelServer {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get serializer_type(): SerializerType;
+        /**
+         * @construct-only
+         */
         get serializerType(): SerializerType;
 
         /**

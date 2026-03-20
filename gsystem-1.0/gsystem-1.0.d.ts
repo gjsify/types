@@ -631,6 +631,7 @@ export namespace GSystem {
 
         /**
          * @since 2.36
+         * @construct-only
          */
         get context(): SubprocessContext;
 

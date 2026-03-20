@@ -25,6 +25,9 @@ export namespace GstValidate {
      * GstValidate-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ActionReturn {
         export const $gtype: GObject.GType<ActionReturn>;
     }
@@ -55,6 +58,9 @@ export namespace GstValidate {
         DONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InterceptionReturn {
         export const $gtype: GObject.GType<InterceptionReturn>;
     }
@@ -79,6 +85,9 @@ export namespace GstValidate {
         REPORT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ReportLevel {
         export const $gtype: GObject.GType<ReportLevel>;
     }
@@ -96,6 +105,9 @@ export namespace GstValidate {
         NUM_ENTRIES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ReportingDetails {
         export const $gtype: GObject.GType<ReportingDetails>;
     }
@@ -461,6 +473,9 @@ export namespace GstValidate {
     interface PrepareAction {
         (action: Action): number;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace ActionTypeFlags {
         export const $gtype: GObject.GType<ActionTypeFlags>;
     }
@@ -524,6 +539,9 @@ export namespace GstValidate {
         CHECK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DebugFlags {
         export const $gtype: GObject.GType<DebugFlags>;
     }
@@ -548,6 +566,9 @@ export namespace GstValidate {
         PRINT_CRITICALS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace IssueFlags {
         export const $gtype: GObject.GType<IssueFlags>;
     }
@@ -568,6 +589,9 @@ export namespace GstValidate {
         FORCE_BACKTRACE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MediaDescriptorWriterFlags {
         export const $gtype: GObject.GType<MediaDescriptorWriterFlags>;
     }
@@ -582,6 +606,9 @@ export namespace GstValidate {
         HANDLE_GLOGS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ObjectSetPropertyFlags {
         export const $gtype: GObject.GType<ObjectSetPropertyFlags>;
     }
@@ -603,6 +630,9 @@ export namespace GstValidate {
         NO_VALUE_CHECK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StructureResolveVariablesFlags {
         export const $gtype: GObject.GType<StructureResolveVariablesFlags>;
     }
@@ -618,6 +648,9 @@ export namespace GstValidate {
         NO_EXPRESSION,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VerbosityFlags {
         export const $gtype: GObject.GType<VerbosityFlags>;
     }
@@ -667,7 +700,13 @@ export namespace GstValidate {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get handles_states(): boolean;
+        /**
+         * @read-only
+         */
         get handlesStates(): boolean;
 
         /**
@@ -1238,9 +1277,15 @@ export namespace GstValidate {
             ...args: GObject.GjsParameters<ElementMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GstValidate.Reporter */
+        /**
+         * @construct-only
+         * @category Inherited from GstValidate.Reporter
+         */
         get validate_runner(): Runner;
-        /** @category Inherited from GstValidate.Reporter */
+        /**
+         * @construct-only
+         * @category Inherited from GstValidate.Reporter
+         */
         get validateRunner(): Runner;
         /**
          * Gets `name` of `reporter`
@@ -1802,7 +1847,13 @@ export namespace GstValidate {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get validate_runner(): Runner;
+        /**
+         * @construct-only
+         */
         get validateRunner(): Runner;
 
         /**
@@ -2461,9 +2512,15 @@ export namespace GstValidate {
         all_stream_found(): boolean;
         all_tags_found(): boolean;
         get_xml_path(): string;
-        /** @category Inherited from GstValidate.Reporter */
+        /**
+         * @construct-only
+         * @category Inherited from GstValidate.Reporter
+         */
         get validate_runner(): Runner;
-        /** @category Inherited from GstValidate.Reporter */
+        /**
+         * @construct-only
+         * @category Inherited from GstValidate.Reporter
+         */
         get validateRunner(): Runner;
         /**
          * Gets `name` of `reporter`
@@ -3096,9 +3153,15 @@ export namespace GstValidate {
          * @param filename
          */
         write(filename: string): boolean;
-        /** @category Inherited from GstValidate.Reporter */
+        /**
+         * @construct-only
+         * @category Inherited from GstValidate.Reporter
+         */
         get validate_runner(): Runner;
-        /** @category Inherited from GstValidate.Reporter */
+        /**
+         * @construct-only
+         * @category Inherited from GstValidate.Reporter
+         */
         get validateRunner(): Runner;
         /**
          * Gets `name` of `reporter`
@@ -3672,13 +3735,28 @@ export namespace GstValidate {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         // This accessor conflicts with a property or field in a parent class or interface.
         object: GObject.Object | any;
         get pipeline(): Gst.Pipeline;
         set pipeline(val: Gst.Pipeline);
+        /**
+         * @construct-only
+         */
         get validate_parent(): Monitor;
+        /**
+         * @construct-only
+         */
         get validateParent(): Monitor;
+        /**
+         * @construct-only
+         */
         get validate_runner(): Runner;
+        /**
+         * @construct-only
+         */
         get validateRunner(): Runner;
         get verbosity(): VerbosityFlags;
         set verbosity(val: VerbosityFlags);
@@ -4334,7 +4412,13 @@ export namespace GstValidate {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get validate_runner(): Runner;
+        /**
+         * @construct-only
+         */
         get validateRunner(): Runner;
 
         /**
@@ -5024,9 +5108,15 @@ export namespace GstValidate {
             ...args: GObject.GjsParameters<PadMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from GstValidate.Reporter */
+        /**
+         * @construct-only
+         * @category Inherited from GstValidate.Reporter
+         */
         get validate_runner(): Runner;
-        /** @category Inherited from GstValidate.Reporter */
+        /**
+         * @construct-only
+         * @category Inherited from GstValidate.Reporter
+         */
         get validateRunner(): Runner;
         /**
          * Gets `name` of `reporter`
@@ -6089,10 +6179,12 @@ export namespace GstValidate {
         interface SignalSignatures extends Gst.Tracer.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'report-added': (arg0: Report) => void;
             /**
              * @signal
+             * @run-last
              */
             stopping: () => void;
             'notify::params': (pspec: GObject.ParamSpec) => void;
@@ -6202,17 +6294,20 @@ export namespace GstValidate {
              * Emitted when an action is done.
              * @signal
              * @since 1.20
+             * @run-last
              */
             'action-done': (arg0: Action) => void;
             /**
              * Emitted once all actions have been executed
              * @signal
+             * @run-last
              */
             done: () => void;
             /**
              * Emitted when the 'stop' action is fired
              * @signal
              * @since 1.26
+             * @run-last
              */
             stopping: () => void;
             'notify::execute-on-idle': (pspec: GObject.ParamSpec) => void;
@@ -6246,9 +6341,21 @@ export namespace GstValidate {
         set execute_on_idle(val: boolean);
         get executeOnIdle(): boolean;
         set executeOnIdle(val: boolean);
+        /**
+         * @read-only
+         */
         get handles_states(): boolean;
+        /**
+         * @read-only
+         */
         get handlesStates(): boolean;
+        /**
+         * @construct-only
+         */
         get validate_runner(): Runner;
+        /**
+         * @construct-only
+         */
         get validateRunner(): Runner;
 
         /**
@@ -7345,7 +7452,13 @@ export namespace GstValidate {
     interface Reporter extends GObject.Object, Reporter.Interface {
         // Properties
 
+        /**
+         * @construct-only
+         */
         get validate_runner(): Runner;
+        /**
+         * @construct-only
+         */
         get validateRunner(): Runner;
 
         // Methods

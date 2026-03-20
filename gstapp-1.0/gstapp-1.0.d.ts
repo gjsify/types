@@ -21,6 +21,9 @@ export namespace GstApp {
      * GstApp-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AppLeakyType {
         export const $gtype: GObject.GType<AppLeakyType>;
     }
@@ -46,6 +49,9 @@ export namespace GstApp {
         DOWNSTREAM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AppStreamType {
         export const $gtype: GObject.GType<AppStreamType>;
     }
@@ -79,6 +85,7 @@ export namespace GstApp {
              * Signal that the end-of-stream has been reached. This signal is emitted from
              * the streaming thread.
              * @signal
+             * @run-last
              */
             eos: () => void;
             /**
@@ -94,6 +101,7 @@ export namespace GstApp {
              * Note that this signal is only emitted when the "emit-signals" property is
              * set to `true`, which it is not by default for performance reasons.
              * @signal
+             * @run-last
              */
             'new-preroll': () => Gst.FlowReturn;
             /**
@@ -109,6 +117,7 @@ export namespace GstApp {
              * Note that this signal is only emitted when the "emit-signals" property is
              * set to `true`, which it is not by default for performance reasons.
              * @signal
+             * @run-last
              */
             'new-sample': () => Gst.FlowReturn;
             /**
@@ -131,6 +140,7 @@ export namespace GstApp {
              * skip basesink handling of the event, `false` otherwise.
              * @signal
              * @since 1.20
+             * @run-last
              */
             'new-serialized-event': () => boolean | void;
             /**
@@ -140,6 +150,7 @@ export namespace GstApp {
              * "emit-signals" property is `true`.
              * @signal
              * @since 1.24
+             * @run-last
              */
             'propose-allocation': (arg0: Gst.Query) => boolean | void;
             /**
@@ -162,6 +173,8 @@ export namespace GstApp {
              * This function blocks until a preroll sample or EOS is received or the appsink
              * element is set to the READY/NULL state.
              * @signal
+             * @action
+             * @run-last
              */
             'pull-preroll': () => Gst.Sample | null;
             /**
@@ -180,6 +193,8 @@ export namespace GstApp {
              * If an EOS event was received before any buffers, this function returns
              * `null`. Use gst_app_sink_is_eos () to check for the EOS condition.
              * @signal
+             * @action
+             * @run-last
              */
             'pull-sample': () => Gst.Sample | null;
             /**
@@ -207,6 +222,8 @@ export namespace GstApp {
              * so make sure that your code is checking for the actual type it is handling.
              * @signal
              * @since 1.20
+             * @action
+             * @run-last
              */
             'try-pull-object': (arg0: number) => Gst.MiniObject | null;
             /**
@@ -231,6 +248,8 @@ export namespace GstApp {
              * element is set to the READY/NULL state, or the timeout expires.
              * @signal
              * @since 1.10
+             * @action
+             * @run-last
              */
             'try-pull-preroll': (arg0: number) => Gst.Sample | null;
             /**
@@ -251,6 +270,8 @@ export namespace GstApp {
              * for the EOS condition.
              * @signal
              * @since 1.10
+             * @action
+             * @run-last
              */
             'try-pull-sample': (arg0: number) => Gst.Sample | null;
             'notify::buffer-list': (pspec: GObject.ParamSpec) => void;
@@ -350,6 +371,9 @@ export namespace GstApp {
         set emit_signals(val: boolean);
         get emitSignals(): boolean;
         set emitSignals(val: boolean);
+        /**
+         * @read-only
+         */
         // This accessor conflicts with a property or field in a parent class or interface.
         eos: boolean | any;
         get max_buffers(): number;
@@ -1151,6 +1175,8 @@ export namespace GstApp {
             /**
              * Notify `appsrc` that no more buffer are available.
              * @signal
+             * @action
+             * @run-last
              */
             'end-of-stream': () => Gst.FlowReturn;
             /**
@@ -1158,6 +1184,7 @@ export namespace GstApp {
              * application stops calling push-buffer until the need-data signal is
              * emitted again to avoid excessive buffer queueing.
              * @signal
+             * @run-last
              */
             'enough-data': () => void;
             /**
@@ -1170,6 +1197,7 @@ export namespace GstApp {
              * You can call push-buffer multiple times until the enough-data signal is
              * fired.
              * @signal
+             * @run-last
              */
             'need-data': (arg0: number) => void;
             /**
@@ -1183,6 +1211,8 @@ export namespace GstApp {
              * When the block property is TRUE, this function can block until free space
              * becomes available in the queue.
              * @signal
+             * @action
+             * @run-last
              */
             'push-buffer': (arg0: Gst.Buffer) => Gst.FlowReturn;
             /**
@@ -1197,6 +1227,8 @@ export namespace GstApp {
              * becomes available in the queue.
              * @signal
              * @since 1.14
+             * @action
+             * @run-last
              */
             'push-buffer-list': (arg0: Gst.BufferList) => Gst.FlowReturn;
             /**
@@ -1215,6 +1247,8 @@ export namespace GstApp {
              * becomes available in the queue.
              * @signal
              * @since 1.6
+             * @action
+             * @run-last
              */
             'push-sample': (arg0: Gst.Sample) => Gst.FlowReturn;
             /**
@@ -1222,6 +1256,7 @@ export namespace GstApp {
              * the new `offset`.
              * This callback is only called for seekable stream types.
              * @signal
+             * @run-last
              */
             'seek-data': (arg0: number) => boolean | void;
             'notify::block': (pspec: GObject.ParamSpec) => void;
@@ -1380,31 +1415,37 @@ export namespace GstApp {
         /**
          * The number of currently queued buffers inside appsrc.
          * @since 1.20
+         * @read-only
          */
         get current_level_buffers(): number;
         /**
          * The number of currently queued buffers inside appsrc.
          * @since 1.20
+         * @read-only
          */
         get currentLevelBuffers(): number;
         /**
          * The number of currently queued bytes inside appsrc.
          * @since 1.2
+         * @read-only
          */
         get current_level_bytes(): number;
         /**
          * The number of currently queued bytes inside appsrc.
          * @since 1.2
+         * @read-only
          */
         get currentLevelBytes(): number;
         /**
          * The amount of currently queued time inside appsrc.
          * @since 1.20
+         * @read-only
          */
         get current_level_time(): number;
         /**
          * The amount of currently queued time inside appsrc.
          * @since 1.20
+         * @read-only
          */
         get currentLevelTime(): number;
         /**

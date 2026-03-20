@@ -45,6 +45,9 @@ export namespace XApp {
         static '96': number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScrollDirection {
         export const $gtype: GObject.GType<ScrollDirection>;
     }
@@ -72,6 +75,9 @@ export namespace XApp {
         RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StatusIconState {
         export const $gtype: GObject.GType<StatusIconState>;
     }
@@ -323,6 +329,8 @@ export namespace XApp {
             /**
              * Notifies when the favorites list has changed.
              * @signal
+             * @action
+             * @run-first
              */
             changed: () => void;
         }
@@ -453,6 +461,8 @@ export namespace XApp {
              * This signal is emitted by the helper when it has completed
              * gathering GPU information. It will only be sent once.
              * @signal
+             * @action
+             * @run-last
              */
             ready: (arg0: boolean) => void;
         }
@@ -1462,9 +1472,15 @@ export namespace XApp {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -1778,6 +1794,7 @@ export namespace XApp {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -1785,6 +1802,7 @@ export namespace XApp {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -1906,6 +1924,7 @@ export namespace XApp {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -6152,10 +6171,14 @@ export namespace XApp {
         interface SignalSignatures extends GtkWindow.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             close: () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             select: () => void;
             'notify::allow-paths': (pspec: GObject.ParamSpec) => void;
@@ -6862,10 +6885,12 @@ export namespace XApp {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'config-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'layout-changed': (arg0: number) => void;
             'notify::enabled': (pspec: GObject.ParamSpec) => void;
@@ -6886,6 +6911,9 @@ export namespace XApp {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get enabled(): boolean;
 
         /**
@@ -9255,6 +9283,8 @@ export namespace XApp {
         interface SignalSignatures extends Gtk.Window.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             close: () => void;
             'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
@@ -10445,16 +10475,22 @@ export namespace XApp {
              * XAppStatusIcon:secondary-menu is not `null`, this signal is skipped for the respective button
              * presses.  A middle button click will always send this signal when pressed.
              * @signal
+             * @action
+             * @run-first
              */
             activate: (arg0: number, arg1: number) => void;
             /**
              * Gets emitted when there is a button press received from an applet
              * @signal
+             * @action
+             * @run-last
              */
             'button-press-event': (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number) => void;
             /**
              * Gets emitted when there is a button release received from an applet
              * @signal
+             * @action
+             * @run-last
              */
             'button-release-event': (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number) => void;
             /**
@@ -10462,6 +10498,8 @@ export namespace XApp {
              * For the most part, amounts will always be 1, unless an applet supports smooth
              * scrolling.  Generally the direction value is most important.
              * @signal
+             * @action
+             * @run-first
              */
             'scroll-event': (arg0: number, arg1: ScrollDirection, arg2: number) => void;
             /**
@@ -10470,6 +10508,8 @@ export namespace XApp {
              * (perhaps to alter the menu or other click behavior), you should
              * connect to this - see {@link XApp.StatusIconState} for more details.
              * @signal
+             * @action
+             * @run-first
              */
             'state-changed': (arg0: StatusIconState) => void;
             'notify::icon-size': (pspec: GObject.ParamSpec) => void;
@@ -13162,12 +13202,16 @@ export namespace XApp {
              * This signal is emitted by the monitor when it has discovered a new
              * {@link XApp.StatusIcon} on the bus.
              * @signal
+             * @action
+             * @run-last
              */
             'icon-added': (arg0: StatusIconInterfaceProxy) => void;
             /**
              * This signal is emitted by the monitor when an {@link XApp.StatusIcon} has disappeared
              * from the bus.
              * @signal
+             * @action
+             * @run-last
              */
             'icon-removed': (arg0: StatusIconInterfaceProxy) => void;
         }

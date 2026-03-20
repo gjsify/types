@@ -1837,6 +1837,7 @@ export namespace Cogl {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             destroy: () => void;
             'notify::driver-config': (pspec: GObject.ParamSpec) => void;
@@ -1862,7 +1863,13 @@ export namespace Cogl {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get driver_config(): any;
+        /**
+         * @construct-only
+         */
         get driverConfig(): any;
         get height(): number;
         set height(val: number);

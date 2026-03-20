@@ -337,9 +337,21 @@ export namespace UMockdev {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get devnode(): string;
+        /**
+         * @read-only
+         */
         get request(): number;
+        /**
+         * @read-only
+         */
         get arg(): IoctlData;
+        /**
+         * @read-only
+         */
         get connected(): boolean;
 
         /**

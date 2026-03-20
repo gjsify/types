@@ -157,6 +157,7 @@ export namespace Thunarx {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             activate: () => void;
             'notify::icon': (pspec: GObject.ParamSpec) => void;
@@ -195,6 +196,9 @@ export namespace Thunarx {
         set label(val: string);
         get menu(): Menu;
         set menu(val: Menu);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get priority(): boolean;
         set priority(val: boolean);
@@ -1688,6 +1692,7 @@ export namespace Thunarx {
              * The file manager will then invoke `thunarx_renamer_process()`
              * for all files that should be renamed and update the preview.
              * @signal
+             * @run-first
              */
             changed: () => void;
             'notify::help-url': (pspec: GObject.ParamSpec) => void;
@@ -1791,6 +1796,7 @@ export namespace Thunarx {
          * The user visible name of the renamer, that is displayed
          * in the bulk rename dialog of the file manager. Derived
          * classes should set a useful name.
+         * @construct-only
          */
         get name(): string;
 

@@ -118,12 +118,33 @@ export namespace TelepathyLogger {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get detailed_end_reason(): string;
+        /**
+         * @construct-only
+         */
         get detailedEndReason(): string;
+        /**
+         * @construct-only
+         */
         get duration(): number;
+        /**
+         * @construct-only
+         */
         get end_actor(): Entity;
+        /**
+         * @construct-only
+         */
         get endActor(): Entity;
+        /**
+         * @construct-only
+         */
         get end_reason(): number;
+        /**
+         * @construct-only
+         */
         get endReason(): number;
 
         /**
@@ -213,22 +234,27 @@ export namespace TelepathyLogger {
 
         /**
          * The entity's alias
+         * @construct-only
          */
         get alias(): string;
         /**
          * The entity's avatar token
+         * @construct-only
          */
         get avatar_token(): string;
         /**
          * The entity's avatar token
+         * @construct-only
          */
         get avatarToken(): string;
         /**
          * The entity's identifier
+         * @construct-only
          */
         get identifier(): string;
         /**
          * The entity's type (see {@link TelepathyLogger.EntityType}).
+         * @construct-only
          */
         get type(): number;
 
@@ -328,13 +354,37 @@ export namespace TelepathyLogger {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get account(): TelepathyGLib.Account;
+        /**
+         * @read-only
+         */
         get account_path(): string;
+        /**
+         * @read-only
+         */
         get accountPath(): string;
+        /**
+         * @construct-only
+         */
         get channel_path(): string;
+        /**
+         * @construct-only
+         */
         get channelPath(): string;
+        /**
+         * @construct-only
+         */
         get receiver(): Entity;
+        /**
+         * @construct-only
+         */
         get sender(): Entity;
+        /**
+         * @construct-only
+         */
         get timestamp(): number;
 
         /**
@@ -754,8 +804,17 @@ export namespace TelepathyLogger {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get filter(): any;
+        /**
+         * @construct-only
+         */
         get filter_data(): any;
+        /**
+         * @construct-only
+         */
         get filterData(): any;
 
         /**
@@ -904,14 +963,41 @@ export namespace TelepathyLogger {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get edit_timestamp(): number;
+        /**
+         * @construct-only
+         */
         get editTimestamp(): number;
+        /**
+         * @construct-only
+         */
         get message(): string;
+        /**
+         * @construct-only
+         */
         get message_token(): string;
+        /**
+         * @construct-only
+         */
         get messageToken(): string;
+        /**
+         * @construct-only
+         */
         get message_type(): number;
+        /**
+         * @construct-only
+         */
         get messageType(): number;
+        /**
+         * @construct-only
+         */
         get supersedes_token(): string;
+        /**
+         * @construct-only
+         */
         get supersedesToken(): string;
 
         /**

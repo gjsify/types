@@ -38,6 +38,9 @@ export namespace Garcon {
         PARENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MenuNodeType {
         export const $gtype: GObject.GType<MenuNodeType>;
     }
@@ -186,10 +189,12 @@ export namespace Garcon {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'directory-changed': (arg0: MenuDirectory, arg1: MenuDirectory) => void;
             /**
              * @signal
+             * @run-last
              */
             'reload-required': () => void;
             'notify::directory': (pspec: GObject.ParamSpec) => void;
@@ -219,6 +224,7 @@ export namespace Garcon {
         set directory(val: MenuDirectory);
         /**
          * The {@link Gio.File} from which the %GarconMenu was loaded.
+         * @construct-only
          */
         get file(): Gio.File;
 
@@ -872,6 +878,9 @@ export namespace Garcon {
          */
         get comment(): string;
         set comment(val: string);
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
         /**
          * Icon associated with this directory.
@@ -1021,6 +1030,7 @@ export namespace Garcon {
             /**
              * Emitted when {@link Garcon.MenuItem} has been reloaded.
              * @signal
+             * @run-first
              */
             changed: () => void;
             'notify::command': (pspec: GObject.ParamSpec) => void;
@@ -1098,6 +1108,7 @@ export namespace Garcon {
         set desktopId(val: string);
         /**
          * The {@link Gio.File} from which the %GarconMenuItem was loaded.
+         * @construct-only
          */
         get file(): Gio.File;
         /**
@@ -2128,7 +2139,13 @@ export namespace Garcon {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get tree_provider(): MenuTreeProvider;
+        /**
+         * @construct-only
+         */
         get treeProvider(): MenuTreeProvider;
 
         /**
@@ -2817,6 +2834,9 @@ export namespace Garcon {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
 
         /**

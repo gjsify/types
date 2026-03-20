@@ -49,6 +49,9 @@ export namespace Dee {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SharedModelAccessMode {
         export const $gtype: GObject.GType<SharedModelAccessMode>;
     }
@@ -70,6 +73,9 @@ export namespace Dee {
         SHARED_MODEL_ERROR_LEADER_INVALIDATED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SharedModelFlushMode {
         export const $gtype: GObject.GType<SharedModelFlushMode>;
     }
@@ -524,7 +530,13 @@ export namespace Dee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get bus_address(): string;
+        /**
+         * @construct-only
+         */
         get busAddress(): string;
 
         /**
@@ -592,10 +604,12 @@ export namespace Dee {
 
         /**
          * Property holding the primary path used to store and load resources
+         * @construct-only
          */
         get primary_path(): string;
         /**
          * Property holding the primary path used to store and load resources
+         * @construct-only
          */
         get primaryPath(): string;
 
@@ -1194,6 +1208,7 @@ export namespace Dee {
         /**
          * Property holding the {@link Dee.Filter} used to filter the model
          * defined in the {@link Dee.FilterModel.back_end} property.
+         * @construct-only
          */
         get filter(): Filter;
 
@@ -2428,14 +2443,17 @@ export namespace Dee {
 
         /**
          * The {@link Dee.Analyzer} used to analyze terms extracted by the model reader
+         * @construct-only
          */
         get analyzer(): Analyzer;
         /**
          * The {@link Dee.Model} being indexed
+         * @construct-only
          */
         get model(): Model;
         /**
          * The {@link Dee.ModelReader} used to extract terms from rows in the model
+         * @construct-only
          */
         set reader(val: ModelReader);
 
@@ -2590,23 +2608,27 @@ export namespace Dee {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'connection-acquired': (arg0: Gio.DBusConnection) => void;
             /**
              * Connect to this signal to be notified when peers close
              * their {@link Gio.DBusConnection}.
              * @signal
+             * @run-last
              */
             'connection-closed': (arg0: Gio.DBusConnection) => void;
             /**
              * Connect to this signal to be notified of existing and new peers that are
              *   in your swarm.
              * @signal
+             * @run-last
              */
             'peer-found': (arg0: string) => void;
             /**
              * Connect to this signal to be notified when peers disconnect from the swarm
              * @signal
+             * @run-last
              */
             'peer-lost': (arg0: string) => void;
             'notify::swarm-leader': (pspec: GObject.ParamSpec) => void;
@@ -2636,13 +2658,25 @@ export namespace Dee {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get swarm_leader(): string;
+        /**
+         * @read-only
+         */
         get swarmLeader(): string;
         get swarm_name(): string;
         set swarm_name(val: string);
         get swarmName(): string;
         set swarmName(val: string);
+        /**
+         * @construct-only
+         */
         get swarm_owner(): boolean;
+        /**
+         * @construct-only
+         */
         get swarmOwner(): boolean;
 
         /**
@@ -2797,10 +2831,12 @@ export namespace Dee {
 
         /**
          * The backend model used by this proxy model.
+         * @construct-only
          */
         get back_end(): Model;
         /**
          * The backend model used by this proxy model.
+         * @construct-only
          */
         get backEnd(): Model;
         /**
@@ -2809,6 +2845,7 @@ export namespace Dee {
          * You will most likely want to set this property to false
          * if the implementation manipulates with the rows in the model and keep
          * track of seqnums yourself.
+         * @construct-only
          */
         get inherit_seqnums(): boolean;
         /**
@@ -2817,18 +2854,21 @@ export namespace Dee {
          * You will most likely want to set this property to false
          * if the implementation manipulates with the rows in the model and keep
          * track of seqnums yourself.
+         * @construct-only
          */
         get inheritSeqnums(): boolean;
         /**
          * Boolean property defining whether or not to automatically forward signals
          * from the back end model. This is especially useful for sub classes wishing
          * to do their own more advanced signal forwarding.
+         * @construct-only
          */
         get proxy_signals(): boolean;
         /**
          * Boolean property defining whether or not to automatically forward signals
          * from the back end model. This is especially useful for sub classes wishing
          * to do their own more advanced signal forwarding.
+         * @construct-only
          */
         get proxySignals(): boolean;
 
@@ -6805,9 +6845,21 @@ export namespace Dee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get bus_address(): string;
+        /**
+         * @construct-only
+         */
         get busAddress(): string;
+        /**
+         * @construct-only
+         */
         get same_user_only(): boolean;
+        /**
+         * @construct-only
+         */
         get sameUserOnly(): boolean;
 
         /**
@@ -6875,11 +6927,13 @@ export namespace Dee {
             /**
              * Emitted right before a remote transaction will be committed to the model.
              * @signal
+             * @run-last
              */
             'begin-transaction': (arg0: number, arg1: number) => void;
             /**
              * Emitted right after a remote transaction has been committed to the model.
              * @signal
+             * @run-last
              */
             'end-transaction': (arg0: number, arg1: number) => void;
             'notify::access-mode': (pspec: GObject.ParamSpec) => void;
@@ -6922,6 +6976,7 @@ export namespace Dee {
          * peers are supposed to only synchronize it for reading.
          *
          * See also DeePeer:swarm-owner property to ensure ownership of a swarm.
+         * @construct-only
          */
         get access_mode(): SharedModelAccessMode;
         /**
@@ -6932,6 +6987,7 @@ export namespace Dee {
          * peers are supposed to only synchronize it for reading.
          *
          * See also DeePeer:swarm-owner property to ensure ownership of a swarm.
+         * @construct-only
          */
         get accessMode(): SharedModelAccessMode;
         /**
@@ -6960,6 +7016,7 @@ export namespace Dee {
         set flushMode(val: SharedModelFlushMode);
         /**
          * The {@link Dee.Peer} that this model uses to connect to the swarm
+         * @construct-only
          */
         get peer(): Peer;
         /**
@@ -6969,6 +7026,7 @@ export namespace Dee {
          * You should not modify a {@link Dee.SharedModel} that is not synchronized. Before
          * modifying the model in any way (except calling `dee_model_set_schema()`)
          * you should wait for it to become synchronized.
+         * @read-only
          */
         get synchronized(): boolean;
 
@@ -7767,6 +7825,9 @@ export namespace Dee {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get target(): Model;
 
         /**

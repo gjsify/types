@@ -119,14 +119,17 @@ export namespace Gtd {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'day-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'hour-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'minute-changed': () => void;
             'notify::loading': (pspec: GObject.ParamSpec) => void;
@@ -209,7 +212,13 @@ export namespace Gtd {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get child_model(): Gio.ListModel;
+        /**
+         * @read-only
+         */
         get childModel(): Gio.ListModel;
 
         /**
@@ -841,11 +850,13 @@ export namespace Gtd {
         /**
          * The type of items contained in this list store. Items must be
          * subclasses of {@link GObject.Object}.
+         * @construct-only
          */
         get item_type(): GObject.GType;
         /**
          * The type of items contained in this list store. Items must be
          * subclasses of {@link GObject.Object}.
+         * @construct-only
          */
         get itemType(): GObject.GType;
 
@@ -1533,41 +1544,48 @@ export namespace Gtd {
              * The ::list-added signal is emmited after a {@link Gtd.TaskList}
              * is connected.
              * @signal
+             * @run-last
              */
             'list-added': (arg0: TaskList) => void;
             /**
              * The ::list-changed signal is emmited after a {@link Gtd.TaskList}
              * has any of it's properties changed.
              * @signal
+             * @run-last
              */
             'list-changed': (arg0: TaskList) => void;
             /**
              * The ::list-removed signal is emmited after a {@link Gtd.TaskList}
              * is disconnected.
              * @signal
+             * @run-last
              */
             'list-removed': (arg0: TaskList) => void;
             /**
              * The ::provider-added signal is emmited after a {@link Gtd.Provider}
              * is added.
              * @signal
+             * @run-last
              */
             'provider-added': (arg0: Provider) => void;
             /**
              * The ::provider-removed signal is emmited after a {@link Gtd.Provider}
              * is removed from the list.
              * @signal
+             * @run-last
              */
             'provider-removed': (arg0: Provider) => void;
             /**
              * Notifies about errors, and sends the error message for widgets
              * to display.
              * @signal
+             * @run-last
              */
             'show-error-message': (arg0: string, arg1: string, arg2: any | null, arg3: any | null) => void;
             /**
              * Sends a notification.
              * @signal
+             * @run-last
              */
             'show-notification': (arg0: Notification) => void;
             'notify::clock': (pspec: GObject.ParamSpec) => void;
@@ -1593,6 +1611,9 @@ export namespace Gtd {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get clock(): Clock;
         get default_provider(): Provider;
         set default_provider(val: Provider);
@@ -2986,6 +3007,7 @@ export namespace Gtd {
              * The ::executed signal is emitted after the primary or secondary
              * {@link Gtd.Notification} action is executed.
              * @signal
+             * @run-first
              */
             executed: () => void;
             'notify::has-dismissal-action': (pspec: GObject.ParamSpec) => void;
@@ -3017,9 +3039,21 @@ export namespace Gtd {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get has_dismissal_action(): boolean;
+        /**
+         * @read-only
+         */
         get hasDismissalAction(): boolean;
+        /**
+         * @read-only
+         */
         get has_secondary_action(): boolean;
+        /**
+         * @read-only
+         */
         get hasSecondaryAction(): boolean;
         get secondary_action_name(): string;
         set secondary_action_name(val: string);
@@ -3126,6 +3160,9 @@ export namespace Gtd {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get loading(): boolean;
         get uid(): string;
         set uid(val: string);
@@ -3939,6 +3976,7 @@ export namespace Gtd {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -3947,6 +3985,7 @@ export namespace Gtd {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -3986,21 +4025,25 @@ export namespace Gtd {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -4219,6 +4262,7 @@ export namespace Gtd {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -4238,16 +4282,19 @@ export namespace Gtd {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -7818,18 +7865,21 @@ export namespace Gtd {
              * The ::task-added signal is emitted after a {@link Gtd.Task}
              * is added to the list.
              * @signal
+             * @run-last
              */
             'task-added': (arg0: Task) => void;
             /**
              * The ::task-removed signal is emitted after a {@link Gtd.Task}
              * is removed from the list.
              * @signal
+             * @run-last
              */
             'task-removed': (arg0: Task) => void;
             /**
              * The ::task-updated signal is emitted after a {@link Gtd.Task}
              * in the list is updated.
              * @signal
+             * @run-last
              */
             'task-updated': (arg0: Task) => void;
             'notify::archived': (pspec: GObject.ParamSpec) => void;
@@ -9266,6 +9316,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped': (arg0: string, arg1: boolean) => void;
             /**
@@ -9273,6 +9325,7 @@ export namespace Gtd {
              * involving `actor` are complete.
              * @signal
              * @since 1.10
+             * @run-last
              */
             'transitions-completed': () => void;
             'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
@@ -9329,6 +9382,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::pivot-point': (arg0: string, arg1: boolean) => void;
             /**
@@ -9339,6 +9394,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::rotation-x': (arg0: string, arg1: boolean) => void;
             /**
@@ -9349,6 +9406,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::rotation-y': (arg0: string, arg1: boolean) => void;
             /**
@@ -9359,6 +9418,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::rotation-z': (arg0: string, arg1: boolean) => void;
             /**
@@ -9369,6 +9430,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::scale-x': (arg0: string, arg1: boolean) => void;
             /**
@@ -9379,6 +9442,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::scale-y': (arg0: string, arg1: boolean) => void;
             /**
@@ -9389,6 +9454,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::scale-z': (arg0: string, arg1: boolean) => void;
             /**
@@ -9399,6 +9466,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::translation-x': (arg0: string, arg1: boolean) => void;
             /**
@@ -9409,6 +9478,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::translation-y': (arg0: string, arg1: boolean) => void;
             /**
@@ -9419,6 +9490,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::translation-z': (arg0: string, arg1: boolean) => void;
             /**
@@ -9429,6 +9502,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::can-focus': (arg0: string, arg1: boolean) => void;
             /**
@@ -9439,6 +9514,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::can-target': (arg0: string, arg1: boolean) => void;
             /**
@@ -9449,6 +9526,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::css-classes': (arg0: string, arg1: boolean) => void;
             /**
@@ -9459,6 +9538,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::css-name': (arg0: string, arg1: boolean) => void;
             /**
@@ -9469,6 +9550,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::cursor': (arg0: string, arg1: boolean) => void;
             /**
@@ -9479,6 +9562,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::focus-on-click': (arg0: string, arg1: boolean) => void;
             /**
@@ -9489,6 +9574,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::focusable': (arg0: string, arg1: boolean) => void;
             /**
@@ -9499,6 +9586,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::halign': (arg0: string, arg1: boolean) => void;
             /**
@@ -9509,6 +9598,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::has-default': (arg0: string, arg1: boolean) => void;
             /**
@@ -9519,6 +9610,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::has-focus': (arg0: string, arg1: boolean) => void;
             /**
@@ -9529,6 +9622,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::has-tooltip': (arg0: string, arg1: boolean) => void;
             /**
@@ -9539,6 +9634,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::height-request': (arg0: string, arg1: boolean) => void;
             /**
@@ -9549,6 +9646,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::hexpand': (arg0: string, arg1: boolean) => void;
             /**
@@ -9559,6 +9658,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::hexpand-set': (arg0: string, arg1: boolean) => void;
             /**
@@ -9569,6 +9670,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::layout-manager': (arg0: string, arg1: boolean) => void;
             /**
@@ -9579,6 +9682,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::limit-events': (arg0: string, arg1: boolean) => void;
             /**
@@ -9589,6 +9694,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::margin-bottom': (arg0: string, arg1: boolean) => void;
             /**
@@ -9599,6 +9706,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::margin-end': (arg0: string, arg1: boolean) => void;
             /**
@@ -9609,6 +9718,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::margin-start': (arg0: string, arg1: boolean) => void;
             /**
@@ -9619,6 +9730,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::margin-top': (arg0: string, arg1: boolean) => void;
             /**
@@ -9629,6 +9742,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::name': (arg0: string, arg1: boolean) => void;
             /**
@@ -9639,6 +9754,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::opacity': (arg0: string, arg1: boolean) => void;
             /**
@@ -9649,6 +9766,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::overflow': (arg0: string, arg1: boolean) => void;
             /**
@@ -9659,6 +9778,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::parent': (arg0: string, arg1: boolean) => void;
             /**
@@ -9669,6 +9790,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::receives-default': (arg0: string, arg1: boolean) => void;
             /**
@@ -9679,6 +9802,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::root': (arg0: string, arg1: boolean) => void;
             /**
@@ -9689,6 +9814,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::scale-factor': (arg0: string, arg1: boolean) => void;
             /**
@@ -9699,6 +9826,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::sensitive': (arg0: string, arg1: boolean) => void;
             /**
@@ -9709,6 +9838,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::tooltip-markup': (arg0: string, arg1: boolean) => void;
             /**
@@ -9719,6 +9850,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::tooltip-text': (arg0: string, arg1: boolean) => void;
             /**
@@ -9729,6 +9862,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::valign': (arg0: string, arg1: boolean) => void;
             /**
@@ -9739,6 +9874,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::vexpand': (arg0: string, arg1: boolean) => void;
             /**
@@ -9749,6 +9886,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::vexpand-set': (arg0: string, arg1: boolean) => void;
             /**
@@ -9759,6 +9898,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::visible': (arg0: string, arg1: boolean) => void;
             /**
@@ -9769,6 +9910,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::width-request': (arg0: string, arg1: boolean) => void;
             /**
@@ -9779,6 +9922,8 @@ export namespace Gtd {
              * transitions applied on `actor`, using `gtd_actor_remove_transition()`.
              * @signal
              * @since 1.12
+             * @detailed
+             * @run-last
              */
             'transition-stopped::accessible-role': (arg0: string, arg1: boolean) => void;
         }
@@ -10903,7 +11048,13 @@ export namespace Gtd {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get current_workspace(): Workspace;
+        /**
+         * @read-only
+         */
         get currentWorkspace(): Workspace;
 
         /**
@@ -11008,6 +11159,7 @@ export namespace Gtd {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -11016,6 +11168,7 @@ export namespace Gtd {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -11055,21 +11208,25 @@ export namespace Gtd {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -11288,6 +11445,7 @@ export namespace Gtd {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -11307,16 +11465,19 @@ export namespace Gtd {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -14742,7 +14903,13 @@ export namespace Gtd {
     interface Activatable extends GObject.Object, Activatable.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get preferences_panel(): Gtk.Widget;
+        /**
+         * @read-only
+         */
         get preferencesPanel(): Gtk.Widget;
 
         // Methods
@@ -14926,11 +15093,29 @@ export namespace Gtd {
     interface Panel extends Gtk.Widget, Panel.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get icon(): Gio.Icon;
+        /**
+         * @read-only
+         */
         get menu(): Gio.Menu;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get priority(): number;
+        /**
+         * @read-only
+         */
         get subtitle(): string;
+        /**
+         * @read-only
+         */
         get title(): string;
 
         // Methods
@@ -15205,12 +15390,33 @@ export namespace Gtd {
     interface Provider extends Object, Provider.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get description(): string;
+        /**
+         * @read-only
+         */
         get enabled(): boolean;
+        /**
+         * @read-only
+         */
         get icon(): Gio.Icon;
+        /**
+         * @read-only
+         */
         get id(): string;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get provider_type(): string;
+        /**
+         * @read-only
+         */
         get providerType(): string;
 
         // Methods
@@ -15569,7 +15775,13 @@ export namespace Gtd {
     interface Workspace extends Gtk.Widget, Workspace.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get icon(): Gio.Icon;
+        /**
+         * @read-only
+         */
         get title(): string;
 
         // Methods

@@ -18,6 +18,9 @@ export namespace Vips {
      * Vips-8.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Access {
         export const $gtype: GObject.GType<Access>;
     }
@@ -45,6 +48,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Align {
         export const $gtype: GObject.GType<Align>;
     }
@@ -74,6 +80,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Angle {
         export const $gtype: GObject.GType<Angle>;
     }
@@ -106,6 +115,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Angle45 {
         export const $gtype: GObject.GType<Angle45>;
     }
@@ -154,6 +166,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BandFormat {
         export const $gtype: GObject.GType<BandFormat>;
     }
@@ -213,6 +228,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BlendMode {
         export const $gtype: GObject.GType<BlendMode>;
     }
@@ -332,6 +350,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Coding {
         export const $gtype: GObject.GType<Coding>;
     }
@@ -364,6 +385,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Combine {
         export const $gtype: GObject.GType<Combine>;
     }
@@ -388,6 +412,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CombineMode {
         export const $gtype: GObject.GType<CombineMode>;
     }
@@ -413,6 +440,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CompassDirection {
         export const $gtype: GObject.GType<CompassDirection>;
     }
@@ -461,6 +491,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DemandStyle {
         export const $gtype: GObject.GType<DemandStyle>;
     }
@@ -516,6 +549,9 @@ export namespace Vips {
         ANY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Direction {
         export const $gtype: GObject.GType<Direction>;
     }
@@ -541,6 +577,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Extend {
         export const $gtype: GObject.GType<Extend>;
     }
@@ -599,6 +638,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FailOn {
         export const $gtype: GObject.GType<FailOn>;
     }
@@ -631,6 +673,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ForeignDzContainer {
         export const $gtype: GObject.GType<ForeignDzContainer>;
     }
@@ -655,6 +700,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ForeignDzDepth {
         export const $gtype: GObject.GType<ForeignDzDepth>;
     }
@@ -679,6 +727,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ForeignDzLayout {
         export const $gtype: GObject.GType<ForeignDzLayout>;
     }
@@ -711,6 +762,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ForeignHeifCompression {
         export const $gtype: GObject.GType<ForeignHeifCompression>;
     }
@@ -741,6 +795,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ForeignHeifEncoder {
         export const $gtype: GObject.GType<ForeignHeifEncoder>;
     }
@@ -775,6 +832,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ForeignJpegSubsample {
         export const $gtype: GObject.GType<ForeignJpegSubsample>;
     }
@@ -800,6 +860,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ForeignPpmFormat {
         export const $gtype: GObject.GType<ForeignPpmFormat>;
     }
@@ -843,6 +906,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ForeignSubsample {
         export const $gtype: GObject.GType<ForeignSubsample>;
     }
@@ -867,6 +933,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ForeignTiffCompression {
         export const $gtype: GObject.GType<ForeignTiffCompression>;
     }
@@ -923,6 +992,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ForeignTiffPredictor {
         export const $gtype: GObject.GType<ForeignTiffPredictor>;
     }
@@ -948,6 +1020,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ForeignTiffResunit {
         export const $gtype: GObject.GType<ForeignTiffResunit>;
     }
@@ -968,6 +1043,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ForeignWebpPreset {
         export const $gtype: GObject.GType<ForeignWebpPreset>;
     }
@@ -1004,6 +1082,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ImageType {
         export const $gtype: GObject.GType<ImageType>;
     }
@@ -1023,6 +1104,9 @@ export namespace Vips {
         PARTIAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Intent {
         export const $gtype: GObject.GType<Intent>;
     }
@@ -1053,6 +1137,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Interesting {
         export const $gtype: GObject.GType<Interesting>;
     }
@@ -1101,6 +1188,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Interpretation {
         export const $gtype: GObject.GType<Interpretation>;
     }
@@ -1198,6 +1288,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Kernel {
         export const $gtype: GObject.GType<Kernel>;
     }
@@ -1234,6 +1327,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OperationBoolean {
         export const $gtype: GObject.GType<OperationBoolean>;
     }
@@ -1266,6 +1362,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OperationComplex {
         export const $gtype: GObject.GType<OperationComplex>;
     }
@@ -1290,6 +1389,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OperationComplex2 {
         export const $gtype: GObject.GType<OperationComplex2>;
     }
@@ -1306,6 +1408,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OperationComplexget {
         export const $gtype: GObject.GType<OperationComplexget>;
     }
@@ -1326,6 +1431,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OperationMath {
         export const $gtype: GObject.GType<OperationMath>;
     }
@@ -1402,6 +1510,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OperationMath2 {
         export const $gtype: GObject.GType<OperationMath2>;
     }
@@ -1426,6 +1537,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OperationMorphology {
         export const $gtype: GObject.GType<OperationMorphology>;
     }
@@ -1448,6 +1562,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OperationRelational {
         export const $gtype: GObject.GType<OperationRelational>;
     }
@@ -1484,6 +1601,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OperationRound {
         export const $gtype: GObject.GType<OperationRound>;
     }
@@ -1508,6 +1628,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PCS {
         export const $gtype: GObject.GType<PCS>;
     }
@@ -1530,6 +1653,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Precision {
         export const $gtype: GObject.GType<Precision>;
     }
@@ -1554,6 +1680,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RegionShrink {
         export const $gtype: GObject.GType<RegionShrink>;
     }
@@ -1590,6 +1719,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Saveable {
         export const $gtype: GObject.GType<Saveable>;
     }
@@ -1626,6 +1758,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Size {
         export const $gtype: GObject.GType<Size>;
     }
@@ -1657,6 +1792,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextWrap {
         export const $gtype: GObject.GType<TextWrap>;
     }
@@ -1688,6 +1826,9 @@ export namespace Vips {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Token {
         export const $gtype: GObject.GType<Token>;
     }
@@ -3344,6 +3485,9 @@ export namespace Vips {
     interface TypeMapFn {
         (type: GObject.GType, a?: any | null): any | null;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace ArgumentFlags {
         export const $gtype: GObject.GType<ArgumentFlags>;
     }
@@ -3417,6 +3561,9 @@ export namespace Vips {
         NON_HASHABLE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ForeignFlags {
         export const $gtype: GObject.GType<ForeignFlags>;
     }
@@ -3459,6 +3606,9 @@ export namespace Vips {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ForeignKeep {
         export const $gtype: GObject.GType<ForeignKeep>;
     }
@@ -3498,6 +3648,9 @@ export namespace Vips {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ForeignPngFilter {
         export const $gtype: GObject.GType<ForeignPngFilter>;
     }
@@ -3534,6 +3687,9 @@ export namespace Vips {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace OperationFlags {
         export const $gtype: GObject.GType<OperationFlags>;
     }
@@ -3998,6 +4154,7 @@ export namespace Vips {
              * Use `vips_image_set_progress()` to turn on progress reporting for an
              * image.
              * @signal
+             * @run-last
              */
             eval: (arg0: Progress) => void;
             /**
@@ -4005,6 +4162,8 @@ export namespace Vips {
              * upstream data sources has been destructively modified. See
              * `vips_image_invalidate_all()`.
              * @signal
+             * @action
+             * @run-last
              */
             invalidate: () => void;
             /**
@@ -4012,6 +4171,8 @@ export namespace Vips {
              * minimise memory usage. All non-essential caches are dropped.
              * See `vips_image_minimise_all()`.
              * @signal
+             * @action
+             * @run-last
              */
             minimise: () => void;
             /**
@@ -4021,6 +4182,7 @@ export namespace Vips {
              * Use `vips_image_set_progress()` to turn on progress reporting for an
              * image.
              * @signal
+             * @run-last
              */
             posteval: (arg0: Progress) => void;
             /**
@@ -4030,6 +4192,7 @@ export namespace Vips {
              * Use `vips_image_set_progress()` to turn on progress reporting for an
              * image.
              * @signal
+             * @run-last
              */
             preeval: (arg0: Progress) => void;
             /**
@@ -4038,6 +4201,8 @@ export namespace Vips {
              * used by vips to implement things like write to foreign file
              * formats.
              * @signal
+             * @action
+             * @run-last
              */
             written: (arg0: number) => void;
             'notify::bands': (pspec: GObject.ParamSpec) => void;
@@ -5141,24 +5306,28 @@ export namespace Vips {
              * The ::close signal is emitted once during object close. The object
              * is dying and may not work.
              * @signal
+             * @run-last
              */
             close: () => void;
             /**
              * The ::postbuild signal is emitted once just after successful object
              * construction. Return non-zero to cause object construction to fail.
              * @signal
+             * @run-last
              */
             postbuild: () => number;
             /**
              * The ::postclose signal is emitted once after object close. The
              * object pointer is still valid, but nothing else.
              * @signal
+             * @run-last
              */
             postclose: () => void;
             /**
              * The ::preclose signal is emitted once just before object close
              * starts. The object is still alive.
              * @signal
+             * @run-last
              */
             preclose: () => void;
             'notify::description': (pspec: GObject.ParamSpec) => void;
@@ -5417,6 +5586,7 @@ export namespace Vips {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             invalidate: () => void;
             'notify::description': (pspec: GObject.ParamSpec) => void;

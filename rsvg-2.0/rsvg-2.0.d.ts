@@ -289,6 +289,9 @@ export namespace Rsvg {
     interface SizeFunc {
         (): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace HandleFlags {
         export const $gtype: GObject.GType<HandleFlags>;
     }
@@ -550,6 +553,7 @@ export namespace Rsvg {
         /**
          * SVG's description.
          * @deprecated since 2.36.: Reading this property always returns `NULL`.
+         * @read-only
          */
         get desc(): string;
         /**
@@ -588,39 +592,46 @@ export namespace Rsvg {
          * Exact width, in pixels, of the rendered SVG before calling the size callback
          * as specified by {@link Rsvg.Handle.set_size_callback}.
          * @deprecated since 2.46.: Reading each of the size properties causes the size of the SVG to be recomputed, so reading both the `em` and `ex` properties will cause two such computations.  Please use {@link Rsvg.Handle.get_intrinsic_dimensions} instead.
+         * @read-only
          */
         get em(): number;
         /**
          * Exact height, in pixels, of the rendered SVG before calling the size callback
          * as specified by {@link Rsvg.Handle.set_size_callback}.
          * @deprecated since 2.46.: Reading each of the size properties causes the size of the SVG to be recomputed, so reading both the `em` and `ex` properties will cause two such computations.  Please use {@link Rsvg.Handle.get_intrinsic_dimensions} instead.
+         * @read-only
          */
         get ex(): number;
         /**
          * Flags from {@link Rsvg.HandleFlags}.
          * @since 2.36
+         * @construct-only
          */
         get flags(): HandleFlags;
         /**
          * Height, in pixels, of the rendered SVG after calling the size callback
          * as specified by {@link Rsvg.Handle.set_size_callback}.
          * @deprecated since 2.46.: For historical reasons, this property is of integer type, which cannot give the exact size of SVG images that are not pixel-aligned. Moreover, reading each of the size properties causes the size of the SVG to be recomputed, so reading both the `width` and `height` properties will cause two such computations. Please use {@link Rsvg.Handle.get_intrinsic_dimensions} instead.
+         * @read-only
          */
         get height(): number;
         /**
          * SVG's metadata
          * @deprecated since 2.36.: Reading this property always returns `NULL`.
+         * @read-only
          */
         get metadata(): string;
         /**
          * SVG's title.
          * @deprecated since 2.36.: Reading this property always returns `NULL`.
+         * @read-only
          */
         get title(): string;
         /**
          * Width, in pixels, of the rendered SVG after calling the size callback
          * as specified by {@link Rsvg.Handle.set_size_callback}.
          * @deprecated since 2.46.: For historical reasons, this property is of integer type, which cannot give the exact size of SVG images that are not pixel-aligned. Moreover, reading each of the size properties causes the size of the SVG to be recomputed, so reading both the `width` and `height` properties will cause two such computations. Please use {@link Rsvg.Handle.get_intrinsic_dimensions} instead.
+         * @read-only
          */
         get width(): number;
 

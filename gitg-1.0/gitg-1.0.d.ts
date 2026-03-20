@@ -31,6 +31,9 @@ export namespace Gitg {
      * Gitg-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AuthenticationLifeTime {
         export const $gtype: GObject.GType<AuthenticationLifeTime>;
     }
@@ -44,6 +47,9 @@ export namespace Gitg {
         FOREVER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CommitModelColumns {
         export const $gtype: GObject.GType<CommitModelColumns>;
     }
@@ -67,6 +73,9 @@ export namespace Gitg {
         NUM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RefType {
         export const $gtype: GObject.GType<RefType>;
     }
@@ -82,6 +91,9 @@ export namespace Gitg {
         STASH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RefState {
         export const $gtype: GObject.GType<RefState>;
     }
@@ -95,6 +107,9 @@ export namespace Gitg {
         PRELIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RemoteState {
         export const $gtype: GObject.GType<RemoteState>;
     }
@@ -109,6 +124,9 @@ export namespace Gitg {
         TRANSFERRING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SelectionMode {
         export const $gtype: GObject.GType<SelectionMode>;
     }
@@ -121,6 +139,9 @@ export namespace Gitg {
         SELECTION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeleteSources {
         export const $gtype: GObject.GType<DeleteSources>;
     }
@@ -134,6 +155,9 @@ export namespace Gitg {
         DELETE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SidebarHint {
         export const $gtype: GObject.GType<SidebarHint>;
     }
@@ -148,6 +172,9 @@ export namespace Gitg {
         DUMMY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SidebarColumn {
         export const $gtype: GObject.GType<SidebarColumn>;
     }
@@ -245,6 +272,9 @@ export namespace Gitg {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PatchSetType {
         export const $gtype: GObject.GType<PatchSetType>;
     }
@@ -259,6 +289,9 @@ export namespace Gitg {
 
     function commit_model_columns_type(): GObject.GType;
     function init(): void;
+    /**
+     * @gir-type Flags
+     */
     export namespace LaneTag {
         export const $gtype: GObject.GType<LaneTag>;
     }
@@ -276,6 +309,9 @@ export namespace Gitg {
         HIDDEN,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StageCommitOptions {
         export const $gtype: GObject.GType<StageCommitOptions>;
     }
@@ -461,9 +497,21 @@ export namespace Gitg {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get username(): string;
+        /**
+         * @read-only
+         */
         get password(): string;
+        /**
+         * @read-only
+         */
         get life_time(): AuthenticationLifeTime;
+        /**
+         * @read-only
+         */
         get lifeTime(): AuthenticationLifeTime;
 
         /**
@@ -1143,8 +1191,17 @@ export namespace Gitg {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get r(): number;
+        /**
+         * @read-only
+         */
         get g(): number;
+        /**
+         * @read-only
+         */
         get b(): number;
 
         /**
@@ -2834,12 +2891,33 @@ export namespace Gitg {
         set tag(val: LaneTag);
         get mylane(): number;
         set mylane(val: number);
+        /**
+         * @read-only
+         */
         get lane(): Lane;
+        /**
+         * @read-only
+         */
         get format_patch_name(): string;
+        /**
+         * @read-only
+         */
         get formatPatchName(): string;
+        /**
+         * @read-only
+         */
         get committer_date_for_display(): string;
+        /**
+         * @read-only
+         */
         get committerDateForDisplay(): string;
+        /**
+         * @read-only
+         */
         get author_date_for_display(): string;
+        /**
+         * @read-only
+         */
         get authorDateForDisplay(): string;
 
         /**
@@ -3003,6 +3081,9 @@ export namespace Gitg {
         set date_string(val: string);
         get dateString(): string;
         set dateString(val: string);
+        /**
+         * @read-only
+         */
         get date(): GLib.DateTime;
 
         /**
@@ -3966,6 +4047,9 @@ export namespace Gitg {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get options(): Ggit.DiffOptions;
         get has_selection(): boolean;
         set has_selection(val: boolean);
@@ -4319,6 +4403,9 @@ export namespace Gitg {
         set working_directory(val: Gio.File);
         get workingDirectory(): Gio.File;
         set workingDirectory(val: Gio.File);
+        /**
+         * @read-only
+         */
         get output(): string[];
 
         /**
@@ -5142,12 +5229,33 @@ export namespace Gitg {
 
         get rtype(): RefType;
         set rtype(val: RefType);
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get shortname(): string;
+        /**
+         * @read-only
+         */
         get remote_name(): string;
+        /**
+         * @read-only
+         */
         get remoteName(): string;
+        /**
+         * @read-only
+         */
         get remote_branch(): string;
+        /**
+         * @read-only
+         */
         get remoteBranch(): string;
+        /**
+         * @read-only
+         */
         get prefix(): string;
 
         /**
@@ -5236,7 +5344,13 @@ export namespace Gitg {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get transfer_progress(): number;
+        /**
+         * @read-only
+         */
         get transferProgress(): number;
         get state(): RemoteState;
         set state(val: RemoteState);
@@ -5536,7 +5650,13 @@ export namespace Gitg {
         set bookmarksFromRecentFiles(val: boolean);
         get location(): Gio.File;
         set location(val: Gio.File);
+        /**
+         * @read-only
+         */
         get has_selection(): boolean;
+        /**
+         * @read-only
+         */
         get hasSelection(): boolean;
 
         /**
@@ -5723,6 +5843,9 @@ export namespace Gitg {
         set canRemove(val: boolean);
         get time(): GLib.DateTime;
         set time(val: GLib.DateTime);
+        /**
+         * @write-only
+         */
         set fraction(val: number);
         get repository_name(): string;
         set repository_name(val: string);
@@ -5864,7 +5987,13 @@ export namespace Gitg {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get stage(): Stage;
 
         /**
@@ -6073,6 +6202,9 @@ export namespace Gitg {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get clearing(): boolean;
 
         /**
@@ -6206,11 +6338,20 @@ export namespace Gitg {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gitg.SidebarItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.SidebarItem
+         */
         get text(): string;
-        /** @category Inherited from Gitg.SidebarItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.SidebarItem
+         */
         get icon_name(): string;
-        /** @category Inherited from Gitg.SidebarItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.SidebarItem
+         */
         get iconName(): string;
         /**
          * @param numclick
@@ -6703,6 +6844,9 @@ export namespace Gitg {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get id(): number;
 
         /**
@@ -6967,6 +7111,9 @@ export namespace Gitg {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get flags(): Ggit.StatusFlags;
 
         /**
@@ -7010,23 +7157,50 @@ export namespace Gitg {
         // Methods
 
         get_flags(): Ggit.StatusFlags;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get path(): string;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get is_staged(): boolean;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get isStaged(): boolean;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get is_unstaged(): boolean;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get isUnstaged(): boolean;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get is_untracked(): boolean;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get isUntracked(): boolean;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get icon_name(): string;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get iconName(): string;
         get_path(): string;
         get_is_staged(): boolean;
@@ -7535,9 +7709,21 @@ export namespace Gitg {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get submodule(): Ggit.Submodule;
+        /**
+         * @read-only
+         */
         get is_dirty(): boolean;
+        /**
+         * @read-only
+         */
         get isDirty(): boolean;
+        /**
+         * @read-only
+         */
         get flags(): Ggit.SubmoduleStatus;
 
         /**
@@ -7585,23 +7771,50 @@ export namespace Gitg {
         get_submodule(): Ggit.Submodule;
         get_is_dirty(): boolean;
         get_flags(): Ggit.SubmoduleStatus;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get path(): string;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get is_staged(): boolean;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get isStaged(): boolean;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get is_unstaged(): boolean;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get isUnstaged(): boolean;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get is_untracked(): boolean;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get isUntracked(): boolean;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get icon_name(): string;
-        /** @category Inherited from Gitg.StageStatusItem */
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get iconName(): string;
         get_path(): string;
         get_is_staged(): boolean;
@@ -9850,8 +10063,17 @@ export namespace Gitg {
     interface SidebarItem extends GObject.Object, SidebarItem.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get text(): string;
+        /**
+         * @read-only
+         */
         get icon_name(): string;
+        /**
+         * @read-only
+         */
         get iconName(): string;
 
         // Methods
@@ -9923,14 +10145,41 @@ export namespace Gitg {
     interface StageStatusItem extends GObject.Object, StageStatusItem.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get path(): string;
+        /**
+         * @read-only
+         */
         get is_staged(): boolean;
+        /**
+         * @read-only
+         */
         get isStaged(): boolean;
+        /**
+         * @read-only
+         */
         get is_unstaged(): boolean;
+        /**
+         * @read-only
+         */
         get isUnstaged(): boolean;
+        /**
+         * @read-only
+         */
         get is_untracked(): boolean;
+        /**
+         * @read-only
+         */
         get isUntracked(): boolean;
+        /**
+         * @read-only
+         */
         get icon_name(): string;
+        /**
+         * @read-only
+         */
         get iconName(): string;
 
         // Methods

@@ -26,36 +26,43 @@ export namespace FcitxG {
             /**
              * Emit when input method commit one string
              * @signal
+             * @run-last
              */
             'commit-string': (arg0: string) => void;
             /**
              * Emit when connected to fcitx and created ic
              * @signal
+             * @run-last
              */
             connected: () => void;
             /**
              * Emit when input method used in input context changed
              * @signal
+             * @run-last
              */
             'current-im': (arg0: string, arg1: string, arg2: string) => void;
             /**
              * Emit when input method need to delete surrounding text
              * @signal
+             * @run-last
              */
             'delete-surrounding-text': (arg0: number, arg1: number) => void;
             /**
              * Emit when input method ask for forward a key
              * @signal
+             * @run-last
              */
             'forward-key': (arg0: number, arg1: number, arg2: number) => void;
             /**
              * Emit when focus out happens on server side
              * @signal
+             * @run-last
              */
             'notify-focus-out': () => void;
             /**
              * Emit when input method needs to update the client-side user interface
              * @signal
+             * @run-last
              */
             'update-client-side-ui': (
                 arg0: PreeditItem[],
@@ -71,6 +78,7 @@ export namespace FcitxG {
             /**
              * Emit when input method needs to update formatted preedit
              * @signal
+             * @run-last
              */
             'update-formatted-preedit': (arg0: PreeditItem[], arg1: number) => void;
             'notify::watcher': (pspec: GObject.ParamSpec) => void;
@@ -92,6 +100,9 @@ export namespace FcitxG {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set watcher(val: Watcher);
 
         /**
@@ -292,6 +303,7 @@ export namespace FcitxG {
             /**
              * Emit when connected to fcitx and created ic
              * @signal
+             * @run-last
              */
             'availability-changed': (arg0: boolean) => void;
         }

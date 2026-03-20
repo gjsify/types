@@ -1010,7 +1010,7 @@ export namespace GLib {
          * @returns The recursively unpacked JavaScript value with all Variants converted to native types
          * @see {@link deepUnpack} for one-level unpacking with type preservation
          * @see {@link unpack} for shallow unpacking only
-         * @since GJS 1.64 (GNOME 3.36)
+         * @since 1.64
          */
         recursiveUnpack(): $ParseRecursiveVariant<S>;
         recursiveUnpack<T>(): T;
@@ -1819,6 +1819,9 @@ export namespace GLib {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NormalizeMode {
         export const $gtype: GObject.GType<NormalizeMode>;
     }
@@ -2715,6 +2718,9 @@ export namespace GLib {
         LEVEL_ORDER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UnicodeBreakType {
         export const $gtype: GObject.GType<UnicodeBreakType>;
     }
@@ -2927,6 +2933,9 @@ export namespace GLib {
         VIRAMA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UnicodeScript {
         export const $gtype: GObject.GType<UnicodeScript>;
     }
@@ -3638,6 +3647,9 @@ export namespace GLib {
         OL_ONAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UnicodeType {
         export const $gtype: GObject.GType<UnicodeType>;
     }
@@ -14864,6 +14876,9 @@ export namespace GLib {
         MASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace IOCondition {
         export const $gtype: GObject.GType<IOCondition>;
     }

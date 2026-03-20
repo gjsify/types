@@ -18,6 +18,9 @@ export namespace MPID {
      * MPID-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Error {
         export const $gtype: GObject.GType<Error>;
     }
@@ -67,6 +70,9 @@ export namespace MPID {
         OVERRIDE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceType {
         export const $gtype: GObject.GType<SourceType>;
     }
@@ -157,122 +163,151 @@ export namespace MPID {
 
         /**
          * Names of access protocols that can be used to access the device contents
+         * @read-only
          */
         get access_protocols(): string[];
         /**
          * Names of access protocols that can be used to access the device contents
+         * @read-only
          */
         get accessProtocols(): string[];
         /**
          * A set of folders (relative to the root of the device) containing audio
          * folders.
+         * @read-only
          */
         get audio_folders(): string[];
         /**
          * A set of folders (relative to the root of the device) containing audio
          * folders.
+         * @read-only
          */
         get audioFolders(): string[];
         /**
          * The device drive type
+         * @read-only
          */
         get drive_type(): string;
         /**
          * The device drive type
+         * @read-only
          */
         get driveType(): string;
         /**
          * MPID error code resulting from device detection (see {@link MPID.Error})
+         * @read-only
          */
         get error(): Error;
         /**
          * The folder nesting level supported by the device.  -1 indicates there is no limit.
+         * @read-only
          */
         get folder_depth(): number;
         /**
          * The folder nesting level supported by the device.  -1 indicates there is no limit.
+         * @read-only
          */
         get folderDepth(): number;
         /**
          * The device filesystem UUID
+         * @read-only
          */
         get fs_uuid(): string;
         /**
          * The device filesystem UUID
+         * @read-only
          */
         get fsUuid(): string;
         /**
          * A set of MIME types that the device can record
+         * @read-only
          */
         get input_formats(): string[];
         /**
          * A set of MIME types that the device can record
+         * @read-only
          */
         get inputFormats(): string[];
         /**
          * Either the device node path or the mount point path for the device.
+         * @construct-only
          */
         get input_path(): string;
         /**
          * Either the device node path or the mount point path for the device.
+         * @construct-only
          */
         get inputPath(): string;
         /**
          * The device model name
+         * @read-only
          */
         get model(): string;
         /**
          * Path to a .mpi file describing the device
+         * @construct-only
          */
         get mpi_file(): string;
         /**
          * Path to a .mpi file describing the device
+         * @construct-only
          */
         get mpiFile(): string;
         /**
          * A set of MIME types that the device can play
+         * @read-only
          */
         get output_formats(): string[];
         /**
          * A set of MIME types that the device can play
+         * @read-only
          */
         get outputFormats(): string[];
         /**
          * A set of playlist format MIME types suppored by the device
+         * @read-only
          */
         get playlist_formats(): string[];
         /**
          * A set of playlist format MIME types suppored by the device
+         * @read-only
          */
         get playlistFormats(): string[];
         /**
          * Path to playlist files on the device.  May include '%File' to indicate a directory
          * containing any number of playlist files.
+         * @read-only
          */
         get playlist_path(): string;
         /**
          * Path to playlist files on the device.  May include '%File' to indicate a directory
          * containing any number of playlist files.
+         * @read-only
          */
         get playlistPath(): string;
         /**
          * If `true`, the device must be ejected rather than unmounted
+         * @read-only
          */
         get requires_eject(): boolean;
         /**
          * If `true`, the device must be ejected rather than unmounted
+         * @read-only
          */
         get requiresEject(): boolean;
         /**
          * The device serial ID
+         * @read-only
          */
         get serial(): string;
         /**
          * The information source used to provide device information (see {@link MPID.Source})
+         * @read-only
          */
         get source(): SourceType;
         /**
          * The device vendor name
+         * @read-only
          */
         get vendor(): string;
 

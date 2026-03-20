@@ -43,6 +43,9 @@ export namespace Plasma {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set client(val: any);
 
         /**
@@ -376,15 +379,45 @@ export namespace Plasma {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get client(): Client;
+        /**
+         * @construct-only
+         */
         get data(): Arrow.Buffer;
+        /**
+         * @construct-only
+         */
         get gpu_device(): number;
+        /**
+         * @construct-only
+         */
         get gpuDevice(): number;
+        /**
+         * @construct-only
+         */
         get id(): ObjectID;
+        /**
+         * @construct-only
+         */
         get metadata(): Arrow.Buffer;
+        /**
+         * @construct-only
+         */
         set raw_data(val: any);
+        /**
+         * @construct-only
+         */
         set rawData(val: any);
+        /**
+         * @construct-only
+         */
         set raw_metadata(val: any);
+        /**
+         * @construct-only
+         */
         set rawMetadata(val: any);
 
         /**

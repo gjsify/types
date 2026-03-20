@@ -20,6 +20,9 @@ export namespace AccountsService {
      * AccountsService-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UserAccountType {
         export const $gtype: GObject.GType<UserAccountType>;
     }
@@ -78,6 +81,9 @@ export namespace AccountsService {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UserPasswordMode {
         export const $gtype: GObject.GType<UserPasswordMode>;
     }
@@ -108,11 +114,13 @@ export namespace AccountsService {
             /**
              * Emitted when the user accounts changes in some way.
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
              * Emitted when the list of sessions for this user changes.
              * @signal
+             * @run-last
              */
             'sessions-changed': () => void;
             'notify::account-type': (pspec: GObject.ParamSpec) => void;
@@ -191,16 +199,49 @@ export namespace AccountsService {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get account_type(): number;
+        /**
+         * @read-only
+         */
         get accountType(): number;
+        /**
+         * @read-only
+         */
         get automatic_login(): boolean;
+        /**
+         * @read-only
+         */
         get automaticLogin(): boolean;
+        /**
+         * @read-only
+         */
         get email(): string;
+        /**
+         * @read-only
+         */
         get home_directory(): string;
+        /**
+         * @read-only
+         */
         get homeDirectory(): string;
+        /**
+         * @read-only
+         */
         get icon_file(): string;
+        /**
+         * @read-only
+         */
         get iconFile(): string;
+        /**
+         * @read-only
+         */
         get is_loaded(): boolean;
+        /**
+         * @read-only
+         */
         get isLoaded(): boolean;
         /**
          * The user’s locale, in the format
@@ -214,32 +255,108 @@ export namespace AccountsService {
          *
          * The property may be `null` if it wasn’t possible to load it from the
          * daemon.
+         * @read-only
          */
         get language(): string;
+        /**
+         * @read-only
+         */
         get local_account(): boolean;
+        /**
+         * @read-only
+         */
         get localAccount(): boolean;
+        /**
+         * @read-only
+         */
         get location(): string;
+        /**
+         * @read-only
+         */
         get locked(): boolean;
+        /**
+         * @read-only
+         */
         get login_frequency(): number;
+        /**
+         * @read-only
+         */
         get loginFrequency(): number;
+        /**
+         * @read-only
+         */
         get login_history(): GLib.Variant;
+        /**
+         * @read-only
+         */
         get loginHistory(): GLib.Variant;
+        /**
+         * @read-only
+         */
         get login_time(): number;
+        /**
+         * @read-only
+         */
         get loginTime(): number;
+        /**
+         * @read-only
+         */
         get nonexistent(): boolean;
+        /**
+         * @read-only
+         */
         get password_hint(): string;
+        /**
+         * @read-only
+         */
         get passwordHint(): string;
+        /**
+         * @read-only
+         */
         get password_mode(): number;
+        /**
+         * @read-only
+         */
         get passwordMode(): number;
+        /**
+         * @read-only
+         */
         get real_name(): string;
+        /**
+         * @read-only
+         */
         get realName(): string;
+        /**
+         * @read-only
+         */
         get shell(): string;
+        /**
+         * @read-only
+         */
         get system_account(): boolean;
+        /**
+         * @read-only
+         */
         get systemAccount(): boolean;
+        /**
+         * @read-only
+         */
         get uid(): number;
+        /**
+         * @read-only
+         */
         get user_name(): string;
+        /**
+         * @read-only
+         */
         get userName(): string;
+        /**
+         * @read-only
+         */
         get x_session(): string;
+        /**
+         * @read-only
+         */
         get xSession(): string;
 
         /**
@@ -610,21 +727,25 @@ export namespace AccountsService {
             /**
              * Emitted when a user is added to the user manager.
              * @signal
+             * @run-last
              */
             'user-added': (arg0: User) => void;
             /**
              * One of the users has changed
              * @signal
+             * @run-last
              */
             'user-changed': (arg0: User) => void;
             /**
              * One of the users has logged in or out.
              * @signal
+             * @run-last
              */
             'user-is-logged-in-changed': (arg0: User) => void;
             /**
              * Emitted when a user is removed from the user manager.
              * @signal
+             * @run-last
              */
             'user-removed': (arg0: User) => void;
             'notify::exclude-usernames-list': (pspec: GObject.ParamSpec) => void;
@@ -668,7 +789,13 @@ export namespace AccountsService {
         set include_usernames_list(val: any);
         get includeUsernamesList(): any;
         set includeUsernamesList(val: any);
+        /**
+         * @read-only
+         */
         get is_loaded(): boolean;
+        /**
+         * @read-only
+         */
         get isLoaded(): boolean;
 
         /**

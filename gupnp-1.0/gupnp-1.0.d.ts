@@ -303,26 +303,31 @@ export namespace GUPnP {
         set defaultLanguage(val: string);
         /**
          * The port to run on. Set to 0 if you don't care what port to run on.
+         * @construct-only
          */
         get port(): number;
         /**
          * The {@link Soup.Server} HTTP server used by GUPnP.
+         * @read-only
          */
         get server(): Soup.Server;
         /**
          * The {@link Soup.Session} object used by GUPnP.
+         * @read-only
          */
         get session(): Soup.Session;
         /**
          * The preferred subscription timeout: the number of seconds after
          * which subscriptions are renewed. Set to '0' if subscriptions
          * are never to time out.
+         * @construct-only
          */
         get subscription_timeout(): number;
         /**
          * The preferred subscription timeout: the number of seconds after
          * which subscriptions are renewed. Set to '0' if subscriptions
          * are never to time out.
+         * @construct-only
          */
         get subscriptionTimeout(): number;
 
@@ -1008,11 +1013,13 @@ export namespace GUPnP {
             /**
              * Signals the availability of new {@link GUPnP.Context}.
              * @signal
+             * @run-first
              */
             'context-available': (arg0: Context) => void;
             /**
              * Signals the unavailability of a {@link GUPnP.Context}.
              * @signal
+             * @run-first
              */
             'context-unavailable': (arg0: Context) => void;
             'notify::main-context': (pspec: GObject.ParamSpec) => void;
@@ -1041,19 +1048,28 @@ export namespace GUPnP {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get main_context(): any;
+        /**
+         * @construct-only
+         */
         get mainContext(): any;
         /**
          * Port the contexts listen on, or 0 if you don't care what
          * port is used by {@link GUPnP.Context} objects created by this object.
+         * @construct-only
          */
         get port(): number;
         /**
          * The white list to use.
+         * @read-only
          */
         get white_list(): WhiteList;
         /**
          * The white list to use.
+         * @read-only
          */
         get whiteList(): WhiteList;
 
@@ -1152,24 +1168,28 @@ export namespace GUPnP {
              * The ::device-proxy-available signal is emitted whenever a new
              * device has become available.
              * @signal
+             * @run-last
              */
             'device-proxy-available': (arg0: DeviceProxy) => void;
             /**
              * The ::device-proxy-unavailable signal is emitted whenever a
              * device is not available any more.
              * @signal
+             * @run-last
              */
             'device-proxy-unavailable': (arg0: DeviceProxy) => void;
             /**
              * The ::service-proxy-available signal is emitted whenever a new
              * service has become available.
              * @signal
+             * @run-last
              */
             'service-proxy-available': (arg0: ServiceProxy) => void;
             /**
              * The ::service-proxy-unavailable signal is emitted whenever a
              * service is not available any more.
              * @signal
+             * @run-last
              */
             'service-proxy-unavailable': (arg0: ServiceProxy) => void;
             'notify::resource-factory': (pspec: GObject.ParamSpec) => void;
@@ -1199,10 +1219,12 @@ export namespace GUPnP {
 
         /**
          * The resource factory to use. Set to NULL for default factory.
+         * @construct-only
          */
         get resource_factory(): ResourceFactory;
         /**
          * The resource factory to use. Set to NULL for default factory.
+         * @construct-only
          */
         get resourceFactory(): ResourceFactory;
 
@@ -1330,11 +1352,13 @@ export namespace GUPnP {
         /**
          * The containing {@link GUPnP.RootDevice}, or NULL if this is the root
          * device.
+         * @construct-only
          */
         get root_device(): RootDevice;
         /**
          * The containing {@link GUPnP.RootDevice}, or NULL if this is the root
          * device.
+         * @construct-only
          */
         get rootDevice(): RootDevice;
 
@@ -1417,46 +1441,57 @@ export namespace GUPnP {
 
         /**
          * The {@link GUPnP.Context} to use.
+         * @construct-only
          */
         get context(): Context;
         /**
          * The device type.
+         * @construct-only
          */
         get device_type(): string;
         /**
          * The device type.
+         * @construct-only
          */
         get deviceType(): string;
         /**
          * Private property.
+         * @construct-only
          */
         get document(): XMLDoc;
         /**
          * Private property.
+         * @construct-only
          */
         set element(val: any);
         /**
          * The location of the device description file.
+         * @construct-only
          */
         get location(): string;
         /**
          * The resource factory to use. Set to NULL for default factory.
+         * @construct-only
          */
         get resource_factory(): ResourceFactory;
         /**
          * The resource factory to use. Set to NULL for default factory.
+         * @construct-only
          */
         get resourceFactory(): ResourceFactory;
         /**
          * The UDN of this device.
+         * @construct-only
          */
         get udn(): string;
         /**
          * The URL base ({@link Soup.URI}).
+         * @construct-only
          */
         get url_base(): Soup.URI;
         /**
          * The URL base ({@link Soup.URI}).
+         * @construct-only
          */
         get urlBase(): Soup.URI;
 
@@ -1894,32 +1929,38 @@ export namespace GUPnP {
         set available(val: boolean);
         /**
          * The path to directory where description documents are provided.
+         * @construct-only
          */
         get description_dir(): string;
         /**
          * The path to directory where description documents are provided.
+         * @construct-only
          */
         get descriptionDir(): string;
         /**
          * Device description document. Constructor property.
          * @since 0.13.0
+         * @construct-only
          */
         set description_doc(val: XMLDoc);
         /**
          * Device description document. Constructor property.
          * @since 0.13.0
+         * @construct-only
          */
         set descriptionDoc(val: XMLDoc);
         /**
          * The path to device description document. This could either be an
          * absolute path or path relative to GUPnPRootDevice:description-dir.
          * @since 0.13.0
+         * @construct-only
          */
         get description_path(): string;
         /**
          * The path to device description document. This could either be an
          * absolute path or path relative to GUPnPRootDevice:description-dir.
          * @since 0.13.0
+         * @construct-only
          */
         get descriptionPath(): string;
 
@@ -2013,17 +2054,22 @@ export namespace GUPnP {
              * `action` and must call either `gupnp_service_action_return()` or
              * `gupnp_service_action_return_error()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'action-invoked': (arg0: ServiceAction) => void;
             /**
              * Emitted whenever notification of a client fails.
              * @signal
+             * @run-last
              */
             'notify-failed': (arg0: Soup.URI[], arg1: GLib.Error) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'query-variable': (arg0: string, arg1: GObject.Value) => void;
             'notify::root-device': (pspec: GObject.ParamSpec) => void;
@@ -2039,6 +2085,8 @@ export namespace GUPnP {
              * `action` and must call either `gupnp_service_action_return()` or
              * `gupnp_service_action_return_error()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'action-invoked::root-device': (arg0: ServiceAction) => void;
             /**
@@ -2046,6 +2094,8 @@ export namespace GUPnP {
              * `action` and must call either `gupnp_service_action_return()` or
              * `gupnp_service_action_return_error()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'action-invoked::context': (arg0: ServiceAction) => void;
             /**
@@ -2053,6 +2103,8 @@ export namespace GUPnP {
              * `action` and must call either `gupnp_service_action_return()` or
              * `gupnp_service_action_return_error()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'action-invoked::document': (arg0: ServiceAction) => void;
             /**
@@ -2060,6 +2112,8 @@ export namespace GUPnP {
              * `action` and must call either `gupnp_service_action_return()` or
              * `gupnp_service_action_return_error()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'action-invoked::element': (arg0: ServiceAction) => void;
             /**
@@ -2067,6 +2121,8 @@ export namespace GUPnP {
              * `action` and must call either `gupnp_service_action_return()` or
              * `gupnp_service_action_return_error()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'action-invoked::location': (arg0: ServiceAction) => void;
             /**
@@ -2074,6 +2130,8 @@ export namespace GUPnP {
              * `action` and must call either `gupnp_service_action_return()` or
              * `gupnp_service_action_return_error()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'action-invoked::service-type': (arg0: ServiceAction) => void;
             /**
@@ -2081,6 +2139,8 @@ export namespace GUPnP {
              * `action` and must call either `gupnp_service_action_return()` or
              * `gupnp_service_action_return_error()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'action-invoked::udn': (arg0: ServiceAction) => void;
             /**
@@ -2088,54 +2148,72 @@ export namespace GUPnP {
              * `action` and must call either `gupnp_service_action_return()` or
              * `gupnp_service_action_return_error()`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'action-invoked::url-base': (arg0: ServiceAction) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'query-variable::root-device': (arg0: string, arg1: GObject.Value) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'query-variable::context': (arg0: string, arg1: GObject.Value) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'query-variable::document': (arg0: string, arg1: GObject.Value) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'query-variable::element': (arg0: string, arg1: GObject.Value) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'query-variable::location': (arg0: string, arg1: GObject.Value) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'query-variable::service-type': (arg0: string, arg1: GObject.Value) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'query-variable::udn': (arg0: string, arg1: GObject.Value) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
              * @signal
+             * @detailed
+             * @run-last
              */
             'query-variable::url-base': (arg0: string, arg1: GObject.Value) => void;
         }
@@ -2160,10 +2238,12 @@ export namespace GUPnP {
 
         /**
          * The containing {@link GUPnP.RootDevice}.
+         * @construct-only
          */
         get root_device(): RootDevice;
         /**
          * The containing {@link GUPnP.RootDevice}.
+         * @construct-only
          */
         get rootDevice(): RootDevice;
 
@@ -2303,38 +2383,47 @@ export namespace GUPnP {
 
         /**
          * The {@link GUPnP.Context} to use.
+         * @construct-only
          */
         get context(): Context;
         /**
          * Private property.
+         * @construct-only
          */
         set document(val: XMLDoc);
         /**
          * Private property.
+         * @construct-only
          */
         set element(val: any);
         /**
          * The location of the device description file.
+         * @construct-only
          */
         get location(): string;
         /**
          * The service type.
+         * @construct-only
          */
         get service_type(): string;
         /**
          * The service type.
+         * @construct-only
          */
         get serviceType(): string;
         /**
          * The UDN of the containing device.
+         * @construct-only
          */
         get udn(): string;
         /**
          * The URL base ({@link Soup.URI}).
+         * @construct-only
          */
         get url_base(): Soup.URI;
         /**
          * The URL base ({@link Soup.URI}).
+         * @construct-only
          */
         get urlBase(): Soup.URI;
 
@@ -2480,6 +2569,7 @@ export namespace GUPnP {
 
         /**
          * The scpd of the device description file.
+         * @construct-only
          */
         set scpd(val: any);
 
@@ -2566,6 +2656,7 @@ export namespace GUPnP {
              * Emitted whenever the subscription to this service has been lost due
              * to an error condition.
              * @signal
+             * @run-last
              */
             'subscription-lost': (arg0: GLib.Error) => void;
             'notify::subscribed': (pspec: GObject.ParamSpec) => void;
@@ -2818,6 +2909,7 @@ export namespace GUPnP {
         /**
          * Whether this white list is active or not.
          * @since 0.20.5
+         * @construct-only
          */
         get entries(): string[];
 

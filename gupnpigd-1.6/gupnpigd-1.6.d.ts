@@ -39,12 +39,15 @@ export namespace GUPnPIgd {
              * if a context will be used by changing the return value of the signal
              * handler.
              * @signal
+             * @run-last
              */
             'context-available': (arg0: GObject.Object) => boolean | void;
             /**
              * This means that mapping a port on a specific IGD has failed (it may still
              * succeed on other IGDs on the network).
              * @signal
+             * @detailed
+             * @run-last
              */
             'error-mapping-port': (
                 arg0: GLib.Error,
@@ -58,6 +61,7 @@ export namespace GUPnPIgd {
              * This signal means that an IGD has been found that that adding a port
              * mapping has succeeded.
              * @signal
+             * @run-last
              */
             'mapped-external-port': (
                 arg0: string,
@@ -73,6 +77,8 @@ export namespace GUPnPIgd {
              * This means that mapping a port on a specific IGD has failed (it may still
              * succeed on other IGDs on the network).
              * @signal
+             * @detailed
+             * @run-last
              */
             'error-mapping-port::main-context': (
                 arg0: GLib.Error,
@@ -101,7 +107,13 @@ export namespace GUPnPIgd {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get main_context(): any;
+        /**
+         * @read-only
+         */
         get mainContext(): any;
 
         /**

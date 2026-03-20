@@ -78,9 +78,15 @@ export namespace Gepub {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
         get page(): number;
         set page(val: number);
+        /**
+         * @construct-only
+         */
         get path(): string;
 
         /**

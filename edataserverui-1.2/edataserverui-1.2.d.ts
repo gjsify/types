@@ -912,6 +912,7 @@ export namespace EDataServerUI {
              * to get the window from the default GtkApplication.
              * @signal
              * @since 3.16
+             * @run-last
              */
             'get-dialog-parent': () => Gtk.Window | null;
             /**
@@ -920,6 +921,7 @@ export namespace EDataServerUI {
              * to get the window from the default GtkApplication.
              * @signal
              * @since 3.42
+             * @run-last
              */
             'get-dialog-parent-full': (arg0: EDataServer.Source | null) => Gtk.Window | null;
             'notify::auto-prompt': (pspec: GObject.ParamSpec) => void;
@@ -965,11 +967,13 @@ export namespace EDataServerUI {
         /**
          * The {@link EDataServer.SourceCredentialsProvider} object, which the prompter uses.
          * @since 3.16
+         * @read-only
          */
         get provider(): EDataServer.SourceCredentialsProvider;
         /**
          * The {@link EDataServer.SourceRegistry} object, to whose credential requests the prompter listens.
          * @since 3.16
+         * @construct-only
          */
         get registry(): EDataServer.SourceRegistry;
 
@@ -1721,6 +1725,7 @@ export namespace EDataServerUI {
              * Emitted when a prompt of ID `prompt_id` is finished.
              * @signal
              * @since 3.16
+             * @run-last
              */
             'prompt-finished': (arg0: any | null, arg1: EDataServer.NamedParameters | null) => void;
             'notify::extensible': (pspec: GObject.ParamSpec) => void;
@@ -1991,10 +1996,14 @@ export namespace EDataServerUI {
         interface SignalSignatures extends Gtk.Grid.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             activated: (arg0: ECal.ReminderData) => boolean | void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             changed: () => void;
             'notify::empty': (pspec: GObject.ParamSpec) => void;
@@ -2077,7 +2086,13 @@ export namespace EDataServerUI {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get empty(): boolean;
+        /**
+         * @construct-only
+         */
         get watcher(): ECal.ReminderWatcher;
 
         /**

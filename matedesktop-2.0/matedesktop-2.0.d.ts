@@ -426,10 +426,12 @@ export namespace MateDesktop {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
              * @signal
+             * @run-last
              */
             transitioned: () => void;
         }
@@ -657,6 +659,7 @@ export namespace MateDesktop {
              * of the end surface as its background, and this signal will
              * get emitted.
              * @signal
+             * @run-last
              */
             finished: (arg0: GObject.Object) => void;
             'notify::height': (pspec: GObject.ParamSpec) => void;
@@ -682,11 +685,13 @@ export namespace MateDesktop {
         /**
          * When a crossfade is running, this is height of the fading
          * surface.
+         * @construct-only
          */
         get height(): number;
         /**
          * When a crossfade is running, this is width of the fading
          * surface.
+         * @construct-only
          */
         get width(): number;
 
@@ -798,6 +803,7 @@ export namespace MateDesktop {
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'color-changed': () => void;
             'notify::current-alpha': (pspec: GObject.ParamSpec) => void;
@@ -898,7 +904,13 @@ export namespace MateDesktop {
         set has_palette(val: boolean);
         get hasPalette(): boolean;
         set hasPalette(val: boolean);
+        /**
+         * @read-only
+         */
         get hex_string(): string;
+        /**
+         * @read-only
+         */
         get hexString(): string;
 
         /**
@@ -1618,13 +1630,37 @@ export namespace MateDesktop {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get cancel_button(): Gtk.Widget;
+        /**
+         * @read-only
+         */
         get cancelButton(): Gtk.Widget;
+        /**
+         * @read-only
+         */
         get color_selection(): Gtk.Widget;
+        /**
+         * @read-only
+         */
         get colorSelection(): Gtk.Widget;
+        /**
+         * @read-only
+         */
         get help_button(): Gtk.Widget;
+        /**
+         * @read-only
+         */
         get helpButton(): Gtk.Widget;
+        /**
+         * @read-only
+         */
         get ok_button(): Gtk.Widget;
+        /**
+         * @read-only
+         */
         get okButton(): Gtk.Widget;
 
         /**
@@ -2256,10 +2292,13 @@ export namespace MateDesktop {
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             changed: () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             move: (arg0: Gtk.DirectionType) => void;
             'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
@@ -3274,9 +3313,15 @@ export namespace MateDesktop {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -3590,6 +3635,7 @@ export namespace MateDesktop {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -3597,6 +3643,7 @@ export namespace MateDesktop {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -3718,6 +3765,7 @@ export namespace MateDesktop {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -7990,6 +8038,9 @@ export namespace MateDesktop {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set screen(val: RRScreen);
 
         /**
@@ -8105,6 +8156,9 @@ export namespace MateDesktop {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set config(val: RRConfig);
 
         /**
@@ -8268,6 +8322,7 @@ export namespace MateDesktop {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             changed: () => void;
             'notify::gdk-screen': (pspec: GObject.ParamSpec) => void;
@@ -8289,7 +8344,13 @@ export namespace MateDesktop {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get gdk_screen(): Gdk.Screen;
+        /**
+         * @construct-only
+         */
         get gdkScreen(): Gdk.Screen;
 
         /**

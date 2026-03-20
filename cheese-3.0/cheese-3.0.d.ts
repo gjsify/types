@@ -88,21 +88,29 @@ export namespace Cheese {
             /**
              * Emitted when a photo was saved to disk.
              * @signal
+             * @action
+             * @run-last
              */
             'photo-saved': () => void;
             /**
              * Emitted when a photo was taken.
              * @signal
+             * @action
+             * @run-last
              */
             'photo-taken': (arg0: GdkPixbuf.Pixbuf) => void;
             /**
              * Emitted when the state of the `camera` {@link Gst.Element} changed.
              * @signal
+             * @action
+             * @run-last
              */
             'state-flags-changed': (arg0: number) => void;
             /**
              * Emitted when a video was saved to disk.
              * @signal
+             * @action
+             * @run-last
              */
             'video-saved': () => void;
             'notify::device': (pspec: GObject.ParamSpec) => void;
@@ -144,10 +152,12 @@ export namespace Cheese {
         set format(val: VideoFormat);
         /**
          * The currently number of camera devices available for being used.
+         * @read-only
          */
         get num_camera_devices(): number;
         /**
          * The currently number of camera devices available for being used.
+         * @read-only
          */
         get numCameraDevices(): number;
         /**
@@ -365,14 +375,17 @@ export namespace Cheese {
 
         /**
          * GStreamer device object of the video capture device.
+         * @construct-only
          */
         get device(): Gst.Device;
         /**
          * Human-readable name of the video capture device, for display to the user.
+         * @construct-only
          */
         get name(): string;
         /**
          * Path of the video capture device.
+         * @construct-only
          */
         get path(): string;
 
@@ -1001,12 +1014,16 @@ export namespace Cheese {
              * The ::added signal is emitted when a camera is added, or on start-up
              * after `cheese_camera_device_monitor_coldplug()` is called.
              * @signal
+             * @action
+             * @run-last
              */
             added: (arg0: CameraDevice) => void;
             /**
              * The ::removed signal is emitted when a camera is unplugged, or disabled on
              * the system.
              * @signal
+             * @action
+             * @run-last
              */
             removed: (arg0: CameraDevice) => void;
         }
@@ -1889,14 +1906,17 @@ export namespace Cheese {
         set controlValve(val: Gst.Element);
         /**
          * Name of the effect, for display in a UI.
+         * @construct-only
          */
         get name(): string;
         /**
          * Description of the GStreamer pipeline associated with the effect.
+         * @construct-only
          */
         get pipeline_desc(): string;
         /**
          * Description of the GStreamer pipeline associated with the effect.
+         * @construct-only
          */
         get pipelineDesc(): string;
 

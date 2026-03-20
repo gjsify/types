@@ -1076,12 +1076,14 @@ export namespace Grss {
              * Emitted when an error raises in fetching or parsing a {@link Grss.FeedChannel}
              * assigned to the `pool`.
              * @signal
+             * @run-last
              */
             'feed-fail': (arg0: GObject.Object) => void;
             /**
              * Emitted when the `pool` starts fetching a new {@link Grss.FeedChannel}. To be
              * used to know the internal status of the component.
              * @signal
+             * @run-last
              */
             'feed-fetching': (arg0: GObject.Object) => void;
             /**
@@ -1091,6 +1093,7 @@ export namespace Grss {
              * an error occurred while fetching and/or parsing. List of `items`
              * is freed, and his elements are unref'd, when signal ends.
              * @signal
+             * @run-last
              */
             'feed-ready': (arg0: GObject.Object, arg1: FeedItem[]) => void;
         }
@@ -1197,10 +1200,12 @@ export namespace Grss {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'delete-subscription': (arg0: FeedChannel, arg1: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'new-subscription': (arg0: FeedChannel, arg1: string) => void;
         }
@@ -1449,6 +1454,7 @@ export namespace Grss {
              * `item` is cached and unref'd when the {@link Grss.FeedsSubscriber} is
              * destroyed or a new set of feeds is provided.
              * @signal
+             * @run-last
              */
             'notification-received': (arg0: GObject.Object, arg1: GObject.Object) => void;
         }

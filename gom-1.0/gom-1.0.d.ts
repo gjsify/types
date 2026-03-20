@@ -43,6 +43,9 @@ export namespace Gom {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FilterMode {
         export const $gtype: GObject.GType<FilterMode>;
     }
@@ -66,6 +69,9 @@ export namespace Gom {
         IS_NOT_NULL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SortingMode {
         export const $gtype: GObject.GType<SortingMode>;
     }
@@ -255,7 +261,13 @@ export namespace Gom {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get adapter(): Adapter;
+        /**
+         * @write-only
+         */
         set sql(val: string);
 
         /**
@@ -394,14 +406,29 @@ export namespace Gom {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get adapter(): Adapter;
         get filter(): Filter;
         set filter(val: Filter);
         get limit(): number;
         set limit(val: number);
+        /**
+         * @construct-only
+         */
         get m2m_table(): string;
+        /**
+         * @construct-only
+         */
         get m2mTable(): string;
+        /**
+         * @construct-only
+         */
         get m2m_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get m2mType(): GObject.GType;
         get offset(): number;
         set offset(val: number);
@@ -512,6 +539,9 @@ export namespace Gom {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get statement(): any;
 
         /**
@@ -620,7 +650,13 @@ export namespace Gom {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get mode(): FilterMode;
+        /**
+         * @construct-only
+         */
         set sql(val: string);
 
         /**
@@ -724,6 +760,9 @@ export namespace Gom {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get adapter(): Adapter;
 
         /**
@@ -1209,17 +1248,53 @@ export namespace Gom {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get count(): number;
+        /**
+         * @construct-only
+         */
         get filter(): Filter;
+        /**
+         * @construct-only
+         */
         get is_writable(): boolean;
+        /**
+         * @construct-only
+         */
         get isWritable(): boolean;
+        /**
+         * @construct-only
+         */
         get m2m_table(): string;
+        /**
+         * @construct-only
+         */
         get m2mTable(): string;
+        /**
+         * @construct-only
+         */
         get m2m_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get m2mType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get repository(): Repository;
+        /**
+         * @construct-only
+         */
         get resource_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get resourceType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get sorting(): Sorting;
 
         /**

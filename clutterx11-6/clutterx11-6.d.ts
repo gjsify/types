@@ -33,6 +33,9 @@ export namespace ClutterX11 {
      * ClutterX11-6
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FilterReturn {
         export const $gtype: GObject.GType<FilterReturn>;
     }

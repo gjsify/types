@@ -31,6 +31,9 @@ export namespace Panel {
      * Panel-1
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Area {
         export const $gtype: GObject.GType<Area>;
     }
@@ -2290,23 +2293,27 @@ export namespace Panel {
              * to every {@link Panel.Frame}.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'adopt-widget': (arg0: Widget) => boolean | void;
             /**
              * This signal is emitted when a new frame is needed.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'create-frame': (arg0: Position) => Frame;
             /**
              * This signal is emitted when dragging of a panel begins.
              * @signal
+             * @run-last
              */
             'panel-drag-begin': (arg0: Widget) => void;
             /**
              * This signal is emitted when dragging of a panel either
              * completes or was cancelled.
              * @signal
+             * @run-last
              */
             'panel-drag-end': (arg0: Widget) => void;
             'notify::bottom-height': (pspec: GObject.ParamSpec) => void;
@@ -2417,13 +2424,37 @@ export namespace Panel {
         set bottom_height(val: number);
         get bottomHeight(): number;
         set bottomHeight(val: number);
+        /**
+         * @read-only
+         */
         get can_reveal_bottom(): boolean;
+        /**
+         * @read-only
+         */
         get canRevealBottom(): boolean;
+        /**
+         * @read-only
+         */
         get can_reveal_end(): boolean;
+        /**
+         * @read-only
+         */
         get canRevealEnd(): boolean;
+        /**
+         * @read-only
+         */
         get can_reveal_start(): boolean;
+        /**
+         * @read-only
+         */
         get canRevealStart(): boolean;
+        /**
+         * @read-only
+         */
         get can_reveal_top(): boolean;
+        /**
+         * @read-only
+         */
         get canRevealTop(): boolean;
         get end_width(): number;
         set end_width(val: number);
@@ -3373,12 +3404,14 @@ export namespace Panel {
              * generally in the document grid.
              * @signal
              * @since 1.4
+             * @run-last
              */
             'add-widget': (arg0: Widget, arg1: Position) => boolean | void;
             /**
              * Creates a new {@link Panel.Frame} to be added to the document grid.
              * @signal
              * @since 1.4
+             * @run-last
              */
             'create-frame': (arg0: Position) => Frame;
             'notify::dock': (pspec: GObject.ParamSpec) => void;
@@ -3492,8 +3525,17 @@ export namespace Panel {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get dock(): Dock;
+        /**
+         * @read-only
+         */
         get grid(): Grid;
+        /**
+         * @read-only
+         */
         get statusbar(): Statusbar;
 
         /**
@@ -3631,6 +3673,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -3639,6 +3682,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -3678,21 +3722,25 @@ export namespace Panel {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -3911,6 +3959,7 @@ export namespace Panel {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -3930,16 +3979,19 @@ export namespace Panel {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -6609,12 +6661,14 @@ export namespace Panel {
              * If `GDK_EVENT_STOP` is returned, then the widget will not be adopted.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'adopt-widget': (arg0: Widget) => boolean | void;
             /**
              * This signal is emitted when the page widget will be closed.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'page-closed': (arg0: Widget) => void;
             'notify::closeable': (pspec: GObject.ParamSpec) => void;
@@ -6691,7 +6745,13 @@ export namespace Panel {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get closeable(): boolean;
+        /**
+         * @read-only
+         */
         get empty(): boolean;
         get placeholder(): Gtk.Widget;
         set placeholder(val: Gtk.Widget);
@@ -7824,6 +7884,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -7832,6 +7893,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -7871,21 +7933,25 @@ export namespace Panel {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -8104,6 +8170,7 @@ export namespace Panel {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -8123,16 +8190,19 @@ export namespace Panel {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -11313,6 +11383,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -11321,6 +11392,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -11360,21 +11432,25 @@ export namespace Panel {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -11593,6 +11669,7 @@ export namespace Panel {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -11612,16 +11689,19 @@ export namespace Panel {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -14864,6 +14944,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -14872,6 +14953,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -14911,21 +14993,25 @@ export namespace Panel {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -15144,6 +15230,7 @@ export namespace Panel {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -15163,16 +15250,19 @@ export namespace Panel {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -18193,6 +18283,9 @@ export namespace Panel {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get settings(): Gio.Settings;
 
         /**
@@ -19153,6 +19246,7 @@ export namespace Panel {
              * Consumers of this signal are required to return an unrooted
              * {@link Panel.Frame} from this signal. The first signal handler wins.
              * @signal
+             * @run-last
              */
             'create-frame': () => Frame;
             'notify::can-focus': (pspec: GObject.ParamSpec) => void;
@@ -20985,16 +21079,22 @@ export namespace Panel {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             changed: (arg0: string) => void;
             'notify::path': (pspec: GObject.ParamSpec) => void;
             'notify::schema-id': (pspec: GObject.ParamSpec) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'changed::path': (arg0: string) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'changed::schema-id': (arg0: string) => void;
         }
@@ -21016,8 +21116,17 @@ export namespace Panel {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get path(): string;
+        /**
+         * @construct-only
+         */
         get schema_id(): string;
+        /**
+         * @construct-only
+         */
         get schemaId(): string;
 
         /**
@@ -21608,6 +21717,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -21616,6 +21726,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -21655,21 +21766,25 @@ export namespace Panel {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -21888,6 +22003,7 @@ export namespace Panel {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -21907,16 +22023,19 @@ export namespace Panel {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -26076,6 +26195,7 @@ export namespace Panel {
              * Implementations are encouraged to connect to this signal (or
              * implement the virtual method) and call `panel_widget_force_close()`.
              * @signal
+             * @run-last
              */
             close: () => void;
             /**
@@ -26086,6 +26206,7 @@ export namespace Panel {
              * implement the virtual method) and revert the document to the
              * last saved state and/or close the document.
              * @signal
+             * @run-last
              */
             discard: () => void;
             /**
@@ -26097,6 +26218,7 @@ export namespace Panel {
              * The caller is expected to complete `task` with a boolean when the
              * save operation has completed.
              * @signal
+             * @run-last
              */
             save: (arg0: Gio.Task) => boolean | void;
             'notify::icon': (pspec: GObject.ParamSpec) => void;
@@ -26567,6 +26689,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -26575,6 +26698,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -26614,21 +26738,25 @@ export namespace Panel {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -26847,6 +26975,7 @@ export namespace Panel {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -26866,16 +26995,19 @@ export namespace Panel {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -29821,6 +29953,8 @@ export namespace Panel {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             changed: (arg0: string) => void;
             'notify::identifier': (pspec: GObject.ParamSpec) => void;
@@ -29831,26 +29965,38 @@ export namespace Panel {
             'notify::schema-id-prefix': (pspec: GObject.ParamSpec) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'changed::identifier': (arg0: string) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'changed::path': (arg0: string) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'changed::path-prefix': (arg0: string) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'changed::path-suffix': (arg0: string) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'changed::schema-id': (arg0: string) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'changed::schema-id-prefix': (arg0: string) => void;
         }
@@ -29883,16 +30029,44 @@ export namespace Panel {
          * The "identifier" property is used to make unique paths.
          *
          * This might be a unique "project-id" for example, in an IDE.
+         * @construct-only
          */
         get identifier(): string;
+        /**
+         * @construct-only
+         */
         get path(): string;
+        /**
+         * @construct-only
+         */
         get path_prefix(): string;
+        /**
+         * @construct-only
+         */
         get pathPrefix(): string;
+        /**
+         * @construct-only
+         */
         get path_suffix(): string;
+        /**
+         * @construct-only
+         */
         get pathSuffix(): string;
+        /**
+         * @construct-only
+         */
         get schema_id(): string;
+        /**
+         * @construct-only
+         */
         get schemaId(): string;
+        /**
+         * @construct-only
+         */
         get schema_id_prefix(): string;
+        /**
+         * @construct-only
+         */
         get schemaIdPrefix(): string;
 
         /**
@@ -32786,6 +32960,7 @@ export namespace Panel {
 
         /**
          * The area this button will reveal.
+         * @construct-only
          */
         get area(): Area;
         /**
@@ -33588,12 +33763,14 @@ export namespace Panel {
              * handler for this signal is expected to return a widget, or `null` if
              * there is nothing to focus.
              * @signal
+             * @run-last
              */
             'get-default-focus': () => Gtk.Widget | null;
             /**
              * The "presented" signal is emitted when the widget is brought
              * to the front of a frame.
              * @signal
+             * @run-last
              */
             presented: () => void;
             'notify::busy': (pspec: GObject.ParamSpec) => void;
@@ -33688,6 +33865,9 @@ export namespace Panel {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get busy(): boolean;
         get can_maximize(): boolean;
         set can_maximize(val: boolean);
@@ -34755,6 +34935,7 @@ export namespace Panel {
         interface SignalSignatures extends Gtk.WindowGroup.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             activate: () => void;
             'notify::id': (pspec: GObject.ParamSpec) => void;
@@ -35159,6 +35340,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -35167,6 +35349,7 @@ export namespace Panel {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -35206,21 +35389,25 @@ export namespace Panel {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -35439,6 +35626,7 @@ export namespace Panel {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -35458,16 +35646,19 @@ export namespace Panel {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;

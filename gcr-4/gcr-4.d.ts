@@ -1183,6 +1183,7 @@ export namespace Gcr {
 
         /**
          * The length of the certificate chain.
+         * @read-only
          */
         get length(): number;
 
@@ -1493,14 +1494,17 @@ export namespace Gcr {
 
         /**
          * Whether this certificate is critical.
+         * @construct-only
          */
         get critical(): boolean;
         /**
          * The Object Identifier (OID) that identifies the extension.
+         * @read-only
          */
         get oid(): string;
         /**
          * The raw value in bytes of the extension.
+         * @construct-only
          */
         get value(): GLib.Bytes;
 
@@ -1606,10 +1610,12 @@ export namespace Gcr {
 
         /**
          * The number of items. See {@link Gio.ListModel.get_n_items}.
+         * @read-only
          */
         get n_items(): number;
         /**
          * The number of items. See {@link Gio.ListModel.get_n_items}.
+         * @read-only
          */
         get nItems(): number;
 
@@ -2423,10 +2429,12 @@ export namespace Gcr {
 
         /**
          * The number of items. See {@link Gio.ListModel.get_n_items}.
+         * @read-only
          */
         get n_items(): number;
         /**
          * The number of items. See {@link Gio.ListModel.get_n_items}.
+         * @read-only
          */
         get nItems(): number;
 
@@ -3063,10 +3071,12 @@ export namespace Gcr {
 
         /**
          * The number of items. See {@link Gio.ListModel.get_n_items}.
+         * @read-only
          */
         get n_items(): number;
         /**
          * The number of items. See {@link Gio.ListModel.get_n_items}.
+         * @read-only
          */
         get nItems(): number;
 
@@ -3853,7 +3863,13 @@ export namespace Gcr {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get n_items(): number;
+        /**
+         * @read-only
+         */
         get nItems(): number;
 
         /**
@@ -5181,8 +5197,17 @@ export namespace Gcr {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get label(): string;
+        /**
+         * @construct-only
+         */
         get section(): CertificateSection;
+        /**
+         * @read-only
+         */
         get value(): GObject.Value;
 
         /**
@@ -5974,10 +5999,12 @@ export namespace Gcr {
 
         /**
          * The private key that this certificate request is for.
+         * @construct-only
          */
         get private_key(): Gck.Object;
         /**
          * The private key that this certificate request is for.
+         * @construct-only
          */
         get privateKey(): Gck.Object;
 
@@ -6151,7 +6178,13 @@ export namespace Gcr {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get fields(): Gio.ListModel;
+        /**
+         * @construct-only
+         */
         get label(): string;
 
         /**
@@ -6987,6 +7020,7 @@ export namespace Gcr {
              * no handlers return `true` then the item is not parsed and an error
              * with the code {@link Gcr.DataError.CANCELLED} will be raised.
              * @signal
+             * @run-last
              */
             authenticate: (arg0: number) => boolean | void;
             /**
@@ -6995,6 +7029,7 @@ export namespace Gcr {
              * `gcr_parser_get_parsed_attributes()` and `gcr_parser_get_parsed_description()`
              * functions.
              * @signal
+             * @run-first
              */
             parsed: () => void;
             'notify::parsed-attributes': (pspec: GObject.ParamSpec) => void;
@@ -7039,31 +7074,37 @@ export namespace Gcr {
         /**
          * Get the attributes that make up the currently parsed item. This is
          * generally only valid during a `Gcr.Parser::parsed` signal.
+         * @read-only
          */
         get parsed_attributes(): Gck.Attributes;
         /**
          * Get the attributes that make up the currently parsed item. This is
          * generally only valid during a `Gcr.Parser::parsed` signal.
+         * @read-only
          */
         get parsedAttributes(): Gck.Attributes;
         /**
          * The description of the type of the currently parsed item. This is generally
          * only valid during a `Gcr.Parser::parsed` signal.
+         * @read-only
          */
         get parsed_description(): string;
         /**
          * The description of the type of the currently parsed item. This is generally
          * only valid during a `Gcr.Parser::parsed` signal.
+         * @read-only
          */
         get parsedDescription(): string;
         /**
          * The label of the currently parsed item. This is generally
          * only valid during a `Gcr.Parser::parsed` signal.
+         * @read-only
          */
         get parsed_label(): string;
         /**
          * The label of the currently parsed item. This is generally
          * only valid during a `Gcr.Parser::parsed` signal.
+         * @read-only
          */
         get parsedLabel(): string;
 
@@ -7313,6 +7354,7 @@ export namespace Gcr {
 
         /**
          * Automatically loaded attributes for this certificate.
+         * @construct-only
          */
         get attributes(): Gck.Attributes;
 
@@ -7440,37 +7482,49 @@ export namespace Gcr {
         get_attributes(): Gck.Attributes;
         /**
          * A readable description for this certificate
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get description(): string;
         /**
          * The expiry date of the certificate
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get expiry_date(): GLib.DateTime;
         /**
          * The expiry date of the certificate
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get expiryDate(): GLib.DateTime;
         /**
          * Common name part of the certificate issuer
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get issuer_name(): string;
         /**
          * Common name part of the certificate issuer
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get issuerName(): string;
         /**
          * A readable label for this certificate.
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get label(): string;
-        /** @category Inherited from Gcr.Certificate */
+        /**
+         * @read-only
+         * @category Inherited from Gcr.Certificate
+         */
         get subject_name(): string;
-        /** @category Inherited from Gcr.Certificate */
+        /**
+         * @read-only
+         * @category Inherited from Gcr.Certificate
+         */
         get subjectName(): string;
         /**
          * Get the basic constraints for the certificate if present. If `false` is
@@ -8177,6 +8231,7 @@ export namespace Gcr {
          * Will be `null` if no protocol was specified when creating this object,
          * and either {@link SecretExchange.begin} or {@link SecretExchange.receive}
          * have not been called successfully.
+         * @construct-only
          */
         get protocol(): string;
 
@@ -8353,37 +8408,49 @@ export namespace Gcr {
         emit(signal: string, ...args: any[]): void;
         /**
          * A readable description for this certificate
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get description(): string;
         /**
          * The expiry date of the certificate
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get expiry_date(): GLib.DateTime;
         /**
          * The expiry date of the certificate
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get expiryDate(): GLib.DateTime;
         /**
          * Common name part of the certificate issuer
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get issuer_name(): string;
         /**
          * Common name part of the certificate issuer
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get issuerName(): string;
         /**
          * A readable label for this certificate.
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get label(): string;
-        /** @category Inherited from Gcr.Certificate */
+        /**
+         * @read-only
+         * @category Inherited from Gcr.Certificate
+         */
         get subject_name(): string;
-        /** @category Inherited from Gcr.Certificate */
+        /**
+         * @read-only
+         * @category Inherited from Gcr.Certificate
+         */
         get subjectName(): string;
         /**
          * Get the basic constraints for the certificate if present. If `false` is
@@ -9056,6 +9123,7 @@ export namespace Gcr {
 
         /**
          * The interaction used to prompt for passwords.
+         * @construct-only
          */
         get interaction(): Gio.TlsInteraction;
 
@@ -9173,11 +9241,13 @@ export namespace Gcr {
         /**
          * The DBus bus name of the prompter to use for prompting, or `null`
          * for the default prompter.
+         * @construct-only
          */
         get bus_name(): string;
         /**
          * The DBus bus name of the prompter to use for prompting, or `null`
          * for the default prompter.
+         * @construct-only
          */
         get busName(): string;
         /**
@@ -9194,10 +9264,12 @@ export namespace Gcr {
         set secretExchange(val: SecretExchange);
         /**
          * The timeout in seconds to wait when opening the prompt.
+         * @construct-only
          */
         set timeout_seconds(val: number);
         /**
          * The timeout in seconds to wait when opening the prompt.
+         * @construct-only
          */
         set timeoutSeconds(val: number);
 
@@ -9522,6 +9594,7 @@ export namespace Gcr {
          * greater than zero if the password has any characters.
          *
          * This is only valid after a successful prompt for a password.
+         * @read-only
          * @category Inherited from Gcr.Prompt
          */
         get password_strength(): number;
@@ -9532,6 +9605,7 @@ export namespace Gcr {
          * greater than zero if the password has any characters.
          *
          * This is only valid after a successful prompt for a password.
+         * @read-only
          * @category Inherited from Gcr.Prompt
          */
         get passwordStrength(): number;
@@ -10687,6 +10761,7 @@ export namespace Gcr {
              * The default implementation of this signal creates a prompt of the type
              * `gcr_system_prompter_get_prompt_type()`.
              * @signal
+             * @run-last
              */
             'new-prompt': () => Prompt;
             'notify::prompt-type': (pspec: GObject.ParamSpec) => void;
@@ -10723,15 +10798,18 @@ export namespace Gcr {
         /**
          * The {@link GObject.GType} for prompts created by this prompter. This must be a
          * {@link Gcr.Prompt} implementation.
+         * @construct-only
          */
         get prompt_type(): GObject.GType;
         /**
          * The {@link GObject.GType} for prompts created by this prompter. This must be a
          * {@link Gcr.Prompt} implementation.
+         * @construct-only
          */
         get promptType(): GObject.GType;
         /**
          * Whether the prompter is prompting or not.
+         * @read-only
          */
         get prompting(): boolean;
 
@@ -11146,29 +11224,41 @@ export namespace Gcr {
 
         /**
          * A readable description for this certificate
+         * @read-only
          */
         get description(): string;
         /**
          * The expiry date of the certificate
+         * @read-only
          */
         get expiry_date(): GLib.DateTime;
         /**
          * The expiry date of the certificate
+         * @read-only
          */
         get expiryDate(): GLib.DateTime;
         /**
          * Common name part of the certificate issuer
+         * @read-only
          */
         get issuer_name(): string;
         /**
          * Common name part of the certificate issuer
+         * @read-only
          */
         get issuerName(): string;
         /**
          * A readable label for this certificate.
+         * @read-only
          */
         get label(): string;
+        /**
+         * @read-only
+         */
         get subject_name(): string;
+        /**
+         * @read-only
+         */
         get subjectName(): string;
 
         // Methods
@@ -11636,10 +11726,12 @@ export namespace Gcr {
         set interaction(val: Gio.TlsInteraction);
         /**
          * The label for the importer.
+         * @read-only
          */
         get label(): string;
         /**
          * The URI of the location imported to.
+         * @read-only
          */
         get uri(): string;
 
@@ -11943,6 +12035,7 @@ export namespace Gcr {
          * greater than zero if the password has any characters.
          *
          * This is only valid after a successful prompt for a password.
+         * @read-only
          */
         get password_strength(): number;
         /**
@@ -11952,6 +12045,7 @@ export namespace Gcr {
          * greater than zero if the password has any characters.
          *
          * This is only valid after a successful prompt for a password.
+         * @read-only
          */
         get passwordStrength(): number;
         /**

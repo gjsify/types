@@ -48,6 +48,7 @@ export namespace TrackerControl {
              * the miner has appeared in the session bus).
              * @signal
              * @since 0.8
+             * @run-last
              */
             'miner-activated': (arg0: string) => void;
             /**
@@ -56,6 +57,7 @@ export namespace TrackerControl {
              * the miner has disappeared from the session bus).
              * @signal
              * @since 0.8
+             * @run-last
              */
             'miner-deactivated': (arg0: string) => void;
             /**
@@ -63,6 +65,7 @@ export namespace TrackerControl {
              * (referenced by `miner`) is paused.
              * @signal
              * @since 0.8
+             * @run-last
              */
             'miner-paused': (arg0: string) => void;
             /**
@@ -70,6 +73,7 @@ export namespace TrackerControl {
              * in any tracked miner.
              * @signal
              * @since 0.12
+             * @run-last
              */
             'miner-progress': (arg0: string, arg1: string, arg2: number, arg3: number) => void;
             /**
@@ -77,6 +81,7 @@ export namespace TrackerControl {
              * (referenced by `miner`) is resumed.
              * @signal
              * @since 0.8
+             * @run-last
              */
             'miner-resumed': (arg0: string) => void;
             'notify::auto-start': (pspec: GObject.ParamSpec) => void;
@@ -102,9 +107,21 @@ export namespace TrackerControl {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get auto_start(): boolean;
+        /**
+         * @construct-only
+         */
         get autoStart(): boolean;
+        /**
+         * @construct-only
+         */
         get domain_ontology(): string;
+        /**
+         * @construct-only
+         */
         get domainOntology(): string;
 
         /**

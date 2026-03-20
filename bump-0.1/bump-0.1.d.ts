@@ -68,11 +68,29 @@ export namespace Bump {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
         get waiting_threads(): number;
         set waiting_threads(val: number);
@@ -172,6 +190,9 @@ export namespace Bump {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get active(): boolean;
         get time_acquired(): number;
         set time_acquired(val: number);
@@ -181,7 +202,13 @@ export namespace Bump {
         set time_released(val: number);
         get timeReleased(): number;
         set timeReleased(val: number);
+        /**
+         * @read-only
+         */
         get duration_held(): GLib.TimeSpan;
+        /**
+         * @read-only
+         */
         get durationHeld(): GLib.TimeSpan;
 
         /**
@@ -814,14 +841,41 @@ export namespace Bump {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get t_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get tType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get t_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get tDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get t_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get tDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get pool(): TaskQueue;
+        /**
+         * @construct-only
+         */
         get auto_reset(): boolean;
+        /**
+         * @construct-only
+         */
         get autoReset(): boolean;
         get triggered(): boolean;
         set triggered(val: boolean);
@@ -1032,11 +1086,29 @@ export namespace Bump {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get g_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get gType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get g_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get gDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get g_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get gDestroyFunc(): GLib.DestroyNotify;
 
         /**
@@ -1319,15 +1391,45 @@ export namespace Bump {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get t_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get tType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get t_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get tDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get t_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get tDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get pool(): TaskQueue;
+        /**
+         * @read-only
+         */
         get value(): any;
+        /**
+         * @read-only
+         */
         get is_initialized(): boolean;
+        /**
+         * @read-only
+         */
         get isInitialized(): boolean;
 
         /**
@@ -1411,13 +1513,37 @@ export namespace Bump {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get t_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get tType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get t_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get tDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get t_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get tDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get pool(): ResourcePool;
+        /**
+         * @read-only
+         */
         get resource(): any;
 
         /**
@@ -1525,13 +1651,37 @@ export namespace Bump {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get t_type(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get tType(): GObject.GType;
+        /**
+         * @construct-only
+         */
         get t_dup_func(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get tDupFunc(): GObject.BoxedCopyFunc;
+        /**
+         * @construct-only
+         */
         get t_destroy_func(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get tDestroyFunc(): GLib.DestroyNotify;
+        /**
+         * @construct-only
+         */
         get max_resources(): number;
+        /**
+         * @construct-only
+         */
         get maxResources(): number;
         get max_idle_time(): GLib.TimeSpan;
         set max_idle_time(val: GLib.TimeSpan);
@@ -1541,10 +1691,25 @@ export namespace Bump {
         set num_resources(val: number);
         get numResources(): number;
         set numResources(val: number);
+        /**
+         * @read-only
+         */
         get idle_resources(): number;
+        /**
+         * @read-only
+         */
         get idleResources(): number;
+        /**
+         * @read-only
+         */
         get active_resources(): number;
+        /**
+         * @read-only
+         */
         get activeResources(): number;
+        /**
+         * @construct-only
+         */
         get pool(): TaskQueue;
 
         /**
@@ -1789,10 +1954,19 @@ export namespace Bump {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get max_claims(): number;
+        /**
+         * @construct-only
+         */
         get maxClaims(): number;
         get claims(): number;
         set claims(val: number);
+        /**
+         * @construct-only
+         */
         get pool(): TaskQueue;
 
         /**
@@ -1954,6 +2128,9 @@ export namespace Bump {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get semaphore(): Semaphore;
 
         /**
@@ -2282,7 +2459,10 @@ export namespace Bump {
             g_dup_func: GObject.BoxedCopyFunc,
             _res_: Gio.AsyncResult,
         ): any;
-        /** @category Inherited from Bump.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Bump.Queue
+         */
         get length(): number;
         get_length(): number;
         /**
@@ -2914,6 +3094,9 @@ export namespace Bump {
     interface Queue extends GObject.Object, Queue.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get length(): number;
 
         // Methods

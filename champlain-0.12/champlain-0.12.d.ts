@@ -31,6 +31,9 @@ export namespace Champlain {
      * Champlain-0.12
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MapProjection {
         export const $gtype: GObject.GType<MapProjection>;
     }
@@ -46,6 +49,9 @@ export namespace Champlain {
         MERCATOR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SelectionMode {
         export const $gtype: GObject.GType<SelectionMode>;
     }
@@ -69,6 +75,9 @@ export namespace Champlain {
         MULTIPLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace State {
         export const $gtype: GObject.GType<State>;
     }
@@ -97,6 +106,9 @@ export namespace Champlain {
         DONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Unit {
         export const $gtype: GObject.GType<Unit>;
     }
@@ -207,6 +219,7 @@ export namespace Champlain {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
             'notify::lower': (pspec: GObject.ParamSpec) => void;
@@ -1663,11 +1676,13 @@ export namespace Champlain {
         /**
          * The directory where the tile database is stored.
          * @since 0.6
+         * @construct-only
          */
         get cache_dir(): string;
         /**
          * The directory where the tile database is stored.
          * @since 0.6
+         * @construct-only
          */
         get cacheDir(): string;
         /**
@@ -1902,6 +1917,7 @@ export namespace Champlain {
         interface SignalSignatures extends Clutter.Actor.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'panning-completed': () => void;
             'notify::decel-rate': (pspec: GObject.ParamSpec) => void;
@@ -6571,76 +6587,91 @@ export namespace Champlain {
         /**
          * User data passed to the constructor
          * @since 0.10
+         * @construct-only
          */
         get data(): any;
         /**
          * The id of the map source
          * @since 0.10
+         * @construct-only
          */
         get id(): string;
         /**
          * The license of the map source
          * @since 0.10
+         * @construct-only
          */
         get license(): string;
         /**
          * The license's uri for more information
          * @since 0.10
+         * @construct-only
          */
         get license_uri(): string;
         /**
          * The license's uri for more information
          * @since 0.10
+         * @construct-only
          */
         get licenseUri(): string;
         /**
          * The maximum zoom level
          * @since 0.10
+         * @construct-only
          */
         get max_zoom_level(): number;
         /**
          * The maximum zoom level
          * @since 0.10
+         * @construct-only
          */
         get maxZoomLevel(): number;
         /**
          * The minimum zoom level
          * @since 0.10
+         * @construct-only
          */
         get min_zoom_level(): number;
         /**
          * The minimum zoom level
          * @since 0.10
+         * @construct-only
          */
         get minZoomLevel(): number;
         /**
          * The name of the map source
          * @since 0.10
+         * @construct-only
          */
         get name(): string;
         /**
          * The map projection of the map source
          * @since 0.10
+         * @construct-only
          */
         get projection(): MapProjection;
         /**
          * The tile size of the map source
          * @since 0.10
+         * @construct-only
          */
         get tile_size(): number;
         /**
          * The tile size of the map source
          * @since 0.10
+         * @construct-only
          */
         get tileSize(): number;
         /**
          * The URI format of a network map source
          * @since 0.10
+         * @construct-only
          */
         get uri_format(): string;
         /**
          * The URI format of a network map source
          * @since 0.10
+         * @construct-only
          */
         get uriFormat(): string;
 
@@ -6845,12 +6876,14 @@ export namespace Champlain {
              * Emitted when button is pressed.
              * @signal
              * @since 0.10
+             * @run-last
              */
             'button-press': (arg0: Clutter.Event) => void;
             /**
              * Emitted when button is released. This signal is not emmitted at the end of dragging.
              * @signal
              * @since 0.10
+             * @run-last
              */
             'button-release': (arg0: Clutter.Event) => void;
             /**
@@ -6858,6 +6891,7 @@ export namespace Champlain {
              * of dragging).
              * @signal
              * @since 0.10
+             * @run-last
              */
             'drag-finish': (arg0: Clutter.Event) => void;
             /**
@@ -6865,6 +6899,7 @@ export namespace Champlain {
              * the marker has been dragged since last time.
              * @signal
              * @since 0.10
+             * @run-last
              */
             'drag-motion': (arg0: number, arg1: number, arg2: Clutter.Event) => void;
             'notify::draggable': (pspec: GObject.ParamSpec) => void;
@@ -8984,11 +9019,13 @@ export namespace Champlain {
         /**
          * The HTTP user agent used for requests
          * @since 0.12.16
+         * @write-only
          */
         set user_agent(val: string);
         /**
          * The HTTP user agent used for requests
          * @since 0.12.16
+         * @write-only
          */
         set userAgent(val: string);
 
@@ -9172,11 +9209,13 @@ export namespace Champlain {
         /**
          * The HTTP user agent used for requests
          * @since 0.12.16
+         * @write-only
          */
         set user_agent(val: string);
         /**
          * The HTTP user agent used for requests
          * @since 0.12.16
+         * @write-only
          */
         set userAgent(val: string);
 
@@ -12136,6 +12175,7 @@ export namespace Champlain {
              * completed by the renderer.
              * @signal
              * @since 0.10
+             * @run-last
              */
             'render-complete': (arg0: any | null, arg1: number, arg2: boolean) => void;
             'notify::content': (pspec: GObject.ParamSpec) => void;
@@ -13771,6 +13811,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed': () => void;
             /**
@@ -13780,6 +13822,7 @@ export namespace Champlain {
              * than MAX_INT pixels.
              * @signal
              * @since 0.10
+             * @run-last
              */
             'layer-relocated': () => void;
             'notify::animate-zoom': (pspec: GObject.ParamSpec) => void;
@@ -13889,6 +13932,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::animate-zoom': () => void;
             /**
@@ -13898,6 +13943,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::background-pattern': () => void;
             /**
@@ -13907,6 +13954,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::deceleration': () => void;
             /**
@@ -13916,6 +13965,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::goto-animation-duration': () => void;
             /**
@@ -13925,6 +13976,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::goto-animation-mode': () => void;
             /**
@@ -13934,6 +13987,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::horizontal-wrap': () => void;
             /**
@@ -13943,6 +13998,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::keep-center-on-resize': () => void;
             /**
@@ -13952,6 +14009,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::kinetic-mode': () => void;
             /**
@@ -13961,6 +14020,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::latitude': () => void;
             /**
@@ -13970,6 +14031,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::longitude': () => void;
             /**
@@ -13979,6 +14042,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::map-source': () => void;
             /**
@@ -13988,6 +14053,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::max-zoom-level': () => void;
             /**
@@ -13997,6 +14064,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::min-zoom-level': () => void;
             /**
@@ -14006,6 +14075,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::state': () => void;
             /**
@@ -14015,6 +14086,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::world': () => void;
             /**
@@ -14024,6 +14097,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::zoom-level': () => void;
             /**
@@ -14033,6 +14108,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::zoom-on-double-click': () => void;
             /**
@@ -14042,6 +14119,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::actions': () => void;
             /**
@@ -14051,6 +14130,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::allocation': () => void;
             /**
@@ -14060,6 +14141,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::anchor-gravity': () => void;
             /**
@@ -14069,6 +14152,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::anchor-x': () => void;
             /**
@@ -14078,6 +14163,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::anchor-y': () => void;
             /**
@@ -14087,6 +14174,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::background-color': () => void;
             /**
@@ -14096,6 +14185,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::background-color-set': () => void;
             /**
@@ -14105,6 +14196,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::child-transform': () => void;
             /**
@@ -14114,6 +14207,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::child-transform-set': () => void;
             /**
@@ -14123,6 +14218,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::clip': () => void;
             /**
@@ -14132,6 +14229,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::clip-rect': () => void;
             /**
@@ -14141,6 +14240,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::clip-to-allocation': () => void;
             /**
@@ -14150,6 +14251,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::constraints': () => void;
             /**
@@ -14159,6 +14262,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::content': () => void;
             /**
@@ -14168,6 +14273,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::content-box': () => void;
             /**
@@ -14177,6 +14284,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::content-gravity': () => void;
             /**
@@ -14186,6 +14295,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::content-repeat': () => void;
             /**
@@ -14195,6 +14306,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::depth': () => void;
             /**
@@ -14204,6 +14317,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::effect': () => void;
             /**
@@ -14213,6 +14328,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::first-child': () => void;
             /**
@@ -14222,6 +14339,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::fixed-position-set': () => void;
             /**
@@ -14231,6 +14350,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::fixed-x': () => void;
             /**
@@ -14240,6 +14361,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::fixed-y': () => void;
             /**
@@ -14249,6 +14372,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::has-clip': () => void;
             /**
@@ -14258,6 +14383,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::has-pointer': () => void;
             /**
@@ -14267,6 +14394,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::height': () => void;
             /**
@@ -14276,6 +14405,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::last-child': () => void;
             /**
@@ -14285,6 +14416,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::layout-manager': () => void;
             /**
@@ -14294,6 +14427,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::magnification-filter': () => void;
             /**
@@ -14303,6 +14438,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::mapped': () => void;
             /**
@@ -14312,6 +14449,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::margin-bottom': () => void;
             /**
@@ -14321,6 +14460,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::margin-left': () => void;
             /**
@@ -14330,6 +14471,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::margin-right': () => void;
             /**
@@ -14339,6 +14482,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::margin-top': () => void;
             /**
@@ -14348,6 +14493,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::min-height': () => void;
             /**
@@ -14357,6 +14504,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::min-height-set': () => void;
             /**
@@ -14366,6 +14515,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::min-width': () => void;
             /**
@@ -14375,6 +14526,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::min-width-set': () => void;
             /**
@@ -14384,6 +14537,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::minification-filter': () => void;
             /**
@@ -14393,6 +14548,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::name': () => void;
             /**
@@ -14402,6 +14559,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::natural-height': () => void;
             /**
@@ -14411,6 +14570,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::natural-height-set': () => void;
             /**
@@ -14420,6 +14581,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::natural-width': () => void;
             /**
@@ -14429,6 +14592,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::natural-width-set': () => void;
             /**
@@ -14438,6 +14603,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::offscreen-redirect': () => void;
             /**
@@ -14447,6 +14614,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::opacity': () => void;
             /**
@@ -14456,6 +14625,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::pivot-point': () => void;
             /**
@@ -14465,6 +14636,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::pivot-point-z': () => void;
             /**
@@ -14474,6 +14647,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::position': () => void;
             /**
@@ -14483,6 +14658,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::reactive': () => void;
             /**
@@ -14492,6 +14669,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::realized': () => void;
             /**
@@ -14501,6 +14680,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::request-mode': () => void;
             /**
@@ -14510,6 +14691,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::rotation-angle-x': () => void;
             /**
@@ -14519,6 +14702,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::rotation-angle-y': () => void;
             /**
@@ -14528,6 +14713,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::rotation-angle-z': () => void;
             /**
@@ -14537,6 +14724,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::rotation-center-x': () => void;
             /**
@@ -14546,6 +14735,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::rotation-center-y': () => void;
             /**
@@ -14555,6 +14746,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::rotation-center-z': () => void;
             /**
@@ -14564,6 +14757,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::rotation-center-z-gravity': () => void;
             /**
@@ -14573,6 +14768,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::rotation-center-zgravity': () => void;
             /**
@@ -14582,6 +14779,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::scale-center-x': () => void;
             /**
@@ -14591,6 +14790,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::scale-center-y': () => void;
             /**
@@ -14600,6 +14801,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::scale-gravity': () => void;
             /**
@@ -14609,6 +14812,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::scale-x': () => void;
             /**
@@ -14618,6 +14823,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::scale-y': () => void;
             /**
@@ -14627,6 +14834,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::scale-z': () => void;
             /**
@@ -14636,6 +14845,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::show-on-set-parent': () => void;
             /**
@@ -14645,6 +14856,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::size': () => void;
             /**
@@ -14654,6 +14867,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::text-direction': () => void;
             /**
@@ -14663,6 +14878,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::transform': () => void;
             /**
@@ -14672,6 +14889,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::transform-set': () => void;
             /**
@@ -14681,6 +14900,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::translation-x': () => void;
             /**
@@ -14690,6 +14911,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::translation-y': () => void;
             /**
@@ -14699,6 +14922,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::translation-z': () => void;
             /**
@@ -14708,6 +14933,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::visible': () => void;
             /**
@@ -14717,6 +14944,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::width': () => void;
             /**
@@ -14726,6 +14955,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::x': () => void;
             /**
@@ -14735,6 +14966,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::x-align': () => void;
             /**
@@ -14744,6 +14977,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::x-expand': () => void;
             /**
@@ -14753,6 +14988,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::y': () => void;
             /**
@@ -14762,6 +14999,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::y-align': () => void;
             /**
@@ -14771,6 +15010,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::y-expand': () => void;
             /**
@@ -14780,6 +15021,8 @@ export namespace Champlain {
              * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
              * @signal
              * @since 0.4
+             * @detailed
+             * @run-last
              */
             'animation-completed::z-position': () => void;
         }
@@ -14989,6 +15232,7 @@ export namespace Champlain {
          * The view's global state. Useful to inform using if the view is busy loading
          * tiles or not.
          * @since 0.4
+         * @read-only
          */
         get state(): State;
         /**
@@ -16280,6 +16524,7 @@ export namespace Champlain {
         interface SignalSignatures extends Clutter.Actor.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             relocated: () => void;
             'notify::hadjustment': (pspec: GObject.ParamSpec) => void;

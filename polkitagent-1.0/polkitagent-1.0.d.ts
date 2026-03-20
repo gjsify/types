@@ -28,6 +28,9 @@ export namespace PolkitAgent {
      * @param object_path The D-Bus object path to use for the authentication agent or `null` for the default object path.
      */
     function register_listener(listener: Listener, subject: Polkit.Subject, object_path: string): boolean;
+    /**
+     * @gir-type Flags
+     */
     export namespace RegisterFlags {
         export const $gtype: GObject.GType<RegisterFlags>;
     }
@@ -341,6 +344,7 @@ export namespace PolkitAgent {
              *
              * Upon receiving this signal, the user should free `session` using `g_object_unref()`.
              * @signal
+             * @run-last
              */
             completed: (arg0: boolean) => void;
             /**
@@ -348,16 +352,19 @@ export namespace PolkitAgent {
              *
              * When the response has been collected from the user, call `polkit_agent_session_response()`.
              * @signal
+             * @run-last
              */
             request: (arg0: string, arg1: boolean) => void;
             /**
              * Emitted when there is information related to an error condition to be displayed to the user.
              * @signal
+             * @run-last
              */
             'show-error': (arg0: string) => void;
             /**
              * Emitted when there is information to be displayed to the user.
              * @signal
+             * @run-last
              */
             'show-info': (arg0: string) => void;
             'notify::cookie': (pspec: GObject.ParamSpec) => void;
@@ -404,10 +411,12 @@ export namespace PolkitAgent {
 
         /**
          * The cookie obtained from the PolicyKit daemon
+         * @construct-only
          */
         get cookie(): string;
         /**
          * The identity to authenticate.
+         * @construct-only
          */
         get identity(): Polkit.Identity;
 

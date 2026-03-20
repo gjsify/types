@@ -23,6 +23,9 @@ export namespace GstPbutils {
      * GstPbutils-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AudioVisualizerShader {
         export const $gtype: GObject.GType<AudioVisualizerShader>;
     }
@@ -74,6 +77,9 @@ export namespace GstPbutils {
         FADE_AND_MOVE_VERT_IN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DiscovererResult {
         export const $gtype: GObject.GType<DiscovererResult>;
     }
@@ -109,6 +115,9 @@ export namespace GstPbutils {
         MISSING_PLUGINS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InstallPluginsReturn {
         export const $gtype: GObject.GType<InstallPluginsReturn>;
     }
@@ -882,6 +891,9 @@ export namespace GstPbutils {
     interface InstallPluginsResultFunc {
         (result: InstallPluginsReturn): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace DiscovererSerializeFlags {
         export const $gtype: GObject.GType<DiscovererSerializeFlags>;
     }
@@ -917,6 +929,9 @@ export namespace GstPbutils {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PbUtilsCapsDescriptionFlags {
         export const $gtype: GObject.GType<PbUtilsCapsDescriptionFlags>;
     }
@@ -1077,11 +1092,13 @@ export namespace GstPbutils {
              * When an error occurs, `info` might still contain some partial information,
              * depending on the circumstances of the error.
              * @signal
+             * @run-last
              */
             discovered: (arg0: DiscovererInfo, arg1: GLib.Error | null) => void;
             /**
              * Will be emitted in async mode when all pending URIs have been processed.
              * @signal
+             * @run-last
              */
             finished: () => void;
             /**
@@ -1090,6 +1107,7 @@ export namespace GstPbutils {
              * discovery.
              * @signal
              * @since 1.24
+             * @run-last
              */
             'load-serialized-info': (arg0: string) => DiscovererInfo | null;
             /**
@@ -1101,11 +1119,13 @@ export namespace GstPbutils {
              * This signal is usually emitted from the context of a GStreamer streaming
              * thread.
              * @signal
+             * @run-last
              */
             'source-setup': (arg0: Gst.Element) => void;
             /**
              * Will be emitted when the discover starts analyzing the pending URIs
              * @signal
+             * @run-last
              */
             starting: () => void;
             'notify::timeout': (pspec: GObject.ParamSpec) => void;

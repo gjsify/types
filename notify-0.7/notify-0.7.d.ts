@@ -21,6 +21,9 @@ export namespace Notify {
      * Notify-0.7
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClosedReason {
         export const $gtype: GObject.GType<ClosedReason>;
     }
@@ -57,6 +60,9 @@ export namespace Notify {
         UNDEFIEND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Urgency {
         export const $gtype: GObject.GType<Urgency>;
     }
@@ -322,6 +328,7 @@ export namespace Notify {
              * NO signal will be emitted if the user or the daemon dismissed the
              * notification for any other reason.
              * @signal
+             * @run-first
              */
             closed: () => void;
             'notify::app-icon': (pspec: GObject.ParamSpec) => void;
@@ -399,12 +406,14 @@ export namespace Notify {
          * The closed reason of the notification.
          *
          * See `Notify.Notification::closed`.
+         * @read-only
          */
         get closed_reason(): number;
         /**
          * The closed reason of the notification.
          *
          * See `Notify.Notification::closed`.
+         * @read-only
          */
         get closedReason(): number;
         /**

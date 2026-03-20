@@ -230,38 +230,47 @@ export namespace GUPnPDLNA {
 
         /**
          * Audio information of a file.
+         * @read-only
          */
         get audio_information(): AudioInformation;
         /**
          * Audio information of a file.
+         * @read-only
          */
         get audioInformation(): AudioInformation;
         /**
          * Container information of a file.
+         * @read-only
          */
         get container_information(): ContainerInformation;
         /**
          * Container information of a file.
+         * @read-only
          */
         get containerInformation(): ContainerInformation;
         /**
          * Image information of a file.
+         * @read-only
          */
         get image_information(): ImageInformation;
         /**
          * Image information of a file.
+         * @read-only
          */
         get imageInformation(): ImageInformation;
         /**
          * URI of file which metadata this object stores.
+         * @construct-only
          */
         get uri(): string;
         /**
          * Video information of a file.
+         * @read-only
          */
         get video_information(): VideoInformation;
         /**
          * Video information of a file.
+         * @read-only
          */
         get videoInformation(): VideoInformation;
 
@@ -375,6 +384,7 @@ export namespace GUPnPDLNA {
              * Will be emitted when all information on a URI could be
              * discovered.
              * @signal
+             * @run-last
              */
             done: (arg0: Information, arg1: GLib.Error | null) => void;
         }
@@ -512,25 +522,52 @@ export namespace GUPnPDLNA {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get audio_restrictions(): any;
+        /**
+         * @construct-only
+         */
         get audioRestrictions(): any;
+        /**
+         * @construct-only
+         */
         get container_restrictions(): any;
+        /**
+         * @construct-only
+         */
         get containerRestrictions(): any;
         /**
          * Whether the DLNA profile is not a part of DLNA specification.
+         * @construct-only
          */
         get extended(): boolean;
+        /**
+         * @construct-only
+         */
         get image_restrictions(): any;
+        /**
+         * @construct-only
+         */
         get imageRestrictions(): any;
         /**
          * MIME type of the DLNA profile.
+         * @construct-only
          */
         get mime(): string;
         /**
          * Name of the DLNA profile.
+         * @construct-only
          */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get video_restrictions(): any;
+        /**
+         * @construct-only
+         */
         get videoRestrictions(): any;
 
         /**
@@ -611,6 +648,7 @@ export namespace GUPnPDLNA {
             /**
              * Will be emitted when guessing DLNA profile for a URI has finished.
              * @signal
+             * @run-last
              */
             done: (arg0: Information, arg1: Profile | null, arg2: GLib.Error | null) => void;
             'notify::extended-mode': (pspec: GObject.ParamSpec) => void;
@@ -638,21 +676,25 @@ export namespace GUPnPDLNA {
         /**
          * Whether profile matching should be done also against DLNA
          * profiles not being a part of DLNA specification.
+         * @construct-only
          */
         get extended_mode(): boolean;
         /**
          * Whether profile matching should be done also against DLNA
          * profiles not being a part of DLNA specification.
+         * @construct-only
          */
         get extendedMode(): boolean;
         /**
          * Whether profile matching should not be strictly compliant
          * with the DLNA specification.
+         * @construct-only
          */
         get relaxed_mode(): boolean;
         /**
          * Whether profile matching should not be strictly compliant
          * with the DLNA specification.
+         * @construct-only
          */
         get relaxedMode(): boolean;
 

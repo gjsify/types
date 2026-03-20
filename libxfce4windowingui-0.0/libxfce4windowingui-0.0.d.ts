@@ -148,6 +148,7 @@ export namespace Libxfce4windowingui {
 
         /**
          * The {@link Libxfce4windowing.Window} instance used to create the action menu.
+         * @construct-only
          */
         // This accessor conflicts with another accessor's type in a parent class or interface.
         get window(): Libxfce4windowing.Window | any;

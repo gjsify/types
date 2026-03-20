@@ -25,6 +25,9 @@ export namespace GstPlayer {
      * GstPlayer-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlayerColorBalanceType {
         export const $gtype: GObject.GType<PlayerColorBalanceType>;
     }
@@ -90,6 +93,9 @@ export namespace GstPlayer {
         PNG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlayerState {
         export const $gtype: GObject.GType<PlayerState>;
     }
@@ -147,54 +153,67 @@ export namespace GstPlayer {
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             buffering: (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'duration-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'end-of-stream': () => void;
             /**
              * @signal
+             * @run-last
              */
             error: (arg0: GLib.Error) => void;
             /**
              * @signal
+             * @run-last
              */
             'media-info-updated': (arg0: PlayerMediaInfo) => void;
             /**
              * @signal
+             * @run-last
              */
             'mute-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'position-updated': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'seek-done': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'state-changed': (arg0: PlayerState) => void;
             /**
              * @signal
+             * @run-last
              */
             'uri-loaded': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'video-dimensions-changed': (arg0: number, arg1: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'volume-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             warning: (arg0: GLib.Error) => void;
             'notify::audio-video-offset': (pspec: GObject.ParamSpec) => void;
@@ -267,22 +286,61 @@ export namespace GstPlayer {
         set audio_video_offset(val: number);
         get audioVideoOffset(): number;
         set audioVideoOffset(val: number);
+        /**
+         * @read-only
+         */
         get current_audio_track(): PlayerAudioInfo;
+        /**
+         * @read-only
+         */
         get currentAudioTrack(): PlayerAudioInfo;
+        /**
+         * @read-only
+         */
         get current_subtitle_track(): PlayerSubtitleInfo;
+        /**
+         * @read-only
+         */
         get currentSubtitleTrack(): PlayerSubtitleInfo;
+        /**
+         * @read-only
+         */
         get current_video_track(): PlayerVideoInfo;
+        /**
+         * @read-only
+         */
         get currentVideoTrack(): PlayerVideoInfo;
+        /**
+         * @read-only
+         */
         get duration(): number;
+        /**
+         * @read-only
+         */
         get media_info(): PlayerMediaInfo;
+        /**
+         * @read-only
+         */
         get mediaInfo(): PlayerMediaInfo;
         get mute(): boolean;
         set mute(val: boolean);
+        /**
+         * @read-only
+         */
         get pipeline(): Gst.Element;
+        /**
+         * @read-only
+         */
         get position(): number;
         get rate(): number;
         set rate(val: number);
+        /**
+         * @construct-only
+         */
         set signal_dispatcher(val: PlayerSignalDispatcher);
+        /**
+         * @construct-only
+         */
         set signalDispatcher(val: PlayerSignalDispatcher);
         get subtitle_video_offset(): number;
         set subtitle_video_offset(val: number);
@@ -300,7 +358,13 @@ export namespace GstPlayer {
         set video_multiview_mode(val: GstVideo.VideoMultiviewFramePacking);
         get videoMultiviewMode(): GstVideo.VideoMultiviewFramePacking;
         set videoMultiviewMode(val: GstVideo.VideoMultiviewFramePacking);
+        /**
+         * @construct-only
+         */
         get video_renderer(): PlayerVideoRenderer;
+        /**
+         * @construct-only
+         */
         get videoRenderer(): PlayerVideoRenderer;
         get volume(): number;
         set volume(val: number);
@@ -755,7 +819,13 @@ export namespace GstPlayer {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get application_context(): GLib.MainContext;
+        /**
+         * @construct-only
+         */
         get applicationContext(): GLib.MainContext;
 
         /**

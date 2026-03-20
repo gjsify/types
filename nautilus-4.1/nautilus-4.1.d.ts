@@ -20,6 +20,9 @@ export namespace Nautilus {
      * Nautilus-4.1
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OperationResult {
         export const $gtype: GObject.GType<OperationResult>;
     }
@@ -108,7 +111,13 @@ export namespace Nautilus {
 
         get attribute(): string;
         set attribute(val: string);
+        /**
+         * @read-only
+         */
         get attribute_q(): number;
+        /**
+         * @read-only
+         */
         get attributeQ(): number;
         get default_sort_order(): boolean;
         set default_sort_order(val: boolean);
@@ -118,6 +127,9 @@ export namespace Nautilus {
         set description(val: string);
         get label(): string;
         set label(val: string);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get visible(): boolean;
         set visible(val: boolean);
@@ -230,6 +242,7 @@ export namespace Nautilus {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-LAST
              */
             activate: () => void;
             'notify::icon': (pspec: GObject.ParamSpec) => void;
@@ -268,6 +281,9 @@ export namespace Nautilus {
         set label(val: string);
         get menu(): Menu;
         set menu(val: Menu);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get priority(): boolean;
         set priority(val: boolean);
@@ -360,7 +376,13 @@ export namespace Nautilus {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get value(): string;
 
         /**
@@ -430,6 +452,9 @@ export namespace Nautilus {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get model(): Gio.ListModel;
         get title(): string;
         set title(val: string);

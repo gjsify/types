@@ -20,6 +20,9 @@ export namespace GnomeBluetooth {
      * GnomeBluetooth-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AdapterState {
         export const $gtype: GObject.GType<AdapterState>;
     }
@@ -51,6 +54,9 @@ export namespace GnomeBluetooth {
         OFF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BatteryType {
         export const $gtype: GObject.GType<BatteryType>;
     }
@@ -121,6 +127,9 @@ export namespace GnomeBluetooth {
      * @returns `true` if the address is valid, `false` if not.
      */
     function verify_address(bdaddr: string): boolean;
+    /**
+     * @gir-type Flags
+     */
     export namespace Type {
         export const $gtype: GObject.GType<Type>;
     }
@@ -223,6 +232,7 @@ export namespace GnomeBluetooth {
              * The {@link GnomeBluetooth.Client.SignalSignatures.device_added | GnomeBluetooth.Client::device-added} signal is launched when a
              * device gets added to the model.
              * @signal
+             * @run-last
              */
             'device-added': (arg0: GObject.Object) => void;
             /**
@@ -233,6 +243,7 @@ export namespace GnomeBluetooth {
              * for each individual device as the model is cleared when the
              * {@link GnomeBluetooth.Client.default_adapter} property changes.
              * @signal
+             * @run-last
              */
             'device-removed': (arg0: string) => void;
             'notify::default-adapter': (pspec: GObject.ParamSpec) => void;
@@ -274,26 +285,32 @@ export namespace GnomeBluetooth {
 
         /**
          * The D-Bus path of the default Bluetooth adapter or `null`.
+         * @read-only
          */
         get default_adapter(): string;
         /**
          * The D-Bus path of the default Bluetooth adapter or `null`.
+         * @read-only
          */
         get defaultAdapter(): string;
         /**
          * The address of the default Bluetooth adapter or `null`.
+         * @read-only
          */
         get default_adapter_address(): string;
         /**
          * The address of the default Bluetooth adapter or `null`.
+         * @read-only
          */
         get defaultAdapterAddress(): string;
         /**
          * The name of the default Bluetooth adapter or `null`.
+         * @read-only
          */
         get default_adapter_name(): string;
         /**
          * The name of the default Bluetooth adapter or `null`.
+         * @read-only
          */
         get defaultAdapterName(): string;
         /**
@@ -319,19 +336,23 @@ export namespace GnomeBluetooth {
         /**
          * The {@link GnomeBluetooth.AdapterState} of the default Bluetooth adapter. More precise than
          * {@link GnomeBluetooth.Client.default_adapter_powered}.
+         * @read-only
          */
         get default_adapter_state(): AdapterState;
         /**
          * The {@link GnomeBluetooth.AdapterState} of the default Bluetooth adapter. More precise than
          * {@link GnomeBluetooth.Client.default_adapter_powered}.
+         * @read-only
          */
         get defaultAdapterState(): AdapterState;
         /**
          * The number of detected Bluetooth adapters.
+         * @read-only
          */
         get num_adapters(): number;
         /**
          * The number of detected Bluetooth adapters.
+         * @read-only
          */
         get numAdapters(): number;
 
@@ -532,6 +553,9 @@ export namespace GnomeBluetooth {
         set battery_type(val: BatteryType);
         get batteryType(): BatteryType;
         set batteryType(val: BatteryType);
+        /**
+         * @read-only
+         */
         get connectable(): boolean;
         get connected(): boolean;
         set connected(val: boolean);

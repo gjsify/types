@@ -1251,6 +1251,7 @@ export namespace GnomeDesktop {
 
         /**
          * A formatted string representing the current clock display.
+         * @read-only
          */
         get clock(): string;
         /**
@@ -1281,6 +1282,7 @@ export namespace GnomeDesktop {
         set timeOnly(val: boolean);
         /**
          * The timezone used for this clock
+         * @read-only
          */
         get timezone(): GLib.TimeZone;
 
@@ -1361,6 +1363,7 @@ export namespace GnomeDesktop {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'layouts-changed': () => void;
         }

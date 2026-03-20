@@ -38,6 +38,9 @@ export namespace Granite {
      * Granite-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ServicesLogLevel {
         export const $gtype: GObject.GType<ServicesLogLevel>;
     }
@@ -69,6 +72,9 @@ export namespace Granite {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WidgetsDynamicNotebookTabBarBehavior {
         export const $gtype: GObject.GType<WidgetsDynamicNotebookTabBarBehavior>;
     }
@@ -82,6 +88,9 @@ export namespace Granite {
         NEVER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WidgetsStorageBarItemDescription {
         export const $gtype: GObject.GType<WidgetsStorageBarItemDescription>;
     }
@@ -98,6 +107,9 @@ export namespace Granite {
         FILES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CollapseMode {
         export const $gtype: GObject.GType<CollapseMode>;
     }
@@ -115,6 +127,9 @@ export namespace Granite {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextStyle {
         export const $gtype: GObject.GType<TextStyle>;
     }
@@ -130,6 +145,9 @@ export namespace Granite {
         H3,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CloseButtonPosition {
         export const $gtype: GObject.GType<CloseButtonPosition>;
     }
@@ -142,6 +160,9 @@ export namespace Granite {
         RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingsPageStatusType {
         export const $gtype: GObject.GType<SettingsPageStatusType>;
     }
@@ -157,6 +178,9 @@ export namespace Granite {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingsColorScheme {
         export const $gtype: GObject.GType<SettingsColorScheme>;
     }
@@ -502,6 +526,9 @@ export namespace Granite {
         set width(val: number);
         get height(): number;
         set height(val: number);
+        /**
+         * @read-only
+         */
         get context(): cairo.Context;
 
         /**
@@ -1625,6 +1652,9 @@ export namespace Granite {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get schema(): Gio.Settings;
 
         /**
@@ -3140,6 +3170,9 @@ export namespace Granite {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get format(): string;
         get date(): GLib.DateTime;
         set date(val: GLib.DateTime);
@@ -3752,6 +3785,9 @@ export namespace Granite {
 
         get label(): string;
         set label(val: string);
+        /**
+         * @write-only
+         */
         set tooltip(val: string);
         get pinned(): boolean;
         set pinned(val: boolean);
@@ -3761,11 +3797,29 @@ export namespace Granite {
         set restore_data(val: string);
         get restoreData(): string;
         set restoreData(val: string);
+        /**
+         * @construct-only
+         */
         get close_tab_label(): AccelLabel;
+        /**
+         * @construct-only
+         */
         get closeTabLabel(): AccelLabel;
+        /**
+         * @construct-only
+         */
         get duplicate_tab_label(): AccelLabel;
+        /**
+         * @construct-only
+         */
         get duplicateTabLabel(): AccelLabel;
+        /**
+         * @construct-only
+         */
         get new_window_label(): AccelLabel;
+        /**
+         * @construct-only
+         */
         get newWindowLabel(): AccelLabel;
         get page(): Gtk.Widget;
         set page(val: Gtk.Widget);
@@ -4050,7 +4104,13 @@ export namespace Granite {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get n_tabs(): number;
+        /**
+         * @read-only
+         */
         get nTabs(): number;
         get show_tabs(): boolean;
         set show_tabs(val: boolean);
@@ -4096,12 +4156,27 @@ export namespace Granite {
         set add_button_tooltip(val: string);
         get addButtonTooltip(): string;
         set addButtonTooltip(val: string);
+        /**
+         * @construct-only
+         */
         get new_tab_label(): AccelLabel;
+        /**
+         * @construct-only
+         */
         get newTabLabel(): AccelLabel;
+        /**
+         * @construct-only
+         */
         get restore_tab_label(): AccelLabel;
+        /**
+         * @construct-only
+         */
         get restoreTabLabel(): AccelLabel;
         get current(): WidgetsTab;
         set current(val: WidgetsTab);
+        /**
+         * @read-only
+         */
         get tabs(): WidgetsTab[];
         get group_name(): string;
         set group_name(val: string);
@@ -4351,7 +4426,13 @@ export namespace Granite {
 
         get selected(): number;
         set selected(val: number);
+        /**
+         * @read-only
+         */
         get n_items(): number;
+        /**
+         * @read-only
+         */
         get nItems(): number;
 
         /**
@@ -4511,6 +4592,7 @@ export namespace Granite {
 
         /**
          * @deprecated since 0.5.1
+         * @construct-only
          */
         get overlay(): Gtk.Overlay;
         /**
@@ -4685,6 +4767,9 @@ export namespace Granite {
         set ellipsize_mode(val: Pango.EllipsizeMode);
         get ellipsizeMode(): Pango.EllipsizeMode;
         set ellipsizeMode(val: Pango.EllipsizeMode);
+        /**
+         * @read-only
+         */
         get editing(): boolean;
 
         /**
@@ -5068,8 +5153,17 @@ export namespace Granite {
         set collapsible(val: boolean);
         get expanded(): boolean;
         set expanded(val: boolean);
+        /**
+         * @read-only
+         */
         get n_children(): number;
+        /**
+         * @read-only
+         */
         get nChildren(): number;
+        /**
+         * @read-only
+         */
         get children(): Gee.Collection;
 
         /**
@@ -5436,9 +5530,21 @@ export namespace Granite {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get format_12(): string;
+        /**
+         * @construct-only
+         */
         get format12(): string;
+        /**
+         * @construct-only
+         */
         get format_24(): string;
+        /**
+         * @construct-only
+         */
         get format24(): string;
         get time(): GLib.DateTime;
         set time(val: GLib.DateTime);
@@ -6164,8 +6270,17 @@ export namespace Granite {
         set status_type(val: SettingsPageStatusType);
         get statusType(): SettingsPageStatusType;
         set statusType(val: SettingsPageStatusType);
+        /**
+         * @construct-only
+         */
         get display_widget(): Gtk.Widget;
+        /**
+         * @construct-only
+         */
         get displayWidget(): Gtk.Widget;
+        /**
+         * @construct-only
+         */
         get header(): string;
         get status(): string;
         set status(val: string);
@@ -6336,12 +6451,33 @@ export namespace Granite {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get action_area(): Gtk.ButtonBox;
+        /**
+         * @construct-only
+         */
         get actionArea(): Gtk.ButtonBox;
+        /**
+         * @construct-only
+         */
         get content_area(): Gtk.Grid;
+        /**
+         * @construct-only
+         */
         get contentArea(): Gtk.Grid;
+        /**
+         * @construct-only
+         */
         get status_switch(): Gtk.Switch;
+        /**
+         * @construct-only
+         */
         get statusSwitch(): Gtk.Switch;
+        /**
+         * @construct-only
+         */
         get activatable(): boolean;
         get description(): string;
         set description(val: string);
@@ -6655,9 +6791,21 @@ export namespace Granite {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get load_on_realize(): boolean;
+        /**
+         * @construct-only
+         */
         get loadOnRealize(): boolean;
+        /**
+         * @construct-only
+         */
         get auto_size_request(): boolean;
+        /**
+         * @construct-only
+         */
         get autoSizeRequest(): boolean;
         get gicon_async(): Gio.Icon;
         set gicon_async(val: Gio.Icon);
@@ -7359,12 +7507,33 @@ export namespace Granite {
         set badge_icon(val: Gio.Icon);
         get badgeIcon(): Gio.Icon;
         set badgeIcon(val: Gio.Icon);
+        /**
+         * @construct-only
+         */
         get primary_label(): Gtk.Label;
+        /**
+         * @construct-only
+         */
         get primaryLabel(): Gtk.Label;
+        /**
+         * @construct-only
+         */
         get secondary_label(): Gtk.Label;
+        /**
+         * @construct-only
+         */
         get secondaryLabel(): Gtk.Label;
+        /**
+         * @construct-only
+         */
         set buttons(val: Gtk.ButtonsType);
+        /**
+         * @construct-only
+         */
         get custom_bin(): Gtk.Bin;
+        /**
+         * @construct-only
+         */
         get customBin(): Gtk.Bin;
 
         /**
@@ -7912,6 +8081,9 @@ export namespace Granite {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get stack(): Gtk.Stack;
         get visible_child_name(): string;
         set visible_child_name(val: string);

@@ -170,18 +170,22 @@ export namespace GstAllocators {
 
         /**
          * @since 1.24
+         * @construct-only
          */
         get drm_device_path(): string;
         /**
          * @since 1.24
+         * @construct-only
          */
         get drmDevicePath(): string;
         /**
          * @since 1.24
+         * @construct-only
          */
         get drm_fd(): number;
         /**
          * @since 1.24
+         * @construct-only
          */
         get drmFd(): number;
 

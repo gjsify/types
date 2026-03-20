@@ -124,39 +124,48 @@ export namespace Hex {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'document-changed': (arg0: any | null, arg1: boolean) => void;
             /**
              * @signal
+             * @run-first
              */
             'file-loaded': () => void;
             /**
              * @signal
+             * @run-first
              */
             'file-name-changed': () => void;
             /**
              * @signal
+             * @run-first
              */
             'file-read-started': () => void;
             /**
              * @signal
              * @since 4.6.1
+             * @run-first
              */
             'file-save-started': () => void;
             /**
              * @signal
+             * @run-first
              */
             'file-saved': () => void;
             /**
              * @signal
+             * @run-first
              */
             redo: () => void;
             /**
              * @signal
+             * @run-first
              */
             undo: () => void;
             /**
              * @signal
+             * @run-first
              */
             'undo-stack-forget': () => void;
             'notify::buffer': (pspec: GObject.ParamSpec) => void;
@@ -628,30 +637,36 @@ export namespace Hex {
             /**
              * Emitted when a copy-to-clipboard operation has occurred.
              * @signal
+             * @run-first
              */
             'copy-clipboard': () => void;
             /**
              * Emitted when the cursor has moved.
              * @signal
+             * @run-first
              */
             'cursor-moved': () => void;
             /**
              * Emitted when a cut-to-clipboard operation has occurred.
              * @signal
+             * @run-first
              */
             'cut-clipboard': () => void;
             /**
              * Emitted when data has changed.
              * @signal
+             * @run-first
              */
             'data-changed': () => void;
             /**
              * @signal
+             * @run-first
              */
             'draw-complete': () => void;
             /**
              * Emitted when a paste-from-clipboard operation has occurred.
              * @signal
+             * @run-first
              */
             'paste-clipboard': () => void;
             'notify::document': (pspec: GObject.ParamSpec) => void;
@@ -722,6 +737,7 @@ export namespace Hex {
         /**
          * {@link Hex.Document} affiliated with and owned by the {@link Hex.Widget}.
          * @since 4.2
+         * @construct-only
          */
         get document(): Document;
         /**
@@ -1759,10 +1775,12 @@ export namespace Hex {
         set customColor(val: Gdk.RGBA);
         /**
          * Whether the {@link Hex.WidgetMark} has a custom color.
+         * @read-only
          */
         get have_custom_color(): boolean;
         /**
          * Whether the {@link Hex.WidgetMark} has a custom color.
+         * @read-only
          */
         get haveCustomColor(): boolean;
 

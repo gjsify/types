@@ -994,6 +994,7 @@ export namespace TimezoneMap {
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'location-changed': (arg0: TimezoneLocation) => void;
             'notify::app-paintable': (pspec: GObject.ParamSpec) => void;

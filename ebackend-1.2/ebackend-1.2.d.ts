@@ -25,6 +25,9 @@ export namespace EBackend {
      * EBackend-1.2
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AuthenticationSessionResult {
         export const $gtype: GObject.GType<AuthenticationSessionResult>;
     }
@@ -168,6 +171,9 @@ export namespace EBackend {
         ROLLBACK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DBusServerExitCode {
         export const $gtype: GObject.GType<DBusServerExitCode>;
     }
@@ -195,6 +201,9 @@ export namespace EBackend {
         RELOAD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OfflineState {
         export const $gtype: GObject.GType<OfflineState>;
     }
@@ -307,6 +316,9 @@ export namespace EBackend {
             column_values: string[],
         ): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace CollectionBackendParts {
         export const $gtype: GObject.GType<CollectionBackendParts>;
     }
@@ -339,6 +351,9 @@ export namespace EBackend {
         ANY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SourcePermissionFlags {
         export const $gtype: GObject.GType<SourcePermissionFlags>;
     }
@@ -399,12 +414,27 @@ export namespace EBackend {
 
         get connectable(): Gio.SocketConnectable;
         set connectable(val: Gio.SocketConnectable);
+        /**
+         * @read-only
+         */
         get main_context(): GLib.MainContext;
+        /**
+         * @read-only
+         */
         get mainContext(): GLib.MainContext;
         get online(): boolean;
         set online(val: boolean);
+        /**
+         * @construct-only
+         */
         get source(): EDataServer.Source;
+        /**
+         * @read-only
+         */
         get user_prompter(): UserPrompter;
+        /**
+         * @read-only
+         */
         get userPrompter(): UserPrompter;
 
         /**
@@ -888,6 +918,7 @@ export namespace EBackend {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'before-put': (
                 arg0: string,
@@ -900,10 +931,12 @@ export namespace EBackend {
             ) => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             'before-remove': (arg0: string, arg1: Gio.Cancellable | null, arg2: any | null) => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             'revision-changed': () => void;
         }
@@ -1376,6 +1409,7 @@ export namespace EBackend {
              * when only a reference count changes for a key.
              * @signal
              * @since 3.48
+             * @run-last
              */
             changed: () => void;
             'notify::cache': (pspec: GObject.ParamSpec) => void;
@@ -1411,36 +1445,43 @@ export namespace EBackend {
         /**
          * The {@link EBackend.Cache} being used for this keys table.
          * @since 3.48
+         * @construct-only
          */
         get cache(): Cache;
         /**
          * The column name for the keys.
          * @since 3.48
+         * @construct-only
          */
         get key_column_name(): string;
         /**
          * The column name for the keys.
          * @since 3.48
+         * @construct-only
          */
         get keyColumnName(): string;
         /**
          * The table name of this keys table.
          * @since 3.48
+         * @construct-only
          */
         get table_name(): string;
         /**
          * The table name of this keys table.
          * @since 3.48
+         * @construct-only
          */
         get tableName(): string;
         /**
          * The column name for the values.
          * @since 3.48
+         * @construct-only
          */
         get value_column_name(): string;
         /**
          * The column name for the values.
          * @since 3.48
+         * @construct-only
          */
         get valueColumnName(): string;
 
@@ -2149,6 +2190,7 @@ export namespace EBackend {
              * {@link EBackend.SourceRegistryServer}'s {@link EBackend.SourceRegistryServer.SignalSignatures.source_added | EBackend.SourceRegistryServer::source-added}
              * signal which only lets through sources relevant to `backend`.
              * @signal
+             * @run-last
              */
             'child-added': (arg0: ServerSideSource) => void;
             /**
@@ -2160,6 +2202,7 @@ export namespace EBackend {
              * {@link EBackend.SourceRegistryServer}'s {@link EBackend.SourceRegistryServer.SignalSignatures.source_removed | EBackend.SourceRegistryServer::source-removed}
              * signal which only lets through sources relevant to `backend`.
              * @signal
+             * @run-last
              */
             'child-removed': (arg0: ServerSideSource) => void;
             'notify::proxy-resolver': (pspec: GObject.ParamSpec) => void;
@@ -2191,8 +2234,17 @@ export namespace EBackend {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get proxy_resolver(): Gio.ProxyResolver;
+        /**
+         * @read-only
+         */
         get proxyResolver(): Gio.ProxyResolver;
+        /**
+         * @construct-only
+         */
         get server(): SourceRegistryServer;
 
         /**
@@ -2830,28 +2882,33 @@ export namespace EBackend {
             /**
              * Emitted when `server` acquires a connection to the session bus.
              * @signal
+             * @run-last
              */
             'bus-acquired': (arg0: Gio.DBusConnection) => void;
             /**
              * Emitted when `server` acquires its well-known session bus name.
              * @signal
+             * @run-last
              */
             'bus-name-acquired': (arg0: Gio.DBusConnection) => void;
             /**
              * Emitted when `server` loses its well-known session bus name
              * or the session bus connection has been closed.
              * @signal
+             * @run-last
              */
             'bus-name-lost': (arg0: Gio.DBusConnection) => void;
             /**
              * Emitted to request that `server` quit its main loop.
              * @signal
+             * @run-last
              */
             'quit-server': (arg0: DBusServerExitCode) => void;
             /**
              * Emitted to request that `server` start its main loop and
              * attempt to acquire its well-known session bus name.
              * @signal
+             * @run-last
              */
             'run-server': () => DBusServerExitCode;
         }
@@ -3488,10 +3545,25 @@ export namespace EBackend {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get backend_per_process(): number;
+        /**
+         * @construct-only
+         */
         get backendPerProcess(): number;
+        /**
+         * @read-only
+         */
         get registry(): EDataServer.SourceRegistry;
+        /**
+         * @construct-only
+         */
         get reload_supported(): boolean;
+        /**
+         * @construct-only
+         */
         get reloadSupported(): boolean;
 
         /**
@@ -4239,6 +4311,7 @@ export namespace EBackend {
 
         /**
          * The filename of the cache.
+         * @construct-only
          */
         get filename(): string;
 
@@ -4404,7 +4477,13 @@ export namespace EBackend {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get exported(): boolean;
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
         get oauth2_support(): OAuth2Support;
         set oauth2_support(val: OAuth2Support);
@@ -4420,6 +4499,9 @@ export namespace EBackend {
         set remoteDeletable(val: boolean);
         get removable(): boolean;
         set removable(val: boolean);
+        /**
+         * @construct-only
+         */
         get server(): SourceRegistryServer;
         get writable(): boolean;
         set writable(val: boolean);
@@ -5846,22 +5928,26 @@ export namespace EBackend {
              * Extensions can connect to this signal to perform any additional
              * work prior to running the main loop.
              * @signal
+             * @run-last
              */
             'files-loaded': () => void;
             /**
              * Emitted when an error occurs while loading or parsing a
              * data source key file.
              * @signal
+             * @run-last
              */
             'load-error': (arg0: Gio.File, arg1: GLib.Error) => void;
             /**
              * Emitted when an {@link EBackend.ServerSideSource} is added to `server`.
              * @signal
+             * @run-last
              */
             'source-added': (arg0: ServerSideSource) => void;
             /**
              * Emitted when an {@link EBackend.ServerSideSource} is removed from `server`.
              * @signal
+             * @run-last
              */
             'source-removed': (arg0: ServerSideSource) => void;
             /**
@@ -5878,6 +5964,7 @@ export namespace EBackend {
              * `true`, the `key_file` content is written back to disk.
              * @signal
              * @since 3.8
+             * @run-last
              */
             'tweak-key-file': (arg0: GLib.KeyFile, arg1: string) => boolean | void;
             'notify::backend-per-process': (pspec: GObject.ParamSpec) => void;
@@ -6805,6 +6892,9 @@ export namespace EBackend {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get registry(): EDataServer.SourceRegistry;
 
         /**
@@ -7776,6 +7866,7 @@ export namespace EBackend {
         interface SignalSignatures extends DBusServer.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             prompt: (
                 arg0: number,

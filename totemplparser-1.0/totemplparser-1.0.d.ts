@@ -52,6 +52,9 @@ export namespace TotemPlParser {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ParserResult {
         export const $gtype: GObject.GType<ParserResult>;
     }
@@ -84,6 +87,9 @@ export namespace TotemPlParser {
         CANCELLED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ParserType {
         export const $gtype: GObject.GType<ParserType>;
     }
@@ -275,6 +281,7 @@ export namespace TotemPlParser {
             /**
              * The ::entry-parsed signal is emitted when a new entry is parsed.
              * @signal
+             * @run-last
              */
             'entry-parsed': (arg0: string, arg1: GLib.HashTable<string, string>) => void;
             /**
@@ -282,6 +289,7 @@ export namespace TotemPlParser {
              * parsing. It is only called when {@link TotemPlParser.Parser.SignalSignatures.playlist_started | TotemPlParser.Parser::playlist-started}
              * has been called for that playlist.
              * @signal
+             * @run-last
              */
             'playlist-ended': (arg0: string) => void;
             /**
@@ -290,6 +298,7 @@ export namespace TotemPlParser {
              * can be relied on to be called for playlists which support playlist
              * metadata, such as title.
              * @signal
+             * @run-last
              */
             'playlist-started': (arg0: string, arg1: GLib.HashTable<string, string>) => void;
             'notify::debug': (pspec: GObject.ParamSpec) => void;

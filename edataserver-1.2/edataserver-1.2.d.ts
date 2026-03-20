@@ -147,6 +147,9 @@ export namespace EDataServer {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConflictResolution {
         export const $gtype: GObject.GType<ConflictResolution>;
     }
@@ -201,6 +204,9 @@ export namespace EDataServer {
         COMPLETED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MdnResponsePolicy {
         export const $gtype: GObject.GType<MdnResponsePolicy>;
     }
@@ -249,6 +255,9 @@ export namespace EDataServer {
         ABORT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ProxyMethod {
         export const $gtype: GObject.GType<ProxyMethod>;
     }
@@ -277,6 +286,9 @@ export namespace EDataServer {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceAuthenticationResult {
         export const $gtype: GObject.GType<SourceAuthenticationResult>;
     }
@@ -313,6 +325,9 @@ export namespace EDataServer {
         REQUIRED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceConnectionStatus {
         export const $gtype: GObject.GType<SourceConnectionStatus>;
     }
@@ -351,6 +366,9 @@ export namespace EDataServer {
         CONNECTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceCredentialsReason {
         export const $gtype: GObject.GType<SourceCredentialsReason>;
     }
@@ -389,6 +407,9 @@ export namespace EDataServer {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceLDAPAuthentication {
         export const $gtype: GObject.GType<SourceLDAPAuthentication>;
     }
@@ -413,6 +434,9 @@ export namespace EDataServer {
         BINDDN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceLDAPScope {
         export const $gtype: GObject.GType<SourceLDAPScope>;
     }
@@ -433,6 +457,9 @@ export namespace EDataServer {
         SUBTREE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceLDAPSecurity {
         export const $gtype: GObject.GType<SourceLDAPSecurity>;
     }
@@ -457,6 +484,9 @@ export namespace EDataServer {
         STARTTLS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceMailCompositionReplyStyle {
         export const $gtype: GObject.GType<SourceMailCompositionReplyStyle>;
     }
@@ -489,6 +519,9 @@ export namespace EDataServer {
         OUTLOOK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceWeatherUnits {
         export const $gtype: GObject.GType<SourceWeatherUnits>;
     }
@@ -513,6 +546,9 @@ export namespace EDataServer {
         KELVIN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ThreeState {
         export const $gtype: GObject.GType<ThreeState>;
     }
@@ -555,6 +591,9 @@ export namespace EDataServer {
         INVALID,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TrustPromptResponse {
         export const $gtype: GObject.GType<TrustPromptResponse>;
     }
@@ -2807,18 +2846,22 @@ export namespace EDataServer {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'backend-died': () => void;
             /**
              * @signal
+             * @run-first
              */
             'backend-error': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'backend-property-changed': (arg0: string, arg1: string) => void;
             /**
              * @signal
+             * @run-last
              */
             opened: (arg0: GLib.Error) => void;
             'notify::capabilities': (pspec: GObject.ParamSpec) => void;
@@ -2855,16 +2898,19 @@ export namespace EDataServer {
 
         /**
          * The capabilities of this client
+         * @read-only
          */
         get capabilities(): any;
         /**
          * The main loop context in which notifications for
          * this client will be delivered.
+         * @read-only
          */
         get main_context(): GLib.MainContext;
         /**
          * The main loop context in which notifications for
          * this client will be delivered.
+         * @read-only
          */
         get mainContext(): GLib.MainContext;
         /**
@@ -2875,14 +2921,17 @@ export namespace EDataServer {
         /**
          * Whether this client is open and ready to use.
          * @deprecated since 3.8: This property is no longer relevant and will always be `true` after successfully creating any concrete type of {@link EDataServer.Client}.
+         * @read-only
          */
         get opened(): boolean;
         /**
          * Whether this client's backing data is readonly.
+         * @read-only
          */
         get readonly(): boolean;
         /**
          * The {@link EDataServer.Source} for which this client was created.
+         * @construct-only
          */
         get source(): Source;
 
@@ -3704,6 +3753,9 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get extensible(): Extensible;
 
         /**
@@ -4025,6 +4077,7 @@ export namespace EDataServer {
 
         /**
          * The filename of the module.
+         * @construct-only
          */
         get filename(): string;
 
@@ -4711,6 +4764,7 @@ export namespace EDataServer {
          * See `g_network_monitor_get_connectivity()` and
          * {@link Gio.NetworkConnectivity} for more details.
          * @since 2.44
+         * @read-only
          * @category Inherited from Gio.NetworkMonitor
          */
         get connectivity(): Gio.NetworkConnectivity;
@@ -4733,6 +4787,7 @@ export namespace EDataServer {
          *
          * See also {@link Gio.NetworkMonitor.SignalSignatures.network_changed | Gio.NetworkMonitor::network-changed}.
          * @since 2.32
+         * @read-only
          * @category Inherited from Gio.NetworkMonitor
          */
         get network_available(): boolean;
@@ -4755,6 +4810,7 @@ export namespace EDataServer {
          *
          * See also {@link Gio.NetworkMonitor.SignalSignatures.network_changed | Gio.NetworkMonitor::network-changed}.
          * @since 2.32
+         * @read-only
          * @category Inherited from Gio.NetworkMonitor
          */
         get networkAvailable(): boolean;
@@ -4781,6 +4837,7 @@ export namespace EDataServer {
          *
          * See also {@link Gio.NetworkMonitor.network_available}.
          * @since 2.46
+         * @read-only
          * @category Inherited from Gio.NetworkMonitor
          */
         get network_metered(): boolean;
@@ -4807,6 +4864,7 @@ export namespace EDataServer {
          *
          * See also {@link Gio.NetworkMonitor.network_available}.
          * @since 2.46
+         * @read-only
          * @category Inherited from Gio.NetworkMonitor
          */
         get networkMetered(): boolean;
@@ -9303,6 +9361,7 @@ export namespace EDataServer {
         /**
          * The {@link EDataServer.Source} being used for this soup session.
          * @since 3.26
+         * @construct-only
          */
         get source(): Source;
 
@@ -9665,6 +9724,7 @@ export namespace EDataServer {
              * Let's the backend know provided credentials to use to login
              * to (possibly remote) data store.
              * @signal
+             * @run-last
              */
             authenticate: (arg0: NamedParameters) => void;
             /**
@@ -9673,6 +9733,7 @@ export namespace EDataServer {
              * signal is to notify a `GtkTreeModel` containing data collected
              * from {@link EDataServer.Source}<!-- -->s that it needs to update a row.
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
@@ -9681,6 +9742,7 @@ export namespace EDataServer {
              * data store. The credentials can be passed to the backend using
              * `e_source_invoke_authenticate()` function.
              * @signal
+             * @run-last
              */
             'credentials-required': (
                 arg0: SourceCredentialsReason,
@@ -9733,7 +9795,13 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get connection_status(): SourceConnectionStatus;
+        /**
+         * @read-only
+         */
         get connectionStatus(): SourceConnectionStatus;
         get display_name(): string;
         set display_name(val: string);
@@ -9741,16 +9809,43 @@ export namespace EDataServer {
         set displayName(val: string);
         get enabled(): boolean;
         set enabled(val: boolean);
+        /**
+         * @construct-only
+         */
         get main_context(): GLib.MainContext;
+        /**
+         * @construct-only
+         */
         get mainContext(): GLib.MainContext;
         get parent(): string;
         set parent(val: string);
+        /**
+         * @read-only
+         */
         get remote_creatable(): boolean;
+        /**
+         * @read-only
+         */
         get remoteCreatable(): boolean;
+        /**
+         * @read-only
+         */
         get remote_deletable(): boolean;
+        /**
+         * @read-only
+         */
         get remoteDeletable(): boolean;
+        /**
+         * @read-only
+         */
         get removable(): boolean;
+        /**
+         * @construct-only
+         */
         get uid(): string;
+        /**
+         * @read-only
+         */
         get writable(): boolean;
 
         /**
@@ -12333,6 +12428,9 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get connectable(): Gio.SocketConnectable;
         get credential_name(): string;
         set credential_name(val: string);
@@ -12940,6 +13038,9 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get settings(): Camel.Settings;
 
         /**
@@ -13396,6 +13497,7 @@ export namespace EDataServer {
 
         /**
          * The Source Registry object, which can be either `ESourceregistry` or `ESourceRegistryServer`.
+         * @construct-only
          */
         get registry(): GObject.Object;
 
@@ -14510,6 +14612,9 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get source(): Source;
 
         /**
@@ -15910,6 +16015,9 @@ export namespace EDataServer {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get file(): Gio.File;
         get mime_type(): string;
         set mime_type(val: string);
@@ -17193,6 +17301,7 @@ export namespace EDataServer {
              *
              * Note: This is just a proxy signal for the ESource::credentials-required signal.
              * @signal
+             * @run-last
              */
             'credentials-required': (
                 arg0: Source,
@@ -17204,27 +17313,32 @@ export namespace EDataServer {
             /**
              * Emitted when an {@link EDataServer.Source} is added to `registry`.
              * @signal
+             * @run-last
              */
             'source-added': (arg0: Source) => void;
             /**
              * Emitted when an {@link EDataServer.Source} registered with `registry` emits
              * its {@link EDataServer.Source.SignalSignatures.changed | EDataServer.Source::changed} signal.
              * @signal
+             * @run-last
              */
             'source-changed': (arg0: Source) => void;
             /**
              * Emitted when an {@link EDataServer.Source} {@link EDataServer.Source.enabled} property becomes `false`.
              * @signal
+             * @run-last
              */
             'source-disabled': (arg0: Source) => void;
             /**
              * Emitted when an {@link EDataServer.Source} {@link EDataServer.Source.enabled} property becomes `true`.
              * @signal
+             * @run-last
              */
             'source-enabled': (arg0: Source) => void;
             /**
              * Emitted when an {@link EDataServer.Source} is removed from `registry`.
              * @signal
+             * @run-last
              */
             'source-removed': (arg0: Source) => void;
             'notify::default-address-book': (pspec: GObject.ParamSpec) => void;
@@ -18736,6 +18850,7 @@ export namespace EDataServer {
              * considered for inclusion with the `ESourceRegistryWatcher`::filter signal.
              * @signal
              * @since 3.26
+             * @run-last
              */
             appeared: (arg0: Source) => void;
             /**
@@ -18744,6 +18859,7 @@ export namespace EDataServer {
              * earlier.
              * @signal
              * @since 3.26
+             * @run-last
              */
             disappeared: (arg0: Source) => void;
             /**
@@ -18752,6 +18868,8 @@ export namespace EDataServer {
              * are included.
              * @signal
              * @since 3.26
+             * @action
+             * @run-last
              */
             filter: (arg0: Source) => boolean | void;
             'notify::extension-name': (pspec: GObject.ParamSpec) => void;
@@ -18783,6 +18901,7 @@ export namespace EDataServer {
          * a complementary filter to {@link EDataServer.SourceRegistryWatcher.SignalSignatures.filter | EDataServer.SourceRegistryWatcher::filter}
          * signal.
          * @since 3.26
+         * @construct-only
          */
         get extension_name(): string;
         /**
@@ -18791,11 +18910,13 @@ export namespace EDataServer {
          * a complementary filter to {@link EDataServer.SourceRegistryWatcher.SignalSignatures.filter | EDataServer.SourceRegistryWatcher::filter}
          * signal.
          * @since 3.26
+         * @construct-only
          */
         get extensionName(): string;
         /**
          * The {@link EDataServer.SourceRegistry} manages {@link EDataServer.Source} instances.
          * @since 3.26
+         * @construct-only
          */
         get registry(): SourceRegistry;
 

@@ -29,6 +29,9 @@ export namespace Handy {
      * Handy-1
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CenteringPolicy {
         export const $gtype: GObject.GType<CenteringPolicy>;
     }
@@ -49,6 +52,9 @@ export namespace Handy {
         STRICT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ColorScheme {
         export const $gtype: GObject.GType<ColorScheme>;
     }
@@ -85,6 +91,9 @@ export namespace Handy {
         FORCE_DARK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeckTransitionType {
         export const $gtype: GObject.GType<DeckTransitionType>;
     }
@@ -116,6 +125,9 @@ export namespace Handy {
         SLIDE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FlapFoldPolicy {
         export const $gtype: GObject.GType<FlapFoldPolicy>;
     }
@@ -142,6 +154,9 @@ export namespace Handy {
         AUTO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FlapTransitionType {
         export const $gtype: GObject.GType<FlapTransitionType>;
     }
@@ -176,6 +191,9 @@ export namespace Handy {
         SLIDE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace HeaderGroupChildType {
         export const $gtype: GObject.GType<HeaderGroupChildType>;
     }
@@ -204,6 +222,9 @@ export namespace Handy {
         HEADER_GROUP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LeafletTransitionType {
         export const $gtype: GObject.GType<LeafletTransitionType>;
     }
@@ -235,6 +256,9 @@ export namespace Handy {
         SLIDE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NavigationDirection {
         export const $gtype: GObject.GType<NavigationDirection>;
     }
@@ -257,6 +281,9 @@ export namespace Handy {
         FORWARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SqueezerTransitionType {
         export const $gtype: GObject.GType<SqueezerTransitionType>;
     }
@@ -277,6 +304,9 @@ export namespace Handy {
         CROSSFADE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ViewSwitcherPolicy {
         export const $gtype: GObject.GType<ViewSwitcherPolicy>;
     }
@@ -369,6 +399,7 @@ export namespace Handy {
              * This signal is emitted after the row has been activated.
              * @signal
              * @since 1.0
+             * @run-last
              */
             activated: () => void;
             'notify::activatable-widget': (pspec: GObject.ParamSpec) => void;
@@ -735,9 +766,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -1051,6 +1088,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -1058,6 +1096,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -1179,6 +1218,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -7137,6 +7177,7 @@ export namespace Handy {
              * after every scroll.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'page-changed': (arg0: number) => void;
             'notify::allow-long-swipes': (pspec: GObject.ParamSpec) => void;
@@ -7314,11 +7355,13 @@ export namespace Handy {
         /**
          * The number of pages in a {@link Carousel}.
          * @since 1.0
+         * @read-only
          */
         get n_pages(): number;
         /**
          * The number of pages in a {@link Carousel}.
          * @since 1.0
+         * @read-only
          */
         get nPages(): number;
         /**
@@ -7326,6 +7369,7 @@ export namespace Handy {
          *
          * 1 matches 1 page. Use {@link Carousel.scroll_to} for changing it.
          * @since 1.0
+         * @read-only
          */
         get position(): number;
         /**
@@ -7536,9 +7580,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -7852,6 +7902,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -7859,6 +7910,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -7980,6 +8032,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -14331,9 +14384,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -14647,6 +14706,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -14654,6 +14714,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -14775,6 +14836,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -19001,11 +19063,13 @@ export namespace Handy {
         /**
          * Whether or not the transition is currently running.
          * @since 1.0
+         * @read-only
          */
         get transition_running(): boolean;
         /**
          * Whether or not the transition is currently running.
          * @since 1.0
+         * @read-only
          */
         get transitionRunning(): boolean;
         /**
@@ -19282,9 +19346,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -19598,6 +19668,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -19605,6 +19676,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -19726,6 +19798,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -24280,9 +24353,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -24596,6 +24675,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -24603,6 +24683,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -24724,6 +24805,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -28991,6 +29073,7 @@ export namespace Handy {
          *
          * See {@link Flap.fold_policy}.
          * @since 1.2
+         * @read-only
          */
         get folded(): boolean;
         /**
@@ -29043,6 +29126,7 @@ export namespace Handy {
          * 0 means fully hidden, 1 means fully revealed. See
          * {@link Flap.reveal_flap}.
          * @since 1.2
+         * @read-only
          */
         get reveal_progress(): number;
         /**
@@ -29051,6 +29135,7 @@ export namespace Handy {
          * 0 means fully hidden, 1 means fully revealed. See
          * {@link Flap.reveal_flap}.
          * @since 1.2
+         * @read-only
          */
         get revealProgress(): number;
         /**
@@ -29340,9 +29425,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -29656,6 +29747,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -29663,6 +29755,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -29784,6 +29877,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -34250,11 +34344,13 @@ export namespace Handy {
         /**
          * Whether or not the transition is currently running.
          * @since 1.0
+         * @read-only
          */
         get transition_running(): boolean;
         /**
          * Whether or not the transition is currently running.
          * @since 1.0
+         * @read-only
          */
         get transitionRunning(): boolean;
 
@@ -34880,6 +34976,7 @@ export namespace Handy {
              * This signal is emitted before updating the decoration layouts.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'update-decoration-layouts': () => void;
             'notify::decorate-all': (pspec: GObject.ParamSpec) => void;
@@ -36699,11 +36796,13 @@ export namespace Handy {
         /**
          * Whether a child transition is currently running.
          * @since 1.0
+         * @read-only
          */
         get child_transition_running(): boolean;
         /**
          * Whether a child transition is currently running.
          * @since 1.0
+         * @read-only
          */
         get childTransitionRunning(): boolean;
         /**
@@ -36712,6 +36811,7 @@ export namespace Handy {
          * The leaflet will be folded if the size allocated to it is smaller than the
          * sum of the natural size of its children, it will be unfolded otherwise.
          * @since 1.0
+         * @read-only
          */
         get folded(): boolean;
         /**
@@ -37078,9 +37178,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -37394,6 +37500,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -37401,6 +37508,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -37522,6 +37630,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -43125,9 +43234,15 @@ export namespace Handy {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -43441,6 +43556,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -43448,6 +43564,7 @@ export namespace Handy {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -43569,6 +43686,7 @@ export namespace Handy {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -49231,11 +49349,13 @@ export namespace Handy {
         /**
          * Whether a transition is currently running.
          * @since 1.0
+         * @read-only
          */
         get transition_running(): boolean;
         /**
          * Whether a transition is currently running.
          * @since 1.0
+         * @read-only
          */
         get transitionRunning(): boolean;
         /**
@@ -49265,11 +49385,13 @@ export namespace Handy {
         /**
          * The currently visible child.
          * @since 1.0
+         * @read-only
          */
         get visible_child(): Gtk.Widget;
         /**
          * The currently visible child.
          * @since 1.0
+         * @read-only
          */
         get visibleChild(): Gtk.Widget;
         /**
@@ -50647,6 +50769,7 @@ export namespace Handy {
          * This property can be used to query the current appearance, as requested via
          * {@link StyleManager.color_scheme}.
          * @since 1.6
+         * @read-only
          */
         get dark(): boolean;
         /**
@@ -50655,6 +50778,7 @@ export namespace Handy {
          * The display will be `NULL` for the style manager returned by
          * {@link StyleManager.get_default}.
          * @since 1.6
+         * @construct-only
          */
         get display(): Gdk.Display;
         /**
@@ -50662,6 +50786,7 @@ export namespace Handy {
          *
          * This cannot be overridden by applications.
          * @since 1.6
+         * @read-only
          */
         get high_contrast(): boolean;
         /**
@@ -50669,6 +50794,7 @@ export namespace Handy {
          *
          * This cannot be overridden by applications.
          * @since 1.6
+         * @read-only
          */
         get highContrast(): boolean;
         /**
@@ -50682,6 +50808,7 @@ export namespace Handy {
          *
          * See {@link StyleManager.color_scheme}.
          * @since 1.6
+         * @read-only
          */
         get system_supports_color_schemes(): boolean;
         /**
@@ -50695,6 +50822,7 @@ export namespace Handy {
          *
          * See {@link StyleManager.color_scheme}.
          * @since 1.6
+         * @read-only
          */
         get systemSupportsColorSchemes(): boolean;
 
@@ -51548,18 +51676,21 @@ export namespace Handy {
              * direction.
              * @signal
              * @since 1.0
+             * @run-first
              */
             'begin-swipe': (arg0: NavigationDirection, arg1: boolean) => void;
             /**
              * This signal is emitted as soon as the gesture has stopped.
              * @signal
              * @since 1.0
+             * @run-first
              */
             'end-swipe': (arg0: number, arg1: number) => void;
             /**
              * This signal is emitted every time the progress value changes.
              * @signal
              * @since 1.0
+             * @run-first
              */
             'update-swipe': (arg0: number) => void;
             'notify::allow-long-swipes': (pspec: GObject.ParamSpec) => void;
@@ -51657,6 +51788,7 @@ export namespace Handy {
         /**
          * The widget the swipe tracker is attached to. Must not be `NULL`.
          * @since 1.0
+         * @construct-only
          */
         get swipeable(): Swipeable;
 
@@ -52241,6 +52373,7 @@ export namespace Handy {
              * See `Gtk.Widget::drag-data-received`.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'extra-drag-data-received': (
                 arg0: TabPage,
@@ -52435,6 +52568,7 @@ export namespace Handy {
          * If set to `TRUE`, all tabs cannot be displayed at once and require
          * scrolling.
          * @since 1.2
+         * @read-only
          */
         get is_overflowing(): boolean;
         /**
@@ -52443,6 +52577,7 @@ export namespace Handy {
          * If set to `TRUE`, all tabs cannot be displayed at once and require
          * scrolling.
          * @since 1.2
+         * @read-only
          */
         get isOverflowing(): boolean;
         /**
@@ -52462,6 +52597,7 @@ export namespace Handy {
          *
          * See {@link TabBar.autohide}.
          * @since 1.2
+         * @read-only
          */
         get tabs_revealed(): boolean;
         /**
@@ -52469,6 +52605,7 @@ export namespace Handy {
          *
          * See {@link TabBar.autohide}.
          * @since 1.2
+         * @read-only
          */
         get tabsRevealed(): boolean;
         /**
@@ -53124,6 +53261,7 @@ export namespace Handy {
         /**
          * The child of the page.
          * @since 1.2
+         * @construct-only
          */
         get child(): Gtk.Widget;
         /**
@@ -53229,6 +53367,7 @@ export namespace Handy {
          *
          * See {@link TabView.add_page} and {@link TabView.close_page}.
          * @since 1.2
+         * @construct-only
          */
         get parent(): TabPage;
         /**
@@ -53236,11 +53375,13 @@ export namespace Handy {
          *
          * See {@link TabView.set_page_pinned}.
          * @since 1.2
+         * @read-only
          */
         get pinned(): boolean;
         /**
          * Whether the page is selected.
          * @since 1.2
+         * @read-only
          */
         get selected(): boolean;
         /**
@@ -53426,6 +53567,7 @@ export namespace Handy {
              * for closing a tab.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'close-page': (arg0: TabPage) => boolean | void;
             /**
@@ -53437,6 +53579,7 @@ export namespace Handy {
              * needed and return its {@link Handy.TabView}that the page will be transferred into.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'create-window': () => TabView | null;
             /**
@@ -53446,6 +53589,7 @@ export namespace Handy {
              * {@link TabPage.indicator_activatable}.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'indicator-activated': (arg0: TabPage) => void;
             /**
@@ -53455,6 +53599,7 @@ export namespace Handy {
              * signals for things such as updating window title.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'page-attached': (arg0: TabPage, arg1: number) => void;
             /**
@@ -53469,12 +53614,14 @@ export namespace Handy {
              * {@link TabView.close_page_finish} calls.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'page-detached': (arg0: TabPage, arg1: number) => void;
             /**
              * This signal is emitted after `page` has been reordered to `position`.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'page-reordered': (arg0: TabPage, arg1: number) => void;
             /**
@@ -53486,6 +53633,7 @@ export namespace Handy {
              * disable actions not applicable to `page`.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'setup-menu': (arg0: TabPage) => void;
             'notify::default-icon': (pspec: GObject.ParamSpec) => void;
@@ -53638,6 +53786,7 @@ export namespace Handy {
          * During the transfer, children cannot receive pointer input and a tab can be
          * safely dropped on the tab view.
          * @since 1.2
+         * @read-only
          */
         get is_transferring_page(): boolean;
         /**
@@ -53649,6 +53798,7 @@ export namespace Handy {
          * During the transfer, children cannot receive pointer input and a tab can be
          * safely dropped on the tab view.
          * @since 1.2
+         * @read-only
          */
         get isTransferringPage(): boolean;
         /**
@@ -53674,11 +53824,13 @@ export namespace Handy {
         /**
          * The number of pages in the tab view.
          * @since 1.2
+         * @read-only
          */
         get n_pages(): number;
         /**
          * The number of pages in the tab view.
          * @since 1.2
+         * @read-only
          */
         get nPages(): number;
         /**
@@ -53686,6 +53838,7 @@ export namespace Handy {
          *
          * See {@link TabView.set_page_pinned}.
          * @since 1.2
+         * @read-only
          */
         get n_pinned_pages(): number;
         /**
@@ -53693,6 +53846,7 @@ export namespace Handy {
          *
          * See {@link TabView.set_page_pinned}.
          * @since 1.2
+         * @read-only
          */
         get nPinnedPages(): number;
         /**
@@ -55181,6 +55335,7 @@ export namespace Handy {
         /**
          * The contained value.
          * @since 1.0
+         * @construct-only
          */
         get value(): GObject.Value;
 
@@ -56714,11 +56869,13 @@ export namespace Handy {
         /**
          * Whether the bar should be revealed or hidden.
          * @since 1.0
+         * @read-only
          */
         get title_visible(): boolean;
         /**
          * Whether the bar should be revealed or hidden.
          * @since 1.0
+         * @read-only
          */
         get titleVisible(): boolean;
         /**

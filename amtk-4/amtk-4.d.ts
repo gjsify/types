@@ -183,6 +183,9 @@ export namespace Amtk {
      * @since 2.0
      */
     function utils_recent_chooser_menu_get_item_uri(menu: Gtk.RecentChooserMenu, item: Gtk.MenuItem): string;
+    /**
+     * @gir-type Flags
+     */
     export namespace FactoryFlags {
         export const $gtype: GObject.GType<FactoryFlags>;
     }
@@ -415,11 +418,13 @@ export namespace Amtk {
         /**
          * The {@link Gtk.ApplicationWindow}.
          * @since 2.0
+         * @construct-only
          */
         get application_window(): Gtk.ApplicationWindow;
         /**
          * The {@link Gtk.ApplicationWindow}.
          * @since 2.0
+         * @construct-only
          */
         get applicationWindow(): Gtk.ApplicationWindow;
         /**
@@ -565,6 +570,7 @@ export namespace Amtk {
          * The associated {@link Gtk.Application} (it is optional, it can be `null`).
          * {@link Amtk.Factory} has a weak reference to the {@link Gtk.Application}.
          * @since 3.0
+         * @construct-only
          */
         get application(): Gtk.Application;
         /**
@@ -721,6 +727,7 @@ export namespace Amtk {
              * (directly or indirectly through submenus) to `amtk_menu_shell`.
              * @signal
              * @since 2.0
+             * @run-first
              */
             'menu-item-deselected': (arg0: Gtk.MenuItem) => void;
             /**
@@ -729,6 +736,7 @@ export namespace Amtk {
              * (directly or indirectly through submenus) to `amtk_menu_shell`.
              * @signal
              * @since 2.0
+             * @run-first
              */
             'menu-item-selected': (arg0: Gtk.MenuItem) => void;
             'notify::menu-shell': (pspec: GObject.ParamSpec) => void;
@@ -753,11 +761,13 @@ export namespace Amtk {
         /**
          * The {@link Gtk.MenuShell}.
          * @since 2.0
+         * @construct-only
          */
         get menu_shell(): Gtk.MenuShell;
         /**
          * The {@link Gtk.MenuShell}.
          * @since 2.0
+         * @construct-only
          */
         get menuShell(): Gtk.MenuShell;
 

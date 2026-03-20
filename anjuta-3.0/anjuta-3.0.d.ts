@@ -30,6 +30,9 @@ export namespace Anjuta {
      * Anjuta-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CommandBarEntryType {
         export const $gtype: GObject.GType<CommandBarEntryType>;
     }
@@ -56,6 +59,9 @@ export namespace Anjuta {
         BUTTON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CommandQueueExecuteMode {
         export const $gtype: GObject.GType<CommandQueueExecuteMode>;
     }
@@ -91,6 +97,9 @@ export namespace Anjuta {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LauncherOutputType {
         export const $gtype: GObject.GType<LauncherOutputType>;
     }
@@ -189,6 +198,9 @@ export namespace Anjuta {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ProjectValueType {
         export const $gtype: GObject.GType<ProjectValueType>;
     }
@@ -203,6 +215,9 @@ export namespace Anjuta {
         MAP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SerializerMode {
         export const $gtype: GObject.GType<SerializerMode>;
     }
@@ -215,6 +230,9 @@ export namespace Anjuta {
         WRITE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SessionPhase {
         export const $gtype: GObject.GType<SessionPhase>;
     }
@@ -249,6 +267,9 @@ export namespace Anjuta {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ShellPlacement {
         export const $gtype: GObject.GType<ShellPlacement>;
     }
@@ -752,6 +773,9 @@ export namespace Anjuta {
     interface TokenForeachFunc {
         (token: Token, data?: any | null): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace ProjectNodeState {
         export const $gtype: GObject.GType<ProjectNodeState>;
     }
@@ -775,6 +799,9 @@ export namespace Anjuta {
         REMOVE_FILE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ProjectNodeType {
         export const $gtype: GObject.GType<ProjectNodeType>;
     }
@@ -823,6 +850,9 @@ export namespace Anjuta {
         OBJECT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ProjectPropertyFlags {
         export const $gtype: GObject.GType<ProjectPropertyFlags>;
     }
@@ -837,6 +867,9 @@ export namespace Anjuta {
         STATIC,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TokenType {
         export const $gtype: GObject.GType<TokenType>;
     }
@@ -894,6 +927,9 @@ export namespace Anjuta {
         ADDED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VcsStatus {
         export const $gtype: GObject.GType<VcsStatus>;
     }
@@ -1944,6 +1980,9 @@ export namespace Anjuta {
 
         // Properties
 
+        /**
+         * @write-only
+         */
         set diff(val: string);
 
         /**
@@ -2197,9 +2236,15 @@ export namespace Anjuta {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -2513,6 +2558,7 @@ export namespace Anjuta {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -2520,6 +2566,7 @@ export namespace Anjuta {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -2641,6 +2688,7 @@ export namespace Anjuta {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -7473,21 +7521,25 @@ export namespace Anjuta {
              * </para>
              * </note>
              * @signal
+             * @run-first
              */
             'command-finished': (arg0: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'command-started': () => void;
             /**
              * Notifies clients that the command has processed data that is ready to
              * be used.
              * @signal
+             * @run-last
              */
             'data-arrived': () => void;
             /**
              * Notifies clients of changes in progress during command execution.
              * @signal
+             * @run-first
              */
             progress: (arg0: number) => void;
         }
@@ -7764,7 +7816,13 @@ export namespace Anjuta {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get max_text_width(): number;
+        /**
+         * @construct-only
+         */
         get maxTextWidth(): number;
 
         /**
@@ -8281,6 +8339,7 @@ export namespace Anjuta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             finished: () => void;
         }
@@ -9102,6 +9161,7 @@ export namespace Anjuta {
              * This signal is emitted by pane subclasses to notify clients that the set
              * of selected items in the pane has changed.
              * @signal
+             * @run-first
              */
             'multiple-selection-changed': () => void;
             /**
@@ -9109,6 +9169,7 @@ export namespace Anjuta {
              * the user has selected an item. This signal should be used when users are
              * expected to only select one item at a time.
              * @signal
+             * @run-first
              */
             'single-selection-changed': () => void;
             'notify::plugin': (pspec: GObject.ParamSpec) => void;
@@ -9370,9 +9431,15 @@ export namespace Anjuta {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -9686,6 +9753,7 @@ export namespace Anjuta {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -9693,6 +9761,7 @@ export namespace Anjuta {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -9814,6 +9883,7 @@ export namespace Anjuta {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -14066,9 +14136,15 @@ export namespace Anjuta {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -14382,6 +14458,7 @@ export namespace Anjuta {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -14389,6 +14466,7 @@ export namespace Anjuta {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -14510,6 +14588,7 @@ export namespace Anjuta {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -18815,6 +18894,7 @@ export namespace Anjuta {
              * The ::changed signal is emitted when an environment variable
              * is changed (include deleted variables)
              * @signal
+             * @run-last
              */
             changed: () => void;
             'notify::border-width': (pspec: GObject.ParamSpec) => void;
@@ -19565,9 +19645,15 @@ export namespace Anjuta {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -19881,6 +19967,7 @@ export namespace Anjuta {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -19888,6 +19975,7 @@ export namespace Anjuta {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -20009,6 +20097,7 @@ export namespace Anjuta {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -24751,6 +24840,7 @@ export namespace Anjuta {
              * (busy is `true`) or when a child exits and all i/o channels are
              * closed (busy is `false`).
              * @signal
+             * @run-first
              */
             busy: (arg0: boolean) => void;
             /**
@@ -24760,6 +24850,7 @@ export namespace Anjuta {
              * You need to use WEXITSTATUS and friend to get the child exit
              * code from the status returned.
              * @signal
+             * @run-first
              */
             'child-exited': (arg0: number, arg1: number, arg2: number) => void;
         }
@@ -25697,10 +25788,12 @@ export namespace Anjuta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             activated: () => void;
             /**
              * @signal
+             * @run-first
              */
             deactivated: () => void;
             'notify::shell': (pspec: GObject.ParamSpec) => void;
@@ -25895,28 +25988,97 @@ export namespace Anjuta {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get about(): string;
+        /**
+         * @read-only
+         */
         get can_load(): boolean;
+        /**
+         * @read-only
+         */
         get canLoad(): boolean;
+        /**
+         * @read-only
+         */
         get can_unload(): boolean;
+        /**
+         * @read-only
+         */
         get canUnload(): boolean;
+        /**
+         * @read-only
+         */
         get checked(): boolean;
+        /**
+         * @read-only
+         */
         get dependencies(): any;
+        /**
+         * @read-only
+         */
         get dependency_names(): any;
+        /**
+         * @read-only
+         */
         get dependencyNames(): any;
+        /**
+         * @read-only
+         */
         get dependents(): any;
+        /**
+         * @read-only
+         */
         get description(): any;
+        /**
+         * @read-only
+         */
         get icon_path(): string;
+        /**
+         * @read-only
+         */
         get iconPath(): string;
+        /**
+         * @read-only
+         */
         get id(): string;
+        /**
+         * @read-only
+         */
         get interfaces(): any;
+        /**
+         * @read-only
+         */
         get language(): string;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get path(): string;
+        /**
+         * @read-only
+         */
         get resident(): boolean;
+        /**
+         * @read-only
+         */
         get resolve_pass(): number;
+        /**
+         * @read-only
+         */
         get resolvePass(): number;
+        /**
+         * @read-only
+         */
         get user_activatable(): boolean;
+        /**
+         * @read-only
+         */
         get userActivatable(): boolean;
 
         /**
@@ -25996,10 +26158,12 @@ export namespace Anjuta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'plugin-activated': (arg0: any | null, arg1: Plugin) => void;
             /**
              * @signal
+             * @run-first
              */
             'plugin-deactivated': (arg0: any | null, arg1: Plugin) => void;
             'notify::activated-plugins': (pspec: GObject.ParamSpec) => void;
@@ -26030,10 +26194,25 @@ export namespace Anjuta {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get activated_plugins(): any;
+        /**
+         * @read-only
+         */
         get activatedPlugins(): any;
+        /**
+         * @read-only
+         */
         get available_plugins(): any;
+        /**
+         * @read-only
+         */
         get availablePlugins(): any;
+        /**
+         * @read-only
+         */
         get profiles(): any;
         get shell(): GObject.Object;
         set shell(val: GObject.Object);
@@ -26851,24 +27030,29 @@ export namespace Anjuta {
             /**
              * Emitted when a plugin is added or removed from the list.
              * @signal
+             * @run-first
              */
             changed: () => void;
             /**
              * @signal
+             * @run-first
              */
             descoped: () => void;
             /**
              * Emitted when a plugin is added in the list.
              * @signal
+             * @run-first
              */
             'plugin-added': (arg0: any | null) => void;
             /**
              * Emitted when a plugin is removed from the list.
              * @signal
+             * @run-first
              */
             'plugin-removed': (arg0: any | null) => void;
             /**
              * @signal
+             * @run-first
              */
             scoped: () => void;
             'notify::plugin-manager': (pspec: GObject.ParamSpec) => void;
@@ -27033,6 +27217,7 @@ export namespace Anjuta {
              * is not frozen, the current profile will be unloaded and the previous one
              * will be loaded.
              * @signal
+             * @run-first
              */
             'profile-popped': (arg0: Profile) => void;
             /**
@@ -27040,6 +27225,7 @@ export namespace Anjuta {
              * not frozen, the current profile will be unloaded and the new one
              * will be loaded.
              * @signal
+             * @run-first
              */
             'profile-pushed': (arg0: Profile) => void;
             'notify::plugin-manager': (pspec: GObject.ParamSpec) => void;
@@ -27170,10 +27356,12 @@ export namespace Anjuta {
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             loaded: (arg0: any | null, arg1: GLib.Error) => void;
             /**
              * @signal
+             * @run-last
              */
             updated: (arg0: any | null, arg1: GLib.Error) => void;
             'notify::file': (pspec: GObject.ParamSpec) => void;
@@ -27980,7 +28168,13 @@ export namespace Anjuta {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get filepath(): string;
+        /**
+         * @construct-only
+         */
         get mode(): SerializerMode;
 
         /**
@@ -28206,6 +28400,7 @@ export namespace Anjuta {
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             busy: (arg0: boolean) => void;
             'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
@@ -28951,6 +29146,9 @@ export namespace Anjuta {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set notebook(val: GObject.Object);
 
         /**
@@ -29544,14 +29742,19 @@ export namespace Anjuta {
         interface SignalSignatures extends Gtk.ToggleButton.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             popdown: () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             popup: () => void;
             'notify::model': (pspec: GObject.ParamSpec) => void;
@@ -29733,9 +29936,15 @@ export namespace Anjuta {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -30049,6 +30258,7 @@ export namespace Anjuta {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -30056,6 +30266,7 @@ export namespace Anjuta {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -30177,6 +30388,7 @@ export namespace Anjuta {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -35318,13 +35530,25 @@ export namespace Anjuta {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get conflicted_selectable(): boolean;
+        /**
+         * @construct-only
+         */
         get conflictedSelectable(): boolean;
         get show_status(): boolean;
         set show_status(val: boolean);
         get showStatus(): boolean;
         set showStatus(val: boolean);
+        /**
+         * @construct-only
+         */
         get status_codes(): VcsStatus;
+        /**
+         * @construct-only
+         */
         get statusCodes(): VcsStatus;
 
         /**

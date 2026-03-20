@@ -193,31 +193,37 @@ export namespace GcrUi {
         set_certificate(certificate?: Gcr.Certificate | null): void;
         /**
          * A readable description for this certificate
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get description(): string;
         /**
          * The expiry date of the certificate
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get expiry(): GLib.Date;
         /**
          * An icon representing the certificate
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get icon(): Gio.Icon;
         /**
          * Common name part of the certificate issuer
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get issuer(): string;
         /**
          * GLib markup to describe the certificate
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get markup(): string;
         /**
          * Common name part of the certificate subject
+         * @read-only
          * @category Inherited from Gcr.Certificate
          */
         get subject(): string;
@@ -1555,6 +1561,9 @@ export namespace GcrUi {
 
         get collection(): Gcr.Collection;
         set collection(val: Gcr.Collection);
+        /**
+         * @construct-only
+         */
         get columns(): any;
 
         /**
@@ -2740,6 +2749,7 @@ export namespace GcrUi {
 
         /**
          * The collection which contains the objects to display in the selector.
+         * @construct-only
          */
         get collection(): Gcr.Collection;
 
@@ -2834,9 +2844,15 @@ export namespace GcrUi {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -3150,6 +3166,7 @@ export namespace GcrUi {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -3157,6 +3174,7 @@ export namespace GcrUi {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -3278,6 +3296,7 @@ export namespace GcrUi {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -8102,11 +8121,13 @@ export namespace GcrUi {
             /**
              * Signal emitted when an import completes or fails.
              * @signal
+             * @run-last
              */
             imported: (arg0: GObject.Object, arg1: GLib.Error) => void;
             /**
              * Signal emitted when an import begins.
              * @signal
+             * @run-last
              */
             importing: (arg0: GObject.Object) => void;
             'notify::always-show-image': (pspec: GObject.ParamSpec) => void;
@@ -8341,9 +8362,15 @@ export namespace GcrUi {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -8657,6 +8684,7 @@ export namespace GcrUi {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -8664,6 +8692,7 @@ export namespace GcrUi {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -8785,6 +8814,7 @@ export namespace GcrUi {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -14274,6 +14304,7 @@ export namespace GcrUi {
 
         /**
          * The collection which contains the objects to display in the selector.
+         * @construct-only
          */
         get collection(): Gcr.Collection;
 
@@ -15023,34 +15054,42 @@ export namespace GcrUi {
 
         /**
          * Whether the choice check box is visible or not.
+         * @read-only
          */
         get choice_visible(): boolean;
         /**
          * Whether the choice check box is visible or not.
+         * @read-only
          */
         get choiceVisible(): boolean;
         /**
          * Whether the password confirm entry is visible or not.
+         * @read-only
          */
         get confirm_visible(): boolean;
         /**
          * Whether the password confirm entry is visible or not.
+         * @read-only
          */
         get confirmVisible(): boolean;
         /**
          * Whether the password entry is visible or not.
+         * @read-only
          */
         get password_visible(): boolean;
         /**
          * Whether the password entry is visible or not.
+         * @read-only
          */
         get passwordVisible(): boolean;
         /**
          * Whether the warning label is visible or not.
+         * @read-only
          */
         get warning_visible(): boolean;
         /**
          * Whether the warning label is visible or not.
+         * @read-only
          */
         get warningVisible(): boolean;
 
@@ -15227,6 +15266,7 @@ export namespace GcrUi {
          * greater than zero if the password has any characters.
          *
          * This is only valid after a successful prompt for a password.
+         * @read-only
          * @category Inherited from Gcr.Prompt
          */
         get password_strength(): number;
@@ -15237,6 +15277,7 @@ export namespace GcrUi {
          * greater than zero if the password has any characters.
          *
          * This is only valid after a successful prompt for a password.
+         * @read-only
          * @category Inherited from Gcr.Prompt
          */
         get passwordStrength(): number;
@@ -16277,10 +16318,12 @@ export namespace GcrUi {
 
         /**
          * The collection which contains the objects to display in the selector.
+         * @construct-only
          */
         get collection(): Gcr.Collection;
         /**
          * The columns to use to display the objects.
+         * @construct-only
          */
         get columns(): any;
 
@@ -17539,6 +17582,7 @@ export namespace GcrUi {
             /**
              * This signal is emitted when an item is added to the viewer widget.
              * @signal
+             * @run-last
              */
             added: (arg0: Renderer, arg1: Gcr.Parsed) => void;
             'notify::display-name': (pspec: GObject.ParamSpec) => void;
@@ -17635,6 +17679,7 @@ export namespace GcrUi {
         set displayName(val: string);
         /**
          * The parser used to parse loaded data into viewable items.
+         * @read-only
          */
         get parser(): Gcr.Parser;
 

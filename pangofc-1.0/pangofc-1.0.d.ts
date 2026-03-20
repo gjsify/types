@@ -251,6 +251,7 @@ export namespace PangoFc {
         set fontmap(val: FontMap);
         /**
          * The fontconfig pattern for this font.
+         * @construct-only
          */
         get pattern(): any;
 

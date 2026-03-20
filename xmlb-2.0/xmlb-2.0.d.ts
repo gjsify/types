@@ -1706,6 +1706,9 @@ export namespace Xmlb {
         set enableNodeCache(val: boolean);
         get guid(): string;
         set guid(val: string);
+        /**
+         * @read-only
+         */
         get valid(): boolean;
 
         /**

@@ -23,6 +23,9 @@ export namespace Pango {
      * Pango-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Alignment {
         export const $gtype: GObject.GType<Alignment>;
     }
@@ -53,6 +56,9 @@ export namespace Pango {
         RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AttrType {
         export const $gtype: GObject.GType<AttrType>;
     }
@@ -218,6 +224,9 @@ export namespace Pango {
         FONT_SCALE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BaselineShift {
         export const $gtype: GObject.GType<BaselineShift>;
     }
@@ -244,6 +253,9 @@ export namespace Pango {
         SUBSCRIPT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BidiType {
         export const $gtype: GObject.GType<BidiType>;
     }
@@ -353,6 +365,9 @@ export namespace Pango {
         PDI,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CoverageLevel {
         export const $gtype: GObject.GType<CoverageLevel>;
     }
@@ -392,6 +407,9 @@ export namespace Pango {
         EXACT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Direction {
         export const $gtype: GObject.GType<Direction>;
     }
@@ -450,6 +468,9 @@ export namespace Pango {
         NEUTRAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EllipsizeMode {
         export const $gtype: GObject.GType<EllipsizeMode>;
     }
@@ -482,6 +503,9 @@ export namespace Pango {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FontColor {
         export const $gtype: GObject.GType<FontColor>;
     }
@@ -506,6 +530,9 @@ export namespace Pango {
         DONT_CARE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FontScale {
         export const $gtype: GObject.GType<FontScale>;
     }
@@ -535,6 +562,9 @@ export namespace Pango {
         SMALL_CAPS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Gravity {
         export const $gtype: GObject.GType<Gravity>;
     }
@@ -579,6 +609,9 @@ export namespace Pango {
         AUTO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GravityHint {
         export const $gtype: GObject.GType<GravityHint>;
     }
@@ -646,6 +679,9 @@ export namespace Pango {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Overline {
         export const $gtype: GObject.GType<Overline>;
     }
@@ -668,6 +704,9 @@ export namespace Pango {
         SINGLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RenderPart {
         export const $gtype: GObject.GType<RenderPart>;
     }
@@ -701,6 +740,9 @@ export namespace Pango {
         OVERLINE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Script {
         export const $gtype: GObject.GType<Script>;
     }
@@ -1194,6 +1236,9 @@ export namespace Pango {
         SIGNWRITING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Stretch {
         export const $gtype: GObject.GType<Stretch>;
     }
@@ -1242,6 +1287,9 @@ export namespace Pango {
         ULTRA_EXPANDED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Style {
         export const $gtype: GObject.GType<Style>;
     }
@@ -1265,6 +1313,9 @@ export namespace Pango {
         ITALIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TabAlign {
         export const $gtype: GObject.GType<TabAlign>;
     }
@@ -1297,6 +1348,9 @@ export namespace Pango {
         DECIMAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextTransform {
         export const $gtype: GObject.GType<TextTransform>;
     }
@@ -1326,6 +1380,9 @@ export namespace Pango {
         CAPITALIZE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Underline {
         export const $gtype: GObject.GType<Underline>;
     }
@@ -1388,6 +1445,9 @@ export namespace Pango {
         ERROR_LINE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Variant {
         export const $gtype: GObject.GType<Variant>;
     }
@@ -1435,6 +1495,9 @@ export namespace Pango {
         TITLE_CAPS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Weight {
         export const $gtype: GObject.GType<Weight>;
     }
@@ -1497,6 +1560,9 @@ export namespace Pango {
         ULTRAHEAVY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WrapMode {
         export const $gtype: GObject.GType<WrapMode>;
     }
@@ -2914,6 +2980,9 @@ export namespace Pango {
     interface FontsetForeachFunc {
         (fontset: Fontset, font: Font): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace FontMask {
         export const $gtype: GObject.GType<FontMask>;
     }
@@ -2966,6 +3035,9 @@ export namespace Pango {
         COLOR,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace LayoutDeserializeFlags {
         export const $gtype: GObject.GType<LayoutDeserializeFlags>;
     }
@@ -2989,6 +3061,9 @@ export namespace Pango {
         CONTEXT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace LayoutSerializeFlags {
         export const $gtype: GObject.GType<LayoutSerializeFlags>;
     }
@@ -3015,6 +3090,9 @@ export namespace Pango {
         OUTPUT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ShapeFlags {
         export const $gtype: GObject.GType<ShapeFlags>;
     }
@@ -3038,6 +3116,9 @@ export namespace Pango {
         ROUND_POSITIONS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ShowFlags {
         export const $gtype: GObject.GType<ShowFlags>;
     }
@@ -3910,46 +3991,55 @@ export namespace Pango {
         /**
          * Is this a monospace font
          * @since 1.52
+         * @read-only
          */
         get is_monospace(): boolean;
         /**
          * Is this a monospace font
          * @since 1.52
+         * @read-only
          */
         get isMonospace(): boolean;
         /**
          * Is this a variable font
          * @since 1.52
+         * @read-only
          */
         get is_variable(): boolean;
         /**
          * Is this a variable font
          * @since 1.52
+         * @read-only
          */
         get isVariable(): boolean;
         /**
          * The type of items contained in this list.
          * @since 1.52
+         * @read-only
          */
         get item_type(): GObject.GType;
         /**
          * The type of items contained in this list.
          * @since 1.52
+         * @read-only
          */
         get itemType(): GObject.GType;
         /**
          * The number of items contained in this list.
          * @since 1.52
+         * @read-only
          */
         get n_items(): number;
         /**
          * The number of items contained in this list.
          * @since 1.52
+         * @read-only
          */
         get nItems(): number;
         /**
          * The name of the family
          * @since 1.52
+         * @read-only
          */
         get name(): string;
 
@@ -4663,21 +4753,25 @@ export namespace Pango {
         /**
          * The type of items contained in this list.
          * @since 1.52
+         * @read-only
          */
         get item_type(): GObject.GType;
         /**
          * The type of items contained in this list.
          * @since 1.52
+         * @read-only
          */
         get itemType(): GObject.GType;
         /**
          * The number of items contained in this list.
          * @since 1.52
+         * @read-only
          */
         get n_items(): number;
         /**
          * The number of items contained in this list.
          * @since 1.52
+         * @read-only
          */
         get nItems(): number;
 

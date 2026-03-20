@@ -29,6 +29,9 @@ export namespace Wnck {
      * Wnck-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClientType {
         export const $gtype: GObject.GType<ClientType>;
     }
@@ -50,6 +53,9 @@ export namespace Wnck {
         PAGER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MotionDirection {
         export const $gtype: GObject.GType<MotionDirection>;
     }
@@ -82,6 +88,9 @@ export namespace Wnck {
         RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PagerDisplayMode {
         export const $gtype: GObject.GType<PagerDisplayMode>;
     }
@@ -103,6 +112,9 @@ export namespace Wnck {
         CONTENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PagerScrollMode {
         export const $gtype: GObject.GType<PagerScrollMode>;
     }
@@ -131,6 +143,9 @@ export namespace Wnck {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TasklistGroupingType {
         export const $gtype: GObject.GType<TasklistGroupingType>;
     }
@@ -159,6 +174,9 @@ export namespace Wnck {
         ALWAYS_GROUP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowGravity {
         export const $gtype: GObject.GType<WindowGravity>;
     }
@@ -226,6 +244,9 @@ export namespace Wnck {
         STATIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowType {
         export const $gtype: GObject.GType<WindowType>;
     }
@@ -382,6 +403,9 @@ export namespace Wnck {
      * @since 2.6
      */
     function xid_read_resource_usage(gdk_display: Gdk.Display, xid: number, usage: ResourceUsage): void;
+    /**
+     * @gir-type Flags
+     */
     export namespace WindowActions {
         export const $gtype: GObject.GType<WindowActions>;
     }
@@ -475,6 +499,9 @@ export namespace Wnck {
         BELOW,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WindowMoveResizeMask {
         export const $gtype: GObject.GType<WindowMoveResizeMask>;
     }
@@ -504,6 +531,9 @@ export namespace Wnck {
         HEIGHT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WindowState {
         export const $gtype: GObject.GType<WindowState>;
     }
@@ -653,6 +683,9 @@ export namespace Wnck {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         // This accessor conflicts with another accessor's type in a parent class or interface.
         get window(): any | any;
 
@@ -1153,11 +1186,13 @@ export namespace Wnck {
             /**
              * Emitted when the icon of `app` changes.
              * @signal
+             * @run-last
              */
             'icon-changed': () => void;
             /**
              * Emitted when the name of `app` changes.
              * @signal
+             * @run-last
              */
             'name-changed': () => void;
         }
@@ -1303,11 +1338,13 @@ export namespace Wnck {
             /**
              * Emitted when the icon of `class_group` changes.
              * @signal
+             * @run-last
              */
             'icon-changed': () => void;
             /**
              * Emitted when the name of `class_group` changes.
              * @signal
+             * @run-last
              */
             'name-changed': () => void;
         }
@@ -1766,9 +1803,15 @@ export namespace Wnck {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -2082,6 +2125,7 @@ export namespace Wnck {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -2089,6 +2133,7 @@ export namespace Wnck {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -2210,6 +2255,7 @@ export namespace Wnck {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -6524,6 +6570,9 @@ export namespace Wnck {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): Handle;
 
         /**
@@ -7285,44 +7334,52 @@ export namespace Wnck {
             /**
              * Emitted when the active window on `screen` has changed.
              * @signal
+             * @run-last
              */
             'active-window-changed': (arg0: Window) => void;
             /**
              * Emitted when the active workspace on `screen` has changed.
              * @signal
+             * @run-last
              */
             'active-workspace-changed': (arg0: Workspace) => void;
             /**
              * Emitted when a {@link Wnck.Application} is closed on `screen`.
              * @signal
+             * @run-last
              */
             'application-closed': (arg0: Application) => void;
             /**
              * Emitted when a new {@link Wnck.Application} is opened on `screen`.
              * @signal
+             * @run-last
              */
             'application-opened': (arg0: Application) => void;
             /**
              * Emitted when the background on the root window of `screen` has changed.
              * @signal
+             * @run-last
              */
             'background-changed': () => void;
             /**
              * Emitted when a {@link Wnck.ClassGroup} is closed on `screen`.
              * @signal
              * @since 2.20
+             * @run-last
              */
             'class-group-closed': (arg0: ClassGroup) => void;
             /**
              * Emitted when a new {@link Wnck.ClassGroup} is opened on `screen`.
              * @signal
              * @since 2.20
+             * @run-last
              */
             'class-group-opened': (arg0: ClassGroup) => void;
             /**
              * Emitted when "showing the desktop" mode of `screen` is toggled.
              * @signal
              * @since 2.20
+             * @run-last
              */
             'showing-desktop-changed': () => void;
             /**
@@ -7330,37 +7387,44 @@ export namespace Wnck {
              * `screen` or when a {@link Wnck.Workspace} of `screen` gets or loses its viewport.
              * @signal
              * @since 2.20
+             * @run-last
              */
             'viewports-changed': () => void;
             /**
              * Emitted when a {@link Wnck.Window} is closed on `screen`.
              * @signal
+             * @run-last
              */
             'window-closed': (arg0: Window) => void;
             /**
              * Emitted when the window manager on `screen` has changed.
              * @signal
              * @since 2.20
+             * @run-last
              */
             'window-manager-changed': () => void;
             /**
              * Emitted when a new {@link Wnck.Window} is opened on `screen`.
              * @signal
+             * @run-last
              */
             'window-opened': (arg0: Window) => void;
             /**
              * Emitted when the stacking order of {@link Wnck.Window} on `screen` has changed.
              * @signal
+             * @run-last
              */
             'window-stacking-changed': () => void;
             /**
              * Emitted when a {@link Wnck.Workspace} is created on `screen`.
              * @signal
+             * @run-last
              */
             'workspace-created': (arg0: Workspace) => void;
             /**
              * Emitted when a {@link Wnck.Workspace} is destroyed on `screen`.
              * @signal
+             * @run-last
              */
             'workspace-destroyed': (arg0: Workspace) => void;
         }
@@ -7760,6 +7824,9 @@ export namespace Wnck {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): Handle;
 
         /**
@@ -8258,11 +8325,13 @@ export namespace Wnck {
             /**
              * Emitted when the task is entered.
              * @signal
+             * @run-last
              */
             'task-enter-notify': (arg0: any | null) => void;
             /**
              * Emitted when the task is entered.
              * @signal
+             * @run-last
              */
             'task-leave-notify': (arg0: any | null) => void;
             'notify::handle': (pspec: GObject.ParamSpec) => void;
@@ -8334,6 +8403,9 @@ export namespace Wnck {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handle(): Handle;
         get tooltips_enabled(): boolean;
         set tooltips_enabled(val: boolean);
@@ -8923,31 +8995,37 @@ export namespace Wnck {
             /**
              * Emitted when the actions availabilities for `window` change.
              * @signal
+             * @run-last
              */
             'actions-changed': (arg0: WindowActions, arg1: WindowActions) => void;
             /**
              * Emitted when the class name or instance name of `window` changes.
              * @signal
+             * @run-last
              */
             'class-changed': () => void;
             /**
              * Emitted when the geometry of `window` changes.
              * @signal
+             * @run-last
              */
             'geometry-changed': () => void;
             /**
              * Emitted when the icon of `window` changes.
              * @signal
+             * @run-last
              */
             'icon-changed': () => void;
             /**
              * Emitted when the name of `window` changes.
              * @signal
+             * @run-last
              */
             'name-changed': () => void;
             /**
              * Emitted when the role of `window` changes.
              * @signal
+             * @run-last
              */
             'role-changed': () => void;
             /**
@@ -8956,18 +9034,21 @@ export namespace Wnck {
              * (un)made below, (un)set fullscreen, when it needs attention, etc. See
              * {@link Wnck.WindowState} for the complete list of states that might have changed.
              * @signal
+             * @run-last
              */
             'state-changed': (arg0: WindowState, arg1: WindowState) => void;
             /**
              * Emitted when the EWMH type hint of the window changes.
              * @signal
              * @since 3.20
+             * @run-last
              */
             'type-changed': () => void;
             /**
              * Emitted when the current workspace of `window` changes, or if `window` has
              * been pinned or unpinned.
              * @signal
+             * @run-last
              */
             'workspace-changed': () => void;
         }
@@ -9620,6 +9701,7 @@ export namespace Wnck {
             /**
              * Emitted when the name of `space` changes.
              * @signal
+             * @run-last
              */
             'name-changed': () => void;
         }

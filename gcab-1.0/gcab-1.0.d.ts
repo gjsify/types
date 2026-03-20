@@ -20,6 +20,9 @@ export namespace GCab {
      * GCab-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Compression {
         export const $gtype: GObject.GType<Compression>;
     }
@@ -82,6 +85,9 @@ export namespace GCab {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FileAttribute {
         export const $gtype: GObject.GType<FileAttribute>;
     }
@@ -466,7 +472,13 @@ export namespace GCab {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get compression(): Compression;
+        /**
+         * @construct-only
+         */
         get comptype(): number;
         get reserved(): Uint8Array;
         set reserved(val: Uint8Array);

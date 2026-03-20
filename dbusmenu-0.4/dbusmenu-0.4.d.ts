@@ -375,6 +375,7 @@ export namespace Dbusmenu {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'event-result': (
                 arg0: GObject.Object,
@@ -386,16 +387,19 @@ export namespace Dbusmenu {
             /**
              * Signaled when the theme directories are changed by the server.
              * @signal
+             * @run-last
              */
             'icon-theme-dirs-changed': (arg0: any | null) => void;
             /**
              * Signaled when the server wants to activate an item in
              * 		order to display the menu.
              * @signal
+             * @run-last
              */
             'item-activate': (arg0: GObject.Object, arg1: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'layout-updated': () => void;
             /**
@@ -404,6 +408,7 @@ export namespace Dbusmenu {
              * 		it's applied to will signal {@link Dbusmenu.Menuitem.SignalSignatures.child_added | Dbusmenu.Menuitem::child-added}
              * 		when it gets parented.
              * @signal
+             * @run-last
              */
             'new-menuitem': (arg0: GObject.Object) => void;
             /**
@@ -411,6 +416,7 @@ export namespace Dbusmenu {
              * 		represented by the individual items changing as the
              * 		root of this client has changed.
              * @signal
+             * @run-last
              */
             'root-changed': (arg0: GObject.Object) => void;
             'notify::dbus-name': (pspec: GObject.ParamSpec) => void;
@@ -440,9 +446,21 @@ export namespace Dbusmenu {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get dbus_name(): string;
+        /**
+         * @construct-only
+         */
         get dbusName(): string;
+        /**
+         * @construct-only
+         */
         get dbus_object(): string;
+        /**
+         * @construct-only
+         */
         get dbusObject(): string;
         get group_events(): boolean;
         set group_events(val: boolean);
@@ -564,18 +582,21 @@ export namespace Dbusmenu {
              * Emitted when the submenu for this item
              * 		is about to be shown
              * @signal
+             * @run-last
              */
             'about-to-show': () => boolean | void;
             /**
              * Signaled when the child menuitem has been added to
              * 		the parent.
              * @signal
+             * @run-last
              */
             'child-added': (arg0: GObject.Object, arg1: number) => void;
             /**
              * Signaled when the child menuitem has had its location
              * 		in the list change.
              * @signal
+             * @run-last
              */
             'child-moved': (arg0: GObject.Object, arg1: number, arg2: number) => void;
             /**
@@ -584,24 +605,29 @@ export namespace Dbusmenu {
              * 		it has been removed from the list but not yet had
              * 		`g_object_unref` called on it.
              * @signal
+             * @run-last
              */
             'child-removed': (arg0: GObject.Object) => void;
             /**
              * Emitted when an event is passed through.  The event is signalled
              * 		after handle_event is called.
              * @signal
+             * @detailed
+             * @run-last
              */
             event: (arg0: string, arg1: GLib.Variant, arg2: number) => boolean | void;
             /**
              * Emitted on the objects on the server side when
              * 		they are signaled on the client side.
              * @signal
+             * @run-last
              */
             'item-activated': (arg0: number) => void;
             /**
              * Emitted everytime a property on a menuitem is either
              * 		updated or added.
              * @signal
+             * @run-last
              */
             'property-changed': (arg0: string, arg1: GLib.Variant) => void;
             /**
@@ -610,6 +636,7 @@ export namespace Dbusmenu {
              * 		handler configured for the "type" parameter
              * 		that will be executed before this is signaled.
              * @signal
+             * @run-last
              */
             realized: () => void;
             /**
@@ -617,6 +644,7 @@ export namespace Dbusmenu {
              * 		of this menu item shown to the user.  This usually requires
              * 		going over the bus to get it done.
              * @signal
+             * @run-last
              */
             'show-to-user': (arg0: number) => void;
             'notify::id': (pspec: GObject.ParamSpec) => void;
@@ -624,6 +652,8 @@ export namespace Dbusmenu {
              * Emitted when an event is passed through.  The event is signalled
              * 		after handle_event is called.
              * @signal
+             * @detailed
+             * @run-last
              */
             'event::id': (arg0: string, arg1: GLib.Variant, arg2: number) => boolean | void;
         }
@@ -649,6 +679,9 @@ export namespace Dbusmenu {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): number;
 
         /**
@@ -1058,7 +1091,13 @@ export namespace Dbusmenu {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get menu_item(): Menuitem;
+        /**
+         * @construct-only
+         */
         get menuItem(): Menuitem;
 
         /**
@@ -1119,20 +1158,24 @@ export namespace Dbusmenu {
              * This is signaled when a menuitem under this server
              * 		sends its activate signal.
              * @signal
+             * @run-last
              */
             'item-activation-requested': (arg0: number, arg1: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'item-property-updated': (arg0: number, arg1: string, arg2: GLib.Variant) => void;
             /**
              * @signal
+             * @run-last
              */
             'item-updated': (arg0: number) => void;
             /**
              * This signal is emitted any time the layout of the
              * 		menuitems under this server is changed.
              * @signal
+             * @run-last
              */
             'layout-updated': (arg0: number, arg1: number) => void;
             'notify::dbus-object': (pspec: GObject.ParamSpec) => void;
@@ -1161,12 +1204,21 @@ export namespace Dbusmenu {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get dbus_object(): string;
+        /**
+         * @construct-only
+         */
         get dbusObject(): string;
         get root_node(): Menuitem;
         set root_node(val: Menuitem);
         get rootNode(): Menuitem;
         set rootNode(val: Menuitem);
+        /**
+         * @read-only
+         */
         get version(): number;
 
         /**

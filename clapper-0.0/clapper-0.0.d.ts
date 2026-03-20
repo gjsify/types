@@ -26,6 +26,9 @@ export namespace Clapper {
      * Clapper-0.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DiscovererDiscoveryMode {
         export const $gtype: GObject.GType<DiscovererDiscoveryMode>;
     }
@@ -49,6 +52,9 @@ export namespace Clapper {
         NONCURRENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MarkerType {
         export const $gtype: GObject.GType<MarkerType>;
     }
@@ -78,6 +84,9 @@ export namespace Clapper {
         CUSTOM_3,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlayerMessageDestination {
         export const $gtype: GObject.GType<PlayerMessageDestination>;
     }
@@ -101,6 +110,9 @@ export namespace Clapper {
         APPLICATION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlayerSeekMethod {
         export const $gtype: GObject.GType<PlayerSeekMethod>;
     }
@@ -123,6 +135,9 @@ export namespace Clapper {
         FAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlayerState {
         export const $gtype: GObject.GType<PlayerState>;
     }
@@ -149,6 +164,9 @@ export namespace Clapper {
         PLAYING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace QueueProgressionMode {
         export const $gtype: GObject.GType<QueueProgressionMode>;
     }
@@ -183,6 +201,9 @@ export namespace Clapper {
         SHUFFLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StreamType {
         export const $gtype: GObject.GType<StreamType>;
     }
@@ -367,6 +388,9 @@ export namespace Clapper {
      * @returns `true` if Clapper could be initialized, `false` otherwise.
      */
     function init_check(argv?: string[] | null): [boolean, string[] | null];
+    /**
+     * @gir-type Flags
+     */
     export namespace EnhancerParamFlags {
         export const $gtype: GObject.GType<EnhancerParamFlags>;
     }
@@ -399,6 +423,9 @@ export namespace Clapper {
         DIRPATH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ReactableItemUpdatedFlags {
         export const $gtype: GObject.GType<ReactableItemUpdatedFlags>;
     }
@@ -479,46 +506,57 @@ export namespace Clapper {
 
         /**
          * Stream bitrate.
+         * @read-only
          */
         get bitrate(): number;
         /**
          * Stream number of audio channels.
+         * @read-only
          */
         get channels(): number;
         /**
          * Stream codec.
+         * @read-only
          */
         get codec(): string;
         /**
          * Stream language code in ISO-639 format.
+         * @read-only
          */
         get lang_code(): string;
         /**
          * Stream language code in ISO-639 format.
+         * @read-only
          */
         get langCode(): string;
         /**
          * Stream language name.
+         * @read-only
          */
         get lang_name(): string;
         /**
          * Stream language name.
+         * @read-only
          */
         get langName(): string;
         /**
          * Stream sample format.
+         * @read-only
          */
         get sample_format(): string;
         /**
          * Stream sample format.
+         * @read-only
          */
         get sampleFormat(): string;
         /**
          * Stream sample rate (in Hz).
+         * @read-only
          */
         get sample_rate(): number;
         /**
          * Stream sample rate (in Hz).
+         * @read-only
          */
         get sampleRate(): number;
 
@@ -763,36 +801,43 @@ export namespace Clapper {
         /**
          * Description from enhancer plugin info file.
          * @since 0.10
+         * @read-only
          */
         get description(): string;
         /**
          * Name from enhancer plugin info file.
          * @since 0.10
+         * @read-only
          */
         get friendly_name(): string;
         /**
          * Name from enhancer plugin info file.
          * @since 0.10
+         * @read-only
          */
         get friendlyName(): string;
         /**
          * Module directory.
          * @since 0.10
+         * @read-only
          */
         get module_dir(): string;
         /**
          * Module directory.
          * @since 0.10
+         * @read-only
          */
         get moduleDir(): string;
         /**
          * Module name from enhancer plugin info file.
          * @since 0.10
+         * @read-only
          */
         get module_name(): string;
         /**
          * Module name from enhancer plugin info file.
          * @since 0.10
+         * @read-only
          */
         get moduleName(): string;
         /**
@@ -836,6 +881,7 @@ export namespace Clapper {
         /**
          * Version from enhancer plugin info file.
          * @since 0.10
+         * @read-only
          */
         get version(): string;
 
@@ -1035,11 +1081,13 @@ export namespace Clapper {
         /**
          * Number of proxies in the list.
          * @since 0.10
+         * @read-only
          */
         get n_proxies(): number;
         /**
          * Number of proxies in the list.
          * @since 0.10
+         * @read-only
          */
         get nProxies(): number;
 
@@ -2044,22 +2092,27 @@ export namespace Clapper {
 
         /**
          * Ending time of marker.
+         * @construct-only
          */
         get end(): number;
         /**
          * Type of stream.
+         * @construct-only
          */
         get marker_type(): MarkerType;
         /**
          * Type of stream.
+         * @construct-only
          */
         get markerType(): MarkerType;
         /**
          * Starting time of marker.
+         * @construct-only
          */
         get start(): number;
         /**
          * Title of marker.
+         * @construct-only
          */
         get title(): string;
 
@@ -2183,6 +2236,7 @@ export namespace Clapper {
          * NOTE: This property was added in 0.8 as write at construct only.
          * It can also be read only since Clapper 0.10.
          * @since 0.8
+         * @construct-only
          */
         get cache_location(): string;
         /**
@@ -2195,16 +2249,19 @@ export namespace Clapper {
          * NOTE: This property was added in 0.8 as write at construct only.
          * It can also be read only since Clapper 0.10.
          * @since 0.8
+         * @construct-only
          */
         get cacheLocation(): string;
         /**
          * Media container format.
          * @deprecated since 0.10: Get `container-format` from {@link Clapper.MediaItem.tags} instead.
+         * @read-only
          */
         get container_format(): string;
         /**
          * Media container format.
          * @deprecated since 0.10: Get `container-format` from {@link Clapper.MediaItem.tags} instead.
+         * @read-only
          */
         get containerFormat(): string;
         /**
@@ -2213,10 +2270,12 @@ export namespace Clapper {
          * This might be a different value compared to `duration` from
          * {@link Clapper.MediaItem.tags}, as this value is updated
          * during decoding instead of being a fixed value from metadata.
+         * @read-only
          */
         get duration(): number;
         /**
          * Media Item ID.
+         * @read-only
          */
         get id(): number;
         /**
@@ -2230,6 +2289,7 @@ export namespace Clapper {
          * Once redirect URI in item is present, player will use that URI instead
          * of the default one. Cache location takes precedence over both URIs through.
          * @since 0.10
+         * @read-only
          */
         get redirect_uri(): string;
         /**
@@ -2243,6 +2303,7 @@ export namespace Clapper {
          * Once redirect URI in item is present, player will use that URI instead
          * of the default one. Cache location takes precedence over both URIs through.
          * @since 0.10
+         * @read-only
          */
         get redirectUri(): string;
         /**
@@ -2253,10 +2314,12 @@ export namespace Clapper {
         /**
          * A readable list of tags stored in media item.
          * @since 0.10
+         * @read-only
          */
         get tags(): Gst.TagList;
         /**
          * Media timeline.
+         * @read-only
          */
         get timeline(): Timeline;
         /**
@@ -2265,10 +2328,12 @@ export namespace Clapper {
          * This might be a different string compared to `title` from
          * {@link Clapper.MediaItem.tags}, as this gives parsed
          * title from file name/URI as fallback when no `title` tag.
+         * @read-only
          */
         get title(): string;
         /**
          * Media URI.
+         * @construct-only
          */
         get uri(): string;
 
@@ -2440,11 +2505,13 @@ export namespace Clapper {
         /**
          * The basename of an installed .desktop file with the ".desktop" extension stripped.
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
+         * @construct-only
          */
         get desktop_entry(): string;
         /**
          * The basename of an installed .desktop file with the ".desktop" extension stripped.
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
+         * @construct-only
          */
         get desktopEntry(): string;
         /**
@@ -2464,6 +2531,7 @@ export namespace Clapper {
          *
          * Example: "My Player"
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
+         * @construct-only
          */
         get identity(): string;
         /**
@@ -2474,6 +2542,7 @@ export namespace Clapper {
          *
          * Example: "org.mpris.MediaPlayer2.MyPlayer.instance123"
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
+         * @construct-only
          */
         get own_name(): string;
         /**
@@ -2484,6 +2553,7 @@ export namespace Clapper {
          *
          * Example: "org.mpris.MediaPlayer2.MyPlayer.instance123"
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
+         * @construct-only
          */
         get ownName(): string;
         /**
@@ -2580,12 +2650,14 @@ export namespace Clapper {
              * through its {@link Clapper.MediaItem.cache_location} property.
              * @signal
              * @since 0.8
+             * @run-last
              */
             'download-complete': (arg0: MediaItem, arg1: string) => void;
             /**
              * These are normal error messages. Upon emitting this signal,
              * playback will stop due to the error.
              * @signal
+             * @run-last
              */
             error: (arg0: GLib.Error, arg1: string | null) => void;
             /**
@@ -2601,6 +2673,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             message: (arg0: Gst.Message) => void;
             /**
@@ -2609,17 +2683,20 @@ export namespace Clapper {
              * The `description` and `installer_detail` can be used to present the user more info
              * about what is missing and prompt him to install it with an external installer.
              * @signal
+             * @run-last
              */
             'missing-plugin': (arg0: string, arg1: string | null) => void;
             /**
              * A seeking operation has finished. Player is now at playback position after seek.
              * @signal
+             * @run-last
              */
             'seek-done': () => void;
             /**
              * These are some usually more minor error messages that should
              * be treated like warnings. Should not generally prevent/stop playback.
              * @signal
+             * @run-last
              */
             warning: (arg0: GLib.Error, arg1: string | null) => void;
             'notify::adaptive-bandwidth': (pspec: GObject.ParamSpec) => void;
@@ -2666,6 +2743,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::adaptive-bandwidth': (arg0: Gst.Message) => void;
             /**
@@ -2681,6 +2760,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::adaptive-max-bitrate': (arg0: Gst.Message) => void;
             /**
@@ -2696,6 +2777,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::adaptive-min-bitrate': (arg0: Gst.Message) => void;
             /**
@@ -2711,6 +2794,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::adaptive-start-bitrate': (arg0: Gst.Message) => void;
             /**
@@ -2726,6 +2811,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::audio-enabled': (arg0: Gst.Message) => void;
             /**
@@ -2741,6 +2828,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::audio-filter': (arg0: Gst.Message) => void;
             /**
@@ -2756,6 +2845,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::audio-offset': (arg0: Gst.Message) => void;
             /**
@@ -2771,6 +2862,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::audio-sink': (arg0: Gst.Message) => void;
             /**
@@ -2786,6 +2879,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::audio-streams': (arg0: Gst.Message) => void;
             /**
@@ -2801,6 +2896,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::autoplay': (arg0: Gst.Message) => void;
             /**
@@ -2816,6 +2913,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::current-audio-decoder': (arg0: Gst.Message) => void;
             /**
@@ -2831,6 +2930,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::current-video-decoder': (arg0: Gst.Message) => void;
             /**
@@ -2846,6 +2947,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::download-dir': (arg0: Gst.Message) => void;
             /**
@@ -2861,6 +2964,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::download-enabled': (arg0: Gst.Message) => void;
             /**
@@ -2876,6 +2981,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::enhancer-proxies': (arg0: Gst.Message) => void;
             /**
@@ -2891,6 +2998,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::mute': (arg0: Gst.Message) => void;
             /**
@@ -2906,6 +3015,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::position': (arg0: Gst.Message) => void;
             /**
@@ -2921,6 +3032,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::queue': (arg0: Gst.Message) => void;
             /**
@@ -2936,6 +3049,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::speed': (arg0: Gst.Message) => void;
             /**
@@ -2951,6 +3066,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::state': (arg0: Gst.Message) => void;
             /**
@@ -2966,6 +3083,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::subtitle-font-desc': (arg0: Gst.Message) => void;
             /**
@@ -2981,6 +3100,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::subtitle-offset': (arg0: Gst.Message) => void;
             /**
@@ -2996,6 +3117,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::subtitle-streams': (arg0: Gst.Message) => void;
             /**
@@ -3011,6 +3134,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::subtitles-enabled': (arg0: Gst.Message) => void;
             /**
@@ -3026,6 +3151,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::video-enabled': (arg0: Gst.Message) => void;
             /**
@@ -3041,6 +3168,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::video-filter': (arg0: Gst.Message) => void;
             /**
@@ -3056,6 +3185,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::video-sink': (arg0: Gst.Message) => void;
             /**
@@ -3071,6 +3202,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::video-streams': (arg0: Gst.Message) => void;
             /**
@@ -3086,6 +3219,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::volume': (arg0: Gst.Message) => void;
             /**
@@ -3101,6 +3236,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::name': (arg0: Gst.Message) => void;
             /**
@@ -3116,6 +3253,8 @@ export namespace Clapper {
              * of connecting to simply `message` with no details (without message name).
              * @signal
              * @since 0.10
+             * @detailed
+             * @run-last
              */
             'message::parent': (arg0: Gst.Message) => void;
         }
@@ -3208,6 +3347,7 @@ export namespace Clapper {
          * Apps can use this to determine and set an optimal value for
          * {@link Clapper.Player.adaptive_start_bitrate}.
          * @since 0.8
+         * @read-only
          */
         get adaptive_bandwidth(): number;
         /**
@@ -3219,6 +3359,7 @@ export namespace Clapper {
          * Apps can use this to determine and set an optimal value for
          * {@link Clapper.Player.adaptive_start_bitrate}.
          * @since 0.8
+         * @read-only
          */
         get adaptiveBandwidth(): number;
         /**
@@ -3331,10 +3472,12 @@ export namespace Clapper {
         set audioSink(val: Gst.Element);
         /**
          * List of currently available audio streams.
+         * @read-only
          */
         get audio_streams(): StreamList;
         /**
          * List of currently available audio streams.
+         * @read-only
          */
         get audioStreams(): StreamList;
         /**
@@ -3344,18 +3487,22 @@ export namespace Clapper {
         set autoplay(val: boolean);
         /**
          * Currently used audio decoder.
+         * @read-only
          */
         get current_audio_decoder(): Gst.Element;
         /**
          * Currently used audio decoder.
+         * @read-only
          */
         get currentAudioDecoder(): Gst.Element;
         /**
          * Currently used video decoder.
+         * @read-only
          */
         get current_video_decoder(): Gst.Element;
         /**
          * Currently used video decoder.
+         * @read-only
          */
         get currentVideoDecoder(): Gst.Element;
         /**
@@ -3436,6 +3583,7 @@ export namespace Clapper {
          * Use these to inspect available enhancers on the system and configure
          * their properties on a per player instance basis.
          * @since 0.10
+         * @read-only
          */
         get enhancer_proxies(): EnhancerProxyList;
         /**
@@ -3444,6 +3592,7 @@ export namespace Clapper {
          * Use these to inspect available enhancers on the system and configure
          * their properties on a per player instance basis.
          * @since 0.10
+         * @read-only
          */
         get enhancerProxies(): EnhancerProxyList;
         /**
@@ -3453,10 +3602,12 @@ export namespace Clapper {
         set mute(val: boolean);
         /**
          * Current playback position as a decimal number in seconds.
+         * @read-only
          */
         get position(): number;
         /**
          * Clapper playback queue.
+         * @read-only
          */
         get queue(): Queue;
         /**
@@ -3466,6 +3617,7 @@ export namespace Clapper {
         set speed(val: number);
         /**
          * Current playback state.
+         * @read-only
          */
         get state(): PlayerState;
         /**
@@ -3490,10 +3642,12 @@ export namespace Clapper {
         set subtitleOffset(val: number);
         /**
          * List of currently available subtitle streams.
+         * @read-only
          */
         get subtitle_streams(): StreamList;
         /**
          * List of currently available subtitle streams.
+         * @read-only
          */
         get subtitleStreams(): StreamList;
         /**
@@ -3538,10 +3692,12 @@ export namespace Clapper {
         set videoSink(val: Gst.Element);
         /**
          * List of currently available video streams.
+         * @read-only
          */
         get video_streams(): StreamList;
         /**
          * List of currently available video streams.
+         * @read-only
          */
         get videoStreams(): StreamList;
         /**
@@ -4000,10 +4156,12 @@ export namespace Clapper {
         set currentIndex(val: number);
         /**
          * Currently selected media item for playback.
+         * @read-only
          */
         get current_item(): MediaItem;
         /**
          * Currently selected media item for playback.
+         * @read-only
          */
         get currentItem(): MediaItem;
         /**
@@ -4018,10 +4176,12 @@ export namespace Clapper {
         set instant(val: boolean);
         /**
          * Number of media items in the queue.
+         * @read-only
          */
         get n_items(): number;
         /**
          * Number of media items in the queue.
+         * @read-only
          */
         get nItems(): number;
         /**
@@ -4826,14 +4986,17 @@ export namespace Clapper {
 
         /**
          * Type of stream.
+         * @construct-only
          */
         get stream_type(): StreamType;
         /**
          * Type of stream.
+         * @construct-only
          */
         get streamType(): StreamType;
         /**
          * Title of stream.
+         * @read-only
          */
         get title(): string;
 
@@ -4945,18 +5108,22 @@ export namespace Clapper {
         set currentIndex(val: number);
         /**
          * Currently selected stream.
+         * @read-only
          */
         get current_stream(): Stream;
         /**
          * Currently selected stream.
+         * @read-only
          */
         get currentStream(): Stream;
         /**
          * Number of streams in the list.
+         * @read-only
          */
         get n_streams(): number;
         /**
          * Number of streams in the list.
+         * @read-only
          */
         get nStreams(): number;
 
@@ -5622,18 +5789,22 @@ export namespace Clapper {
 
         /**
          * Stream language code in ISO-639 format.
+         * @read-only
          */
         get lang_code(): string;
         /**
          * Stream language code in ISO-639 format.
+         * @read-only
          */
         get langCode(): string;
         /**
          * Stream language name.
+         * @read-only
          */
         get lang_name(): string;
         /**
          * Stream language name.
+         * @read-only
          */
         get langName(): string;
 
@@ -5802,10 +5973,12 @@ export namespace Clapper {
 
         /**
          * Number of markers in the timeline.
+         * @read-only
          */
         get n_markers(): number;
         /**
          * Number of markers in the timeline.
+         * @read-only
          */
         get nMarkers(): number;
 
@@ -6466,30 +6639,37 @@ export namespace Clapper {
 
         /**
          * Stream bitrate.
+         * @read-only
          */
         get bitrate(): number;
         /**
          * Stream codec.
+         * @read-only
          */
         get codec(): string;
         /**
          * Stream FPS.
+         * @read-only
          */
         get fps(): number;
         /**
          * Stream height.
+         * @read-only
          */
         get height(): number;
         /**
          * Stream pixel format.
+         * @read-only
          */
         get pixel_format(): string;
         /**
          * Stream pixel format.
+         * @read-only
          */
         get pixelFormat(): string;
         /**
          * Stream width.
+         * @read-only
          */
         get width(): number;
 

@@ -34,6 +34,9 @@ export namespace Mx {
      * Mx-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ActorManagerError {
         export const $gtype: GObject.GType<ActorManagerError>;
     }
@@ -48,6 +51,9 @@ export namespace Mx {
         UNKNOWN_OPERATION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Align {
         export const $gtype: GObject.GType<Align>;
     }
@@ -71,6 +77,9 @@ export namespace Mx {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DragAxis {
         export const $gtype: GObject.GType<DragAxis>;
     }
@@ -84,6 +93,9 @@ export namespace Mx {
         Y,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FocusDirection {
         export const $gtype: GObject.GType<FocusDirection>;
     }
@@ -101,6 +113,9 @@ export namespace Mx {
         PREVIOUS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FocusHint {
         export const $gtype: GObject.GType<FocusHint>;
     }
@@ -118,6 +133,9 @@ export namespace Mx {
         FROM_RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FontWeight {
         export const $gtype: GObject.GType<FontWeight>;
     }
@@ -167,6 +185,9 @@ export namespace Mx {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ImageScaleMode {
         export const $gtype: GObject.GType<ImageScaleMode>;
     }
@@ -190,6 +211,9 @@ export namespace Mx {
         CROP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace KineticScrollViewState {
         export const $gtype: GObject.GType<KineticScrollViewState>;
     }
@@ -204,6 +228,9 @@ export namespace Mx {
         CLAMPING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LongPressAction {
         export const $gtype: GObject.GType<LongPressAction>;
     }
@@ -217,6 +244,9 @@ export namespace Mx {
         CANCEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Orientation {
         export const $gtype: GObject.GType<Orientation>;
     }
@@ -236,6 +266,9 @@ export namespace Mx {
         VERTICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Position {
         export const $gtype: GObject.GType<Position>;
     }
@@ -264,6 +297,9 @@ export namespace Mx {
         LEFT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScrollPolicy {
         export const $gtype: GObject.GType<ScrollPolicy>;
     }
@@ -291,6 +327,9 @@ export namespace Mx {
         BOTH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StyleError {
         export const $gtype: GObject.GType<StyleError>;
     }
@@ -302,6 +341,9 @@ export namespace Mx {
         INVALID_FILE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TooltipAnimation {
         export const $gtype: GObject.GType<TooltipAnimation>;
     }
@@ -447,6 +489,9 @@ export namespace Mx {
     interface ClipboardCallbackFunc {
         (clipboard: Clipboard, text: string): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace ApplicationFlags {
         export const $gtype: GObject.GType<ApplicationFlags>;
     }
@@ -459,6 +504,9 @@ export namespace Mx {
         KEEP_ALIVE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StyleChangedFlags {
         export const $gtype: GObject.GType<StyleChangedFlags>;
     }
@@ -491,11 +539,13 @@ export namespace Mx {
              * an incorrect type was given, no signal will be emitted.
              * @signal
              * @since 1.4
+             * @run-last
              */
             activate: (arg0: GLib.Variant) => void;
             /**
              * Emitted when the MxAction is activated.
              * @signal
+             * @run-last
              */
             activated: () => void;
             'notify::active': (pspec: GObject.ParamSpec) => void;
@@ -636,6 +686,7 @@ export namespace Mx {
          * If the action is disabled then calls to {@link Gio.Action.activate} and
          * {@link Gio.Action.change_state} have no effect.
          * @since 2.28
+         * @read-only
          * @category Inherited from Gio.Action
          */
         get enabled(): boolean;
@@ -643,6 +694,7 @@ export namespace Mx {
          * The name of the action.  This is mostly meaningful for identifying
          * the action once it has been added to a {@link Gio.ActionGroup}. It is immutable.
          * @since 2.28
+         * @read-only
          * @category Inherited from Gio.Action
          */
         get name(): string;
@@ -651,6 +703,7 @@ export namespace Mx {
          * action. This is immutable, and may be `NULL` if no parameter is needed when
          * activating the action.
          * @since 2.28
+         * @read-only
          * @category Inherited from Gio.Action
          */
         get parameter_type(): GLib.VariantType;
@@ -659,12 +712,14 @@ export namespace Mx {
          * action. This is immutable, and may be `NULL` if no parameter is needed when
          * activating the action.
          * @since 2.28
+         * @read-only
          * @category Inherited from Gio.Action
          */
         get parameterType(): GLib.VariantType;
         /**
          * The state of the action, or `NULL` if the action is stateless.
          * @since 2.28
+         * @read-only
          * @category Inherited from Gio.Action
          */
         get state(): GLib.Variant;
@@ -672,6 +727,7 @@ export namespace Mx {
          * The {@link GLib.VariantType} of the state that the action has, or `NULL` if the
          * action is stateless. This is immutable.
          * @since 2.28
+         * @read-only
          * @category Inherited from Gio.Action
          */
         get state_type(): GLib.VariantType;
@@ -679,6 +735,7 @@ export namespace Mx {
          * The {@link GLib.VariantType} of the state that the action has, or `NULL` if the
          * action is stateless. This is immutable.
          * @since 2.28
+         * @read-only
          * @category Inherited from Gio.Action
          */
         get stateType(): GLib.VariantType;
@@ -1339,42 +1396,49 @@ export namespace Mx {
              * Emitted when an actor add operation has completed.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'actor-added': (arg0: number, arg1: Clutter.Actor, arg2: Clutter.Actor) => void;
             /**
              * Emitted when an actor creation operation has completed.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'actor-created': (arg0: number, arg1: Clutter.Actor) => void;
             /**
              * Emitted when all queued operations involving `actor` have completed.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'actor-finished': (arg0: Clutter.Actor) => void;
             /**
              * Emitted when an actor remove operation has completed.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'actor-removed': (arg0: number, arg1: Clutter.Actor, arg2: Clutter.Actor) => void;
             /**
              * Emitted when an operation has been cancelled.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'operation-cancelled': (arg0: number) => void;
             /**
              * Emitted when an operation has completed successfully.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'operation-completed': (arg0: number) => void;
             /**
              * Emitted when an operation has failed.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'operation-failed': (arg0: number, arg1: GLib.Error) => void;
             'notify::n-operations': (pspec: GObject.ParamSpec) => void;
@@ -1401,8 +1465,17 @@ export namespace Mx {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get n_operations(): number;
+        /**
+         * @read-only
+         */
         get nOperations(): number;
+        /**
+         * @construct-only
+         */
         get stage(): Clutter.Stage;
         get time_slice(): number;
         set time_slice(val: number);
@@ -1588,11 +1661,13 @@ export namespace Mx {
             /**
              * Emitted when any of the adjustment values have changed
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
              * Emitted when the animation started by mx_adjustment_interpolate completes
              * @signal
+             * @run-last
              */
             'interpolation-completed': () => void;
             'notify::clamp-value': (pspec: GObject.ParamSpec) => void;
@@ -1857,6 +1932,7 @@ export namespace Mx {
             /**
              * Emitted when an action has been added or removed from the MxApplication.
              * @signal
+             * @run-last
              */
             'actions-changed': () => void;
             'notify::application-name': (pspec: GObject.ParamSpec) => void;
@@ -1882,8 +1958,17 @@ export namespace Mx {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get application_name(): string;
+        /**
+         * @construct-only
+         */
         get applicationName(): string;
+        /**
+         * @construct-only
+         */
         get flags(): number;
 
         /**
@@ -3996,6 +4081,7 @@ export namespace Mx {
              * Emitted when the user activates the button, either with a mouse press and
              * release or with the keyboard.
              * @signal
+             * @run-last
              */
             clicked: () => void;
             'notify::action': (pspec: GObject.ParamSpec) => void;
@@ -9321,11 +9407,13 @@ export namespace Mx {
             /**
              * Emitted when the primary icon is clicked
              * @signal
+             * @run-last
              */
             'primary-icon-clicked': () => void;
             /**
              * Emitted when the secondary icon is clicked
              * @signal
+             * @run-last
              */
             'secondary-icon-clicked': () => void;
             'notify::clutter-text': (pspec: GObject.ParamSpec) => void;
@@ -9467,7 +9555,13 @@ export namespace Mx {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get clutter_text(): Clutter.Text;
+        /**
+         * @read-only
+         */
         get clutterText(): Clutter.Text;
         get hint_text(): string;
         set hint_text(val: string);
@@ -10253,6 +10347,7 @@ export namespace Mx {
              * Emitted after the expand animation finishes. Check the "expanded" property
              * of the {@link Mx.Expander} to determine if the expander is expanded or not.
              * @signal
+             * @run-last
              */
             'expand-complete': () => void;
             'notify::expanded': (pspec: GObject.ParamSpec) => void;
@@ -11886,7 +11981,13 @@ export namespace Mx {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get focused(): Clutter.Actor;
+        /**
+         * @read-only
+         */
         get stage(): Clutter.Stage;
 
         /**
@@ -14477,12 +14578,14 @@ export namespace Mx {
              * and cannot load the requested image.
              * @signal
              * @since 1.2
+             * @run-last
              */
             'image-load-error': (arg0: GLib.Error) => void;
             /**
              * Emitted when an asynchronous image load has completed successfully
              * @signal
              * @since 1.2
+             * @run-last
              */
             'image-loaded': () => void;
             'notify::allow-upscale': (pspec: GObject.ParamSpec) => void;
@@ -16422,6 +16525,9 @@ export namespace Mx {
         set scroll_policy(val: ScrollPolicy);
         get scrollPolicy(): ScrollPolicy;
         set scrollPolicy(val: ScrollPolicy);
+        /**
+         * @read-only
+         */
         get state(): KineticScrollViewState;
         get use_captured(): boolean;
         set use_captured(val: boolean);
@@ -17231,7 +17337,13 @@ export namespace Mx {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get clutter_text(): Clutter.Text;
+        /**
+         * @read-only
+         */
         get clutterText(): Clutter.Text;
         get fade_out(): boolean;
         set fade_out(val: boolean);
@@ -18783,6 +18895,7 @@ export namespace Mx {
         interface SignalSignatures extends FloatingWidget.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'action-activated': (arg0: Action) => void;
             'notify::disabled': (pspec: GObject.ParamSpec) => void;
@@ -20429,7 +20542,13 @@ export namespace Mx {
         set accumulation_enabled(val: boolean);
         get accumulationEnabled(): boolean;
         set accumulationEnabled(val: boolean);
+        /**
+         * @read-only
+         */
         get accumulation_material(): any;
+        /**
+         * @read-only
+         */
         get accumulationMaterial(): any;
         get auto_update(): boolean;
         set auto_update(val: boolean);
@@ -20437,6 +20556,7 @@ export namespace Mx {
         set autoUpdate(val: boolean);
         /**
          * The off-screen buffer used to draw the child.
+         * @read-only
          */
         get buffer(): any;
         get child(): Clutter.Actor;
@@ -21187,7 +21307,13 @@ export namespace Mx {
         set clearOnChange(val: boolean);
         get editable(): boolean;
         set editable(val: boolean);
+        /**
+         * @read-only
+         */
         get entry(): Entry;
+        /**
+         * @read-only
+         */
         get level(): number;
 
         /**
@@ -22698,10 +22824,12 @@ export namespace Mx {
         interface SignalSignatures extends Bin.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'scroll-start': () => void;
             /**
              * @signal
+             * @run-last
              */
             'scroll-stop': () => void;
             'notify::adjustment': (pspec: GObject.ParamSpec) => void;
@@ -25000,6 +25128,7 @@ export namespace Mx {
              * Emitted after the animation has displayed the final frame.
              * @signal
              * @since 1.2
+             * @run-last
              */
             looped: () => void;
             'notify::animating': (pspec: GObject.ParamSpec) => void;
@@ -26754,6 +26883,7 @@ export namespace Mx {
              * Indicates that the style data has changed in some way. For example, a new
              * stylesheet may have been loaded.
              * @signal
+             * @run-last
              */
             changed: () => void;
         }
@@ -26979,13 +27109,25 @@ export namespace Mx {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get column_count(): number;
+        /**
+         * @read-only
+         */
         get columnCount(): number;
         get column_spacing(): number;
         set column_spacing(val: number);
         get columnSpacing(): number;
         set columnSpacing(val: number);
+        /**
+         * @read-only
+         */
         get row_count(): number;
+        /**
+         * @read-only
+         */
         get rowCount(): number;
         get row_spacing(): number;
         set row_spacing(val: number);
@@ -30049,6 +30191,7 @@ export namespace Mx {
              * clicked. Return `TRUE` from this handler to prevent the stage from being
              * destroyed.
              * @signal
+             * @run-last
              */
             'close-button-clicked': () => boolean | void;
             'notify::has-close-button': (pspec: GObject.ParamSpec) => void;
@@ -32126,6 +32269,7 @@ export namespace Mx {
             /**
              * Emitted when the user holds a mouse button down for a longer period.
              * @signal
+             * @run-last
              */
             'long-press': (arg0: number, arg1: number, arg2: LongPressAction) => boolean | void;
             'notify::disabled': (pspec: GObject.ParamSpec) => void;
@@ -33512,6 +33656,7 @@ export namespace Mx {
             /**
              * Emitted when the stage managed by the window is destroyed.
              * @signal
+             * @run-last
              */
             destroy: () => void;
             'notify::child': (pspec: GObject.ParamSpec) => void;
@@ -33566,7 +33711,13 @@ export namespace Mx {
 
         get child(): Clutter.Actor;
         set child(val: Clutter.Actor);
+        /**
+         * @construct-only
+         */
         get clutter_stage(): Clutter.Stage;
+        /**
+         * @construct-only
+         */
         get clutterStage(): Clutter.Stage;
         get fullscreen(): boolean;
         set fullscreen(val: boolean);
@@ -33594,9 +33745,21 @@ export namespace Mx {
         set window_rotation(val: WindowRotation);
         get windowRotation(): WindowRotation;
         set windowRotation(val: WindowRotation);
+        /**
+         * @read-only
+         */
         get window_rotation_angle(): number;
+        /**
+         * @read-only
+         */
         get windowRotationAngle(): number;
+        /**
+         * @read-only
+         */
         get window_rotation_timeline(): Clutter.Timeline;
+        /**
+         * @read-only
+         */
         get windowRotationTimeline(): Clutter.Timeline;
 
         /**

@@ -64,7 +64,13 @@ export namespace Parquet {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set arrow_file_reader(val: any);
+        /**
+         * @construct-only
+         */
         set arrowFileReader(val: any);
 
         /**
@@ -160,7 +166,13 @@ export namespace Parquet {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set arrow_file_writer(val: any);
+        /**
+         * @construct-only
+         */
         set arrowFileWriter(val: any);
 
         /**

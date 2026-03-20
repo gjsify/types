@@ -61,6 +61,7 @@ export namespace SocialWebClient {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'online-changed': (arg0: boolean) => void;
         }
@@ -164,7 +165,13 @@ export namespace SocialWebClient {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get object_path(): string;
+        /**
+         * @construct-only
+         */
         get objectPath(): string;
 
         /**
@@ -245,7 +252,13 @@ export namespace SocialWebClient {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get object_path(): string;
+        /**
+         * @construct-only
+         */
         get objectPath(): string;
 
         /**
@@ -392,18 +405,22 @@ export namespace SocialWebClient {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'avatar-retrieved': (arg0: string) => void;
             /**
              * @signal
+             * @run-first
              */
             'capabilities-changed': (arg0: string[]) => void;
             /**
              * @signal
+             * @run-first
              */
             'status-updated': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-first
              */
             'user-changed': () => void;
         }

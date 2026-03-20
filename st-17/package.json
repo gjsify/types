@@ -6,71 +6,65 @@
     "module": "st-17.js",
     "main": "st-17.js",
     "exports": {
-        "./ambient": {
-            "types": "./st-17-ambient.d.ts",
-            "import": "./st-17-ambient.js",
-            "default": "./st-17-ambient.js"
-        },
-        "./import": {
-            "types": "./st-17-import.d.ts",
-            "import": "./st-17-import.js",
-            "default": "./st-17-import.js"
-        },
-        "./st-17": {
-            "types": "./st-17.d.ts",
-            "import": "./st-17.js",
-            "default": "./st-17.js"
-        },
-        ".": {
-            "types": "./index.d.ts",
-            "import": "./index.js",
-            "default": "./index.js"
-        }
+      "./ambient": {
+        "types": "./st-17-ambient.d.ts",
+        "import": "./st-17-ambient.js",
+        "default": "./st-17-ambient.js"
+      },
+      "./import": {
+        "types": "./st-17-import.d.ts",
+        "import": "./st-17-import.js",
+        "default": "./st-17-import.js"
+      },
+      "./st-17": {
+        "types": "./st-17.d.ts",
+        "import": "./st-17.js",
+        "default": "./st-17.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
     },
     "scripts": {
-        "test": "tsc --project tsconfig.json"
+      "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-        "@girs/atk-1.0": "workspace:^",
-        "@girs/cairo-1.0": "workspace:^",
-        "@girs/clutter-17": "workspace:^",
-        "@girs/cogl-17": "workspace:^",
-        "@girs/freetype2-2.0": "workspace:^",
-        "@girs/gdesktopenums-3.0": "workspace:^",
-        "@girs/gdkpixbuf-2.0": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/gjs": "workspace:^",
-        "@girs/gl-1.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/graphene-1.0": "workspace:^",
-        "@girs/harfbuzz-0.0": "workspace:^",
-        "@girs/meta-17": "workspace:^",
-        "@girs/mtk-17": "workspace:^",
-        "@girs/pango-1.0": "workspace:^",
-        "@girs/xfixes-4.0": "workspace:^",
-        "@girs/xlib-2.0": "workspace:^"
-    },
+      "@girs/gjs": "workspace:^",
+      "@girs/meta-17": "workspace:^",
+      "@girs/xlib-2.0": "workspace:^",
+      "@girs/xfixes-4.0": "workspace:^",
+      "@girs/mtk-17": "workspace:^",
+      "@girs/graphene-1.0": "workspace:^",
+      "@girs/gobject-2.0": "workspace:^",
+      "@girs/glib-2.0": "workspace:^",
+      "@girs/gio-2.0": "workspace:^",
+      "@girs/gmodule-2.0": "workspace:^",
+      "@girs/gdesktopenums-3.0": "workspace:^",
+      "@girs/cogl-17": "workspace:^",
+      "@girs/gl-1.0": "workspace:^",
+      "@girs/clutter-17": "workspace:^",
+      "@girs/pango-1.0": "workspace:^",
+      "@girs/cairo-1.0": "workspace:^",
+      "@girs/harfbuzz-0.0": "workspace:^",
+      "@girs/freetype2-2.0": "workspace:^",
+      "@girs/atk-1.0": "workspace:^",
+      "@girs/gdkpixbuf-2.0": "workspace:^"    },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "St-17"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "St-17"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/types.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/st-17#readme"
 }
+
+

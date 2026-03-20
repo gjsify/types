@@ -21,6 +21,9 @@ export namespace GstWebRTC {
      * GstWebRTC-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCBundlePolicy {
         export const $gtype: GObject.GType<WebRTCBundlePolicy>;
     }
@@ -50,6 +53,9 @@ export namespace GstWebRTC {
         MAX_BUNDLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCDTLSSetup {
         export const $gtype: GObject.GType<WebRTCDTLSSetup>;
     }
@@ -76,6 +82,9 @@ export namespace GstWebRTC {
         PASSIVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCDTLSTransportState {
         export const $gtype: GObject.GType<WebRTCDTLSTransportState>;
     }
@@ -106,6 +115,9 @@ export namespace GstWebRTC {
         CONNECTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCDataChannelState {
         export const $gtype: GObject.GType<WebRTCDataChannelState>;
     }
@@ -199,6 +211,9 @@ export namespace GstWebRTC {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCFECType {
         export const $gtype: GObject.GType<WebRTCFECType>;
     }
@@ -218,6 +233,9 @@ export namespace GstWebRTC {
         ULP_RED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCICEComponent {
         export const $gtype: GObject.GType<WebRTCICEComponent>;
     }
@@ -236,6 +254,9 @@ export namespace GstWebRTC {
         RTCP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCICEConnectionState {
         export const $gtype: GObject.GType<WebRTCICEConnectionState>;
     }
@@ -275,6 +296,9 @@ export namespace GstWebRTC {
         CLOSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCICEGatheringState {
         export const $gtype: GObject.GType<WebRTCICEGatheringState>;
     }
@@ -298,6 +322,9 @@ export namespace GstWebRTC {
         COMPLETE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCICERole {
         export const $gtype: GObject.GType<WebRTCICERole>;
     }
@@ -316,6 +343,9 @@ export namespace GstWebRTC {
         CONTROLLING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCICETransportPolicy {
         export const $gtype: GObject.GType<WebRTCICETransportPolicy>;
     }
@@ -337,6 +367,9 @@ export namespace GstWebRTC {
         RELAY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCKind {
         export const $gtype: GObject.GType<WebRTCKind>;
     }
@@ -361,6 +394,9 @@ export namespace GstWebRTC {
         VIDEO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCPeerConnectionState {
         export const $gtype: GObject.GType<WebRTCPeerConnectionState>;
     }
@@ -396,6 +432,9 @@ export namespace GstWebRTC {
         CLOSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCPriorityType {
         export const $gtype: GObject.GType<WebRTCPriorityType>;
     }
@@ -424,6 +463,9 @@ export namespace GstWebRTC {
         HIGH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCRTPTransceiverDirection {
         export const $gtype: GObject.GType<WebRTCRTPTransceiverDirection>;
     }
@@ -454,6 +496,9 @@ export namespace GstWebRTC {
         SENDRECV,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCSCTPTransportState {
         export const $gtype: GObject.GType<WebRTCSCTPTransportState>;
     }
@@ -482,6 +527,9 @@ export namespace GstWebRTC {
         CLOSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCSDPType {
         export const $gtype: GObject.GType<WebRTCSDPType>;
     }
@@ -509,6 +557,9 @@ export namespace GstWebRTC {
         ROLLBACK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCSignalingState {
         export const $gtype: GObject.GType<WebRTCSignalingState>;
     }
@@ -544,6 +595,9 @@ export namespace GstWebRTC {
         HAVE_REMOTE_PRANSWER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WebRTCStatsType {
         export const $gtype: GObject.GType<WebRTCStatsType>;
     }
@@ -665,11 +719,29 @@ export namespace GstWebRTC {
         set certificate(val: string);
         get client(): boolean;
         set client(val: boolean);
+        /**
+         * @read-only
+         */
         get remote_certificate(): string;
+        /**
+         * @read-only
+         */
         get remoteCertificate(): string;
+        /**
+         * @construct-only
+         */
         get session_id(): number;
+        /**
+         * @construct-only
+         */
         get sessionId(): number;
+        /**
+         * @read-only
+         */
         get state(): WebRTCDTLSTransportState;
+        /**
+         * @read-only
+         */
         get transport(): WebRTCICETransport;
 
         /**
@@ -717,38 +789,50 @@ export namespace GstWebRTC {
             /**
              * Close the data channel
              * @signal
+             * @action
+             * @run-last
              */
             close: () => void;
             /**
              * @signal
+             * @run-last
              */
             'on-buffered-amount-low': () => void;
             /**
              * @signal
+             * @run-last
              */
             'on-close': () => void;
             /**
              * @signal
+             * @run-last
              */
             'on-error': (arg0: GLib.Error) => void;
             /**
              * @signal
+             * @run-last
              */
             'on-message-data': (arg0: GLib.Bytes | null) => void;
             /**
              * @signal
+             * @run-last
              */
             'on-message-string': (arg0: string | null) => void;
             /**
              * @signal
+             * @run-last
              */
             'on-open': () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'send-data': (arg0: GLib.Bytes | null) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'send-string': (arg0: string | null) => void;
             'notify::buffered-amount': (pspec: GObject.ParamSpec) => void;
@@ -795,23 +879,65 @@ export namespace GstWebRTC {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get buffered_amount(): number;
+        /**
+         * @read-only
+         */
         get bufferedAmount(): number;
         get buffered_amount_low_threshold(): number;
         set buffered_amount_low_threshold(val: number);
         get bufferedAmountLowThreshold(): number;
         set bufferedAmountLowThreshold(val: number);
+        /**
+         * @construct-only
+         */
         get id(): number;
+        /**
+         * @construct-only
+         */
         get label(): string;
+        /**
+         * @construct-only
+         */
         get max_packet_lifetime(): number;
+        /**
+         * @construct-only
+         */
         get maxPacketLifetime(): number;
+        /**
+         * @construct-only
+         */
         get max_retransmits(): number;
+        /**
+         * @construct-only
+         */
         get maxRetransmits(): number;
+        /**
+         * @construct-only
+         */
         get negotiated(): boolean;
+        /**
+         * @construct-only
+         */
         get ordered(): boolean;
+        /**
+         * @construct-only
+         */
         get priority(): WebRTCPriorityType;
+        /**
+         * @construct-only
+         */
         get protocol(): string;
+        /**
+         * @read-only
+         */
         get ready_state(): WebRTCDataChannelState;
+        /**
+         * @read-only
+         */
         get readyState(): WebRTCDataChannelState;
 
         /**
@@ -888,6 +1014,8 @@ export namespace GstWebRTC {
              * are supplied, they will be discovered automatically. Calling this signal
              * stops automatic ICE gathering.
              * @signal
+             * @action
+             * @run-last
              */
             'add-local-ip-address': (arg0: string) => boolean | void;
             'notify::max-rtp-port': (pspec: GObject.ParamSpec) => void;
@@ -1230,7 +1358,13 @@ export namespace GstWebRTC {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get stream_id(): number;
+        /**
+         * @construct-only
+         */
         get streamId(): number;
 
         /**
@@ -1299,10 +1433,12 @@ export namespace GstWebRTC {
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'on-new-candidate': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'on-selected-candidate-pair-change': () => void;
             'notify::component': (pspec: GObject.ParamSpec) => void;
@@ -1330,9 +1466,21 @@ export namespace GstWebRTC {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get component(): WebRTCICEComponent;
+        /**
+         * @read-only
+         */
         get gathering_state(): WebRTCICEGatheringState;
+        /**
+         * @read-only
+         */
         get gatheringState(): WebRTCICEGatheringState;
+        /**
+         * @read-only
+         */
         get state(): WebRTCICEConnectionState;
 
         /**
@@ -1432,6 +1580,7 @@ export namespace GstWebRTC {
         /**
          * The DTLS transport for this receiver
          * @since 1.20
+         * @read-only
          */
         get transport(): WebRTCDTLSTransport;
 
@@ -1509,6 +1658,7 @@ export namespace GstWebRTC {
         /**
          * The DTLS transport for this sender
          * @since 1.20
+         * @read-only
          */
         get transport(): WebRTCDTLSTransport;
 
@@ -1617,6 +1767,7 @@ export namespace GstWebRTC {
          * of offers and answers. To change the transceiver's
          * directionality, set the value of the direction property.
          * @since 1.20
+         * @read-only
          */
         get current_direction(): WebRTCRTPTransceiverDirection;
         /**
@@ -1625,6 +1776,7 @@ export namespace GstWebRTC {
          * of offers and answers. To change the transceiver's
          * directionality, set the value of the direction property.
          * @since 1.20
+         * @read-only
          */
         get currentDirection(): WebRTCRTPTransceiverDirection;
         /**
@@ -1636,6 +1788,7 @@ export namespace GstWebRTC {
         /**
          * The kind of media this transceiver transports
          * @since 1.20
+         * @read-only
          */
         get kind(): WebRTCKind;
         /**
@@ -1646,10 +1799,20 @@ export namespace GstWebRTC {
          * associated m-line is rejected by either a remote offer or any
          * answer.
          * @since 1.20
+         * @read-only
          */
         get mid(): string;
+        /**
+         * @construct-only
+         */
         get mlineindex(): number;
+        /**
+         * @construct-only
+         */
         get receiver(): WebRTCRTPReceiver;
+        /**
+         * @construct-only
+         */
         get sender(): WebRTCRTPSender;
 
         /**
@@ -1722,11 +1885,29 @@ export namespace GstWebRTC {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get max_channels(): number;
+        /**
+         * @read-only
+         */
         get maxChannels(): number;
+        /**
+         * @read-only
+         */
         get max_message_size(): number;
+        /**
+         * @read-only
+         */
         get maxMessageSize(): number;
+        /**
+         * @read-only
+         */
         get state(): WebRTCSCTPTransportState;
+        /**
+         * @read-only
+         */
         get transport(): WebRTCDTLSTransport;
 
         /**

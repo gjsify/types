@@ -78,17 +78,20 @@ export namespace Gspell {
             /**
              * Emitted when the session dictionary is cleared.
              * @signal
+             * @run-last
              */
             'session-cleared': () => void;
             /**
              * Emitted when a word is added to the personal dictionary.
              * @signal
+             * @run-last
              */
             'word-added-to-personal': (arg0: string) => void;
             /**
              * Emitted when a word is added to the session dictionary. See
              * `gspell_checker_add_word_to_session()`.
              * @signal
+             * @run-last
              */
             'word-added-to-session': (arg0: string) => void;
             'notify::language': (pspec: GObject.ParamSpec) => void;
@@ -331,10 +334,12 @@ export namespace Gspell {
 
         /**
          * The {@link Gspell.Navigator} to use.
+         * @construct-only
          */
         get spell_navigator(): Navigator;
         /**
          * The {@link Gspell.Navigator} to use.
+         * @construct-only
          */
         get spellNavigator(): Navigator;
 
@@ -863,6 +868,7 @@ export namespace Gspell {
         /**
          * The {@link Gtk.Entry}.
          * @since 1.4
+         * @construct-only
          */
         get entry(): Gtk.Entry;
         /**
@@ -1013,6 +1019,7 @@ export namespace Gspell {
         /**
          * The {@link Gtk.EntryBuffer}.
          * @since 1.4
+         * @construct-only
          */
         get buffer(): Gtk.EntryBuffer;
         /**
@@ -1327,9 +1334,15 @@ export namespace Gspell {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -1643,6 +1656,7 @@ export namespace Gspell {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -1650,6 +1664,7 @@ export namespace Gspell {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -1771,6 +1786,7 @@ export namespace Gspell {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -6710,6 +6726,7 @@ export namespace Gspell {
         /**
          * The {@link Gtk.TextView}. The buffer is not sufficient, the view is needed to
          * scroll to the misspelled words.
+         * @construct-only
          */
         get view(): Gtk.TextView;
 
@@ -6846,6 +6863,7 @@ export namespace Gspell {
 
         /**
          * The {@link Gtk.TextBuffer}.
+         * @construct-only
          */
         get buffer(): Gtk.TextBuffer;
         /**
@@ -6976,6 +6994,7 @@ export namespace Gspell {
         set inlineSpellChecking(val: boolean);
         /**
          * The {@link Gtk.TextView}.
+         * @construct-only
          */
         get view(): Gtk.TextView;
 

@@ -916,6 +916,7 @@ export namespace EDataServerUI4 {
              * to get the window from the default GtkApplication.
              * @signal
              * @since 3.16
+             * @run-last
              */
             'get-dialog-parent': () => Gtk.Window | null;
             /**
@@ -924,6 +925,7 @@ export namespace EDataServerUI4 {
              * to get the window from the default GtkApplication.
              * @signal
              * @since 3.42
+             * @run-last
              */
             'get-dialog-parent-full': (arg0: EDataServer.Source | null) => Gtk.Window | null;
             'notify::auto-prompt': (pspec: GObject.ParamSpec) => void;
@@ -969,11 +971,13 @@ export namespace EDataServerUI4 {
         /**
          * The {@link EDataServer.SourceCredentialsProvider} object, which the prompter uses.
          * @since 3.16
+         * @read-only
          */
         get provider(): EDataServer.SourceCredentialsProvider;
         /**
          * The {@link EDataServer.SourceRegistry} object, to whose credential requests the prompter listens.
          * @since 3.16
+         * @construct-only
          */
         get registry(): EDataServer.SourceRegistry;
 
@@ -1725,6 +1729,7 @@ export namespace EDataServerUI4 {
              * Emitted when a prompt of ID `prompt_id` is finished.
              * @signal
              * @since 3.16
+             * @run-last
              */
             'prompt-finished': (arg0: any | null, arg1: EDataServer.NamedParameters | null) => void;
             'notify::extensible': (pspec: GObject.ParamSpec) => void;
@@ -1995,10 +2000,14 @@ export namespace EDataServerUI4 {
         interface SignalSignatures extends Gtk.Grid.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             activated: (arg0: ECal.ReminderData) => boolean | void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             changed: () => void;
             'notify::empty': (pspec: GObject.ParamSpec) => void;
@@ -2075,7 +2084,13 @@ export namespace EDataServerUI4 {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get empty(): boolean;
+        /**
+         * @construct-only
+         */
         get watcher(): ECal.ReminderWatcher;
 
         /**
@@ -3554,6 +3569,7 @@ export namespace EDataServerUI4 {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -3562,6 +3578,7 @@ export namespace EDataServerUI4 {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -3601,21 +3618,25 @@ export namespace EDataServerUI4 {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -3834,6 +3855,7 @@ export namespace EDataServerUI4 {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -3853,16 +3875,19 @@ export namespace EDataServerUI4 {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;

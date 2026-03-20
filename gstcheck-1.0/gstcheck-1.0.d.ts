@@ -570,6 +570,7 @@ export namespace GstCheck {
          * this property contains the value of the `start_time` argument. If
          * `gst_test_clock_new()` was called the clock started at time zero, and thus
          * this property contains the value 0.
+         * @construct-only
          */
         get start_time(): number;
         /**
@@ -578,6 +579,7 @@ export namespace GstCheck {
          * this property contains the value of the `start_time` argument. If
          * `gst_test_clock_new()` was called the clock started at time zero, and thus
          * this property contains the value 0.
+         * @construct-only
          */
         get startTime(): number;
 

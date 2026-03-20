@@ -158,6 +158,9 @@ export namespace RygelRenderer {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get player(): MediaPlayer;
 
         /**
@@ -401,7 +404,13 @@ export namespace RygelRenderer {
         set playback_state(val: string);
         get playbackState(): string;
         set playbackState(val: string);
+        /**
+         * @read-only
+         */
         get allowed_playback_speeds(): string[];
+        /**
+         * @read-only
+         */
         get allowedPlaybackSpeeds(): string[];
         get playback_speed(): string;
         set playback_speed(val: string);
@@ -411,7 +420,13 @@ export namespace RygelRenderer {
         set uri(val: string);
         get volume(): number;
         set volume(val: number);
+        /**
+         * @read-only
+         */
         get duration(): number;
+        /**
+         * @read-only
+         */
         get size(): number;
         get metadata(): string;
         set metadata(val: string);
@@ -419,16 +434,37 @@ export namespace RygelRenderer {
         set mime_type(val: string);
         get mimeType(): string;
         set mimeType(val: string);
+        /**
+         * @read-only
+         */
         get can_seek(): boolean;
+        /**
+         * @read-only
+         */
         get canSeek(): boolean;
+        /**
+         * @read-only
+         */
         get can_seek_bytes(): boolean;
+        /**
+         * @read-only
+         */
         get canSeekBytes(): boolean;
         get content_features(): string;
         set content_features(val: string);
         get contentFeatures(): string;
         set contentFeatures(val: string);
+        /**
+         * @read-only
+         */
         get position(): number;
+        /**
+         * @read-only
+         */
         get byte_position(): number;
+        /**
+         * @read-only
+         */
         get bytePosition(): number;
         get user_agent(): string;
         set user_agent(val: string);
@@ -735,13 +771,25 @@ export namespace RygelRenderer {
         set next_metadata(val: string);
         get nextMetadata(): string;
         set nextMetadata(val: string);
+        /**
+         * @read-only
+         */
         get current_transport_actions(): string;
+        /**
+         * @read-only
+         */
         get currentTransportActions(): string;
         get play_mode(): string;
         set play_mode(val: string);
         get playMode(): string;
         set playMode(val: string);
+        /**
+         * @read-only
+         */
         get can_pause(): boolean;
+        /**
+         * @read-only
+         */
         get canPause(): boolean;
 
         // Methods

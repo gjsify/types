@@ -25,6 +25,9 @@ export namespace RygelCore {
      * RygelCore-2.6
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LogLevel {
         export const $gtype: GObject.GType<LogLevel>;
     }
@@ -42,6 +45,9 @@ export namespace RygelCore {
         DEBUG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConfigurationEntry {
         export const $gtype: GObject.GType<ConfigurationEntry>;
     }
@@ -62,6 +68,9 @@ export namespace RygelCore {
         PICTURE_UPLOAD_FOLDER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SectionEntry {
         export const $gtype: GObject.GType<SectionEntry>;
     }
@@ -106,6 +115,9 @@ export namespace RygelCore {
     }
 
     function get_pretty_host_name(): string;
+    /**
+     * @gir-type Flags
+     */
     export namespace PluginCapabilities {
         export const $gtype: GObject.GType<PluginCapabilities>;
     }
@@ -1180,6 +1192,9 @@ export namespace RygelCore {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get context(): GUPnP.Context;
 
         /**
@@ -2693,11 +2708,23 @@ export namespace RygelCore {
 
         get capabilities(): PluginCapabilities;
         set capabilities(val: PluginCapabilities);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get title(): string;
         set title(val: string);
+        /**
+         * @construct-only
+         */
         get description(): string;
+        /**
+         * @construct-only
+         */
         get desc_path(): string;
+        /**
+         * @construct-only
+         */
         get descPath(): string;
         get active(): boolean;
         set active(val: boolean);
@@ -2882,7 +2909,13 @@ export namespace RygelCore {
 
         get plugin(): Plugin;
         set plugin(val: Plugin);
+        /**
+         * @construct-only
+         */
         get title(): string;
+        /**
+         * @construct-only
+         */
         get capabilities(): PluginCapabilities;
 
         /**
@@ -5583,7 +5616,13 @@ export namespace RygelCore {
         set device_type(val: string);
         get deviceType(): string;
         set deviceType(val: string);
+        /**
+         * @construct-only
+         */
         get service_types(): string[];
+        /**
+         * @construct-only
+         */
         get serviceTypes(): string[];
 
         /**
@@ -5855,9 +5894,21 @@ export namespace RygelCore {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get module_path(): string;
+        /**
+         * @construct-only
+         */
         get modulePath(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get conflicts(): never;
         get module_loaded(): boolean;
         set module_loaded(val: boolean);

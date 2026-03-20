@@ -20,6 +20,9 @@ export namespace Snapd {
      * Snapd-1
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AliasStatus {
         export const $gtype: GObject.GType<AliasStatus>;
     }
@@ -56,6 +59,9 @@ export namespace Snapd {
         MANUAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ChangeFilter {
         export const $gtype: GObject.GType<ChangeFilter>;
     }
@@ -80,6 +86,9 @@ export namespace Snapd {
         READY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Confinement {
         export const $gtype: GObject.GType<Confinement>;
     }
@@ -108,6 +117,9 @@ export namespace Snapd {
         CLASSIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DaemonType {
         export const $gtype: GObject.GType<DaemonType>;
     }
@@ -308,6 +320,9 @@ export namespace Snapd {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MaintenanceKind {
         export const $gtype: GObject.GType<MaintenanceKind>;
     }
@@ -332,6 +347,9 @@ export namespace Snapd {
         SYSTEM_RESTART,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MarkdownNodeType {
         export const $gtype: GObject.GType<MarkdownNodeType>;
     }
@@ -395,6 +413,9 @@ export namespace Snapd {
         static '0': number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PublisherValidation {
         export const $gtype: GObject.GType<PublisherValidation>;
     }
@@ -419,6 +440,9 @@ export namespace Snapd {
         VERIFIED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SnapStatus {
         export const $gtype: GObject.GType<SnapStatus>;
     }
@@ -451,6 +475,9 @@ export namespace Snapd {
         ACTIVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SnapType {
         export const $gtype: GObject.GType<SnapType>;
     }
@@ -495,6 +522,9 @@ export namespace Snapd {
         SNAPD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SystemConfinement {
         export const $gtype: GObject.GType<SystemConfinement>;
     }
@@ -609,6 +639,9 @@ export namespace Snapd {
     interface ProgressCallback {
         (client: Client, change: Change, deprecated?: any | null): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace CreateUserFlags {
         export const $gtype: GObject.GType<CreateUserFlags>;
     }
@@ -633,6 +666,9 @@ export namespace Snapd {
         KNOWN,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FindFlags {
         export const $gtype: GObject.GType<FindFlags>;
     }
@@ -671,6 +707,9 @@ export namespace Snapd {
         MATCH_COMMON_ID,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GetAppsFlags {
         export const $gtype: GObject.GType<GetAppsFlags>;
     }
@@ -691,6 +730,9 @@ export namespace Snapd {
         SELECT_SERVICES,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GetConnectionsFlags {
         export const $gtype: GObject.GType<GetConnectionsFlags>;
     }
@@ -711,6 +753,9 @@ export namespace Snapd {
         SELECT_ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GetInterfacesFlags {
         export const $gtype: GObject.GType<GetInterfacesFlags>;
     }
@@ -743,6 +788,9 @@ export namespace Snapd {
         ONLY_CONNECTED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GetSnapsFlags {
         export const $gtype: GObject.GType<GetSnapsFlags>;
     }
@@ -763,6 +811,9 @@ export namespace Snapd {
         INCLUDE_INACTIVE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace InstallFlags {
         export const $gtype: GObject.GType<InstallFlags>;
     }
@@ -797,6 +848,9 @@ export namespace Snapd {
         JAILMODE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RemoveFlags {
         export const $gtype: GObject.GType<RemoveFlags>;
     }
@@ -854,13 +908,37 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get app_auto(): string;
+        /**
+         * @construct-only
+         */
         get appAuto(): string;
+        /**
+         * @construct-only
+         */
         get app_manual(): string;
+        /**
+         * @construct-only
+         */
         get appManual(): string;
+        /**
+         * @construct-only
+         */
         get command(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get snap(): string;
+        /**
+         * @construct-only
+         */
         get status(): AliasStatus;
 
         /**
@@ -982,16 +1060,49 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get active(): boolean;
+        /**
+         * @construct-only
+         */
         get aliases(): string[];
+        /**
+         * @construct-only
+         */
         get common_id(): string;
+        /**
+         * @construct-only
+         */
         get commonId(): string;
+        /**
+         * @construct-only
+         */
         get daemon_type(): DaemonType;
+        /**
+         * @construct-only
+         */
         get daemonType(): DaemonType;
+        /**
+         * @construct-only
+         */
         get desktop_file(): string;
+        /**
+         * @construct-only
+         */
         get desktopFile(): string;
+        /**
+         * @construct-only
+         */
         get enabled(): boolean;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get snap(): string;
 
         /**
@@ -1100,6 +1211,9 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get content(): string;
 
         /**
@@ -1290,16 +1404,49 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get error(): string;
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get kind(): string;
+        /**
+         * @construct-only
+         */
         get ready(): boolean;
+        /**
+         * @construct-only
+         */
         get ready_time(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get readyTime(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get spawn_time(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get spawnTime(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get status(): string;
+        /**
+         * @construct-only
+         */
         get summary(): string;
+        /**
+         * @construct-only
+         */
         get tasks(): any[];
 
         /**
@@ -1424,13 +1571,37 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get confinement(): Confinement;
+        /**
+         * @construct-only
+         */
         get epoch(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get released_at(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get releasedAt(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get revision(): string;
+        /**
+         * @construct-only
+         */
         get size(): number;
+        /**
+         * @construct-only
+         */
         get version(): string;
 
         /**
@@ -4721,16 +4892,49 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get gadget(): boolean;
+        /**
+         * @construct-only
+         */
         get interface(): string;
+        /**
+         * @construct-only
+         */
         get manual(): boolean;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get plug(): PlugRef;
+        /**
+         * @construct-only
+         */
         get plug_attrs(): GLib.HashTable<any, any>;
+        /**
+         * @construct-only
+         */
         get plugAttrs(): GLib.HashTable<any, any>;
+        /**
+         * @construct-only
+         */
         get slot(): SlotRef;
+        /**
+         * @construct-only
+         */
         get slot_attrs(): GLib.HashTable<any, any>;
+        /**
+         * @construct-only
+         */
         get slotAttrs(): GLib.HashTable<any, any>;
+        /**
+         * @construct-only
+         */
         get snap(): string;
 
         /**
@@ -4868,8 +5072,17 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get data(): GLib.Bytes;
+        /**
+         * @construct-only
+         */
         get mime_type(): string;
+        /**
+         * @construct-only
+         */
         get mimeType(): string;
 
         /**
@@ -4959,11 +5172,29 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get doc_url(): string;
+        /**
+         * @construct-only
+         */
         get docUrl(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get plugs(): any[];
+        /**
+         * @construct-only
+         */
         get slots(): any[];
+        /**
+         * @construct-only
+         */
         get summary(): string;
 
         /**
@@ -5061,7 +5292,13 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get kind(): MaintenanceKind;
+        /**
+         * @construct-only
+         */
         get message(): string;
 
         /**
@@ -5143,9 +5380,21 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get children(): any[];
+        /**
+         * @construct-only
+         */
         get node_type(): MarkdownNodeType;
+        /**
+         * @construct-only
+         */
         get nodeType(): MarkdownNodeType;
+        /**
+         * @construct-only
+         */
         get text(): string;
 
         /**
@@ -5312,9 +5561,21 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get height(): number;
+        /**
+         * @construct-only
+         */
         get type(): string;
+        /**
+         * @construct-only
+         */
         get url(): string;
+        /**
+         * @construct-only
+         */
         get width(): number;
 
         /**
@@ -5410,11 +5671,29 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get attributes(): GLib.HashTable<any, any>;
+        /**
+         * @construct-only
+         */
         get connections(): any[];
+        /**
+         * @construct-only
+         */
         get interface(): string;
+        /**
+         * @construct-only
+         */
         get label(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get snap(): string;
 
         /**
@@ -5529,7 +5808,13 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get plug(): string;
+        /**
+         * @construct-only
+         */
         get snap(): string;
 
         /**
@@ -5607,7 +5892,13 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get amount(): number;
+        /**
+         * @construct-only
+         */
         get currency(): string;
 
         /**
@@ -5687,8 +5978,17 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get height(): number;
+        /**
+         * @construct-only
+         */
         get url(): string;
+        /**
+         * @construct-only
+         */
         get width(): number;
 
         /**
@@ -5779,11 +6079,29 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get attributes(): GLib.HashTable<any, any>;
+        /**
+         * @construct-only
+         */
         get connections(): any[];
+        /**
+         * @construct-only
+         */
         get interface(): string;
+        /**
+         * @construct-only
+         */
         get label(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get snap(): string;
 
         /**
@@ -5898,7 +6216,13 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get slot(): string;
+        /**
+         * @construct-only
+         */
         get snap(): string;
 
         /**
@@ -6059,54 +6383,201 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get apps(): any[];
+        /**
+         * @construct-only
+         */
         get base(): string;
+        /**
+         * @construct-only
+         */
         get broken(): string;
+        /**
+         * @construct-only
+         */
         get channel(): string;
+        /**
+         * @construct-only
+         */
         get channels(): any[];
+        /**
+         * @construct-only
+         */
         get common_ids(): string[];
+        /**
+         * @construct-only
+         */
         get commonIds(): string[];
+        /**
+         * @construct-only
+         */
         get confinement(): Confinement;
+        /**
+         * @construct-only
+         */
         get contact(): string;
+        /**
+         * @construct-only
+         */
         get description(): string;
+        /**
+         * @construct-only
+         */
         get developer(): string;
+        /**
+         * @construct-only
+         */
         get devmode(): boolean;
+        /**
+         * @construct-only
+         */
         get download_size(): number;
+        /**
+         * @construct-only
+         */
         get downloadSize(): number;
+        /**
+         * @construct-only
+         */
         get icon(): string;
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get install_date(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get installDate(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get installed_size(): number;
+        /**
+         * @construct-only
+         */
         get installedSize(): number;
+        /**
+         * @construct-only
+         */
         get jailmode(): boolean;
+        /**
+         * @construct-only
+         */
         get license(): string;
+        /**
+         * @construct-only
+         */
         get media(): any[];
+        /**
+         * @construct-only
+         */
         get mounted_from(): string;
+        /**
+         * @construct-only
+         */
         get mountedFrom(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get prices(): any[];
+        /**
+         * @construct-only
+         */
         get private(): boolean;
+        /**
+         * @construct-only
+         */
         get publisher_display_name(): string;
+        /**
+         * @construct-only
+         */
         get publisherDisplayName(): string;
+        /**
+         * @construct-only
+         */
         get publisher_id(): string;
+        /**
+         * @construct-only
+         */
         get publisherId(): string;
+        /**
+         * @construct-only
+         */
         get publisher_username(): string;
+        /**
+         * @construct-only
+         */
         get publisherUsername(): string;
+        /**
+         * @construct-only
+         */
         get publisher_validation(): PublisherValidation;
+        /**
+         * @construct-only
+         */
         get publisherValidation(): PublisherValidation;
+        /**
+         * @construct-only
+         */
         get revision(): string;
+        /**
+         * @construct-only
+         */
         get screenshots(): any[];
+        /**
+         * @construct-only
+         */
         get snap_type(): SnapType;
+        /**
+         * @construct-only
+         */
         get snapType(): SnapType;
+        /**
+         * @construct-only
+         */
         get status(): SnapStatus;
+        /**
+         * @construct-only
+         */
         get summary(): string;
+        /**
+         * @construct-only
+         */
         get title(): string;
+        /**
+         * @construct-only
+         */
         get tracking_channel(): string;
+        /**
+         * @construct-only
+         */
         get trackingChannel(): string;
+        /**
+         * @construct-only
+         */
         get tracks(): string[];
+        /**
+         * @construct-only
+         */
         get trymode(): boolean;
+        /**
+         * @construct-only
+         */
         get version(): string;
+        /**
+         * @construct-only
+         */
         get website(): string;
 
         /**
@@ -6423,36 +6894,129 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get binaries_directory(): string;
+        /**
+         * @construct-only
+         */
         get binariesDirectory(): string;
+        /**
+         * @construct-only
+         */
         get build_id(): string;
+        /**
+         * @construct-only
+         */
         get buildId(): string;
+        /**
+         * @construct-only
+         */
         get confinement(): SystemConfinement;
+        /**
+         * @construct-only
+         */
         get kernel_version(): string;
+        /**
+         * @construct-only
+         */
         get kernelVersion(): string;
+        /**
+         * @construct-only
+         */
         get managed(): boolean;
+        /**
+         * @construct-only
+         */
         get mount_directory(): string;
+        /**
+         * @construct-only
+         */
         get mountDirectory(): string;
+        /**
+         * @construct-only
+         */
         get on_classic(): boolean;
+        /**
+         * @construct-only
+         */
         get onClassic(): boolean;
+        /**
+         * @construct-only
+         */
         get os_id(): string;
+        /**
+         * @construct-only
+         */
         get osId(): string;
+        /**
+         * @construct-only
+         */
         get os_version(): string;
+        /**
+         * @construct-only
+         */
         get osVersion(): string;
+        /**
+         * @construct-only
+         */
         get refresh_hold(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get refreshHold(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get refresh_last(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get refreshLast(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get refresh_next(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get refreshNext(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get refresh_schedule(): string;
+        /**
+         * @construct-only
+         */
         get refreshSchedule(): string;
+        /**
+         * @construct-only
+         */
         get refresh_timer(): string;
+        /**
+         * @construct-only
+         */
         get refreshTimer(): string;
+        /**
+         * @construct-only
+         */
         get sandbox_features(): any;
+        /**
+         * @construct-only
+         */
         get sandboxFeatures(): any;
+        /**
+         * @construct-only
+         */
         get series(): string;
+        /**
+         * @construct-only
+         */
         get store(): string;
+        /**
+         * @construct-only
+         */
         get version(): string;
 
         /**
@@ -6633,20 +7197,65 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get kind(): string;
+        /**
+         * @construct-only
+         */
         get progress_done(): number;
+        /**
+         * @construct-only
+         */
         get progressDone(): number;
+        /**
+         * @construct-only
+         */
         get progress_label(): string;
+        /**
+         * @construct-only
+         */
         get progressLabel(): string;
+        /**
+         * @construct-only
+         */
         get progress_total(): number;
+        /**
+         * @construct-only
+         */
         get progressTotal(): number;
+        /**
+         * @construct-only
+         */
         get ready(): boolean;
+        /**
+         * @construct-only
+         */
         get ready_time(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get readyTime(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get spawn_time(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get spawnTime(): GLib.DateTime;
+        /**
+         * @construct-only
+         */
         get status(): string;
+        /**
+         * @construct-only
+         */
         get summary(): string;
 
         /**
@@ -6773,12 +7382,33 @@ export namespace Snapd {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get auth_data(): AuthData;
+        /**
+         * @construct-only
+         */
         get authData(): AuthData;
+        /**
+         * @construct-only
+         */
         get email(): string;
+        /**
+         * @construct-only
+         */
         get id(): number;
+        /**
+         * @construct-only
+         */
         get ssh_keys(): string[];
+        /**
+         * @construct-only
+         */
         get sshKeys(): string[];
+        /**
+         * @construct-only
+         */
         get username(): string;
 
         /**

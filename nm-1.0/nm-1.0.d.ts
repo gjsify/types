@@ -20,6 +20,9 @@ export namespace NM {
      * NM-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace __80211Mode {
         export const $gtype: GObject.GType<__80211Mode>;
     }
@@ -57,6 +60,9 @@ export namespace NM {
         MESH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ActiveConnectionState {
         export const $gtype: GObject.GType<ActiveConnectionState>;
     }
@@ -92,6 +98,9 @@ export namespace NM {
         DEACTIVATED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ActiveConnectionStateReason {
         export const $gtype: GObject.GType<ActiveConnectionStateReason>;
     }
@@ -231,6 +240,9 @@ export namespace NM {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Capability {
         export const $gtype: GObject.GType<Capability>;
     }
@@ -300,6 +312,9 @@ export namespace NM {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClientPermission {
         export const $gtype: GObject.GType<ClientPermission>;
     }
@@ -402,6 +417,9 @@ export namespace NM {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClientPermissionResult {
         export const $gtype: GObject.GType<ClientPermissionResult>;
     }
@@ -506,6 +524,9 @@ export namespace NM {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionMultiConnect {
         export const $gtype: GObject.GType<ConnectionMultiConnect>;
     }
@@ -541,6 +562,9 @@ export namespace NM {
         MULTIPLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectivityState {
         export const $gtype: GObject.GType<ConnectivityState>;
     }
@@ -703,6 +727,9 @@ export namespace NM {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceState {
         export const $gtype: GObject.GType<DeviceState>;
     }
@@ -787,6 +814,9 @@ export namespace NM {
         FAILED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceStateReason {
         export const $gtype: GObject.GType<DeviceStateReason>;
     }
@@ -1120,6 +1150,9 @@ export namespace NM {
         UNMANAGED_USER_UDEV,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceType {
         export const $gtype: GObject.GType<DeviceType>;
     }
@@ -1269,6 +1302,9 @@ export namespace NM {
         HSR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IPTunnelMode {
         export const $gtype: GObject.GType<IPTunnelMode>;
     }
@@ -1329,6 +1365,9 @@ export namespace NM {
         IP6GRETAP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace KeyfileHandlerType {
         export const $gtype: GObject.GType<KeyfileHandlerType>;
     }
@@ -1351,6 +1390,9 @@ export namespace NM {
         WRITE_CERT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace KeyfileWarnSeverity {
         export const $gtype: GObject.GType<KeyfileWarnSeverity>;
     }
@@ -1464,6 +1506,9 @@ export namespace NM {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Metered {
         export const $gtype: GObject.GType<Metered>;
     }
@@ -1599,6 +1644,9 @@ export namespace NM {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Setting8021xCKFormat {
         export const $gtype: GObject.GType<Setting8021xCKFormat>;
     }
@@ -1629,6 +1677,9 @@ export namespace NM {
         PKCS12,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Setting8021xCKScheme {
         export const $gtype: GObject.GType<Setting8021xCKScheme>;
     }
@@ -1662,6 +1713,9 @@ export namespace NM {
         PKCS11,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingCompareFlags {
         export const $gtype: GObject.GType<SettingCompareFlags>;
     }
@@ -1728,6 +1782,9 @@ export namespace NM {
         IGNORE_TIMESTAMP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingConnectionAutoconnectSlaves {
         export const $gtype: GObject.GType<SettingConnectionAutoconnectSlaves>;
     }
@@ -1756,6 +1813,9 @@ export namespace NM {
         YES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingConnectionDnsOverTls {
         export const $gtype: GObject.GType<SettingConnectionDnsOverTls>;
     }
@@ -1784,6 +1844,9 @@ export namespace NM {
         YES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingConnectionDownOnPoweroff {
         export const $gtype: GObject.GType<SettingConnectionDownOnPoweroff>;
     }
@@ -1809,6 +1872,9 @@ export namespace NM {
         YES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingConnectionLldp {
         export const $gtype: GObject.GType<SettingConnectionLldp>;
     }
@@ -1833,6 +1899,9 @@ export namespace NM {
         ENABLE_RX,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingConnectionLlmnr {
         export const $gtype: GObject.GType<SettingConnectionLlmnr>;
     }
@@ -1861,6 +1930,9 @@ export namespace NM {
         YES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingConnectionMdns {
         export const $gtype: GObject.GType<SettingConnectionMdns>;
     }
@@ -1889,6 +1961,9 @@ export namespace NM {
         YES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingDiffResult {
         export const $gtype: GObject.GType<SettingDiffResult>;
     }
@@ -1922,6 +1997,9 @@ export namespace NM {
         IN_B_DEFAULT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingIP4LinkLocal {
         export const $gtype: GObject.GType<SettingIP4LinkLocal>;
     }
@@ -1954,6 +2032,9 @@ export namespace NM {
         ENABLED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingIP6ConfigAddrGenMode {
         export const $gtype: GObject.GType<SettingIP6ConfigAddrGenMode>;
     }
@@ -1989,6 +2070,9 @@ export namespace NM {
         DEFAULT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingIP6ConfigPrivacy {
         export const $gtype: GObject.GType<SettingIP6ConfigPrivacy>;
     }
@@ -2019,6 +2103,9 @@ export namespace NM {
         PREFER_TEMP_ADDR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingMacRandomization {
         export const $gtype: GObject.GType<SettingMacRandomization>;
     }
@@ -2044,6 +2131,9 @@ export namespace NM {
         ALWAYS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingMacsecMode {
         export const $gtype: GObject.GType<SettingMacsecMode>;
     }
@@ -2065,6 +2155,9 @@ export namespace NM {
         EAP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingMacsecOffload {
         export const $gtype: GObject.GType<SettingMacsecOffload>;
     }
@@ -2093,6 +2186,9 @@ export namespace NM {
         MAC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingMacsecValidation {
         export const $gtype: GObject.GType<SettingMacsecValidation>;
     }
@@ -2120,6 +2216,9 @@ export namespace NM {
         STRICT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingMacvlanMode {
         export const $gtype: GObject.GType<SettingMacvlanMode>;
     }
@@ -2155,6 +2254,9 @@ export namespace NM {
         SOURCE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingProxyMethod {
         export const $gtype: GObject.GType<SettingProxyMethod>;
     }
@@ -2175,6 +2277,9 @@ export namespace NM {
         AUTO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingSerialParity {
         export const $gtype: GObject.GType<SettingSerialParity>;
     }
@@ -2198,6 +2303,9 @@ export namespace NM {
         ODD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingTunMode {
         export const $gtype: GObject.GType<SettingTunMode>;
     }
@@ -2222,6 +2330,9 @@ export namespace NM {
         TAP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingWirelessChannelWidth {
         export const $gtype: GObject.GType<SettingWirelessChannelWidth>;
     }
@@ -2250,6 +2361,9 @@ export namespace NM {
         '80MHZ',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingWirelessPowersave {
         export const $gtype: GObject.GType<SettingWirelessPowersave>;
     }
@@ -2278,6 +2392,9 @@ export namespace NM {
         ENABLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingWirelessSecurityFils {
         export const $gtype: GObject.GType<SettingWirelessSecurityFils>;
     }
@@ -2306,6 +2423,9 @@ export namespace NM {
         REQUIRED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingWirelessSecurityPmf {
         export const $gtype: GObject.GType<SettingWirelessSecurityPmf>;
     }
@@ -2403,6 +2523,9 @@ export namespace NM {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SriovEswitchEncapMode {
         export const $gtype: GObject.GType<SriovEswitchEncapMode>;
     }
@@ -2426,6 +2549,9 @@ export namespace NM {
         BASIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SriovEswitchInlineMode {
         export const $gtype: GObject.GType<SriovEswitchInlineMode>;
     }
@@ -2457,6 +2583,9 @@ export namespace NM {
         TRANSPORT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SriovEswitchMode {
         export const $gtype: GObject.GType<SriovEswitchMode>;
     }
@@ -2480,6 +2609,9 @@ export namespace NM {
         SWITCHDEV,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SriovVFVlanProtocol {
         export const $gtype: GObject.GType<SriovVFVlanProtocol>;
     }
@@ -2500,6 +2632,9 @@ export namespace NM {
         '1AD',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace State {
         export const $gtype: GObject.GType<State>;
     }
@@ -2561,6 +2696,9 @@ export namespace NM {
         CONNECTED_GLOBAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Ternary {
         export const $gtype: GObject.GType<Ternary>;
     }
@@ -2585,6 +2723,9 @@ export namespace NM {
         TRUE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UtilsSecurityType {
         export const $gtype: GObject.GType<UtilsSecurityType>;
     }
@@ -2648,6 +2789,9 @@ export namespace NM {
         WPA3_SUITE_B_192,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VersionInfoCapability {
         export const $gtype: GObject.GType<VersionInfoCapability>;
     }
@@ -2664,6 +2808,9 @@ export namespace NM {
         UNUSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VlanPriorityMap {
         export const $gtype: GObject.GType<VlanPriorityMap>;
     }
@@ -2684,6 +2831,9 @@ export namespace NM {
         EGRESS_MAP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VpnConnectionState {
         export const $gtype: GObject.GType<VpnConnectionState>;
     }
@@ -2731,6 +2881,9 @@ export namespace NM {
         DISCONNECTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VpnConnectionStateReason {
         export const $gtype: GObject.GType<VpnConnectionStateReason>;
     }
@@ -2874,6 +3027,9 @@ export namespace NM {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VpnPluginFailure {
         export const $gtype: GObject.GType<VpnPluginFailure>;
     }
@@ -2898,6 +3054,9 @@ export namespace NM {
         BAD_IP_CONFIG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VpnServiceState {
         export const $gtype: GObject.GType<VpnServiceState>;
     }
@@ -2937,6 +3096,9 @@ export namespace NM {
         STOPPED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WepKeyType {
         export const $gtype: GObject.GType<WepKeyType>;
     }
@@ -2974,6 +3136,9 @@ export namespace NM {
         PASSPHRASE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WimaxNspNetworkType {
         export const $gtype: GObject.GType<WimaxNspNetworkType>;
     }
@@ -5293,6 +5458,9 @@ export namespace NM {
     interface VpnIterFunc {
         (key: string, value: string): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace __80211ApFlags {
         export const $gtype: GObject.GType<__80211ApFlags>;
     }
@@ -5325,6 +5493,9 @@ export namespace NM {
         WPS_PIN,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace __80211ApSecurityFlags {
         export const $gtype: GObject.GType<__80211ApSecurityFlags>;
     }
@@ -5409,6 +5580,9 @@ export namespace NM {
         KEY_MGMT_EAP_SUITE_B_192,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ActivationStateFlags {
         export const $gtype: GObject.GType<ActivationStateFlags>;
     }
@@ -5462,6 +5636,9 @@ export namespace NM {
         EXTERNAL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BluetoothCapabilities {
         export const $gtype: GObject.GType<BluetoothCapabilities>;
     }
@@ -5486,6 +5663,9 @@ export namespace NM {
         NAP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace CheckpointCreateFlags {
         export const $gtype: GObject.GType<CheckpointCreateFlags>;
     }
@@ -5548,6 +5728,9 @@ export namespace NM {
         TRACK_INTERNAL_GLOBAL_DNS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ClientInstanceFlags {
         export const $gtype: GObject.GType<ClientInstanceFlags>;
     }
@@ -5585,6 +5768,9 @@ export namespace NM {
         INITIALIZED_BAD,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ConnectionSerializationFlags {
         export const $gtype: GObject.GType<ConnectionSerializationFlags>;
     }
@@ -5638,6 +5824,9 @@ export namespace NM {
         WITH_SECRETS_NOT_SAVED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DeviceCapabilities {
         export const $gtype: GObject.GType<DeviceCapabilities>;
     }
@@ -5669,6 +5858,9 @@ export namespace NM {
         SRIOV,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DeviceInterfaceFlags {
         export const $gtype: GObject.GType<DeviceInterfaceFlags>;
     }
@@ -5707,6 +5899,9 @@ export namespace NM {
         LLDP_CLIENT_ENABLED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DeviceModemCapabilities {
         export const $gtype: GObject.GType<DeviceModemCapabilities>;
     }
@@ -5748,6 +5943,9 @@ export namespace NM {
         '5GNR',
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DeviceReapplyFlags {
         export const $gtype: GObject.GType<DeviceReapplyFlags>;
     }
@@ -5770,6 +5968,9 @@ export namespace NM {
         PRESERVE_EXTERNAL_IP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DeviceWifiCapabilities {
         export const $gtype: GObject.GType<DeviceWifiCapabilities>;
     }
@@ -5841,6 +6042,9 @@ export namespace NM {
         IBSS_RSN,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DhcpHostnameFlags {
         export const $gtype: GObject.GType<DhcpHostnameFlags>;
     }
@@ -5889,6 +6093,9 @@ export namespace NM {
         FQDN_CLEAR_FLAGS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace IPAddressCmpFlags {
         export const $gtype: GObject.GType<IPAddressCmpFlags>;
     }
@@ -5913,6 +6120,9 @@ export namespace NM {
         WITH_ATTRS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace IPRoutingRuleAsStringFlags {
         export const $gtype: GObject.GType<IPRoutingRuleAsStringFlags>;
     }
@@ -5945,6 +6155,9 @@ export namespace NM {
         VALIDATE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace IPTunnelFlags {
         export const $gtype: GObject.GType<IPTunnelFlags>;
     }
@@ -5988,6 +6201,9 @@ export namespace NM {
         IP6_USE_ORIG_FWMARK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace KeyfileHandlerFlags {
         export const $gtype: GObject.GType<KeyfileHandlerFlags>;
     }
@@ -6006,6 +6222,9 @@ export namespace NM {
         NONE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ManagerReloadFlags {
         export const $gtype: GObject.GType<ManagerReloadFlags>;
     }
@@ -6037,6 +6256,9 @@ export namespace NM {
         DNS_FULL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MptcpFlags {
         export const $gtype: GObject.GType<MptcpFlags>;
     }
@@ -6115,6 +6337,9 @@ export namespace NM {
         FULLMESH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RadioFlags {
         export const $gtype: GObject.GType<RadioFlags>;
     }
@@ -6141,6 +6366,9 @@ export namespace NM {
         WWAN_AVAILABLE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SecretAgentCapabilities {
         export const $gtype: GObject.GType<SecretAgentCapabilities>;
     }
@@ -6165,6 +6393,9 @@ export namespace NM {
         LAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SecretAgentGetSecretsFlags {
         export const $gtype: GObject.GType<SecretAgentGetSecretsFlags>;
     }
@@ -6218,6 +6449,9 @@ export namespace NM {
         NO_ERRORS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace Setting8021xAuthFlags {
         export const $gtype: GObject.GType<Setting8021xAuthFlags>;
     }
@@ -6278,6 +6512,9 @@ export namespace NM {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SettingDcbFlags {
         export const $gtype: GObject.GType<SettingDcbFlags>;
     }
@@ -6306,6 +6543,9 @@ export namespace NM {
         WILLING,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SettingSecretFlags {
         export const $gtype: GObject.GType<SettingSecretFlags>;
     }
@@ -6342,6 +6582,9 @@ export namespace NM {
         NOT_REQUIRED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SettingWiredWakeOnLan {
         export const $gtype: GObject.GType<SettingWiredWakeOnLan>;
     }
@@ -6387,6 +6630,9 @@ export namespace NM {
         IGNORE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SettingWirelessSecurityWpsMethod {
         export const $gtype: GObject.GType<SettingWirelessSecurityWpsMethod>;
     }
@@ -6422,6 +6668,9 @@ export namespace NM {
         PIN,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SettingWirelessWakeOnWLan {
         export const $gtype: GObject.GType<SettingWirelessWakeOnWLan>;
     }
@@ -6478,6 +6727,9 @@ export namespace NM {
         IGNORE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SettingsAddConnection2Flags {
         export const $gtype: GObject.GType<SettingsAddConnection2Flags>;
     }
@@ -6509,6 +6761,9 @@ export namespace NM {
         BLOCK_AUTOCONNECT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SettingsConnectionFlags {
         export const $gtype: GObject.GType<SettingsConnectionFlags>;
     }
@@ -6552,6 +6807,9 @@ export namespace NM {
         EXTERNAL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SettingsUpdate2Flags {
         export const $gtype: GObject.GType<SettingsUpdate2Flags>;
     }
@@ -6631,6 +6889,9 @@ export namespace NM {
         NO_REAPPLY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TeamLinkWatcherArpPingFlags {
         export const $gtype: GObject.GType<TeamLinkWatcherArpPingFlags>;
     }
@@ -6657,6 +6918,9 @@ export namespace NM {
         SEND_ALWAYS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VlanFlags {
         export const $gtype: GObject.GType<VlanFlags>;
     }
@@ -6689,6 +6953,9 @@ export namespace NM {
         MVRP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VpnEditorPluginCapability {
         export const $gtype: GObject.GType<VpnEditorPluginCapability>;
     }
@@ -6769,28 +7036,34 @@ export namespace NM {
         /**
          * The channel bandwidth announced by the AP in MHz.
          * @since 1.46
+         * @read-only
          */
         get bandwidth(): number;
         /**
          * The BSSID of the access point.
+         * @read-only
          */
         get bssid(): string;
         /**
          * The flags of the access point.
+         * @read-only
          */
         get flags(): __80211ApFlags;
         /**
          * The frequency of the access point.
+         * @read-only
          */
         get frequency(): number;
         /**
          * Alias for {@link NM.AccessPoint.bssid}.
          * @deprecated since 1.0: Use {@link NM.AccessPoint.bssid}.
+         * @read-only
          */
         get hw_address(): string;
         /**
          * Alias for {@link NM.AccessPoint.bssid}.
          * @deprecated since 1.0: Use {@link NM.AccessPoint.bssid}.
+         * @read-only
          */
         get hwAddress(): string;
         /**
@@ -6798,6 +7071,7 @@ export namespace NM {
          * access point was found in scan results.  A value of -1 means the
          * access point has not been found in a scan.
          * @since 1.2
+         * @read-only
          */
         get last_seen(): number;
         /**
@@ -6805,44 +7079,54 @@ export namespace NM {
          * access point was found in scan results.  A value of -1 means the
          * access point has not been found in a scan.
          * @since 1.2
+         * @read-only
          */
         get lastSeen(): number;
         /**
          * The maximum bit rate of the access point in kbit/s.
+         * @read-only
          */
         get max_bitrate(): number;
         /**
          * The maximum bit rate of the access point in kbit/s.
+         * @read-only
          */
         get maxBitrate(): number;
         /**
          * The mode of the access point; either "infrastructure" (a central
          * coordinator of the wireless network allowing clients to connect) or
          * "ad-hoc" (a network with no central controller).
+         * @read-only
          */
         get mode(): __80211Mode;
         /**
          * The RSN flags of the access point.
+         * @read-only
          */
         get rsn_flags(): __80211ApSecurityFlags;
         /**
          * The RSN flags of the access point.
+         * @read-only
          */
         get rsnFlags(): __80211ApSecurityFlags;
         /**
          * The SSID of the access point, or `null` if it is not known.
+         * @read-only
          */
         get ssid(): GLib.Bytes;
         /**
          * The current signal strength of the access point.
+         * @read-only
          */
         get strength(): number;
         /**
          * The WPA flags of the access point.
+         * @read-only
          */
         get wpa_flags(): __80211ApSecurityFlags;
         /**
          * The WPA flags of the access point.
+         * @read-only
          */
         get wpaFlags(): __80211ApSecurityFlags;
 
@@ -6972,6 +7256,7 @@ export namespace NM {
         interface SignalSignatures extends Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'state-changed': (arg0: number, arg1: number) => void;
             'notify::connection': (pspec: GObject.ParamSpec) => void;
@@ -7034,101 +7319,124 @@ export namespace NM {
 
         /**
          * The connection that this is an active instance of.
+         * @read-only
          */
         get connection(): RemoteConnection;
         /**
          * The controller device if one exists. This replaces the deprecated
          * "master" property.
          * @since 1.44
+         * @read-only
          */
         get controller(): Device;
         /**
          * Whether the active connection is the default IPv4 one.
+         * @read-only
          */
         get default(): boolean;
         /**
          * Whether the active connection is the default IPv6 one.
+         * @read-only
          */
         get default6(): boolean;
         /**
          * The devices of the active connection.
+         * @read-only
          */
         get devices(): Device[];
         /**
          * The IPv4 {@link NM.DhcpConfig} of the connection.
+         * @read-only
          */
         get dhcp4_config(): DhcpConfig;
         /**
          * The IPv4 {@link NM.DhcpConfig} of the connection.
+         * @read-only
          */
         get dhcp4Config(): DhcpConfig;
         /**
          * The IPv6 {@link NM.DhcpConfig} of the connection.
+         * @read-only
          */
         get dhcp6_config(): DhcpConfig;
         /**
          * The IPv6 {@link NM.DhcpConfig} of the connection.
+         * @read-only
          */
         get dhcp6Config(): DhcpConfig;
         /**
          * The active connection's ID
+         * @read-only
          */
         get id(): string;
         /**
          * The IPv4 {@link NM.IPConfig} of the connection.
+         * @read-only
          */
         get ip4_config(): IPConfig;
         /**
          * The IPv4 {@link NM.IPConfig} of the connection.
+         * @read-only
          */
         get ip4Config(): IPConfig;
         /**
          * The IPv6 {@link NM.IPConfig} of the connection.
+         * @read-only
          */
         get ip6_config(): IPConfig;
         /**
          * The IPv6 {@link NM.IPConfig} of the connection.
+         * @read-only
          */
         get ip6Config(): IPConfig;
         /**
          * The controller device if one exists. Replaced by the "controller" property.
          * @deprecated since 1.44
+         * @read-only
          */
         get master(): Device;
         /**
          * The path to the "specific object" of the active connection; see
          * `nm_active_connection_get_specific_object_path()` for more details.
+         * @read-only
          */
         get specific_object_path(): string;
         /**
          * The path to the "specific object" of the active connection; see
          * `nm_active_connection_get_specific_object_path()` for more details.
+         * @read-only
          */
         get specificObjectPath(): string;
         /**
          * The state of the active connection.
+         * @read-only
          */
         get state(): ActiveConnectionState;
         /**
          * The state flags of the active connection.
          * @since 1.10
+         * @read-only
          */
         get state_flags(): number;
         /**
          * The state flags of the active connection.
          * @since 1.10
+         * @read-only
          */
         get stateFlags(): number;
         /**
          * The active connection's type
+         * @read-only
          */
         get type(): string;
         /**
          * The active connection's UUID
+         * @read-only
          */
         get uuid(): string;
         /**
          * Whether the active connection is a VPN connection.
+         * @read-only
          */
         get vpn(): boolean;
 
@@ -7305,21 +7613,25 @@ export namespace NM {
         /**
          * The timestamp (in CLOCK_BOOTTIME milliseconds) of checkpoint creation.
          * @since 1.12
+         * @read-only
          */
         get created(): number;
         /**
          * The devices that are part of this checkpoint.
          * @since 1.12
+         * @read-only
          */
         get devices(): Device[];
         /**
          * Timeout in seconds for automatic rollback, or zero.
          * @since 1.12
+         * @read-only
          */
         get rollback_timeout(): number;
         /**
          * Timeout in seconds for automatic rollback, or zero.
          * @since 1.12
+         * @read-only
          */
         get rollbackTimeout(): number;
 
@@ -7387,50 +7699,59 @@ export namespace NM {
             /**
              * Notifies that a {@link NM.ActiveConnection} has been added.
              * @signal
+             * @run-first
              */
             'active-connection-added': (arg0: ActiveConnection) => void;
             /**
              * Notifies that a {@link NM.ActiveConnection} has been removed.
              * @signal
+             * @run-first
              */
             'active-connection-removed': (arg0: ActiveConnection) => void;
             /**
              * Notifies that a {@link NM.Device} is added.  This signal is emitted for both
              * regular devices and placeholder devices.
              * @signal
+             * @run-first
              */
             'any-device-added': (arg0: Device) => void;
             /**
              * Notifies that a {@link NM.Device} is removed.  This signal is emitted for both
              * regular devices and placeholder devices.
              * @signal
+             * @run-first
              */
             'any-device-removed': (arg0: Device) => void;
             /**
              * Notifies that a {@link NM.Connection} has been added.
              * @signal
+             * @run-first
              */
             'connection-added': (arg0: RemoteConnection) => void;
             /**
              * Notifies that a {@link NM.Connection} has been removed.
              * @signal
+             * @run-first
              */
             'connection-removed': (arg0: RemoteConnection) => void;
             /**
              * Notifies that a {@link NM.Device} is added.  This signal is not emitted for
              * placeholder devices.
              * @signal
+             * @run-first
              */
             'device-added': (arg0: Device) => void;
             /**
              * Notifies that a {@link NM.Device} is removed.  This signal is not emitted for
              * placeholder devices.
              * @signal
+             * @run-first
              */
             'device-removed': (arg0: Device) => void;
             /**
              * Notifies that a permission has changed
              * @signal
+             * @run-first
              */
             'permission-changed': (arg0: number, arg1: number) => void;
             'notify::activating-connection': (pspec: GObject.ParamSpec) => void;
@@ -7553,37 +7874,45 @@ export namespace NM {
         /**
          * The {@link NM.ActiveConnection} of the activating connection that is
          * likely to become the new {@link NM.Client.primary_connection}.
+         * @read-only
          */
         get activating_connection(): ActiveConnection;
         /**
          * The {@link NM.ActiveConnection} of the activating connection that is
          * likely to become the new {@link NM.Client.primary_connection}.
+         * @read-only
          */
         get activatingConnection(): ActiveConnection;
         /**
          * The active connections.
+         * @read-only
          */
         get active_connections(): ActiveConnection[];
         /**
          * The active connections.
+         * @read-only
          */
         get activeConnections(): ActiveConnection[];
         /**
          * List of both real devices and device placeholders.
          * @since 1.2
+         * @read-only
          */
         get all_devices(): Device[];
         /**
          * List of both real devices and device placeholders.
          * @since 1.2
+         * @read-only
          */
         get allDevices(): Device[];
         /**
          * If `true`, adding and modifying connections is supported.
+         * @read-only
          */
         get can_modify(): boolean;
         /**
          * If `true`, adding and modifying connections is supported.
+         * @read-only
          */
         get canModify(): boolean;
         /**
@@ -7591,11 +7920,13 @@ export namespace NM {
          * there are no capabilities. The numeric value correspond
          * to %NMCapability enum.
          * @since 1.24
+         * @read-only
          */
         get capabilities(): number[];
         /**
          * The list of active checkpoints.
          * @since 1.12
+         * @read-only
          */
         get checkpoints(): Checkpoint[];
         /**
@@ -7603,13 +7934,21 @@ export namespace NM {
          * that this differs from the underlying D-Bus property, which may also
          * contain the object paths of connections that the user does not have
          * permission to read the details of.)
+         * @read-only
          */
         get connections(): RemoteConnection[];
         /**
          * The network connectivity state.
+         * @read-only
          */
         get connectivity(): ConnectivityState;
+        /**
+         * @read-only
+         */
         get connectivity_check_available(): boolean;
+        /**
+         * @read-only
+         */
         get connectivityCheckAvailable(): boolean;
         get connectivity_check_enabled(): boolean;
         set connectivity_check_enabled(val: boolean);
@@ -7618,11 +7957,13 @@ export namespace NM {
         /**
          * The used URI for connectivity checking.
          * @since 1.22
+         * @read-only
          */
         get connectivity_check_uri(): string;
         /**
          * The used URI for connectivity checking.
          * @since 1.22
+         * @read-only
          */
         get connectivityCheckUri(): string;
         /**
@@ -7631,6 +7972,7 @@ export namespace NM {
          * If this is not set during object construction, the D-Bus connection will
          * automatically be chosen during async/sync initalization via `g_bus_get()`.
          * @since 1.22
+         * @construct-only
          */
         get dbus_connection(): Gio.DBusConnection;
         /**
@@ -7639,57 +7981,68 @@ export namespace NM {
          * If this is not set during object construction, the D-Bus connection will
          * automatically be chosen during async/sync initalization via `g_bus_get()`.
          * @since 1.22
+         * @construct-only
          */
         get dbusConnection(): Gio.DBusConnection;
         /**
          * The name owner of the NetworkManager D-Bus service.
          * @since 1.22
+         * @read-only
          */
         get dbus_name_owner(): string;
         /**
          * The name owner of the NetworkManager D-Bus service.
          * @since 1.22
+         * @read-only
          */
         get dbusNameOwner(): string;
         /**
          * List of real network devices.  Does not include placeholder devices.
+         * @read-only
          */
         get devices(): Device[];
         /**
          * The current DNS configuration, represented as an array
          * of {@link NM.DnsEntry} objects.
          * @since 1.6
+         * @read-only
          */
         get dns_configuration(): DnsEntry[];
         /**
          * The current DNS configuration, represented as an array
          * of {@link NM.DnsEntry} objects.
          * @since 1.6
+         * @read-only
          */
         get dnsConfiguration(): DnsEntry[];
         /**
          * The current DNS processing mode.
          * @since 1.6
+         * @read-only
          */
         get dns_mode(): string;
         /**
          * The current DNS processing mode.
          * @since 1.6
+         * @read-only
          */
         get dnsMode(): string;
         /**
          * The current resolv.conf management mode.
          * @since 1.6
+         * @read-only
          */
         get dns_rc_manager(): string;
         /**
          * The current resolv.conf management mode.
          * @since 1.6
+         * @read-only
          */
         get dnsRcManager(): string;
         /**
          * The machine hostname stored in persistent configuration. This can be
          * modified by calling `nm_client_save_hostname()`.
+         * @read-only
          */
         get hostname(): string;
         /**
@@ -7727,6 +8080,7 @@ export namespace NM {
         /**
          * Whether the connectivity is metered.
          * @since 1.2
+         * @read-only
          */
         get metered(): number;
         /**
@@ -7745,10 +8099,12 @@ export namespace NM {
         set networkingEnabled(val: boolean);
         /**
          * Whether the daemon is running.
+         * @read-only
          */
         get nm_running(): boolean;
         /**
          * Whether the daemon is running.
+         * @read-only
          */
         get nmRunning(): boolean;
         /**
@@ -7766,6 +8122,7 @@ export namespace NM {
          * no D-Bus name owner, no permissions are fetched (and this property won't
          * change).
          * @since 1.24
+         * @read-only
          */
         get permissions_state(): Ternary;
         /**
@@ -7783,38 +8140,46 @@ export namespace NM {
          * no D-Bus name owner, no permissions are fetched (and this property won't
          * change).
          * @since 1.24
+         * @read-only
          */
         get permissionsState(): Ternary;
         /**
          * The {@link NM.ActiveConnection} of the device with the default route;
          * see `nm_client_get_primary_connection()` for more details.
+         * @read-only
          */
         get primary_connection(): ActiveConnection;
         /**
          * The {@link NM.ActiveConnection} of the device with the default route;
          * see `nm_client_get_primary_connection()` for more details.
+         * @read-only
          */
         get primaryConnection(): ActiveConnection;
         /**
          * Flags for radio interfaces. See {@link NM.RadioFlags}.
          * @since 1.38
+         * @read-only
          */
         get radio_flags(): number;
         /**
          * Flags for radio interfaces. See {@link NM.RadioFlags}.
          * @since 1.38
+         * @read-only
          */
         get radioFlags(): number;
         /**
          * Whether the daemon is still starting up.
+         * @read-only
          */
         get startup(): boolean;
         /**
          * The current daemon state.
+         * @read-only
          */
         get state(): State;
         /**
          * The NetworkManager version.
+         * @read-only
          */
         get version(): string;
         /**
@@ -7824,6 +8189,7 @@ export namespace NM {
          * is a bitfields of %NMVersionInfoCapabilities. If a bit is set, then
          * the running NetworkManager has the respective capability.
          * @since 1.42
+         * @read-only
          */
         get version_info(): number[];
         /**
@@ -7833,6 +8199,7 @@ export namespace NM {
          * is a bitfields of %NMVersionInfoCapabilities. If a bit is set, then
          * the running NetworkManager has the respective capability.
          * @since 1.42
+         * @read-only
          */
         get versionInfo(): number[];
         /**
@@ -7850,11 +8217,13 @@ export namespace NM {
         /**
          * Whether the WiMAX hardware is enabled.
          * @deprecated since 1.22: WiMAX is no longer supported and this always returns FALSE.
+         * @read-only
          */
         get wimax_hardware_enabled(): boolean;
         /**
          * Whether the WiMAX hardware is enabled.
          * @deprecated since 1.22: WiMAX is no longer supported and this always returns FALSE.
+         * @read-only
          */
         get wimaxHardwareEnabled(): boolean;
         /**
@@ -7873,10 +8242,12 @@ export namespace NM {
         set wirelessEnabled(val: boolean);
         /**
          * Whether the wireless hardware is enabled.
+         * @read-only
          */
         get wireless_hardware_enabled(): boolean;
         /**
          * Whether the wireless hardware is enabled.
+         * @read-only
          */
         get wirelessHardwareEnabled(): boolean;
         /**
@@ -7895,10 +8266,12 @@ export namespace NM {
         set wwanEnabled(val: boolean);
         /**
          * Whether the WWAN hardware is enabled.
+         * @read-only
          */
         get wwan_hardware_enabled(): boolean;
         /**
          * Whether the WWAN hardware is enabled.
+         * @read-only
          */
         get wwanHardwareEnabled(): boolean;
 
@@ -10123,6 +10496,7 @@ export namespace NM {
             /**
              * Notifies the state change of a {@link NM.Device}.
              * @signal
+             * @run-first
              */
             'state-changed': (arg0: number, arg1: number, arg2: number) => void;
             'notify::active-connection': (pspec: GObject.ParamSpec) => void;
@@ -10229,10 +10603,12 @@ export namespace NM {
 
         /**
          * The {@link NM.ActiveConnection} object that "owns" this device during activation.
+         * @read-only
          */
         get active_connection(): ActiveConnection;
         /**
          * The {@link NM.ActiveConnection} object that "owns" this device during activation.
+         * @read-only
          */
         get activeConnection(): ActiveConnection;
         /**
@@ -10244,171 +10620,209 @@ export namespace NM {
         set autoconnect(val: boolean);
         /**
          * The available connections of the device
+         * @read-only
          */
         get available_connections(): RemoteConnection[];
         /**
          * The available connections of the device
+         * @read-only
          */
         get availableConnections(): RemoteConnection[];
         /**
          * The capabilities of the device.
+         * @read-only
          */
         get capabilities(): DeviceCapabilities;
         /**
          * The numeric type of the device.
+         * @read-only
          */
         get device_type(): DeviceType;
         /**
          * The numeric type of the device.
+         * @read-only
          */
         get deviceType(): DeviceType;
         /**
          * The IPv4 {@link NM.DhcpConfig} of the device.
+         * @read-only
          */
         get dhcp4_config(): DhcpConfig;
         /**
          * The IPv4 {@link NM.DhcpConfig} of the device.
+         * @read-only
          */
         get dhcp4Config(): DhcpConfig;
         /**
          * The IPv6 {@link NM.DhcpConfig} of the device.
+         * @read-only
          */
         get dhcp6_config(): DhcpConfig;
         /**
          * The IPv6 {@link NM.DhcpConfig} of the device.
+         * @read-only
          */
         get dhcp6Config(): DhcpConfig;
         /**
          * The driver of the device.
+         * @read-only
          */
         get driver(): string;
         /**
          * The version of the device driver.
+         * @read-only
          */
         get driver_version(): string;
         /**
          * The version of the device driver.
+         * @read-only
          */
         get driverVersion(): string;
         /**
          * When `true` indicates the device is likely missing firmware required
          * for its operation.
+         * @read-only
          */
         get firmware_missing(): boolean;
         /**
          * When `true` indicates the device is likely missing firmware required
          * for its operation.
+         * @read-only
          */
         get firmwareMissing(): boolean;
         /**
          * The firmware version of the device.
+         * @read-only
          */
         get firmware_version(): string;
         /**
          * The firmware version of the device.
+         * @read-only
          */
         get firmwareVersion(): string;
         /**
          * The hardware address of the device.
          * @since 1.24
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The hardware address of the device.
          * @since 1.24
+         * @read-only
          */
         get hwAddress(): string;
         /**
          * The interface of the device.
+         * @read-only
          */
         get interface(): string;
         /**
          * The interface flags.
          * @since 1.22
+         * @read-only
          */
         get interface_flags(): number;
         /**
          * The interface flags.
          * @since 1.22
+         * @read-only
          */
         get interfaceFlags(): number;
         /**
          * The IP interface of the device which should be used for all IP-related
          * operations like addressing and routing.
+         * @read-only
          */
         get ip_interface(): string;
         /**
          * The IP interface of the device which should be used for all IP-related
          * operations like addressing and routing.
+         * @read-only
          */
         get ipInterface(): string;
         /**
          * The `NMIP4Config` of the device.
+         * @read-only
          */
         get ip4_config(): IPConfig;
         /**
          * The `NMIP4Config` of the device.
+         * @read-only
          */
         get ip4Config(): IPConfig;
         /**
          * The IPv4 connectivity state of the device.
          * @since 1.16
+         * @read-only
          */
         get ip4_connectivity(): ConnectivityState;
         /**
          * The IPv4 connectivity state of the device.
          * @since 1.16
+         * @read-only
          */
         get ip4Connectivity(): ConnectivityState;
         /**
          * The IPv6 {@link NM.IPConfig} of the device.
+         * @read-only
          */
         get ip6_config(): IPConfig;
         /**
          * The IPv6 {@link NM.IPConfig} of the device.
+         * @read-only
          */
         get ip6Config(): IPConfig;
         /**
          * The IPv6 connectivity state of the device.
          * @since 1.16
+         * @read-only
          */
         get ip6_connectivity(): ConnectivityState;
         /**
          * The IPv6 connectivity state of the device.
          * @since 1.16
+         * @read-only
          */
         get ip6Connectivity(): ConnectivityState;
         /**
          * The LLDP neighbors.
+         * @read-only
          */
         get lldp_neighbors(): any[];
         /**
          * The LLDP neighbors.
+         * @read-only
          */
         get lldpNeighbors(): any[];
         /**
          * Whether the device is managed by NetworkManager.
+         * @read-only
          */
         get managed(): boolean;
         /**
          * Whether the device is metered.
          * @since 1.2
+         * @read-only
          */
         get metered(): number;
         /**
          * The MTU of the device.
+         * @read-only
          */
         get mtu(): number;
         /**
          * When `true` indicates that the NetworkManager plugin for the device
          * is not installed.
          * @since 1.2
+         * @read-only
          */
         get nm_plugin_missing(): boolean;
         /**
          * When `true` indicates that the NetworkManager plugin for the device
          * is not installed.
          * @since 1.2
+         * @read-only
          */
         get nmPluginMissing(): boolean;
         /**
@@ -10418,26 +10832,31 @@ export namespace NM {
          * characters. The escaping can be reverted with `g_strcompress()`,
          * however the result may not be valid UTF-8.
          * @since 1.26
+         * @read-only
          */
         get path(): string;
         /**
          * The physical port ID of the device. (See
          * `nm_device_get_physical_port_id()`.)
+         * @read-only
          */
         get physical_port_id(): string;
         /**
          * The physical port ID of the device. (See
          * `nm_device_get_physical_port_id()`.)
+         * @read-only
          */
         get physicalPortId(): string;
         /**
          * The port devices of the controller device. For devices that cannot be
          * controllers this is likely to be always empty.
          * @since 1.34
+         * @read-only
          */
         get ports(): any[];
         /**
          * The product string of the device.
+         * @read-only
          */
         get product(): string;
         /**
@@ -10445,18 +10864,22 @@ export namespace NM {
          * be created automatically by NetworkManager if one of its
          * {@link NM.Device.available_connections} was activated.
          * @since 1.2
+         * @read-only
          */
         get real(): boolean;
         /**
          * The state of the device.
+         * @read-only
          */
         get state(): DeviceState;
         /**
          * The reason for the device state.
+         * @read-only
          */
         get state_reason(): number;
         /**
          * The reason for the device state.
+         * @read-only
          */
         get stateReason(): number;
         /**
@@ -10466,10 +10889,12 @@ export namespace NM {
          * contains an identifier provided by the underlying hardware service daemon
          * such as Bluez or ModemManager, and clients can use this property to
          * request more information about the device from those services.
+         * @read-only
          */
         get udi(): string;
         /**
          * The vendor string of the device.
+         * @read-only
          */
         get vendor(): string;
 
@@ -11025,6 +11450,7 @@ export namespace NM {
         /**
          * The devices's parent device.
          * @since 1.14
+         * @read-only
          */
         get parent(): Device;
 
@@ -11129,6 +11555,7 @@ export namespace NM {
 
         /**
          * Whether the device has carrier.
+         * @read-only
          */
         get carrier(): boolean;
 
@@ -11236,10 +11663,12 @@ export namespace NM {
 
         /**
          * Whether the device has carrier.
+         * @read-only
          */
         get carrier(): boolean;
         /**
          * The devices attached as port to the bond device.
+         * @read-only
          */
         get slaves(): Device[];
 
@@ -11352,10 +11781,12 @@ export namespace NM {
 
         /**
          * Whether the device has carrier.
+         * @read-only
          */
         get carrier(): boolean;
         /**
          * The devices attached as port to the bridge device.
+         * @read-only
          */
         get slaves(): Device[];
 
@@ -11469,14 +11900,17 @@ export namespace NM {
 
         /**
          * The device's bluetooth capabilities, a combination of {@link NM.BluetoothCapabilities}.
+         * @read-only
          */
         get bt_capabilities(): BluetoothCapabilities;
         /**
          * The device's bluetooth capabilities, a combination of {@link NM.BluetoothCapabilities}.
+         * @read-only
          */
         get btCapabilities(): BluetoothCapabilities;
         /**
          * The name of the bluetooth device.
+         * @read-only
          */
         get name(): string;
 
@@ -11688,30 +12122,36 @@ export namespace NM {
 
         /**
          * Whether the device has carrier.
+         * @read-only
          */
         get carrier(): boolean;
         /**
          * The permanent hardware (MAC) address of the device.
+         * @read-only
          */
         get perm_hw_address(): string;
         /**
          * The permanent hardware (MAC) address of the device.
+         * @read-only
          */
         get permHwAddress(): string;
         /**
          * Identifies subchannels of this network device used for
          * communication with z/VM or s390 host.
          * @since 1.2
+         * @read-only
          */
         get s390_subchannels(): string[];
         /**
          * Identifies subchannels of this network device used for
          * communication with z/VM or s390 host.
          * @since 1.2
+         * @read-only
          */
         get s390Subchannels(): string[];
         /**
          * The speed of the device.
+         * @read-only
          */
         get speed(): number;
 
@@ -11834,11 +12274,13 @@ export namespace NM {
         /**
          * A description of the specific type of device this is, or `null`
          * if not known.
+         * @read-only
          */
         get type_description(): string;
         /**
          * A description of the specific type of device this is, or `null`
          * if not known.
+         * @read-only
          */
         get typeDescription(): string;
 
@@ -11948,36 +12390,43 @@ export namespace NM {
         /**
          * The device last byte of the supervision address.
          * @since 1.46
+         * @read-only
          */
         get multicast_spec(): number;
         /**
          * The device last byte of the supervision address.
          * @since 1.46
+         * @read-only
          */
         get multicastSpec(): number;
         /**
          * The device's port1 device.
          * @since 1.46
+         * @read-only
          */
         get port1(): Device;
         /**
          * The device's port2 device.
          * @since 1.46
+         * @read-only
          */
         get port2(): Device;
         /**
          * Whether the PRP protocol is used or not.
          * @since 1.46
+         * @read-only
          */
         get prp(): boolean;
         /**
          * The device supervision MAC adddress.
          * @since 1.46
+         * @read-only
          */
         get supervision_address(): string;
         /**
          * The device supervision MAC adddress.
          * @since 1.46
+         * @read-only
          */
         get supervisionAddress(): string;
 
@@ -12131,6 +12580,7 @@ export namespace NM {
          * be prepended to packets. This property applies only to IPv6
          * tunnels.
          * @since 1.2
+         * @read-only
          */
         get encapsulation_limit(): number;
         /**
@@ -12138,91 +12588,108 @@ export namespace NM {
          * be prepended to packets. This property applies only to IPv6
          * tunnels.
          * @since 1.2
+         * @read-only
          */
         get encapsulationLimit(): number;
         /**
          * Tunnel flags.
          * @since 1.12
+         * @read-only
          */
         get flags(): number;
         /**
          * The flow label to assign to tunnel packets. This property
          * applies only to IPv6 tunnels.
          * @since 1.2
+         * @read-only
          */
         get flow_label(): number;
         /**
          * The flow label to assign to tunnel packets. This property
          * applies only to IPv6 tunnels.
          * @since 1.2
+         * @read-only
          */
         get flowLabel(): number;
         /**
          * The fwmark value to assign to tunnel packets. This property applies only
          * to VTI tunnels.
          * @since 1.46
+         * @read-only
          */
         get fwmark(): number;
         /**
          * The key used for tunneled input packets, if applicable.
          * @since 1.2
+         * @read-only
          */
         get input_key(): string;
         /**
          * The key used for tunneled input packets, if applicable.
          * @since 1.2
+         * @read-only
          */
         get inputKey(): string;
         /**
          * The local endpoint of the tunnel.
          * @since 1.2
+         * @read-only
          */
         get local(): string;
         /**
          * The tunneling mode of the device.
          * @since 1.2
+         * @read-only
          */
         get mode(): number;
         /**
          * The key used for tunneled output packets, if applicable.
          * @since 1.2
+         * @read-only
          */
         get output_key(): string;
         /**
          * The key used for tunneled output packets, if applicable.
          * @since 1.2
+         * @read-only
          */
         get outputKey(): string;
         /**
          * The devices's parent device.
          * @since 1.2
+         * @read-only
          */
         get parent(): Device;
         /**
          * Whether path MTU discovery is enabled on this tunnel.
          * @since 1.2
+         * @read-only
          */
         get path_mtu_discovery(): boolean;
         /**
          * Whether path MTU discovery is enabled on this tunnel.
          * @since 1.2
+         * @read-only
          */
         get pathMtuDiscovery(): boolean;
         /**
          * The remote endpoint of the tunnel.
          * @since 1.2
+         * @read-only
          */
         get remote(): string;
         /**
          * The type of service (IPv4) or traffic class (IPv6) assigned to
          * tunneled packets.
          * @since 1.2
+         * @read-only
          */
         get tos(): number;
         /**
          * The TTL assigned to tunneled packets. 0 is a special value
          *  meaning that packets inherit the TTL value
          * @since 1.2
+         * @read-only
          */
         get ttl(): number;
 
@@ -12375,6 +12842,7 @@ export namespace NM {
 
         /**
          * Whether the device has carrier.
+         * @read-only
          */
         get carrier(): boolean;
 
@@ -12599,98 +13067,116 @@ export namespace NM {
         /**
          * The set of cryptographic algorithms in use.
          * @since 1.6
+         * @read-only
          */
         get cipher_suite(): number;
         /**
          * The set of cryptographic algorithms in use.
          * @since 1.6
+         * @read-only
          */
         get cipherSuite(): number;
         /**
          * The value of the Association Number (0..3) for the Security
          * Association in use.
          * @since 1.6
+         * @read-only
          */
         get encoding_sa(): number;
         /**
          * The value of the Association Number (0..3) for the Security
          * Association in use.
          * @since 1.6
+         * @read-only
          */
         get encodingSa(): number;
         /**
          * Whether encryption of transmitted frames is enabled.
          * @since 1.6
+         * @read-only
          */
         get encrypt(): boolean;
         /**
          * Whether the ES (End station) bit is enabled in SecTAG for
          * transmitted frames.
          * @since 1.6
+         * @read-only
          */
         get es(): boolean;
         /**
          * The length of ICV (Integrity Check Value).
          * @since 1.6
+         * @read-only
          */
         get icv_length(): number;
         /**
          * The length of ICV (Integrity Check Value).
          * @since 1.6
+         * @read-only
          */
         get icvLength(): number;
         /**
          * Whether the SCI is always included in SecTAG for transmitted
          * frames.
          * @since 1.6
+         * @read-only
          */
         get include_sci(): boolean;
         /**
          * Whether the SCI is always included in SecTAG for transmitted
          * frames.
          * @since 1.6
+         * @read-only
          */
         get includeSci(): boolean;
         /**
          * The devices's parent device.
          * @since 1.6
+         * @read-only
          */
         get parent(): Device;
         /**
          * Whether protection of transmitted frames is enabled.
          * @since 1.6
+         * @read-only
          */
         get protect(): boolean;
         /**
          * Whether replay protection is enabled.
          * @since 1.6
+         * @read-only
          */
         get replay_protect(): boolean;
         /**
          * Whether replay protection is enabled.
          * @since 1.6
+         * @read-only
          */
         get replayProtect(): boolean;
         /**
          * Whether the SCB (Single Copy Broadcast) bit is enabled in
          * SecTAG for transmitted frames.
          * @since 1.6
+         * @read-only
          */
         get scb(): boolean;
         /**
          * The Secure Channel Identifier in use.
          * @since 1.6
+         * @read-only
          */
         get sci(): number;
         /**
          * The validation mode for incoming packets (strict, check,
          * disabled).
          * @since 1.6
+         * @read-only
          */
         get validation(): string;
         /**
          * The size of the replay window.
          * @since 1.6
+         * @read-only
          */
         get window(): number;
 
@@ -12869,26 +13355,31 @@ export namespace NM {
         /**
          * The MACVLAN mode.
          * @since 1.2
+         * @read-only
          */
         get mode(): string;
         /**
          * Whether the device has the no-promiscuos flag.
          * @since 1.2
+         * @read-only
          */
         get no_promisc(): boolean;
         /**
          * Whether the device has the no-promiscuos flag.
          * @since 1.2
+         * @read-only
          */
         get noPromisc(): boolean;
         /**
          * The devices's parent device.
          * @since 1.2
+         * @read-only
          */
         get parent(): Device;
         /**
          * Whether the device is a MACVTAP.
          * @since 1.2
+         * @read-only
          */
         get tap(): boolean;
 
@@ -13020,24 +13511,29 @@ export namespace NM {
 
         /**
          * @since 1.20
+         * @read-only
          */
         get apn(): string;
         /**
          * The generic family of access technologies the modem currently supports
          * without a firmware reload or reinitialization.
+         * @read-only
          */
         get current_capabilities(): DeviceModemCapabilities;
         /**
          * The generic family of access technologies the modem currently supports
          * without a firmware reload or reinitialization.
+         * @read-only
          */
         get currentCapabilities(): DeviceModemCapabilities;
         /**
          * @since 1.20
+         * @read-only
          */
         get device_id(): string;
         /**
          * @since 1.20
+         * @read-only
          */
         get deviceId(): string;
         /**
@@ -13045,6 +13541,7 @@ export namespace NM {
          * capabilities are available at the same time however; some modems require
          * a firmware reload or other reinitialization to switch between eg
          * CDMA/EVDO and GSM/UMTS.
+         * @read-only
          */
         get modem_capabilities(): DeviceModemCapabilities;
         /**
@@ -13052,14 +13549,17 @@ export namespace NM {
          * capabilities are available at the same time however; some modems require
          * a firmware reload or other reinitialization to switch between eg
          * CDMA/EVDO and GSM/UMTS.
+         * @read-only
          */
         get modemCapabilities(): DeviceModemCapabilities;
         /**
          * @since 1.20
+         * @read-only
          */
         get operator_code(): string;
         /**
          * @since 1.20
+         * @read-only
          */
         get operatorCode(): string;
 
@@ -13194,14 +13694,17 @@ export namespace NM {
 
         /**
          * The device's active channel.
+         * @read-only
          */
         get active_channel(): number;
         /**
          * The device's active channel.
+         * @read-only
          */
         get activeChannel(): number;
         /**
          * The companion device.
+         * @read-only
          */
         get companion(): DeviceWifi;
 
@@ -13314,6 +13817,7 @@ export namespace NM {
         /**
          * Gets the ports currently attached as port to the device.
          * @since 1.22
+         * @read-only
          */
         get slaves(): Device[];
 
@@ -13509,6 +14013,7 @@ export namespace NM {
         /**
          * Gets the interfaces currently attached as port to the device.
          * @since 1.22
+         * @read-only
          */
         get slaves(): Device[];
 
@@ -13706,15 +14211,18 @@ export namespace NM {
 
         /**
          * Whether the device has carrier.
+         * @read-only
          */
         get carrier(): boolean;
         /**
          * The current JSON configuration of the device.
          * @since 1.4
+         * @read-only
          */
         get config(): string;
         /**
          * The devices attached as port to the team device.
+         * @read-only
          */
         get slaves(): Device[];
 
@@ -13845,11 +14353,13 @@ export namespace NM {
         /**
          * The gid of the tunnel group, or -1 if it has no owner.
          * @since 1.2
+         * @read-only
          */
         get group(): number;
         /**
          * The tunnel mode, either "tun" or "tap".
          * @since 1.2
+         * @read-only
          */
         get mode(): string;
         /**
@@ -13857,6 +14367,7 @@ export namespace NM {
          * the tap device multiple times, for multiple send/receive
          * queues.
          * @since 1.2
+         * @read-only
          */
         get multi_queue(): boolean;
         /**
@@ -13864,35 +14375,41 @@ export namespace NM {
          * the tap device multiple times, for multiple send/receive
          * queues.
          * @since 1.2
+         * @read-only
          */
         get multiQueue(): boolean;
         /**
          * The tunnel's "TUN_NO_PI" flag; true if no protocol info is
          * prepended to the tunnel packets.
          * @since 1.2
+         * @read-only
          */
         get no_pi(): boolean;
         /**
          * The tunnel's "TUN_NO_PI" flag; true if no protocol info is
          * prepended to the tunnel packets.
          * @since 1.2
+         * @read-only
          */
         get noPi(): boolean;
         /**
          * The uid of the tunnel owner, or -1 if it has no owner.
          * @since 1.2
+         * @read-only
          */
         get owner(): number;
         /**
          * The tunnel's "TUN_VNET_HDR" flag; true if the tunnel packets
          * include a virtio network header.
          * @since 1.2
+         * @read-only
          */
         get vnet_hdr(): boolean;
         /**
          * The tunnel's "TUN_VNET_HDR" flag; true if the tunnel packets
          * include a virtio network header.
          * @since 1.2
+         * @read-only
          */
         get vnetHdr(): boolean;
 
@@ -14029,6 +14546,7 @@ export namespace NM {
         /**
          * The device's peer device.
          * @since 1.30
+         * @read-only
          */
         get peer(): Device;
 
@@ -14138,18 +14656,22 @@ export namespace NM {
 
         /**
          * Whether the device has carrier.
+         * @read-only
          */
         get carrier(): boolean;
         /**
          * The devices's parent device.
+         * @read-only
          */
         get parent(): Device;
         /**
          * The device's VLAN ID.
+         * @read-only
          */
         get vlan_id(): number;
         /**
          * The device's VLAN ID.
+         * @read-only
          */
         get vlanId(): number;
 
@@ -14265,6 +14787,7 @@ export namespace NM {
         /**
          * The device's VRF table.
          * @since 1.24
+         * @read-only
          */
         get table(): number;
 
@@ -14406,6 +14929,7 @@ export namespace NM {
         /**
          * The lifetime in seconds of FDB entries learnt by the kernel.
          * @since 1.2
+         * @read-only
          */
         get ageing(): number;
         /**
@@ -14413,18 +14937,21 @@ export namespace NM {
          *
          * This property is not implemented yet, and the property is always FALSE.
          * @since 1.2
+         * @read-only
          */
         get carrier(): boolean;
         /**
          * The UDP destination port used to communicate with the remote VXLAN tunnel
          * endpoint.
          * @since 1.2
+         * @read-only
          */
         get dst_port(): number;
         /**
          * The UDP destination port used to communicate with the remote VXLAN tunnel
          * endpoint.
          * @since 1.2
+         * @read-only
          */
         get dstPort(): number;
         /**
@@ -14432,86 +14959,102 @@ export namespace NM {
          * destination link layer address is not known in the VXLAN device
          * forwarding database or the multicast IP address joined.
          * @since 1.2
+         * @read-only
          */
         get group(): string;
         /**
          * The device's VXLAN ID.
          * @since 1.2
+         * @read-only
          */
         get id(): number;
         /**
          * Whether netlink LL ADDR miss notifications are generated.
          * @since 1.2
+         * @read-only
          */
         get l2miss(): boolean;
         /**
          * Whether netlink IP ADDR miss notifications are generated.
          * @since 1.2
+         * @read-only
          */
         get l3miss(): boolean;
         /**
          * Whether unknown source link layer addresses and IP addresses are entered
          * into the VXLAN device forwarding database.
          * @since 1.2
+         * @read-only
          */
         get learning(): boolean;
         /**
          * The maximum number of entries that can be added to the forwarding table.
          * @since 1.2
+         * @read-only
          */
         get limit(): number;
         /**
          * The source IP address to use in outgoing packets.
          * @since 1.2
+         * @read-only
          */
         get local(): string;
         /**
          * The devices's parent device.
          * @since 1.2
+         * @read-only
          */
         get parent(): Device;
         /**
          * Whether ARP proxy is turned on.
          * @since 1.2
+         * @read-only
          */
         get proxy(): boolean;
         /**
          * Whether route short circuit is turned on.
          * @since 1.2
+         * @read-only
          */
         get rsc(): boolean;
         /**
          * The maximum UDP source port used to communicate with the remote VXLAN
          * tunnel endpoint.
          * @since 1.2
+         * @read-only
          */
         get src_port_max(): number;
         /**
          * The maximum UDP source port used to communicate with the remote VXLAN
          * tunnel endpoint.
          * @since 1.2
+         * @read-only
          */
         get srcPortMax(): number;
         /**
          * The minimum UDP source port used to communicate with the remote VXLAN
          * tunnel endpoint.
          * @since 1.2
+         * @read-only
          */
         get src_port_min(): number;
         /**
          * The minimum UDP source port used to communicate with the remote VXLAN
          * tunnel endpoint.
          * @since 1.2
+         * @read-only
          */
         get srcPortMin(): number;
         /**
          * The TOS value to use in outgoing packets.
          * @since 1.2
+         * @read-only
          */
         get tos(): number;
         /**
          * The time-to-live value to use in outgoing packets.
          * @since 1.2
+         * @read-only
          */
         get ttl(): number;
 
@@ -14630,11 +15173,13 @@ export namespace NM {
             /**
              * Notifies that a {@link NM.AccessPoint} is added to the Wi-Fi device.
              * @signal
+             * @run-first
              */
             'access-point-added': (arg0: GObject.Object) => void;
             /**
              * Notifies that a {@link NM.AccessPoint} is removed from the Wi-Fi device.
              * @signal
+             * @run-first
              */
             'access-point-removed': (arg0: GObject.Object) => void;
             'notify::access-points': (pspec: GObject.ParamSpec) => void;
@@ -14708,22 +15253,27 @@ export namespace NM {
 
         /**
          * List of all Wi-Fi access points the device can see.
+         * @read-only
          */
         get access_points(): AccessPoint[];
         /**
          * List of all Wi-Fi access points the device can see.
+         * @read-only
          */
         get accessPoints(): AccessPoint[];
         /**
          * The active {@link NM.AccessPoint} of the device.
+         * @read-only
          */
         get active_access_point(): AccessPoint;
         /**
          * The active {@link NM.AccessPoint} of the device.
+         * @read-only
          */
         get activeAccessPoint(): AccessPoint;
         /**
          * The bit rate of the device in kbit/s.
+         * @read-only
          */
         get bitrate(): number;
         /**
@@ -14731,6 +15281,7 @@ export namespace NM {
          * network scan. A value of -1 means the device never scanned for
          * access points.
          * @since 1.12
+         * @read-only
          */
         get last_scan(): number;
         /**
@@ -14738,26 +15289,32 @@ export namespace NM {
          * network scan. A value of -1 means the device never scanned for
          * access points.
          * @since 1.12
+         * @read-only
          */
         get lastScan(): number;
         /**
          * The mode of the device.
+         * @read-only
          */
         get mode(): __80211Mode;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get perm_hw_address(): string;
         /**
          * The hardware (MAC) address of the device.
+         * @read-only
          */
         get permHwAddress(): string;
         /**
          * The wireless capabilities of the device.
+         * @read-only
          */
         get wireless_capabilities(): DeviceWifiCapabilities;
         /**
          * The wireless capabilities of the device.
+         * @read-only
          */
         get wirelessCapabilities(): DeviceWifiCapabilities;
 
@@ -14931,12 +15488,14 @@ export namespace NM {
              * Notifies that a {@link NM.WifiP2PPeer} is added to the Wi-Fi P2P device.
              * @signal
              * @since 1.16
+             * @run-first
              */
             'peer-added': (arg0: GObject.Object) => void;
             /**
              * Notifies that a {@link NM.WifiP2PPeer} is removed from the Wi-Fi P2P device.
              * @signal
              * @since 1.16
+             * @run-first
              */
             'peer-removed': (arg0: GObject.Object) => void;
             'notify::peers': (pspec: GObject.ParamSpec) => void;
@@ -14995,6 +15554,7 @@ export namespace NM {
         /**
          * List of all Wi-Fi P2P peers the device can see.
          * @since 1.16
+         * @read-only
          */
         get peers(): WifiP2PPeer[];
 
@@ -15131,12 +15691,14 @@ export namespace NM {
              * Notifies that a {@link NM.WimaxNsp} is added to the wimax device.
              * @signal
              * @deprecated since 1.2: WiMAX is no longer supported.
+             * @run-first
              */
             'nsp-added': (arg0: GObject.Object) => void;
             /**
              * Notifies that a {@link NM.WimaxNsp} is removed from the wimax device.
              * @signal
              * @deprecated since 1.2: WiMAX is no longer supported.
+             * @run-first
              */
             'nsp-removed': (arg0: GObject.Object) => void;
             'notify::active-nsp': (pspec: GObject.ParamSpec) => void;
@@ -15212,17 +15774,20 @@ export namespace NM {
         /**
          * The active {@link NM.WimaxNsp} of the device.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get active_nsp(): WimaxNsp;
         /**
          * The active {@link NM.WimaxNsp} of the device.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get activeNsp(): WimaxNsp;
         /**
          * The ID of the serving base station as received from the network.  Has
          * no meaning when the device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get bsid(): string;
         /**
@@ -15230,6 +15795,7 @@ export namespace NM {
          * communicate with the network when connected.  Has no meaning when the
          * device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get center_frequency(): number;
         /**
@@ -15237,6 +15803,7 @@ export namespace NM {
          * communicate with the network when connected.  Has no meaning when the
          * device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get centerFrequency(): number;
         /**
@@ -15244,20 +15811,24 @@ export namespace NM {
          * in dB.  CINR is a more accurate measure of radio link quality.  Has no
          * meaning when the device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get cinr(): number;
         /**
          * The hardware (MAC) address of the device.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The hardware (MAC) address of the device.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get hwAddress(): string;
         /**
          * List of all WiMAX Network Service Providers the device can see.
+         * @read-only
          */
         get nsps(): WimaxNsp[];
         /**
@@ -15266,6 +15837,7 @@ export namespace NM {
          * indicate the overall quality of the radio link.  Has no meaning when the
          * device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get rssi(): number;
         /**
@@ -15273,6 +15845,7 @@ export namespace NM {
          * 0.5 dBm.  i.e. a TxPower of -11 represents an actual device TX power of
          * -5.5 dBm.  Has no meaning when the device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get tx_power(): number;
         /**
@@ -15280,6 +15853,7 @@ export namespace NM {
          * 0.5 dBm.  i.e. a TxPower of -11 represents an actual device TX power of
          * -5.5 dBm.  Has no meaning when the device is not connected.
          * @deprecated since 1.2: WiMAX is no longer supported.
+         * @read-only
          */
         get txPower(): number;
 
@@ -15445,28 +16019,33 @@ export namespace NM {
          * Used when setting routing policy for outgoing encrypted packets.
          * Set to 0 to disable the mark (default).
          * @since 1.14
+         * @read-only
          */
         get fwmark(): number;
         /**
          * Local UDP listen port.
          * Set to 0 to allow a random port to be chosen (default).
          * @since 1.14
+         * @read-only
          */
         get listen_port(): number;
         /**
          * Local UDP listen port.
          * Set to 0 to allow a random port to be chosen (default).
          * @since 1.14
+         * @read-only
          */
         get listenPort(): number;
         /**
          * 32-byte public key, derived from the current private key.
          * @since 1.14
+         * @read-only
          */
         get public_key(): GLib.Bytes;
         /**
          * 32-byte public key, derived from the current private key.
          * @since 1.14
+         * @read-only
          */
         get publicKey(): GLib.Bytes;
 
@@ -15643,10 +16222,12 @@ export namespace NM {
         /**
          * The IP address family of the configuration; either
          * <literal>AF_INET</literal> or <literal>AF_INET6</literal>.
+         * @read-only
          */
         get family(): number;
         /**
          * The {@link GLib.HashTable} containing options of the configuration.
+         * @read-only
          */
         get options(): GLib.HashTable<string, string>;
 
@@ -15746,41 +16327,50 @@ export namespace NM {
 
         /**
          * A {@link GLib.PtrArray} containing the addresses ({@link NM.IPAddress}) of the configuration.
+         * @read-only
          */
         get addresses(): any[];
         /**
          * The array containing domain strings of the configuration.
+         * @read-only
          */
         get domains(): string[];
         /**
          * The IP address family of the configuration; either
          * <literal>AF_INET</literal> or <literal>AF_INET6</literal>.
+         * @read-only
          */
         get family(): number;
         /**
          * The IP gateway address of the configuration as string.
+         * @read-only
          */
         get gateway(): string;
         /**
          * The array containing name server IP addresses of the configuration.
+         * @read-only
          */
         get nameservers(): string[];
         /**
          * A {@link GLib.PtrArray} containing the routes ({@link NM.IPRoute}) of the configuration.
+         * @read-only
          */
         get routes(): IPRoute[];
         /**
          * The array containing DNS search strings of the configuration.
+         * @read-only
          */
         get searches(): string[];
         /**
          * The array containing WINS server IP addresses of the configuration.
          * (This will always be empty for IPv6 configurations.)
+         * @read-only
          */
         get wins_servers(): string[];
         /**
          * The array containing WINS server IP addresses of the configuration.
          * (This will always be empty for IPv6 configurations.)
+         * @read-only
          */
         get winsServers(): string[];
 
@@ -15895,6 +16485,7 @@ export namespace NM {
          * instance gets reset to `null`. You can use this property to
          * track removal of the object from the cache.
          * @since 1.34
+         * @read-only
          */
         get client(): Client;
         /**
@@ -15903,6 +16494,7 @@ export namespace NM {
          * The D-Bus path of an object instance never changes, even if the object
          * gets removed from the cache. To see whether the object is still in the
          * cache, check NMObject:client.
+         * @read-only
          */
         get path(): string;
 
@@ -15995,29 +16587,34 @@ export namespace NM {
          * File that stores the connection in case the connection is
          * file-backed.
          * @since 1.12
+         * @read-only
          */
         get filename(): string;
         /**
          * The flags of the connection as unsigned integer. The values
          * correspond to the {@link NM.SettingsConnectionFlags} enum.
          * @since 1.12
+         * @read-only
          */
         get flags(): number;
         /**
          * `true` if the remote connection contains changes that have not been saved
          * to disk, `false` if the connection is the same as its on-disk representation.
+         * @read-only
          */
         get unsaved(): boolean;
         /**
          * The version ID of the profile that is incremented when the profile gets modified.
          * This can be used to track concurrent modifications of the profile.
          * @since 1.44
+         * @read-only
          */
         get version_id(): number;
         /**
          * The version ID of the profile that is incremented when the profile gets modified.
          * This can be used to track concurrent modifications of the profile.
          * @since 1.44
+         * @read-only
          */
         get versionId(): number;
         /**
@@ -16028,6 +16625,7 @@ export namespace NM {
          * fail. (`NMRemoteSettings` will not normally return non-visible connections
          * to callers, but it is possible for a connection's visibility to change
          * after you already have a reference to it.)
+         * @read-only
          */
         get visible(): boolean;
 
@@ -17263,6 +17861,7 @@ export namespace NM {
          * as construct-only property, or otherwise {@link NM.SecretAgentOld} will choose
          * a connection via `g_bus_get()` during initialization.
          * @since 1.24
+         * @construct-only
          */
         get dbus_connection(): Gio.DBusConnection;
         /**
@@ -17270,6 +17869,7 @@ export namespace NM {
          * as construct-only property, or otherwise {@link NM.SecretAgentOld} will choose
          * a connection via `g_bus_get()` during initialization.
          * @since 1.24
+         * @construct-only
          */
         get dbusConnection(): Gio.DBusConnection;
         /**
@@ -17280,10 +17880,12 @@ export namespace NM {
          * identifier is limited in length to 255 characters with a minimum
          * of 3 characters.  An example valid identifier is 'org.gnome.nm-applet'
          * (without quotes).
+         * @construct-only
          */
         get identifier(): string;
         /**
          * `true` if the agent is registered with NetworkManager, `false` if not.
+         * @read-only
          */
         get registered(): boolean;
 
@@ -18363,6 +18965,7 @@ export namespace NM {
          * The setting's name, which uniquely identifies the setting within the
          * connection.  Each setting type has a name unique to that type, for
          * example "ppp" or "802-11-wireless" or "802-3-ethernet".
+         * @read-only
          */
         get name(): string;
 
@@ -35264,6 +35867,7 @@ export namespace NM {
         interface SignalSignatures extends ActiveConnection.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'vpn-state-changed': (arg0: number, arg1: number) => void;
             'notify::banner': (pspec: GObject.ParamSpec) => void;
@@ -35308,14 +35912,17 @@ export namespace NM {
 
         /**
          * The VPN login banner of the active VPN connection.
+         * @read-only
          */
         get banner(): string;
         /**
          * The VPN state of the active VPN connection.
+         * @read-only
          */
         get vpn_state(): VpnConnectionState;
         /**
          * The VPN state of the active VPN connection.
+         * @read-only
          */
         get vpnState(): VpnConnectionState;
 
@@ -35400,6 +36007,7 @@ export namespace NM {
          * a file (i.e. the keyfile instance was passed to the
          * constructor).
          * @since 1.2
+         * @construct-only
          */
         get filename(): string;
         /**
@@ -35407,11 +36015,13 @@ export namespace NM {
          * When passing a keyfile instance, the constructor will not
          * try to read from filename.
          * @since 1.2
+         * @construct-only
          */
         set keyfile(val: GLib.KeyFile);
         /**
          * The name of the VPN plugin.
          * @since 1.2
+         * @read-only
          */
         get name(): string;
 
@@ -36119,34 +36729,42 @@ export namespace NM {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             config: (arg0: GLib.Variant) => void;
             /**
              * @signal
+             * @run-first
              */
             failure: (arg0: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'ip4-config': (arg0: GLib.Variant) => void;
             /**
              * @signal
+             * @run-first
              */
             'ip6-config': (arg0: GLib.Variant) => void;
             /**
              * @signal
+             * @run-first
              */
             'login-banner': (arg0: string) => void;
             /**
              * @signal
+             * @run-first
              */
             quit: () => void;
             /**
              * @signal
+             * @run-first
              */
             'secrets-required': (arg0: string, arg1: string[]) => void;
             /**
              * @signal
+             * @run-first
              */
             'state-changed': (arg0: number) => void;
             'notify::service-name': (pspec: GObject.ParamSpec) => void;
@@ -36173,11 +36791,13 @@ export namespace NM {
         /**
          * The D-Bus service name of this plugin.
          * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
+         * @construct-only
          */
         get service_name(): string;
         /**
          * The D-Bus service name of this plugin.
          * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
+         * @construct-only
          */
         get serviceName(): string;
         /**
@@ -36879,34 +37499,42 @@ export namespace NM {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             config: (arg0: GLib.Variant) => void;
             /**
              * @signal
+             * @run-first
              */
             failure: (arg0: number) => void;
             /**
              * @signal
+             * @run-first
              */
             'ip4-config': (arg0: GLib.Variant) => void;
             /**
              * @signal
+             * @run-first
              */
             'ip6-config': (arg0: GLib.Variant) => void;
             /**
              * @signal
+             * @run-first
              */
             'login-banner': (arg0: string) => void;
             /**
              * @signal
+             * @run-first
              */
             quit: () => void;
             /**
              * @signal
+             * @run-first
              */
             'secrets-required': (arg0: string, arg1: string[]) => void;
             /**
              * @signal
+             * @run-first
              */
             'state-changed': (arg0: number) => void;
             'notify::service-name': (pspec: GObject.ParamSpec) => void;
@@ -36937,11 +37565,13 @@ export namespace NM {
         /**
          * The D-Bus service name of this plugin.
          * @since 1.2
+         * @construct-only
          */
         get service_name(): string;
         /**
          * The D-Bus service name of this plugin.
          * @since 1.2
+         * @construct-only
          */
         get serviceName(): string;
         /**
@@ -36953,11 +37583,13 @@ export namespace NM {
         /**
          * Whether to watch for D-Bus peer's changes.
          * @since 1.2
+         * @construct-only
          */
         get watch_peer(): boolean;
         /**
          * Whether to watch for D-Bus peer's changes.
          * @since 1.2
+         * @construct-only
          */
         get watchPeer(): boolean;
 
@@ -37709,73 +38341,87 @@ export namespace NM {
         /**
          * The flags of the P2P peer.
          * @since 1.16
+         * @read-only
          */
         get flags(): __80211ApFlags;
         /**
          * The hardware address of the P2P peer.
          * @since 1.16
+         * @read-only
          */
         get hw_address(): string;
         /**
          * The hardware address of the P2P peer.
          * @since 1.16
+         * @read-only
          */
         get hwAddress(): string;
         /**
          * The timestamp (in CLOCK_BOOTTIME seconds) for the last time the
          * P2P peer was found.  A value of -1 means the peer has never been seen.
          * @since 1.16
+         * @read-only
          */
         get last_seen(): number;
         /**
          * The timestamp (in CLOCK_BOOTTIME seconds) for the last time the
          * P2P peer was found.  A value of -1 means the peer has never been seen.
          * @since 1.16
+         * @read-only
          */
         get lastSeen(): number;
         /**
          * The manufacturer of the P2P peer.
          * @since 1.16
+         * @read-only
          */
         get manufacturer(): string;
         /**
          * The model of the P2P peer.
          * @since 1.16
+         * @read-only
          */
         get model(): string;
         /**
          * The hardware address of the P2P peer.
          * @since 1.16
+         * @read-only
          */
         get model_number(): string;
         /**
          * The hardware address of the P2P peer.
          * @since 1.16
+         * @read-only
          */
         get modelNumber(): string;
         /**
          * The name of the P2P peer.
          * @since 1.16
+         * @read-only
          */
         get name(): string;
         /**
          * The serial number of the P2P peer.
          * @since 1.16
+         * @read-only
          */
         get serial(): string;
         /**
          * The current signal strength of the P2P peer.
          * @since 1.16
+         * @read-only
          */
         get strength(): number;
         /**
          * The WFD information elements of the P2P peer.
          * @since 1.16
+         * @read-only
          */
         get wfd_ies(): GLib.Bytes;
         /**
          * The WFD information elements of the P2P peer.
          * @since 1.16
+         * @read-only
          */
         get wfdIes(): GLib.Bytes;
 
@@ -37925,26 +38571,31 @@ export namespace NM {
         /**
          * The name of the WiMAX NSP.
          * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
+         * @read-only
          */
         get name(): string;
         /**
          * The network type of the WiMAX NSP.
          * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
+         * @read-only
          */
         get network_type(): WimaxNspNetworkType;
         /**
          * The network type of the WiMAX NSP.
          * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
+         * @read-only
          */
         get networkType(): WimaxNspNetworkType;
         /**
          * The signal quality of the WiMAX NSP.
          * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
+         * @read-only
          */
         get signal_quality(): number;
         /**
          * The signal quality of the WiMAX NSP.
          * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
+         * @read-only
          */
         get signalQuality(): number;
 
@@ -40468,14 +41119,17 @@ export namespace NM {
 
         /**
          * Longer description of the VPN plugin.
+         * @read-only
          */
         get description(): string;
         /**
          * Short display name of the VPN plugin.
+         * @read-only
          */
         get name(): string;
         /**
          * D-Bus service name of the plugin's VPN service.
+         * @read-only
          */
         get service(): string;
 

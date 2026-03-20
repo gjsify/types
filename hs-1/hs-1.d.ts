@@ -20,6 +20,9 @@ export namespace Hs {
      * Hs-1
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Atari2600Controller {
         export const $gtype: GObject.GType<Atari2600Controller>;
     }
@@ -55,6 +58,9 @@ export namespace Hs {
         PADDLES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Atari2600Difficulty {
         export const $gtype: GObject.GType<Atari2600Difficulty>;
     }
@@ -74,6 +80,9 @@ export namespace Hs {
         BEGINNER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Atari2600JoystickButton {
         export const $gtype: GObject.GType<Atari2600JoystickButton>;
     }
@@ -91,6 +100,9 @@ export namespace Hs {
         FIRE_9,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Atari2600TVType {
         export const $gtype: GObject.GType<Atari2600TVType>;
     }
@@ -110,6 +122,9 @@ export namespace Hs {
         BLACK_WHITE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Atari7800Controller {
         export const $gtype: GObject.GType<Atari7800Controller>;
     }
@@ -133,6 +148,9 @@ export namespace Hs {
         LIGHTGUN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Atari7800Difficulty {
         export const $gtype: GObject.GType<Atari7800Difficulty>;
     }
@@ -152,6 +170,9 @@ export namespace Hs {
         BEGINNER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Atari7800JoystickButton {
         export const $gtype: GObject.GType<Atari7800JoystickButton>;
     }
@@ -168,6 +189,9 @@ export namespace Hs {
         TWO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AtariLynxButton {
         export const $gtype: GObject.GType<AtariLynxButton>;
     }
@@ -270,6 +294,9 @@ export namespace Hs {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GLProfile {
         export const $gtype: GObject.GType<GLProfile>;
     }
@@ -293,6 +320,9 @@ export namespace Hs {
         ES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GameBoyAdvanceButton {
         export const $gtype: GObject.GType<GameBoyAdvanceButton>;
     }
@@ -313,6 +343,9 @@ export namespace Hs {
         R,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GameBoyButton {
         export const $gtype: GObject.GType<GameBoyButton>;
     }
@@ -331,6 +364,9 @@ export namespace Hs {
         START,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GameBoyModel {
         export const $gtype: GObject.GType<GameBoyModel>;
     }
@@ -366,6 +402,9 @@ export namespace Hs {
         SUPER_GAME_BOY_2,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GameGearButton {
         export const $gtype: GObject.GType<GameGearButton>;
     }
@@ -383,6 +422,9 @@ export namespace Hs {
         START,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LogLevel {
         export const $gtype: GObject.GType<LogLevel>;
     }
@@ -414,6 +456,9 @@ export namespace Hs {
         CRITICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MasterSystemButton {
         export const $gtype: GObject.GType<MasterSystemButton>;
     }
@@ -430,6 +475,9 @@ export namespace Hs {
         TWO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MegaDriveButton {
         export const $gtype: GObject.GType<MegaDriveButton>;
     }
@@ -452,6 +500,9 @@ export namespace Hs {
         MODE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NeoGeoPocketButton {
         export const $gtype: GObject.GType<NeoGeoPocketButton>;
     }
@@ -469,6 +520,9 @@ export namespace Hs {
         OPTION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NesAccessory {
         export const $gtype: GObject.GType<NesAccessory>;
     }
@@ -492,6 +546,9 @@ export namespace Hs {
         PADDLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NesButton {
         export const $gtype: GObject.GType<NesButton>;
     }
@@ -510,6 +567,9 @@ export namespace Hs {
         START,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NesMicLevel {
         export const $gtype: GObject.GType<NesMicLevel>;
     }
@@ -529,6 +589,9 @@ export namespace Hs {
         LOUD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Nintendo64Button {
         export const $gtype: GObject.GType<Nintendo64Button>;
     }
@@ -553,6 +616,9 @@ export namespace Hs {
         START,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Nintendo64Pak {
         export const $gtype: GObject.GType<Nintendo64Pak>;
     }
@@ -577,6 +643,9 @@ export namespace Hs {
         RUMBLE_PAK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NintendoDsButton {
         export const $gtype: GObject.GType<NintendoDsButton>;
     }
@@ -599,6 +668,9 @@ export namespace Hs {
         R,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PcEngineButton {
         export const $gtype: GObject.GType<PcEngineButton>;
     }
@@ -621,6 +693,9 @@ export namespace Hs {
         RUN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PcEnginePadMode {
         export const $gtype: GObject.GType<PcEnginePadMode>;
     }
@@ -643,6 +718,9 @@ export namespace Hs {
         SIX_BUTTONS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PixelFormat {
         export const $gtype: GObject.GType<PixelFormat>;
     }
@@ -669,6 +747,9 @@ export namespace Hs {
         B8G8R8X8,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Platform {
         export const $gtype: GObject.GType<Platform>;
     }
@@ -770,6 +851,9 @@ export namespace Hs {
         WONDERSWAN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlayStationBios {
         export const $gtype: GObject.GType<PlayStationBios>;
     }
@@ -794,6 +878,9 @@ export namespace Hs {
         N_BIOS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlayStationButton {
         export const $gtype: GObject.GType<PlayStationButton>;
     }
@@ -820,6 +907,9 @@ export namespace Hs {
         START,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlayStationDualShockMode {
         export const $gtype: GObject.GType<PlayStationDualShockMode>;
     }
@@ -840,6 +930,9 @@ export namespace Hs {
         ANALOG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlayStationStick {
         export const $gtype: GObject.GType<PlayStationStick>;
     }
@@ -852,6 +945,9 @@ export namespace Hs {
         RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Region {
         export const $gtype: GObject.GType<Region>;
     }
@@ -875,6 +971,9 @@ export namespace Hs {
         PAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SegaSaturn3DPadMode {
         export const $gtype: GObject.GType<SegaSaturn3DPadMode>;
     }
@@ -888,6 +987,9 @@ export namespace Hs {
         ANALOG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SegaSaturnBios {
         export const $gtype: GObject.GType<SegaSaturnBios>;
     }
@@ -907,6 +1009,9 @@ export namespace Hs {
         US_EU,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SegaSaturnButton {
         export const $gtype: GObject.GType<SegaSaturnButton>;
     }
@@ -930,6 +1035,9 @@ export namespace Hs {
         START,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SegaSaturnController {
         export const $gtype: GObject.GType<SegaSaturnController>;
     }
@@ -943,6 +1051,9 @@ export namespace Hs {
         '3D_CONTROL_PAD',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Sg1000Button {
         export const $gtype: GObject.GType<Sg1000Button>;
     }
@@ -959,6 +1070,9 @@ export namespace Hs {
         TWO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SuperNesButton {
         export const $gtype: GObject.GType<SuperNesButton>;
     }
@@ -981,6 +1095,9 @@ export namespace Hs {
         R,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VirtualBoyButton {
         export const $gtype: GObject.GType<VirtualBoyButton>;
     }
@@ -1005,6 +1122,9 @@ export namespace Hs {
         R,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WonderSwanButton {
         export const $gtype: GObject.GType<WonderSwanButton>;
     }
@@ -1216,6 +1336,9 @@ export namespace Hs {
     interface StateCallback {
         (self: Core): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace GLFlags {
         export const $gtype: GObject.GType<GLFlags>;
     }
@@ -1526,6 +1649,7 @@ export namespace Hs {
          * The core name, set by the frontend.
          *
          * Matches the `Name` key from the descriptor file.
+         * @construct-only
          */
         get name(): string;
         /**
@@ -1533,6 +1657,7 @@ export namespace Hs {
          *
          * Cores that support multiple platforms can query it to determine the current
          * platform.
+         * @construct-only
          */
         get platform(): Platform;
 

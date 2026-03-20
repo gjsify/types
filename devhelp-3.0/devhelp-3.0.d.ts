@@ -32,6 +32,9 @@ export namespace Devhelp {
      * Devhelp-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LinkType {
         export const $gtype: GObject.GType<LinkType>;
     }
@@ -126,6 +129,9 @@ export namespace Devhelp {
      * @returns a string representation of the {@link Devhelp.LinkType}, translated in the current language.
      */
     function link_type_to_string(link_type: LinkType | null): string;
+    /**
+     * @gir-type Flags
+     */
     export namespace LinkFlags {
         export const $gtype: GObject.GType<LinkFlags>;
     }
@@ -745,12 +751,14 @@ export namespace Devhelp {
              * The ::deleted signal is emitted when the index file has been deleted
              * from the filesystem.
              * @signal
+             * @run-last
              */
             deleted: () => void;
             /**
              * The ::updated signal is emitted when the index file has been
              * modified (but the file still exists).
              * @signal
+             * @run-last
              */
             updated: () => void;
         }
@@ -868,6 +876,7 @@ export namespace Devhelp {
              * the list.
              * @signal
              * @since 3.30
+             * @run-last
              */
             'add-book': (arg0: Book) => void;
             /**
@@ -879,6 +888,7 @@ export namespace Devhelp {
              * and that `book` was not inserted several times.
              * @signal
              * @since 3.30
+             * @run-last
              */
             'remove-book': (arg0: Book) => void;
         }
@@ -1135,6 +1145,7 @@ export namespace Devhelp {
         /**
          * The directory, as a {@link Gio.File}, containing a set of Devhelp books.
          * @since 3.30
+         * @construct-only
          */
         get directory(): Gio.File;
 
@@ -1250,6 +1261,7 @@ export namespace Devhelp {
         interface SignalSignatures extends Gtk.TreeView.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'link-selected': (arg0: Link) => void;
             'notify::profile': (pspec: GObject.ParamSpec) => void;
@@ -1343,6 +1355,7 @@ export namespace Devhelp {
          * The {@link Devhelp.Profile}. If set to `null`, the default profile as returned by
          * `dh_profile_get_default()` is used.
          * @since 3.30
+         * @construct-only
          */
         get profile(): Profile;
 
@@ -3084,6 +3097,7 @@ export namespace Devhelp {
          * The {@link Devhelp.Profile}. If set to `null`, the default profile as returned by
          * `dh_profile_get_default()` is used.
          * @since 3.30
+         * @construct-only
          */
         get profile(): Profile;
 
@@ -3831,6 +3845,7 @@ export namespace Devhelp {
          * The associated {@link Devhelp.Notebook}. {@link Devhelp.SearchBar} has a strong reference to
          * the {@link Devhelp.Notebook}.
          * @since 3.30
+         * @construct-only
          */
         get notebook(): Notebook;
 
@@ -4344,6 +4359,7 @@ export namespace Devhelp {
              * "books-disabled" {@link Gio.Settings} key changes.
              * @signal
              * @since 3.30
+             * @run-first
              */
             'books-disabled-changed': () => void;
             /**
@@ -4351,6 +4367,7 @@ export namespace Devhelp {
              * `dh_settings_get_selected_fonts()` have potentially changed.
              * @signal
              * @since 3.30
+             * @run-first
              */
             'fonts-changed': () => void;
             'notify::fixed-font': (pspec: GObject.ParamSpec) => void;
@@ -4683,6 +4700,7 @@ export namespace Devhelp {
              * not necessarily the same as the current return value of
              * `dh_sidebar_get_selected_link()`.
              * @signal
+             * @run-last
              */
             'link-selected': (arg0: Link) => void;
             'notify::profile': (pspec: GObject.ParamSpec) => void;
@@ -4760,6 +4778,7 @@ export namespace Devhelp {
          * The {@link Devhelp.Profile}. If set to `null`, the default profile as returned by
          * `dh_profile_get_default()` is used.
          * @since 3.30
+         * @construct-only
          */
         get profile(): Profile;
 
@@ -5392,12 +5411,14 @@ export namespace Devhelp {
          * The {@link Devhelp.WebView} of the tab. If set to `null` a {@link Devhelp.WebView} is created
          * with the default {@link Devhelp.Profile}.
          * @since 3.30
+         * @construct-only
          */
         get web_view(): WebView;
         /**
          * The {@link Devhelp.WebView} of the tab. If set to `null` a {@link Devhelp.WebView} is created
          * with the default {@link Devhelp.Profile}.
          * @since 3.30
+         * @construct-only
          */
         get webView(): WebView;
 
@@ -5994,6 +6015,7 @@ export namespace Devhelp {
          * The associated {@link Devhelp.Tab}. {@link Devhelp.TabLabel} has a weak reference to the
          * {@link Devhelp.Tab}.
          * @since 3.30
+         * @construct-only
          */
         get tab(): Tab;
 
@@ -6521,6 +6543,7 @@ export namespace Devhelp {
              * on a link.
              * @signal
              * @since 3.30
+             * @run-last
              */
             'open-new-tab': (arg0: string) => void;
             'notify::profile': (pspec: GObject.ParamSpec) => void;
@@ -6616,6 +6639,7 @@ export namespace Devhelp {
          * The {@link Devhelp.Profile}. If set to `null`, the default profile as returned by
          * `dh_profile_get_default()` is used.
          * @since 3.30
+         * @construct-only
          */
         get profile(): Profile;
 

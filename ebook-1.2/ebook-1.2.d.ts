@@ -26,6 +26,9 @@ export namespace EBook {
      * EBook-1.2
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BookStatus {
         export const $gtype: GObject.GType<BookStatus>;
     }
@@ -123,6 +126,7 @@ export namespace EBook {
         /**
          * The currently active locale for this addressbook.
          * @since 3.12
+         * @read-only
          */
         get locale(): string;
 
@@ -1919,6 +1923,7 @@ export namespace EBook {
              * which was the thread default context at cursor creation time.
              * @signal
              * @since 3.12
+             * @run-last
              */
             refresh: () => void;
             'notify::alphabet': (pspec: GObject.ParamSpec) => void;
@@ -1974,11 +1979,13 @@ export namespace EBook {
          * delivered in the {@link GLib.MainContext} which was the thread
          * default context at cursor creation time.
          * @since 3.12
+         * @read-only
          */
         get alphabet(): string[];
         /**
          * The {@link EBook.BookClient} which this cursor was created for
          * @since 3.12
+         * @construct-only
          */
         get client(): BookClient;
         /**
@@ -1988,6 +1995,7 @@ export namespace EBook {
          * cursor, to construct the cursor use `e_book_client_get_cursor()`.
          * </para></note>
          * @since 3.12
+         * @construct-only
          */
         set connection(val: Gio.DBusConnection);
         /**
@@ -1997,6 +2005,7 @@ export namespace EBook {
          * cursor, to construct the cursor use `e_book_client_get_cursor()`.
          * </para></note>
          * @since 3.12
+         * @construct-only
          */
         set context(val: GLib.MainContext);
         /**
@@ -2006,6 +2015,7 @@ export namespace EBook {
          * cursor, to construct the cursor use `e_book_client_get_cursor()`.
          * </para></note>
          * @since 3.12
+         * @construct-only
          */
         set object_path(val: string);
         /**
@@ -2015,6 +2025,7 @@ export namespace EBook {
          * cursor, to construct the cursor use `e_book_client_get_cursor()`.
          * </para></note>
          * @since 3.12
+         * @construct-only
          */
         set objectPath(val: string);
         /**
@@ -2036,6 +2047,7 @@ export namespace EBook {
          * delivered in the {@link GLib.MainContext} which was the thread
          * default context at cursor creation time.
          * @since 3.12
+         * @read-only
          */
         get position(): number;
         /**
@@ -2045,6 +2057,7 @@ export namespace EBook {
          * cursor, to construct the cursor use `e_book_client_get_cursor()`.
          * </para></note>
          * @since 3.12
+         * @construct-only
          */
         set sort_fields(val: string[]);
         /**
@@ -2054,6 +2067,7 @@ export namespace EBook {
          * cursor, to construct the cursor use `e_book_client_get_cursor()`.
          * </para></note>
          * @since 3.12
+         * @construct-only
          */
         set sortFields(val: string[]);
         /**
@@ -2063,6 +2077,7 @@ export namespace EBook {
          * delivered in the {@link GLib.MainContext} which was the thread
          * default context at cursor creation time.
          * @since 3.12
+         * @read-only
          */
         get total(): number;
 
@@ -2981,6 +2996,7 @@ export namespace EBook {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             complete: (arg0: GLib.Error) => void;
             /**
@@ -2991,22 +3007,27 @@ export namespace EBook {
              * Note: This signal can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
              * @signal
              * @since 3.50
+             * @run-last
              */
             'content-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'objects-added': (arg0: EBookContacts.Contact[]) => void;
             /**
              * @signal
+             * @run-last
              */
             'objects-modified': (arg0: EBookContacts.Contact[]) => void;
             /**
              * @signal
+             * @run-last
              */
             'objects-removed': (arg0: string[]) => void;
             /**
              * @signal
+             * @run-last
              */
             progress: (arg0: number, arg1: string) => void;
             'notify::client': (pspec: GObject.ParamSpec) => void;
@@ -3040,7 +3061,13 @@ export namespace EBook {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get client(): BookClient;
+        /**
+         * @construct-only
+         */
         get connection(): Gio.DBusConnection;
         /**
          * A list of {@link EBookContacts.BookIndices} holding indices of the contacts in the view.
@@ -3050,6 +3077,7 @@ export namespace EBook {
          *
          * Note: This property can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
          * @since 3.50
+         * @read-only
          */
         get indices(): EBookContacts.BookIndices;
         /**
@@ -3057,6 +3085,7 @@ export namespace EBook {
          *
          * Note: This property can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
          * @since 3.50
+         * @read-only
          */
         get n_total(): number;
         /**
@@ -3064,9 +3093,16 @@ export namespace EBook {
          *
          * Note: This property can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
          * @since 3.50
+         * @read-only
          */
         get nTotal(): number;
+        /**
+         * @construct-only
+         */
         get object_path(): string;
+        /**
+         * @construct-only
+         */
         get objectPath(): string;
 
         /**
@@ -3787,6 +3823,7 @@ export namespace EBook {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
         }

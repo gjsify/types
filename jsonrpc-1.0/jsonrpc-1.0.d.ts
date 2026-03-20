@@ -62,6 +62,7 @@ export namespace Jsonrpc {
              * or the connection has been knowingly closed.
              * @signal
              * @since 3.28
+             * @run-last
              */
             failed: () => void;
             /**
@@ -78,6 +79,8 @@ export namespace Jsonrpc {
              * the signal.
              * @signal
              * @since 3.26
+             * @detailed
+             * @run-last
              */
             'handle-call': (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean | void;
             /**
@@ -87,6 +90,8 @@ export namespace Jsonrpc {
              * trip.
              * @signal
              * @since 3.26
+             * @detailed
+             * @run-last
              */
             notification: (arg0: string, arg1: GLib.Variant | null) => void;
             'notify::io-stream': (pspec: GObject.ParamSpec) => void;
@@ -105,6 +110,8 @@ export namespace Jsonrpc {
              * the signal.
              * @signal
              * @since 3.26
+             * @detailed
+             * @run-last
              */
             'handle-call::io-stream': (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean | void;
             /**
@@ -121,6 +128,8 @@ export namespace Jsonrpc {
              * the signal.
              * @signal
              * @since 3.26
+             * @detailed
+             * @run-last
              */
             'handle-call::use-gvariant': (
                 arg0: string,
@@ -134,6 +143,8 @@ export namespace Jsonrpc {
              * trip.
              * @signal
              * @since 3.26
+             * @detailed
+             * @run-last
              */
             'notification::io-stream': (arg0: string, arg1: GLib.Variant | null) => void;
             /**
@@ -143,6 +154,8 @@ export namespace Jsonrpc {
              * trip.
              * @signal
              * @since 3.26
+             * @detailed
+             * @run-last
              */
             'notification::use-gvariant': (arg0: string, arg1: GLib.Variant | null) => void;
         }
@@ -196,12 +209,14 @@ export namespace Jsonrpc {
          * The "io-stream" property is the {@link Gio.IOStream} to use for communicating
          * with a JSON-RPC peer.
          * @since 3.26
+         * @construct-only
          */
         set io_stream(val: Gio.IOStream);
         /**
          * The "io-stream" property is the {@link Gio.IOStream} to use for communicating
          * with a JSON-RPC peer.
          * @since 3.26
+         * @construct-only
          */
         set ioStream(val: Gio.IOStream);
         /**
@@ -1887,12 +1902,14 @@ export namespace Jsonrpc {
              * This signal is emitted when a new client has been accepted.
              * @signal
              * @since 3.28
+             * @run-last
              */
             'client-accepted': (arg0: Client) => void;
             /**
              * This signal is emitted when a new client has been lost.
              * @signal
              * @since 3.30
+             * @run-last
              */
             'client-closed': (arg0: Client) => void;
             /**
@@ -1902,12 +1919,14 @@ export namespace Jsonrpc {
              * failure), using {@link Client.reply} or {@link Client.reply_async}.
              * @signal
              * @since 3.26
+             * @run-last
              */
             'handle-call': (arg0: Client, arg1: string, arg2: GLib.Variant, arg3: GLib.Variant) => boolean | void;
             /**
              * This signal is emitted when the client has sent a notification to us.
              * @signal
              * @since 3.26
+             * @run-last
              */
             notification: (arg0: Client, arg1: string, arg2: GLib.Variant) => void;
         }

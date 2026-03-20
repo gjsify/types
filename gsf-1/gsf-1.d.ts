@@ -99,6 +99,9 @@ export namespace Gsf {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OutputCsvQuotingMode {
         export const $gtype: GObject.GType<OutputCsvQuotingMode>;
     }
@@ -1481,6 +1484,9 @@ export namespace Gsf {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get source(): Input;
 
         /**
@@ -1560,15 +1566,29 @@ export namespace Gsf {
 
         /**
          * Controls the level of compression used for new members.
+         * @read-only
          */
         get compression_level(): number;
         /**
          * Controls the level of compression used for new members.
+         * @read-only
          */
         get compressionLevel(): number;
+        /**
+         * @construct-only
+         */
         set internal_parent(val: InfileZip);
+        /**
+         * @construct-only
+         */
         set internalParent(val: InfileZip);
+        /**
+         * @construct-only
+         */
         get source(): Input;
+        /**
+         * @read-only
+         */
         get zip64(): boolean;
 
         /**
@@ -1646,29 +1666,38 @@ export namespace Gsf {
 
         /**
          * The container, optionally `null`, in which this input lives.
+         * @read-only
          */
         get container(): Infile;
         /**
          * `true` if the end of the file has been reached.
+         * @read-only
          */
         get eof(): boolean;
         /**
          * The time the input was last updated.  This represents the
          * timestamp from the originating file or `GsfInfile` member.
          * It is not supported by all derived classes.
+         * @read-only
          */
         get modtime(): GLib.DateTime;
+        /**
+         * @read-only
+         */
         get name(): string;
         /**
          * The current position in the input.
+         * @read-only
          */
         get position(): number;
         /**
          * The number of bytes remaining in the file.
+         * @read-only
          */
         get remaining(): number;
         /**
          * The total number of bytes in the file.
+         * @read-only
          */
         get size(): number;
 
@@ -1883,9 +1912,21 @@ export namespace Gsf {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get raw(): boolean;
+        /**
+         * @construct-only
+         */
         get source(): Input;
+        /**
+         * @construct-only
+         */
         get uncompressed_size(): number;
+        /**
+         * @construct-only
+         */
         get uncompressedSize(): number;
 
         /**
@@ -2024,8 +2065,17 @@ export namespace Gsf {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get content_type(): string;
+        /**
+         * @construct-only
+         */
         get contentType(): string;
+        /**
+         * @construct-only
+         */
         get url(): string;
 
         /**
@@ -2377,7 +2427,13 @@ export namespace Gsf {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get odf_version(): number;
+        /**
+         * @construct-only
+         */
         get odfVersion(): number;
 
         /**
@@ -2539,10 +2595,25 @@ export namespace Gsf {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get big_block_size(): number;
+        /**
+         * @construct-only
+         */
         get bigBlockSize(): number;
+        /**
+         * @construct-only
+         */
         get sink(): Output;
+        /**
+         * @construct-only
+         */
         get small_block_size(): number;
+        /**
+         * @construct-only
+         */
         get smallBlockSize(): number;
 
         /**
@@ -2628,10 +2699,25 @@ export namespace Gsf {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get content_type(): string;
+        /**
+         * @construct-only
+         */
         get contentType(): string;
+        /**
+         * @construct-only
+         */
         get is_dir(): boolean;
+        /**
+         * @construct-only
+         */
         get isDir(): boolean;
+        /**
+         * @construct-only
+         */
         get sink(): Outfile;
 
         /**
@@ -2798,13 +2884,37 @@ export namespace Gsf {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get compression_level(): number;
+        /**
+         * @construct-only
+         */
         get compressionLevel(): number;
+        /**
+         * @construct-only
+         */
         get deflate_level(): number;
+        /**
+         * @construct-only
+         */
         get deflateLevel(): number;
+        /**
+         * @construct-only
+         */
         get entry_name(): string;
+        /**
+         * @construct-only
+         */
         get entryName(): string;
+        /**
+         * @construct-only
+         */
         get sink(): Output;
+        /**
+         * @construct-only
+         */
         get zip64(): number;
 
         /**
@@ -2893,10 +3003,12 @@ export namespace Gsf {
         set container(val: Outfile);
         /**
          * `true` if the output has been closed.
+         * @read-only
          */
         get is_closed(): boolean;
         /**
          * `true` if the output has been closed.
+         * @read-only
          */
         get isClosed(): boolean;
         /**
@@ -2904,16 +3016,19 @@ export namespace Gsf {
          * construction and represents the timestamp to put on the resulting
          * file or {@link Gsf.Outfile} member.  Not all derived classes will actually
          * do anything with this property.
+         * @construct-only
          */
         get modtime(): GLib.DateTime;
         get name(): string;
         set name(val: string);
         /**
          * The current position in the output.
+         * @read-only
          */
         get position(): number;
         /**
          * The current file size.
+         * @read-only
          */
         get size(): number;
 
@@ -3292,7 +3407,13 @@ export namespace Gsf {
         set deflate_level(val: number);
         get deflateLevel(): number;
         set deflateLevel(val: number);
+        /**
+         * @construct-only
+         */
         get raw(): boolean;
+        /**
+         * @construct-only
+         */
         get sink(): Output;
 
         /**
@@ -3502,10 +3623,25 @@ export namespace Gsf {
          */
         get fallback(): string;
         set fallback(val: string);
+        /**
+         * @construct-only
+         */
         get input_charset(): string;
+        /**
+         * @construct-only
+         */
         get inputCharset(): string;
+        /**
+         * @construct-only
+         */
         get output_charset(): string;
+        /**
+         * @construct-only
+         */
         get outputCharset(): string;
+        /**
+         * @construct-only
+         */
         get sink(): Output;
 
         /**
@@ -3851,6 +3987,9 @@ export namespace Gsf {
         set pretty_print(val: boolean);
         get prettyPrint(): boolean;
         set prettyPrint(val: boolean);
+        /**
+         * @construct-only
+         */
         get sink(): Output;
 
         /**

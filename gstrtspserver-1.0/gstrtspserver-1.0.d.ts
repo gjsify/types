@@ -103,6 +103,9 @@ export namespace GstRtspServer {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTSPPublishClockMode {
         export const $gtype: GObject.GType<RTSPPublishClockMode>;
     }
@@ -126,6 +129,9 @@ export namespace GstRtspServer {
         CLOCK_AND_OFFSET,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RTSPSuspendMode {
         export const $gtype: GObject.GType<RTSPSuspendMode>;
     }
@@ -382,6 +388,9 @@ export namespace GstRtspServer {
         UNICAST,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RTSPTransportMode {
         export const $gtype: GObject.GType<RTSPTransportMode>;
     }
@@ -528,6 +537,7 @@ export namespace GstRtspServer {
              * been received. See also `gst_rtsp_auth_set_tls_authentication_mode()`.
              * @signal
              * @since 1.6
+             * @run-last
              */
             'accept-certificate': (
                 arg0: Gio.TlsConnection,
@@ -742,113 +752,138 @@ export namespace GstRtspServer {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'announce-request': (arg0: RTSPContext) => void;
             /**
              * @signal
              * @since 1.6
+             * @run-last
              */
             'check-requirements': (arg0: RTSPContext, arg1: string[]) => string;
             /**
              * @signal
+             * @run-last
              */
             closed: () => void;
             /**
              * @signal
+             * @run-last
              */
             'describe-request': (arg0: RTSPContext) => void;
             /**
              * @signal
+             * @run-last
              */
             'get-parameter-request': (arg0: RTSPContext) => void;
             /**
              * @signal
+             * @run-last
              */
             'handle-response': (arg0: RTSPContext) => void;
             /**
              * @signal
+             * @run-last
              */
             'new-session': (arg0: RTSPSession) => void;
             /**
              * @signal
+             * @run-last
              */
             'options-request': (arg0: RTSPContext) => void;
             /**
              * @signal
+             * @run-last
              */
             'pause-request': (arg0: RTSPContext) => void;
             /**
              * @signal
+             * @run-last
              */
             'play-request': (arg0: RTSPContext) => void;
             /**
              * @signal
              * @since 1.12
+             * @run-last
              */
             'pre-announce-request': (arg0: RTSPContext) => GstRtsp.RTSPStatusCode;
             /**
              * @signal
              * @since 1.12
+             * @run-last
              */
             'pre-describe-request': (arg0: RTSPContext) => GstRtsp.RTSPStatusCode;
             /**
              * @signal
              * @since 1.12
+             * @run-last
              */
             'pre-get-parameter-request': (arg0: RTSPContext) => GstRtsp.RTSPStatusCode;
             /**
              * @signal
              * @since 1.12
+             * @run-last
              */
             'pre-options-request': (arg0: RTSPContext) => GstRtsp.RTSPStatusCode;
             /**
              * @signal
              * @since 1.12
+             * @run-last
              */
             'pre-pause-request': (arg0: RTSPContext) => GstRtsp.RTSPStatusCode;
             /**
              * @signal
              * @since 1.12
+             * @run-last
              */
             'pre-play-request': (arg0: RTSPContext) => GstRtsp.RTSPStatusCode;
             /**
              * @signal
              * @since 1.12
+             * @run-last
              */
             'pre-record-request': (arg0: RTSPContext) => GstRtsp.RTSPStatusCode;
             /**
              * @signal
              * @since 1.12
+             * @run-last
              */
             'pre-set-parameter-request': (arg0: RTSPContext) => GstRtsp.RTSPStatusCode;
             /**
              * @signal
              * @since 1.12
+             * @run-last
              */
             'pre-setup-request': (arg0: RTSPContext) => GstRtsp.RTSPStatusCode;
             /**
              * @signal
              * @since 1.12
+             * @run-last
              */
             'pre-teardown-request': (arg0: RTSPContext) => GstRtsp.RTSPStatusCode;
             /**
              * @signal
+             * @run-last
              */
             'record-request': (arg0: RTSPContext) => void;
             /**
              * @signal
+             * @run-last
              */
             'send-message': (arg0: RTSPSession, arg1: GstRtsp.RTSPMessage) => void;
             /**
              * @signal
+             * @run-last
              */
             'set-parameter-request': (arg0: RTSPContext) => void;
             /**
              * @signal
+             * @run-last
              */
             'setup-request': (arg0: RTSPContext) => void;
             /**
              * @signal
+             * @run-last
              */
             'teardown-request': (arg0: RTSPContext) => void;
             'notify::drop-backlog': (pspec: GObject.ParamSpec) => void;
@@ -1305,30 +1340,38 @@ export namespace GstRtspServer {
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message': (arg0: Gst.Message) => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             'new-state': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'new-stream': (arg0: RTSPStream) => void;
             /**
              * @signal
+             * @run-last
              */
             prepared: () => void;
             /**
              * @signal
+             * @run-last
              */
             'removed-stream': (arg0: RTSPStream) => void;
             /**
              * @signal
+             * @run-last
              */
             'target-state': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             unprepared: () => void;
             'notify::bind-mcast-address': (pspec: GObject.ParamSpec) => void;
@@ -1351,96 +1394,128 @@ export namespace GstRtspServer {
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::bind-mcast-address': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::buffer-size': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::clock': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::dscp-qos': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::element': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::eos-shutdown': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::latency': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::max-mcast-ttl': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::profiles': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::protocols': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::reusable': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::shared': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::stop-on-disconnect': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::suspend-mode': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::time-provider': (arg0: Gst.Message) => boolean | void;
             /**
              * Will be emitted when a message appears on the pipeline bus.
              * @signal
              * @since 1.22
+             * @detailed
+             * @run-last
              */
             'handle-message::transport-mode': (arg0: Gst.Message) => boolean | void;
         }
@@ -1502,6 +1577,9 @@ export namespace GstRtspServer {
         set dscp_qos(val: number);
         get dscpQos(): number;
         set dscpQos(val: number);
+        /**
+         * @construct-only
+         */
         get element(): Gst.Element;
         get eos_shutdown(): boolean;
         set eos_shutdown(val: boolean);
@@ -2152,10 +2230,12 @@ export namespace GstRtspServer {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'media-configure': (arg0: RTSPMedia) => void;
             /**
              * @signal
+             * @run-last
              */
             'media-constructed': (arg0: RTSPMedia) => void;
             'notify::bind-mcast-address': (pspec: GObject.ParamSpec) => void;
@@ -3201,6 +3281,7 @@ export namespace GstRtspServer {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'client-connected': (arg0: RTSPClient) => void;
             'notify::address': (pspec: GObject.ParamSpec) => void;
@@ -3243,7 +3324,13 @@ export namespace GstRtspServer {
         set address(val: string);
         get backlog(): number;
         set backlog(val: number);
+        /**
+         * @read-only
+         */
         get bound_port(): number;
+        /**
+         * @read-only
+         */
         get boundPort(): number;
         get content_length_limit(): number;
         set content_length_limit(val: number);
@@ -3525,6 +3612,9 @@ export namespace GstRtspServer {
         set extra_timeout(val: number);
         get extraTimeout(): number;
         set extraTimeout(val: number);
+        /**
+         * @construct-only
+         */
         get sessionid(): string;
         get timeout(): number;
         set timeout(val: number);
@@ -3808,6 +3898,7 @@ export namespace GstRtspServer {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'session-removed': (arg0: RTSPSession) => void;
             'notify::max-sessions': (pspec: GObject.ParamSpec) => void;
@@ -3961,14 +4052,17 @@ export namespace GstRtspServer {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'new-rtcp-encoder': (arg0: Gst.Element) => void;
             /**
              * @signal
+             * @run-last
              */
             'new-rtp-encoder': (arg0: Gst.Element) => void;
             /**
              * @signal
+             * @run-last
              */
             'new-rtp-rtcp-decoder': (arg0: Gst.Element) => void;
             'notify::control': (pspec: GObject.ParamSpec) => void;

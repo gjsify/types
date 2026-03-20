@@ -20,6 +20,9 @@ export namespace Arrow {
      * Arrow-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CompressionType {
         export const $gtype: GObject.GType<CompressionType>;
     }
@@ -63,6 +66,9 @@ export namespace Arrow {
         BZ2,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CountMode {
         export const $gtype: GObject.GType<CountMode>;
     }
@@ -166,6 +172,9 @@ export namespace Arrow {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FileMode {
         export const $gtype: GObject.GType<FileMode>;
     }
@@ -189,6 +198,9 @@ export namespace Arrow {
         READWRITE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FileType {
         export const $gtype: GObject.GType<FileType>;
     }
@@ -217,6 +229,9 @@ export namespace Arrow {
         DIR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FilterNullSelectionBehavior {
         export const $gtype: GObject.GType<FilterNullSelectionBehavior>;
     }
@@ -237,6 +252,9 @@ export namespace Arrow {
         EMIT_NULL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IntervalType {
         export const $gtype: GObject.GType<IntervalType>;
     }
@@ -264,6 +282,9 @@ export namespace Arrow {
         MONTH_DAY_NANO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace JSONReadUnexpectedFieldBehavior {
         export const $gtype: GObject.GType<JSONReadUnexpectedFieldBehavior>;
     }
@@ -287,6 +308,9 @@ export namespace Arrow {
         INFER_TYPE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace JoinType {
         export const $gtype: GObject.GType<JoinType>;
     }
@@ -307,6 +331,9 @@ export namespace Arrow {
         FULL_OUTER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MetadataVersion {
         export const $gtype: GObject.GType<MetadataVersion>;
     }
@@ -331,6 +358,9 @@ export namespace Arrow {
         V3,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NullPlacement {
         export const $gtype: GObject.GType<NullPlacement>;
     }
@@ -353,6 +383,9 @@ export namespace Arrow {
         AT_END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace QuantileInterpolation {
         export const $gtype: GObject.GType<QuantileInterpolation>;
     }
@@ -386,6 +419,9 @@ export namespace Arrow {
         MIDPOINT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RankTiebreaker {
         export const $gtype: GObject.GType<RankTiebreaker>;
     }
@@ -400,6 +436,9 @@ export namespace Arrow {
         DENSE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RoundMode {
         export const $gtype: GObject.GType<RoundMode>;
     }
@@ -444,6 +483,9 @@ export namespace Arrow {
         HALF_TO_ODD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace S3LogLevel {
         export const $gtype: GObject.GType<S3LogLevel>;
     }
@@ -484,6 +526,9 @@ export namespace Arrow {
         TRACE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SortOrder {
         export const $gtype: GObject.GType<SortOrder>;
     }
@@ -504,6 +549,9 @@ export namespace Arrow {
         DESCENDING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TimeUnit {
         export const $gtype: GObject.GType<TimeUnit>;
     }
@@ -531,6 +579,9 @@ export namespace Arrow {
         NANO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Type {
         export const $gtype: GObject.GType<Type>;
     }
@@ -704,6 +755,9 @@ export namespace Arrow {
         RUN_END_ENCODED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UTF8NormalizeForm {
         export const $gtype: GObject.GType<UTF8NormalizeForm>;
     }
@@ -865,21 +919,25 @@ export namespace Arrow {
         /**
          * The function name to aggregate.
          * @since 6.0.0
+         * @construct-only
          */
         get function(): string;
         /**
          * The input field name of aggregate function.
          * @since 6.0.0
+         * @construct-only
          */
         get input(): string;
         /**
          * The options of aggregate function.
          * @since 6.0.0
+         * @construct-only
          */
         get options(): FunctionOptions;
         /**
          * The output field name of aggregate function.
          * @since 6.0.0
+         * @construct-only
          */
         get output(): string;
 
@@ -955,13 +1013,37 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set array(val: any);
+        /**
+         * @construct-only
+         */
         get buffer1(): Buffer;
+        /**
+         * @construct-only
+         */
         get buffer2(): Buffer;
+        /**
+         * @construct-only
+         */
         get null_bitmap(): Buffer;
+        /**
+         * @construct-only
+         */
         get nullBitmap(): Buffer;
+        /**
+         * @construct-only
+         */
         get parent(): Array;
+        /**
+         * @construct-only
+         */
         get value_data_type(): DataType;
+        /**
+         * @construct-only
+         */
         get valueDataType(): DataType;
 
         /**
@@ -1193,7 +1275,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set array_builder(val: any);
+        /**
+         * @construct-only
+         */
         set arrayBuilder(val: any);
 
         /**
@@ -1324,6 +1412,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get value(): Array;
 
         /**
@@ -1471,6 +1562,7 @@ export namespace Arrow {
         /**
          * The value of the scalar.
          * @since 5.0.0
+         * @construct-only
          */
         set value(val: Buffer);
 
@@ -1544,6 +1636,7 @@ export namespace Arrow {
         /**
          * The value of the scalar.
          * @since 5.0.0
+         * @construct-only
          */
         set value(val: Array);
 
@@ -2290,8 +2383,17 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set buffer(val: any);
+        /**
+         * @construct-only
+         */
         set data(val: GLib.Bytes);
+        /**
+         * @construct-only
+         */
         get parent(): Buffer;
 
         /**
@@ -2413,6 +2515,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get buffer(): Buffer;
 
         /**
@@ -3812,8 +3917,17 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set csv_table_reader(val: any);
+        /**
+         * @construct-only
+         */
         set csvTableReader(val: any);
+        /**
+         * @construct-only
+         */
         get input(): InputStream;
 
         /**
@@ -4105,9 +4219,21 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set chunked_array(val: any);
+        /**
+         * @construct-only
+         */
         set chunkedArray(val: any);
+        /**
+         * @construct-only
+         */
         set data_type(val: DataType);
+        /**
+         * @construct-only
+         */
         set dataType(val: DataType);
 
         /**
@@ -4257,6 +4383,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get value(): ChunkedArray;
 
         /**
@@ -4319,6 +4448,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set codec(val: any);
 
         /**
@@ -4400,7 +4532,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get codec(): Codec;
+        /**
+         * @construct-only
+         */
         get raw(): InputStream;
 
         /**
@@ -4954,7 +5092,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get codec(): Codec;
+        /**
+         * @construct-only
+         */
         get raw(): OutputStream;
 
         /**
@@ -5558,7 +5702,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set data_type(val: any);
+        /**
+         * @construct-only
+         */
         set dataType(val: any);
 
         /**
@@ -6190,6 +6340,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set datum(val: any);
 
         /**
@@ -6639,6 +6792,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set decimal128(val: any);
 
         /**
@@ -7025,6 +7181,7 @@ export namespace Arrow {
         /**
          * The value of the scalar.
          * @since 5.0.0
+         * @construct-only
          */
         set value(val: Decimal128);
 
@@ -7095,6 +7252,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set decimal256(val: any);
 
         /**
@@ -7467,6 +7627,7 @@ export namespace Arrow {
         /**
          * The value of the scalar.
          * @since 5.0.0
+         * @construct-only
          */
         set value(val: Decimal256);
 
@@ -7615,7 +7776,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get value_offsets(): Int32Array;
+        /**
+         * @construct-only
+         */
         get valueOffsets(): Int32Array;
 
         /**
@@ -7873,7 +8040,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get dictionary(): Array;
+        /**
+         * @construct-only
+         */
         get indices(): Array;
 
         /**
@@ -8458,7 +8631,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set node(val: any);
+        /**
+         * @construct-only
+         */
         get options(): ExecuteNodeOptions;
 
         /**
@@ -8530,6 +8709,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set options(val: any);
 
         /**
@@ -8590,6 +8772,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set plan(val: any);
 
         /**
@@ -8801,6 +8986,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get storage(): Array;
 
         /**
@@ -8870,7 +9058,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get storage_data_type(): DataType;
+        /**
+         * @construct-only
+         */
         get storageDataType(): DataType;
 
         /**
@@ -8975,6 +9169,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set registry(val: any);
 
         /**
@@ -9118,7 +9315,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set feather_reader(val: any);
+        /**
+         * @construct-only
+         */
         set featherReader(val: any);
 
         /**
@@ -9281,8 +9484,17 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set data_type(val: DataType);
+        /**
+         * @construct-only
+         */
         set dataType(val: DataType);
+        /**
+         * @construct-only
+         */
         set field(val: any);
 
         /**
@@ -9480,26 +9692,31 @@ export namespace Arrow {
         /**
          * The file base name (component after the last directory separator).
          * @since 0.17.0
+         * @read-only
          */
         get base_name(): string;
         /**
          * The file base name (component after the last directory separator).
          * @since 0.17.0
+         * @read-only
          */
         get baseName(): string;
         /**
          * The directory base name (component before the file base name).
          * @since 0.17.0
+         * @read-only
          */
         get dir_name(): string;
         /**
          * The directory base name (component before the file base name).
          * @since 0.17.0
+         * @read-only
          */
         get dirName(): string;
         /**
          * The file extension (excluding the dot).
          * @since 0.17.0
+         * @read-only
          */
         get extension(): string;
         /**
@@ -10772,7 +10989,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set file_system(val: any);
+        /**
+         * @construct-only
+         */
         set fileSystem(val: any);
 
         /**
@@ -11780,6 +12003,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set function(val: any);
 
         /**
@@ -11883,6 +12109,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set doc(val: any);
 
         /**
@@ -12082,6 +12311,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get raw(): Gio.InputStream;
 
         /**
@@ -12602,6 +12834,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get raw(): Gio.OutputStream;
 
         /**
@@ -13665,7 +13900,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set input_stream(val: any);
+        /**
+         * @construct-only
+         */
         set inputStream(val: any);
 
         /**
@@ -15663,8 +15904,17 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get input(): InputStream;
+        /**
+         * @construct-only
+         */
         set json_table_reader(val: any);
+        /**
+         * @construct-only
+         */
         set jsonTableReader(val: any);
 
         /**
@@ -16023,7 +16273,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get raw_values(): Array;
+        /**
+         * @construct-only
+         */
         get rawValues(): Array;
 
         /**
@@ -16595,7 +16851,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get raw_values(): Array;
+        /**
+         * @construct-only
+         */
         get rawValues(): Array;
 
         /**
@@ -17094,8 +17356,17 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get items(): Array;
+        /**
+         * @construct-only
+         */
         get keys(): Array;
+        /**
+         * @construct-only
+         */
         get offsets(): Array;
 
         /**
@@ -17977,7 +18248,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set memory_pool(val: any);
+        /**
+         * @construct-only
+         */
         set memoryPool(val: any);
 
         /**
@@ -19188,8 +19465,17 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get input(): SeekableInputStream;
+        /**
+         * @construct-only
+         */
         set orc_file_reader(val: any);
+        /**
+         * @construct-only
+         */
         set orcFileReader(val: any);
 
         /**
@@ -19294,7 +19580,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set output_stream(val: any);
+        /**
+         * @construct-only
+         */
         set outputStream(val: any);
 
         /**
@@ -20300,7 +20592,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set record_batch(val: any);
+        /**
+         * @construct-only
+         */
         set recordBatch(val: any);
 
         /**
@@ -20456,7 +20754,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set record_batch_builder(val: any);
+        /**
+         * @construct-only
+         */
         set recordBatchBuilder(val: any);
 
         /**
@@ -20557,6 +20861,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get value(): RecordBatch;
 
         /**
@@ -20620,7 +20927,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set record_batch_file_reader(val: any);
+        /**
+         * @construct-only
+         */
         set recordBatchFileReader(val: any);
 
         /**
@@ -20768,6 +21081,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set iterator(val: any);
 
         /**
@@ -20851,8 +21167,17 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set record_batch_reader(val: any);
+        /**
+         * @construct-only
+         */
         set recordBatchReader(val: any);
+        /**
+         * @construct-only
+         */
         set sources(val: any);
 
         /**
@@ -21074,7 +21399,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set record_batch_writer(val: any);
+        /**
+         * @construct-only
+         */
         set recordBatchWriter(val: any);
 
         /**
@@ -21475,8 +21806,17 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get run_ends(): Array;
+        /**
+         * @construct-only
+         */
         get runEnds(): Array;
+        /**
+         * @construct-only
+         */
         get values(): Array;
 
         /**
@@ -21779,13 +22119,18 @@ export namespace Arrow {
         /**
          * The data type of the scalar.
          * @since 5.0.0
+         * @construct-only
          */
         set data_type(val: DataType);
         /**
          * The data type of the scalar.
          * @since 5.0.0
+         * @construct-only
          */
         set dataType(val: DataType);
+        /**
+         * @construct-only
+         */
         set scalar(val: any);
 
         /**
@@ -21978,6 +22323,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get value(): Scalar;
 
         /**
@@ -22040,6 +22388,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set schema(val: any);
 
         /**
@@ -22908,7 +23259,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get base_file_system(): FileSystem;
+        /**
+         * @construct-only
+         */
         get baseFileSystem(): FileSystem;
 
         /**
@@ -22982,6 +23339,7 @@ export namespace Arrow {
         /**
          * How to order values.
          * @since 3.0.0
+         * @construct-only
          */
         get order(): SortOrder;
         /**
@@ -22991,6 +23349,7 @@ export namespace Arrow {
          *              | '[' digit+ ']'
          *              | dot_path+
          * @since 7.0.0
+         * @read-only
          */
         get target(): string;
 
@@ -23147,8 +23506,17 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get reader(): RecordBatchReader;
+        /**
+         * @construct-only
+         */
         get record_batch(): RecordBatch;
+        /**
+         * @construct-only
+         */
         get recordBatch(): RecordBatch;
 
         /**
@@ -24382,7 +24750,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get field_ref(): string;
+        /**
+         * @read-only
+         */
         get fieldRef(): string;
 
         /**
@@ -24518,7 +24892,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get base_file_system(): FileSystem;
+        /**
+         * @construct-only
+         */
         get baseFileSystem(): FileSystem;
 
         /**
@@ -24581,6 +24961,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set table(val: any);
 
         /**
@@ -24938,6 +25321,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get value(): Table;
 
         /**
@@ -25110,7 +25496,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get buffer(): Buffer;
+        /**
+         * @construct-only
+         */
         set tensor(val: any);
 
         /**
@@ -26012,11 +26404,13 @@ export namespace Arrow {
         /**
          * The time zone of this data type.
          * @since 16.0.0
+         * @construct-only
          */
         get time_zone(): GLib.TimeZone;
         /**
          * The time zone of this data type.
          * @since 16.0.0
+         * @construct-only
          */
         get timeZone(): GLib.TimeZone;
 
@@ -26087,6 +26481,9 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set parser(val: any);
 
         /**
@@ -27467,7 +27864,13 @@ export namespace Arrow {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get type_ids(): Int8Array;
+        /**
+         * @construct-only
+         */
         get typeIds(): Int8Array;
 
         /**
@@ -27703,6 +28106,7 @@ export namespace Arrow {
         /**
          * The value of the scalar.
          * @since 5.0.0
+         * @construct-only
          */
         set value(val: Scalar);
 

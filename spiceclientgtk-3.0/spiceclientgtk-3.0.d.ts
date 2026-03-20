@@ -32,6 +32,9 @@ export namespace SpiceClientGtk {
      * SpiceClientGtk-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DisplayKeyEvent {
         export const $gtype: GObject.GType<DisplayKeyEvent>;
     }
@@ -61,16 +64,19 @@ export namespace SpiceClientGtk {
             /**
              * Notify when the grab keys have been pressed
              * @signal
+             * @run-first
              */
             'grab-keys-pressed': () => void;
             /**
              * Notify when the keyboard grab is active or not.
              * @signal
+             * @run-first
              */
             'keyboard-grab': (arg0: number) => void;
             /**
              * Notify when the mouse grab is active or not.
              * @signal
+             * @run-first
              */
             'mouse-grab': (arg0: number) => void;
             'notify::channel-id': (pspec: GObject.ParamSpec) => void;
@@ -173,10 +179,12 @@ export namespace SpiceClientGtk {
 
         /**
          * channel-id for this {@link SpiceClientGtk.Display}
+         * @construct-only
          */
         get channel_id(): number;
         /**
          * channel-id for this {@link SpiceClientGtk.Display}
+         * @construct-only
          */
         get channelId(): number;
         /**
@@ -252,6 +260,7 @@ export namespace SpiceClientGtk {
          * into account several conditions, such as the channel display
          * "mark" state, whether the monitor area is visible..
          * @since 0.13
+         * @read-only
          */
         get ready(): boolean;
         get resize_guest(): boolean;
@@ -262,6 +271,7 @@ export namespace SpiceClientGtk {
         set scaling(val: boolean);
         /**
          * {@link SpiceClientGLib.Session} for this {@link SpiceClientGtk.Display}
+         * @construct-only
          */
         get session(): SpiceClientGLib.Session;
         /**
@@ -870,16 +880,19 @@ export namespace SpiceClientGtk {
         /**
          * Returns `true` if the pointer is currently grabbed by this session.
          * @since 0.27
+         * @read-only
          */
         get pointer_grabbed(): boolean;
         /**
          * Returns `true` if the pointer is currently grabbed by this session.
          * @since 0.27
+         * @read-only
          */
         get pointerGrabbed(): boolean;
         /**
          * {@link SpiceClientGLib.Session} this {@link SpiceClientGtk.GtkSession} is associated with
          * @since 0.8
+         * @construct-only
          */
         get session(): SpiceClientGLib.Session;
         /**
@@ -968,6 +981,7 @@ export namespace SpiceClientGtk {
              * the user has requested for a device to be redirected and this has
              * failed.
              * @signal
+             * @run-first
              */
             'connect-failed': (arg0: SpiceClientGLib.UsbDevice, arg1: GLib.Error) => void;
             'notify::device-format-string': (pspec: GObject.ParamSpec) => void;
@@ -1046,15 +1060,18 @@ export namespace SpiceClientGtk {
         /**
          * Format string to pass to `spice_usb_device_get_description()` for getting
          * the device USB descriptions.
+         * @construct-only
          */
         get device_format_string(): string;
         /**
          * Format string to pass to `spice_usb_device_get_description()` for getting
          * the device USB descriptions.
+         * @construct-only
          */
         get deviceFormatString(): string;
         /**
          * {@link SpiceClientGLib.Session} this {@link SpiceClientGtk.UsbDeviceWidget} is associated with
+         * @construct-only
          */
         get session(): SpiceClientGLib.Session;
 

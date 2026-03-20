@@ -25,6 +25,9 @@ export namespace GstPlay {
      * GstPlay-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlayColorBalanceType {
         export const $gtype: GObject.GType<PlayColorBalanceType>;
     }
@@ -80,6 +83,9 @@ export namespace GstPlay {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlayMessage {
         export const $gtype: GObject.GType<PlayMessage>;
     }
@@ -170,6 +176,9 @@ export namespace GstPlay {
         PNG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlayState {
         export const $gtype: GObject.GType<PlayState>;
     }
@@ -364,18 +373,51 @@ export namespace GstPlay {
         set audio_video_offset(val: number);
         get audioVideoOffset(): number;
         set audioVideoOffset(val: number);
+        /**
+         * @read-only
+         */
         get current_audio_track(): PlayAudioInfo;
+        /**
+         * @read-only
+         */
         get currentAudioTrack(): PlayAudioInfo;
+        /**
+         * @read-only
+         */
         get current_subtitle_track(): PlaySubtitleInfo;
+        /**
+         * @read-only
+         */
         get currentSubtitleTrack(): PlaySubtitleInfo;
+        /**
+         * @read-only
+         */
         get current_video_track(): PlayVideoInfo;
+        /**
+         * @read-only
+         */
         get currentVideoTrack(): PlayVideoInfo;
+        /**
+         * @read-only
+         */
         get duration(): number;
+        /**
+         * @read-only
+         */
         get media_info(): PlayMediaInfo;
+        /**
+         * @read-only
+         */
         get mediaInfo(): PlayMediaInfo;
         get mute(): boolean;
         set mute(val: boolean);
+        /**
+         * @read-only
+         */
         get pipeline(): Gst.Element;
+        /**
+         * @read-only
+         */
         get position(): number;
         get rate(): number;
         set rate(val: number);
@@ -972,56 +1014,69 @@ export namespace GstPlay {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             buffering: (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'duration-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'end-of-stream': () => void;
             /**
              * Emitted on errors.
              * @signal
+             * @run-last
              */
             error: (arg0: GLib.Error, arg1: Gst.Structure | null) => void;
             /**
              * @signal
+             * @run-last
              */
             'media-info-updated': (arg0: PlayMediaInfo) => void;
             /**
              * @signal
+             * @run-last
              */
             'mute-changed': (arg0: boolean) => void;
             /**
              * @signal
+             * @run-last
              */
             'position-updated': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'seek-done': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'state-changed': (arg0: PlayState) => void;
             /**
              * @signal
+             * @run-last
              */
             'uri-loaded': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'video-dimensions-changed': (arg0: number, arg1: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'volume-changed': (arg0: number) => void;
             /**
              * Emitted on warnings.
              * @signal
+             * @run-last
              */
             warning: (arg0: GLib.Error, arg1: Gst.Structure | null) => void;
             'notify::play': (pspec: GObject.ParamSpec) => void;
@@ -1043,6 +1098,9 @@ export namespace GstPlay {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get play(): Play;
 
         /**

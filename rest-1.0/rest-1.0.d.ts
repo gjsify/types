@@ -647,7 +647,13 @@ export namespace Rest {
         set binding_required(val: boolean);
         get bindingRequired(): boolean;
         set bindingRequired(val: boolean);
+        /**
+         * @construct-only
+         */
         get disable_cookies(): boolean;
+        /**
+         * @construct-only
+         */
         get disableCookies(): boolean;
         get password(): string;
         set password(val: string);
@@ -859,6 +865,9 @@ export namespace Rest {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get proxy(): Proxy;
 
         /**

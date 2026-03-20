@@ -64,10 +64,25 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get is_empty(): boolean;
+        /**
+         * @read-only
+         */
         get isEmpty(): boolean;
+        /**
+         * @read-only
+         */
         get read_only_view(): Collection;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Collection;
 
         /**
@@ -189,9 +204,15 @@ export namespace Gee {
          */
         retain_all(collection: Collection): boolean;
         iterator(): Iterator;
-        /** @category Inherited from Gee.Iterable */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get element_type(): GObject.Type;
-        /** @category Inherited from Gee.Iterable */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get elementType(): GObject.Type;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -669,7 +690,13 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only_view(): List;
+        /**
+         * @read-only
+         */
         get readOnlyView(): List;
 
         /**
@@ -804,15 +831,30 @@ export namespace Gee {
          * @param collection
          */
         insert_all(index: number, collection: Collection): void;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get size(): number;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get is_empty(): boolean;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get isEmpty(): boolean;
-        /** @category Inherited from Gee.Iterable */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get element_type(): GObject.Type;
-        /** @category Inherited from Gee.Iterable */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get elementType(): GObject.Type;
         /**
          * @param compare_func
@@ -940,13 +982,37 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get is_empty(): boolean;
+        /**
+         * @read-only
+         */
         get isEmpty(): boolean;
+        /**
+         * @read-only
+         */
         get keys(): Set;
+        /**
+         * @read-only
+         */
         get values(): Collection;
+        /**
+         * @read-only
+         */
         get entries(): Set;
+        /**
+         * @read-only
+         */
         get read_only_view(): Map;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Map;
 
         /**
@@ -1081,17 +1147,35 @@ export namespace Gee {
          * @param map
          */
         has_all(map: Map): boolean;
-        /** @category Inherited from Gee.Iterable */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get element_type(): GObject.Type;
-        /** @category Inherited from Gee.Iterable */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get elementType(): GObject.Type;
-        /** @category Inherited from Gee.Map */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Map
+         */
         get key_type(): GObject.Type;
-        /** @category Inherited from Gee.Map */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Map
+         */
         get keyType(): GObject.Type;
-        /** @category Inherited from Gee.Map */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Map
+         */
         get value_type(): GObject.Type;
-        /** @category Inherited from Gee.Map */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Map
+         */
         get valueType(): GObject.Type;
         iterator(): Iterator;
         /**
@@ -1653,7 +1737,10 @@ export namespace Gee {
         create_value_storage(): Collection;
         create_multi_key_set(): MultiSet;
         get_value_equal_func(): GLib.EqualFunc;
-        /** @category Inherited from Gee.MultiMap */
+        /**
+         * @read-only
+         * @category Inherited from Gee.MultiMap
+         */
         get size(): number;
         get_keys(): Set;
         get_all_keys(): MultiSet;
@@ -2230,19 +2317,40 @@ export namespace Gee {
             ...args: GObject.GjsParameters<AbstractMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get size(): number;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get is_empty(): boolean;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get isEmpty(): boolean;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get read_only_view(): Collection;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get readOnlyView(): Collection;
-        /** @category Inherited from Gee.Iterable */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get element_type(): GObject.Type;
-        /** @category Inherited from Gee.Iterable */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get elementType(): GObject.Type;
         /**
          * @param item
@@ -2364,10 +2472,25 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get capacity(): number;
+        /**
+         * @read-only
+         */
         get remaining_capacity(): number;
+        /**
+         * @read-only
+         */
         get remainingCapacity(): number;
+        /**
+         * @read-only
+         */
         get is_full(): boolean;
+        /**
+         * @read-only
+         */
         get isFull(): boolean;
 
         /**
@@ -2441,19 +2564,40 @@ export namespace Gee {
          * @param amount
          */
         drain(recipient: Collection, amount: number): number;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get size(): number;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get is_empty(): boolean;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get isEmpty(): boolean;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get read_only_view(): Collection;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get readOnlyView(): Collection;
-        /** @category Inherited from Gee.Iterable */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get element_type(): GObject.Type;
-        /** @category Inherited from Gee.Iterable */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get elementType(): GObject.Type;
         /**
          * @param item
@@ -2560,7 +2704,13 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only_view(): Set;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Set;
 
         /**
@@ -2598,15 +2748,30 @@ export namespace Gee {
             ...args: GObject.GjsParameters<AbstractSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get size(): number;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get is_empty(): boolean;
-        /** @category Inherited from Gee.Collection */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get isEmpty(): boolean;
-        /** @category Inherited from Gee.Iterable */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get element_type(): GObject.Type;
-        /** @category Inherited from Gee.Iterable */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get elementType(): GObject.Type;
         /**
          * @param item
@@ -2885,9 +3050,21 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get key_hash_func(): GLib.HashFunc;
+        /**
+         * @read-only
+         */
         get keyHashFunc(): GLib.HashFunc;
+        /**
+         * @read-only
+         */
         get key_equal_func(): GLib.EqualFunc;
+        /**
+         * @read-only
+         */
         get keyEqualFunc(): GLib.EqualFunc;
         get value_hash_func(): GLib.HashFunc;
         set value_hash_func(val: GLib.HashFunc);
@@ -2970,9 +3147,21 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get hash_func(): GLib.HashFunc;
+        /**
+         * @read-only
+         */
         get hashFunc(): GLib.HashFunc;
+        /**
+         * @read-only
+         */
         get equal_func(): GLib.EqualFunc;
+        /**
+         * @read-only
+         */
         get equalFunc(): GLib.EqualFunc;
 
         /**
@@ -3125,7 +3314,13 @@ export namespace Gee {
         set equal_func(val: GLib.EqualFunc);
         get equalFunc(): GLib.EqualFunc;
         set equalFunc(val: GLib.EqualFunc);
+        /**
+         * @read-only
+         */
         get readOnlyView(): LinkedList;
+        /**
+         * @read-only
+         */
         get read_only_view(): LinkedList;
 
         /**
@@ -3165,15 +3360,30 @@ export namespace Gee {
             ...args: GObject.GjsParameters<LinkedList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get capacity(): number;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get remaining_capacity(): number;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get remainingCapacity(): number;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get is_full(): boolean;
-        /** @category Inherited from Gee.Queue */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get isFull(): boolean;
         /**
          * @param element
@@ -3443,7 +3653,13 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get key_compare_func(): GLib.CompareFunc;
+        /**
+         * @read-only
+         */
         get keyCompareFunc(): GLib.CompareFunc;
         get value_compare_func(): GLib.CompareFunc;
         set value_compare_func(val: GLib.CompareFunc);
@@ -3514,7 +3730,13 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get compare_func(): GLib.CompareFunc;
+        /**
+         * @read-only
+         */
         get compareFunc(): GLib.CompareFunc;
 
         /**
@@ -3623,9 +3845,15 @@ export namespace Gee {
             ...args: GObject.GjsParameters<TreeSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-        /** @category Inherited from Gee.Set */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Set
+         */
         get read_only_view(): Set;
-        /** @category Inherited from Gee.Set */
+        /**
+         * @read-only
+         * @category Inherited from Gee.Set
+         */
         get readOnlyView(): Set;
         first(): any;
         last(): any;
@@ -3741,6 +3969,9 @@ export namespace Gee {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get key(): any;
         get value(): any;
         set value(val: any);
@@ -4169,10 +4400,25 @@ export namespace Gee {
     interface Collection extends Iterable, Collection.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get is_empty(): boolean;
+        /**
+         * @read-only
+         */
         get isEmpty(): boolean;
+        /**
+         * @read-only
+         */
         get read_only_view(): Collection;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Collection;
 
         // Methods
@@ -4376,7 +4622,13 @@ export namespace Gee {
     interface Iterable extends GObject.Object, Iterable.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get element_type(): GObject.Type;
+        /**
+         * @read-only
+         */
         get elementType(): GObject.Type;
 
         // Methods
@@ -4530,7 +4782,13 @@ export namespace Gee {
     interface List extends Collection, List.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only_view(): List;
+        /**
+         * @read-only
+         */
         get readOnlyView(): List;
 
         // Methods
@@ -4763,17 +5021,53 @@ export namespace Gee {
     interface Map extends GObject.Object, Map.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get is_empty(): boolean;
+        /**
+         * @read-only
+         */
         get isEmpty(): boolean;
+        /**
+         * @read-only
+         */
         get keys(): Set;
+        /**
+         * @read-only
+         */
         get values(): Collection;
+        /**
+         * @read-only
+         */
         get entries(): Set;
+        /**
+         * @read-only
+         */
         get read_only_view(): Map;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Map;
+        /**
+         * @read-only
+         */
         get key_type(): GObject.Type;
+        /**
+         * @read-only
+         */
         get keyType(): GObject.Type;
+        /**
+         * @read-only
+         */
         get value_type(): GObject.Type;
+        /**
+         * @read-only
+         */
         get valueType(): GObject.Type;
 
         // Methods
@@ -4981,6 +5275,9 @@ export namespace Gee {
     interface MultiMap extends GObject.Object, MultiMap.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
 
         // Methods
@@ -5112,10 +5409,25 @@ export namespace Gee {
     interface Queue extends Collection, Queue.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get capacity(): number;
+        /**
+         * @read-only
+         */
         get remaining_capacity(): number;
+        /**
+         * @read-only
+         */
         get remainingCapacity(): number;
+        /**
+         * @read-only
+         */
         get is_full(): boolean;
+        /**
+         * @read-only
+         */
         get isFull(): boolean;
 
         // Methods
@@ -5158,7 +5470,13 @@ export namespace Gee {
     interface Set extends Collection {
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only_view(): Set;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Set;
     }
 

@@ -109,10 +109,12 @@ export namespace PeasGtk {
 
         /**
          * The {@link Peas.Engine} this manager is attached to.
+         * @construct-only
          */
         get engine(): Peas.Engine;
         /**
          * The {@link PluginManagerView} shown in the {@link PeasGtk.PluginManager}.
+         * @construct-only
          */
         get view(): PluginManagerView;
 
@@ -645,6 +647,7 @@ export namespace PeasGtk {
              * If you need to add items to the context menu,
              * connect to this signal and add your menuitems to the `menu`.
              * @signal
+             * @run-last
              */
             'populate-popup': (arg0: Gtk.Menu) => void;
             'notify::engine': (pspec: GObject.ParamSpec) => void;
@@ -739,6 +742,9 @@ export namespace PeasGtk {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get engine(): Peas.Engine;
         /**
          * If builtin plugins should be shown.

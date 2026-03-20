@@ -20,6 +20,9 @@ export namespace Json {
      * Json-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NodeType {
         export const $gtype: GObject.GType<NodeType>;
     }
@@ -540,6 +543,7 @@ export namespace Json {
          * Making the output immutable on creation avoids the expense
          * of traversing it to make it immutable later.
          * @since 1.2
+         * @construct-only
          */
         get immutable(): boolean;
 
@@ -925,6 +929,7 @@ export namespace Json {
              * has successfully parsed a single element of a JSON array.
              * @signal
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.array_element} virtual function
+             * @run-last
              */
             'array-element': (arg0: Array, arg1: number) => void;
             /**
@@ -932,6 +937,7 @@ export namespace Json {
              * has successfully parsed an entire JSON array.
              * @signal
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.array_end} virtual function
+             * @run-last
              */
             'array-end': (arg0: Array) => void;
             /**
@@ -939,6 +945,7 @@ export namespace Json {
              * starts parsing a JSON array.
              * @signal
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.array_start} virtual function
+             * @run-last
              */
             'array-start': () => void;
             /**
@@ -946,6 +953,7 @@ export namespace Json {
              * an error in a JSON stream.
              * @signal
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.error} virtual function
+             * @run-last
              */
             error: (arg0: any | null) => void;
             /**
@@ -953,6 +961,7 @@ export namespace Json {
              * has successfully parsed an entire JSON object.
              * @signal
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.object_end} virtual function
+             * @run-last
              */
             'object-end': (arg0: Object) => void;
             /**
@@ -960,12 +969,14 @@ export namespace Json {
              * has successfully parsed a single member of a JSON object.
              * @signal
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.object_member} virtual function
+             * @run-last
              */
             'object-member': (arg0: Object, arg1: string) => void;
             /**
              * This signal is emitted each time a parser starts parsing a JSON object.
              * @signal
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.object_start} virtual function
+             * @run-last
              */
             'object-start': () => void;
             /**
@@ -973,12 +984,14 @@ export namespace Json {
              * JSON data stream.
              * @signal
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.parse_end} virtual function
+             * @run-last
              */
             'parse-end': () => void;
             /**
              * This signal is emitted when a parser starts parsing a JSON data stream.
              * @signal
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.parse_start} virtual function
+             * @run-last
              */
             'parse-start': () => void;
             'notify::immutable': (pspec: GObject.ParamSpec) => void;
@@ -1044,6 +1057,7 @@ export namespace Json {
          * Making the output immutable on creation avoids the expense
          * of traversing it to make it immutable later.
          * @since 1.2
+         * @construct-only
          */
         get immutable(): boolean;
         /**

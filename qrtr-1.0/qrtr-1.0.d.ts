@@ -98,6 +98,7 @@ export namespace Qrtr {
              * the QRTR bus.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'node-added': (arg0: number) => void;
             /**
@@ -105,6 +106,7 @@ export namespace Qrtr {
              * from the QRTR bus.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'node-removed': (arg0: number) => void;
             'notify::lookup-timeout': (pspec: GObject.ParamSpec) => void;
@@ -131,10 +133,12 @@ export namespace Qrtr {
 
         /**
          * @since 1.0
+         * @construct-only
          */
         get lookup_timeout(): number;
         /**
          * @since 1.0
+         * @construct-only
          */
         get lookupTimeout(): number;
 
@@ -954,6 +958,7 @@ export namespace Qrtr {
              * signal may modify the contents of the `message` byte array if needed.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'client-message': (arg0: Uint8Array) => void;
             'notify::client-node': (pspec: GObject.ParamSpec) => void;
@@ -983,18 +988,22 @@ export namespace Qrtr {
 
         /**
          * @since 1.0
+         * @construct-only
          */
         get client_node(): Node;
         /**
          * @since 1.0
+         * @construct-only
          */
         get clientNode(): Node;
         /**
          * @since 1.0
+         * @construct-only
          */
         get client_port(): number;
         /**
          * @since 1.0
+         * @construct-only
          */
         get clientPort(): number;
 
@@ -1606,6 +1615,7 @@ export namespace Qrtr {
              * the QRTR bus.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'node-removed': () => void;
             /**
@@ -1613,6 +1623,7 @@ export namespace Qrtr {
              * on the QRTR node.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'service-added': (arg0: number) => void;
             /**
@@ -1620,6 +1631,7 @@ export namespace Qrtr {
              * from the QRTR node.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'service-removed': (arg0: number) => void;
             'notify::bus': (pspec: GObject.ParamSpec) => void;
@@ -1648,14 +1660,17 @@ export namespace Qrtr {
 
         /**
          * @since 1.0
+         * @construct-only
          */
         get bus(): Bus;
         /**
          * @since 1.0
+         * @construct-only
          */
         get node_id(): number;
         /**
          * @since 1.0
+         * @construct-only
          */
         get nodeId(): number;
 

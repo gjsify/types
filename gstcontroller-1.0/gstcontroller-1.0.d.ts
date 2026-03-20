@@ -20,6 +20,9 @@ export namespace GstController {
      * GstController-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InterpolationMode {
         export const $gtype: GObject.GType<InterpolationMode>;
     }
@@ -50,6 +53,9 @@ export namespace GstController {
         CUBIC_MONOTONIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LFOWaveform {
         export const $gtype: GObject.GType<LFOWaveform>;
     }
@@ -231,6 +237,9 @@ export namespace GstController {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get absolute(): boolean;
         get control_source(): Gst.ControlSource;
         set control_source(val: Gst.ControlSource);
@@ -538,18 +547,21 @@ export namespace GstController {
              * Emitted right after the new value has been added to `self`
              * @signal
              * @since 1.6
+             * @run-first
              */
             'value-added': (arg0: ControlPoint) => void;
             /**
              * Emitted right after the new value has been set on `timed_signals`
              * @signal
              * @since 1.6
+             * @run-first
              */
             'value-changed': (arg0: ControlPoint) => void;
             /**
              * Emitted when `timed_value` is removed from `self`
              * @signal
              * @since 1.6
+             * @run-first
              */
             'value-removed': (arg0: ControlPoint) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;

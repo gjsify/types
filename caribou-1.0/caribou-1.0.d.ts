@@ -26,6 +26,9 @@ export namespace Caribou {
      * Caribou-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ModifierState {
         export const $gtype: GObject.GType<ModifierState>;
     }
@@ -39,6 +42,9 @@ export namespace Caribou {
         LOCKED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScanGrouping {
         export const $gtype: GObject.GType<ScanGrouping>;
     }
@@ -92,6 +98,9 @@ export namespace Caribou {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get display(): Gdk.Display;
 
         /**
@@ -384,9 +393,21 @@ export namespace Caribou {
         set active_group(val: string);
         get activeGroup(): string;
         set activeGroup(val: string);
+        /**
+         * @construct-only
+         */
         get keyboard_type(): string;
+        /**
+         * @construct-only
+         */
         get keyboardType(): string;
+        /**
+         * @construct-only
+         */
         get keyboard_file(): string;
+        /**
+         * @construct-only
+         */
         get keyboardFile(): string;
 
         /**
@@ -3935,7 +3956,13 @@ export namespace Caribou {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get bind_settings(): boolean;
+        /**
+         * @construct-only
+         */
         get bindSettings(): boolean;
         get scan_grouping(): number;
         set scan_grouping(val: number);

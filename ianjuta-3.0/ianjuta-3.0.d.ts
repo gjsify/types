@@ -31,6 +31,9 @@ export namespace IAnjuta {
      * IAnjuta-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BuildableCommand {
         export const $gtype: GObject.GType<BuildableCommand>;
     }
@@ -146,6 +149,9 @@ export namespace IAnjuta {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DebuggerBreakpointMethod {
         export const $gtype: GObject.GType<DebuggerBreakpointMethod>;
     }
@@ -178,6 +184,9 @@ export namespace IAnjuta {
         CONDITION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DebuggerBreakpointType {
         export const $gtype: GObject.GType<DebuggerBreakpointType>;
     }
@@ -341,6 +350,9 @@ export namespace IAnjuta {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DebuggerOutputType {
         export const $gtype: GObject.GType<DebuggerOutputType>;
     }
@@ -369,6 +381,9 @@ export namespace IAnjuta {
         INFO_OUTPUT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DebuggerState {
         export const $gtype: GObject.GType<DebuggerState>;
     }
@@ -424,6 +439,9 @@ export namespace IAnjuta {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EditorAttribute {
         export const $gtype: GObject.GType<EditorAttribute>;
     }
@@ -471,6 +489,9 @@ export namespace IAnjuta {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EditorLineModeType {
         export const $gtype: GObject.GType<EditorLineModeType>;
     }
@@ -516,6 +537,9 @@ export namespace IAnjuta {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IndicableIndicator {
         export const $gtype: GObject.GType<IndicableIndicator>;
     }
@@ -562,6 +586,9 @@ export namespace IAnjuta {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MarkableMarker {
         export const $gtype: GObject.GType<MarkableMarker>;
     }
@@ -616,6 +643,9 @@ export namespace IAnjuta {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MessageViewType {
         export const $gtype: GObject.GType<MessageViewType>;
     }
@@ -725,6 +755,9 @@ export namespace IAnjuta {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ProjectProbe {
         export const $gtype: GObject.GType<ProjectProbe>;
     }
@@ -738,6 +771,9 @@ export namespace IAnjuta {
         PROBE_PROJECT_FILES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SymbolField {
         export const $gtype: GObject.GType<SymbolField>;
     }
@@ -829,6 +865,9 @@ export namespace IAnjuta {
         FIELD_END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SymbolQueryDb {
         export const $gtype: GObject.GType<SymbolQueryDb>;
     }
@@ -850,6 +889,9 @@ export namespace IAnjuta {
         DB_SYSTEM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SymbolQueryFileScope {
         export const $gtype: GObject.GType<SymbolQueryFileScope>;
     }
@@ -873,6 +915,9 @@ export namespace IAnjuta {
         SEARCH_FS_PRIVATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SymbolQueryMode {
         export const $gtype: GObject.GType<SymbolQueryMode>;
     }
@@ -904,6 +949,9 @@ export namespace IAnjuta {
         MODE_QUEUED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SymbolQueryName {
         export const $gtype: GObject.GType<SymbolQueryName>;
     }
@@ -955,6 +1003,9 @@ export namespace IAnjuta {
         SEARCH_PARENT_SCOPE_FILE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SymbolType {
         export const $gtype: GObject.GType<SymbolType>;
     }

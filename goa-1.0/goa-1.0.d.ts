@@ -5903,16 +5903,19 @@ export namespace Goa {
              * Emitted when `object` has been added. See {@link Goa.Client.get_accounts}
              * for information about how to use this object.
              * @signal
+             * @run-last
              */
             'account-added': (arg0: Object) => void;
             /**
              * Emitted when something on `object` changes.
              * @signal
+             * @run-last
              */
             'account-changed': (arg0: Object) => void;
             /**
              * Emitted when `object` has been removed.
              * @signal
+             * @run-last
              */
             'account-removed': (arg0: Object) => void;
             'notify::object-manager': (pspec: GObject.ParamSpec) => void;
@@ -5939,10 +5942,12 @@ export namespace Goa {
 
         /**
          * The {@link Gio.DBusObjectManager} used by the {@link Goa.Client} instance.
+         * @read-only
          */
         get object_manager(): Gio.DBusObjectManager;
         /**
          * The {@link Gio.DBusObjectManager} used by the {@link Goa.Client} instance.
+         * @read-only
          */
         get objectManager(): Gio.DBusObjectManager;
 

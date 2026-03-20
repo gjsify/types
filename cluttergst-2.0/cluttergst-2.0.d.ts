@@ -35,6 +35,9 @@ export namespace ClutterGst {
      * ClutterGst-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BufferingMode {
         export const $gtype: GObject.GType<BufferingMode>;
     }
@@ -115,6 +118,9 @@ export namespace ClutterGst {
      * @since 1.4
      */
     function player_class_init(object_class: typeof GObject.Object): void;
+    /**
+     * @gir-type Flags
+     */
     export namespace SeekFlags {
         export const $gtype: GObject.GType<SeekFlags>;
     }
@@ -1087,6 +1093,7 @@ export namespace ClutterGst {
          * as a value between 0.0 and 1.0.
          * @since 1.0
          * @deprecated since 1.12
+         * @read-only
          * @category Inherited from Clutter.Media
          */
         get buffer_fill(): number;
@@ -1095,6 +1102,7 @@ export namespace ClutterGst {
          * as a value between 0.0 and 1.0.
          * @since 1.0
          * @deprecated since 1.12
+         * @read-only
          * @category Inherited from Clutter.Media
          */
         get bufferFill(): number;
@@ -1102,6 +1110,7 @@ export namespace ClutterGst {
          * Whether the current stream is seekable.
          * @since 0.2
          * @deprecated since 1.12
+         * @read-only
          * @category Inherited from Clutter.Media
          */
         get can_seek(): boolean;
@@ -1109,6 +1118,7 @@ export namespace ClutterGst {
          * Whether the current stream is seekable.
          * @since 0.2
          * @deprecated since 1.12
+         * @read-only
          * @category Inherited from Clutter.Media
          */
         get canSeek(): boolean;
@@ -1116,6 +1126,7 @@ export namespace ClutterGst {
          * The duration of the current stream, in seconds
          * @since 0.2
          * @deprecated since 1.12
+         * @read-only
          * @category Inherited from Clutter.Media
          */
         get duration(): number;
@@ -1197,30 +1208,35 @@ export namespace ClutterGst {
         /**
          * List of audio streams available on the current media.
          * @since 1.4
+         * @read-only
          * @category Inherited from ClutterGst.Player
          */
         get audio_streams(): any;
         /**
          * List of audio streams available on the current media.
          * @since 1.4
+         * @read-only
          * @category Inherited from ClutterGst.Player
          */
         get audioStreams(): any;
         /**
          * Whether the {@link ClutterGst.Player} is in idle mode.
          * @since 1.4
+         * @read-only
          * @category Inherited from ClutterGst.Player
          */
         get idle(): boolean;
         /**
          * Whether or not the stream is being seeked.
          * @since 1.6
+         * @read-only
          * @category Inherited from ClutterGst.Player
          */
         get in_seek(): boolean;
         /**
          * Whether or not the stream is being seeked.
          * @since 1.6
+         * @read-only
          * @category Inherited from ClutterGst.Player
          */
         get inSeek(): boolean;
@@ -1244,9 +1260,15 @@ export namespace ClutterGst {
         /** @category Inherited from ClutterGst.Player */
         get subtitleTrack(): number;
         set subtitleTrack(val: number);
-        /** @category Inherited from ClutterGst.Player */
+        /**
+         * @read-only
+         * @category Inherited from ClutterGst.Player
+         */
         get subtitle_tracks(): any;
-        /** @category Inherited from ClutterGst.Player */
+        /**
+         * @read-only
+         * @category Inherited from ClutterGst.Player
+         */
         get subtitleTracks(): any;
         /**
          * The User Agent used by {@link ClutterGst.Player} with network protocols.
@@ -2142,26 +2164,31 @@ export namespace ClutterGst {
         /**
          * List of audio streams available on the current media.
          * @since 1.4
+         * @read-only
          */
         get audio_streams(): any;
         /**
          * List of audio streams available on the current media.
          * @since 1.4
+         * @read-only
          */
         get audioStreams(): any;
         /**
          * Whether the {@link ClutterGst.Player} is in idle mode.
          * @since 1.4
+         * @read-only
          */
         get idle(): boolean;
         /**
          * Whether or not the stream is being seeked.
          * @since 1.6
+         * @read-only
          */
         get in_seek(): boolean;
         /**
          * Whether or not the stream is being seeked.
          * @since 1.6
+         * @read-only
          */
         get inSeek(): boolean;
         /**
@@ -2180,7 +2207,13 @@ export namespace ClutterGst {
         set subtitle_track(val: number);
         get subtitleTrack(): number;
         set subtitleTrack(val: number);
+        /**
+         * @read-only
+         */
         get subtitle_tracks(): any;
+        /**
+         * @read-only
+         */
         get subtitleTracks(): any;
         /**
          * The User Agent used by {@link ClutterGst.Player} with network protocols.

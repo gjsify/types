@@ -20,6 +20,9 @@ export namespace Zeitgeist {
      * Zeitgeist-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ResultType {
         export const $gtype: GObject.GType<ResultType>;
     }
@@ -66,6 +69,9 @@ export namespace Zeitgeist {
         RELEVANCY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RelevantResultType {
         export const $gtype: GObject.GType<RelevantResultType>;
     }
@@ -78,6 +84,9 @@ export namespace Zeitgeist {
         RELATED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StorageState {
         export const $gtype: GObject.GType<StorageState>;
     }

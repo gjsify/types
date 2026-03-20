@@ -501,7 +501,13 @@ export namespace Msg {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get goa_object(): Goa.Object;
+        /**
+         * @construct-only
+         */
         get goaObject(): Goa.Object;
 
         /**
@@ -1992,9 +1998,21 @@ export namespace Msg {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get client_id(): string;
+        /**
+         * @construct-only
+         */
         get clientId(): string;
+        /**
+         * @construct-only
+         */
         get redirect_uri(): string;
+        /**
+         * @construct-only
+         */
         get redirectUri(): string;
         get refresh_token(): string;
         set refresh_token(val: string);
@@ -2548,6 +2566,9 @@ export namespace Msg {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set authorizer(val: Authorizer);
 
         /**

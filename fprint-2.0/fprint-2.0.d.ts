@@ -92,6 +92,9 @@ export namespace FPrint {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceRetry {
         export const $gtype: GObject.GType<DeviceRetry>;
     }
@@ -125,6 +128,9 @@ export namespace FPrint {
         REMOVE_FINGER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceType {
         export const $gtype: GObject.GType<DeviceType>;
     }
@@ -147,6 +153,9 @@ export namespace FPrint {
         USB,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Finger {
         export const $gtype: GObject.GType<Finger>;
     }
@@ -209,6 +218,9 @@ export namespace FPrint {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScanType {
         export const $gtype: GObject.GType<ScanType>;
     }
@@ -227,6 +239,9 @@ export namespace FPrint {
         PRESS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Temperature {
         export const $gtype: GObject.GType<Temperature>;
     }
@@ -273,6 +288,9 @@ export namespace FPrint {
     interface MatchCb {
         (device: Device, match?: Print | null, print?: Print | null, error?: GLib.Error | null): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace DeviceFeature {
         export const $gtype: GObject.GType<DeviceFeature>;
     }
@@ -327,6 +345,9 @@ export namespace FPrint {
         UPDATE_PRINT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FingerStatusFlags {
         export const $gtype: GObject.GType<FingerStatusFlags>;
     }
@@ -355,6 +376,7 @@ export namespace FPrint {
             /**
              * This signal is emitted when a fingerprint reader is added.
              * @signal
+             * @run-last
              */
             'device-added': (arg0: Device) => void;
             /**
@@ -364,6 +386,7 @@ export namespace FPrint {
              * is emitted. See the {@link FPrint.Device} removed signal documentation for more
              * information.
              * @signal
+             * @run-last
              */
             'device-removed': (arg0: Device) => void;
         }
@@ -464,6 +487,7 @@ export namespace FPrint {
              * The device will only be removed from the {@link FPrint.Context} after it has been
              * closed by the API user.
              * @signal
+             * @run-last
              */
             removed: () => void;
             'notify::device-id': (pspec: GObject.ParamSpec) => void;
@@ -519,28 +543,97 @@ export namespace FPrint {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get device_id(): string;
+        /**
+         * @read-only
+         */
         get deviceId(): string;
+        /**
+         * @read-only
+         */
         get driver(): string;
+        /**
+         * @read-only
+         */
         get finger_status(): FingerStatusFlags;
+        /**
+         * @read-only
+         */
         get fingerStatus(): FingerStatusFlags;
+        /**
+         * @construct-only
+         */
         set fpi_driver_data(val: number);
+        /**
+         * @construct-only
+         */
         set fpiDriverData(val: number);
+        /**
+         * @construct-only
+         */
         set fpi_environ(val: string);
+        /**
+         * @construct-only
+         */
         set fpiEnviron(val: string);
+        /**
+         * @construct-only
+         */
         get fpi_udev_data_hidraw(): string;
+        /**
+         * @construct-only
+         */
         get fpiUdevDataHidraw(): string;
+        /**
+         * @construct-only
+         */
         get fpi_udev_data_spidev(): string;
+        /**
+         * @construct-only
+         */
         get fpiUdevDataSpidev(): string;
+        /**
+         * @construct-only
+         */
         get fpi_usb_device(): GUsb.Device;
+        /**
+         * @construct-only
+         */
         get fpiUsbDevice(): GUsb.Device;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get nr_enroll_stages(): number;
+        /**
+         * @read-only
+         */
         get nrEnrollStages(): number;
+        /**
+         * @read-only
+         */
         get open(): boolean;
+        /**
+         * @read-only
+         */
         get removed(): boolean;
+        /**
+         * @read-only
+         */
         get scan_type(): ScanType;
+        /**
+         * @read-only
+         */
         get scanType(): ScanType;
+        /**
+         * @read-only
+         */
         get temperature(): Temperature;
 
         /**
@@ -1894,7 +1987,13 @@ export namespace FPrint {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get height(): number;
+        /**
+         * @construct-only
+         */
         get width(): number;
 
         /**
@@ -2012,6 +2111,7 @@ export namespace FPrint {
             /**
              * This signal is only for internal purposes.
              * @signal
+             * @run-first
              */
             'fpi-image-device-state-changed': (arg0: unknown) => void;
             'notify::device-id': (pspec: GObject.ParamSpec) => void;
@@ -2774,10 +2874,25 @@ export namespace FPrint {
 
         get description(): string;
         set description(val: string);
+        /**
+         * @construct-only
+         */
         get device_id(): string;
+        /**
+         * @construct-only
+         */
         get deviceId(): string;
+        /**
+         * @construct-only
+         */
         get device_stored(): boolean;
+        /**
+         * @construct-only
+         */
         get deviceStored(): boolean;
+        /**
+         * @construct-only
+         */
         get driver(): string;
         get enroll_date(): GLib.Date;
         set enroll_date(val: GLib.Date);
@@ -2793,6 +2908,9 @@ export namespace FPrint {
         set fpi_prints(val: any);
         get fpiPrints(): any;
         set fpiPrints(val: any);
+        /**
+         * @read-only
+         */
         get image(): Image;
         get username(): string;
         set username(val: string);

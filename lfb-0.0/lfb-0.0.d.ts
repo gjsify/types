@@ -20,6 +20,9 @@ export namespace Lfb {
      * Lfb-0.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EventEndReason {
         export const $gtype: GObject.GType<EventEndReason>;
     }
@@ -48,6 +51,9 @@ export namespace Lfb {
         EXPLICIT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EventState {
         export const $gtype: GObject.GType<EventState>;
     }
@@ -141,6 +147,7 @@ export namespace Lfb {
             /**
              * Emitted when all feedbacks triggered by the event have ended.
              * @signal
+             * @run-last
              */
             'feedback-ended': () => void;
             'notify::app-id': (pspec: GObject.ParamSpec) => void;
@@ -246,10 +253,17 @@ export namespace Lfb {
          */
         get appId(): string;
         set appId(val: string);
+        /**
+         * @read-only
+         */
         get end_reason(): EventEndReason;
+        /**
+         * @read-only
+         */
         get endReason(): EventEndReason;
         /**
          * The type of event from the Event naming spec, e.g. 'message-new-instant'.
+         * @construct-only
          */
         get event(): string;
         /**
@@ -270,6 +284,9 @@ export namespace Lfb {
          */
         get important(): boolean;
         set important(val: boolean);
+        /**
+         * @read-only
+         */
         get state(): EventState;
         /**
          * How long feedback should be provided in seconds. The special value

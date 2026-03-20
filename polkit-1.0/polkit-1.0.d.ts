@@ -55,6 +55,9 @@ export namespace Polkit {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ImplicitAuthorization {
         export const $gtype: GObject.GType<ImplicitAuthorization>;
     }
@@ -121,6 +124,9 @@ export namespace Polkit {
      * @returns A {@link Polkit.Subject} or `null` if `error` is set. Free with `g_object_unref()`.
      */
     function subject_from_string(str: string): Subject;
+    /**
+     * @gir-type Flags
+     */
     export namespace AuthorityFeatures {
         export const $gtype: GObject.GType<AuthorityFeatures>;
     }
@@ -141,6 +147,9 @@ export namespace Polkit {
         TEMPORARY_AUTHORIZATION,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace CheckAuthorizationFlags {
         export const $gtype: GObject.GType<CheckAuthorizationFlags>;
     }
@@ -283,6 +292,7 @@ export namespace Polkit {
             /**
              * Emitted when actions and/or authorizations change
              * @signal
+             * @run-last
              */
             changed: () => void;
             'notify::backend-features': (pspec: GObject.ParamSpec) => void;
@@ -325,26 +335,37 @@ export namespace Polkit {
 
         /**
          * The features of the currently used Authority backend.
+         * @read-only
          */
         get backend_features(): AuthorityFeatures;
         /**
          * The features of the currently used Authority backend.
+         * @read-only
          */
         get backendFeatures(): AuthorityFeatures;
         /**
          * The name of the currently used Authority backend.
+         * @read-only
          */
         get backend_name(): string;
         /**
          * The name of the currently used Authority backend.
+         * @read-only
          */
         get backendName(): string;
+        /**
+         * @read-only
+         */
         get backend_version(): string;
+        /**
+         * @read-only
+         */
         get backendVersion(): string;
         /**
          * The unique name of the owner of the org.freedesktop.PolicyKit1
          * D-Bus service or `null` if there is no owner. Connect to the
          * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to track changes to this property.
+         * @read-only
          */
         get owner(): string;
 
@@ -2225,15 +2246,18 @@ export namespace Polkit {
 
         /**
          * The action identifier to use for the permission.
+         * @construct-only
          */
         get action_id(): string;
         /**
          * The action identifier to use for the permission.
+         * @construct-only
          */
         get actionId(): string;
         /**
          * The {@link Polkit.Subject} to use for the permission. If not set during
          * construction, it will be set to match the current process.
+         * @construct-only
          */
         get subject(): Subject;
 
@@ -5752,6 +5776,7 @@ export namespace Polkit {
 
         /**
          * The UNIX process id to look up the session.
+         * @construct-only
          */
         set pid(val: number);
         /**

@@ -30,6 +30,9 @@ export namespace Xed {
      * Xed-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SearchMode {
         export const $gtype: GObject.GType<SearchMode>;
     }
@@ -42,6 +45,9 @@ export namespace Xed {
         REPLACE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TabState {
         export const $gtype: GObject.GType<TabState>;
     }
@@ -347,6 +353,9 @@ export namespace Xed {
     interface MessageTypeForeach {
         (key: string, type: GObject.GType, required: boolean): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace DebugSection {
         export const $gtype: GObject.GType<DebugSection>;
     }
@@ -373,6 +382,9 @@ export namespace Xed {
         DEBUG_SAVER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WindowState {
         export const $gtype: GObject.GType<WindowState>;
     }
@@ -973,26 +985,31 @@ export namespace Xed {
         interface SignalSignatures extends GtkSource.Buffer.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'cursor-moved': () => void;
             /**
              * The "load" signal is emitted at the beginning of file loading.
              * @signal
+             * @run-last
              */
             load: () => void;
             /**
              * The "loaded" signal is emitted at the end of a successful loading.
              * @signal
+             * @run-first
              */
             loaded: () => void;
             /**
              * The "save" signal is emitted at the beginning of file saving.
              * @signal
+             * @run-last
              */
             save: () => void;
             /**
              * The "saved" signal is emitted at the end of a successful file saving.
              * @signal
+             * @run-first
              */
             saved: () => void;
             'notify::content-type': (pspec: GObject.ParamSpec) => void;
@@ -1052,13 +1069,21 @@ export namespace Xed {
         set contentType(val: string);
         /**
          * The documents MIME type.
+         * @read-only
          */
         get mime_type(): string;
         /**
          * The documents MIME type.
+         * @read-only
          */
         get mimeType(): string;
+        /**
+         * @read-only
+         */
         get read_only(): boolean;
+        /**
+         * @read-only
+         */
         get readOnly(): boolean;
         /**
          * The documents short name.
@@ -1074,6 +1099,7 @@ export namespace Xed {
          * The property is used internally by xed. It must not be used in a
          * xed plugin. The property can be modified or removed at any time.
          * </warning>
+         * @construct-only
          */
         get use_gvfs_metadata(): boolean;
         /**
@@ -1085,6 +1111,7 @@ export namespace Xed {
          * The property is used internally by xed. It must not be used in a
          * xed plugin. The property can be modified or removed at any time.
          * </warning>
+         * @construct-only
          */
         get useGvfsMetadata(): boolean;
 
@@ -1414,9 +1441,15 @@ export namespace Xed {
         /** @category Inherited from Gtk.Widget */
         get canFocus(): boolean;
         set canFocus(val: boolean);
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get composite_child(): boolean;
-        /** @category Inherited from Gtk.Widget */
+        /**
+         * @read-only
+         * @category Inherited from Gtk.Widget
+         */
         get compositeChild(): boolean;
         /**
          * Whether the widget is double buffered.
@@ -1730,6 +1763,7 @@ export namespace Xed {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
@@ -1737,6 +1771,7 @@ export namespace Xed {
          * The scale factor of the widget. See `gtk_widget_get_scale_factor()` for
          * more details about widget scaling.
          * @since 3.10
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -1858,6 +1893,7 @@ export namespace Xed {
         /**
          * The widget's window if it is realized, `null` otherwise.
          * @since 2.14
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get window(): Gdk.Window;
@@ -7430,10 +7466,20 @@ export namespace Xed {
 
         /**
          * The messages method.
+         * @read-only
          */
         get method(): string;
+        /**
+         * @read-only
+         */
         get object_path(): string;
+        /**
+         * @read-only
+         */
         get objectPath(): string;
+        /**
+         * @construct-only
+         */
         get type(): MessageType;
 
         /**
@@ -7531,18 +7577,21 @@ export namespace Xed {
              * (for instance to automatically dispatch all messages over DBus).
              * 2
              * @signal
+             * @run-last
              */
             dispatch: (arg0: Message) => void;
             /**
              * The "registered" signal is emitted when a message has been registered
              * on the bus.
              * @signal
+             * @run-last
              */
             registered: (arg0: MessageType) => void;
             /**
              * The "unregistered" signal is emitted when a message has been
              * unregistered from the bus.
              * @signal
+             * @run-last
              */
             unregistered: (arg0: MessageType) => void;
         }
@@ -7737,22 +7786,27 @@ export namespace Xed {
         interface SignalSignatures extends Gtk.Notebook.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'tab-added': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-last
              */
             'tab-close-request': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'tab-detached': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'tab-removed': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'tabs-reordered': () => void;
             'notify::enable-popup': (pspec: GObject.ParamSpec) => void;
@@ -8418,18 +8472,24 @@ export namespace Xed {
         interface SignalSignatures extends Gtk.Bin.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             close: () => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'focus-document': () => void;
             /**
              * @signal
+             * @run-first
              */
             'item-added': (arg0: Gtk.Widget) => void;
             /**
              * @signal
+             * @run-first
              */
             'item-removed': (arg0: Gtk.Widget) => void;
             'notify::orientation': (pspec: GObject.ParamSpec) => void;
@@ -8493,6 +8553,9 @@ export namespace Xed {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get orientation(): Gtk.Orientation;
 
         /**
@@ -9118,7 +9181,13 @@ export namespace Xed {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set has_cancel_button(val: boolean);
+        /**
+         * @construct-only
+         */
         set hasCancelButton(val: boolean);
 
         /**
@@ -10913,9 +10982,21 @@ export namespace Xed {
         set autosave_interval(val: number);
         get autosaveInterval(): number;
         set autosaveInterval(val: number);
+        /**
+         * @read-only
+         */
         get can_close(): boolean;
+        /**
+         * @read-only
+         */
         get canClose(): boolean;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get state(): TabState;
 
         /**
@@ -11486,6 +11567,8 @@ export namespace Xed {
         interface SignalSignatures extends GtkSource.View.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'drop-uris': (arg0: string[]) => void;
             'notify::auto-indent': (pspec: GObject.ParamSpec) => void;
@@ -12135,22 +12218,27 @@ export namespace Xed {
         interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'active-tab-changed': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'active-tab-state-changed': () => void;
             /**
              * @signal
+             * @run-first
              */
             'tab-added': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'tab-removed': (arg0: Tab) => void;
             /**
              * @signal
+             * @run-first
              */
             'tabs-reordered': () => void;
             'notify::state': (pspec: GObject.ParamSpec) => void;
@@ -12256,6 +12344,9 @@ export namespace Xed {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get state(): WindowState;
 
         /**
@@ -13718,6 +13809,7 @@ export namespace Xed {
         /**
          * The app property contains the xed app for this
          * {@link Xed.AppActivatable} instance.
+         * @construct-only
          */
         get app(): App;
 
@@ -13777,6 +13869,7 @@ export namespace Xed {
         /**
          * The window property contains the xed window for this
          * {@link Xed.ViewActivatable} instance.
+         * @construct-only
          */
         get view(): View;
 
@@ -13842,6 +13935,7 @@ export namespace Xed {
         /**
          * The window property contains the xed window for this
          * {@link Xed.WindowActivatable} instance.
+         * @construct-only
          */
         get window(): Window;
 

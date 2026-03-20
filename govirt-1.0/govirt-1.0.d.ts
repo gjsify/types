@@ -62,6 +62,9 @@ export namespace GoVirt {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VmDisplayType {
         export const $gtype: GObject.GType<VmDisplayType>;
     }
@@ -74,6 +77,9 @@ export namespace GoVirt {
         VNC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VmState {
         export const $gtype: GObject.GType<VmState>;
     }

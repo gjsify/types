@@ -33,6 +33,7 @@ export namespace GUPnPDLNA {
              *
              * The reciever must unref `dlna` with when done using it.
              * @signal
+             * @run-last
              */
             done: (arg0: Information, arg1: GLib.Error) => void;
             'notify::extended-mode': (pspec: GObject.ParamSpec) => void;
@@ -60,9 +61,21 @@ export namespace GUPnPDLNA {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get extended_mode(): boolean;
+        /**
+         * @construct-only
+         */
         get extendedMode(): boolean;
+        /**
+         * @construct-only
+         */
         get relaxed_mode(): boolean;
+        /**
+         * @construct-only
+         */
         get relaxedMode(): boolean;
 
         /**
@@ -182,8 +195,17 @@ export namespace GUPnPDLNA {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get info(): GstPbutils.DiscovererInfo;
+        /**
+         * @construct-only
+         */
         get mime(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
 
         /**
@@ -267,10 +289,25 @@ export namespace GUPnPDLNA {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get encoding_profile(): GstPbutils.EncodingProfile;
+        /**
+         * @read-only
+         */
         get encodingProfile(): GstPbutils.EncodingProfile;
+        /**
+         * @construct-only
+         */
         get extended(): boolean;
+        /**
+         * @construct-only
+         */
         get mime(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
 
         /**

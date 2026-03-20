@@ -432,11 +432,13 @@ export namespace GdkWayland {
         emit(signal: string, ...args: any[]): void;
         /**
          * Whether to hide on outside clicks.
+         * @construct-only
          * @category Inherited from Gdk.Popup
          */
         get autohide(): boolean;
         /**
          * The parent surface.
+         * @construct-only
          * @category Inherited from Gdk.Popup
          */
         get parent(): Gdk.Surface;
@@ -448,32 +450,38 @@ export namespace GdkWayland {
         set cursor(val: Gdk.Cursor);
         /**
          * The {@link Gdk.Display} connection of the surface.
+         * @construct-only
          * @category Inherited from Gdk.Surface
          */
         get display(): Gdk.Display;
         /**
          * The {@link Gdk.FrameClock} of the surface.
+         * @construct-only
          * @category Inherited from Gdk.Surface
          */
         get frame_clock(): Gdk.FrameClock;
         /**
          * The {@link Gdk.FrameClock} of the surface.
+         * @construct-only
          * @category Inherited from Gdk.Surface
          */
         get frameClock(): Gdk.FrameClock;
         /**
          * The height of the surface, in pixels.
+         * @read-only
          * @category Inherited from Gdk.Surface
          */
         get height(): number;
         /**
          * Whether the surface is mapped.
+         * @read-only
          * @category Inherited from Gdk.Surface
          */
         get mapped(): boolean;
         /**
          * The scale of the surface.
          * @since 4.12
+         * @read-only
          * @category Inherited from Gdk.Surface
          */
         get scale(): number;
@@ -482,6 +490,7 @@ export namespace GdkWayland {
          *
          * The scale factor is the next larger integer,
          * compared to {@link Gdk.Surface.scale}.
+         * @read-only
          * @category Inherited from Gdk.Surface
          */
         get scale_factor(): number;
@@ -490,11 +499,13 @@ export namespace GdkWayland {
          *
          * The scale factor is the next larger integer,
          * compared to {@link Gdk.Surface.scale}.
+         * @read-only
          * @category Inherited from Gdk.Surface
          */
         get scaleFactor(): number;
         /**
          * The width of the surface in pixels.
+         * @read-only
          * @category Inherited from Gdk.Surface
          */
         get width(): number;
@@ -1102,6 +1113,7 @@ export namespace GdkWayland {
         /**
          * The capabilities that are available for this toplevel.
          * @since 4.20
+         * @read-only
          * @category Inherited from Gdk.Toplevel
          */
         get capabilities(): Gdk.ToplevelCapabilities;
@@ -1165,11 +1177,13 @@ export namespace GdkWayland {
         set modal(val: boolean);
         /**
          * Whether the surface should inhibit keyboard shortcuts.
+         * @read-only
          * @category Inherited from Gdk.Toplevel
          */
         get shortcuts_inhibited(): boolean;
         /**
          * Whether the surface should inhibit keyboard shortcuts.
+         * @read-only
          * @category Inherited from Gdk.Toplevel
          */
         get shortcutsInhibited(): boolean;
@@ -1193,6 +1207,7 @@ export namespace GdkWayland {
         set startupId(val: string);
         /**
          * The state of the toplevel.
+         * @read-only
          * @category Inherited from Gdk.Toplevel
          */
         get state(): Gdk.ToplevelState;
@@ -1222,32 +1237,38 @@ export namespace GdkWayland {
         set cursor(val: Gdk.Cursor);
         /**
          * The {@link Gdk.Display} connection of the surface.
+         * @construct-only
          * @category Inherited from Gdk.Surface
          */
         get display(): Gdk.Display;
         /**
          * The {@link Gdk.FrameClock} of the surface.
+         * @construct-only
          * @category Inherited from Gdk.Surface
          */
         get frame_clock(): Gdk.FrameClock;
         /**
          * The {@link Gdk.FrameClock} of the surface.
+         * @construct-only
          * @category Inherited from Gdk.Surface
          */
         get frameClock(): Gdk.FrameClock;
         /**
          * The height of the surface, in pixels.
+         * @read-only
          * @category Inherited from Gdk.Surface
          */
         get height(): number;
         /**
          * Whether the surface is mapped.
+         * @read-only
          * @category Inherited from Gdk.Surface
          */
         get mapped(): boolean;
         /**
          * The scale of the surface.
          * @since 4.12
+         * @read-only
          * @category Inherited from Gdk.Surface
          */
         get scale(): number;
@@ -1256,6 +1277,7 @@ export namespace GdkWayland {
          *
          * The scale factor is the next larger integer,
          * compared to {@link Gdk.Surface.scale}.
+         * @read-only
          * @category Inherited from Gdk.Surface
          */
         get scale_factor(): number;
@@ -1264,11 +1286,13 @@ export namespace GdkWayland {
          *
          * The scale factor is the next larger integer,
          * compared to {@link Gdk.Surface.scale}.
+         * @read-only
          * @category Inherited from Gdk.Surface
          */
         get scaleFactor(): number;
         /**
          * The width of the surface in pixels.
+         * @read-only
          * @category Inherited from Gdk.Surface
          */
         get width(): number;

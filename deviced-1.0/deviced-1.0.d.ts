@@ -20,6 +20,9 @@ export namespace Deviced {
      * Deviced-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceKind {
         export const $gtype: GObject.GType<DeviceKind>;
     }
@@ -143,6 +146,7 @@ export namespace Deviced {
              * The "device-added" signal is emitted when a device has been discovered.
              * @signal
              * @since 3.28
+             * @run-last
              */
             'device-added': (arg0: Device) => void;
             /**
@@ -150,6 +154,7 @@ export namespace Deviced {
              * known to be available.
              * @signal
              * @since 3.28
+             * @run-last
              */
             'device-removed': (arg0: Device) => void;
             'notify::certificate': (pspec: GObject.ParamSpec) => void;
@@ -346,6 +351,8 @@ export namespace Deviced {
              * with some clients and services.
              * @signal
              * @since 3.28
+             * @detailed
+             * @run-last
              */
             notification: (arg0: string, arg1: GLib.Variant) => void;
             /**
@@ -357,6 +364,7 @@ export namespace Deviced {
              * that additional services are enabled on the connection.
              * @signal
              * @since 3.28
+             * @run-last
              */
             'service-added': (arg0: string) => void;
             'notify::arch': (pspec: GObject.ParamSpec) => void;
@@ -373,6 +381,8 @@ export namespace Deviced {
              * with some clients and services.
              * @signal
              * @since 3.28
+             * @detailed
+             * @run-last
              */
             'notification::arch': (arg0: string, arg1: GLib.Variant) => void;
             /**
@@ -383,6 +393,8 @@ export namespace Deviced {
              * with some clients and services.
              * @signal
              * @since 3.28
+             * @detailed
+             * @run-last
              */
             'notification::kernel': (arg0: string, arg1: GLib.Variant) => void;
             /**
@@ -393,6 +405,8 @@ export namespace Deviced {
              * with some clients and services.
              * @signal
              * @since 3.28
+             * @detailed
+             * @run-last
              */
             'notification::name': (arg0: string, arg1: GLib.Variant) => void;
             /**
@@ -403,6 +417,8 @@ export namespace Deviced {
              * with some clients and services.
              * @signal
              * @since 3.28
+             * @detailed
+             * @run-last
              */
             'notification::system': (arg0: string, arg1: GLib.Variant) => void;
             /**
@@ -413,6 +429,8 @@ export namespace Deviced {
              * with some clients and services.
              * @signal
              * @since 3.28
+             * @detailed
+             * @run-last
              */
             'notification::timeout': (arg0: string, arg1: GLib.Variant) => void;
             /**
@@ -423,6 +441,8 @@ export namespace Deviced {
              * with some clients and services.
              * @signal
              * @since 3.28
+             * @detailed
+             * @run-last
              */
             'notification::triplet': (arg0: string, arg1: GLib.Variant) => void;
         }
@@ -447,12 +467,27 @@ export namespace Deviced {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get arch(): string;
+        /**
+         * @read-only
+         */
         get kernel(): string;
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get system(): string;
         get timeout(): number;
         set timeout(val: number);
+        /**
+         * @read-only
+         */
         get triplet(): string;
 
         /**
@@ -1126,6 +1161,9 @@ export namespace Deviced {
         set icon_name(val: string);
         get iconName(): string;
         set iconName(val: string);
+        /**
+         * @construct-only
+         */
         get id(): string;
         get kind(): DeviceKind;
         set kind(val: DeviceKind);
@@ -1374,8 +1412,12 @@ export namespace Deviced {
         /**
          * The "address" is the destination that we will attept to connect to
          * using this client, when `devd_client_connect_async()` is called.
+         * @construct-only
          */
         get address(): Gio.InetSocketAddress;
+        /**
+         * @construct-only
+         */
         get certificate(): Gio.TlsCertificate;
 
         /**
@@ -1458,7 +1500,13 @@ export namespace Deviced {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get address(): Gio.InetSocketAddress;
+        /**
+         * @construct-only
+         */
         get certificate(): Gio.TlsCertificate;
 
         /**
@@ -1524,6 +1572,7 @@ export namespace Deviced {
              * are notified.
              * @signal
              * @since 3.28
+             * @run-last
              */
             'process-exited': (arg0: string, arg1: number) => void;
             /**
@@ -1534,6 +1583,7 @@ export namespace Deviced {
              * are notified.
              * @signal
              * @since 3.28
+             * @run-last
              */
             'process-signaled': (arg0: string, arg1: number) => void;
             'notify::client': (pspec: GObject.ParamSpec) => void;
@@ -1791,11 +1841,15 @@ export namespace Deviced {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             notification: (arg0: string, arg1: GLib.Variant) => void;
             'notify::client': (pspec: GObject.ParamSpec) => void;
             /**
              * @signal
+             * @detailed
+             * @run-last
              */
             'notification::client': (arg0: string, arg1: GLib.Variant) => void;
         }
@@ -1815,6 +1869,9 @@ export namespace Deviced {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get client(): Client;
 
         /**

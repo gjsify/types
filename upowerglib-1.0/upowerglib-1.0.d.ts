@@ -136,12 +136,14 @@ export namespace UPowerGlib {
              * The ::device-added signal is emitted when a power device is added.
              * @signal
              * @since 0.9.0
+             * @run-last
              */
             'device-added': (arg0: Device) => void;
             /**
              * The ::device-removed signal is emitted when a power device is removed.
              * @signal
              * @since 1.0
+             * @run-last
              */
             'device-removed': (arg0: string) => void;
             'notify::daemon-version': (pspec: GObject.ParamSpec) => void;
@@ -175,41 +177,49 @@ export namespace UPowerGlib {
         /**
          * The daemon version.
          * @since 0.9.0
+         * @read-only
          */
         get daemon_version(): string;
         /**
          * The daemon version.
          * @since 0.9.0
+         * @read-only
          */
         get daemonVersion(): string;
         /**
          * If the laptop lid is closed.
          * @since 0.9.0
+         * @read-only
          */
         get lid_is_closed(): boolean;
         /**
          * If the laptop lid is closed.
          * @since 0.9.0
+         * @read-only
          */
         get lidIsClosed(): boolean;
         /**
          * If a laptop lid is present.
          * @since 0.9.0
+         * @read-only
          */
         get lid_is_present(): boolean;
         /**
          * If a laptop lid is present.
          * @since 0.9.0
+         * @read-only
          */
         get lidIsPresent(): boolean;
         /**
          * If the computer is on battery power.
          * @since 0.9.0
+         * @read-only
          */
         get on_battery(): boolean;
         /**
          * If the computer is on battery power.
          * @since 0.9.0
+         * @read-only
          */
         get onBattery(): boolean;
 
@@ -5890,10 +5900,12 @@ export namespace UPowerGlib {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'data-changed': () => void;
             /**
              * @signal
+             * @run-last
              */
             'total-changed': (arg0: number) => void;
         }

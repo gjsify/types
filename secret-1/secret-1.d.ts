@@ -20,6 +20,9 @@ export namespace Secret {
      * Secret-1
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BackendFlags {
         export const $gtype: GObject.GType<BackendFlags>;
     }
@@ -46,6 +49,9 @@ export namespace Secret {
         LOAD_COLLECTIONS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Error {
         export const $gtype: GObject.GType<Error>;
     }
@@ -101,6 +107,9 @@ export namespace Secret {
         EMPTY_TABLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SchemaAttributeType {
         export const $gtype: GObject.GType<SchemaAttributeType>;
     }
@@ -128,6 +137,9 @@ export namespace Secret {
         BOOLEAN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SchemaType {
         export const $gtype: GObject.GType<SchemaType>;
     }
@@ -750,6 +762,9 @@ export namespace Secret {
      * @param password password to clear
      */
     function password_wipe(password?: string | null): void;
+    /**
+     * @gir-type Flags
+     */
     export namespace CollectionCreateFlags {
         export const $gtype: GObject.GType<CollectionCreateFlags>;
     }
@@ -765,6 +780,9 @@ export namespace Secret {
         NONE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace CollectionFlags {
         export const $gtype: GObject.GType<CollectionFlags>;
     }
@@ -784,6 +802,9 @@ export namespace Secret {
         LOAD_ITEMS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ItemCreateFlags {
         export const $gtype: GObject.GType<ItemCreateFlags>;
     }
@@ -803,6 +824,9 @@ export namespace Secret {
         REPLACE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ItemFlags {
         export const $gtype: GObject.GType<ItemFlags>;
     }
@@ -822,6 +846,9 @@ export namespace Secret {
         LOAD_SECRET,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SchemaFlags {
         export const $gtype: GObject.GType<SchemaFlags>;
     }
@@ -842,6 +869,9 @@ export namespace Secret {
         DONT_MATCH_NAME,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SearchFlags {
         export const $gtype: GObject.GType<SearchFlags>;
     }
@@ -869,6 +899,9 @@ export namespace Secret {
         LOAD_SECRETS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ServiceFlags {
         export const $gtype: GObject.GType<ServiceFlags>;
     }
@@ -961,6 +994,7 @@ export namespace Secret {
         /**
          * A set of flags describing which parts of the secret collection have
          * been initialized.
+         * @construct-only
          */
         get flags(): CollectionFlags;
         /**
@@ -977,6 +1011,7 @@ export namespace Secret {
          *
          * To lock or unlock a collection use the {@link Service.lock} or
          * {@link Service.unlock} functions.
+         * @read-only
          */
         get locked(): boolean;
         /**
@@ -988,6 +1023,7 @@ export namespace Secret {
         /**
          * The {@link Service} object that this collection is associated with and
          * uses to interact with the actual D-Bus Secret Service.
+         * @construct-only
          */
         get service(): Service;
 
@@ -2332,6 +2368,7 @@ export namespace Secret {
         /**
          * A set of flags describing which parts of the secret item have
          * been initialized.
+         * @construct-only
          */
         get flags(): ItemFlags;
         /**
@@ -2342,11 +2379,13 @@ export namespace Secret {
          *
          * To lock or unlock a item use the {@link Service.lock} or
          * {@link Service.unlock} functions.
+         * @read-only
          */
         get locked(): boolean;
         /**
          * The {@link Service} object that this item is associated with and
          * uses to interact with the actual D-Bus Secret Service.
+         * @construct-only
          */
         get service(): Service;
 
@@ -6096,6 +6135,7 @@ export namespace Secret {
          * A set of flags describing which parts of the secret backend have
          * been initialized.
          * @since 0.19.0
+         * @construct-only
          * @category Inherited from Secret.Backend
          */
         get flags(): ServiceFlags;
@@ -7374,6 +7414,7 @@ export namespace Secret {
          * A set of flags describing which parts of the secret backend have
          * been initialized.
          * @since 0.19.0
+         * @construct-only
          */
         get flags(): ServiceFlags;
     }

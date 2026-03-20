@@ -184,6 +184,7 @@ export namespace SecretUnstable {
          *
          * To lock or unlock a collection use the `secret_service_lock()` or
          * `secret_service_unlock()` functions.
+         * @read-only
          */
         get locked(): boolean;
         /**
@@ -195,6 +196,7 @@ export namespace SecretUnstable {
         /**
          * The {@link SecretUnstable.Service} object that this collection is associated with and
          * uses to interact with the actual D-Bus Secret Service.
+         * @construct-only
          */
         get service(): Service;
 
@@ -1658,6 +1660,7 @@ export namespace SecretUnstable {
          *
          * To lock or unlock a item use the `secret_service_lock()` or
          * `secret_service_unlock()` functions.
+         * @read-only
          */
         get locked(): boolean;
         /**
@@ -1669,6 +1672,7 @@ export namespace SecretUnstable {
         /**
          * The {@link SecretUnstable.Service} object that this item is associated with and
          * uses to interact with the actual D-Bus Secret Service.
+         * @construct-only
          */
         get service(): Service;
 

@@ -20,6 +20,9 @@ export namespace Cvc {
      * Cvc-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MixerControlState {
         export const $gtype: GObject.GType<MixerControlState>;
     }
@@ -34,6 +37,9 @@ export namespace Cvc {
         FAILED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MixerStreamState {
         export const $gtype: GObject.GType<MixerStreamState>;
     }
@@ -48,6 +54,9 @@ export namespace Cvc {
         SUSPENDED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MixerUIDeviceDirection {
         export const $gtype: GObject.GType<MixerUIDeviceDirection>;
     }
@@ -61,6 +70,9 @@ export namespace Cvc {
     }
 
     const MIXER_UI_DEVICE_INVALID: number;
+    /**
+     * @gir-type Flags
+     */
     export namespace HeadsetPortChoice {
         export const $gtype: GObject.GType<HeadsetPortChoice>;
     }
@@ -80,6 +92,7 @@ export namespace Cvc {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'volume-changed': (arg0: boolean) => void;
         }
@@ -206,17 +219,35 @@ export namespace Cvc {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get human_profile(): string;
+        /**
+         * @read-only
+         */
         get humanProfile(): string;
         get icon_name(): string;
         set icon_name(val: string);
         get iconName(): string;
         set iconName(val: string);
+        /**
+         * @construct-only
+         */
         get id(): number;
+        /**
+         * @construct-only
+         */
         get index(): number;
         get name(): string;
         set name(val: string);
+        /**
+         * @construct-only
+         */
         get pa_context(): any;
+        /**
+         * @construct-only
+         */
         get paContext(): any;
         get profile(): string;
         set profile(val: string);
@@ -299,62 +330,77 @@ export namespace Cvc {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'active-input-update': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'active-output-update': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'audio-device-selection-needed': (arg0: number, arg1: boolean, arg2: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'card-added': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'card-removed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'default-sink-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'default-source-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'input-added': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'input-removed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'output-added': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'output-removed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'state-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'stream-added': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'stream-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'stream-removed': (arg0: number) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -375,6 +421,9 @@ export namespace Cvc {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
 
         /**
@@ -938,10 +987,12 @@ export namespace Cvc {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'monitor-suspend': () => void;
             /**
              * @signal
+             * @run-last
              */
             'monitor-update': (arg0: number) => void;
             'notify::application-id': (pspec: GObject.ParamSpec) => void;
@@ -1037,7 +1088,13 @@ export namespace Cvc {
         set icon_name(val: string);
         get iconName(): string;
         set iconName(val: string);
+        /**
+         * @construct-only
+         */
         get id(): number;
+        /**
+         * @construct-only
+         */
         get index(): number;
         get is_event_stream(): boolean;
         set is_event_stream(val: boolean);
@@ -1053,7 +1110,13 @@ export namespace Cvc {
         set isVirtual(val: boolean);
         get name(): string;
         set name(val: string);
+        /**
+         * @construct-only
+         */
         get pa_context(): any;
+        /**
+         * @construct-only
+         */
         get paContext(): any;
         get port(): string;
         set port(val: string);

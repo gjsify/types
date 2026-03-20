@@ -46,6 +46,9 @@ export namespace Shell {
      * Shell-13
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AppLaunchGpu {
         export const $gtype: GObject.GType<AppLaunchGpu>;
     }
@@ -59,6 +62,9 @@ export namespace Shell {
         DEFAULT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AppState {
         export const $gtype: GObject.GType<AppState>;
     }
@@ -72,6 +78,9 @@ export namespace Shell {
         RUNNING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BlurMode {
         export const $gtype: GObject.GType<BlurMode>;
     }
@@ -91,6 +100,9 @@ export namespace Shell {
         BACKGROUND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NetworkAgentResponse {
         export const $gtype: GObject.GType<NetworkAgentResponse>;
     }
@@ -104,6 +116,9 @@ export namespace Shell {
         INTERNAL_ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SnippetHook {
         export const $gtype: GObject.GType<SnippetHook>;
     }
@@ -389,6 +404,9 @@ export namespace Shell {
     interface PerfStatisticsCallback {
         (perf_log: PerfLog, data?: any | null): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace ActionMode {
         export const $gtype: GObject.GType<ActionMode>;
     }
@@ -451,6 +469,7 @@ export namespace Shell {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'windows-changed': () => void;
             'notify::action-group': (pspec: GObject.ParamSpec) => void;
@@ -486,37 +505,45 @@ export namespace Shell {
         /**
          * The {@link Gio.DBusActionGroup} associated with this ShellApp, if any. See the
          * documentation of {@link Gio.Application} and {@link Gio.ActionGroup} for details.
+         * @read-only
          */
         get action_group(): Gio.ActionGroup;
         /**
          * The {@link Gio.DBusActionGroup} associated with this ShellApp, if any. See the
          * documentation of {@link Gio.Application} and {@link Gio.ActionGroup} for details.
+         * @read-only
          */
         get actionGroup(): Gio.ActionGroup;
         /**
          * The `GDesktopAppInfo` associated with this ShellApp, if any.
+         * @construct-only
          */
         get app_info(): never;
         /**
          * The `GDesktopAppInfo` associated with this ShellApp, if any.
+         * @construct-only
          */
         get appInfo(): never;
         /**
          * Whether the application has marked itself as busy.
+         * @read-only
          */
         get busy(): boolean;
         /**
          * The {@link Gio.Icon} representing this ShellApp
+         * @read-only
          */
         get icon(): Gio.Icon;
         /**
          * The id of this application (a desktop filename, or a special string
          * like window:0xabcd1234)
+         * @read-only
          */
         get id(): string;
         /**
          * The high-level state of the application, effectively whether it's
          * running or not, or transitioning between those states.
+         * @read-only
          */
         get state(): AppState;
 
@@ -695,10 +722,12 @@ export namespace Shell {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'app-state-changed': (arg0: App) => void;
             /**
              * @signal
+             * @run-last
              */
             'installed-changed': () => void;
         }
@@ -987,7 +1016,13 @@ export namespace Shell {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get cameras_in_use(): boolean;
+        /**
+         * @read-only
+         */
         get camerasInUse(): boolean;
 
         /**
@@ -1128,14 +1163,17 @@ export namespace Shell {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'locate-pointer': () => void;
             /**
              * @signal
+             * @run-last
              */
             'notify-error': (arg0: string, arg1: string) => void;
             /**
              * @signal
+             * @run-last
              */
             shutdown: () => void;
             'notify::automation-script': (pspec: GObject.ParamSpec) => void;
@@ -1211,14 +1249,41 @@ export namespace Shell {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get automation_script(): Gio.File;
+        /**
+         * @construct-only
+         */
         get automationScript(): Gio.File;
+        /**
+         * @read-only
+         */
         get backend(): Meta.Backend;
+        /**
+         * @read-only
+         */
         get compositor(): Meta.Compositor;
+        /**
+         * @read-only
+         */
         get context(): Meta.Context;
+        /**
+         * @read-only
+         */
         get datadir(): string;
+        /**
+         * @read-only
+         */
         get display(): Meta.Display;
+        /**
+         * @read-only
+         */
         get focus_manager(): St.FocusManager;
+        /**
+         * @read-only
+         */
         get focusManager(): St.FocusManager;
         get force_animations(): boolean;
         set force_animations(val: boolean);
@@ -1232,25 +1297,85 @@ export namespace Shell {
         set frame_timestamps(val: boolean);
         get frameTimestamps(): boolean;
         set frameTimestamps(val: boolean);
+        /**
+         * @read-only
+         */
         get imagedir(): string;
+        /**
+         * @read-only
+         */
         get screen_height(): number;
+        /**
+         * @read-only
+         */
         get screenHeight(): number;
+        /**
+         * @read-only
+         */
         get screen_width(): number;
+        /**
+         * @read-only
+         */
         get screenWidth(): number;
+        /**
+         * @construct-only
+         */
         get session_mode(): string;
+        /**
+         * @construct-only
+         */
         get sessionMode(): string;
+        /**
+         * @read-only
+         */
         get settings(): Gio.Settings;
+        /**
+         * @read-only
+         */
         get stage(): Clutter.Actor;
+        /**
+         * @read-only
+         */
         get switcheroo_control(): Gio.DBusProxy;
+        /**
+         * @read-only
+         */
         get switcherooControl(): Gio.DBusProxy;
+        /**
+         * @read-only
+         */
         get top_window_group(): Clutter.Actor;
+        /**
+         * @read-only
+         */
         get topWindowGroup(): Clutter.Actor;
+        /**
+         * @read-only
+         */
         get userdatadir(): string;
+        /**
+         * @read-only
+         */
         get window_group(): Clutter.Actor;
+        /**
+         * @read-only
+         */
         get windowGroup(): Clutter.Actor;
+        /**
+         * @read-only
+         */
         get window_manager(): WM;
+        /**
+         * @read-only
+         */
         get windowManager(): WM;
+        /**
+         * @read-only
+         */
         get workspace_manager(): Meta.WorkspaceManager;
+        /**
+         * @read-only
+         */
         get workspaceManager(): Meta.WorkspaceManager;
 
         /**
@@ -1559,10 +1684,12 @@ export namespace Shell {
 
         /**
          * Whether the choice check box is visible or not.
+         * @read-only
          */
         get choice_visible(): boolean;
         /**
          * Whether the choice check box is visible or not.
+         * @read-only
          */
         get choiceVisible(): boolean;
         /**
@@ -1577,10 +1704,12 @@ export namespace Shell {
         set confirmActor(val: Clutter.Text);
         /**
          * Whether the password confirm entry is visible or not.
+         * @read-only
          */
         get confirm_visible(): boolean;
         /**
          * Whether the password confirm entry is visible or not.
+         * @read-only
          */
         get confirmVisible(): boolean;
         /**
@@ -1595,18 +1724,22 @@ export namespace Shell {
         set passwordActor(val: Clutter.Text);
         /**
          * Whether the password entry is visible or not.
+         * @read-only
          */
         get password_visible(): boolean;
         /**
          * Whether the password entry is visible or not.
+         * @read-only
          */
         get passwordVisible(): boolean;
         /**
          * Whether the warning label is visible or not.
+         * @read-only
          */
         get warning_visible(): boolean;
         /**
          * Whether the warning label is visible or not.
+         * @read-only
          */
         get warningVisible(): boolean;
 
@@ -1818,6 +1951,7 @@ export namespace Shell {
          * greater than zero if the password has any characters.
          *
          * This is only valid after a successful prompt for a password.
+         * @read-only
          * @category Inherited from Gcr.Prompt
          */
         get password_strength(): number;
@@ -1828,6 +1962,7 @@ export namespace Shell {
          * greater than zero if the password has any characters.
          *
          * This is only valid after a successful prompt for a password.
+         * @read-only
          * @category Inherited from Gcr.Prompt
          */
         get passwordStrength(): number;
@@ -2701,6 +2836,7 @@ export namespace Shell {
         interface SignalSignatures extends Gio.MountOperation.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'show-processes-2': () => void;
             'notify::anonymous': (pspec: GObject.ParamSpec) => void;
@@ -3795,10 +3931,12 @@ export namespace Shell {
         interface SignalSignatures extends PolkitAgent.Listener.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             cancel: () => void;
             /**
              * @signal
+             * @run-last
              */
             initiate: (arg0: string, arg1: string, arg2: string, arg3: string, arg4: string[]) => void;
         }
@@ -3874,6 +4012,7 @@ export namespace Shell {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'screenshot-taken': (arg0: Mtk.Rectangle) => void;
         }
@@ -5860,9 +5999,21 @@ export namespace Shell {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get pid(): number;
+        /**
+         * @read-only
+         */
         get title(): string;
+        /**
+         * @read-only
+         */
         get wm_class(): string;
+        /**
+         * @read-only
+         */
         get wmClass(): string;
 
         /**
@@ -6538,10 +6689,12 @@ export namespace Shell {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'tray-icon-added': (arg0: Clutter.Actor) => void;
             /**
              * @signal
+             * @run-last
              */
             'tray-icon-removed': (arg0: Clutter.Actor) => void;
             'notify::bg-color': (pspec: GObject.ParamSpec) => void;
@@ -6563,7 +6716,13 @@ export namespace Shell {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get bg_color(): Clutter.Color;
+        /**
+         * @construct-only
+         */
         get bgColor(): Clutter.Color;
 
         /**
@@ -6618,56 +6777,69 @@ export namespace Shell {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'confirm-display-change': () => void;
             /**
              * Creates a close dialog for the given window.
              * @signal
+             * @run-last
              */
             'create-close-dialog': (arg0: Meta.Window) => Meta.CloseDialog;
             /**
              * Creates an inhibit shortcuts dialog for the given window.
              * @signal
+             * @run-last
              */
             'create-inhibit-shortcuts-dialog': (arg0: Meta.Window) => Meta.InhibitShortcutsDialog;
             /**
              * @signal
+             * @run-last
              */
             destroy: (arg0: Meta.WindowActor) => void;
             /**
              * @signal
+             * @run-last
              */
             'filter-keybinding': (arg0: Meta.KeyBinding) => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             'hide-tile-preview': () => void;
             /**
              * @signal
+             * @run-last
              */
             'kill-switch-workspace': () => void;
             /**
              * @signal
+             * @run-last
              */
             'kill-window-effects': (arg0: Meta.WindowActor) => void;
             /**
              * @signal
+             * @run-last
              */
             map: (arg0: Meta.WindowActor) => void;
             /**
              * @signal
+             * @run-last
              */
             minimize: (arg0: Meta.WindowActor) => void;
             /**
              * @signal
+             * @run-last
              */
             'show-tile-preview': (arg0: Meta.Window, arg1: Mtk.Rectangle, arg2: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'show-window-menu': (arg0: Meta.Window, arg1: number, arg2: Mtk.Rectangle) => void;
             /**
              * @signal
+             * @run-last
              */
             'size-change': (
                 arg0: Meta.WindowActor,
@@ -6677,14 +6849,17 @@ export namespace Shell {
             ) => void;
             /**
              * @signal
+             * @run-last
              */
             'size-changed': (arg0: Meta.WindowActor) => void;
             /**
              * @signal
+             * @run-last
              */
             'switch-workspace': (arg0: number, arg1: number, arg2: number) => void;
             /**
              * @signal
+             * @run-last
              */
             unminimize: (arg0: Meta.WindowActor) => void;
         }
@@ -7570,7 +7745,13 @@ export namespace Shell {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get bounding_box(): Clutter.ActorBox;
+        /**
+         * @read-only
+         */
         get boundingBox(): Clutter.ActorBox;
 
         /**
@@ -7642,10 +7823,12 @@ export namespace Shell {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'startup-sequence-changed': (arg0: Meta.StartupSequence) => void;
             /**
              * @signal
+             * @run-last
              */
             'tracked-windows-changed': () => void;
             'notify::focus-app': (pspec: GObject.ParamSpec) => void;
@@ -7667,7 +7850,13 @@ export namespace Shell {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get focus_app(): App;
+        /**
+         * @read-only
+         */
         get focusApp(): App;
 
         /**
@@ -7843,7 +8032,13 @@ export namespace Shell {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get monitor_index(): number;
+        /**
+         * @construct-only
+         */
         get monitorIndex(): number;
         get state_adjustment_value(): number;
         set state_adjustment_value(val: number);

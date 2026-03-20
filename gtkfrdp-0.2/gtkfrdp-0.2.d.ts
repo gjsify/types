@@ -67,26 +67,32 @@ export namespace GtkFrdp {
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'rdp-auth-failure': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'rdp-connected': () => void;
             /**
              * @signal
+             * @run-last
              */
             'rdp-disconnected': () => void;
             /**
              * @signal
+             * @run-last
              */
             'rdp-error': (arg0: string) => void;
             /**
              * @signal
+             * @run-last
              */
             'rdp-needs-authentication': () => void;
             /**
              * @signal
+             * @run-last
              */
             'rdp-needs-certificate-change-verification': (
                 arg0: string,
@@ -102,6 +108,7 @@ export namespace GtkFrdp {
             ) => void;
             /**
              * @signal
+             * @run-last
              */
             'rdp-needs-certificate-verification': (
                 arg0: string,
@@ -798,18 +805,22 @@ export namespace GtkFrdp {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'rdp-auth-failure': (arg0: string) => void;
             /**
              * @signal
+             * @run-first
              */
             'rdp-connected': () => void;
             /**
              * @signal
+             * @run-first
              */
             'rdp-disconnected': () => void;
             /**
              * @signal
+             * @run-first
              */
             'rdp-error': (arg0: string) => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;

@@ -18,6 +18,9 @@ export namespace Epc {
      * Epc-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AddressFamily {
         export const $gtype: GObject.GType<AddressFamily>;
     }
@@ -32,6 +35,9 @@ export namespace Epc {
         IPV6,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CollisionHandling {
         export const $gtype: GObject.GType<CollisionHandling>;
     }
@@ -46,6 +52,9 @@ export namespace Epc {
         UNIQUE_SERVICE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Protocol {
         export const $gtype: GObject.GType<Protocol>;
     }
@@ -175,6 +184,9 @@ export namespace Epc {
     interface ContentsReadFunc {
         (contents: Contents, buffer: any, length: number): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace AuthFlags {
         export const $gtype: GObject.GType<AuthFlags>;
     }
@@ -193,10 +205,12 @@ export namespace Epc {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             authenticate: (arg0: string) => boolean | void;
             /**
              * @signal
+             * @run-first
              */
             'publisher-resolved': (arg0: Protocol, arg1: string, arg2: number) => void;
             'notify::application': (pspec: GObject.ParamSpec) => void;
@@ -234,13 +248,31 @@ export namespace Epc {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get application(): string;
+        /**
+         * @construct-only
+         */
         get domain(): string;
+        /**
+         * @construct-only
+         */
         get hostname(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
         get password(): string;
         set password(val: string);
+        /**
+         * @construct-only
+         */
         get path(): string;
+        /**
+         * @construct-only
+         */
         get port(): number;
         get protocol(): Protocol;
         set protocol(val: Protocol);
@@ -650,14 +682,17 @@ export namespace Epc {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'scanning-done': (arg0: string) => void;
             /**
              * @signal
+             * @run-first
              */
             'service-found': (arg0: string, arg1: ServiceInfo) => void;
             /**
              * @signal
+             * @run-first
              */
             'service-removed': (arg0: string, arg1: string) => void;
             'notify::application': (pspec: GObject.ParamSpec) => void;
@@ -687,9 +722,21 @@ export namespace Epc {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get application(): string;
+        /**
+         * @construct-only
+         */
         get domain(): string;
+        /**
+         * @construct-only
+         */
         get service_types(): string[];
+        /**
+         * @construct-only
+         */
         get serviceTypes(): string[];
         get skip_our_own(): boolean;
         set skip_our_own(val: boolean);

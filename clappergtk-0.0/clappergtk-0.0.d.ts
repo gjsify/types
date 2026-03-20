@@ -111,6 +111,9 @@ export namespace ClapperGtk {
      * @since 0.10
      */
     function get_version_s(): string;
+    /**
+     * @gir-type Flags
+     */
     export namespace VideoActionMask {
         export const $gtype: GObject.GType<VideoActionMask>;
     }
@@ -871,10 +874,12 @@ export namespace ClapperGtk {
         set autoInhibit(val: boolean);
         /**
          * Get whether session is currently inhibited by playback.
+         * @read-only
          */
         get inhibited(): boolean;
         /**
          * A {@link Clapper.Player} used by widget.
+         * @read-only
          */
         get player(): Clapper.Player;
 
@@ -2295,6 +2300,7 @@ export namespace ClapperGtk {
              * A helper signal for implementing mobile/narrow adaptive
              * behavior on descendants.
              * @signal
+             * @run-last
              */
             adapt: (arg0: boolean) => void;
             'notify::adaptive-height': (pspec: GObject.ParamSpec) => void;
@@ -3288,6 +3294,7 @@ export namespace ClapperGtk {
              * setting {@link ClapperGtk.ExtraMenuButton.set_can_open_subtitles} to `true`,
              * so you do not have to implement handler for it otherwise.
              * @signal
+             * @run-last
              */
             'open-subtitles': (arg0: Clapper.MediaItem) => void;
             'notify::can-open-subtitles': (pspec: GObject.ParamSpec) => void;
@@ -5001,6 +5008,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -5009,6 +5017,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -5048,21 +5057,25 @@ export namespace ClapperGtk {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -5281,6 +5294,7 @@ export namespace ClapperGtk {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -5300,16 +5314,19 @@ export namespace ClapperGtk {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -8252,6 +8269,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -8260,6 +8278,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -8299,21 +8318,25 @@ export namespace ClapperGtk {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -8532,6 +8555,7 @@ export namespace ClapperGtk {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -8551,16 +8575,19 @@ export namespace ClapperGtk {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -12302,10 +12329,12 @@ export namespace ClapperGtk {
 
         /**
          * Access to extra menu button within controls.
+         * @read-only
          */
         get extra_menu_button(): ExtraMenuButton;
         /**
          * Access to extra menu button within controls.
+         * @read-only
          */
         get extraMenuButton(): ExtraMenuButton;
         /**
@@ -12926,10 +12955,12 @@ export namespace ClapperGtk {
 
         /**
          * Currently displayed title.
+         * @read-only
          */
         get current_title(): string;
         /**
          * Currently displayed title.
+         * @read-only
          */
         get currentTitle(): string;
         /**
@@ -13532,10 +13563,12 @@ export namespace ClapperGtk {
 
         /**
          * Currently displayed title.
+         * @read-only
          */
         get current_title(): string;
         /**
          * Currently displayed title.
+         * @read-only
          */
         get currentTitle(): string;
         /**
@@ -14557,6 +14590,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -14565,6 +14599,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -14604,21 +14639,25 @@ export namespace ClapperGtk {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -14837,6 +14876,7 @@ export namespace ClapperGtk {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -14856,16 +14896,19 @@ export namespace ClapperGtk {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -17808,6 +17851,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
@@ -17816,6 +17860,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
          * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
@@ -17855,21 +17900,25 @@ export namespace ClapperGtk {
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
@@ -18088,6 +18137,7 @@ export namespace ClapperGtk {
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
@@ -18107,16 +18157,19 @@ export namespace ClapperGtk {
          * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
          * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
@@ -20890,6 +20943,7 @@ export namespace ClapperGtk {
              * Note that `forward` already takes into account RTL direction,
              * so implementation does not have to check.
              * @signal
+             * @run-last
              */
             'seek-request': (arg0: boolean) => void;
             /**
@@ -20899,6 +20953,7 @@ export namespace ClapperGtk {
              * for only video to be fullscreened and not the whole app window.
              * It is up to implementation to decide how to handle that.
              * @signal
+             * @run-last
              */
             'toggle-fullscreen': () => void;
             'notify::fade-delay': (pspec: GObject.ParamSpec) => void;

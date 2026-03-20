@@ -224,11 +224,23 @@ export namespace GstNet {
 
         get address(): string;
         set address(val: string);
+        /**
+         * @construct-only
+         */
         get base_time(): number;
+        /**
+         * @construct-only
+         */
         get baseTime(): number;
         get bus(): Gst.Bus;
         set bus(val: Gst.Bus);
+        /**
+         * @read-only
+         */
         get internal_clock(): Gst.Clock;
+        /**
+         * @read-only
+         */
         get internalClock(): Gst.Clock;
         get minimum_update_interval(): number;
         set minimum_update_interval(val: number);
@@ -336,8 +348,17 @@ export namespace GstNet {
 
         get active(): boolean;
         set active(val: boolean);
+        /**
+         * @construct-only
+         */
         get address(): string;
+        /**
+         * @construct-only
+         */
         get clock(): Gst.Clock;
+        /**
+         * @construct-only
+         */
         get port(): number;
         get qos_dscp(): number;
         set qos_dscp(val: number);
@@ -1059,12 +1080,33 @@ export namespace GstNet {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get domain(): number;
+        /**
+         * @read-only
+         */
         get grandmaster_clock_id(): number;
+        /**
+         * @read-only
+         */
         get grandmasterClockId(): number;
+        /**
+         * @read-only
+         */
         get internal_clock(): Gst.Clock;
+        /**
+         * @read-only
+         */
         get internalClock(): Gst.Clock;
+        /**
+         * @read-only
+         */
         get master_clock_id(): number;
+        /**
+         * @read-only
+         */
         get masterClockId(): number;
 
         /**

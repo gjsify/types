@@ -56,6 +56,9 @@ export namespace Template {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ExprBuiltin {
         export const $gtype: GObject.GType<ExprBuiltin>;
     }
@@ -89,6 +92,9 @@ export namespace Template {
         CAST_BOOL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ExprType {
         export const $gtype: GObject.GType<ExprType>;
     }
@@ -132,6 +138,9 @@ export namespace Template {
         NULL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SymbolType {
         export const $gtype: GObject.GType<SymbolType>;
     }

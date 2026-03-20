@@ -409,6 +409,7 @@ export namespace EDataBook {
              * Emitted when a client destroys its `EBookClient` for `backend`.
              * @signal
              * @since 3.10
+             * @run-last
              */
             closed: (arg0: string) => void;
             /**
@@ -417,6 +418,7 @@ export namespace EDataBook {
              * tasks such as synchronizing data to permanent storage.
              * @signal
              * @since 3.10
+             * @run-last
              */
             shutdown: () => void;
             'notify::cache-dir': (pspec: GObject.ParamSpec) => void;
@@ -456,8 +458,17 @@ export namespace EDataBook {
         set cache_dir(val: string);
         get cacheDir(): string;
         set cacheDir(val: string);
+        /**
+         * @read-only
+         */
         get proxy_resolver(): Gio.ProxyResolver;
+        /**
+         * @read-only
+         */
         get proxyResolver(): Gio.ProxyResolver;
+        /**
+         * @construct-only
+         */
         get registry(): EDataServer.SourceRegistry;
         get writable(): boolean;
         set writable(val: boolean);
@@ -2095,14 +2106,19 @@ export namespace EDataBook {
         interface SignalSignatures extends EBackend.Cache.SignalSignatures {
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'categories-changed': (arg0: string) => void;
             /**
              * @signal
+             * @action
+             * @run-last
              */
             'dup-contact-revision': (arg0: EBookContacts.Contact) => string;
             /**
              * @signal
+             * @run-last
              */
             'e164-changed': (arg0: EBookContacts.Contact, arg1: boolean) => void;
             'notify::locale': (pspec: GObject.ParamSpec) => void;
@@ -2126,6 +2142,9 @@ export namespace EDataBook {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get locale(): string;
 
         /**
@@ -3086,6 +3105,7 @@ export namespace EDataBook {
         interface SignalSignatures extends BookBackendSync.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'refresh-completed': () => void;
             /**
@@ -3095,6 +3115,7 @@ export namespace EDataBook {
              * a dedicated thread, thus it doesn't block the main thread.
              * @signal
              * @since 3.26
+             * @run-last
              */
             'source-changed': () => void;
             'notify::cache': (pspec: GObject.ParamSpec) => void;
@@ -3811,6 +3832,7 @@ export namespace EDataBook {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'before-insert-contact': (
                 arg0: any | null,
@@ -3822,6 +3844,7 @@ export namespace EDataBook {
             ) => boolean | void;
             /**
              * @signal
+             * @run-last
              */
             'before-remove-contact': (
                 arg0: any | null,
@@ -4746,9 +4769,21 @@ export namespace EDataBook {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get backend(): BookBackend;
+        /**
+         * @construct-only
+         */
         get connection(): Gio.DBusConnection;
+        /**
+         * @construct-only
+         */
         get object_path(): string;
+        /**
+         * @construct-only
+         */
         get objectPath(): string;
 
         /**
@@ -5466,8 +5501,17 @@ export namespace EDataBook {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get backend(): BookBackend;
+        /**
+         * @read-only
+         */
         get position(): number;
+        /**
+         * @read-only
+         */
         get total(): number;
 
         /**
@@ -5726,8 +5770,17 @@ export namespace EDataBook {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set book_cache(val: BookCache);
+        /**
+         * @construct-only
+         */
         set bookCache(val: BookCache);
+        /**
+         * @construct-only
+         */
         set cursor(val: any);
 
         /**
@@ -5807,9 +5860,21 @@ export namespace EDataBook {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set cursor(val: any);
+        /**
+         * @construct-only
+         */
         set ebsql(val: BookSqlite);
+        /**
+         * @construct-only
+         */
         set revision_key(val: string);
+        /**
+         * @construct-only
+         */
         set revisionKey(val: string);
 
         /**
@@ -6529,6 +6594,7 @@ export namespace EDataBook {
              *    set `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY` flag.
              * @signal
              * @since 3.50
+             * @run-last
              */
             'objects-added': (arg0: string[]) => void;
             /**
@@ -6538,6 +6604,7 @@ export namespace EDataBook {
              *    set `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY` flag.
              * @signal
              * @since 3.50
+             * @run-last
              */
             'objects-modified': (arg0: string[]) => void;
             /**
@@ -6547,6 +6614,7 @@ export namespace EDataBook {
              *    set `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY` flag.
              * @signal
              * @since 3.50
+             * @run-last
              */
             'objects-removed': (arg0: string[]) => void;
             'notify::backend': (pspec: GObject.ParamSpec) => void;
@@ -6579,7 +6647,13 @@ export namespace EDataBook {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get backend(): BookBackend;
+        /**
+         * @construct-only
+         */
         get connection(): Gio.DBusConnection;
         get indices(): any;
         set indices(val: any);
@@ -6587,8 +6661,17 @@ export namespace EDataBook {
         set n_total(val: number);
         get nTotal(): number;
         set nTotal(val: number);
+        /**
+         * @construct-only
+         */
         get object_path(): string;
+        /**
+         * @construct-only
+         */
         get objectPath(): string;
+        /**
+         * @construct-only
+         */
         get sexp(): BookBackendSExp;
 
         /**
@@ -8232,6 +8315,7 @@ export namespace EDataBook {
          * Current locale, as detected. It can be `null`, when the locale
          * was not detected yet.
          * @since 3.30
+         * @read-only
          */
         get locale(): string;
 

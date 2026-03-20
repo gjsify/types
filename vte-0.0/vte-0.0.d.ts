@@ -59,6 +59,9 @@ export namespace Vte {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TerminalAntiAlias {
         export const $gtype: GObject.GType<TerminalAntiAlias>;
     }
@@ -72,6 +75,9 @@ export namespace Vte {
         FORCE_DISABLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TerminalCursorBlinkMode {
         export const $gtype: GObject.GType<TerminalCursorBlinkMode>;
     }
@@ -96,6 +102,9 @@ export namespace Vte {
         OFF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TerminalCursorShape {
         export const $gtype: GObject.GType<TerminalCursorShape>;
     }
@@ -121,6 +130,9 @@ export namespace Vte {
         UNDERLINE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TerminalEraseBinding {
         export const $gtype: GObject.GType<TerminalEraseBinding>;
     }
@@ -154,6 +166,9 @@ export namespace Vte {
         TTY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TerminalWriteFlags {
         export const $gtype: GObject.GType<TerminalWriteFlags>;
     }
@@ -190,6 +205,9 @@ export namespace Vte {
     interface SelectionFunc {
         (terminal: Terminal, column: number, row: number, data?: any | null): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace PtyFlags {
         export const $gtype: GObject.GType<PtyFlags>;
     }
@@ -255,12 +273,14 @@ export namespace Vte {
         /**
          * The file descriptor of the PTY master.
          * @since 0.26
+         * @construct-only
          */
         get fd(): number;
         /**
          * Controls how the session is recorded in lastlog, utmp, and wtmp,
          * and whether to use the GNOME PTY helper.
          * @since 0.26
+         * @construct-only
          */
         get flags(): PtyFlags;
         /**
@@ -900,18 +920,21 @@ export namespace Vte {
              * This signal is emitted when the a child sends a beep request to the
              * terminal.
              * @signal
+             * @run-last
              */
             beep: () => void;
             /**
              * Emitted whenever selection of a new font causes the values of the
              * %char_width or %char_height fields to change.
              * @signal
+             * @run-last
              */
             'char-size-changed': (arg0: number, arg1: number) => void;
             /**
              * This signal is emitted when the terminal detects that a child started
              * using `vte_terminal_fork_command()` has exited.
              * @signal
+             * @run-last
              */
             'child-exited': () => void;
             /**
@@ -919,39 +942,47 @@ export namespace Vte {
              * prepares to send it to the child process.  The signal is emitted even
              * when there is no child process.
              * @signal
+             * @run-last
              */
             commit: (arg0: string, arg1: number) => void;
             /**
              * Emitted whenever the visible appearance of the terminal has changed.
              * Used primarily by `VteTerminalAccessible`.
              * @signal
+             * @run-last
              */
             'contents-changed': () => void;
             /**
              * Emitted whenever `vte_terminal_copy_clipboard()` is called.
              * @signal
+             * @action
+             * @run-last
              */
             'copy-clipboard': () => void;
             /**
              * Emitted whenever the cursor moves to a new character cell.  Used
              * primarily by `VteTerminalAccessible`.
              * @signal
+             * @run-last
              */
             'cursor-moved': () => void;
             /**
              * Emitted when the user hits the '-' key while holding the Control key.
              * @signal
+             * @run-last
              */
             'decrease-font-size': () => void;
             /**
              * Emitted at the child application's request.
              * @signal
+             * @run-last
              */
             'deiconify-window': () => void;
             /**
              * Emitted whenever the terminal's emulation changes, only possible at
              * the parent application's request.
              * @signal
+             * @run-last
              */
             'emulation-changed': () => void;
             /**
@@ -959,6 +990,7 @@ export namespace Vte {
              * as a result of receiving a control sequence which toggled between the
              * local and UTF-8 encodings, or at the parent application's request.
              * @signal
+             * @run-last
              */
             'encoding-changed': () => void;
             /**
@@ -966,66 +998,80 @@ export namespace Vte {
              * is running in the terminal.  This signal is frequently (but not
              * always) emitted with a {@link Vte.Terminal.SignalSignatures.child_exited | Vte.Terminal::child-exited} signal.
              * @signal
+             * @run-last
              */
             eof: () => void;
             /**
              * Emitted when the terminal's %icon_title field is modified.
              * @signal
+             * @run-last
              */
             'icon-title-changed': () => void;
             /**
              * Emitted at the child application's request.
              * @signal
+             * @run-last
              */
             'iconify-window': () => void;
             /**
              * Emitted when the user hits the '+' key while holding the Control key.
              * @signal
+             * @run-last
              */
             'increase-font-size': () => void;
             /**
              * Emitted at the child application's request.
              * @signal
+             * @run-last
              */
             'lower-window': () => void;
             /**
              * Emitted at the child application's request.
              * @signal
+             * @run-last
              */
             'maximize-window': () => void;
             /**
              * Emitted at the child application's request.
              * @signal
+             * @run-last
              */
             'move-window': (arg0: number, arg1: number) => void;
             /**
              * Emitted whenever `vte_terminal_paste_clipboard()` is called.
              * @signal
+             * @action
+             * @run-last
              */
             'paste-clipboard': () => void;
             /**
              * Emitted at the child application's request.
              * @signal
+             * @run-last
              */
             'raise-window': () => void;
             /**
              * Emitted at the child application's request.
              * @signal
+             * @run-last
              */
             'refresh-window': () => void;
             /**
              * Emitted at the child application's request.
              * @signal
+             * @run-last
              */
             'resize-window': (arg0: number, arg1: number) => void;
             /**
              * Emitted at the child application's request.
              * @signal
+             * @run-last
              */
             'restore-window': () => void;
             /**
              * Emitted whenever the contents of terminal's selection changes.
              * @signal
+             * @run-last
              */
             'selection-changed': () => void;
             /**
@@ -1034,12 +1080,14 @@ export namespace Vte {
              * of {@link Gtk.Scrollbar} to the scroll directions of the {@link Vte.Terminal}.
              * @signal
              * @since 0.17.1
+             * @run-last
              */
             'set-scroll-adjustments': (arg0: Gtk.Adjustment | null, arg1: Gtk.Adjustment | null) => void;
             /**
              * Emitted whenever the contents of the status line are modified or
              * cleared.
              * @signal
+             * @run-last
              */
             'status-line-changed': () => void;
             /**
@@ -1047,6 +1095,7 @@ export namespace Vte {
              * its accessibility peer. May not be emitted under certain
              * circumstances.
              * @signal
+             * @run-last
              */
             'text-deleted': () => void;
             /**
@@ -1054,6 +1103,7 @@ export namespace Vte {
              * its accessibility peer. May not be emitted under certain
              * circumstances.
              * @signal
+             * @run-last
              */
             'text-inserted': () => void;
             /**
@@ -1061,6 +1111,7 @@ export namespace Vte {
              * its accessibility peer. May not be emitted under certain
              * circumstances.
              * @signal
+             * @run-last
              */
             'text-modified': () => void;
             /**
@@ -1068,11 +1119,13 @@ export namespace Vte {
              * its accessibility peer. May not be emitted under certain
              * circumstances.
              * @signal
+             * @run-last
              */
             'text-scrolled': (arg0: number) => void;
             /**
              * Emitted when the terminal's %window_title field is modified.
              * @signal
+             * @run-last
              */
             'window-title-changed': () => void;
             'notify::allow-bold': (pspec: GObject.ParamSpec) => void;
@@ -1438,11 +1491,13 @@ export namespace Vte {
         /**
          * The terminal's so-called icon title, or `null` if no icon title has been set.
          * @since 0.20
+         * @read-only
          */
         get icon_title(): string;
         /**
          * The terminal's so-called icon title, or `null` if no icon title has been set.
          * @since 0.20
+         * @read-only
          */
         get iconTitle(): string;
         /**
@@ -1565,11 +1620,13 @@ export namespace Vte {
         /**
          * The terminal's title.
          * @since 0.20
+         * @read-only
          */
         get window_title(): string;
         /**
          * The terminal's title.
          * @since 0.20
+         * @read-only
          */
         get windowTitle(): string;
         /**

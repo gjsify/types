@@ -55,6 +55,9 @@ export namespace Eog {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ImageMetadataStatus {
         export const $gtype: GObject.GType<ImageMetadataStatus>;
     }
@@ -68,6 +71,9 @@ export namespace Eog {
         READY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ImageStatus {
         export const $gtype: GObject.GType<ImageStatus>;
     }
@@ -83,6 +89,9 @@ export namespace Eog {
         FAILED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace JobPriority {
         export const $gtype: GObject.GType<JobPriority>;
     }
@@ -97,6 +106,9 @@ export namespace Eog {
         N_PRIORITIES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ListStoreColumn {
         export const $gtype: GObject.GType<ListStoreColumn>;
     }
@@ -112,6 +124,9 @@ export namespace Eog {
         NUM_COLUMNS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ThumbNavMode {
         export const $gtype: GObject.GType<ThumbNavMode>;
     }
@@ -126,6 +141,9 @@ export namespace Eog {
         MULTIPLE_COLUMNS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ThumbViewSelectionChange {
         export const $gtype: GObject.GType<ThumbViewSelectionChange>;
     }
@@ -142,6 +160,9 @@ export namespace Eog {
         RANDOM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransformType {
         export const $gtype: GObject.GType<TransformType>;
     }
@@ -160,6 +181,9 @@ export namespace Eog {
         TRANSVERSE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransparencyStyle {
         export const $gtype: GObject.GType<TransparencyStyle>;
     }
@@ -206,6 +230,9 @@ export namespace Eog {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UCType {
         export const $gtype: GObject.GType<UCType>;
     }
@@ -229,6 +256,9 @@ export namespace Eog {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowError {
         export const $gtype: GObject.GType<WindowError>;
     }
@@ -246,6 +276,9 @@ export namespace Eog {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowGalleryPos {
         export const $gtype: GObject.GType<WindowGalleryPos>;
     }
@@ -260,6 +293,9 @@ export namespace Eog {
         RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WindowMode {
         export const $gtype: GObject.GType<WindowMode>;
     }
@@ -274,6 +310,9 @@ export namespace Eog {
         SLIDESHOW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ZoomMode {
         export const $gtype: GObject.GType<ZoomMode>;
     }
@@ -361,6 +400,9 @@ export namespace Eog {
      * @gir-type Alias
      */
     type ExifData = object | null;
+    /**
+     * @gir-type Flags
+     */
     export namespace Debug {
         export const $gtype: GObject.GType<Debug>;
     }
@@ -384,6 +426,9 @@ export namespace Eog {
         PLUGINS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ImageData {
         export const $gtype: GObject.GType<ImageData>;
     }
@@ -398,6 +443,9 @@ export namespace Eog {
         XMP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StartupFlags {
         export const $gtype: GObject.GType<StartupFlags>;
     }
@@ -1010,7 +1058,13 @@ export namespace Eog {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get pixbuf(): GdkPixbuf.Pixbuf;
+        /**
+         * @construct-only
+         */
         get uri(): string;
 
         /**
@@ -2949,28 +3003,34 @@ export namespace Eog {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             changed: () => void;
             /**
              * @signal
+             * @run-last
              */
             'file-changed': () => void;
             /**
              * The ::next-frame signal will be emitted each time an animated image
              * advances to the next frame.
              * @signal
+             * @run-last
              */
             'next-frame': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'save-progress': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'size-prepared': (arg0: number, arg1: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'thumbnail-changed': () => void;
         }
@@ -3251,14 +3311,17 @@ export namespace Eog {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             cancelled: () => void;
             /**
              * @signal
+             * @run-last
              */
             finished: () => void;
             /**
              * @signal
+             * @run-last
              */
             progress: (arg0: number) => void;
         }
@@ -3783,6 +3846,7 @@ export namespace Eog {
         interface SignalSignatures extends Gtk.ListStore.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'draw-thumbnail': () => void;
         }
@@ -5317,10 +5381,25 @@ export namespace Eog {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get next_action(): string;
+        /**
+         * @construct-only
+         */
         get nextAction(): string;
+        /**
+         * @construct-only
+         */
         get prev_action(): string;
+        /**
+         * @construct-only
+         */
         get prevAction(): string;
+        /**
+         * @construct-only
+         */
         get thumbview(): ThumbView;
 
         /**
@@ -5836,18 +5915,22 @@ export namespace Eog {
         interface SignalSignatures extends Gtk.Overlay.SignalSignatures {
             /**
              * @signal
+             * @run-last
              */
             'next-image': () => void;
             /**
              * @signal
+             * @run-last
              */
             'previous-image': () => void;
             /**
              * @signal
+             * @run-last
              */
             'rotation-changed': (arg0: number) => void;
             /**
              * @signal
+             * @run-last
              */
             'zoom-changed': (arg0: number) => void;
             'notify::antialiasing-in': (pspec: GObject.ParamSpec) => void;
@@ -6004,11 +6087,13 @@ export namespace Eog {
         /**
          * This is the color used to fill the transparent parts of an image
          * if {@link Eog.ScrollView.transparency_style} is set to {@link Eog.TransparencyStyle.COLOR}.
+         * @write-only
          */
         set transparency_color(val: Gdk.RGBA);
         /**
          * This is the color used to fill the transparent parts of an image
          * if {@link Eog.ScrollView.transparency_style} is set to {@link Eog.TransparencyStyle.COLOR}.
+         * @write-only
          */
         set transparencyColor(val: Gdk.RGBA);
         /**
@@ -6759,10 +6844,12 @@ export namespace Eog {
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
             /**
              * @signal
+             * @run-first
              */
             'page-added': (arg0: Gtk.Widget) => void;
             /**
              * @signal
+             * @run-first
              */
             'page-removed': (arg0: Gtk.Widget) => void;
             'notify::current-page': (pspec: GObject.ParamSpec) => void;
@@ -8034,6 +8121,9 @@ export namespace Eog {
         set show_buttons(val: boolean);
         get showButtons(): boolean;
         set showButtons(val: boolean);
+        /**
+         * @construct-only
+         */
         get thumbview(): ThumbView;
 
         /**
@@ -9633,7 +9723,13 @@ export namespace Eog {
         set counter_start(val: number);
         get counterStart(): number;
         set counterStart(val: number);
+        /**
+         * @write-only
+         */
         set n_images(val: number);
+        /**
+         * @write-only
+         */
         set nImages(val: number);
         get space_character(): number;
         set space_character(val: number);
@@ -9722,6 +9818,7 @@ export namespace Eog {
              * The {@link Eog.Window.SignalSignatures.prepared | Eog.Window::prepared} signal is emitted when the `window` is ready
              * to be shown.
              * @signal
+             * @run-last
              */
             prepared: () => void;
             'notify::gallery-position': (pspec: GObject.ParamSpec) => void;
@@ -9861,11 +9958,13 @@ export namespace Eog {
         /**
          * A bitwise OR of {@link Eog.StartupFlags} elements, indicating how the window
          * should behave upon creation.
+         * @construct-only
          */
         get startup_flags(): StartupFlags;
         /**
          * A bitwise OR of {@link Eog.StartupFlags} elements, indicating how the window
          * should behave upon creation.
+         * @construct-only
          */
         get startupFlags(): StartupFlags;
 
@@ -11251,6 +11350,7 @@ export namespace Eog {
         /**
          * This is the {@link Eog.Application} this {@link Eog.ApplicationActivatable} instance
          * should be attached to.
+         * @construct-only
          */
         get app(): Application;
 
@@ -11302,6 +11402,7 @@ export namespace Eog {
         /**
          * This is the {@link Eog.Window} this {@link Eog.WindowActivatable} instance
          * should be attached to.
+         * @construct-only
          */
         get window(): Window;
 

@@ -420,11 +420,29 @@ export namespace GstBase {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get current_level_bytes(): number;
+        /**
+         * @read-only
+         */
         get currentLevelBytes(): number;
+        /**
+         * @read-only
+         */
         get current_level_time(): number;
+        /**
+         * @read-only
+         */
         get currentLevelTime(): number;
+        /**
+         * @read-only
+         */
         get current_level_visible(): number;
+        /**
+         * @read-only
+         */
         get currentLevelVisible(): number;
 
         /**
@@ -624,7 +642,13 @@ export namespace GstBase {
         set enable_last_buffer(val: boolean);
         get enableLastBuffer(): boolean;
         set enableLastBuffer(val: boolean);
+        /**
+         * @read-only
+         */
         get last_buffer(): Gst.Buffer;
+        /**
+         * @read-only
+         */
         get lastBuffer(): Gst.Buffer;
         get max_lateness(): number;
         set max_lateness(val: number);

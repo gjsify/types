@@ -31,6 +31,9 @@ export namespace Budgie {
      * Budgie-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PopoverPositionPolicy {
         export const $gtype: GObject.GType<PopoverPositionPolicy>;
     }
@@ -60,6 +63,9 @@ export namespace Budgie {
     const APPLET_KEY_ALIGN: string;
     const APPLET_KEY_NAME: string;
     const APPLET_KEY_POS: string;
+    /**
+     * @gir-type Flags
+     */
     export namespace PanelAction {
         export const $gtype: GObject.GType<PanelAction>;
     }
@@ -79,6 +85,9 @@ export namespace Budgie {
         MAX,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PanelPosition {
         export const $gtype: GObject.GType<PanelPosition>;
     }
@@ -120,11 +129,15 @@ export namespace Budgie {
              * on screen, so that it may adjust its own layout to better suit
              * the geometry.
              * @signal
+             * @action
+             * @run-last
              */
             'panel-position-changed': (arg0: PanelPosition) => void;
             /**
              * Used to notify this applet of a change in the panel size
              * @signal
+             * @action
+             * @run-last
              */
             'panel-size-changed': (arg0: number, arg1: number, arg2: number) => void;
             'notify::settings-prefix': (pspec: GObject.ParamSpec) => void;
@@ -1088,6 +1101,8 @@ export namespace Budgie {
              * through a toggling action, such as being rolled past in a
              * {@link Budgie.PopoverManager} set of popovers.
              * @signal
+             * @action
+             * @run-last
              */
             closed: () => void;
             'notify::position-policy': (pspec: GObject.ParamSpec) => void;

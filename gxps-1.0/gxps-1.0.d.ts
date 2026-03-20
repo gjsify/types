@@ -122,6 +122,9 @@ export namespace Gxps {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set source(val: string);
 
         /**
@@ -803,6 +806,9 @@ export namespace Gxps {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set source(val: string);
 
         /**
@@ -1441,6 +1447,9 @@ export namespace Gxps {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set source(val: string);
 
         /**
@@ -1545,6 +1554,9 @@ export namespace Gxps {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set file(val: Gio.File);
 
         /**
@@ -2182,6 +2194,9 @@ export namespace Gxps {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set source(val: string);
 
         /**

@@ -54,6 +54,9 @@ export namespace Granite {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingsPageStatusType {
         export const $gtype: GObject.GType<SettingsPageStatusType>;
     }
@@ -69,6 +72,9 @@ export namespace Granite {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingsColorScheme {
         export const $gtype: GObject.GType<SettingsColorScheme>;
     }
@@ -525,8 +531,17 @@ export namespace Granite {
         set status_type(val: SettingsPageStatusType);
         get statusType(): SettingsPageStatusType;
         set statusType(val: SettingsPageStatusType);
+        /**
+         * @construct-only
+         */
         get display_widget(): Gtk.Widget;
+        /**
+         * @construct-only
+         */
         get displayWidget(): Gtk.Widget;
+        /**
+         * @construct-only
+         */
         get header(): string;
         get status(): string;
         set status(val: string);
@@ -684,12 +699,33 @@ export namespace Granite {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get action_area(): Gtk.Box;
+        /**
+         * @construct-only
+         */
         get actionArea(): Gtk.Box;
+        /**
+         * @construct-only
+         */
         get content_area(): Gtk.Grid;
+        /**
+         * @construct-only
+         */
         get contentArea(): Gtk.Grid;
+        /**
+         * @construct-only
+         */
         get status_switch(): Gtk.Switch;
+        /**
+         * @construct-only
+         */
         get statusSwitch(): Gtk.Switch;
+        /**
+         * @construct-only
+         */
         get activatable(): boolean;
         get description(): string;
         set description(val: string);
@@ -981,6 +1017,9 @@ export namespace Granite {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get format(): string;
         get date(): GLib.DateTime;
         set date(val: GLib.DateTime);
@@ -1956,12 +1995,33 @@ export namespace Granite {
         set badge_icon(val: Gio.Icon);
         get badgeIcon(): Gio.Icon;
         set badgeIcon(val: Gio.Icon);
+        /**
+         * @construct-only
+         */
         get primary_label(): Gtk.Label;
+        /**
+         * @construct-only
+         */
         get primaryLabel(): Gtk.Label;
+        /**
+         * @construct-only
+         */
         get secondary_label(): Gtk.Label;
+        /**
+         * @construct-only
+         */
         get secondaryLabel(): Gtk.Label;
+        /**
+         * @construct-only
+         */
         set buttons(val: Gtk.ButtonsType);
+        /**
+         * @construct-only
+         */
         get custom_bin(): Gtk.Box;
+        /**
+         * @construct-only
+         */
         get customBin(): Gtk.Box;
 
         /**
@@ -2295,6 +2355,9 @@ export namespace Granite {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get overlay(): Gtk.Overlay;
         get label(): string;
         set label(val: string);
@@ -2543,6 +2606,9 @@ export namespace Granite {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get stack(): Gtk.Stack;
         get visible_child_name(): string;
         set visible_child_name(val: string);
@@ -2904,9 +2970,21 @@ export namespace Granite {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get format_12(): string;
+        /**
+         * @construct-only
+         */
         get format12(): string;
+        /**
+         * @construct-only
+         */
         get format_24(): string;
+        /**
+         * @construct-only
+         */
         get format24(): string;
         get time(): GLib.DateTime;
         set time(val: GLib.DateTime);

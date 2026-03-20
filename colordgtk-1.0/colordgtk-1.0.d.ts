@@ -1214,6 +1214,7 @@ export namespace ColordGtk {
              * `cd_profile_connect()` if the ICC filename is required.
              * @signal
              * @since 0.1.20
+             * @run-last
              */
             changed: (arg0: Colord.Profile) => void;
             'notify::profile': (pspec: GObject.ParamSpec) => void;
@@ -1234,6 +1235,9 @@ export namespace ColordGtk {
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get Profile(): string;
 
         /**

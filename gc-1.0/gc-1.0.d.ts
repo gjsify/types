@@ -24,6 +24,9 @@ export namespace Gc {
      * Gc-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Category {
         export const $gtype: GObject.GType<Category>;
     }
@@ -53,6 +56,9 @@ export namespace Gc {
         EMOJI_FLAGS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SearchError {
         export const $gtype: GObject.GType<SearchError>;
     }
@@ -102,6 +108,9 @@ export namespace Gc {
     interface SearchFunc {
         (uc: string): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace SearchFlag {
         export const $gtype: GObject.GType<SearchFlag>;
     }
@@ -137,7 +146,13 @@ export namespace Gc {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set criteria(val: SearchCriteria);
+        /**
+         * @construct-only
+         */
         set flags(val: SearchFlag);
 
         /**

@@ -286,16 +286,19 @@ export namespace GUsb {
             /**
              * This signal is emitted when a USB device is added.
              * @signal
+             * @run-last
              */
             'device-added': (arg0: Device) => void;
             /**
              * This signal is emitted when a USB device is changed.
              * @signal
+             * @run-last
              */
             'device-changed': (arg0: Device) => void;
             /**
              * This signal is emitted when a USB device is removed.
              * @signal
+             * @run-last
              */
             'device-removed': (arg0: Device) => void;
             'notify::debug-level': (pspec: GObject.ParamSpec) => void;
@@ -324,7 +327,13 @@ export namespace GUsb {
         set debug_level(val: number);
         get debugLevel(): number;
         set debugLevel(val: number);
+        /**
+         * @read-only
+         */
         get libusb_context(): any;
+        /**
+         * @read-only
+         */
         get libusbContext(): any;
 
         /**
@@ -1069,10 +1078,25 @@ export namespace GUsb {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set context(val: Context);
+        /**
+         * @construct-only
+         */
         get libusb_device(): any;
+        /**
+         * @construct-only
+         */
         get libusbDevice(): any;
+        /**
+         * @construct-only
+         */
         set platform_id(val: string);
+        /**
+         * @construct-only
+         */
         set platformId(val: string);
 
         /**
@@ -2276,11 +2300,13 @@ export namespace GUsb {
             /**
              * This signal is emitted when a USB device is added.
              * @signal
+             * @run-last
              */
             'device-added': (arg0: Device) => void;
             /**
              * This signal is emitted when a USB device is removed.
              * @signal
+             * @run-last
              */
             'device-removed': (arg0: Device) => void;
             'notify::context': (pspec: GObject.ParamSpec) => void;
@@ -2301,6 +2327,9 @@ export namespace GUsb {
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get context(): Context;
 
         /**
